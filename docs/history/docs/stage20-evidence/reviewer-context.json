@@ -1,0 +1,339 @@
+{
+  "identity": {
+    "execution_id": "stage20-reviewer",
+    "task_id": "STAGE20-SLUGIFY",
+    "role": "reviewer",
+    "phase": "review",
+    "contract_version": 1,
+    "workspace_id": "16ad7127b4c4d76496b8ebe41eb1cd117a1886cec0dde354012839638cf59fbe"
+  },
+  "model": "gpt-6-astra",
+  "reasoning": "medium",
+  "bundle": {
+    "task": {
+      "task_id": "STAGE20-SLUGIFY",
+      "contract_version": 1,
+      "public_interface": "def slugify(value: str) -> str",
+      "file": "src/slugify.py",
+      "acceptance_criteria": [
+        "Lowercase ASCII letters; retain ASCII letters and digits.",
+        "Trim whitespace and replace every whitespace run with one hyphen (including tabs/newlines).",
+        "Remove ASCII punctuation except hyphen, including underscore; removal does not insert a separator.",
+        "Collapse repeated hyphens and strip edge hyphens.",
+        "Empty or whitespace-only strings return the empty string."
+      ],
+      "examples": [
+        [
+          "Hello World",
+          "hello-world"
+        ],
+        [
+          "  Hello   World ",
+          "hello-world"
+        ],
+        [
+          "Hello, World!",
+          "hello-world"
+        ],
+        [
+          "a---b",
+          "a-b"
+        ],
+        [
+          "---Hello---",
+          "hello"
+        ],
+        [
+          "",
+          ""
+        ]
+      ],
+      "constraints": [
+        "Pure Python, standard library only, no external dependencies or I/O.",
+        "ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.",
+        "Do not add features or mutate any file other than src/slugify.py."
+      ]
+    },
+    "contract": {
+      "task_id": "STAGE20-SLUGIFY",
+      "contract_version": 1,
+      "public_interface": "def slugify(value: str) -> str",
+      "acceptance_criteria": [
+        "Lowercase ASCII letters; retain ASCII letters and digits.",
+        "Trim whitespace and replace every whitespace run with one hyphen (including tabs/newlines).",
+        "Remove ASCII punctuation except hyphen, including underscore; removal does not insert a separator.",
+        "Collapse repeated hyphens and strip edge hyphens.",
+        "Empty or whitespace-only strings return the empty string."
+      ],
+      "allowed_mutation_scope": [
+        "src/slugify.py"
+      ],
+      "constraints": [
+        "Pure Python, standard library only, no external dependencies or I/O.",
+        "ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.",
+        "Do not add features or mutate any file other than src/slugify.py."
+      ],
+      "risks": [
+        "Replacing punctuation with hyphens would incorrectly split joined text; a_b must become ab.",
+        "Whitespace handling must cover tabs and newlines, not just spaces.",
+        "Whitespace replacement and punctuation removal can produce adjacent hyphens; collapse and edge stripping must apply to the resulting string.",
+        "Character classes that retain underscores can violate punctuation removal.",
+        "Non-whitespace ASCII control-character behavior is not explicitly defined; avoid inventing additional acceptance requirements."
+      ]
+    },
+    "final_diff": "diff --git a/src/slugify.py b/src/slugify.py\nindex 24d2036..92889e2 100644\n--- a/src/slugify.py\n+++ b/src/slugify.py\n@@ -1,2 +1,17 @@\n def slugify(value: str) -> str:\n-    raise NotImplementedError\n+    \"\"\"Return a lowercase, hyphen-separated slug for an ASCII string.\"\"\"\n+    slug: list[str] = []\n+\n+    for character in value:\n+        if \"A\" <= character <= \"Z\":\n+            slug.append(character.lower())\n+        elif \"a\" <= character <= \"z\" or \"0\" <= character <= \"9\":\n+            slug.append(character)\n+        elif character == \"-\" or character.isspace():\n+            if slug and slug[-1] != \"-\":\n+                slug.append(\"-\")\n+\n+    if slug and slug[-1] == \"-\":\n+        slug.pop()\n+\n+    return \"\".join(slug)",
+    "implementation_result": {
+      "task_id": "STAGE20-SLUGIFY",
+      "contract_version": 1,
+      "outcome": "completed",
+      "changed_files": [
+        "src/slugify.py"
+      ],
+      "summary": "Implemented single-pass ASCII slugification with lowercase conversion, whitespace normalization, punctuation removal, hyphen collapsing, and edge trimming.",
+      "checks_run": [
+        "Successful write to src/slugify.py.",
+        "Check passed 12/12 cases covering examples, tabs/newlines, whitespace-only input, underscore and punctuation removal, digits, and repeated/edge hyphens.",
+        "Status confirmed src/slugify.py is the only changed file."
+      ]
+    },
+    "implementer_checks": [
+      {
+        "action": [
+          "inspect",
+          "TASK.json"
+        ],
+        "read_only": true,
+        "changed_paths": [],
+        "returncode": 0,
+        "stdout": "{\n  \"task_id\": \"STAGE20-SLUGIFY\",\n  \"contract_version\": 1,\n  \"public_interface\": \"def slugify(value: str) -> str\",\n  \"file\": \"src/slugify.py\",\n  \"acceptance_criteria\": [\n    \"Lowercase ASCII letters; retain ASCII letters and digits.\",\n    \"Trim whitespace and replace every whitespace run with one hyphen (including tabs/newlines).\",\n    \"Remove ASCII punctuation except hyphen, including underscore; removal does not insert a separator.\",\n    \"Collapse repeated hyphens and strip edge hyphens.\",\n    \"Empty or whitespace-only strings return the empty string.\"\n  ],\n  \"examples\": [\n    [\n      \"Hello World\",\n      \"hello-world\"\n    ],\n    [\n      \"  Hello   World \",\n      \"hello-world\"\n    ],\n    [\n      \"Hello, World!\",\n      \"hello-world\"\n    ],\n    [\n      \"a---b\",\n      \"a-b\"\n    ],\n    [\n      \"---Hello---\",\n      \"hello\"\n    ],\n    [\n      \"\",\n      \"\"\n    ]\n  ],\n  \"constraints\": [\n    \"Pure Python, standard library only, no external dependencies or I/O.\",\n    \"ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.\",\n    \"Do not add features or mutate any file other than src/slugify.py.\"\n  ]\n}\n\n",
+        "stderr": ""
+      },
+      {
+        "action": [
+          "inspect",
+          "src/slugify.py"
+        ],
+        "read_only": true,
+        "changed_paths": [],
+        "returncode": 0,
+        "stdout": "def slugify(value: str) -> str:\n    raise NotImplementedError\n\n",
+        "stderr": ""
+      },
+      {
+        "action": [
+          "write",
+          "src/slugify.py"
+        ],
+        "read_only": false,
+        "changed_paths": [
+          "src/slugify.py"
+        ],
+        "returncode": 0,
+        "stdout": "written: src/slugify.py\n",
+        "stderr": ""
+      },
+      {
+        "action": [
+          "check"
+        ],
+        "read_only": true,
+        "changed_paths": [],
+        "returncode": 0,
+        "stdout": "{\"public_interface_verified\": true, \"own_cases_passed\": 12}\n",
+        "stderr": ""
+      },
+      {
+        "action": [
+          "status"
+        ],
+        "read_only": true,
+        "changed_paths": [],
+        "returncode": 0,
+        "stdout": "diff --git a/src/slugify.py b/src/slugify.py\nindex 24d2036..92889e2 100644\n--- a/src/slugify.py\n+++ b/src/slugify.py\n@@ -1,2 +1,17 @@\n def slugify(value: str) -> str:\n-    raise NotImplementedError\n+    \"\"\"Return a lowercase, hyphen-separated slug for an ASCII string.\"\"\"\n+    slug: list[str] = []\n+\n+    for character in value:\n+        if \"A\" <= character <= \"Z\":\n+            slug.append(character.lower())\n+        elif \"a\" <= character <= \"z\" or \"0\" <= character <= \"9\":\n+            slug.append(character)\n+        elif character == \"-\" or character.isspace():\n+            if slug and slug[-1] != \"-\":\n+                slug.append(\"-\")\n+\n+    if slug and slug[-1] == \"-\":\n+        slug.pop()\n+\n+    return \"\".join(slug)\n",
+        "stderr": ""
+      }
+    ],
+    "test_design": {
+      "task_id": "STAGE20-SLUGIFY",
+      "contract_version": 1,
+      "cases": [
+        {
+          "id": "basic_words",
+          "intent": "Lowercase ASCII letters and replace a single space with a hyphen.",
+          "input": "Hello World",
+          "expected": "hello-world"
+        },
+        {
+          "id": "mixed_case_digits",
+          "intent": "Retain digits while lowercasing adjacent ASCII letters.",
+          "input": "API Version 2B",
+          "expected": "api-version-2b"
+        },
+        {
+          "id": "trim_and_space_run",
+          "intent": "Trim edge whitespace and collapse an internal run of spaces to one hyphen.",
+          "input": "   Hello    World   ",
+          "expected": "hello-world"
+        },
+        {
+          "id": "mixed_whitespace_run",
+          "intent": "Treat adjacent spaces, tabs, and newlines as one whitespace run.",
+          "input": "Alpha \t\n Beta",
+          "expected": "alpha-beta"
+        },
+        {
+          "id": "remaining_ascii_whitespace",
+          "intent": "Handle carriage return, form feed, and vertical tab as whitespace in one run.",
+          "input": "A\r\n\f\u000bB",
+          "expected": "a-b"
+        },
+        {
+          "id": "empty_input",
+          "intent": "Return the empty string for empty input.",
+          "input": "",
+          "expected": ""
+        },
+        {
+          "id": "whitespace_only",
+          "intent": "Return the empty string for input containing only varied ASCII whitespace.",
+          "input": " \t\r\n\f\u000b ",
+          "expected": ""
+        },
+        {
+          "id": "underscore_removed_without_separator",
+          "intent": "Remove underscores without inserting separators between surrounding text.",
+          "input": "snake_case_123",
+          "expected": "snakecase123"
+        },
+        {
+          "id": "ascii_punctuation_removed",
+          "intent": "Remove all ASCII punctuation other than hyphen without separating letters.",
+          "input": "A!\"#$%&'()*+,./:;<=>?@[\\]^_`{|}~Z",
+          "expected": "az"
+        },
+        {
+          "id": "punctuation_only",
+          "intent": "Allow removal and edge cleanup to produce an empty result.",
+          "input": "_!@#$%^&*()",
+          "expected": ""
+        },
+        {
+          "id": "punctuation_inside_words",
+          "intent": "Remove punctuation in-place while preserving whitespace-derived separation.",
+          "input": "rock'n'roll 2.0",
+          "expected": "rocknroll-20"
+        },
+        {
+          "id": "collapse_hyphen_run",
+          "intent": "Collapse a repeated internal hyphen run to one hyphen.",
+          "input": "a---b",
+          "expected": "a-b"
+        },
+        {
+          "id": "strip_edge_hyphens",
+          "intent": "Strip hyphens from both edges after normalizing case.",
+          "input": "---Hello---",
+          "expected": "hello"
+        },
+        {
+          "id": "punctuation_creates_adjacent_hyphens",
+          "intent": "Collapse hyphens that become adjacent after underscore removal.",
+          "input": "a-_-b",
+          "expected": "a-b"
+        },
+        {
+          "id": "whitespace_adjacent_to_hyphen",
+          "intent": "Collapse an explicit hyphen together with surrounding whitespace-derived hyphens.",
+          "input": "a \t- \n b",
+          "expected": "a-b"
+        },
+        {
+          "id": "combined_cleanup",
+          "intent": "Exercise trimming, mixed whitespace, punctuation removal, hyphen collapse, and lowercasing together.",
+          "input": " \t---Hello,_ \n---World!!!\r\n ",
+          "expected": "hello-world"
+        },
+        {
+          "id": "digits_and_leading_zeroes",
+          "intent": "Retain all digits, including leading zeroes, across multiple tokens.",
+          "input": "Version 2 Build 007",
+          "expected": "version-2-build-007"
+        },
+        {
+          "id": "already_normalized",
+          "intent": "Leave an already normalized slug unchanged.",
+          "input": "ready-set-123",
+          "expected": "ready-set-123"
+        }
+      ],
+      "properties": [
+        "idempotence",
+        "output_shape",
+        "input_unchanged"
+      ],
+      "rationale": "The cases cover every specified transformation and their ordering: ASCII lowercasing and digit retention, all ASCII whitespace forms and trimming, punctuation deletion without separator insertion, underscore handling, repeated and edge hyphens, empty outcomes, and adjacency created by interacting cleanup rules. Useful general checks are that applying slugify twice is stable, output is empty or consists only of lowercase ASCII letters, digits, and single non-edge hyphens, and the input value remains unchanged."
+    },
+    "test_result": {
+      "task_id": "STAGE20-SLUGIFY",
+      "contract_version": 1,
+      "outcome": "passed",
+      "summary": "Frozen acceptance suite passed: 3 tests ran successfully (cases, interface, and properties).",
+      "failures": []
+    },
+    "test_evidence": {
+      "action": [
+        "acceptance"
+      ],
+      "read_only": true,
+      "changed_paths": [],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_cases (tests.test_acceptance.Acceptance.test_cases) ... ok\ntest_interface (tests.test_acceptance.Acceptance.test_interface) ... ok\ntest_properties (tests.test_acceptance.Acceptance.test_properties) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n"
+    }
+  },
+  "instruction": "Review only. Evaluate final diff, interface, frozen contract and independent evidence. Give accept/reject/request-fix with concise rationale and unresolved risks. Do not edit files or use tools.",
+  "result_schema": {
+    "type": "object",
+    "properties": {
+      "task_id": {
+        "type": "string",
+        "const": "STAGE20-SLUGIFY"
+      },
+      "contract_version": {
+        "type": "integer",
+        "const": 1
+      },
+      "recommendation": {
+        "type": "string",
+        "enum": [
+          "accept",
+          "reject",
+          "request-fix"
+        ]
+      },
+      "rationale": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      },
+      "unresolved_risks": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "maxItems": 20
+      }
+    },
+    "required": [
+      "task_id",
+      "contract_version",
+      "recommendation",
+      "rationale",
+      "unresolved_risks"
+    ],
+    "additionalProperties": false
+  },
+  "previous_conversation_visible": false
+}

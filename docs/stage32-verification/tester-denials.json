@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "{\"/home/ivan/codex-role-h9sefwfl/collector/run.py\": {\"allowed\": false, \"errno\": 2}, \"/mnt/c/Users/4ivan/codex-multi-agent/STAGE31_DOGFOODING_REPORT.md\": {\"allowed\": false, \"errno\": 2}, \"/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage32/baseline.py\": {\"allowed\": false, \"errno\": 2}}\n",
+  "stderr": "",
+  "existing_canary_hashes": {
+    "/home/ivan/codex-role-h9sefwfl/collector/run.py": "874d28656a599d1e9b642d1f26dacd62d135fe27ffd0d998a583c73eaae04bf7",
+    "/mnt/c/Users/4ivan/codex-multi-agent/STAGE31_DOGFOODING_REPORT.md": "6c6a20ea163c7a8f5408aec3ffd39885545ca3ed4553eba1f752eb0e486bfbcc",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage32/baseline.py": "095f1f5b1c726d246f4dcd677c419e1379545c2799ad2fd4d46e4581970f92a3"
+  }
+}

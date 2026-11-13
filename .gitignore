@@ -1,0 +1,17 @@
+.agent_runs/
+.agent_worktrees/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.test-tmp/
+*.egg-info/
+.venv/
+build/
+dist/
+# Large dependency archive kept locally; hash and reason in docs/publication-exclusions.json
+docs/stage31-verification/project/runtime-closeout.zip
+# Raw Stage 32 worker logs containing a personal contact address; see docs/publication-exclusions.json
+docs/stage32-verification/implementer-execution.json
+docs/stage32-verification/reviewer-execution.json
+docs/stage32-verification/rejected-candidate-v1.zip
+docs/stage32-verification/stage32-ai-model-lifecycle.bundle

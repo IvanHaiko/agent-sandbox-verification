@@ -1,0 +1,202 @@
+"""PostgreSQL lexical boundaries and migration transaction behavior."""
+
+import psycopg
+import pytest
+
+from src import migrations
+from src.db import get_db_connection
+from src.sql_statements import split_sql_statements
+from tests.test_migrations import FakeConnection
+
+
+@pytest.mark.parametrize(
+    "statement",
+    [
+        "SELECT 'one;two'",
+        "SELECT 'it''s;still one'",
+        'SELECT "a;""b"',
+        r"SELECT 'backslash\'; SELECT 'ordinary'",
+        r"SELECT E'escaped\';still inside; doubled''quote'",
+        r"SELECT e'backslash\\;body'",
+        "DO $$ BEGIN PERFORM 1; -- text\n END; $$",
+        "DO $Body_12$ BEGIN PERFORM '$body_12$;'; END; $Body_12$",
+        "SELECT 1 /* outer ; /* inner ' $$ ; */ still outer */",
+        "-- leading ; ' /* $$\rSELECT 1 -- trailing ;\n",
+    ],
+)
+def test_quoted_and_commented_semicolons_are_preserved(statement):
+    sql = " \n" + statement + "; SELECT 2;"
+    # The ordinary-string example deliberately contains two SQL statements.
+    if statement == r"SELECT 'backslash\'; SELECT 'ordinary'":
+        expected = [r"SELECT 'backslash\'", "SELECT 'ordinary'", "SELECT 2"]
+    else:
+        expected = [statement.strip(), "SELECT 2"]
+    assert split_sql_statements(sql) == expected
+    assert sql == " \n" + statement + "; SELECT 2;"
+
+
+@pytest.mark.parametrize(
+    "sql, expected",
+    [
+        ("", []),
+        (" ; ; -- end;", []),
+        ("/* a /* nested */ b */; -- eof", []),
+        ("SELECT 1; /* comment only */", ["SELECT 1"]),
+        ("-- comment\rSELECT 1;-- another\nSELECT 2", [
+            "-- comment\rSELECT 1", "-- another\nSELECT 2",
+        ]),
+        ("SELECT abc$tag$; SELECT $1; SELECT foo$$;", [
+            "SELECT abc$tag$", "SELECT $1", "SELECT foo$$",
+        ]),
+        ("SELECT café$tag$; SELECT 1", ["SELECT café$tag$", "SELECT 1"]),
+        (r"SELECT nameE'\'; SELECT 2", [r"SELECT nameE'\'", "SELECT 2"]),
+        (r"SELECT 1e'\'; SELECT 2", [r"SELECT 1e'\'", "SELECT 2"]),
+        ("SELECT $9bad$; SELECT 1", ["SELECT $9bad$", "SELECT 1"]),
+        ("SELECT $$first$$$$second;body$$; SELECT 2", [
+            "SELECT $$first$$$$second;body$$", "SELECT 2",
+        ]),
+        (r"SELECT $$first$$E'escaped\';body'; SELECT 2", [
+            r"SELECT $$first$$E'escaped\';body'", "SELECT 2",
+        ]),
+        ("SELECT $$ /* ' \" -- ; */ $$", ['SELECT $$ /* \' " -- ; */ $$']),
+    ],
+)
+def test_empty_fragments_comments_and_token_boundaries(sql, expected):
+    assert split_sql_statements(sql) == expected
+
+
+@pytest.mark.parametrize(
+    "suffix",
+    [
+        "'unfinished",
+        '"unfinished',
+        "E'unfinished\\'",
+        "e'unfinished\\",
+        "$$ unfinished",
+        "$Tag$ wrong closing $tag$",
+        "/* unfinished",
+        "/* outer /* inner */",
+    ],
+)
+def test_unterminated_regions_reject_the_entire_input(suffix):
+    with pytest.raises(ValueError, match="^Unterminated SQL"):
+        split_sql_statements("SELECT 1; " + suffix)
+
+
+def test_runner_validates_before_executing_current_file(monkeypatch, tmp_path):
+    (tmp_path / "001_bad.sql").write_text("SELECT 123; SELECT 'broken", encoding="utf-8")
+    connection = FakeConnection()
+    monkeypatch.setattr(migrations, "get_db_connection", lambda: connection)
+
+    with pytest.raises(ValueError, match="^Unterminated SQL"):
+        migrations.run_migrations(tmp_path)
+
+    assert connection.committed == 1
+    assert not any("123" in query for query, _ in connection.executed_queries)
+    assert not any(params for _, params in connection.executed_queries)
+
+
+def test_runner_records_empty_files_and_executes_each_statement(monkeypatch, tmp_path):
+    (tmp_path / "001_empty.sql").write_text("-- only ;\n/* comment */;", encoding="utf-8")
+    (tmp_path / "002_text.sql").write_text("SELECT 'é;'; SELECT $$a;b$$", encoding="utf-8")
+    (tmp_path / "ignored.txt").write_text("SELECT 'broken", encoding="utf-8")
+    (tmp_path / "nested").mkdir()
+    (tmp_path / "nested" / "003_ignored.sql").write_text("SELECT 'broken", encoding="utf-8")
+    connection = FakeConnection()
+    monkeypatch.setattr(migrations, "get_db_connection", lambda: connection)
+
+    migrations.run_migrations(tmp_path)
+
+    assert connection.committed == 3
+    assert connection.executed_queries[-3:] == [
+        ("SELECT 'é;'", None),
+        ("SELECT $$a;b$$", None),
+        ("INSERT INTO schema_migrations (filename) VALUES (%s)", ("002_text.sql",)),
+    ]
+    assert [params[0] for _, params in connection.executed_queries if params] == [
+        "001_empty.sql", "002_text.sql",
+    ]
+
+
+@pytest.fixture
+def isolated_migration_schema(test_database, monkeypatch):
+    """Keep migration DDL and its ledger separate from the original schema tests."""
+    schema = "migration_sql_test"
+    with get_db_connection() as connection:
+        connection.execute(f"CREATE SCHEMA {schema}")
+
+    def connect():
+        connection = get_db_connection()
+        connection.execute(f"SET search_path TO {schema}")
+        connection.commit()
+        return connection
+
+    monkeypatch.setattr(migrations, "get_db_connection", connect)
+    try:
+        yield connect
+    finally:
+        with get_db_connection() as connection:
+            connection.execute(f"DROP SCHEMA {schema} CASCADE")
+
+
+def test_migration_sql_executes_and_reruns_db(isolated_migration_schema, tmp_path):
+    (tmp_path / "001_bodies.sql").write_text(
+        """
+        CREATE TABLE "semi;table" (value text);
+        INSERT INTO "semi;table" VALUES ('literal;quote''s');
+        CREATE FUNCTION body() RETURNS text LANGUAGE plpgsql AS $Body$
+        BEGIN
+            -- a ; inside the body
+            RETURN 'function;result';
+        END;
+        $Body$;
+        DO $$ BEGIN
+            INSERT INTO "semi;table" VALUES (body());
+        END; $$;
+        /* outer ; /* inner ; */ end */
+        INSERT INTO "semi;table" VALUES (E'escaped\\\';quote');
+        """,
+        encoding="utf-8",
+    )
+    (tmp_path / "002_empty.sql").write_text("/* only ; */ -- eof", encoding="utf-8")
+
+    migrations.run_migrations(tmp_path)
+    migrations.run_migrations(tmp_path)
+
+    with isolated_migration_schema() as connection:
+        assert connection.execute('SELECT value FROM "semi;table" ORDER BY value').fetchall() == [
+            ("escaped';quote",), ("function;result",), ("literal;quote's",),
+        ]
+        assert connection.execute("SELECT filename FROM schema_migrations ORDER BY filename").fetchall() == [
+            ("001_bodies.sql",), ("002_empty.sql",),
+        ]
+
+
+def test_failed_migration_rolls_back_only_its_file_db(isolated_migration_schema, tmp_path):
+    (tmp_path / "001_ok.sql").write_text(
+        "CREATE TABLE kept (value integer); INSERT INTO kept VALUES (1);", encoding="utf-8",
+    )
+    failed = tmp_path / "002_failed.sql"
+    failed.write_text(
+        "INSERT INTO kept VALUES (2); CREATE TABLE rolled_back (value integer); SELECT 1 / 0;",
+        encoding="utf-8",
+    )
+    with pytest.raises(psycopg.errors.DivisionByZero):
+        migrations.run_migrations(tmp_path)
+
+    with isolated_migration_schema() as connection:
+        assert connection.execute("SELECT value FROM kept").fetchall() == [(1,)]
+        assert connection.execute("SELECT to_regclass('rolled_back')").fetchone() == (None,)
+        assert connection.execute("SELECT filename FROM schema_migrations").fetchall() == [("001_ok.sql",)]
+
+    failed.write_text("INSERT INTO kept VALUES (3); SELECT 'unterminated", encoding="utf-8")
+    with pytest.raises(ValueError, match="^Unterminated SQL"):
+        migrations.run_migrations(tmp_path)
+    with isolated_migration_schema() as connection:
+        assert connection.execute("SELECT value FROM kept").fetchall() == [(1,)]
+
+    failed.write_text("INSERT INTO kept VALUES (4)", encoding="utf-8")
+    migrations.run_migrations(tmp_path)
+    migrations.run_migrations(tmp_path)
+    with isolated_migration_schema() as connection:
+        assert connection.execute("SELECT value FROM kept ORDER BY value").fetchall() == [(1,), (4,)]

@@ -1,0 +1,94 @@
+{
+  "type": "object",
+  "properties": {
+    "public_interface": {
+      "type": "string",
+      "const": "def normalize_labels(value: str) -> list[str]"
+    },
+    "allowed_mutation_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "const": [
+        "src/normalize_labels.py"
+      ]
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "const": [
+        "Scan ASCII strings left to right. An unescaped comma outside double quotes ends a label; repeated separators are allowed.",
+        "An unescaped double quote toggles quoted mode anywhere within a label; quote delimiters are removed and adjacent quoted/unquoted text concatenates.",
+        "Backslash escapes exactly the next character in either mode: remove the backslash, preserve the next character literally, and do not treat it as a quote or separator.",
+        "A trailing unpaired backslash or unclosed double quote raises ValueError for the whole input, even after otherwise valid labels.",
+        "Only ASCII whitespace (space, tab, CR, LF, vertical tab, form feed) that was neither quoted nor escaped is ordinary whitespace.",
+        "Trim ordinary whitespace from each label boundary before collapsing internal ordinary-whitespace runs to one ASCII space.",
+        "Quoted or escaped whitespace is protected: preserve its exact characters and multiplicity, including at label boundaries; it also breaks ordinary-whitespace runs.",
+        "Lowercase ASCII A-Z in all emitted characters; preserve other non-delimiter literal characters exactly.",
+        "After parsing and normalization, discard labels whose resulting string is empty. Whitespace-only protected labels are nonempty and retained.",
+        "Deduplicate normalized strings by exact equality, retaining first occurrence order. Empty input returns an empty list."
+      ]
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "const": [
+        "Pure Python, standard library only, no external dependencies or I/O.",
+        "ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.",
+        "Do not add features or mutate any file other than src/normalize_labels.py."
+      ]
+    },
+    "clarifications": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "properties": {
+          "rules": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 4,
+            "items": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          "clarification": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2500
+          }
+        },
+        "required": [
+          "rules",
+          "clarification"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2500
+      },
+      "maxItems": 6
+    }
+  },
+  "required": [
+    "public_interface",
+    "allowed_mutation_scope",
+    "acceptance_criteria",
+    "constraints",
+    "clarifications",
+    "risks"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "action": [
+      "inspect",
+      "TASK.json"
+    ],
+    "read_only": true,
+    "changed_paths": [],
+    "returncode": 0,
+    "stdout": "{\n  \"task_id\": \"STAGE20-SLUGIFY\",\n  \"contract_version\": 1,\n  \"public_interface\": \"def slugify(value: str) -> str\",\n  \"file\": \"src/slugify.py\",\n  \"acceptance_criteria\": [\n    \"Lowercase ASCII letters; retain ASCII letters and digits.\",\n    \"Trim whitespace and replace every whitespace run with one hyphen (including tabs/newlines).\",\n    \"Remove ASCII punctuation except hyphen, including underscore; removal does not insert a separator.\",\n    \"Collapse repeated hyphens and strip edge hyphens.\",\n    \"Empty or whitespace-only strings return the empty string.\"\n  ],\n  \"examples\": [\n    [\n      \"Hello World\",\n      \"hello-world\"\n    ],\n    [\n      \"  Hello   World \",\n      \"hello-world\"\n    ],\n    [\n      \"Hello, World!\",\n      \"hello-world\"\n    ],\n    [\n      \"a---b\",\n      \"a-b\"\n    ],\n    [\n      \"---Hello---\",\n      \"hello\"\n    ],\n    [\n      \"\",\n      \"\"\n    ]\n  ],\n  \"constraints\": [\n    \"Pure Python, standard library only, no external dependencies or I/O.\",\n    \"ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.\",\n    \"Do not add features or mutate any file other than src/slugify.py.\"\n  ]\n}\n\n",
+    "stderr": ""
+  },
+  {
+    "action": [
+      "inspect",
+      "src/slugify.py"
+    ],
+    "read_only": true,
+    "changed_paths": [],
+    "returncode": 0,
+    "stdout": "def slugify(value: str) -> str:\n    raise NotImplementedError\n\n",
+    "stderr": ""
+  },
+  {
+    "action": [
+      "write",
+      "src/slugify.py"
+    ],
+    "read_only": false,
+    "changed_paths": [
+      "src/slugify.py"
+    ],
+    "returncode": 0,
+    "stdout": "written: src/slugify.py\n",
+    "stderr": ""
+  },
+  {
+    "action": [
+      "check"
+    ],
+    "read_only": true,
+    "changed_paths": [],
+    "returncode": 0,
+    "stdout": "{\"public_interface_verified\": true, \"own_cases_passed\": 12}\n",
+    "stderr": ""
+  },
+  {
+    "action": [
+      "status"
+    ],
+    "read_only": true,
+    "changed_paths": [],
+    "returncode": 0,
+    "stdout": "diff --git a/src/slugify.py b/src/slugify.py\nindex 24d2036..92889e2 100644\n--- a/src/slugify.py\n+++ b/src/slugify.py\n@@ -1,2 +1,17 @@\n def slugify(value: str) -> str:\n-    raise NotImplementedError\n+    \"\"\"Return a lowercase, hyphen-separated slug for an ASCII string.\"\"\"\n+    slug: list[str] = []\n+\n+    for character in value:\n+        if \"A\" <= character <= \"Z\":\n+            slug.append(character.lower())\n+        elif \"a\" <= character <= \"z\" or \"0\" <= character <= \"9\":\n+            slug.append(character)\n+        elif character == \"-\" or character.isspace():\n+            if slug and slug[-1] != \"-\":\n+                slug.append(\"-\")\n+\n+    if slug and slug[-1] == \"-\":\n+        slug.pop()\n+\n+    return \"\".join(slug)\n",
+    "stderr": ""
+  }
+]

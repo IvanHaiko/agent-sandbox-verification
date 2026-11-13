@@ -1,0 +1,496 @@
+{
+  "model_requests": 0,
+  "tester_sessions": 0,
+  "returncode": 0,
+  "design_sha256": "84ce3f0ffbde1167fc645cbad1caebeaa4130dd031c2e8a4529eb56b35e340bd",
+  "harness_sha256": "90a7e399ff7b7adb152cc47151d07483901ee08b66e52865d3f8c4fba2e1599f",
+  "candidate_sha256_before": "341037fe750c3613cde3e1ed429ca8b7834a1b38c7b817e3aa6b825f8807bf27",
+  "candidate_sha256_after": "341037fe750c3613cde3e1ed429ca8b7834a1b38c7b817e3aa6b825f8807bf27",
+  "mutation_scope_valid": true,
+  "result": {
+    "passed": true,
+    "interface": true,
+    "cases": [
+      {
+        "id": "empty_input",
+        "input": "",
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "discard_empty_labels",
+        "input": ",, \t\r\n\u000b\f,\"\", \"\" ,,,",
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "separators_and_order",
+        "input": ",BETA,,Alpha,BETA,,,GAMMA,alpha,",
+        "expected": [
+          "beta",
+          "alpha",
+          "gamma"
+        ],
+        "actual": [
+          "beta",
+          "alpha",
+          "gamma"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quote_concatenation",
+        "input": "PRE\"MiD\"POST,\"A\"B\"C\",X\"\"Y,\"\"Z\"\"",
+        "expected": [
+          "premidpost",
+          "abc",
+          "xy",
+          "z"
+        ],
+        "actual": [
+          "premidpost",
+          "abc",
+          "xy",
+          "z"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quoted_commas",
+        "input": "\",A,,B,\",C\",D\"E,F",
+        "expected": [
+          ",a,,b,",
+          "c,de",
+          "f"
+        ],
+        "actual": [
+          ",a,,b,",
+          "c,de",
+          "f"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escapes_outside_quotes",
+        "input": "A\\,B,C\\\"D,E\\\\F",
+        "expected": [
+          "a,b",
+          "c\"d",
+          "e\\f"
+        ],
+        "actual": [
+          "a,b",
+          "c\"d",
+          "e\\f"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escapes_inside_quotes",
+        "input": "\"A\\,B\\\"C\\\\D,E\",F",
+        "expected": [
+          "a,b\"c\\d,e",
+          "f"
+        ],
+        "actual": [
+          "a,b\"c\\d,e",
+          "f"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "all_ordinary_whitespace",
+        "input": " \t\r\n\u000b\fA \t\r\n\u000b\fB\f\u000b\n\r\t , C\tD\rE\nF\u000bG\fH ",
+        "expected": [
+          "a b",
+          "c d e f g h"
+        ],
+        "actual": [
+          "a b",
+          "c d e f g h"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "all_quoted_whitespace",
+        "input": "\" \t\r\n\u000b\f \t\r\n\u000b\f\"",
+        "expected": [
+          " \t\r\n\u000b\f \t\r\n\u000b\f"
+        ],
+        "actual": [
+          " \t\r\n\u000b\f \t\r\n\u000b\f"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "all_escaped_whitespace",
+        "input": " \t\\ \\\t\\\r\\\n\\\u000b\\\f \r",
+        "expected": [
+          " \t\r\n\u000b\f"
+        ],
+        "actual": [
+          " \t\r\n\u000b\f"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "protected_boundaries",
+        "input": " \r\" \tA\t \"\n , \t\\ B\\ \r ",
+        "expected": [
+          " \ta\t ",
+          " b "
+        ],
+        "actual": [
+          " \ta\t ",
+          " b "
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "protected_breaks_runs",
+        "input": "A \t\"\t\" \r\nB,A  \\   B,A \"  \" B",
+        "expected": [
+          "a \t b",
+          "a   b",
+          "a    b"
+        ],
+        "actual": [
+          "a \t b",
+          "a   b",
+          "a    b"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "empty_quotes_do_not_break_runs",
+        "input": "A \t\"\"\r\n B, \"\" \tC\"\"\r ",
+        "expected": [
+          "a b",
+          "c"
+        ],
+        "actual": [
+          "a b",
+          "c"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "normalization_before_deduplication",
+        "input": " BETA ,A  B,\"a b\",a\tB,be\"TA\",\\BETA,ALPHA,alpha",
+        "expected": [
+          "beta",
+          "a b",
+          "alpha"
+        ],
+        "actual": [
+          "beta",
+          "a b",
+          "alpha"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "protected_equality_and_distinctions",
+        "input": "A B,\"A B\",A\\ B,\"A  B\",\"A\tB\",A\tB,\" \",\\ ,\"  \",\"\t\"",
+        "expected": [
+          "a b",
+          "a  b",
+          "a\tb",
+          " ",
+          "  ",
+          "\t"
+        ],
+        "actual": [
+          "a b",
+          "a  b",
+          "a\tb",
+          " ",
+          "  ",
+          "\t"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "literal_ascii_and_escape_next_only",
+        "input": "\\N\\T\\R,\"\\A\\Z\",!@#$%^&*()_+-=[]{};:'/?<>.|`~0129,\u0000\u001b\u007f",
+        "expected": [
+          "ntr",
+          "az",
+          "!@#$%^&*()_+-=[]{};:'/?<>.|`~0129",
+          "\u0000\u001b\u007f"
+        ],
+        "actual": [
+          "ntr",
+          "az",
+          "!@#$%^&*()_+-=[]{};:'/?<>.|`~0129",
+          "\u0000\u001b\u007f"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "paired_backslash_before_delimiter",
+        "input": "A\\\\,B,C\\\\\"D,E\"",
+        "expected": [
+          "a\\",
+          "b",
+          "c\\d,e"
+        ],
+        "actual": [
+          "a\\",
+          "b",
+          "c\\d,e"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escaped_quote_and_later_toggle",
+        "input": "A\\\"\"B,C\"D,\"E\\\"F\"G",
+        "expected": [
+          "a\"b,cd",
+          "e\"fg"
+        ],
+        "actual": [
+          "a\"b,cd",
+          "e\"fg"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "trailing_escape_after_valid_labels",
+        "input": "GOOD,good,OK,TAIL\\",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      },
+      {
+        "id": "unclosed_quote_after_valid_labels",
+        "input": "GOOD,OK,PRE\"TAIL,STILL",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      },
+      {
+        "id": "trailing_escape_in_quote",
+        "input": "GOOD,\"TAIL\\",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      },
+      {
+        "id": "escaped_final_quote_does_not_close",
+        "input": "GOOD,\"TAIL\\\"",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      }
+    ],
+    "properties": [
+      {
+        "case": "empty_input",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "empty_input",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "discard_empty_labels",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "discard_empty_labels",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "separators_and_order",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "separators_and_order",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quote_concatenation",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quote_concatenation",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quoted_commas",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quoted_commas",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escapes_outside_quotes",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escapes_outside_quotes",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escapes_inside_quotes",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escapes_inside_quotes",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "all_ordinary_whitespace",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "all_ordinary_whitespace",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "all_quoted_whitespace",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "all_quoted_whitespace",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "all_escaped_whitespace",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "all_escaped_whitespace",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "protected_boundaries",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "protected_boundaries",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "protected_breaks_runs",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "protected_breaks_runs",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "empty_quotes_do_not_break_runs",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "empty_quotes_do_not_break_runs",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "normalization_before_deduplication",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "normalization_before_deduplication",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "protected_equality_and_distinctions",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "protected_equality_and_distinctions",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "literal_ascii_and_escape_next_only",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "literal_ascii_and_escape_next_only",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "paired_backslash_before_delimiter",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "paired_backslash_before_delimiter",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escaped_quote_and_later_toggle",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escaped_quote_and_later_toggle",
+        "property": "ascii_lowercase",
+        "passed": true
+      }
+    ]
+  },
+  "executed_at": 1791377408.7817247,
+  "sandbox": "native Linux Codex; read-only workspace; no project network"
+}

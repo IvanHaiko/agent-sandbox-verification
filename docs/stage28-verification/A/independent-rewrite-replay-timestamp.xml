@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="6" skipped="0" tests="69" time="3.454" timestamp="2026-10-09T11:44:48.698812+02:00" hostname="Ivan"><testcase classname="tests.test_stage28_evaluation" name="test_invalid_envelopes_raise_before_connection[None]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_envelopes_raise_before_connection[payload1]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_envelopes_raise_before_connection[data]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_envelopes_raise_before_connection[1]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_envelopes_raise_before_connection[True]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_envelopes_raise_before_connection[payload5]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_envelopes_raise_before_connection[payload6]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_envelopes_raise_before_connection[payload7]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_envelopes_raise_before_connection[payload8]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_envelopes_raise_before_connection[payload9]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[None]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record1]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[game]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record3]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record4]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record5]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record6]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record7]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record8]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record9]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record10]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record11]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record12]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record13]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record14]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record15]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_invalid_records_reject_entire_batch[record16]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_duplicate_game_ids_rejected[Game]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_duplicate_game_ids_rejected[Different]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value0]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-links]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-2]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-True]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value4]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value5]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value6]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value7]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value8]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value9]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[websites-value10]" time="0.004" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[websites-links]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[websites-2]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[websites-True]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[websites-value14]" time="0.004" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[websites-value15]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[websites-value16]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[websites-value17]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[websites-value18]" time="0.004" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[websites-value19]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value20]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value21]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value22]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value23]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_nested_data_rejected_before_connection[external_games-value24]" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_valid_nested_empty_and_unknown_values_preserve_input[None]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_valid_nested_empty_and_unknown_values_preserve_input[optional1]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_valid_nested_empty_and_unknown_values_preserve_input[optional2]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_valid_nested_empty_and_unknown_values_preserve_input[optional3]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_valid_nested_empty_and_unknown_values_preserve_input[optional4]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_valid_nested_empty_and_unknown_values_preserve_input[optional5]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_empty_batch_and_malformed_json_never_connect" time="0.003" /><testcase classname="tests.test_stage28_evaluation" name="test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_igdb_game]" time="0.184"><failure message="AssertionError: assert {'igdb_game_s..._game', ...)]} == {'igdb_game_s..._game', ...)]}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]} != {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]}&#10;  Use -v to get more diff">seam = 'upsert_igdb_game'
+db = &lt;psycopg.Connection [INTRANS] (port=55425 user=stage25 database=stage28_A_independent_rewrite_replay_timestamp) at 0x7df28ff15fd0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fjvnzu7z/scratch/tmp/test_file_failure_rolls_back_p0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7df28fe140c0&gt;
+
+    @pytest.mark.parametrize("seam", ["upsert_igdb_game", "upsert_igdb_game_store_link",
+                                       "upsert_twitch_category"])
+    def test_file_failure_rolls_back_prior_updates_and_retry_is_durable(seam, db, tmp_path, monkeypatch):
+        saved = _file(tmp_path, {"data": [_game()]}, "igdb_search_results_previous.json")
+        assert load.load_igdb_file(saved) == 1
+        before = _snapshot(db)
+        db.commit()
+        pending = _file(tmp_path, {"data": [_game(name="Changed"), _game(2, "Second", "102", "202")]},
+                        "igdb_search_results_pending.json")
+        original = getattr(load, seam)
+        calls = 0
+    
+        def fail_after_write(*args, **kwargs):
+            nonlocal calls
+            result = original(*args, **kwargs)
+            calls += 1
+            if calls == 2:
+                raise RuntimeError("injected write failure")
+            return result
+    
+        with monkeypatch.context() as patch:
+            patch.setattr(load, seam, fail_after_write)
+            with pytest.raises(RuntimeError, match="injected write failure"):
+                load.load_igdb_file(pending)
+        assert calls == 2
+        assert _snapshot(db) == before
+        db.commit()
+        assert pending.exists()
+        assert load.load_igdb_file(pending) == 2
+        after = _snapshot(db)
+        assert {table: len(rows) for table, rows in after.items()} == {
+            "igdb_games": 2, "igdb_game_store_links": 2, "twitch_categories": 2}
+        assert db.execute("SELECT name FROM igdb_games WHERE igdb_game_id=1").fetchone() == ("Changed",)
+        db.commit()
+        assert load.load_igdb_file(pending) == 2
+&gt;       assert _snapshot(db) == after
+E       AssertionError: assert {'igdb_game_s..._game', ...)]} == {'igdb_game_s..._game', ...)]}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]} != {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]}
+E         Use -v to get more diff
+
+tests/test_stage28_evaluation.py:171: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_igdb_game_store_link]" time="0.050"><failure message="AssertionError: assert {'igdb_game_s..._game', ...)]} == {'igdb_game_s..._game', ...)]}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]} != {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]}&#10;  Use -v to get more diff">seam = 'upsert_igdb_game_store_link'
+db = &lt;psycopg.Connection [INTRANS] (port=55425 user=stage25 database=stage28_A_independent_rewrite_replay_timestamp) at 0x7df2900afb60&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fjvnzu7z/scratch/tmp/test_file_failure_rolls_back_p1')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7df28fe15940&gt;
+
+    @pytest.mark.parametrize("seam", ["upsert_igdb_game", "upsert_igdb_game_store_link",
+                                       "upsert_twitch_category"])
+    def test_file_failure_rolls_back_prior_updates_and_retry_is_durable(seam, db, tmp_path, monkeypatch):
+        saved = _file(tmp_path, {"data": [_game()]}, "igdb_search_results_previous.json")
+        assert load.load_igdb_file(saved) == 1
+        before = _snapshot(db)
+        db.commit()
+        pending = _file(tmp_path, {"data": [_game(name="Changed"), _game(2, "Second", "102", "202")]},
+                        "igdb_search_results_pending.json")
+        original = getattr(load, seam)
+        calls = 0
+    
+        def fail_after_write(*args, **kwargs):
+            nonlocal calls
+            result = original(*args, **kwargs)
+            calls += 1
+            if calls == 2:
+                raise RuntimeError("injected write failure")
+            return result
+    
+        with monkeypatch.context() as patch:
+            patch.setattr(load, seam, fail_after_write)
+            with pytest.raises(RuntimeError, match="injected write failure"):
+                load.load_igdb_file(pending)
+        assert calls == 2
+        assert _snapshot(db) == before
+        db.commit()
+        assert pending.exists()
+        assert load.load_igdb_file(pending) == 2
+        after = _snapshot(db)
+        assert {table: len(rows) for table, rows in after.items()} == {
+            "igdb_games": 2, "igdb_game_store_links": 2, "twitch_categories": 2}
+        assert db.execute("SELECT name FROM igdb_games WHERE igdb_game_id=1").fetchone() == ("Changed",)
+        db.commit()
+        assert load.load_igdb_file(pending) == 2
+&gt;       assert _snapshot(db) == after
+E       AssertionError: assert {'igdb_game_s..._game', ...)]} == {'igdb_game_s..._game', ...)]}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]} != {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]}
+E         Use -v to get more diff
+
+tests/test_stage28_evaluation.py:171: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_twitch_category]" time="0.070"><failure message="AssertionError: assert {'igdb_game_s..._game', ...)]} == {'igdb_game_s..._game', ...)]}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]} != {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]}&#10;  Use -v to get more diff">seam = 'upsert_twitch_category'
+db = &lt;psycopg.Connection [INTRANS] (port=55425 user=stage25 database=stage28_A_independent_rewrite_replay_timestamp) at 0x7df28fe948c0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fjvnzu7z/scratch/tmp/test_file_failure_rolls_back_p2')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7df28fe16890&gt;
+
+    @pytest.mark.parametrize("seam", ["upsert_igdb_game", "upsert_igdb_game_store_link",
+                                       "upsert_twitch_category"])
+    def test_file_failure_rolls_back_prior_updates_and_retry_is_durable(seam, db, tmp_path, monkeypatch):
+        saved = _file(tmp_path, {"data": [_game()]}, "igdb_search_results_previous.json")
+        assert load.load_igdb_file(saved) == 1
+        before = _snapshot(db)
+        db.commit()
+        pending = _file(tmp_path, {"data": [_game(name="Changed"), _game(2, "Second", "102", "202")]},
+                        "igdb_search_results_pending.json")
+        original = getattr(load, seam)
+        calls = 0
+    
+        def fail_after_write(*args, **kwargs):
+            nonlocal calls
+            result = original(*args, **kwargs)
+            calls += 1
+            if calls == 2:
+                raise RuntimeError("injected write failure")
+            return result
+    
+        with monkeypatch.context() as patch:
+            patch.setattr(load, seam, fail_after_write)
+            with pytest.raises(RuntimeError, match="injected write failure"):
+                load.load_igdb_file(pending)
+        assert calls == 2
+        assert _snapshot(db) == before
+        db.commit()
+        assert pending.exists()
+        assert load.load_igdb_file(pending) == 2
+        after = _snapshot(db)
+        assert {table: len(rows) for table, rows in after.items()} == {
+            "igdb_games": 2, "igdb_game_store_links": 2, "twitch_categories": 2}
+        assert db.execute("SELECT name FROM igdb_games WHERE igdb_game_id=1").fetchone() == ("Changed",)
+        db.commit()
+        assert load.load_igdb_file(pending) == 2
+&gt;       assert _snapshot(db) == after
+E       AssertionError: assert {'igdb_game_s..._game', ...)]} == {'igdb_game_s..._game', ...)]}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]} != {'igdb_games': [(1, 'Changed', None, None, None, None, ...), (2, 'Second', None, None, None, None, ...)]}
+E         Use -v to get more diff
+
+tests/test_stage28_evaluation.py:171: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_identical_replay_is_null_safe_and_ignores_json_key_order" time="0.041"><failure message="AssertionError: assert {'igdb_game_s..._game', ...)]} == {'igdb_game_s..._game', ...)]}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'igdb_games': [(1, 'Game', None, None, None, None, ...)]} != {'igdb_games': [(1, 'Game', None, None, None, None, ...)]}&#10;  Use -v to get more diff">db = &lt;psycopg.Connection [INTRANS] (port=55425 user=stage25 database=stage28_A_independent_rewrite_replay_timestamp) at 0x7df28fe957c0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fjvnzu7z/scratch/tmp/test_identical_replay_is_null_0')
+
+    def test_identical_replay_is_null_safe_and_ignores_json_key_order(db, tmp_path):
+        game = _game()
+        game.update({"summary": None, "slug": None, "rating": None,
+                     "custom_metadata": {"z": None, "a": {"y": 2, "x": 1}}})
+        payload = {"data": [game]}
+        path = _file(tmp_path, payload)
+        assert load.load_igdb_file(path) == 1
+        for table, column in (("igdb_games", "updated_at"), ("twitch_categories", "updated_at"),
+                              ("igdb_game_store_links", "created_at")):
+            db.execute(f"UPDATE {table} SET {column} = TIMESTAMP '2001-01-01 00:00:00'")
+        db.commit()
+        before = _snapshot(db)
+        assert all(len(rows) == 1 for rows in before.values())
+        db.commit()
+        path.write_text(json.dumps(payload, sort_keys=True), encoding="utf-8")
+        assert load.load_igdb_file(path) == 1
+&gt;       assert _snapshot(db) == before
+E       AssertionError: assert {'igdb_game_s..._game', ...)]} == {'igdb_game_s..._game', ...)]}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'igdb_games': [(1, 'Game', None, None, None, None, ...)]} != {'igdb_games': [(1, 'Game', None, None, None, None, ...)]}
+E         Use -v to get more diff
+
+tests/test_stage28_evaluation.py:190: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_changed_metadata_and_mapping_advance_timestamps_without_deletion" time="0.046" /><testcase classname="tests.test_stage28_evaluation" name="test_compatibility_raw_json_utc_and_link_precedence" time="0.029"><failure message="AssertionError: assert [('steam', '2...team', '333')] == [('steam', '333')]&#10;  &#10;  At index 0 diff: ('steam', '222') != ('steam', '333')&#10;  Left contains one more item: ('steam', '333')&#10;  Use -v to get more diff">db = &lt;psycopg.Connection [INTRANS] (port=55425 user=stage25 database=stage28_A_independent_rewrite_replay_timestamp) at 0x7df28fe955e0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fjvnzu7z/scratch/tmp/test_compatibility_raw_json_ut0')
+
+    def test_compatibility_raw_json_utc_and_link_precedence(db, tmp_path):
+        game = _game(name="  Verbatim Name  ", steam=None, twitch=None)
+        game.update({"first_release_date": 1609457400, "game_type": 0, "status": 0,
+                     "external_games": [{"category": 1, "uid": "111", "url": "https://store.steampowered.com/app/222/"}],
+                     "websites": [{"category": 13, "url": "https://store.steampowered.com/app/333/"}]})
+        assert load.load_igdb_file(_file(tmp_path, {"data": [game]})) == 1
+        row = db.execute("SELECT name, raw_json, first_release_date, game_type, status, game_type_label, status_label FROM igdb_games").fetchone()
+        assert row[:5] == ("  Verbatim Name  ", game, dt.date(2020, 12, 31), 0, 0)
+        assert isinstance(row[5], str) and row[5]
+        assert isinstance(row[6], str) and row[6]
+&gt;       assert db.execute("SELECT store, store_game_id FROM igdb_game_store_links").fetchall() == [("steam", "333")]
+E       AssertionError: assert [('steam', '2...team', '333')] == [('steam', '333')]
+E         
+E         At index 0 diff: ('steam', '222') != ('steam', '333')
+E         Left contains one more item: ('steam', '333')
+E         Use -v to get more diff
+
+tests/test_stage28_evaluation.py:227: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_public_helpers_remain_compatible_with_fake_connections" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_load_data_dispatches_igdb_saved_file" time="0.037"><failure message="TypeError: load_data() missing 1 required positional argument: 'file_path'">tmp_path = PosixPath('/home/ivan/codex-role-fjvnzu7z/scratch/tmp/test_load_data_dispatches_igdb0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7df28fe15c50&gt;
+
+    def test_load_data_dispatches_igdb_saved_file(tmp_path, monkeypatch):
+        path = _file(tmp_path, {"data": [_game()]}, "igdb_search_results_20261009_120000.json")
+        observed = []
+    
+        def loader(file_path):
+            observed.append(str(file_path))
+            return 1
+    
+        monkeypatch.setattr(load, "load_igdb_file", loader)
+&gt;       load.load_data(path)
+E       TypeError: load_data() missing 1 required positional argument: 'file_path'
+
+tests/test_stage28_evaluation.py:255: TypeError</failure></testcase></testsuite></testsuites>

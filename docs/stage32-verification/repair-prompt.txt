@@ -1,0 +1,17 @@
+Targeted implementation repair after independent read-only review.
+Read STAGE32_CONTRACT.md, REPAIR_REVIEW.json, and current project/ source.
+The Reviewer blocks acceptance: datetime.fromisoformat directly on a UTC ISO
+timestamp ending in Z fails on supported Python 3.10, although the same-day pass
+must succeed. Preserve the documented UTC clock contract and all admitted behavior.
+Make the smallest maintainable compatibility correction in project/collector/run.py.
+Add focused local regression coverage for UTC Z clocks in
+project/tests/test_collection_date.py if useful. Do not alter frozen tests; they
+remain inaccessible. Parent reruns actual acceptance and all project checks.
+Also inspect project/README.md against read-only BASELINE_README.md. Preserve
+unchanged text/line-ending bytes outside the intentional date-admission documentation
+edits; do not churn the file. Parent is correcting its diff generator separately.
+Exact authorized changed set remains project/collector/run.py,
+project/tests/test_collection_date.py and project/README.md. No other modifications,
+network, dependencies, other workspaces or subagents. Only project/ writable.
+This is the single targeted implementation repair; retain all successful work.
+Use cache-free compile() for syntax. End after saving with a concise explanation.

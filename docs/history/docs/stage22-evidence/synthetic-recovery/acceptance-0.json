@@ -1,0 +1,394 @@
+{
+  "epoch": 0,
+  "design_sha256": "1fb283aec5872fca4769f5e7787ffe456a9724e0509c59761cd7e47654d70c60",
+  "harness_sha256": "cd18164b2d0ab454262e7da3a10ce975d077103ed8c87eb5927e41049da376b1",
+  "candidate_sha256_before": "e881ea67e9665a7e66d97784913c96eb77c9d9a638935ba8fc6473b8dd5c8541",
+  "candidate_sha256_after": "e881ea67e9665a7e66d97784913c96eb77c9d9a638935ba8fc6473b8dd5c8541",
+  "executed_at": 1791364036.308925,
+  "returncode": 0,
+  "stdout": "{\"passed\": true, \"interface\": true, \"cases\": [{\"id\": \"empty-input\", \"input\": \"\", \"expected\": [], \"actual\": [], \"error\": null, \"passed\": true}, {\"id\": \"repeated-separators\", \"input\": \",,  ,\", \"expected\": [], \"actual\": [], \"error\": null, \"passed\": true}, {\"id\": \"ordinary-whitespace-normalization\", \"input\": \"  Alpha   BETA\\t gamma  \", \"expected\": [\"alpha beta gamma\"], \"actual\": [\"alpha beta gamma\"], \"error\": null, \"passed\": true}, {\"id\": \"quote-concatenation\", \"input\": \"pre\\\"MiX ed\\\"post\", \"expected\": [\"premix edpost\"], \"actual\": [\"premix edpost\"], \"error\": null, \"passed\": true}, {\"id\": \"quoted-comma\", \"input\": \"\\\"a,b\\\",c\", \"expected\": [\"a,b\", \"c\"], \"actual\": [\"a,b\", \"c\"], \"error\": null, \"passed\": true}, {\"id\": \"escaped-delimiters\", \"input\": \"a\\\\,b,c\\\\\\\"d\", \"expected\": [\"a,b\", \"c\\\"d\"], \"actual\": [\"a,b\", \"c\\\"d\"], \"error\": null, \"passed\": true}, {\"id\": \"protected-boundary-space\", \"input\": \"\\\\ A\\\\ \", \"expected\": [\" a \"], \"actual\": [\" a \"], \"error\": null, \"passed\": true}, {\"id\": \"protected-whitespace-breaks-runs\", \"input\": \"a  \\\" \\t \\\"  b\", \"expected\": [\"a  \\t  b\"], \"actual\": [\"a  \\t  b\"], \"error\": null, \"passed\": true}, {\"id\": \"protected-whitespace-only-label\", \"input\": \"\\\" \\t \\\"\", \"expected\": [\" \\t \"], \"actual\": [\" \\t \"], \"error\": null, \"passed\": true}, {\"id\": \"all-ascii-whitespace-ordinary\", \"input\": \" \\t\\r\\n\\u000b\\f \", \"expected\": [], \"actual\": [], \"error\": null, \"passed\": true}, {\"id\": \"all-ascii-whitespace-protected\", \"input\": \"\\\"\\t\\r\\n\\u000b\\f\\\"\", \"expected\": [\"\\t\\r\\n\\u000b\\f\"], \"actual\": [\"\\t\\r\\n\\u000b\\f\"], \"error\": null, \"passed\": true}, {\"id\": \"deduplication\", \"input\": \"Foo,\\\"FOO\\\",f\\\\ o,f o\", \"expected\": [\"foo\", \"f o\"], \"actual\": [\"foo\", \"f o\"], \"error\": null, \"passed\": true}, {\"id\": \"uppercase-everywhere\", \"input\": \"A\\\"B C\\\"\\\\D\", \"expected\": [\"ab cd\"], \"actual\": [\"ab cd\"], \"error\": null, \"passed\": true}, {\"id\": \"escaped-backslash\", \"input\": \"x\\\\\\\\Y  Z\", \"expected\": [\"x\\\\y z\"], \"actual\": [\"x\\\\y z\"], \"error\": null, \"passed\": true}, {\"id\": \"quoted-and-escaped-comma\", \"input\": \"\\\"A,B\\\"\\\\,C,D\", \"expected\": [\"a,b,c\", \"d\"], \"actual\": [\"a,b,c\", \"d\"], \"error\": null, \"passed\": true}, {\"id\": \"empty-labels-around-content\", \"input\": \",,One,,\\\"\\\",,Two,,\", \"expected\": [\"one\", \"two\"], \"actual\": [\"one\", \"two\"], \"error\": null, \"passed\": true}, {\"id\": \"trailing-backslash-error\", \"input\": \"ok,\\\\\", \"expected\": null, \"actual\": null, \"error\": \"ValueError\", \"passed\": true}, {\"id\": \"unclosed-quote-error\", \"input\": \"ok,\\\"bad\", \"expected\": null, \"actual\": null, \"error\": \"ValueError\", \"passed\": true}], \"properties\": [{\"case\": \"empty-input\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"empty-input\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"repeated-separators\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"repeated-separators\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"ordinary-whitespace-normalization\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"ordinary-whitespace-normalization\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"quote-concatenation\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"quote-concatenation\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"quoted-comma\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"quoted-comma\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"escaped-delimiters\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"escaped-delimiters\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"protected-boundary-space\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"protected-boundary-space\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"protected-whitespace-breaks-runs\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"protected-whitespace-breaks-runs\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"protected-whitespace-only-label\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"protected-whitespace-only-label\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"all-ascii-whitespace-ordinary\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"all-ascii-whitespace-ordinary\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"all-ascii-whitespace-protected\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"all-ascii-whitespace-protected\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"deduplication\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"deduplication\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"uppercase-everywhere\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"uppercase-everywhere\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"escaped-backslash\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"escaped-backslash\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"quoted-and-escaped-comma\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"quoted-and-escaped-comma\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"empty-labels-around-content\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"empty-labels-around-content\", \"property\": \"ascii_lowercase\", \"passed\": true}]}\n",
+  "stderr": "",
+  "host_observation": {
+    "controller_host_process_names": [
+      "docker",
+      "git",
+      "python.exe"
+    ]
+  },
+  "result": {
+    "passed": true,
+    "interface": true,
+    "cases": [
+      {
+        "id": "empty-input",
+        "input": "",
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "repeated-separators",
+        "input": ",,  ,",
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "ordinary-whitespace-normalization",
+        "input": "  Alpha   BETA\t gamma  ",
+        "expected": [
+          "alpha beta gamma"
+        ],
+        "actual": [
+          "alpha beta gamma"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quote-concatenation",
+        "input": "pre\"MiX ed\"post",
+        "expected": [
+          "premix edpost"
+        ],
+        "actual": [
+          "premix edpost"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quoted-comma",
+        "input": "\"a,b\",c",
+        "expected": [
+          "a,b",
+          "c"
+        ],
+        "actual": [
+          "a,b",
+          "c"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escaped-delimiters",
+        "input": "a\\,b,c\\\"d",
+        "expected": [
+          "a,b",
+          "c\"d"
+        ],
+        "actual": [
+          "a,b",
+          "c\"d"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "protected-boundary-space",
+        "input": "\\ A\\ ",
+        "expected": [
+          " a "
+        ],
+        "actual": [
+          " a "
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "protected-whitespace-breaks-runs",
+        "input": "a  \" \t \"  b",
+        "expected": [
+          "a  \t  b"
+        ],
+        "actual": [
+          "a  \t  b"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "protected-whitespace-only-label",
+        "input": "\" \t \"",
+        "expected": [
+          " \t "
+        ],
+        "actual": [
+          " \t "
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "all-ascii-whitespace-ordinary",
+        "input": " \t\r\n\u000b\f ",
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "all-ascii-whitespace-protected",
+        "input": "\"\t\r\n\u000b\f\"",
+        "expected": [
+          "\t\r\n\u000b\f"
+        ],
+        "actual": [
+          "\t\r\n\u000b\f"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "deduplication",
+        "input": "Foo,\"FOO\",f\\ o,f o",
+        "expected": [
+          "foo",
+          "f o"
+        ],
+        "actual": [
+          "foo",
+          "f o"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "uppercase-everywhere",
+        "input": "A\"B C\"\\D",
+        "expected": [
+          "ab cd"
+        ],
+        "actual": [
+          "ab cd"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escaped-backslash",
+        "input": "x\\\\Y  Z",
+        "expected": [
+          "x\\y z"
+        ],
+        "actual": [
+          "x\\y z"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quoted-and-escaped-comma",
+        "input": "\"A,B\"\\,C,D",
+        "expected": [
+          "a,b,c",
+          "d"
+        ],
+        "actual": [
+          "a,b,c",
+          "d"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "empty-labels-around-content",
+        "input": ",,One,,\"\",,Two,,",
+        "expected": [
+          "one",
+          "two"
+        ],
+        "actual": [
+          "one",
+          "two"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "trailing-backslash-error",
+        "input": "ok,\\",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      },
+      {
+        "id": "unclosed-quote-error",
+        "input": "ok,\"bad",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      }
+    ],
+    "properties": [
+      {
+        "case": "empty-input",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "empty-input",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "repeated-separators",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "repeated-separators",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "ordinary-whitespace-normalization",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "ordinary-whitespace-normalization",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quote-concatenation",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quote-concatenation",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quoted-comma",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quoted-comma",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escaped-delimiters",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escaped-delimiters",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "protected-boundary-space",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "protected-boundary-space",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "protected-whitespace-breaks-runs",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "protected-whitespace-breaks-runs",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "protected-whitespace-only-label",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "protected-whitespace-only-label",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "all-ascii-whitespace-ordinary",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "all-ascii-whitespace-ordinary",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "all-ascii-whitespace-protected",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "all-ascii-whitespace-protected",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "deduplication",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "deduplication",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "uppercase-everywhere",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "uppercase-everywhere",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escaped-backslash",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escaped-backslash",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quoted-and-escaped-comma",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quoted-and-escaped-comma",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "empty-labels-around-content",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "empty-labels-around-content",
+        "property": "ascii_lowercase",
+        "passed": true
+      }
+    ]
+  },
+  "model_requests": 0,
+  "tester_sessions": 0
+}

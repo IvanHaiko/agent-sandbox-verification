@@ -1,0 +1,30 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "All checks passed!\n",
+  "stderr": "",
+  "argv": [
+    "/usr/bin/env",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1",
+    "TMPDIR=/home/ivan/codex-role-jvqa11yl/scratch",
+    "POSTGRES_HOST=/home/ivan/codex-role-o19q3cn_/socket",
+    "POSTGRES_PORT=55430",
+    "POSTGRES_USER=stage30",
+    "POSTGRES_PASSWORD=disposable-local-only",
+    "POSTGRES_DB=unused",
+    "POSTGRES_TEST_DB=stage30_checks",
+    "REQUIRE_DB_TESTS=1",
+    "LD_LIBRARY_PATH=/home/ivan/codex-role-o19q3cn_/postgres/usr/lib/x86_64-linux-gnu",
+    "/home/ivan/codex-role-o19q3cn_/python/bin/python",
+    "-B",
+    "-m",
+    "ruff",
+    "check",
+    "--no-cache",
+    "src",
+    "tests"
+  ]
+}

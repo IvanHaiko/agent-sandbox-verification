@@ -1,0 +1,49 @@
+{
+  "handoff": {
+    "summary": [
+      "Validate the explicit IGDB envelope and entire game batch before transformation or connection acquisition; reject malformed IDs, names, duplicates and nested URL/UID types without mutating input.",
+      "Treat absent/null nested collections as empty while preserving raw_json, field values, decoding and link precedence; return zero for an explicit empty batch without connecting.",
+      "Use NULL-safe persisted-value comparisons in IGDB game, store-link and Twitch mapping upserts so identical replay preserves timestamps and changed records update normally.",
+      "Retain existing file-wide transaction boundaries and public helper signatures and fake-connection compatibility."
+    ],
+    "changed_files": [
+      "src/transform.py",
+      "src/load.py",
+      "tests/test_igdb_reliability.py"
+    ],
+    "tests": {
+      "unit": {
+        "command": "/usr/bin/python3 -B controller-check.py unit",
+        "result": "117 passed"
+      },
+      "integration": {
+        "command": "/usr/bin/python3 -B controller-check.py integration",
+        "result": "224 passed"
+      },
+      "lint": {
+        "command": "/usr/bin/python3 -B controller-check.py lint",
+        "result": "All checks passed"
+      },
+      "coverage": [
+        "Malformed envelopes, games and nested entries raise ValueError from transformer and loader before opening a connection.",
+        "Empty batches and malformed JSON do not acquire a connection.",
+        "Valid name preservation, raw_json preservation, UTC release date, enum decoding, URL-over-uid and website precedence, and null nested collections.",
+        "Separate-transaction identical replay including JSON key reorder preserves all persisted values; changes advance game and Twitch timestamps.",
+        "Store-link remapping retains unique keys and created_at; omitted links and categories remain persisted.",
+        "Failures injected at each persistence helper after earlier writes, both Python exceptions and real PostgreSQL errors, roll back inserts and previous-row updates; saved-file retries succeed and remain replay-safe."
+      ],
+      "initial_self_check": "Initial unit run reported two failures in new tests because migrations append columns after timestamp columns. Corrected test queries to select named timestamps explicitly, then reran all required checks on final source/test bytes."
+    },
+    "limitations": [
+      "Unrelated optional scalar fields retain existing transformation behavior, as required.",
+      "No API calls, schema/dependency changes, existing-test edits, or independent-test inspection were performed."
+    ]
+  },
+  "checks": {
+    "response.json": {
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    }
+  }
+}

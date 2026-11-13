@@ -1,0 +1,173 @@
+{
+  "secondary-only": {
+    "accepted": true,
+    "failures": [],
+    "changed_files": [
+      "src/helper.py"
+    ],
+    "final_hashes": {
+      ".codex-owned": "82c12627ee03c374dd585af510e00f8118690112a5c727130bc61f6afe6a2590",
+      "src/helper.py": "c7b50546b60790d8ccea2a3f9dadd0eee235e95909395bf099a4249822251e47",
+      "src/main.py": "59712c793126638ddd70a59e6faaadaa07cad66b76f61d2fce1290d53c7f2a46"
+    },
+    "processes": {
+      "native": {
+        "exit_code": 0,
+        "timed_out": false,
+        "owned_process_group_ended": true,
+        "descendants_killed": false,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    "checks": {
+      "test": {
+        "exit_code": 0,
+        "timed_out": false,
+        "owned_process_group_ended": true,
+        "descendants_killed": false,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    "review": null
+  },
+  "sibling": {
+    "accepted": false,
+    "failures": [
+      {
+        "group": "artifact/scope",
+        "detail": "Unauthorized changes: ['src/unapproved.py']"
+      }
+    ],
+    "changed_files": [
+      "src/helper.py",
+      "src/unapproved.py"
+    ],
+    "final_hashes": {
+      ".codex-owned": "82c12627ee03c374dd585af510e00f8118690112a5c727130bc61f6afe6a2590",
+      "src/helper.py": "c7b50546b60790d8ccea2a3f9dadd0eee235e95909395bf099a4249822251e47",
+      "src/unapproved.py": "84dede8463262871e42a9de1fd20b8cb45bd723c4d5c0269335ca61eb337e93c",
+      "src/main.py": "59712c793126638ddd70a59e6faaadaa07cad66b76f61d2fce1290d53c7f2a46"
+    },
+    "processes": {
+      "native": {
+        "exit_code": 0,
+        "timed_out": false,
+        "owned_process_group_ended": true,
+        "descendants_killed": false,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    "checks": {
+      "test": {
+        "exit_code": 0,
+        "timed_out": false,
+        "owned_process_group_ended": true,
+        "descendants_killed": false,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    "review": null
+  },
+  "wrong-oracle": {
+    "accepted": false,
+    "failures": [
+      {
+        "group": "behavior/review",
+        "detail": "Required check failed or incomplete: test"
+      }
+    ],
+    "changed_files": [
+      "src/helper.py"
+    ],
+    "final_hashes": {
+      ".codex-owned": "82c12627ee03c374dd585af510e00f8118690112a5c727130bc61f6afe6a2590",
+      "src/helper.py": "c7b50546b60790d8ccea2a3f9dadd0eee235e95909395bf099a4249822251e47",
+      "src/main.py": "59712c793126638ddd70a59e6faaadaa07cad66b76f61d2fce1290d53c7f2a46"
+    },
+    "processes": {
+      "native": {
+        "exit_code": 0,
+        "timed_out": false,
+        "owned_process_group_ended": true,
+        "descendants_killed": false,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    "checks": {
+      "test": {
+        "exit_code": 1,
+        "timed_out": false,
+        "owned_process_group_ended": true,
+        "descendants_killed": false,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"/mnt/c/Users/4ivan/codex-multi-agent/docs/stage30-verification/wrong-oracle-v1/test_oracle.py\", line 4, in <module>\n    assert clamp(5,0,3)==5\n           ^^^^^^^^^^^^^^^\nAssertionError\n"
+      }
+    },
+    "review": null
+  },
+  "oracle-adjudication": {
+    "status": "escalated; no superseding version approved",
+    "issue": "The public clamp contract requires 3 for (5,0,3); this injected oracle expects 5.",
+    "original_failure_preserved": true,
+    "implementation_changed_to_match_oracle": false
+  },
+  "malformed-exit17": {
+    "accepted": false,
+    "failures": [
+      {
+        "group": "process/environment",
+        "detail": "Unsuccessful execution/shutdown: native"
+      },
+      {
+        "group": "behavior/review",
+        "detail": "Required check failed or incomplete: test"
+      }
+    ],
+    "changed_files": [
+      "src/helper.py"
+    ],
+    "final_hashes": {
+      ".codex-owned": "82c12627ee03c374dd585af510e00f8118690112a5c727130bc61f6afe6a2590",
+      "src/helper.py": "8201b8f4baeec22e95b05dcf1db19c1df78dbfd690f6e203a5c33cbf0a280631",
+      "src/main.py": "59712c793126638ddd70a59e6faaadaa07cad66b76f61d2fce1290d53c7f2a46"
+    },
+    "processes": {
+      "native": {
+        "exit_code": 17,
+        "timed_out": false,
+        "owned_process_group_ended": true,
+        "descendants_killed": false,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    "checks": {
+      "test": {
+        "exit_code": 1,
+        "timed_out": false,
+        "owned_process_group_ended": true,
+        "descendants_killed": false,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    compile(open(\"src/helper.py\").read(),\"helper.py\",\"exec\")\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"helper.py\", line 1\n    def broken(\n              ^\nSyntaxError: '(' was never closed\n"
+      }
+    },
+    "review": null
+  },
+  "timeout": {
+    "exit_code": -15,
+    "timed_out": true,
+    "owned_process_group_ended": true,
+    "descendants_killed": false,
+    "stdout": "",
+    "stderr": ""
+  },
+  "preservation": {
+    "workspace_removed": true,
+    "exact_partial_bytes_survived": true
+  }
+}

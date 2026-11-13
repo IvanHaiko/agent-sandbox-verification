@@ -1,0 +1,399 @@
+{
+  "trials": [
+    {
+      "trial_id": "validated-p1-t1",
+      "phase": 1,
+      "task_id": "STAGE20-LABELS",
+      "accepted": false,
+      "workflow_completed": false,
+      "failure_category": "unknown_runtime_failure",
+      "roles": [
+        {
+          "label": "implementer",
+          "execution_id": "validated-p1-t1-implementer",
+          "task_id": "STAGE20-LABELS",
+          "role": "implementer",
+          "phase": "implementation",
+          "contract_version": 1,
+          "workspace_id": "0b9904cbce5379aefb41c969fc43a262cf80eb6716c8e9708fa683a99bc2af91",
+          "model": "gpt-5.6-luna",
+          "reasoning": "low",
+          "completed": true,
+          "execution_status": "completed",
+          "requests": 1,
+          "tool_calls": 1,
+          "candidate_sha256": "723e8c1e8c407a912b7229ef8b3e9de1bb47fcc1089e42bd2707327cb0b23f94",
+          "frozen_tester_sha256": null,
+          "failure_category": null,
+          "controller_host_process_names": [
+            "codex.exe",
+            "docker",
+            "git",
+            "powershell",
+            "python.exe"
+          ],
+          "seconds": 32.49,
+          "usage": null,
+          "process_exited": true,
+          "gate_observations": [
+            {
+              "response_bytes": 194959,
+              "secret_checked": true,
+              "event_counts": {
+                "response.created": 1,
+                "response.in_progress": 1,
+                "response.output_item.added": 3,
+                "response.output_item.done": 3,
+                "response.content_part.added": 1,
+                "response.output_text.done": 1,
+                "response.content_part.done": 1,
+                "response.function_call_arguments.delta": 681,
+                "response.function_call_arguments.done": 1,
+                "response.completed": 1
+              },
+              "anomalies": [
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonexecutable_stream_final_mismatch",
+                  "scope": "response",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonexecutable_stream_final_mismatch"
+                },
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "completed_function_omitted_from_final",
+                  "scope": "response",
+                  "executable_content": true,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "completed_function_omitted_from_final"
+                }
+              ],
+              "function_call_count": 1,
+              "item_ids_stable": true,
+              "call_ids_stable": true,
+              "output_indices_stable": true,
+              "arguments_equal": true,
+              "stream_final_bijection": false,
+              "terminal_status": "completed",
+              "validation_passed": true,
+              "transitions": {
+                "item_added": 3,
+                "arguments_delta": 681,
+                "arguments_done": 1,
+                "item_done": 3
+              },
+              "executable_content_seen": true,
+              "streamed_function_count": 1,
+              "completed_function_snapshots": 1,
+              "final_function_count": 0,
+              "completed_calls_omitted_from_final": 1,
+              "usage": {
+                "input_tokens": 5528,
+                "output_tokens": 906,
+                "total_tokens": 6434
+              }
+            }
+          ],
+          "transport_observations": [
+            {
+              "validation_passed": true,
+              "mime_category": "absent",
+              "response_bytes": 194959,
+              "eof": true,
+              "reader_shutdown_confirmed": true,
+              "secret_checked": true,
+              "event_counts": {
+                "response.created": 1,
+                "response.in_progress": 1,
+                "response.output_item.added": 3,
+                "response.output_item.done": 3,
+                "response.content_part.added": 1,
+                "response.output_text.done": 1,
+                "response.content_part.done": 1,
+                "response.function_call_arguments.delta": 681,
+                "response.function_call_arguments.done": 1,
+                "response.completed": 1
+              },
+              "anomalies": [
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonexecutable_stream_final_mismatch",
+                  "scope": "response",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonexecutable_stream_final_mismatch"
+                },
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "completed_function_omitted_from_final",
+                  "scope": "response",
+                  "executable_content": true,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "completed_function_omitted_from_final"
+                },
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonstandard_or_absent_mime",
+                  "scope": "request",
+                  "executable_content": true,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonstandard_or_absent_mime"
+                }
+              ],
+              "function_call_count": 1,
+              "item_ids_stable": true,
+              "call_ids_stable": true,
+              "output_indices_stable": true,
+              "arguments_equal": true,
+              "stream_final_bijection": false,
+              "terminal_status": "completed",
+              "transitions": {
+                "item_added": 3,
+                "arguments_delta": 681,
+                "arguments_done": 1,
+                "item_done": 3
+              },
+              "executable_content_seen": true,
+              "streamed_function_count": 1,
+              "completed_function_snapshots": 1,
+              "final_function_count": 0,
+              "completed_calls_omitted_from_final": 1,
+              "usage": {
+                "input_tokens": 5528,
+                "output_tokens": 906,
+                "total_tokens": 6434
+              },
+              "missing_mime_tolerated": true
+            }
+          ],
+          "session_observations": {
+            "anomalies": []
+          },
+          "failure_receipt": null,
+          "model_home_removed": true,
+          "termination": "controller_after_successful_write"
+        },
+        {
+          "label": "test-design",
+          "execution_id": "validated-p1-t1-test-design",
+          "task_id": "STAGE20-LABELS",
+          "role": "test_engineer",
+          "phase": "test_design",
+          "contract_version": 1,
+          "workspace_id": "fde989860d3bcb7287b11cb254284fed3a4911cb152febb1d33b17d3b3f33ebd",
+          "model": "gpt-5.6-luna",
+          "reasoning": "low",
+          "completed": true,
+          "execution_status": "completed",
+          "requests": 1,
+          "tool_calls": 0,
+          "candidate_sha256": null,
+          "frozen_tester_sha256": null,
+          "failure_category": null,
+          "controller_host_process_names": [
+            "codex.exe",
+            "docker",
+            "powershell"
+          ],
+          "seconds": 33.62,
+          "usage": {
+            "total": {
+              "totalTokens": 6989,
+              "inputTokens": 5750,
+              "cachedInputTokens": 0,
+              "cacheWriteInputTokens": 0,
+              "outputTokens": 1239,
+              "reasoningOutputTokens": 383
+            },
+            "last": {
+              "totalTokens": 6989,
+              "inputTokens": 5750,
+              "cachedInputTokens": 0,
+              "cacheWriteInputTokens": 0,
+              "outputTokens": 1239,
+              "reasoningOutputTokens": 383
+            }
+          },
+          "process_exited": true,
+          "gate_observations": [
+            {
+              "response_bytes": 252104,
+              "secret_checked": true,
+              "event_counts": {
+                "response.created": 1,
+                "response.in_progress": 1,
+                "response.output_item.added": 2,
+                "response.output_item.done": 2,
+                "response.content_part.added": 1,
+                "response.output_text.delta": 850,
+                "response.output_text.done": 1,
+                "response.content_part.done": 1,
+                "response.completed": 1
+              },
+              "anomalies": [
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonexecutable_stream_final_mismatch",
+                  "scope": "response",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonexecutable_stream_final_mismatch"
+                }
+              ],
+              "function_call_count": 0,
+              "item_ids_stable": true,
+              "call_ids_stable": true,
+              "output_indices_stable": true,
+              "arguments_equal": true,
+              "stream_final_bijection": false,
+              "terminal_status": "completed",
+              "validation_passed": true,
+              "transitions": {
+                "item_added": 2,
+                "arguments_delta": 0,
+                "arguments_done": 0,
+                "item_done": 2
+              },
+              "streamed_function_count": 0,
+              "completed_function_snapshots": 0,
+              "final_function_count": 0,
+              "usage": {
+                "input_tokens": 5750,
+                "output_tokens": 1239,
+                "total_tokens": 6989
+              }
+            }
+          ],
+          "transport_observations": [
+            {
+              "validation_passed": true,
+              "mime_category": "absent",
+              "response_bytes": 252104,
+              "eof": true,
+              "reader_shutdown_confirmed": true,
+              "secret_checked": true,
+              "event_counts": {
+                "response.created": 1,
+                "response.in_progress": 1,
+                "response.output_item.added": 2,
+                "response.output_item.done": 2,
+                "response.content_part.added": 1,
+                "response.output_text.delta": 850,
+                "response.output_text.done": 1,
+                "response.content_part.done": 1,
+                "response.completed": 1
+              },
+              "anomalies": [
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonexecutable_stream_final_mismatch",
+                  "scope": "response",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonexecutable_stream_final_mismatch"
+                },
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonstandard_or_absent_mime",
+                  "scope": "request",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonstandard_or_absent_mime"
+                }
+              ],
+              "function_call_count": 0,
+              "item_ids_stable": true,
+              "call_ids_stable": true,
+              "output_indices_stable": true,
+              "arguments_equal": true,
+              "stream_final_bijection": false,
+              "terminal_status": "completed",
+              "transitions": {
+                "item_added": 2,
+                "arguments_delta": 0,
+                "arguments_done": 0,
+                "item_done": 2
+              },
+              "streamed_function_count": 0,
+              "completed_function_snapshots": 0,
+              "final_function_count": 0,
+              "usage": {
+                "input_tokens": 5750,
+                "output_tokens": 1239,
+                "total_tokens": 6989
+              },
+              "missing_mime_tolerated": true
+            }
+          ],
+          "session_observations": {
+            "anomalies": []
+          },
+          "failure_receipt": null,
+          "model_home_removed": true
+        }
+      ],
+      "tester_reached": true,
+      "acceptance_reached": false,
+      "review": null,
+      "candidate_sha256": "723e8c1e8c407a912b7229ef8b3e9de1bb47fcc1089e42bd2707327cb0b23f94",
+      "frozen_tester_sha256": null,
+      "implementation": {
+        "role": "implementer",
+        "execution_status": "completed",
+        "failure_category": null,
+        "candidate_files": [
+          "src/normalize_labels.py"
+        ],
+        "candidate_hashes": {
+          "src/normalize_labels.py": "723e8c1e8c407a912b7229ef8b3e9de1bb47fcc1089e42bd2707327cb0b23f94"
+        },
+        "diff_summary": "--- a/src/normalize_labels.py\n+++ b/src/normalize_labels.py\n@@ -1,2 +1,74 @@\n+\"\"\"Normalize comma-separated labels with quoting and escaping.\"\"\"\n+\n+\n+_ASCII_WHITESPACE = \" \\t\\r\\n\\v\\f\"\n+\n+\n+def _lower_ascii(char: str) -> str:\n+    if \"A\" <= char <= \"Z\":\n+        return chr(ord(char) + (ord(\"a\") - ord(\"A\")))\n+    return char\n+\n+\n+def _normalize_label(parts: list[tuple[str, bool]]) -> str:\n+    \"\"\"Trim and collapse only unprotected whitespace.\"\"\"\n+    result: list[str] = []\n+    index = 0\n+    length = len(parts)\n+\n+    while index < length:\n+        char, protected = parts[index]\n+        if not protected and char in _ASCII_WHITESPACE:\n+            end = index + 1\n+            while (\n+                end < length\n+                and not parts[end][1]\n+                and parts[end][0] in _ASCII_WHITESPACE\n+            ):\n+                end += 1\n+            if result and end < length:\n+                result.append(\" \")\n+            index = end\n+            continue\n+        result.append(_lower_ascii(char))\n+        index += 1\n+\n+    return \"\".join(result)\n+\n+\n def normalize_labels(value: str) -> list[str]:\n-    raise NotImplementedError\n+    \"\"\"Parse, normalize, and deduplicate comma-separated labels.\"\"\"\n+    labels: list[str] = []\n+    current: list[tuple[str, bool]] = []\n+    quoted = False\n+    index = 0\n+\n+    while index < len(value):\n+        char = value[index]\n+        if char == \"\\\\\":\n+            if index + 1 >= len(value):\n+                raise ValueError(\"trailing escape\")\n+            current.append((value[index + 1], True))\n+            index += 2\n+        elif char == '\"':\n+            quoted = not quoted\n+            index += 1\n+        elif char == \",\" and not quoted:\n+            labels.append(_normalize_label(current))\n+            current = []\n+            index += 1\n+        else:\n+            current.append((char, quoted))\n+            index += 1\n+\n+    if quoted:\n+        raise ValueError(\"unclosed quote\")\n+    labels.append(_normalize_label(current))\n+\n+    result: list[str] = []\n+    seen: set[str] = set()\n+    for label in labels:\n+        if label and label not in seen:\n+            seen.add(label)\n+            result.append(label)\n+    return result\n",
+        "mutation_scope_valid": true,
+        "interface_check": {
+          "public_interface_verified": true,
+          "own_cases_passed": 0
+        },
+        "self_checks": [],
+        "model_handoff_received": false,
+        "accepted": false,
+        "authority": "controller_observed_artifacts"
+      },
+      "failed_stage": "test_design",
+      "failure_type": "AgentSystemError",
+      "failure_reason": "Test exceeds supported scope",
+      "cleanup_result": "passed",
+      "containment": {
+        "production_source_unchanged_during_trial": true,
+        "credential_store_unchanged": true,
+        "stale_owned_containers": 0,
+        "docker_cleanup_confirmed": true,
+        "model_homes_removed": true,
+        "role_network": "none",
+        "host_fallback": false,
+        "no_host_execution_attempt": true,
+        "disposable_storage_removed": true
+      },
+      "elapsed_seconds": 82.15
+    }
+  ],
+  "completed": false,
+  "stopped_phase": 1,
+  "stop_reason": "Simpler layer did not pass; no role expansion or automatic retry"
+}

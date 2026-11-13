@@ -1,0 +1,128 @@
+[
+  {
+    "execution_id": "0b1e2d67dd884fa4aeefca07e6ad1770",
+    "name": "agentctl-56d7da4fdd9a-0b1e2d67dd884fa4aeefca07e6ad1770",
+    "owner": "56d7da4fdd9acf606f761aa0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-admission\\test_current_stage22_transport0\\runtime\\codex-agent-system-3c6cc020562b3369\\worktrees\\STAGE21A-ADMISSION\\implementer",
+    "created_at": "2026-10-07T09:52:10.031311+00:00",
+    "status": "failed",
+    "input_commit": "7c6ba713e4347ee15fe63332a8814069a8a93020",
+    "container_id": "e33bb0dcf0dc65b4e084ba7a97a6ef61ab8c50bb7646a62df5f908a0a917d49c",
+    "error": "AgentSystemError: Role output limit exceeded",
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "1caf58813a654b5a851908fa1e0b124f",
+    "name": "agentctl-56d7da4fdd9a-1caf58813a654b5a851908fa1e0b124f",
+    "owner": "56d7da4fdd9acf606f761aa0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-admission\\test_current_stage22_transport0\\runtime\\codex-agent-system-3c6cc020562b3369\\worktrees\\STAGE21A-ADMISSION\\implementer",
+    "created_at": "2026-10-07T09:52:20.833265+00:00",
+    "status": "failed",
+    "input_commit": "7c6ba713e4347ee15fe63332a8814069a8a93020",
+    "container_id": "67e344cd082802949d5cee7ff8993f7162e54354aa798c6c3a4a6521a4aee183",
+    "error": "AgentSystemError: Isolated tool cancelled",
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "2ba6b7908217441ba91addba5a553866",
+    "name": "agentctl-56d7da4fdd9a-2ba6b7908217441ba91addba5a553866",
+    "owner": "56d7da4fdd9acf606f761aa0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-admission\\test_current_stage22_transport0\\runtime\\codex-agent-system-3c6cc020562b3369\\docker-runner\\probe-inputs\\ff11389fced8433e93bf3be51a0a77b2\\role source with spaces",
+    "created_at": "2026-10-07T09:51:29.100126+00:00",
+    "status": "completed",
+    "input_commit": "8c333c4f0f7d3af0215f3884104501e231095baa",
+    "container_id": "9c82e927498a1f0bc769a3d4d72a8f87f75797e71432f3c92485ebff656b3f7b",
+    "changed_paths": [],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "333abf3574734a38a31967f410267d64",
+    "name": "agentctl-56d7da4fdd9a-333abf3574734a38a31967f410267d64",
+    "owner": "56d7da4fdd9acf606f761aa0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-admission\\test_current_stage22_transport0\\runtime\\codex-agent-system-3c6cc020562b3369\\docker-runner\\probe-inputs\\ff11389fced8433e93bf3be51a0a77b2\\role source with spaces",
+    "created_at": "2026-10-07T09:51:34.829675+00:00",
+    "status": "completed",
+    "input_commit": "8c333c4f0f7d3af0215f3884104501e231095baa",
+    "container_id": "621b88d9940be3948e1e3feb72ea52895de5fe78f276b794f27afd9d30b2d921",
+    "changed_paths": [],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "47646a493f3a49f4a750f43360b00148",
+    "name": "agentctl-56d7da4fdd9a-47646a493f3a49f4a750f43360b00148",
+    "owner": "56d7da4fdd9acf606f761aa0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-admission\\test_current_stage22_transport0\\runtime\\codex-agent-system-3c6cc020562b3369\\worktrees\\STAGE21A-ADMISSION\\implementer",
+    "created_at": "2026-10-07T09:51:51.070033+00:00",
+    "status": "completed",
+    "input_commit": "7c6ba713e4347ee15fe63332a8814069a8a93020",
+    "container_id": "6115620746d4fed18b5dac4a6eba6cf981fd64c3f0520bbe15e4fd15e8fde9cf",
+    "changed_paths": [
+      "src/example.py"
+    ],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "9fd34bb0253b401196e83d6e53543658",
+    "name": "agentctl-56d7da4fdd9a-9fd34bb0253b401196e83d6e53543658",
+    "owner": "56d7da4fdd9acf606f761aa0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-admission\\test_current_stage22_transport0\\runtime\\codex-agent-system-3c6cc020562b3369\\worktrees\\STAGE21A-ADMISSION\\implementer",
+    "created_at": "2026-10-07T09:51:57.455892+00:00",
+    "status": "completed",
+    "input_commit": "7c6ba713e4347ee15fe63332a8814069a8a93020",
+    "container_id": "e66f25f24245fdddedaad4a7fe099874fadca3ac005c9385d24a29b315118106",
+    "changed_paths": [],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "aaea41036f954cfba9fa3be4e748873a",
+    "name": "agentctl-56d7da4fdd9a-aaea41036f954cfba9fa3be4e748873a",
+    "owner": "56d7da4fdd9acf606f761aa0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-admission\\test_current_stage22_transport0\\runtime\\codex-agent-system-3c6cc020562b3369\\worktrees\\STAGE21A-ADMISSION\\implementer",
+    "created_at": "2026-10-07T09:52:04.282042+00:00",
+    "status": "failed",
+    "input_commit": "7c6ba713e4347ee15fe63332a8814069a8a93020",
+    "container_id": "abfa19c66990411e9be984a82fd20702bccfba8ff1960296c6b6135acc53d2b3",
+    "error": "TimeoutExpired: Command '['docker', '--context', 'desktop-linux', 'start', '-ai', 'abfa19c66990411e9be984a82fd20702bccfba8ff1960296c6b6135acc53d2b3']' timed out after 1 seconds",
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "d631fd4b1cc0437993919f6049259b27",
+    "name": "agentctl-56d7da4fdd9a-d631fd4b1cc0437993919f6049259b27",
+    "owner": "56d7da4fdd9acf606f761aa0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-admission\\test_current_stage22_transport0\\runtime\\codex-agent-system-3c6cc020562b3369\\worktrees\\STAGE21A-ADMISSION\\implementer",
+    "created_at": "2026-10-07T09:52:15.230439+00:00",
+    "status": "failed",
+    "input_commit": "7c6ba713e4347ee15fe63332a8814069a8a93020",
+    "container_id": "a5e70f357a76ae2fde2276391c68224b1d15cb9ea544f7b48f126378f93eda09",
+    "error": "AgentSystemError: Credential-bearing output rejected",
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "e5df4405aa7845579f94615a56ad9919",
+    "name": "agentctl-56d7da4fdd9a-e5df4405aa7845579f94615a56ad9919",
+    "owner": "56d7da4fdd9acf606f761aa0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-admission\\test_current_stage22_transport0\\runtime\\codex-agent-system-3c6cc020562b3369\\docker-runner\\probe-inputs\\ff11389fced8433e93bf3be51a0a77b2\\role source with spaces",
+    "created_at": "2026-10-07T09:51:38.050624+00:00",
+    "status": "completed",
+    "input_commit": "8c333c4f0f7d3af0215f3884104501e231095baa",
+    "container_id": "ead56c56d856aebcaf9ed208c3ca1ea443c73da5213c19bb0789916ad73abb78",
+    "changed_paths": [
+      "allowed.txt"
+    ],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  }
+]

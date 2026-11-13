@@ -1,0 +1,111 @@
+{
+  "configuration": "A",
+  "started_at": 1791531461.073,
+  "roles": {
+    "independent_tester": {
+      "id": "/root/independent_tester",
+      "started_at": 1791531461.076,
+      "completed_at": 1791531723.17,
+      "status": "completed",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "fork_turns": "none",
+      "duration_seconds": 262.0940001010895,
+      "top_level_tests": 12,
+      "design_correspondence_verified": true
+    },
+    "implementer": {
+      "id": "/root/implementer",
+      "started_at": 1791531735.174,
+      "completed_at": 1791532050.912,
+      "status": "completed",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "fork_turns": "none",
+      "duration_seconds": 315.73799991607666,
+      "reported_checks": {
+        "unit": {
+          "passed": 40,
+          "skipped": 0
+        },
+        "integration": {
+          "passed": 203,
+          "skipped": 0
+        },
+        "lint": "passed"
+      }
+    },
+    "reviewer": {
+      "id": "/root/reviewer",
+      "started_at": 1791532133.297,
+      "completed_at": 1791532216.841,
+      "status": "completed",
+      "recommendation": "accept",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "fork_turns": "none",
+      "duration_seconds": 83.5440001487732
+    }
+  },
+  "failures": [
+    {
+      "stage": "acceptance_setup",
+      "time": 1791532081.834,
+      "description": "Full git diff includes handoff/implementation.json, absent from acceptance; git apply failed atomically. Orchestrator erroneously launched independent check on original source (4 failed, 1 passed, 29 errors). Preserved as independent-setup-failure.json; this is not candidate acceptance evidence."
+    }
+  ],
+  "isolation": {
+    "enforcement": "Role prompts and fresh conversation contexts; filesystem isolation between role directories is unverified."
+  },
+  "acceptance": {
+    "completed_at": 1791532095.227,
+    "result": "passed",
+    "passed": 34,
+    "result_file": "results/independent-result.json",
+    "candidate_files_byte_identical": true,
+    "patch_application": "Applied exact hunks for three allowed candidate files from full saved git diff; excluded handoff metadata absent from acceptance."
+  },
+  "completed_at": 1791532216.845,
+  "duration_seconds": 755.7720000743866,
+  "completion": {
+    "all_three_roles_completed": true,
+    "independent_candidate_check_passed": true,
+    "review_completed": true,
+    "status": "completed_with_recorded_orchestrator_setup_failure",
+    "candidate_repairs": 0,
+    "independent_test_repairs": 0,
+    "role_retries": 0,
+    "extra_agents": 0,
+    "external_acceptance_suite": "unavailable; evaluation deferred",
+    "architecture_decision": "INCONCLUSIVE; no Configuration B comparison or external evaluation available"
+  },
+  "freeze": {
+    "time": 1791531723.1491835,
+    "candidate_visible": false,
+    "files": {
+      "test-design.json": {
+        "sha256": "580c08a4a5ff1469925be20e1147e4181d9289444ad4edd634686e1d8db06f1d",
+        "bytes": 4709
+      },
+      "test_independent.py": {
+        "sha256": "dea7b8aea2a3e04e211b30a9a556cf23b2bf4a1e9d6040f484e862d743055ee8",
+        "bytes": 11180
+      }
+    },
+    "final_hashes_verified": true
+  },
+  "implementation_patch": {
+    "path": "results/implementation.patch",
+    "sha256": "7a317b0728a1df79e29e8b131d7c8f4b9ab5bd819368c2288e22114781f0b6cf"
+  },
+  "artifacts": [
+    "results/test-freeze.json",
+    "results/implementation.patch",
+    "results/independent-setup-failure.json",
+    "results/independent-result.json",
+    "results/reviewer-result.json",
+    "implementer/handoff/implementation.json",
+    "frozen/test-design.json",
+    "frozen/test_independent.py"
+  ]
+}

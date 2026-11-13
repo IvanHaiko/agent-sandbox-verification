@@ -1,0 +1,113 @@
+{
+  "role_invocations": 4,
+  "roles": [
+    {
+      "role": "architect",
+      "thread_id": "01a11b3a-e244-7582-bef7-f24aaadfe475",
+      "elapsed_seconds": 92.237,
+      "native_reported_tokens_used": 41276,
+      "resolved_model": "gpt-6.1-sol"
+    },
+    {
+      "role": "implementer",
+      "thread_id": "01a11b3e-e7de-7882-a842-940128d36ea3",
+      "elapsed_seconds": 237.298,
+      "native_reported_tokens_used": 45009,
+      "resolved_model": "gpt-6.1-sol"
+    },
+    {
+      "role": "independent_tester",
+      "thread_id": "01a11b42-8831-7891-acdf-deee8b5e3986",
+      "elapsed_seconds": 354.561,
+      "native_reported_tokens_used": 49251,
+      "resolved_model": "gpt-6.1-sol"
+    },
+    {
+      "role": "reviewer",
+      "thread_id": "01a11b4a-f8f4-7c50-a328-730b48a13910",
+      "elapsed_seconds": 58.074,
+      "native_reported_tokens_used": 44318,
+      "resolved_model": "gpt-6.1-sol"
+    }
+  ],
+  "role_seconds_total": 742.17,
+  "measured_stage_wall_seconds": 1647.638,
+  "wall_clock_boundary": "Creation of framework baseline test directory; earlier brief/repository reads are excluded because no trustworthy start timestamp was retained.",
+  "development_workflow_seconds": 595.088,
+  "native_reported_tokens_partial_total": 179854,
+  "billing_cost": null,
+  "counter_limit": "Native reported counters only; no complete input/output/cache billing breakdown.",
+  "user_interventions": 0,
+  "controller_manual_failure_closeouts": 1,
+  "environment_startup_continuations": 0,
+  "automatic_role_retries": 0,
+  "candidate_files_changed": [
+    "src/load.py",
+    "src/transform.py",
+    "tests/test_refactoring.py"
+  ],
+  "candidate_source_files_changed": [
+    "src/load.py",
+    "src/transform.py"
+  ],
+  "implementer_check_runs": 6,
+  "implementer_failed_check_runs": 1,
+  "checks": {
+    "controller-regression-1": {
+      "tests": 210,
+      "passed": 210,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "framework-focused": {
+      "tests": 24,
+      "passed": 24,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "framework-regression": {
+      "tests": 43,
+      "passed": 43,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "implementer-check-1": {
+      "tests": 158,
+      "passed": 158,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "implementer-check-2": {
+      "tests": 206,
+      "passed": 206,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "implementer-check-4": {
+      "tests": 162,
+      "passed": 162,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "implementer-check-5": {
+      "tests": 210,
+      "passed": 210,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "prerequisite-check-1": {
+      "tests": 168,
+      "passed": 168,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  }
+}

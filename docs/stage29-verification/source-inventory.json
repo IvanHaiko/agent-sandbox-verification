@@ -1,0 +1,973 @@
+[
+  {
+    "path": "agent_system/__init__.py",
+    "bytes": 82,
+    "physical_lines": 1,
+    "nonblank_noncomment_lines": 1,
+    "sha256": "a3b0b025aa6a802f1e3ea2408018e303d7a264083d8a2668988bedf359367b1f",
+    "imports": [],
+    "definitions": []
+  },
+  {
+    "path": "agent_system/artifacts.py",
+    "bytes": 3794,
+    "physical_lines": 98,
+    "nonblank_noncomment_lines": 77,
+    "sha256": "8984c067f5798e2bdb108a89f2d581fc0dcff9b4fb25c18743a75c514c010f9d",
+    "imports": [
+      "ast",
+      "difflib",
+      "hashlib",
+      "json",
+      "pathlib",
+      "shutil",
+      "subprocess",
+      "tempfile",
+      "time"
+    ],
+    "definitions": [
+      {
+        "name": "snapshot",
+        "line": 12,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "digest",
+        "line": 24,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "save",
+        "line": 28,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "require",
+        "line": 34,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "owned_workspace",
+        "line": 39,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "cleanup",
+        "line": 52,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "archive",
+        "line": 60,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "freeze_design",
+        "line": 67,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "require_frozen",
+        "line": 83,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "changed_files",
+        "line": 93,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "artifact_diff",
+        "line": 96,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "agent_system/controller.py",
+    "bytes": 10305,
+    "physical_lines": 154,
+    "nonblank_noncomment_lines": 146,
+    "sha256": "aa05488d60f02de98e069796339c95892f910abbbb8a2f4e9f12e81085b64049",
+    "imports": [
+      "artifacts",
+      "json",
+      "pathlib",
+      "time"
+    ],
+    "definitions": [
+      {
+        "name": "run_workflow",
+        "line": 12,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "agent_system/native_codex_linux.py",
+    "bytes": 18210,
+    "physical_lines": 313,
+    "nonblank_noncomment_lines": 294,
+    "sha256": "9cca0fae466f82d59ba75839182eedf286cbcb52ee7bb98b33f610ad56f50f45",
+    "imports": [
+      "artifacts",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "shutil",
+      "signal",
+      "subprocess",
+      "time"
+    ],
+    "definitions": [
+      {
+        "name": "native_errors",
+        "line": 14,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "environment",
+        "line": 43,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "NativeLinuxCodexRunner",
+        "line": 51,
+        "kind": "ClassDef"
+      },
+      {
+        "name": "__init__",
+        "line": 52,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "permissions",
+        "line": 67,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "sandbox",
+        "line": 97,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "_process",
+        "line": 106,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "run",
+        "line": 137,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "run_read_only",
+        "line": 232,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "command",
+        "line": 295,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "metadata",
+        "line": 303,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "agent_system/roles.py",
+    "bytes": 7177,
+    "physical_lines": 118,
+    "nonblank_noncomment_lines": 101,
+    "sha256": "dd199bb0ee7fa83a2cc0ab77d014358dea575450d62361c88bb01e5033a08de8",
+    "imports": [
+      "",
+      "artifacts",
+      "json",
+      "jsonschema"
+    ],
+    "definitions": [
+      {
+        "name": "obj",
+        "line": 11,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "architect_schema",
+        "line": 24,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "validate_semantic",
+        "line": 41,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "semantic_role",
+        "line": 56,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "review",
+        "line": 79,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "load_canonical",
+        "line": 105,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "agent_system/test_environment.py",
+    "bytes": 6415,
+    "physical_lines": 133,
+    "nonblank_noncomment_lines": 121,
+    "sha256": "b58dfab72263fd420f3827ecaee86e675ea26319cb60bf6277f735b737d23654",
+    "imports": [
+      "artifacts",
+      "json",
+      "pathlib",
+      "shutil",
+      "threading",
+      "time"
+    ],
+    "definitions": [
+      {
+        "name": "RoleTestEnvironment",
+        "line": 36,
+        "kind": "ClassDef"
+      },
+      {
+        "name": "__init__",
+        "line": 39,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "inputs",
+        "line": 48,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "start",
+        "line": 51,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "_serve",
+        "line": 58,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "execute",
+        "line": 82,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "finish",
+        "line": 124,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "validation/__init__.py",
+    "bytes": 77,
+    "physical_lines": 1,
+    "nonblank_noncomment_lines": 1,
+    "sha256": "a8cf7ba6972f9c05990e72c82ec04b25c32b64d63911fc5c2757aa0c7a70b87f",
+    "imports": [],
+    "definitions": []
+  },
+  {
+    "path": "validation/labels_contract.py",
+    "bytes": 10329,
+    "physical_lines": 161,
+    "nonblank_noncomment_lines": 142,
+    "sha256": "5eb5aa9912715147f52efe9351ac7181aaa707fc4e49c5368b6047ac17c5e8ca",
+    "imports": [
+      "ast",
+      "json",
+      "jsonschema",
+      "pathlib"
+    ],
+    "definitions": [
+      {
+        "name": "strict_json",
+        "line": 8,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "validate_design",
+        "line": 21,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "validate_candidate",
+        "line": 36,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "schema",
+        "line": 76,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "acceptance_source",
+        "line": 93,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "contract_interpret",
+        "line": 116,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "classify_failures",
+        "line": 144,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "pairs",
+        "line": 9,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "constant",
+        "line": 16,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "validation/native_workflow.py",
+    "bytes": 3341,
+    "physical_lines": 62,
+    "nonblank_noncomment_lines": 55,
+    "sha256": "bfc8a763b1ea687fd3255f21ead66c5f3077a6124953fb67a28b82f07af760ee",
+    "imports": [
+      "",
+      "agent_system.artifacts",
+      "agent_system.controller",
+      "agent_system.native_codex_linux",
+      "agent_system.roles",
+      "argparse",
+      "json",
+      "pathlib"
+    ],
+    "definitions": [
+      {
+        "name": "main",
+        "line": 22,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "validation/steam_negative_control.py",
+    "bytes": 3798,
+    "physical_lines": 60,
+    "nonblank_noncomment_lines": 57,
+    "sha256": "580b136c1bd6a0b09bcbd66ae24d3e4397ed98fff54a3f8329bb76beb32d4487",
+    "imports": [
+      "agent_system.artifacts",
+      "agent_system.native_codex_linux",
+      "json",
+      "pathlib",
+      "shutil",
+      "validation.steam_workflow",
+      "xml.etree.ElementTree"
+    ],
+    "definitions": []
+  },
+  {
+    "path": "validation/steam_refactoring.py",
+    "bytes": 22265,
+    "physical_lines": 335,
+    "nonblank_noncomment_lines": 312,
+    "sha256": "6501132c853af66a502ab4d3e553898587b3dda4958f5955113207e6e30aa34b",
+    "imports": [
+      "agent_system.artifacts",
+      "agent_system.native_codex_linux",
+      "agent_system.roles",
+      "agent_system.test_environment",
+      "argparse",
+      "ast",
+      "json",
+      "pathlib",
+      "shutil",
+      "time",
+      "types",
+      "validation.steam_workflow",
+      "xml.etree.ElementTree"
+    ],
+    "definitions": [
+      {
+        "name": "prepare",
+        "line": 30,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "candidate_valid",
+        "line": 69,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "tester_valid",
+        "line": 81,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "preserve_components",
+        "line": 91,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "run",
+        "line": 107,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "run_control",
+        "line": 305,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 324,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "remove",
+        "line": 130,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "validation/steam_resume_acceptance.py",
+    "bytes": 5934,
+    "physical_lines": 92,
+    "nonblank_noncomment_lines": 88,
+    "sha256": "c3e9ba61f94b070c9e381af6a4ed0fa983fa61905746cd611286ef9c3e63f5ea",
+    "imports": [
+      "agent_system.artifacts",
+      "agent_system.native_codex_linux",
+      "json",
+      "pathlib",
+      "time",
+      "validation.steam_workflow"
+    ],
+    "definitions": []
+  },
+  {
+    "path": "validation/steam_runtime.py",
+    "bytes": 7140,
+    "physical_lines": 130,
+    "nonblank_noncomment_lines": 117,
+    "sha256": "30e8c150c2e55dfbc232f8bb904038c4b959d66e0bf304db6bc1a270a016b97c",
+    "imports": [
+      "agent_system.artifacts",
+      "agent_system.native_codex_linux",
+      "argparse",
+      "json",
+      "os",
+      "pathlib",
+      "shutil",
+      "subprocess",
+      "validation.steam_workflow"
+    ],
+    "definitions": [
+      {
+        "name": "command",
+        "line": 14,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "provision",
+        "line": 19,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "stop",
+        "line": 65,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "probe",
+        "line": 84,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "host_probe",
+        "line": 108,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "validation/steam_sandbox_probe.py",
+    "bytes": 4049,
+    "physical_lines": 98,
+    "nonblank_noncomment_lines": 91,
+    "sha256": "b478dc828f7a8bc435f42a19acb08843f6c1741a327cb260d063f3bbfc032d83",
+    "imports": [
+      "agent_system.artifacts",
+      "agent_system.native_codex_linux",
+      "json",
+      "os",
+      "pathlib",
+      "signal",
+      "socket",
+      "subprocess",
+      "threading"
+    ],
+    "definitions": [
+      {
+        "name": "serve",
+        "line": 29,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "validation/steam_workflow.py",
+    "bytes": 28129,
+    "physical_lines": 452,
+    "nonblank_noncomment_lines": 416,
+    "sha256": "51a3f8c6ca1333952368cb7e5b9681785c18101ddeef1653547faab4a85360d3",
+    "imports": [
+      "agent_system.artifacts",
+      "agent_system.native_codex_linux",
+      "agent_system.roles",
+      "argparse",
+      "ast",
+      "io",
+      "json",
+      "jsonschema",
+      "pathlib",
+      "shutil",
+      "subprocess",
+      "tarfile",
+      "time",
+      "types",
+      "xml.etree.ElementTree"
+    ],
+    "definitions": [
+      {
+        "name": "git",
+        "line": 22,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "source_fingerprint",
+        "line": 27,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "fixed_source",
+        "line": 42,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "validate_json",
+        "line": 62,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "project_candidate",
+        "line": 75,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "tester_artifacts",
+        "line": 88,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "acceptance_and_review",
+        "line": 102,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "run",
+        "line": 207,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "prepare",
+        "line": 374,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "main",
+        "line": 440,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "collect_role",
+        "line": 235,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "remove_role",
+        "line": 248,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_acceptance.py",
+    "bytes": 3670,
+    "physical_lines": 76,
+    "nonblank_noncomment_lines": 65,
+    "sha256": "2a552693f54196598e3cb4c4c6e8e1e63366d9d53d40c89146214d11a22a8c62",
+    "imports": [
+      "agent_system.artifacts",
+      "json",
+      "pathlib",
+      "subprocess",
+      "sys",
+      "tempfile",
+      "unittest",
+      "validation"
+    ],
+    "definitions": [
+      {
+        "name": "design",
+        "line": 13,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "FrozenAcceptanceTests",
+        "line": 21,
+        "kind": "ClassDef"
+      },
+      {
+        "name": "test_domain_and_duplicate_ids_rejected",
+        "line": 22,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_duplicate_json_keys_rejected",
+        "line": 32,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_frozen_design_tampering_rejected",
+        "line": 36,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_harness_rejects_incorrect_candidate",
+        "line": 46,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_value_error_expectation_is_not_any_exception",
+        "line": 60,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_controller.py",
+    "bytes": 6558,
+    "physical_lines": 138,
+    "nonblank_noncomment_lines": 116,
+    "sha256": "89392161ba680238c8b2ed15b2d43f5a20594a2e52a62e23be06f0ea8b69e955",
+    "imports": [
+      "agent_system",
+      "json",
+      "os",
+      "pathlib",
+      "pytest",
+      "subprocess",
+      "sys",
+      "validation"
+    ],
+    "definitions": [
+      {
+        "name": "design",
+        "line": 14,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "ArtifactRunner",
+        "line": 21,
+        "kind": "ClassDef"
+      },
+      {
+        "name": "role_home",
+        "line": 73,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_minimal_workflow_accepts_artifacts_and_cleans_every_role",
+        "line": 82,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_failures_stop_without_fallback_and_cleanup",
+        "line": 97,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_optional_review_rejection_blocks_controller_acceptance",
+        "line": 106,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_cleanup_refuses_an_unowned_root",
+        "line": 116,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_snapshot_rejects_linked_artifact",
+        "line": 122,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_freeze_checks_all_three_artifact_hashes",
+        "line": 130,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "__init__",
+        "line": 22,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "run",
+        "line": 26,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "sandbox",
+        "line": 52,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_native_launcher.py",
+    "bytes": 8922,
+    "physical_lines": 188,
+    "nonblank_noncomment_lines": 152,
+    "sha256": "03c6d996ae591d3bea6151128ef502da22bd3da84e50d4033d1ba57cf49e063f",
+    "imports": [
+      "agent_system.native_codex_linux",
+      "json",
+      "os",
+      "pathlib",
+      "pytest",
+      "sys",
+      "tomllib"
+    ],
+    "definitions": [
+      {
+        "name": "runner",
+        "line": 14,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "outcome",
+        "line": 22,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "setup",
+        "line": 30,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "execute",
+        "line": 42,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "candidate",
+        "line": 47,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_success_requires_native_identity_and_artifacts",
+        "line": 51,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_native_failure_cannot_be_replaced_by_valid_candidate",
+        "line": 67,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_every_workspace_mutation_is_compared",
+        "line": 73,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_failed_preflight_does_not_execute_role",
+        "line": 85,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_target_must_be_a_bounded_subtree",
+        "line": 93,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_read_only_output_uses_same_native_route_and_rejects_mutation",
+        "line": 101,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_schema_output_must_be_a_fresh_external_controller_file",
+        "line": 121,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_profile_keeps_isolation_and_native_settings",
+        "line": 127,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_project_scope_accepts_multiple_artifacts_but_rejects_extra_file",
+        "line": 145,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_database_ipc_requires_network_namespace_and_never_enters_model_command",
+        "line": 159,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_environment_drops_inherited_chat_and_api_credentials",
+        "line": 173,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_owned_process_group_timeout",
+        "line": 185,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "process",
+        "line": 36,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "mutation",
+        "line": 74,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "process",
+        "line": 108,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "mutation",
+        "line": 146,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_roles.py",
+    "bytes": 3625,
+    "physical_lines": 62,
+    "nonblank_noncomment_lines": 54,
+    "sha256": "826f692e36190138fc51213db8c3eea5f2847e19ff7572efa2544a989f493327",
+    "imports": [
+      "agent_system",
+      "agent_system.native_codex_linux",
+      "copy",
+      "json",
+      "jsonschema",
+      "unittest",
+      "validation"
+    ],
+    "definitions": [
+      {
+        "name": "SemanticGuards",
+        "line": 12,
+        "kind": "ClassDef"
+      },
+      {
+        "name": "test_multiline_native_error_is_recoverable_without_other_fields",
+        "line": 13,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_error_diagnostics_exclude_role_prose_and_redact_secrets",
+        "line": 23,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_review_cannot_accept_with_blockers",
+        "line": 30,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_architect_cannot_change_original_acceptance_or_scope",
+        "line": 36,
+        "kind": "FunctionDef"
+      }
+    ]
+  },
+  {
+    "path": "tests/test_test_environment.py",
+    "bytes": 3040,
+    "physical_lines": 65,
+    "nonblank_noncomment_lines": 57,
+    "sha256": "df9d8da46b187a5624ae6c0863a8d885183f65e6553a6e008072af4d0e760c1f",
+    "imports": [
+      "agent_system.test_environment",
+      "json",
+      "pytest",
+      "time"
+    ],
+    "definitions": [
+      {
+        "name": "test_service_rejects_commands_and_cleans_exchange",
+        "line": 10,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_checks_are_read_only_and_record_exact_source_and_failure",
+        "line": 31,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "test_check_cannot_mutate_source",
+        "line": 53,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "Runner",
+        "line": 35,
+        "kind": "ClassDef"
+      },
+      {
+        "name": "Runner",
+        "line": 56,
+        "kind": "ClassDef"
+      },
+      {
+        "name": "sandbox",
+        "line": 36,
+        "kind": "FunctionDef"
+      },
+      {
+        "name": "sandbox",
+        "line": 57,
+        "kind": "FunctionDef"
+      }
+    ]
+  }
+]

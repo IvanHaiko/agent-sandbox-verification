@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "stdout": "b'STAGE25_OK'\n",
+  "stderr": "",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "profile": "{filesystem={\":minimal\"=\"read\",\"/home/ivan/.codex/packages/standalone/releases/0.160.1-x86_64-unknown-linux-musl\"=\"read\",\"/home/ivan/codex-role-iikczsf8/socket\"=\"read\",\":workspace_roots\"={\".\"=\"read\"},\":tmpdir\"=\"deny\",\":slash_tmp\"=\"deny\"},network={enabled=true,mode=\"limited\",domains={},dangerously_allow_all_unix_sockets=true}}",
+  "server_messages": [
+    "STAGE25_PING"
+  ]
+}

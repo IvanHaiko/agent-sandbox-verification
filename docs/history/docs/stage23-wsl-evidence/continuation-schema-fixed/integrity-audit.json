@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "trials": [
+    {
+      "trial_id": "architect-1",
+      "case_count": 23,
+      "canonical_original_contract_unchanged": true,
+      "candidate_and_frozen_hashes_verified": true,
+      "freeze_preceded_exposure": true,
+      "frozen_expectations_contract_consistent": true,
+      "readonly_architect_and_reviewer": true,
+      "cleanup_independently_verified": true
+    },
+    {
+      "trial_id": "architect-2",
+      "case_count": 22,
+      "canonical_original_contract_unchanged": true,
+      "candidate_and_frozen_hashes_verified": true,
+      "freeze_preceded_exposure": true,
+      "frozen_expectations_contract_consistent": true,
+      "readonly_architect_and_reviewer": true,
+      "cleanup_independently_verified": true
+    },
+    {
+      "trial_id": "full-1",
+      "case_count": 24,
+      "canonical_original_contract_unchanged": true,
+      "candidate_and_frozen_hashes_verified": true,
+      "freeze_preceded_exposure": true,
+      "frozen_expectations_contract_consistent": true,
+      "readonly_architect_and_reviewer": true,
+      "cleanup_independently_verified": true
+    }
+  ],
+  "distinct_successful_native_contexts": 12,
+  "distinct_from_all_prior_successes_and_failures": true,
+  "all_fifteen_new_repositories_removed": true,
+  "original_architect_schema_unchanged": true,
+  "all_38_stage23_wsl_gate_and_attempt_repositories_removed": true,
+  "total_frozen_cases": 69,
+  "executed_source_hashes": {
+    "architect": {
+      "executed-driver.py": "c5d0fca16495a17d31ec8e8a695e87879cbaf3a32905fb8871dea90ba8b4f951",
+      "workflow-driver.py": "0355ccf0af120e8ba0504ebf3bd4f68c026eba3ac25759e9c0f29de8c19665cf",
+      "native-runner.py": "476b1730cdb96184319ed13d5223fa7a462dff8189897e564e87f7327d744cad",
+      "contract-harness.py": "e3983597d31d095f0a44b83061956eb644b200fa992f43907cd5928d1282ed26"
+    },
+    "full": {
+      "executed-driver.py": "c5d0fca16495a17d31ec8e8a695e87879cbaf3a32905fb8871dea90ba8b4f951",
+      "workflow-driver.py": "0355ccf0af120e8ba0504ebf3bd4f68c026eba3ac25759e9c0f29de8c19665cf",
+      "native-runner.py": "476b1730cdb96184319ed13d5223fa7a462dff8189897e564e87f7327d744cad",
+      "contract-harness.py": "e3983597d31d095f0a44b83061956eb644b200fa992f43907cd5928d1282ed26"
+    },
+    "preserved_architect_1": {
+      "contract-harness.py": "e3983597d31d095f0a44b83061956eb644b200fa992f43907cd5928d1282ed26",
+      "executed-driver.py": "72be0b89a0bdb3403dae291ea41406b493d0bb266e72a59a9f72ed77c5371e4b",
+      "native-runner.py": "476b1730cdb96184319ed13d5223fa7a462dff8189897e564e87f7327d744cad",
+      "workflow-driver.py": "0355ccf0af120e8ba0504ebf3bd4f68c026eba3ac25759e9c0f29de8c19665cf"
+    }
+  },
+  "audit_model_requests": 0,
+  "audit_test_executions": 0,
+  "full_test_suite_run": false
+}

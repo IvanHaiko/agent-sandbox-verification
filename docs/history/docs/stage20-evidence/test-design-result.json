@@ -1,0 +1,120 @@
+{
+  "task_id": "STAGE20-SLUGIFY",
+  "contract_version": 1,
+  "cases": [
+    {
+      "id": "basic_words",
+      "intent": "Lowercase ASCII letters and replace a single space with a hyphen.",
+      "input": "Hello World",
+      "expected": "hello-world"
+    },
+    {
+      "id": "mixed_case_digits",
+      "intent": "Retain digits while lowercasing adjacent ASCII letters.",
+      "input": "API Version 2B",
+      "expected": "api-version-2b"
+    },
+    {
+      "id": "trim_and_space_run",
+      "intent": "Trim edge whitespace and collapse an internal run of spaces to one hyphen.",
+      "input": "   Hello    World   ",
+      "expected": "hello-world"
+    },
+    {
+      "id": "mixed_whitespace_run",
+      "intent": "Treat adjacent spaces, tabs, and newlines as one whitespace run.",
+      "input": "Alpha \t\n Beta",
+      "expected": "alpha-beta"
+    },
+    {
+      "id": "remaining_ascii_whitespace",
+      "intent": "Handle carriage return, form feed, and vertical tab as whitespace in one run.",
+      "input": "A\r\n\f\u000bB",
+      "expected": "a-b"
+    },
+    {
+      "id": "empty_input",
+      "intent": "Return the empty string for empty input.",
+      "input": "",
+      "expected": ""
+    },
+    {
+      "id": "whitespace_only",
+      "intent": "Return the empty string for input containing only varied ASCII whitespace.",
+      "input": " \t\r\n\f\u000b ",
+      "expected": ""
+    },
+    {
+      "id": "underscore_removed_without_separator",
+      "intent": "Remove underscores without inserting separators between surrounding text.",
+      "input": "snake_case_123",
+      "expected": "snakecase123"
+    },
+    {
+      "id": "ascii_punctuation_removed",
+      "intent": "Remove all ASCII punctuation other than hyphen without separating letters.",
+      "input": "A!\"#$%&'()*+,./:;<=>?@[\\]^_`{|}~Z",
+      "expected": "az"
+    },
+    {
+      "id": "punctuation_only",
+      "intent": "Allow removal and edge cleanup to produce an empty result.",
+      "input": "_!@#$%^&*()",
+      "expected": ""
+    },
+    {
+      "id": "punctuation_inside_words",
+      "intent": "Remove punctuation in-place while preserving whitespace-derived separation.",
+      "input": "rock'n'roll 2.0",
+      "expected": "rocknroll-20"
+    },
+    {
+      "id": "collapse_hyphen_run",
+      "intent": "Collapse a repeated internal hyphen run to one hyphen.",
+      "input": "a---b",
+      "expected": "a-b"
+    },
+    {
+      "id": "strip_edge_hyphens",
+      "intent": "Strip hyphens from both edges after normalizing case.",
+      "input": "---Hello---",
+      "expected": "hello"
+    },
+    {
+      "id": "punctuation_creates_adjacent_hyphens",
+      "intent": "Collapse hyphens that become adjacent after underscore removal.",
+      "input": "a-_-b",
+      "expected": "a-b"
+    },
+    {
+      "id": "whitespace_adjacent_to_hyphen",
+      "intent": "Collapse an explicit hyphen together with surrounding whitespace-derived hyphens.",
+      "input": "a \t- \n b",
+      "expected": "a-b"
+    },
+    {
+      "id": "combined_cleanup",
+      "intent": "Exercise trimming, mixed whitespace, punctuation removal, hyphen collapse, and lowercasing together.",
+      "input": " \t---Hello,_ \n---World!!!\r\n ",
+      "expected": "hello-world"
+    },
+    {
+      "id": "digits_and_leading_zeroes",
+      "intent": "Retain all digits, including leading zeroes, across multiple tokens.",
+      "input": "Version 2 Build 007",
+      "expected": "version-2-build-007"
+    },
+    {
+      "id": "already_normalized",
+      "intent": "Leave an already normalized slug unchanged.",
+      "input": "ready-set-123",
+      "expected": "ready-set-123"
+    }
+  ],
+  "properties": [
+    "idempotence",
+    "output_shape",
+    "input_unchanged"
+  ],
+  "rationale": "The cases cover every specified transformation and their ordering: ASCII lowercasing and digit retention, all ASCII whitespace forms and trimming, punctuation deletion without separator insertion, underscore handling, repeated and edge hyphens, empty outcomes, and adjacency created by interacting cleanup rules. Useful general checks are that applying slugify twice is stable, output is empty or consists only of lowercase ASCII letters, digits, and single non-edge hyphens, and the input value remains unchanged."
+}

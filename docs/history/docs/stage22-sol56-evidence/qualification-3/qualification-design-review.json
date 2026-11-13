@@ -1,0 +1,29 @@
+{
+  "design_sha256": "58f00e85c9133f6fe82ba9a35b35db76fe39023119f033d9a0eb97b8c21c1f21",
+  "candidate_exposed": false,
+  "oracle_used": false,
+  "valid": true,
+  "violations": [],
+  "case_ids": [
+    "empty-input",
+    "repeated-separators-and-empty-ordinary-labels",
+    "all-ordinary-whitespace-normalization",
+    "quoted-comma-and-adjacent-concatenation",
+    "outside-quote-escapes",
+    "inside-quote-escapes",
+    "quoted-boundary-whitespace",
+    "escaped-boundary-whitespace",
+    "protected-whitespace-breaks-ordinary-runs",
+    "protected-whitespace-only-labels",
+    "deduplicate-after-normalization",
+    "exact-dedup-with-protected-whitespace",
+    "empty-quotes-and-adjacency",
+    "escaped-quote-does-not-toggle",
+    "preserve-other-ascii",
+    "trailing-unpaired-backslash-whole-error",
+    "unclosed-quote-whole-error",
+    "escaped-final-quote-leaves-mode-open",
+    "escaped-terminal-backslash-is-valid"
+  ],
+  "reasoning": "Controller examined all 19 cases directly against rules 1-10. Empty input and repeated separators/ordinary-only fields emit no labels. All ordinary whitespace kinds trim/collapse to alpha beta. Pre plus quoted MI,D plus Dle concatenates to premi,ddle. Escaped commas, quotes and backslashes inside/outside quotes stay literal. Quoted leading space-tab and two trailing spaces survive while outside newline trims; escaped boundary space-tab and CR survive exactly. Quoted space-tab-space between two ordinary runs yields two spaces-tab-two spaces. Protected spaces-only and tab-only labels remain, ordinary-only labels discard. Foo Bar variants and Baz variants deduplicate after normalization. Quoted double-space and escaped-space-plus-ordinary-space forms match, ordinary double-space form differs, preserving first order. Empty quotes concatenate to ab and otherwise discard. Escaped quote does not toggle, so next comma splits x-quote and y. Punctuation/digits preserve and Z folds. Trailing unpaired backslash, unclosed quote after good label, and escaped nonclosing final quote raise whole-input ValueError; paired terminal backslash emits one literal backslash. Interaction cases are in scope and expectations contain no clear contradiction."
+}

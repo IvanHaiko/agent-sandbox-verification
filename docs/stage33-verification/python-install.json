@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/provision/bin/uv",
+    "python",
+    "install",
+    "3.10",
+    "3.12"
+  ],
+  "cwd": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Downloading cpython-3.12.15-linux-x86_64-gnu (download) (32.7MiB)\nDownloading cpython-3.10.22-linux-x86_64-gnu (download) (28.0MiB)\n Downloaded cpython-3.12.15-linux-x86_64-gnu (download)\n Downloaded cpython-3.10.22-linux-x86_64-gnu (download)\nInstalled 2 versions in 24.61s\n + cpython-3.10.22-linux-x86_64-gnu (python3.10)\n + cpython-3.12.15-linux-x86_64-gnu (python3.12)\nwarning: `/home/ivan/.local/bin` is not on your PATH. To use installed Python executables, run `export PATH=\"/home/ivan/.local/bin:$PATH\"` or `uv python update-shell`.\n",
+  "elapsed_seconds": 24.860612285000002,
+  "provisioning_only": true
+}

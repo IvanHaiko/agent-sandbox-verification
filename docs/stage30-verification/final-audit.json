@@ -1,0 +1,26 @@
+{
+  "built_wheel_sha256": "b503fa2a2ce860420bd3bc9e901b693d6cd60e04ddf0c264ced61ecc0d93df01",
+  "package_sources": [
+    "agent_system/__init__.py",
+    "agent_system/acceptance.py",
+    "agent_system/execution.py"
+  ],
+  "zip_import_passed": true,
+  "runtime_dependencies": [],
+  "scratch_removed": [
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage30-support",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage30-build",
+    "/mnt/c/Users/4ivan/codex-multi-agent/build",
+    "/mnt/c/Users/4ivan/codex-multi-agent/codex_agent_system.egg-info"
+  ],
+  "all_role_workspaces_removed": true,
+  "original_checkout_index_registry_unchanged": true,
+  "historical_evidence": {
+    "unchanged": true,
+    "files": 680
+  },
+  "report_sha256": "f1ccb88ea970e3382dedf61bd6454ddb2dce1cfcf029992d07ca35d03a91f8fc",
+  "support_tests": 12,
+  "final_verdict": "PASS",
+  "deleted_apis_unimportable": true
+}

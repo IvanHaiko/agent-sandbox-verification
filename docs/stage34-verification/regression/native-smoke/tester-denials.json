@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "{\"candidate.txt\": {\"allowed\": false, \"errno\": 2}, \"handoff.txt\": {\"allowed\": false, \"errno\": 2}}\n",
+  "stderr": "",
+  "observations": {
+    "candidate.txt": {
+      "allowed": false,
+      "errno": 2
+    },
+    "handoff.txt": {
+      "allowed": false,
+      "errno": 2
+    }
+  }
+}

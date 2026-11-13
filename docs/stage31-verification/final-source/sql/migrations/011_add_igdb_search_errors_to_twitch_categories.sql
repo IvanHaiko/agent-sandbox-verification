@@ -1,0 +1,31 @@
+-- Migration 011: track IGDB search errors separately from search attempts
+-- on twitch_categories.
+--
+-- record_igdb_search_attempt (src/main.py) only ran on the success path of
+-- run_igdb_enrich_twitch -- the except branch recorded nothing. Combined
+-- with get_unmapped_twitch_categories' ORDER BY c.last_igdb_search_at ASC
+-- NULLS FIRST, a category whose search fails reproducibly (a timeout, a
+-- name IGDB's query syntax chokes on) never gets a last_igdb_search_at and
+-- stays permanently at the head of the backlog -- burning one live IGDB
+-- request per run, forever, on a request that keeps failing. This is the
+-- same defect 009 fixed for empty-but-successful searches, showing up on
+-- the other branch.
+--
+-- igdb_search_errors is a separate counter from igdb_search_attempts on
+-- purpose. "IGDB answered and found nothing" and "we could not ask IGDB"
+-- are different facts -- the first is a real attempt against
+-- --max-attempts, the second is a connectivity or request failure that
+-- should not spend a category's budget of honest tries. A search error
+-- still advances last_igdb_search_at, so the existing retry_after_days
+-- cooldown in get_unmapped_twitch_categories applies to it and the backlog
+-- head clears -- but igdb_search_attempts, and therefore --max-attempts,
+-- is untouched. A category that fails every time keeps returning once
+-- every retry_after_days, forever -- accepted behaviour, not a defect: the
+-- same budget a real "not found" answer gets, applied to a question we
+-- could not even deliver.
+--
+-- mapping_status is not touched by an error, same as 009's reasoning for a
+-- successful-but-empty search.
+
+ALTER TABLE twitch_categories
+ADD COLUMN IF NOT EXISTS igdb_search_errors INTEGER NOT NULL DEFAULT 0;

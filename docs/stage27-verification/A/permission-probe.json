@@ -1,0 +1,28 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"/home/ivan/codex-role-wf80jzr4/implementer/src/migrations.py\": {\"readable\": true}, \"/home/ivan/codex-role-wf80jzr4/tester/tests/test_independent.py\": {\"readable\": true}, \"/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/test_external_acceptance.py\": {\"readable\": false, \"errno\": 2}, \"/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/B/candidate/src/migrations.py\": {\"readable\": false, \"errno\": 2}, \"/mnt/c/Users/4ivan/steam-etl/src/migrations.py\": {\"readable\": false, \"errno\": 2}}\n",
+  "stderr": "",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "purpose": "Same recorded parent native filesystem profile; retrospective read probe, not a subagent trace or reviewer write probe",
+  "paths": {
+    "/home/ivan/codex-role-wf80jzr4/implementer/src/migrations.py": {
+      "readable": true
+    },
+    "/home/ivan/codex-role-wf80jzr4/tester/tests/test_independent.py": {
+      "readable": true
+    },
+    "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/test_external_acceptance.py": {
+      "readable": false,
+      "errno": 2
+    },
+    "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/B/candidate/src/migrations.py": {
+      "readable": false,
+      "errno": 2
+    },
+    "/mnt/c/Users/4ivan/steam-etl/src/migrations.py": {
+      "readable": false,
+      "errno": 2
+    }
+  }
+}

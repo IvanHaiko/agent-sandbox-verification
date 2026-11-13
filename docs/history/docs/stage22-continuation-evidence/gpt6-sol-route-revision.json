@@ -1,0 +1,18 @@
+{
+  "requested_model": "gpt-6-sol",
+  "requested_model_available": false,
+  "catalog_sha256": "664670a82de5a2fcdb00d9e403eb6f46c9bc6466bb40e626c0288dd852eba4dd",
+  "catalog_success": true,
+  "available_known_routes": [
+    "gpt-6-astra",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-5.6-luna"
+  ],
+  "inference_requests": 0,
+  "astra_calls": 0,
+  "qualification_attempts": 0,
+  "workflow_trials": 0,
+  "role_runtime_created": false,
+  "verdict": "STOP_REQUESTED_MODEL_UNAVAILABLE"
+}

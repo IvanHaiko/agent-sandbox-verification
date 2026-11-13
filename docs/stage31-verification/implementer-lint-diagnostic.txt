@@ -1,0 +1,37 @@
+Native Implementer diagnostic retrieved from its observed tool output; no rerun.
+Command (initial and final):
+ruff check --no-cache src/migrations.py tests/test_migrations.py tests/test_migrations_db.py
+
+Initial:
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests\test_migrations_db.py:3:1
+  |
+1 |   """Migration SQL and transaction regressions against real PostgreSQL."""
+2 |
+3 | / from uuid import uuid4
+4 | |
+5 | | import psycopg
+6 | | from psycopg import sql
+7 | | import pytest
+8 | |
+9 | | from src.migrations import run_migrations
+  | |_________________________________________^
+help: Organize imports
+  |
+5 | import psycopg
+6 + import pytest
+7 | from psycopg import sql
+  - import pytest
+8 |
+  |
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.
+
+Repair: one local pre-handoff edit moved import pytest above from psycopg import sql.
+
+Final:
+All checks passed!
+
+git diff --check: no output.
+No behavioral test failure observed; no integration repair used.

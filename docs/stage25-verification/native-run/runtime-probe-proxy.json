@@ -1,0 +1,7 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Error: network proxy constraints are invalid: invalid value for network.denied_domains: * (allowed exact hosts or scoped wildcards like *.example.com or **.example.com)\n",
+  "timed_out": false,
+  "owned_process_group_ended": true
+}

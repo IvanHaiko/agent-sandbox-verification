@@ -1,0 +1,24 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "All checks passed!\n",
+  "stderr": "",
+  "argv": [
+    "/usr/bin/env",
+    "-i",
+    "PATH=/usr/bin:/bin",
+    "HOME=/nonexistent",
+    "TMPDIR=/home/ivan/codex-stage33-gmgvcrc4/project-3.10/.scratch",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/venv-3.10/bin/ruff",
+    "check",
+    "--no-cache",
+    "."
+  ],
+  "cwd": "/home/ivan/codex-stage33-gmgvcrc4/project-3.10",
+  "interpreter": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/venv-3.10/bin/python",
+  "network_disabled": true,
+  "source_and_fixtures_read_only": true
+}

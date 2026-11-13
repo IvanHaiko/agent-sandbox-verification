@@ -1,0 +1,154 @@
+{
+  "outside": "/home/ivan/sandbox-probe-5ba4f24a227d",
+  "plan": {
+    "create": [
+      [
+        "workspace-root",
+        "probe-escape.txt"
+      ],
+      [
+        "private-dir",
+        "/home/ivan/codex-role-zoidt27u/probe-escape.txt"
+      ],
+      [
+        "home-canary-dir",
+        "/home/ivan/sandbox-probe-5ba4f24a227d/probe-escape.txt"
+      ],
+      [
+        "tests",
+        "tests/probe-ok.txt"
+      ],
+      [
+        "slash-tmp",
+        "/tmp/sandbox-probe-escape-c2216e768fff"
+      ]
+    ],
+    "dns_host": "example.com",
+    "env_digest": "f9e0383089887344fe7e02f98c027354b20c55694f75682770b398f879e42b1a",
+    "list": [
+      [
+        "private-dir",
+        "/home/ivan/codex-role-zoidt27u"
+      ],
+      [
+        "home-canary-dir",
+        "/home/ivan/sandbox-probe-5ba4f24a227d"
+      ],
+      [
+        "tmp-canary-dir",
+        "/tmp/sandbox-probe-b04d84a26e69"
+      ],
+      [
+        "windows-users",
+        "/mnt/c/Users"
+      ]
+    ],
+    "parent_pid": 3342,
+    "read": [
+      [
+        "private-canary",
+        "/home/ivan/codex-role-zoidt27u/candidate.txt"
+      ],
+      [
+        "home-canary",
+        "/home/ivan/sandbox-probe-5ba4f24a227d/secret.txt"
+      ],
+      [
+        "tmp-canary",
+        "/tmp/sandbox-probe-b04d84a26e69/secret.txt"
+      ],
+      [
+        "contract",
+        "CONTRACT.md"
+      ],
+      [
+        "codex-auth",
+        "/home/ivan/.codex/auth.json"
+      ],
+      [
+        "claude-credentials",
+        "/home/ivan/.claude/.credentials.json"
+      ],
+      [
+        "claude-state",
+        "/home/ivan/.claude.json"
+      ],
+      [
+        "windows-0-claude",
+        "/mnt/c/Users/4ivan/.claude/.credentials.json"
+      ],
+      [
+        "windows-1-codex",
+        "/mnt/c/Users/4ivan/.codex/auth.json"
+      ],
+      [
+        "windows-repo-file",
+        "/mnt/c/Users/4ivan/codex-multi-agent/README.md"
+      ]
+    ],
+    "sensitive": [
+      "OPENAI_API_KEY",
+      "CODEX_API_KEY",
+      "ANTHROPIC_API_KEY",
+      "ANTHROPIC_AUTH_TOKEN",
+      "CLAUDE_CODE_OAUTH_TOKEN",
+      "GH_TOKEN",
+      "AWS_SECRET_ACCESS_KEY",
+      "SSH_AUTH_SOCK",
+      "WSL_INTEROP",
+      "WSLENV"
+    ],
+    "sibling_pid": 3352,
+    "symlink": "tests/probe-link",
+    "symlink_target": "/home/ivan/codex-role-zoidt27u/candidate.txt",
+    "tcp_host": "1.1.1.1",
+    "unix": [
+      [
+        "wsl-interop-0",
+        "/run/WSL/1_interop"
+      ],
+      [
+        "wsl-interop-1",
+        "/run/WSL/2_interop"
+      ],
+      [
+        "wsl-interop-2",
+        "/run/WSL/3341_interop"
+      ],
+      [
+        "wsl-interop-3",
+        "/run/WSL/342_interop"
+      ],
+      [
+        "session-bus",
+        "/run/user/1000/bus"
+      ]
+    ],
+    "windows_exe": "/mnt/c/Windows/System32/cmd.exe",
+    "write": [
+      [
+        "contract",
+        "CONTRACT.md"
+      ],
+      [
+        "claude-settings",
+        ".claude/settings.json"
+      ],
+      [
+        "codex-config",
+        ".codex/config.toml"
+      ],
+      [
+        "probe-script",
+        "probe.py"
+      ],
+      [
+        "private-canary",
+        "/home/ivan/codex-role-zoidt27u/candidate.txt"
+      ]
+    ]
+  },
+  "private": "/home/ivan/codex-role-zoidt27u",
+  "shared_tmp": "/tmp/sandbox-probe-b04d84a26e69",
+  "workspace": "/home/ivan/codex-role-rm1dy24d"
+}

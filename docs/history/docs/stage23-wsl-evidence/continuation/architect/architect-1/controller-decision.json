@@ -1,0 +1,8 @@
+{
+  "accepted": false,
+  "source": "Controller observed native exit and missing required Architect artifact",
+  "failure_category": "unknown_native_runtime_failure",
+  "cleanup_passed": true,
+  "later_roles_started": false,
+  "retry_started": false
+}

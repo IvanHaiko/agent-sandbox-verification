@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="11" skipped="0" tests="15" time="0.551" timestamp="2026-10-10T12:25:01.298005+02:00" hostname="Ivan"><testcase classname="" name="test_absent_off_date_is_rejected_without_creating_anything[2026-08-28]" time="0.020"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_absent_off_date_is_reject0')
+day = '2026-08-28'
+
+    @pytest.mark.parametrize("day", ["2026-08-28", "2026-08-30", "2025-12-31", "2027-01-01"])
+    def test_absent_off_date_is_rejected_without_creating_anything(tmp_path, day):
+&gt;       reject_unchanged(tmp_path, day, utc(DAY))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_absent_off_date_is_reject0')
+day = '2026-08-28', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382c87a00&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_absent_off_date_is_rejected_without_creating_anything[2026-08-30]" time="0.017"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_absent_off_date_is_reject1')
+day = '2026-08-30'
+
+    @pytest.mark.parametrize("day", ["2026-08-28", "2026-08-30", "2025-12-31", "2027-01-01"])
+    def test_absent_off_date_is_rejected_without_creating_anything(tmp_path, day):
+&gt;       reject_unchanged(tmp_path, day, utc(DAY))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_absent_off_date_is_reject1')
+day = '2026-08-30', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382effb60&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_absent_off_date_is_rejected_without_creating_anything[2025-12-31]" time="0.015"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_absent_off_date_is_reject2')
+day = '2025-12-31'
+
+    @pytest.mark.parametrize("day", ["2026-08-28", "2026-08-30", "2025-12-31", "2027-01-01"])
+    def test_absent_off_date_is_rejected_without_creating_anything(tmp_path, day):
+&gt;       reject_unchanged(tmp_path, day, utc(DAY))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_absent_off_date_is_reject2')
+day = '2025-12-31', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382effc10&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_absent_off_date_is_rejected_without_creating_anything[2027-01-01]" time="0.014"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_absent_off_date_is_reject3')
+day = '2027-01-01'
+
+    @pytest.mark.parametrize("day", ["2026-08-28", "2026-08-30", "2025-12-31", "2027-01-01"])
+    def test_absent_off_date_is_rejected_without_creating_anything(tmp_path, day):
+&gt;       reject_unchanged(tmp_path, day, utc(DAY))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_absent_off_date_is_reject3')
+day = '2027-01-01', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382eff530&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_pending_off_date_is_rejected_without_rewriting[2026-08-28]" time="0.016"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_pending_off_date_is_rejec0')
+today = '2026-08-28'
+
+    @pytest.mark.parametrize("today", ["2026-08-28", "2026-08-30"])
+    def test_pending_off_date_is_rejected_without_rewriting(tmp_path, today):
+        save(manifest_path(tmp_path, DAY), empty(DAY))
+&gt;       reject_unchanged(tmp_path, DAY, utc(today))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_pending_off_date_is_rejec0')
+day = '2026-08-29', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382eff690&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_pending_off_date_is_rejected_without_rewriting[2026-08-30]" time="0.016"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_pending_off_date_is_rejec1')
+today = '2026-08-30'
+
+    @pytest.mark.parametrize("today", ["2026-08-28", "2026-08-30"])
+    def test_pending_off_date_is_rejected_without_rewriting(tmp_path, today):
+        save(manifest_path(tmp_path, DAY), empty(DAY))
+&gt;       reject_unchanged(tmp_path, DAY, utc(today))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_pending_off_date_is_rejec1')
+day = '2026-08-29', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382eff480&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_partial_off_date_is_rejected_with_raw_and_history_intact[2026-08-28-https://openrouter.ai/api/v1/models]" time="0.017"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_partial_off_date_is_rejec0')
+clock = &lt;function clock.&lt;locals&gt;.now at 0x733382efeb90&gt;
+failed_url = 'https://openrouter.ai/api/v1/models', today = '2026-08-28'
+
+    @pytest.mark.parametrize("failed_url", [MODELS_URL, RANKINGS_URL])
+    @pytest.mark.parametrize("today", ["2026-08-28", "2026-08-30"])
+    def test_partial_off_date_is_rejected_with_raw_and_history_intact(tmp_path, clock, failed_url, today):
+        http = FakeHttp()
+        http.fail_urls = {failed_url: 503}
+        collect(tmp_path, snapshot_date=DAY, http=http, now=clock)
+        assert http.call_count &gt; 0
+&gt;       reject_unchanged(tmp_path, DAY, utc(today))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_partial_off_date_is_rejec0')
+day = '2026-08-29', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382efeda0&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_partial_off_date_is_rejected_with_raw_and_history_intact[2026-08-28-https://openrouter.ai/rankings]" time="0.017"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_partial_off_date_is_rejec1')
+clock = &lt;function clock.&lt;locals&gt;.now at 0x733382eff1c0&gt;
+failed_url = 'https://openrouter.ai/rankings', today = '2026-08-28'
+
+    @pytest.mark.parametrize("failed_url", [MODELS_URL, RANKINGS_URL])
+    @pytest.mark.parametrize("today", ["2026-08-28", "2026-08-30"])
+    def test_partial_off_date_is_rejected_with_raw_and_history_intact(tmp_path, clock, failed_url, today):
+        http = FakeHttp()
+        http.fail_urls = {failed_url: 503}
+        collect(tmp_path, snapshot_date=DAY, http=http, now=clock)
+        assert http.call_count &gt; 0
+&gt;       reject_unchanged(tmp_path, DAY, utc(today))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_partial_off_date_is_rejec1')
+day = '2026-08-29', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382eff270&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_partial_off_date_is_rejected_with_raw_and_history_intact[2026-08-30-https://openrouter.ai/api/v1/models]" time="0.022"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_partial_off_date_is_rejec2')
+clock = &lt;function clock.&lt;locals&gt;.now at 0x733382efe820&gt;
+failed_url = 'https://openrouter.ai/api/v1/models', today = '2026-08-30'
+
+    @pytest.mark.parametrize("failed_url", [MODELS_URL, RANKINGS_URL])
+    @pytest.mark.parametrize("today", ["2026-08-28", "2026-08-30"])
+    def test_partial_off_date_is_rejected_with_raw_and_history_intact(tmp_path, clock, failed_url, today):
+        http = FakeHttp()
+        http.fail_urls = {failed_url: 503}
+        collect(tmp_path, snapshot_date=DAY, http=http, now=clock)
+        assert http.call_count &gt; 0
+&gt;       reject_unchanged(tmp_path, DAY, utc(today))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_partial_off_date_is_rejec2')
+day = '2026-08-29', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382eff740&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_partial_off_date_is_rejected_with_raw_and_history_intact[2026-08-30-https://openrouter.ai/rankings]" time="0.018"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_partial_off_date_is_rejec3')
+clock = &lt;function clock.&lt;locals&gt;.now at 0x733382efe610&gt;
+failed_url = 'https://openrouter.ai/rankings', today = '2026-08-30'
+
+    @pytest.mark.parametrize("failed_url", [MODELS_URL, RANKINGS_URL])
+    @pytest.mark.parametrize("today", ["2026-08-28", "2026-08-30"])
+    def test_partial_off_date_is_rejected_with_raw_and_history_intact(tmp_path, clock, failed_url, today):
+        http = FakeHttp()
+        http.fail_urls = {failed_url: 503}
+        collect(tmp_path, snapshot_date=DAY, http=http, now=clock)
+        assert http.call_count &gt; 0
+&gt;       reject_unchanged(tmp_path, DAY, utc(today))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_partial_off_date_is_rejec3')
+day = '2026-08-29', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382efefb0&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_legacy_absent_leg_keeps_historical_admission_semantics[False]" time="0.018"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">tmp_path = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_legacy_absent_leg_keeps_h0')
+clock = &lt;function clock.&lt;locals&gt;.now at 0x733382f24a90&gt;, complete = False
+
+    @pytest.mark.parametrize("complete", [False, True])
+    def test_legacy_absent_leg_keeps_historical_admission_semantics(tmp_path, clock, complete):
+        path = manifest_path(tmp_path, DAY)
+        if complete:
+            collect(tmp_path, snapshot_date=DAY, http=FakeHttp(), now=clock)
+        else:
+            save(path, empty(DAY))
+        original = json.loads(path.read_text())
+        # Exercise each public leg, including whichever legs were added most recently.
+        for leg in LEGS:
+            legacy = omit_leg(original, leg)
+            assert legacy != original, "Fixture must actually omit a leg"
+            save(path, legacy)
+            if complete:
+                before = tree(tmp_path)
+                http = FakeHttp()
+                expected = load_or_empty(path, DAY)
+                result = collect(tmp_path, snapshot_date=DAY, http=http, now=utc("2026-08-30"))
+                assert result == expected
+                assert http.call_count == 0
+                assert not http.calls
+                assert tree(tmp_path) == before
+            else:
+&gt;               reject_unchanged(tmp_path, DAY, utc("2026-08-30"))
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/ivan/codex-role-vkfd93to/.scratch/draft-v3/test_legacy_absent_leg_keeps_h0')
+day = '2026-08-29', now = &lt;function utc.&lt;locals&gt;.&lt;lambda&gt; at 0x733382f24ca0&gt;
+
+    def reject_unchanged(root, day, now):
+        before = tree(root)
+        http = FakeHttp()
+&gt;       with pytest.raises(ValueError) as error:
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/tester-draft-v3/tests/test_date_admission.py:32: Failed</failure></testcase><testcase classname="" name="test_legacy_absent_leg_keeps_historical_admission_semantics[True]" time="0.033" /><testcase classname="" name="test_complete_historical_and_future_partitions_remain_exact_noops" time="0.016" /><testcase classname="" name="test_same_day_retry_preserves_successful_hf_observations" time="0.035" /><testcase classname="" name="test_default_partition_uses_utc_today" time="0.016" /></testsuite></testsuites>

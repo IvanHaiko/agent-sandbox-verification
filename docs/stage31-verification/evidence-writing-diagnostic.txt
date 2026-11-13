@@ -1,0 +1,9 @@
+Observed functions.exec diagnostic while preparing report/diagnostic files:
+Script failed
+Script error:
+SyntaxError: Invalid left-hand side expression in postfix operation
+
+Cause: literal Markdown backticks inside a JavaScript template string.
+The call failed at parsing, so no nested command or patch executed. The parent
+used separate correctly quoted file-writing calls. No engineering change,
+acceptance change, project test rerun, or agent repair resulted.

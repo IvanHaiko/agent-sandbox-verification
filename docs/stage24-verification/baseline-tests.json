@@ -1,0 +1,17 @@
+{
+  "phase": "before cleanup",
+  "windows": {
+    "command": "python -m pytest -q validation/test_stage23_wsl_workflow.py validation/test_stage23_continuation.py --basetemp=.test-tmp/stage24-before",
+    "passed": 9,
+    "failed": 0
+  },
+  "wsl": {
+    "commands": [
+      "python3 -m unittest discover -s validation -p test_stage23*wsl_workflow.py -v",
+      "python3 -m unittest discover -s validation -p test_stage23_continuation.py -v"
+    ],
+    "passed": 9,
+    "failed": 0
+  },
+  "live_baseline": "before/native-baseline/assessment.json"
+}

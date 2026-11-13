@@ -1,0 +1,32 @@
+{
+  "verdict": "STAGE24_PASS_ARCHITECTURE_CLEANUP",
+  "before": {
+    "production": {
+      "files": 48,
+      "lines": 8159
+    },
+    "validation_scripts": {
+      "files": 93,
+      "lines": 15523
+    },
+    "test_files": 70,
+    "historical_source_bytes": 48655877,
+    "inventory_files": 2359
+  },
+  "after": {
+    "production_files": 5,
+    "production_lines": 638,
+    "validation_scripts": 3,
+    "test_files": 4
+  },
+  "focused_wsl_passed": 37,
+  "focused_windows_passed": 29,
+  "focused_windows_skipped": 8,
+  "post_cleanup_live_workflows_passed": 2,
+  "post_cleanup_frozen_cases_passed": 48,
+  "historical_archive_entries": 2359,
+  "expanded_historical_files": 641,
+  "removed_production_python_paths": 44,
+  "integrity_gate": "passed",
+  "automatic_legacy_fallback": false
+}

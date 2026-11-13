@@ -1,0 +1,14 @@
+{
+  "time": 1791531723.1491835,
+  "candidate_visible": false,
+  "files": {
+    "test-design.json": {
+      "sha256": "580c08a4a5ff1469925be20e1147e4181d9289444ad4edd634686e1d8db06f1d",
+      "bytes": 4709
+    },
+    "test_independent.py": {
+      "sha256": "dea7b8aea2a3e04e211b30a9a556cf23b2bf4a1e9d6040f484e862d743055ee8",
+      "bytes": 11180
+    }
+  }
+}

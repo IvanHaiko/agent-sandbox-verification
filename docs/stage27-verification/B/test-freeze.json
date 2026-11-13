@@ -1,0 +1,17 @@
+{
+  "design_sha256": "68cd6ed1fb4cfbeb43d307ba5ed520105b9051053906bf837b6021ef9138ef4f",
+  "harness_sha256": "ee3a22dd43b776d3a6e3633a3cb6210c311d8f66ef4a009a16d98812a62357c2",
+  "task_sha256": "d7b93e43885b156f14d83bcfea93867a67fbdf02fd47386e321019cd04fdfb51",
+  "frozen_at": 1791532789.3175426,
+  "sequence": 1,
+  "candidate_visible_during_design": false,
+  "tester_execution_ended": true,
+  "tester_sessions": 1,
+  "test_context_keys": [
+    "task",
+    "public_interface",
+    "acceptance_criteria",
+    "constraints",
+    "schema"
+  ]
+}

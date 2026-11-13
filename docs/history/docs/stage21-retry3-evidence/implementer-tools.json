@@ -1,0 +1,28 @@
+[
+  {
+    "action": [
+      "inspect",
+      "src/normalize_labels.py"
+    ],
+    "read_only": true,
+    "changed_paths": [],
+    "self_check_cases": null,
+    "returncode": 0,
+    "stdout": "def normalize_labels(value: str) -> list[str]:\n    raise NotImplementedError\n\n",
+    "stderr": ""
+  },
+  {
+    "action": [
+      "write",
+      "src/normalize_labels.py"
+    ],
+    "read_only": false,
+    "changed_paths": [
+      "src/normalize_labels.py"
+    ],
+    "self_check_cases": null,
+    "returncode": 0,
+    "stdout": "written: src/normalize_labels.py\n",
+    "stderr": ""
+  }
+]

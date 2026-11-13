@@ -1,0 +1,14 @@
+{
+  "command": "python3 -B -m unittest discover -s validation -p test_stage23_wsl_workflow.py -v",
+  "environment": "Ubuntu WSL2",
+  "passed": 5,
+  "failed": 0,
+  "checks": [
+    "ASCII domain and unique test IDs",
+    "duplicate JSON keys rejected",
+    "frozen design tampering rejected",
+    "incorrect candidate rejected by frozen harness",
+    "ValueError expectation rejects a different exception type"
+  ],
+  "live_model_trials": false
+}

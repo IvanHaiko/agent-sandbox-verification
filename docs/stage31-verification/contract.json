@@ -1,0 +1,25 @@
+{
+  "task": "Execute complete migration SQL files without splitting semicolons",
+  "profile": "Medium",
+  "candidate": "C:/Users/4ivan/codex-multi-agent/.agent_worktrees/stage31-steam",
+  "allowed": [
+    "src/migrations.py",
+    "tests/test_migrations.py",
+    "tests/test_migrations_db.py"
+  ],
+  "required": [
+    "src/migrations.py",
+    "tests/test_migrations.py",
+    "tests/test_migrations_db.py"
+  ],
+  "acceptance": [
+    "Semicolons inside SQL literals, comments, and dollar-quoted procedural blocks execute correctly in PostgreSQL.",
+    "Existing filename ordering, recorded-file skipping and per-file commits remain compatible.",
+    "A failed file commits neither its DDL/DML nor its schema_migrations entry; earlier successful files remain committed.",
+    "A corrected failed file can be retried and a successful replay makes no duplicate changes.",
+    "Existing complete project pytest suite runs with REQUIRE_DB_TESTS=1 against a disposable PostgreSQL server; Ruff src/tests passes.",
+    "Complete final source scope matches the exact allowed list; original source/index/worktree metadata stays unchanged."
+  ],
+  "repair_budget": 1,
+  "isolation": "Native desktop agents share filesystem access; role separation is independent review, not enforced isolation."
+}

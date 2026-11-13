@@ -1,0 +1,14 @@
+{
+  "owned_repository": "/mnt/c/Users/4ivan/codex-multi-agent/.agent_worktrees/stage32-ai-model-lifecycle",
+  "branch": "stage32/historical-collection-date",
+  "baseline_commit": "7079fcfce5f2d14318f807104199db4d93b0a5f4",
+  "engineering_commit": "c2358aaaf2c53bd2326562047f89ab2f6c1c4892",
+  "patch_sha256": "7265dfcf19c63478bf9c647c85f77a6120d6a0ace590551443d9100f7f0e45a8",
+  "bundle_sha256": "9a2675d4cb1a2ab1ef7cb2fc47fe487fc8d7afe4128abe0146495f36f250a740",
+  "bundle_verified": true,
+  "git_source_bytes_match_tested_candidate": true,
+  "clean": true,
+  "no_push_or_merge": true,
+  "high_risk_verdict": "PARTIAL",
+  "original_index_preservation_blocker": true
+}

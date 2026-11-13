@@ -1,0 +1,40 @@
+{
+  "verdict": "STAGE22_CONTINUATION_STOP_MODEL_UNAVAILABLE",
+  "requested_model": "gpt-6.1-sol",
+  "requested_model_available": false,
+  "catalog_success": true,
+  "catalog_requests": 1,
+  "catalog_sha256": "246505743a4cf460843d755e0337736f86c905b48a49992b2e7966998cc7c233",
+  "available_known_routes": [
+    "gpt-6-astra",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-5.6-luna"
+  ],
+  "qualification_attempts": [],
+  "consecutive_valid_designs": 0,
+  "qualification_status": "not_run_model_unavailable",
+  "workflow_trials": [],
+  "trustworthy_workflows_completed": 0,
+  "inference_usage": {
+    "gpt-6.1-sol": 0,
+    "gpt-5.6-luna": 0,
+    "gpt-5.6-terra": 0,
+    "other_sol": 0,
+    "astra": 0
+  },
+  "candidate_exposures": 0,
+  "reviewer_runs": 0,
+  "architect_runs": 0,
+  "data_auditor_runs": 0,
+  "role_runtime_created": false,
+  "production_source_unchanged": true,
+  "prerequisite_oauth_refresh": {
+    "refresh_attempts": 1,
+    "responses_posts": 0,
+    "success": true,
+    "raw_credentials_exported": false,
+    "same_client_and_account": true,
+    "credentials_changed": true
+  }
+}

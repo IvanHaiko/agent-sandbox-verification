@@ -1,0 +1,6 @@
+{
+  "python": "Python 3.14.4",
+  "codex": "codex-cli 0.160.1",
+  "postgres": "postgres (PostgreSQL) 18.6 (Ubuntu 18.6-0ubuntu0.26.04.1)",
+  "baseline_archive_sha256": "86ff611480b856f02e32240a74ac4e9190679160416ffd669919a72f34ab2f84"
+}

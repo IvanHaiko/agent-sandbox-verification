@@ -1,0 +1,18 @@
+{
+  "exit_code": 1,
+  "stdout": "......................................................................F. [ 96%]\n...                                                                      [100%]\n=================================== FAILURES ===================================\n_____________ test_mapping_precedence_raw_json_enums_and_utc_date ______________\n\ndb = <psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage28_B_independent_review_repair0) at 0x77c24a5f6f30>\ntmp_path = PosixPath('/home/ivan/codex-role-zcnauler/scratch/tmp/test_mapping_precedence_raw_js0')\n\n    def test_mapping_precedence_raw_json_enums_and_utc_date(db, tmp_path):\n        game = _game()\n        game.update({\"game_type\": 0, \"status\": 0, \"first_release_date\": 86399,\n                     \"summary\": \"  Verbatim summary  \", \"unknown\": {\"preserve\": [1, None]},\n                     \"websites\": [{\"category\": 13, \"url\": \"https://store.steampowered.com/app/504/Web/\"}]})\n        untouched = copy.deepcopy(game)\n        payload = {\"data\": [game], \"irrelevant\": 99}\n        transformed = transform_igdb_search_results(payload)\n        assert game == untouched\n        assert transformed == transform_igdb_search_results({\"data\": [copy.deepcopy(game)]})\n        assert loader.load_igdb_file(str(_file(tmp_path, payload))) == 1\n        row = _one(db, \"SELECT name, summary, raw_json, first_release_date, game_type, game_type_label, status, status_label FROM igdb_games WHERE igdb_game_id=101\")\n        assert row[:5] == (game[\"name\"], game[\"summary\"], game, date(1970, 1, 1), 0)\n        assert isinstance(row[5], str) and row[5].strip()\n        assert row[6] == 0\n        assert isinstance(row[7], str) and row[7].strip()\n>       assert _one(db, \"SELECT store_game_id, store_url FROM igdb_game_store_links WHERE store='steam'\") == (\"504\", game[\"websites\"][0][\"url\"])\nE       AssertionError: assert ('502', 'http...502/Example/') == ('504', 'http...app/504/Web/')\nE         \nE         At index 0 diff: '502' != '504'\nE         Use -v to get more diff\n\ntests/test_stage28_evaluation.py:279: AssertionError\n----------------------------- Captured stdout call -----------------------------\nLoaded IGDB data: 1 games, 2 store links, 1 Twitch categories\n=========================== short test summary info ============================\nFAILED tests/test_stage28_evaluation.py::test_mapping_precedence_raw_json_enums_and_utc_date\n1 failed, 74 passed in 3.71s\n",
+  "stderr": "",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "tests": 75,
+  "passed": 74,
+  "failed": 1,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 7.857740163803101,
+  "source_hashes": {
+    "src/load.py": "959d92aef5a169da94a32151aef5cc8ffad2dac898e2286aba3cf76eac9a562d",
+    "src/transform.py": "94abe6532bd635bbe5ad30459909531d59efe89979ac92fbe89b4676d01ec0dc",
+    "tests/test_igdb_reliability.py": "9dfb129c49f9950ef1a5c9ef997aa0455cda9edb8dc534bea6f14770fced9d68"
+  }
+}

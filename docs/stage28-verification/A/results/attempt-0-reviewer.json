@@ -1,0 +1,41 @@
+{
+  "recommendation": "request-fix",
+  "blockers": [
+    "Criterion 6: identical-file replay advances twitch_categories.updated_at when distinct games in the same valid batch share a Twitch UID. Resolve the file's final mapping before persistence while preserving existing last-write precedence."
+  ],
+  "findings": [
+    {
+      "id": "shared-twitch-category-replay",
+      "criterion": 6,
+      "severity": "blocking",
+      "description": "A valid batch containing games 1 and 2 with the same Twitch UID ends with the category mapped to game 2. Replaying that identical file first remaps the category to game 1, then back to game 2. Both updates pass the value comparison and assign CURRENT_TIMESTAMP, violating timestamp preservation despite unchanged final mapping and stable row counts.",
+      "evidence": "candidate/src/load.py:884-894 persists categories separately for every game; lines 509-535 update changed mappings and their timestamps. A read-only execution of the relevant candidate transformation functions accepted distinct games sharing UID 'shared' and produced category writes [('shared', 1), ('shared', 2)]. Neither supplied replay test covers this collision. The SQL consequence is established by inspection; no new PostgreSQL execution was performed.",
+      "already_established_by_acceptance": false
+    },
+    {
+      "id": "independent-precedence-assumption",
+      "criterion": 7,
+      "severity": "info",
+      "description": "The independent precedence failure is a harness expectation defect, not a candidate regression. Website precedence applies to matching (store, store_game_id) keys; different Steam identifiers remain separate links.",
+      "evidence": "acceptance.json reports failure because both Steam IDs 222 and 333 were persisted. original/src/transform.py and candidate/src/transform.py both key links by (store, str(store_game_id)) and process websites after external_games. The candidate preserves committed semantics.",
+      "already_established_by_acceptance": true
+    },
+    {
+      "id": "independent-dispatch-signature-assumption",
+      "criterion": 7,
+      "severity": "info",
+      "description": "The independent dispatch failure calls an unsupported one-argument API. It supplies no runtime evidence about the preserved supported dispatch path.",
+      "evidence": "test_independent.py:255 calls load.load_data(path). Both original and candidate require load_data(source, file_path, snapshot_date=None), with source == 'igdb' dispatching to load_igdb_file. The signature and dispatch body are unchanged.",
+      "already_established_by_acceptance": true
+    },
+    {
+      "id": "write-permission-probe",
+      "criterion": 10,
+      "severity": "info",
+      "description": "Filesystem write denial is not enforced for the probed candidate source. This is an environment observation, not a candidate implementation defect.",
+      "evidence": "os.open('review/candidate/src/transform.py', os.O_WRONLY) succeeded and the descriptor was closed. No bytes were written, no truncation flags were used, and no input was modified.",
+      "already_established_by_acceptance": false
+    }
+  ],
+  "rationale": "Validation, empty-batch handling, NULL-safe individual upserts, transaction ownership, signatures and change scope otherwise satisfy the inspected requirements. Supplied results report 67 independent passes, including atomic rollback and ordinary replay; development results report passing unit, integration and lint checks. The two independent failures reflect incorrect baseline assumptions. However, shared Twitch identifiers within one valid file expose a concrete timestamp-preservation defect requiring a fix. The absence of a collision test is an evidence gap distinct from that source-established defect."
+}

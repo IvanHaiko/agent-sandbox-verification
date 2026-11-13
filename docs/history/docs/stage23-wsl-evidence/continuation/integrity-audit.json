@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "trials": [
+    {
+      "trial_id": "reviewer-1",
+      "case_count": 24,
+      "archive_hashes_verified": true,
+      "freeze_preceded_exposure": true,
+      "readonly_review_verified": true,
+      "controller_decision_verified": true,
+      "cleanup_independently_verified": true
+    },
+    {
+      "trial_id": "reviewer-2",
+      "case_count": 22,
+      "archive_hashes_verified": true,
+      "freeze_preceded_exposure": true,
+      "readonly_review_verified": true,
+      "controller_decision_verified": true,
+      "cleanup_independently_verified": true
+    }
+  ],
+  "successful_native_role_contexts": 6,
+  "failed_architect_launch_contexts": 1,
+  "distinct_from_all_prior_sessions": true,
+  "total_frozen_cases": 46,
+  "all_nine_current_continuation_repositories_removed": true,
+  "executed_source_hashes": {
+    "reviewer": {
+      "executed-driver.py": "d17bc7ffea718b4d1d6a89459a160326e911062cc6cade778b049bc78739493c",
+      "workflow-driver.py": "0355ccf0af120e8ba0504ebf3bd4f68c026eba3ac25759e9c0f29de8c19665cf",
+      "native-runner.py": "726475c603b431ab92b3b5d7961066b0a7dee9cc8368f04ef39efaf7eeb530e4",
+      "contract-harness.py": "e3983597d31d095f0a44b83061956eb644b200fa992f43907cd5928d1282ed26"
+    },
+    "architect": {
+      "executed-driver.py": "d17bc7ffea718b4d1d6a89459a160326e911062cc6cade778b049bc78739493c",
+      "workflow-driver.py": "0355ccf0af120e8ba0504ebf3bd4f68c026eba3ac25759e9c0f29de8c19665cf",
+      "native-runner.py": "726475c603b431ab92b3b5d7961066b0a7dee9cc8368f04ef39efaf7eeb530e4",
+      "contract-harness.py": "e3983597d31d095f0a44b83061956eb644b200fa992f43907cd5928d1282ed26"
+    }
+  },
+  "architect_output_absent_verified": true
+}

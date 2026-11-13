@@ -1,0 +1,45 @@
+{
+  "total": 182,
+  "database_cases": 51,
+  "migration_cases": [
+    {
+      "module": "tests.test_migrations",
+      "name": "test_run_migrations_creates_schema_migrations_table"
+    },
+    {
+      "module": "tests.test_migrations",
+      "name": "test_run_migrations_applies_files_in_filename_order"
+    },
+    {
+      "module": "tests.test_migrations",
+      "name": "test_run_migrations_skips_already_applied"
+    },
+    {
+      "module": "tests.test_migrations",
+      "name": "test_run_migrations_commits_each_migration_independently"
+    },
+    {
+      "module": "tests.test_migrations",
+      "name": "test_run_migrations_executes_complete_sql_file"
+    },
+    {
+      "module": "tests.test_migrations",
+      "name": "test_run_migrations_records_blank_file_without_executing_sql"
+    },
+    {
+      "module": "tests.test_migrations",
+      "name": "test_run_migrations_no_files"
+    },
+    {
+      "module": "tests.test_migrations_db",
+      "name": "test_complete_sql_and_noop_files_are_applied_once"
+    },
+    {
+      "module": "tests.test_migrations_db",
+      "name": "test_failed_file_rolls_back_and_corrected_retry_is_safe"
+    }
+  ],
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0
+}

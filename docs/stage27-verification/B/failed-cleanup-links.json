@@ -1,0 +1,12 @@
+{
+  "workspace": "/home/ivan/codex-role-0ceb46u5",
+  "links": {
+    "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_discovery_is_immediate_sqcurrent": "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_discovery_is_immediate_sq0",
+    "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_failed_file_rolls_back_bucurrent": "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_failed_file_rolls_back_bu0",
+    "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_replay_skips_filenames_evcurrent": "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_replay_skips_filenames_ev0",
+    "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_public_runner_signature_acurrent": "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_public_runner_signature_a0",
+    "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_postgres_quotes_functionscurrent": "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_postgres_quotes_functions0",
+    "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_whole_file_is_validated_bcurrent": "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_whole_file_is_validated_b3",
+    "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_empty_comment_files_recorcurrent": "/home/ivan/codex-role-0ceb46u5/scratch/tmp/test_empty_comment_files_recor0"
+  }
+}

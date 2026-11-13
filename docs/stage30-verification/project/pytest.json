@@ -1,0 +1,32 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "........................................................................ [ 42%]\n........................................................................ [ 85%]\n........................                                                 [100%]\n168 passed in 1.78s\n",
+  "stderr": "",
+  "argv": [
+    "/usr/bin/env",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1",
+    "TMPDIR=/home/ivan/codex-role-cjt9k_pj/scratch",
+    "POSTGRES_HOST=/home/ivan/codex-role-fzuzw0mq/socket",
+    "POSTGRES_PORT=55430",
+    "POSTGRES_USER=stage30",
+    "POSTGRES_PASSWORD=disposable-local-only",
+    "POSTGRES_DB=unused",
+    "POSTGRES_TEST_DB=stage30_checks",
+    "REQUIRE_DB_TESTS=1",
+    "LD_LIBRARY_PATH=/home/ivan/codex-role-fzuzw0mq/postgres/usr/lib/x86_64-linux-gnu",
+    "/home/ivan/codex-role-fzuzw0mq/python/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=scratch/tmp",
+    "--junitxml=scratch/results.xml",
+    "tests"
+  ]
+}

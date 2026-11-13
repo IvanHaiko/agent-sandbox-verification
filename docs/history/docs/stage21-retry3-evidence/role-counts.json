@@ -1,0 +1,534 @@
+[
+  {
+    "label": "architect",
+    "execution_id": "stage21-retry3-architect",
+    "task_id": "STAGE20-LABELS",
+    "role": "orchestrator",
+    "phase": "architecture",
+    "contract_version": 1,
+    "workspace_id": "e92039b6379a64099cf0bffb9f1bae70e4bcfb022a54c02f13f265c4ebce9062",
+    "model": "gpt-6-astra",
+    "reasoning": "medium",
+    "completed": true,
+    "requests": 1,
+    "tool_calls": 0,
+    "controller_host_process_names": [
+      "codex.exe",
+      "docker",
+      "powershell"
+    ],
+    "seconds": 26.28,
+    "usage": {
+      "total": {
+        "totalTokens": 7571,
+        "inputTokens": 7029,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 542,
+        "reasoningOutputTokens": 0
+      },
+      "last": {
+        "totalTokens": 7571,
+        "inputTokens": 7029,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 542,
+        "reasoningOutputTokens": 0
+      }
+    },
+    "process_exited": true,
+    "gate_observations": [
+      {
+        "response_bytes": 161308,
+        "secret_checked": true,
+        "event_counts": {
+          "response.created": 1,
+          "response.in_progress": 1,
+          "response.output_item.added": 1,
+          "response.content_part.added": 1,
+          "response.output_text.delta": 538,
+          "response.output_text.done": 1,
+          "response.content_part.done": 1,
+          "response.output_item.done": 1,
+          "response.completed": 1
+        },
+        "anomalies": [
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "nonexecutable_stream_final_mismatch",
+            "scope": "response",
+            "executable_content": false,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "nonexecutable_stream_final_mismatch"
+          }
+        ],
+        "function_call_count": 0,
+        "item_ids_stable": true,
+        "call_ids_stable": true,
+        "output_indices_stable": true,
+        "arguments_equal": true,
+        "stream_final_bijection": false,
+        "terminal_status": "completed",
+        "validation_passed": true,
+        "transitions": {
+          "item_added": 1,
+          "arguments_delta": 0,
+          "arguments_done": 0,
+          "item_done": 1
+        },
+        "streamed_function_count": 0,
+        "completed_function_snapshots": 0,
+        "final_function_count": 0,
+        "usage": {
+          "input_tokens": 7029,
+          "output_tokens": 542,
+          "total_tokens": 7571
+        }
+      }
+    ],
+    "transport_observations": [
+      {
+        "validation_passed": true,
+        "mime_category": "absent",
+        "response_bytes": 161308,
+        "eof": true,
+        "reader_shutdown_confirmed": true,
+        "secret_checked": true,
+        "event_counts": {
+          "response.created": 1,
+          "response.in_progress": 1,
+          "response.output_item.added": 1,
+          "response.content_part.added": 1,
+          "response.output_text.delta": 538,
+          "response.output_text.done": 1,
+          "response.content_part.done": 1,
+          "response.output_item.done": 1,
+          "response.completed": 1
+        },
+        "anomalies": [
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "nonexecutable_stream_final_mismatch",
+            "scope": "response",
+            "executable_content": false,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "nonexecutable_stream_final_mismatch"
+          },
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "nonstandard_or_absent_mime",
+            "scope": "request",
+            "executable_content": false,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "nonstandard_or_absent_mime"
+          }
+        ],
+        "function_call_count": 0,
+        "item_ids_stable": true,
+        "call_ids_stable": true,
+        "output_indices_stable": true,
+        "arguments_equal": true,
+        "stream_final_bijection": false,
+        "terminal_status": "completed",
+        "transitions": {
+          "item_added": 1,
+          "arguments_delta": 0,
+          "arguments_done": 0,
+          "item_done": 1
+        },
+        "streamed_function_count": 0,
+        "completed_function_snapshots": 0,
+        "final_function_count": 0,
+        "usage": {
+          "input_tokens": 7029,
+          "output_tokens": 542,
+          "total_tokens": 7571
+        },
+        "missing_mime_tolerated": true
+      }
+    ],
+    "session_observations": {
+      "anomalies": []
+    },
+    "failure_receipt": null
+  },
+  {
+    "label": "implementer",
+    "execution_id": "stage21-retry3-implementer",
+    "task_id": "STAGE20-LABELS",
+    "role": "implementer",
+    "phase": "implementation",
+    "contract_version": 1,
+    "workspace_id": "5329e9b8ed375aa8cdda13105f56d1de6df43306e6867a9fc7ea19d4af4c4233",
+    "model": "gpt-5.6-sol",
+    "reasoning": "high",
+    "completed": false,
+    "requests": 3,
+    "tool_calls": 2,
+    "controller_host_process_names": [
+      "codex.exe",
+      "docker",
+      "git",
+      "powershell",
+      "python.exe"
+    ],
+    "seconds": 84.65,
+    "usage": {
+      "total": {
+        "totalTokens": 14458,
+        "inputTokens": 13179,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1279,
+        "reasoningOutputTokens": 379
+      },
+      "last": {
+        "totalTokens": 7800,
+        "inputTokens": 6708,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1092,
+        "reasoningOutputTokens": 357
+      }
+    },
+    "process_exited": true,
+    "gate_observations": [
+      {
+        "response_bytes": 54312,
+        "secret_checked": true,
+        "event_counts": {
+          "response.created": 1,
+          "response.in_progress": 1,
+          "response.output_item.added": 3,
+          "response.content_part.added": 1,
+          "response.output_text.delta": 29,
+          "response.output_text.done": 1,
+          "response.content_part.done": 1,
+          "response.output_item.done": 3,
+          "response.function_call_arguments.delta": 114,
+          "response.function_call_arguments.done": 1,
+          "response.completed": 1
+        },
+        "anomalies": [
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "nonexecutable_stream_final_mismatch",
+            "scope": "response",
+            "executable_content": false,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "nonexecutable_stream_final_mismatch"
+          },
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "completed_function_omitted_from_final",
+            "scope": "response",
+            "executable_content": true,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "completed_function_omitted_from_final"
+          }
+        ],
+        "function_call_count": 1,
+        "item_ids_stable": true,
+        "call_ids_stable": true,
+        "output_indices_stable": true,
+        "arguments_equal": true,
+        "stream_final_bijection": false,
+        "terminal_status": "completed",
+        "validation_passed": true,
+        "transitions": {
+          "item_added": 3,
+          "arguments_delta": 114,
+          "arguments_done": 1,
+          "item_done": 3
+        },
+        "executable_content_seen": true,
+        "streamed_function_count": 1,
+        "completed_function_snapshots": 1,
+        "final_function_count": 0,
+        "completed_calls_omitted_from_final": 1,
+        "usage": {
+          "input_tokens": 6471,
+          "output_tokens": 187,
+          "total_tokens": 6658
+        }
+      },
+      {
+        "response_bytes": 205580,
+        "secret_checked": true,
+        "event_counts": {
+          "response.created": 1,
+          "response.in_progress": 1,
+          "response.output_item.added": 2,
+          "response.output_item.done": 2,
+          "response.function_call_arguments.delta": 718,
+          "response.function_call_arguments.done": 1,
+          "response.completed": 1
+        },
+        "anomalies": [
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "nonexecutable_stream_final_mismatch",
+            "scope": "response",
+            "executable_content": false,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "nonexecutable_stream_final_mismatch"
+          },
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "completed_function_omitted_from_final",
+            "scope": "response",
+            "executable_content": true,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "completed_function_omitted_from_final"
+          }
+        ],
+        "function_call_count": 1,
+        "item_ids_stable": true,
+        "call_ids_stable": true,
+        "output_indices_stable": true,
+        "arguments_equal": true,
+        "stream_final_bijection": false,
+        "terminal_status": "completed",
+        "validation_passed": true,
+        "transitions": {
+          "item_added": 2,
+          "arguments_delta": 718,
+          "arguments_done": 1,
+          "item_done": 2
+        },
+        "executable_content_seen": true,
+        "streamed_function_count": 1,
+        "completed_function_snapshots": 1,
+        "final_function_count": 0,
+        "completed_calls_omitted_from_final": 1,
+        "usage": {
+          "input_tokens": 6708,
+          "output_tokens": 1092,
+          "total_tokens": 7800
+        }
+      }
+    ],
+    "transport_observations": [
+      {
+        "validation_passed": true,
+        "mime_category": "absent",
+        "response_bytes": 54312,
+        "eof": true,
+        "reader_shutdown_confirmed": true,
+        "secret_checked": true,
+        "event_counts": {
+          "response.created": 1,
+          "response.in_progress": 1,
+          "response.output_item.added": 3,
+          "response.content_part.added": 1,
+          "response.output_text.delta": 29,
+          "response.output_text.done": 1,
+          "response.content_part.done": 1,
+          "response.output_item.done": 3,
+          "response.function_call_arguments.delta": 114,
+          "response.function_call_arguments.done": 1,
+          "response.completed": 1
+        },
+        "anomalies": [
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "nonexecutable_stream_final_mismatch",
+            "scope": "response",
+            "executable_content": false,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "nonexecutable_stream_final_mismatch"
+          },
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "completed_function_omitted_from_final",
+            "scope": "response",
+            "executable_content": true,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "completed_function_omitted_from_final"
+          },
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "nonstandard_or_absent_mime",
+            "scope": "request",
+            "executable_content": true,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "nonstandard_or_absent_mime"
+          }
+        ],
+        "function_call_count": 1,
+        "item_ids_stable": true,
+        "call_ids_stable": true,
+        "output_indices_stable": true,
+        "arguments_equal": true,
+        "stream_final_bijection": false,
+        "terminal_status": "completed",
+        "transitions": {
+          "item_added": 3,
+          "arguments_delta": 114,
+          "arguments_done": 1,
+          "item_done": 3
+        },
+        "executable_content_seen": true,
+        "streamed_function_count": 1,
+        "completed_function_snapshots": 1,
+        "final_function_count": 0,
+        "completed_calls_omitted_from_final": 1,
+        "usage": {
+          "input_tokens": 6471,
+          "output_tokens": 187,
+          "total_tokens": 6658
+        },
+        "missing_mime_tolerated": true
+      },
+      {
+        "validation_passed": true,
+        "mime_category": "absent",
+        "response_bytes": 205580,
+        "eof": true,
+        "reader_shutdown_confirmed": true,
+        "secret_checked": true,
+        "event_counts": {
+          "response.created": 1,
+          "response.in_progress": 1,
+          "response.output_item.added": 2,
+          "response.output_item.done": 2,
+          "response.function_call_arguments.delta": 718,
+          "response.function_call_arguments.done": 1,
+          "response.completed": 1
+        },
+        "anomalies": [
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "nonexecutable_stream_final_mismatch",
+            "scope": "response",
+            "executable_content": false,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "nonexecutable_stream_final_mismatch"
+          },
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "completed_function_omitted_from_final",
+            "scope": "response",
+            "executable_content": true,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "completed_function_omitted_from_final"
+          },
+          {
+            "classification": "ANOMALY",
+            "category": "PROTOCOL_OBSERVATION",
+            "anomaly_type": "nonstandard_or_absent_mime",
+            "scope": "request",
+            "executable_content": true,
+            "project_mutation": null,
+            "action": "continue",
+            "reason": "nonstandard_or_absent_mime"
+          }
+        ],
+        "function_call_count": 1,
+        "item_ids_stable": true,
+        "call_ids_stable": true,
+        "output_indices_stable": true,
+        "arguments_equal": true,
+        "stream_final_bijection": false,
+        "terminal_status": "completed",
+        "transitions": {
+          "item_added": 2,
+          "arguments_delta": 718,
+          "arguments_done": 1,
+          "item_done": 2
+        },
+        "executable_content_seen": true,
+        "streamed_function_count": 1,
+        "completed_function_snapshots": 1,
+        "final_function_count": 0,
+        "completed_calls_omitted_from_final": 1,
+        "usage": {
+          "input_tokens": 6708,
+          "output_tokens": 1092,
+          "total_tokens": 7800
+        },
+        "missing_mime_tolerated": true
+      },
+      {
+        "validation_passed": false,
+        "mime_category": "absent",
+        "response_bytes": 7636,
+        "eof": false,
+        "reader_shutdown_confirmed": true,
+        "body_failure": "socket_idle_timeout"
+      }
+    ],
+    "session_observations": {
+      "anomalies": []
+    },
+    "failure_receipt": {
+      "schema_version": 1,
+      "invocation_id": "stage21-retry3-implementer",
+      "role": "implementer",
+      "model": "gpt-5.6-sol",
+      "reasoning": "high",
+      "role_status": "failed",
+      "accepted": false,
+      "recorded_at": "2026-10-07T08:37:52.401913+00:00",
+      "failure_category": "socket_idle_timeout",
+      "failure_detail": "socket_idle_timeout",
+      "request_count": 3,
+      "tool_call_count": 2,
+      "completed_tool_call_count": 2,
+      "tool_result_returned": true,
+      "last_completed_phase": "tool_result_returned",
+      "response_validation_passed": true,
+      "eof_observed": false,
+      "reader_shutdown_confirmed": true,
+      "socket_idle_timeout_observed": true,
+      "parser_status": "passed",
+      "handoff_status": "failed",
+      "protocol_bytes": 41929,
+      "stderr_bytes": 0,
+      "protocol_anomaly_counters": {
+        "nonexecutable_stream_final_mismatch": 4,
+        "completed_function_omitted_from_final": 4,
+        "nonstandard_or_absent_mime": 2
+      },
+      "candidate_written": true,
+      "candidate_preserved": true,
+      "candidate_archived": true,
+      "candidate_skipped_count": 0,
+      "candidates": [
+        {
+          "path": "src/normalize_labels.py",
+          "sha256": "7aad35443570f8bd44062784217f79c25f807e4fded59473454e231cf6a2717d",
+          "archive_path": "candidates/src/normalize_labels.py",
+          "originating_invocation_id": "stage21-retry3-implementer",
+          "archived_at": "2026-10-07T08:37:52.401678+00:00",
+          "status": "unaccepted_diagnostic_candidate",
+          "accepted": false
+        }
+      ]
+    }
+  }
+]

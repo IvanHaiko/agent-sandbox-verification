@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "invocation_id": "stage21-retry3-implementer",
+  "role": "implementer",
+  "model": "gpt-5.6-sol",
+  "reasoning": "high",
+  "role_status": "failed",
+  "accepted": false,
+  "recorded_at": "2026-10-07T08:37:52.401913+00:00",
+  "failure_category": "socket_idle_timeout",
+  "failure_detail": "socket_idle_timeout",
+  "request_count": 3,
+  "tool_call_count": 2,
+  "completed_tool_call_count": 2,
+  "tool_result_returned": true,
+  "last_completed_phase": "tool_result_returned",
+  "response_validation_passed": true,
+  "eof_observed": false,
+  "reader_shutdown_confirmed": true,
+  "socket_idle_timeout_observed": true,
+  "parser_status": "passed",
+  "handoff_status": "failed",
+  "protocol_bytes": 41929,
+  "stderr_bytes": 0,
+  "protocol_anomaly_counters": {
+    "nonexecutable_stream_final_mismatch": 4,
+    "completed_function_omitted_from_final": 4,
+    "nonstandard_or_absent_mime": 2
+  },
+  "candidate_written": true,
+  "candidate_preserved": true,
+  "candidate_archived": true,
+  "candidate_skipped_count": 0,
+  "candidates": [
+    {
+      "path": "src/normalize_labels.py",
+      "sha256": "7aad35443570f8bd44062784217f79c25f807e4fded59473454e231cf6a2717d",
+      "archive_path": "candidates/src/normalize_labels.py",
+      "originating_invocation_id": "stage21-retry3-implementer",
+      "archived_at": "2026-10-07T08:37:52.401678+00:00",
+      "status": "unaccepted_diagnostic_candidate",
+      "accepted": false
+    }
+  ]
+}

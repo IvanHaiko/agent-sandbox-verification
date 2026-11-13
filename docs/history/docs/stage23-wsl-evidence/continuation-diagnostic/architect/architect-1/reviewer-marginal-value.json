@@ -1,0 +1,9 @@
+{
+  "recommendation": "accept",
+  "blockers": [],
+  "findings": [],
+  "novel_claims": [],
+  "latency_seconds": 18.089,
+  "read_only_verified": true,
+  "controller_evaluation_pending": true
+}

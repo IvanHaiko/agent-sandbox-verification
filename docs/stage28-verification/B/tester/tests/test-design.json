@@ -1,0 +1,95 @@
+{
+  "cases": [
+    {
+      "requirement": "envelope",
+      "test": "test_malformed_envelopes",
+      "assertion": "Nondict envelopes and missing, null or nonlist data raise ValueError from transformer and loader before connection acquisition."
+    },
+    {
+      "requirement": "records",
+      "test": "test_malformed_records",
+      "assertion": "Reject malformed records, missing fields, bool/noninteger/out-of-range ids and blank/nonstring names, including invalid records after valid ones; input remains unchanged."
+    },
+    {
+      "requirement": "nested",
+      "test": "test_malformed_nested_data",
+      "assertion": "Reject invalid nested containers, entries, URL types and uid types from both public entry points before connection."
+    },
+    {
+      "requirement": "prevalidation",
+      "test": "test_duplicate_ids_prevalidate_entire_batch",
+      "assertion": "Identical and conflicting duplicate ids reject the whole batch without a connection or input mutation."
+    },
+    {
+      "requirement": "envelope",
+      "test": "test_empty_batch_without_connection",
+      "assertion": "Explicit empty data returns zero without connection; envelope metadata does not alter transformation."
+    },
+    {
+      "requirement": "prevalidation",
+      "test": "test_json_decode_error_before_connection",
+      "assertion": "Malformed JSON propagates JSONDecodeError before connection acquisition."
+    },
+    {
+      "requirement": "nested",
+      "test": "test_valid_nested_empty_values_and_input_immutability",
+      "assertion": "Accept optional null/empty nested data and absent/null/string/integer identifiers; preserve caller input, maximum INTEGER id, and metadata independence."
+    },
+    {
+      "requirement": "replay",
+      "test": "test_null_safe_replay_preserves_every_column_and_timestamp",
+      "assertion": "Real PostgreSQL snapshots of every column remain identical across transactions, including NULLs, timestamps, stable counts and reordered JSON keys."
+    },
+    {
+      "requirement": "replay",
+      "test": "test_changed_metadata_advances_timestamp_and_null_transitions",
+      "assertion": "Game name/summary changes persist and advance updated_at; transitions from NULL and back to NULL update normally."
+    },
+    {
+      "requirement": "replay",
+      "test": "test_twitch_mapping_changes_advance_timestamp_and_links_remap",
+      "assertion": "A shared Twitch id remaps to a new game/name with advancing timestamp; a shared store id retains one row mapped to the new game; replay preserves all values."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_absent_links_and_categories_are_not_deleted",
+      "assertion": "A later file omitting links and categories leaves previously persisted rows and their timestamps intact."
+    },
+    {
+      "requirement": "atomicity",
+      "test": "test_file_rollback_previous_file_durability_and_saved_retry",
+      "assertion": "Failures after real game/store/Twitch writes roll back inserts and prior-row updates for the entire file; earlier files remain exact; unchanged saved-file retry succeeds with stable counts and replay."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_mapping_precedence_raw_json_enums_and_utc_date",
+      "assertion": "Persist verbatim names/summary/raw JSON, UTC date, enum integers and decoded labels; website Steam links override external links and external URL ids override uid."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_public_helpers_with_fake_connection",
+      "assertion": "Loader and all three actual persistence helpers work with a fake connection through only listed public seams."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_load_data_dispatches_igdb_file",
+      "assertion": "Public load_data dispatches the IGDB source and file to the public IGDB loader exactly once."
+    },
+    {
+      "requirement": "replay",
+      "test": "test_raw_json_only_metadata_change_updates_game",
+      "assertion": "A change only in unrecognized raw metadata updates JSONB and advances the game timestamp."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_store_url_update_preserves_unique_identity",
+      "assertion": "A changed URL for the same store identifier updates its row while preserving unique identity and created_at."
+    }
+  ],
+  "limitations": [
+    "The supplied contract does not enumerate the exact transformed container shape or enum label spellings. Tests check deterministic transformation, envelope metadata independence, decoded nonblank labels, and persisted field fidelity rather than guessing those details.",
+    "Dispatch uses the public signature parameter names for source and file/path and the igdb source token; the supplied interface does not document other dispatcher sources.",
+    "Real PostgreSQL tests require the supplied db fixture and follow its configured skip/failure policy. No database or candidate code was run during blind design.",
+    "Injected failures occur after successful real persistence helper writes; process termination and network failure timing are outside this test design."
+  ]
+}

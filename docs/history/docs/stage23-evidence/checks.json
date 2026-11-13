@@ -1,0 +1,8 @@
+{
+  "command": "python -m pytest tests/test_native_codex.py tests/test_artifact_execution.py -q --basetemp .test-tmp/stage23-unit-final --tb=short --junitxml docs/stage23-evidence/offline-checks.xml",
+  "tests": 25,
+  "failures": 0,
+  "errors": 0,
+  "offline_only": true,
+  "full_suite_run": false
+}

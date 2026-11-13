@@ -1,0 +1,19 @@
+{
+  "role": "implementer",
+  "trial_id": "smoke-3",
+  "execution_status": "completed",
+  "model": "gpt-6.1-sol",
+  "changed_files": [
+    "src/add_one.py"
+  ],
+  "candidate_hashes": {
+    "src/add_one.py": "cbb9d566186943a504d0d8de0ff291eb4bcbc753fd36505065470d3f8e395565"
+  },
+  "mutation_scope_valid": true,
+  "interface_check_passed": true,
+  "deterministic_check": "exact bytes match frozen add_one contract",
+  "candidate_status": "unaccepted",
+  "accepted": false,
+  "authority": "controller_observed_artifacts",
+  "diff": "--- a/src/add_one.py\n+++ b/src/add_one.py\n@@ -1,2 +1,2 @@\n def add_one(value: int) -> int:\n-    raise NotImplementedError\n+    return value + 1\n"
+}

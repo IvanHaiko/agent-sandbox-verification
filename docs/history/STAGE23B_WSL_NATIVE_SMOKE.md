@@ -1,0 +1,18 @@
+# Stage23B — WSL Native Codex Smoke
+
+- **WSL/Linux version:** Ubuntu **26.04 LTS**, WSL **2**, kernel **6.6.87.2-microsoft-standard-WSL2**. Native Linux user: `ivan`.
+- **Codex version:** **codex-cli 0.160.1**, installed at `/home/ivan/.local/bin/codex` using the [documented Linux installer](https://learn.chatgpt.com/docs/codex/cli). Installation reported success and the installed executable returned this version.
+- **Authentication result:** **Successful native Linux ChatGPT sign-in.** `codex login --device-auth` returned `Successfully logged in`; subsequent `codex login status` returned `Logged in using ChatGPT` (exit 0). No Windows credentials were copied or manually reused.
+- **GPT-6.1 Sol availability:** **PASS.** Authenticated native `codex debug models` lists **`gpt-6.1-sol`**. Exact requested and native CLI resolved model: **`gpt-6.1-sol`**, provider `openai`, reasoning effort `low`.
+- **Inference started:** **Yes.** Native CLI session **`01a11609-2c49-7fd1-a1b2-b2fb93146681`** completed with exit **0** in **12.851 seconds**. One inference execution ran after sandbox preflight succeeded.
+- **Smoke result:** **PASS**, following the user's explicit request to correct the configuration and try again. The isolated repository contained only `role-input.md` and `src/add_one.py`, plus Git metadata. Native sandbox preflight verified target write access, denied writes to `role-input.md` and `.git/config`, and made no mutations. A full byte comparison after inference including Git metadata found only **`src/add_one.py`** changed, with exactly:
+
+  ```python
+  def add_one(value: int) -> int:
+      return value + 1
+  ```
+
+  The corrected [documented permissions profile](https://learn.chatgpt.com/docs/permissions) grants write access only to the isolated `src` directory, reads only the workspace, minimal runtime paths, and the installed Codex release directory, and disables project network access. It denies `/tmp` and `$TMPDIR`; the disposable repository therefore lives under `/home/ivan`, outside denied `/tmp`. Earlier preflight failures are retained in the evidence directory. No sandbox bypass, broad host access, Windows permission changes, alternate model, or custom transport was used.
+- **Artifact/hash result:** **PASS.** Candidate bytes retained at `docs/stage23b-evidence/isolated-home-workspace/candidate.py`. SHA-256 **`cbb9d566186943a504d0d8de0ff291eb4bcbc753fd36505065470d3f8e395565`**, verified after archival from Linux and independently with Windows `Get-FileHash`. Native session, model, permissions, changed-file list, and diff are recorded in `docs/stage23b-evidence/isolated-home-workspace/smoke.json`.
+- **Cleanup:** **PASS.** `/home/ivan/stage23b-native-cva8x2hl` was deleted and its absence verified. All preceding preflight repositories were also deleted. Installed Linux CLI and supported native login remain available.
+- **Readiness to resume Stage23:** **Stage23B PASS; Stage23 now STAGE23_PASS_NATIVE_BACKEND.** Authorized continuations passed smoke **3 / 3**, minimal workflows **3 / 3**, Reviewer **2 / 2**, Architect **2 / 2**, and the fresh full chain **1 / 1**. The later Architect failure was diagnosed as native `invalid_json_schema` for an array-valued `const`; request schema compatibility was repaired while Controller retained exact original-contract equality checks. All 185 frozen cases passed across accepted workflows; cleanup and artifact hashes were independently verified. Failed attempts remain archived. See `STAGE23_NATIVE_CODEX_BACKEND_ASSESSMENT.md` and `docs/stage23-wsl-evidence/continuation-schema-fixed/final-summary.json`. Stage23 stops here; Stage24 was not started. Production defaults, Windows sandbox and existing custom transport remain unchanged.

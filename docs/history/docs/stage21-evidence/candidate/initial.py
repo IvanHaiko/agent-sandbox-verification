@@ -1,0 +1,74 @@
+"""Parsing and normalization for comma-separated labels."""
+
+_ASCII_WHITESPACE = " \t\r\n\v\f"
+
+
+def _ascii_lower(character: str) -> str:
+    if "A" <= character <= "Z":
+        return chr(ord(character) + (ord("a") - ord("A")))
+    return character
+
+
+def _normalize_label(characters: list[tuple[str, bool]]) -> str:
+    """Normalize one label; the boolean marks ordinary whitespace."""
+    start = 0
+    end = len(characters)
+    while start < end and characters[start][1]:
+        start += 1
+    while end > start and characters[end - 1][1]:
+        end -= 1
+
+    normalized: list[str] = []
+    ordinary_whitespace_pending = False
+    for character, is_ordinary_whitespace in characters[start:end]:
+        if is_ordinary_whitespace:
+            ordinary_whitespace_pending = True
+            continue
+        if ordinary_whitespace_pending:
+            normalized.append(" ")
+            ordinary_whitespace_pending = False
+        normalized.append(_ascii_lower(character))
+
+    return "".join(normalized)
+
+
+def normalize_labels(value: str) -> list[str]:
+    """Parse, normalize, and stably deduplicate labels from *value*."""
+    labels: list[str] = []
+    current: list[tuple[str, bool]] = []
+    quoted = False
+    index = 0
+
+    while index < len(value):
+        character = value[index]
+
+        if character == "\\":
+            index += 1
+            if index == len(value):
+                raise ValueError("trailing unpaired backslash")
+            current.append((value[index], False))
+        elif character == '"':
+            quoted = not quoted
+        elif character == "," and not quoted:
+            labels.append(_normalize_label(current))
+            current = []
+        else:
+            is_ordinary_whitespace = (
+                not quoted and character in _ASCII_WHITESPACE
+            )
+            current.append((character, is_ordinary_whitespace))
+
+        index += 1
+
+    if quoted:
+        raise ValueError("unclosed double quote")
+
+    labels.append(_normalize_label(current))
+
+    result: list[str] = []
+    seen: set[str] = set()
+    for label in labels:
+        if label and label not in seen:
+            seen.add(label)
+            result.append(label)
+    return result

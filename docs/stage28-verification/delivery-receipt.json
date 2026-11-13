@@ -1,0 +1,9 @@
+{
+  "at": 1791539630.86282,
+  "sha256": "ffe7ea6c5a65abfec9e85a3f30278af343f379e0bc0c495984e8a3607ff778e8",
+  "bytes": 1318967,
+  "manifest_entries": 294,
+  "zip_crc_and_manifest_verified": true,
+  "common_recorded_elapsed_seconds_provisioning_start_to_delivery_seal": 2769.9480707645416,
+  "measurement_limit": "Excludes preliminary brief/source inspection and suite authoring; includes provisioning, freeze correction, both runs, coordinator gaps, evaluation, report, cleanup and ZIP sealing."
+}

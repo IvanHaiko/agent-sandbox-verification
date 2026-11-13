@@ -1,0 +1,22 @@
+{
+  "confirmed_failure_classification": "invocation/configuration: native output schema",
+  "native_error": {
+    "message": "Invalid schema for response_format 'codex_output_schema': context=('properties', 'allowed_mutation_scope'), Unexpected constant value: ['src/normalize_labels.py'].",
+    "type": "invalid_request_error",
+    "code": "invalid_json_schema",
+    "param": "text.format.schema"
+  },
+  "failed_native_thread": "01a116a3-bb8c-7832-981a-de5a7f7a620e",
+  "failure_execution_sha256": "9ad215c0c87ff9679b71f177687c4d2dd00525cca5d74b478d2fdef17f51b22a",
+  "old_schema_sha256": "6c7efc031d28367812517ebf49cba5f93bf574f89fa761082f2745499e5d78f1",
+  "new_schema_sha256": "0def7f90f696f95d89f140a632835722c0924b286794c99131538ad760fd6160",
+  "repair": "Remove array-valued const from native request schema; use scalar enums and fixed array lengths. Controller post-validation requires exact ordered lists for scope/criteria/constraints.",
+  "task_scope_model_effort_sandbox_unchanged": true,
+  "acceptance_criteria_exact_equality_preserved": true,
+  "corrected_architect_thread": "01a116a5-2fa9-7a30-92b2-a72cea53217e",
+  "corrected_architect_role_passed": true,
+  "targeted_guard": "One Architect semantic guard, including changed scope/criteria and reordered/duplicated criteria.",
+  "full_test_suite_run": false,
+  "old_successful_architect_workflow_reexecuted": false,
+  "past_missing_error_limit": "First two failed launches have no recoverable native error; the exact invalid_json_schema is established for the later failed Architect-2 launch only."
+}

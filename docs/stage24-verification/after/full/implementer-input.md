@@ -1,0 +1,71 @@
+Role: Implementer. Implement the frozen complete contract below.
+Read role-input.md, TASK.json and src/normalize_labels.py.
+Only src/normalize_labels.py may change. Preserve the exact typed public interface.
+No other files, imports with external dependencies, I/O, network, commits, subagents,
+other workspaces, credentials or previous role histories. No extra features.
+End immediately after the native file edit; no final summary is required.
+Controller derives the handoff and acceptance from artifacts, not your narration.
+{
+  "task_id": "LABEL-NORMALIZATION",
+  "contract_version": 1,
+  "public_interface": "def normalize_labels(value: str) -> list[str]",
+  "file": "src/normalize_labels.py",
+  "acceptance_criteria": [
+    "Scan ASCII strings left to right. An unescaped comma outside double quotes ends a label; repeated separators are allowed.",
+    "An unescaped double quote toggles quoted mode anywhere within a label; quote delimiters are removed and adjacent quoted/unquoted text concatenates.",
+    "Backslash escapes exactly the next character in either mode: remove the backslash, preserve the next character literally, and do not treat it as a quote or separator.",
+    "A trailing unpaired backslash or unclosed double quote raises ValueError for the whole input, even after otherwise valid labels.",
+    "Only ASCII whitespace (space, tab, CR, LF, vertical tab, form feed) that was neither quoted nor escaped is ordinary whitespace.",
+    "Trim ordinary whitespace from each label boundary before collapsing internal ordinary-whitespace runs to one ASCII space.",
+    "Quoted or escaped whitespace is protected: preserve its exact characters and multiplicity, including at label boundaries; it also breaks ordinary-whitespace runs.",
+    "Lowercase ASCII A-Z in all emitted characters; preserve other non-delimiter literal characters exactly.",
+    "After parsing and normalization, discard labels whose resulting string is empty. Whitespace-only protected labels are nonempty and retained.",
+    "Deduplicate normalized strings by exact equality, retaining first occurrence order. Empty input returns an empty list."
+  ],
+  "constraints": [
+    "Pure Python, standard library only, no external dependencies or I/O.",
+    "ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.",
+    "Do not add features or mutate any file other than src/normalize_labels.py."
+  ],
+  "clarifications": [
+    {
+      "rules": [
+        1,
+        2,
+        3,
+        8
+      ],
+      "clarification": "Escaped commas and quotes are literal characters, regardless of quoted mode. Quoting and escaping do not exempt emitted ASCII letters from lowercasing."
+    },
+    {
+      "rules": [
+        5,
+        6,
+        7
+      ],
+      "clarification": "Boundary trimming applies only to ordinary whitespace. Protected whitespace remains exact and separates ordinary-whitespace runs; removed quote delimiters emit no character."
+    },
+    {
+      "rules": [
+        4,
+        9,
+        10
+      ],
+      "clarification": "Malformed quoting or escaping invalidates the entire input, including otherwise valid preceding labels. Empty-label removal and deduplication do not suppress ValueError."
+    },
+    {
+      "rules": [
+        7,
+        9,
+        10
+      ],
+      "clarification": "Protected whitespace-only labels remain eligible for exact-string deduplication. Equality is based on normalized output strings, not their quoting or escaping in the input."
+    }
+  ],
+  "risks": [
+    "Losing whitespace protection can incorrectly trim boundaries, collapse protected characters, or discard nonempty labels.",
+    "Confusing escaped literals with delimiters can change label boundaries or quoted mode.",
+    "Returning preceding labels after malformed trailing input violates whole-input failure.",
+    "Deduplicating before normalization or ignoring exact whitespace differences can alter membership or first-occurrence order."
+  ]
+}

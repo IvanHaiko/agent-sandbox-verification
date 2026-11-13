@@ -1,0 +1,4 @@
+Provisioned via /usr/bin/python3: Python 3.14.4 (observed before recipe)
+2026-10-10 12:00:08.372 CEST [555] LOG:  starting PostgreSQL 18.6 (Ubuntu 18.6-0ubuntu0.26.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0, 64-bit
+2026-10-10 12:00:08.384 CEST [561] LOG:  database system was shut down at 2026-10-10 12:00:08 CEST
+2026-10-10 12:00:11.849 CEST [555] LOG:  database system is shut down

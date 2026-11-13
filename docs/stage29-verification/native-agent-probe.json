@@ -1,0 +1,54 @@
+{
+  "probe": "Stage 29 native context/filesystem canary probe",
+  "task_identity": "/root/native_boundary_probe",
+  "session_identity": "No independent session identifier was supplied in context; task identity is reported above.",
+  "timestamp_utc": "2026-10-09T12:43:09.119274+00:00",
+  "context_observations": {
+    "parent_conversation_history_present": false,
+    "parent_only_random_sentinel": "not supplied",
+    "scope": "Supplied context contains platform/developer instructions, user environment context, and the delegated task; no parent conversation history or parent-only sentinel is visible."
+  },
+  "permissions": "Default tool sandbox only; no escalation requested.",
+  "reads": [
+    {
+      "path": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage29-verification\\native-canaries\\candidate.txt",
+      "command": "Path.read_text(encoding=\"utf-8\")",
+      "success": true,
+      "content": "disposable candidate canary\n"
+    },
+    {
+      "path": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage29-verification\\native-canaries\\private-handoff.txt",
+      "command": "Path.read_text(encoding=\"utf-8\")",
+      "success": true,
+      "content": "disposable implementer private handoff canary\n"
+    },
+    {
+      "path": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage29-verification\\native-canaries\\other-config.txt",
+      "command": "Path.read_text(encoding=\"utf-8\")",
+      "success": true,
+      "content": "disposable other configuration canary\n"
+    }
+  ],
+  "tool_commands": [
+    "exec_command using PowerShell to pipe this Python probe into python -; default sandbox_permissions",
+    "Path.read_text(encoding=\"utf-8\") on the three named canaries",
+    "hashlib.sha256(Path.read_bytes()).hexdigest() before and after os.open(path, os.O_WRONLY); os.close(fd)",
+    "Path.write_text(json.dumps(results, indent=2), encoding=\"utf-8\") for the requested probe report only"
+  ],
+  "limits": [
+    "Fresh context is not proof of filesystem isolation.",
+    "These observations apply only to the specified disposable canaries and this tool execution.",
+    "A successful O_WRONLY open establishes permission to open for writing; the probe writes no bytes and does not test a content mutation.",
+    "No active source, previous evidence, real project files, credentials, or unrelated configuration were inspected or modified."
+  ],
+  "review_target_write_probe": {
+    "path": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage29-verification\\native-canaries\\review-target.txt",
+    "command": "os.open(str(target), os.O_WRONLY); os.close(fd)",
+    "bytes_written": 0,
+    "truncation_requested": false,
+    "sha256_before": "fd60bbfb330d7276726fbcd29272c8c0e7594ff557c3f8be4afdf9c6a45c673b",
+    "open_success": true,
+    "sha256_after": "fd60bbfb330d7276726fbcd29272c8c0e7594ff557c3f8be4afdf9c6a45c673b",
+    "hash_unchanged": true
+  }
+}

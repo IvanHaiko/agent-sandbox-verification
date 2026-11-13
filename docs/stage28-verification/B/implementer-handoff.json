@@ -1,0 +1,32 @@
+{
+  "summary": "Repaired reviewer blocker F1 by restoring website precedence only for matching (store, store_game_id) keys. Distinct external Steam identifiers remain in transformed records and are persisted in a fresh database. Existing envelope validation, file transactions, NULL-safe replay updates, public APIs and schema remain unchanged.",
+  "files_changed_in_repair": [
+    "src/transform.py",
+    "tests/test_igdb_reliability.py"
+  ],
+  "tests": [
+    {
+      "command": "/usr/bin/python3 -B controller-check.py unit",
+      "result": "passed",
+      "passed": 140
+    },
+    {
+      "command": "/usr/bin/python3 -B controller-check.py integration",
+      "result": "passed",
+      "passed": 247
+    },
+    {
+      "command": "/usr/bin/python3 -B controller-check.py lint",
+      "result": "passed"
+    }
+  ],
+  "regression_coverage": [
+    "Unit coverage retains distinct external and website Steam identifiers, replaces matching identifiers, handles multiple websites and duplicate website identifiers, ignores unusable websites, and preserves other stores, Twitch mappings, raw_json and input bytes.",
+    "Real PostgreSQL coverage verifies distinct identifiers are persisted together on first load, replay preserves all row values and timestamps across separate transactions, and later website identifiers are added without deleting existing mappings.",
+    "The reliability suite also covers invalid batches before connection acquisition, empty batches, malformed JSON, NULL-safe metadata and category updates, remapping, last-game category precedence, and atomic rollback and saved-file retry after real SQL failures."
+  ],
+  "limitations": [
+    "Validation results are from the required controller checks on final source and test bytes; independent tests were not inspected or run directly.",
+    "No schema, dependency, existing-test or unrelated-source changes were made."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "recommendation": "reject",
+  "blockers": [
+    "Frozen criterion 6 remains unmet: independent design validation failed, no independent harness was frozen, and no baseline/candidate acceptance or deliberate-regression rejection result exists. Full acceptance remains unmet."
+  ],
+  "findings": [
+    {
+      "id": "missing-independent-evidence",
+      "criterion": 6,
+      "severity": "blocking",
+      "description": "The experiment cannot be accepted. Project regression success does not establish the required independent coverage, baseline compatibility, or mutation sensitivity.",
+      "evidence": "bundle.json records tester_failure.artifact_check.valid=false with reason 'Design/harness mismatch'; independent_acceptance.status='NOT RUN', frozen_design=false and frozen_harness=false. Rejected artifacts were not preserved.",
+      "already_established_by_acceptance": false
+    },
+    {
+      "id": "genuine-engineering-value",
+      "criterion": 1,
+      "severity": "info",
+      "description": "The refactoring has genuine engineering value: pure outcome preparation separates interpretation from database effects, and one small executor removes duplicated successful-record persistence. Responsibilities and transaction ordering are easier to inspect and preparation is directly testable without a database. The abstraction remains Steam Store-specific and adds only standard-library dependencies.",
+      "evidence": "src/transform.py:331-395 contains effect-free preparation; src/load.py:585-602 centralizes the formerly duplicated connection/cursor/load_transformed_record sequence. Existing adapter signatures remain at src/load.py:605 and :617.",
+      "already_established_by_acceptance": false
+    },
+    {
+      "id": "behavioral-compatibility",
+      "criterion": 3,
+      "severity": "info",
+      "description": "Static comparison found no concrete regression in the specified input branches: outcome lookup, falsy-appid early return, invalid-ok fallback, native transformer exceptions, exact diagnostics and ordinary-only truncation remain consistent. This supports compatibility but does not complete independent acceptance.",
+      "evidence": "candidate.patch preserves the original branch conditions and error strings in the preparation functions. src/transform.py:374-380 returns before redirect transformation for falsy appids; :392 slices ordinary diagnostics only. The original parser and game transformer remain unchanged.",
+      "already_established_by_acceptance": false
+    },
+    {
+      "id": "persistence-order-and-replay",
+      "criterion": 5,
+      "severity": "info",
+      "description": "The executor preserves target persistence before the separate requested-row mark, including rollback suppression and partial success on mark failure. Body identity and redirect pointer remain separate; file marks retain fetched_at and is_replay=True. Added PostgreSQL tests meaningfully exercise counters, replay, rollback and committed-target behavior, but are implementer tests.",
+      "evidence": "src/load.py:588-600 exits the metadata connection context before marking, without an added commit. src/transform.py:358-367 keeps the transformed body record separate from appid and redirect_to. tests/test_refactoring.py includes real-database failure and replay assertions.",
+      "already_established_by_acceptance": false
+    },
+    {
+      "id": "internal-contract-coupling",
+      "criterion": 1,
+      "severity": "nonblocking",
+      "description": "The preparation boundary still couples transform to the marking function's keyword schema through dict[str, Any] and ** expansion. The frozen dataclass does not freeze its dictionaries, so misspelled fields or later mutation can produce runtime failures. Positional redirect-plan construction also requires reading the field declaration to understand its values. These are maintainability limitations, not demonstrated behavioral defects.",
+      "evidence": "src/transform.py:321-328 defines mutable dictionary fields; :361-368 constructs the redirect plan positionally. src/load.py:600 forwards the dictionary directly to mark_steam_store_enrichment_result.",
+      "already_established_by_acceptance": false
+    },
+    {
+      "id": "controller-evidence-scope",
+      "criterion": 7,
+      "severity": "info",
+      "description": "Controller evidence supports exact candidate reproduction, unchanged persistence/components and passing project checks. It cannot substitute for independent acceptance.",
+      "evidence": "bundle.json reports candidate_reproduced_exactly=true, patch_applies_to_fixed_source=true, 210 project tests with zero failures/errors/skips, final implementer unit/integration/lint success, and unchanged_components.persistence_sql_unchanged=true.",
+      "already_established_by_acceptance": false
+    }
+  ],
+  "rationale": "Reject the experiment because frozen criterion 6 and full acceptance remain unmet. The refactoring itself provides genuine, proportionate engineering value, and static review found no blocking code defect in the specified behavior. Its dictionary-based internal contract is a nonblocking maintenance concern. Controller checks and implementer tests provide useful evidence, but no independent acceptance result exists."
+}

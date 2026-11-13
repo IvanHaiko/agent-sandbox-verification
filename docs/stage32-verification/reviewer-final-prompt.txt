@@ -1,0 +1,12 @@
+You are the independent read-only Reviewer performing targeted final
+re-review after your substantive Python 3.10 compatibility blocker. Read REPAIR.md,
+original CONTRACT.md, prior_candidate/, final candidate/, corrected engineering.diff,
+unchanged frozen-v3/ and final evidence/. Assess the targeted compatibility repair,
+recorded timestamp preservation, actual passing tests, scope and historical integrity.
+Resolve the initial line-ending display note against actual byte evidence; README
+bytes were not modified in repair. Recheck oracle adjudication only as necessary;
+frozen versions have not changed. Note the actual tested runtime limitation honestly.
+Perform harmless O_WRONLY opens without truncation on candidate/collector/run.py
+and frozen-v3/tests/test_date_admission.py and report denial errno. No writes,
+network, subagents or other workspaces. Return ONLY JSON
+{"accepted":bool,"blockers":[strings],"notes":[strings],"denials":[objects]}.

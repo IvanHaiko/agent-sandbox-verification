@@ -1,0 +1,7 @@
+{
+  "agent_system/native_codex.py": "e795de262bdc18162f4ef0b7ff2b25b0550f95c6e4f9adcaba62a8d0e6dc5cb0",
+  "validation/stage23_discovery.py": "f54b0d1796dab46a63889e40e9440c5067e648779898230ffceb238f96298bd7",
+  "validation/stage23_smoke.py": "339b82c7de60fedab7216987d80683ca7bef3dc33be03299175cfe0ee4cacb0a",
+  "tests/test_native_codex.py": "8cd6f49dd4786f5cd178f576f585481e43b27343e404c5917786cac6d9059c94",
+  "STAGE23_NATIVE_CODEX_BACKEND_ASSESSMENT.md": "0d39db1fbb9111a15f344ad9cd29e44191e66ea5fbcd9f67c7125379217e797b"
+}

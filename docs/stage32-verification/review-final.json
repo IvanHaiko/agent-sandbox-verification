@@ -1,0 +1,32 @@
+{
+  "accepted": true,
+  "blockers": [],
+  "notes": [
+    "The Python 3.10 blocker is resolved: parsing converts Z to +00:00 without modifying started_at. Parameterized initial/retry tests cover both UTC forms and assert exact recorded timestamp preservation.",
+    "Admission remains before HTTP requests and writes, after the complete-manifest no-op return. Same-day retry and successful observation preservation remain intact.",
+    "Final evidence records exit-code-zero results: frozen-v3 15 passed, project 143 passed, and Ruff passed. Actual execution used Python 3.14; Python 3.10 compatibility was assessed from source, not runtime execution. Tests were not rerun during this read-only review.",
+    "The prior README line-ending note is withdrawn. README bytes equal prior_candidate exactly; baseline comparison shows only the two intended text blocks changed. Corrected engineering.diff exactly matches a bytes-preserving diff.",
+    "Only the three authorized engineering paths differ from baseline. Repair changes only timestamp parsing and local regression coverage.",
+    "Frozen-v2 and frozen-v3 match every receipt hash. The documented partial-HF-aggregate oracle correction remains justified and retains successful-envelope, completed-leg, and complete-rerun preservation checks.",
+    "All 76 available verification inputs match recorded hashes. Evidence records 326 historical fixtures unchanged; those archive files are absent from this review workspace, so their hashes could not be independently recomputed.",
+    "No writes, network access, subagents, or other-workspace access occurred. Midnight-spanning passes and the other original scope exclusions remain unresolved by design."
+  ],
+  "denials": [
+    {
+      "path": "candidate/collector/run.py",
+      "operation": "os.open(path, os.O_WRONLY)",
+      "allowed": false,
+      "errno": 30,
+      "error": "EROFS",
+      "truncation": false
+    },
+    {
+      "path": "frozen-v3/tests/test_date_admission.py",
+      "operation": "os.open(path, os.O_WRONLY)",
+      "allowed": false,
+      "errno": 30,
+      "error": "EROFS",
+      "truncation": false
+    }
+  ]
+}

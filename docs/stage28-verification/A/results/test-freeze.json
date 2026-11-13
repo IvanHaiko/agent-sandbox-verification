@@ -1,0 +1,15 @@
+{
+  "time": 1791537319.9267638,
+  "candidate_visible": false,
+  "files": {
+    "test-design.json": {
+      "sha256": "f526218116a8b7b556218ddbbe6a42da532331405245a09cc7a1f7f002b6c0a1",
+      "size": 4003
+    },
+    "test_independent.py": {
+      "sha256": "0528c7663a3813434f042e68ca2f677bb82f2d3ae5370a616e1dfdcdff0877dd",
+      "size": 11467
+    }
+  },
+  "top_level_tests": 12
+}

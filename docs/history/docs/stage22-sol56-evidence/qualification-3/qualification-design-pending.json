@@ -1,0 +1,6 @@
+{
+  "design": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage22-sol56-evidence\\qualification-3\\qualification-design-result.json",
+  "design_sha256": "58f00e85c9133f6fe82ba9a35b35db76fe39023119f033d9a0eb97b8c21c1f21",
+  "candidate_exposed": false,
+  "requires": "Controller contract reasoning, without candidate or oracle"
+}

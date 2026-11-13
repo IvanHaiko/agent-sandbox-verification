@@ -1,0 +1,33 @@
+--- frozen-v2
++++ admitted-v3
+@@ -134,8 +134,14 @@
+     successes = hf_successes(root)
+     assert successes
+     assert failed_repo not in successes
+-    # Files with only successful observations must retain their compressed bytes.
+-    before_files = tree(root)
++    # Stored successful legs are immutable; a partial HF aggregate may grow.
++    manifest = json.loads(manifest_path(root, DAY).read_text())
++    completed_files = {
++        manifest_path(root, DAY).parent / state["file"]:
++            (manifest_path(root, DAY).parent / state["file"]).read_bytes()
++        for state in manifest["legs"].values()
++        if state["status"] == "ok" and state.get("file")
++    }
+     second = FakeHttp()
+     result = collect(root, snapshot_date=DAY, http=second, now=utc(DAY, "23:00:00"))
+     assert second.call_count > 0
+@@ -145,11 +151,8 @@
+     assert set(after) == set(reference_rows)
+     for repo, observation in successes.items():
+         assert after[repo] == observation, "Retry replaced an earlier successful raw envelope"
+-    for relative, data in before_files.items():
+-        if data is not None and relative.endswith(".gz"):
+-            envelopes = gzip.decompress(data).splitlines()
+-            if not any(failed_repo.encode() in line for line in envelopes):
+-                assert tree(root)[relative] == data
++    for path, data in completed_files.items():
++        assert path.read_bytes() == data, "Retry changed a completed leg's stored bytes"
+     before = tree(root)
+     third = FakeHttp()
+     assert collect(root, snapshot_date=DAY, http=third, now=utc(DAY, "23:59:00")) == result

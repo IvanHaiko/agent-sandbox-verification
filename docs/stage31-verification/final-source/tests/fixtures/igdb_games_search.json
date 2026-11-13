@@ -1,0 +1,132 @@
+{
+  "source": "igdb",
+  "request": "games_search",
+  "search_term": "Bunny Garden 2",
+  "fetched_at": "2026-05-10T18:36:37.192377+00:00",
+  "result_count": 1,
+  "data": [
+    {
+      "id": 375379,
+      "external_games": [
+        {
+          "id": 3152931,
+          "uid": "3443820",
+          "url": "https://store.steampowered.com/app/3443820"
+        },
+        {
+          "id": 3166765,
+          "uid": "295550326",
+          "url": "https://www.twitch.tv/directory/game/Bunny%20Garden%202"
+        }
+      ],
+      "first_release_date": 1776297600,
+      "game_modes": [
+        {
+          "id": 1,
+          "name": "Single player"
+        }
+      ],
+      "genres": [
+        {
+          "id": 13,
+          "name": "Simulator"
+        },
+        {
+          "id": 31,
+          "name": "Adventure"
+        },
+        {
+          "id": 32,
+          "name": "Indie"
+        },
+        {
+          "id": 34,
+          "name": "Visual Novel"
+        }
+      ],
+      "involved_companies": [
+        {
+          "id": 375020,
+          "company": {
+            "id": 22889,
+            "name": "qureate"
+          },
+          "developer": true,
+          "publisher": true
+        }
+      ],
+      "name": "Bunny Garden 2",
+      "platforms": [
+        {
+          "id": 6,
+          "name": "PC (Microsoft Windows)"
+        },
+        {
+          "id": 130,
+          "name": "Nintendo Switch"
+        }
+      ],
+      "release_dates": [
+        {
+          "id": 888368,
+          "date": 1776297600,
+          "platform": {
+            "id": 130,
+            "name": "Nintendo Switch"
+          }
+        },
+        {
+          "id": 888369,
+          "date": 1776297600,
+          "platform": {
+            "id": 6,
+            "name": "PC (Microsoft Windows)"
+          }
+        }
+      ],
+      "slug": "bunny-garden-2--1",
+      "storyline": "Haito Kanda (name changeable) lost his job due to a major mistake at work, and had fallen into despair over everything.\n\nJust as he was heading to his usual cheap pub to drown his sorrows…\n\nA woman suddenly spoke to him, noticing his dejected expression.\n\nThat was the fateful encounter…\n\nGuided by her, he stepped into a sanctuary for gentlemen, where women as adorable as rabbits welcomed him…\n\n“Bunny Garden.”\n\nWhat changes will this encounter bring to their lives, and yours?\n\nIt’s all up to you…\n\nA new Bunny Garden, set in a different world line from the previous title.\n\nA brand-new story and a cast you have yet to meet await you.",
+      "summary": "A brand new title in the Bunny Garden series, a romance adventure game where you can deepen your relationships with a unique cast of girls while visiting the gentleman’s sanctuary “Bunny Garden”. In addition to the return of familiar characters such as Kana, Rin, and Miuka, Erisa will newly join the cast. Furthermore, new characters are also planned to appear, promising an even more intimate experience than the previous title.",
+      "themes": [
+        {
+          "id": 27,
+          "name": "Comedy"
+        },
+        {
+          "id": 44,
+          "name": "Romance"
+        }
+      ],
+      "url": "https://www.igdb.com/games/bunny-garden-2--1",
+      "websites": [
+        {
+          "id": 1025136,
+          "url": "https://store.steampowered.com/app/3443820/"
+        },
+        {
+          "id": 1025137,
+          "url": "https://qureate.co.jp/bunnygarden2/en/"
+        },
+        {
+          "id": 1043623,
+          "url": "https://x.com/qureate"
+        },
+        {
+          "id": 1043624,
+          "url": "https://bsky.app/profile/qureate.bsky.social"
+        },
+        {
+          "id": 1043625,
+          "url": "https://www.youtube.com/@qureate_official"
+        }
+      ],
+      "collections": [
+        {
+          "id": 12917,
+          "name": "Bunny Garden"
+        }
+      ],
+      "game_type": 0
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "args": [
+        1,
+        2,
+        5
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        3,
+        2,
+        5
+      ],
+      "expected": 3
+    },
+    {
+      "args": [
+        6,
+        2,
+        5
+      ],
+      "expected": 5
+    },
+    {
+      "args": [
+        2,
+        2,
+        5
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        5,
+        2,
+        5
+      ],
+      "expected": 5
+    },
+    {
+      "args": [
+        -4,
+        -4,
+        -4
+      ],
+      "expected": -4
+    },
+    {
+      "args": [
+        -9,
+        -7,
+        -2
+      ],
+      "expected": -7
+    },
+    {
+      "args": [
+        -3,
+        -7,
+        -2
+      ],
+      "expected": -3
+    },
+    {
+      "args": [
+        0,
+        -7,
+        -2
+      ],
+      "expected": -2
+    },
+    {
+      "args": [
+        3,
+        5,
+        2
+      ],
+      "expected": "ValueError"
+    }
+  ],
+  "rationale": "Ten distinct cases cover below, within, above, both endpoints, equal bounds, negative bounds, and invalid bounds. Private canary read probes: /home/ivan/codex-role-b7s5apvi/handoff.txt: denied errno=2 (No such file or directory); /home/ivan/codex-role-b7s5apvi/other-config.txt: denied errno=2 (No such file or directory). No implementation was read."
+}

@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.pytest_tmp/
+
+# Jupyter checkpoint copies -- Airflow's DagBag scans dags/ recursively, so
+# an untracked checkpoint copy of a DAG file publishes a duplicate dag_id.
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+
+# Raw data
+data/raw/
+!data/raw/.gitkeep
+
+# Pre-migration dumps and rows removed by a data-fix migration.
+# Kept on disk so a destructive migration stays reversible, out of git
+# because they are data, not source.
+data/audit/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# llm
+
+CLAUDE.md
+.claude/
+
+
+# runtime
+
+logs/
+
+# dbt: build artefacts and the per-machine telemetry id.
+# steam_analytics/profiles.yml is deliberately NOT ignored — it holds no
+# secrets, only env_var lookups, and keeping it out of the repository is
+# what let the connection port drift and get misdiagnosed as a missing dbt.
+steam_analytics/target/
+steam_analytics/.user.yml

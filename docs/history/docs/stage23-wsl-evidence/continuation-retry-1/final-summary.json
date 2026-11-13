@@ -1,0 +1,21 @@
+{
+  "verdict": "STAGE23_PARTIAL_PASS",
+  "preserved_gates": {
+    "smoke": "3/3 PASS",
+    "minimal": "3/3 PASS",
+    "reviewer": "2/2 PASS"
+  },
+  "architect_workflows_completed": 0,
+  "architect_workflows_required": 2,
+  "initial_architect_launch_result": "failed",
+  "authorized_retry_result": "failed",
+  "total_failed_architect_launches": 2,
+  "full_chain_started": false,
+  "failure_classification": "unknown_native_runtime_failure",
+  "failure_diagnostic_recovered": false,
+  "future_diagnostic_fix_offline_tests_passed": 9,
+  "retry_cleanup_verified": true,
+  "additional_live_retry": false,
+  "production_defaults_or_custom_transport_changed": false,
+  "stage24_started": false
+}

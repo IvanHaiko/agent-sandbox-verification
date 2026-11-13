@@ -1,0 +1,37 @@
+[
+  {
+    "path": "docs/stage31-verification/project/runtime-closeout.zip",
+    "bytes": 94494664,
+    "sha256": "6fa74049b22d68c0c8dd9ecac2b80f80d150a94244e2140725360284386ba6b5",
+    "reason": "Downloaded Python and PostgreSQL dependency bytes from the Stage 31 runtime workspace; not evidence of behavior. Stage 31 results stay in docs/stage31-verification/project/{pytest,ruff,result}.json and results.xml. Same treatment as the Stage 30 runtime archives (dependency-archive-cleanup.json).",
+    "publication": "Excluded from Git by .gitignore; kept locally. Attach as a release asset if needed."
+  },
+  {
+    "path": "docs/stage32-verification/implementer-execution.json",
+    "bytes": 88996,
+    "sha256": "b6f7f66baa7d5d7c484810580aea626c526a19c8a1b65f33da0003f01bef81c7",
+    "reason": "Raw worker execution log that echoes source of the target project, including a personal contact address in that project's User-Agent constant. Outcomes are summarized in STAGE32_HIGH_RISK_DOGFOODING_REPORT.md and docs/stage32-verification/final-acceptance.json.",
+    "publication": "Excluded from Git by .gitignore; kept locally, unmodified."
+  },
+  {
+    "path": "docs/stage32-verification/reviewer-execution.json",
+    "bytes": 338187,
+    "sha256": "8fe6a52497775245707a4d40d4aaf68c8144cc81f5b396eb62219bc0cf3cde6d",
+    "reason": "Raw worker execution log that echoes source of the target project, including a personal contact address in that project's User-Agent constant. Outcomes are summarized in STAGE32_HIGH_RISK_DOGFOODING_REPORT.md and docs/stage32-verification/final-acceptance.json.",
+    "publication": "Excluded from Git by .gitignore; kept locally, unmodified."
+  },
+  {
+    "path": "docs/stage32-verification/rejected-candidate-v1.zip",
+    "bytes": 164647,
+    "sha256": "e1bbe2703e761f16c780e121676524f678ee9867815ba3e29e1d5307f1181605",
+    "reason": "Contains source of the target project (collector/fetch.py) with a personal contact address in its User-Agent constant. The Stage 32 outcome and hashes remain in STAGE32_HIGH_RISK_DOGFOODING_REPORT.md and docs/stage32-verification/*.json.",
+    "publication": "Excluded from Git by .gitignore; kept locally, unmodified."
+  },
+  {
+    "path": "docs/stage32-verification/stage32-ai-model-lifecycle.bundle",
+    "bytes": 153368,
+    "sha256": "9a2675d4cb1a2ab1ef7cb2fc47fe487fc8d7afe4128abe0146495f36f250a740",
+    "reason": "Contains source of the target project (collector/fetch.py) with a personal contact address in its User-Agent constant. The Stage 32 outcome and hashes remain in STAGE32_HIGH_RISK_DOGFOODING_REPORT.md and docs/stage32-verification/*.json.",
+    "publication": "Excluded from Git by .gitignore; kept locally, unmodified."
+  }
+]

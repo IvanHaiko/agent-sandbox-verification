@@ -1,0 +1,23 @@
+diff --git a/src/slugify.py b/src/slugify.py
+index 24d2036..92889e2 100644
+--- a/src/slugify.py
++++ b/src/slugify.py
+@@ -1,2 +1,17 @@
+ def slugify(value: str) -> str:
+-    raise NotImplementedError
++    """Return a lowercase, hyphen-separated slug for an ASCII string."""
++    slug: list[str] = []
++
++    for character in value:
++        if "A" <= character <= "Z":
++            slug.append(character.lower())
++        elif "a" <= character <= "z" or "0" <= character <= "9":
++            slug.append(character)
++        elif character == "-" or character.isspace():
++            if slug and slug[-1] != "-":
++                slug.append("-")
++
++    if slug and slug[-1] == "-":
++        slug.pop()
++
++    return "".join(slug)

@@ -1,0 +1,690 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "model": "gpt-5.6-sol",
+      "reasoning": "medium",
+      "candidate_exposed": false,
+      "previous_design_visible": false,
+      "valid": false,
+      "freezeable": false,
+      "cases": 0,
+      "failure_category": "socket_idle_timeout",
+      "roles": [
+        {
+          "label": "qualification-design",
+          "execution_id": "qualification-1-qualification-design",
+          "task_id": "STAGE20-LABELS",
+          "role": "test_engineer",
+          "phase": "test_design",
+          "contract_version": 1,
+          "workspace_id": "6f505c76e067a599350794e7e0ba513816c8f0abf1f33c10060c8dc4a8ddf5f8",
+          "model": "gpt-5.6-sol",
+          "reasoning": "medium",
+          "completed": false,
+          "execution_status": "unrecoverable",
+          "requests": 1,
+          "tool_calls": 0,
+          "candidate_sha256": null,
+          "frozen_tester_sha256": null,
+          "failure_category": "socket_idle_timeout",
+          "controller_host_process_names": [
+            "codex.exe",
+            "docker",
+            "powershell"
+          ],
+          "seconds": 40.67,
+          "usage": null,
+          "process_exited": true,
+          "gate_observations": [],
+          "transport_observations": [
+            {
+              "validation_passed": false,
+              "mime_category": "absent",
+              "response_bytes": 13702,
+              "eof": false,
+              "reader_shutdown_confirmed": true,
+              "body_failure": "socket_idle_timeout"
+            }
+          ],
+          "session_observations": {
+            "anomalies": []
+          },
+          "failure_receipt": {
+            "schema_version": 1,
+            "invocation_id": "qualification-1-qualification-design",
+            "role": "test_engineer",
+            "model": "gpt-5.6-sol",
+            "reasoning": "medium",
+            "role_status": "failed",
+            "accepted": false,
+            "recorded_at": "2026-10-07T09:53:55.822818+00:00",
+            "failure_category": "socket_idle_timeout",
+            "failure_detail": "socket_idle_timeout",
+            "request_count": 1,
+            "tool_call_count": 0,
+            "completed_tool_call_count": 0,
+            "tool_result_returned": false,
+            "last_completed_phase": "turn_started",
+            "response_validation_passed": false,
+            "eof_observed": false,
+            "reader_shutdown_confirmed": true,
+            "socket_idle_timeout_observed": true,
+            "parser_status": "passed",
+            "handoff_status": "failed",
+            "protocol_bytes": 17489,
+            "stderr_bytes": 0,
+            "protocol_anomaly_counters": {},
+            "candidate_written": false,
+            "candidate_preserved": false,
+            "candidate_archived": false,
+            "candidate_skipped_count": 0,
+            "candidates": []
+          },
+          "model_home_removed": true
+        }
+      ],
+      "failure_reason": "Codex/model protocol denied",
+      "containment": {
+        "production_source_unchanged": true,
+        "credential_store_unchanged": true,
+        "stale_owned_containers": 0,
+        "model_homes_removed": true,
+        "host_fallback": false,
+        "no_host_execution_attempt": true,
+        "disposable_storage_removed": true
+      },
+      "cleanup_passed": true
+    },
+    {
+      "attempt": 2,
+      "model": "gpt-5.6-sol",
+      "reasoning": "medium",
+      "candidate_exposed": false,
+      "previous_design_visible": false,
+      "valid": true,
+      "freezeable": true,
+      "cases": 20,
+      "failure_category": null,
+      "roles": [
+        {
+          "label": "qualification-design",
+          "execution_id": "qualification-2-qualification-design",
+          "task_id": "STAGE20-LABELS",
+          "role": "test_engineer",
+          "phase": "test_design",
+          "contract_version": 1,
+          "workspace_id": "2aabaa08984614825fa7495f3c52637b955fc7a78707f523e3942be35f68a362",
+          "model": "gpt-5.6-sol",
+          "reasoning": "medium",
+          "completed": true,
+          "execution_status": "completed",
+          "requests": 1,
+          "tool_calls": 0,
+          "candidate_sha256": null,
+          "frozen_tester_sha256": null,
+          "failure_category": null,
+          "controller_host_process_names": [
+            "codex.exe",
+            "docker",
+            "powershell"
+          ],
+          "seconds": 62.25,
+          "usage": {
+            "total": {
+              "totalTokens": 9219,
+              "inputTokens": 6349,
+              "cachedInputTokens": 0,
+              "cacheWriteInputTokens": 0,
+              "outputTokens": 2870,
+              "reasoningOutputTokens": 1706
+            },
+            "last": {
+              "totalTokens": 9219,
+              "inputTokens": 6349,
+              "cachedInputTokens": 0,
+              "cacheWriteInputTokens": 0,
+              "outputTokens": 2870,
+              "reasoningOutputTokens": 1706
+            }
+          },
+          "process_exited": true,
+          "gate_observations": [
+            {
+              "response_bytes": 354192,
+              "secret_checked": true,
+              "event_counts": {
+                "response.created": 1,
+                "response.in_progress": 1,
+                "response.output_item.added": 5,
+                "response.output_item.done": 5,
+                "response.content_part.added": 1,
+                "response.output_text.delta": 1158,
+                "response.output_text.done": 1,
+                "response.content_part.done": 1,
+                "response.completed": 1
+              },
+              "anomalies": [
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonexecutable_stream_final_mismatch",
+                  "scope": "response",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonexecutable_stream_final_mismatch"
+                }
+              ],
+              "function_call_count": 0,
+              "item_ids_stable": true,
+              "call_ids_stable": true,
+              "output_indices_stable": true,
+              "arguments_equal": true,
+              "stream_final_bijection": false,
+              "terminal_status": "completed",
+              "validation_passed": true,
+              "transitions": {
+                "item_added": 5,
+                "arguments_delta": 0,
+                "arguments_done": 0,
+                "item_done": 5
+              },
+              "streamed_function_count": 0,
+              "completed_function_snapshots": 0,
+              "final_function_count": 0,
+              "usage": {
+                "input_tokens": 6349,
+                "output_tokens": 2870,
+                "total_tokens": 9219
+              }
+            }
+          ],
+          "transport_observations": [
+            {
+              "validation_passed": true,
+              "mime_category": "absent",
+              "response_bytes": 354192,
+              "eof": true,
+              "reader_shutdown_confirmed": true,
+              "secret_checked": true,
+              "event_counts": {
+                "response.created": 1,
+                "response.in_progress": 1,
+                "response.output_item.added": 5,
+                "response.output_item.done": 5,
+                "response.content_part.added": 1,
+                "response.output_text.delta": 1158,
+                "response.output_text.done": 1,
+                "response.content_part.done": 1,
+                "response.completed": 1
+              },
+              "anomalies": [
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonexecutable_stream_final_mismatch",
+                  "scope": "response",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonexecutable_stream_final_mismatch"
+                },
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonstandard_or_absent_mime",
+                  "scope": "request",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonstandard_or_absent_mime"
+                }
+              ],
+              "function_call_count": 0,
+              "item_ids_stable": true,
+              "call_ids_stable": true,
+              "output_indices_stable": true,
+              "arguments_equal": true,
+              "stream_final_bijection": false,
+              "terminal_status": "completed",
+              "transitions": {
+                "item_added": 5,
+                "arguments_delta": 0,
+                "arguments_done": 0,
+                "item_done": 5
+              },
+              "streamed_function_count": 0,
+              "completed_function_snapshots": 0,
+              "final_function_count": 0,
+              "usage": {
+                "input_tokens": 6349,
+                "output_tokens": 2870,
+                "total_tokens": 9219
+              },
+              "missing_mime_tolerated": true
+            }
+          ],
+          "session_observations": {
+            "anomalies": []
+          },
+          "failure_receipt": null,
+          "model_home_removed": true
+        }
+      ],
+      "design_sha256": "5c1b4460df276d761cc63410f7c6e5c6f51fb453a270994509fc0ed3485f780f",
+      "validation": {
+        "design_sha256": "5c1b4460df276d761cc63410f7c6e5c6f51fb453a270994509fc0ed3485f780f",
+        "schema_domain_valid": true,
+        "candidate_exposed": false,
+        "violations": [],
+        "oracle_used": false,
+        "contract_valid": true,
+        "freezeable": true,
+        "review_sha256": "84b64764687b580bdd8682b3657f2b2657be7e562552be45154e1d7beca0b84c"
+      },
+      "containment": {
+        "production_source_unchanged": true,
+        "credential_store_unchanged": true,
+        "stale_owned_containers": 0,
+        "model_homes_removed": true,
+        "host_fallback": false,
+        "no_host_execution_attempt": true,
+        "disposable_storage_removed": true
+      },
+      "cleanup_passed": true
+    },
+    {
+      "attempt": 3,
+      "model": "gpt-5.6-sol",
+      "reasoning": "medium",
+      "candidate_exposed": false,
+      "previous_design_visible": false,
+      "valid": true,
+      "freezeable": true,
+      "cases": 19,
+      "failure_category": null,
+      "roles": [
+        {
+          "label": "qualification-design",
+          "execution_id": "qualification-3-qualification-design",
+          "task_id": "STAGE20-LABELS",
+          "role": "test_engineer",
+          "phase": "test_design",
+          "contract_version": 1,
+          "workspace_id": "3546e6fc4d5cc414295b220a878faf8e61d6c3676a1cef3130a29db0192e63c4",
+          "model": "gpt-5.6-sol",
+          "reasoning": "medium",
+          "completed": true,
+          "execution_status": "completed",
+          "requests": 1,
+          "tool_calls": 0,
+          "candidate_sha256": null,
+          "frozen_tester_sha256": null,
+          "failure_category": null,
+          "controller_host_process_names": [
+            "codex.exe",
+            "docker",
+            "powershell"
+          ],
+          "seconds": 67.05,
+          "usage": {
+            "total": {
+              "totalTokens": 9053,
+              "inputTokens": 6357,
+              "cachedInputTokens": 0,
+              "cacheWriteInputTokens": 0,
+              "outputTokens": 2696,
+              "reasoningOutputTokens": 1609
+            },
+            "last": {
+              "totalTokens": 9053,
+              "inputTokens": 6357,
+              "cachedInputTokens": 0,
+              "cacheWriteInputTokens": 0,
+              "outputTokens": 2696,
+              "reasoningOutputTokens": 1609
+            }
+          },
+          "process_exited": true,
+          "gate_observations": [
+            {
+              "response_bytes": 332470,
+              "secret_checked": true,
+              "event_counts": {
+                "response.created": 1,
+                "response.in_progress": 1,
+                "response.output_item.added": 5,
+                "response.output_item.done": 5,
+                "response.content_part.added": 1,
+                "response.output_text.delta": 1081,
+                "response.output_text.done": 1,
+                "response.content_part.done": 1,
+                "response.completed": 1
+              },
+              "anomalies": [
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonexecutable_stream_final_mismatch",
+                  "scope": "response",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonexecutable_stream_final_mismatch"
+                }
+              ],
+              "function_call_count": 0,
+              "item_ids_stable": true,
+              "call_ids_stable": true,
+              "output_indices_stable": true,
+              "arguments_equal": true,
+              "stream_final_bijection": false,
+              "terminal_status": "completed",
+              "validation_passed": true,
+              "transitions": {
+                "item_added": 5,
+                "arguments_delta": 0,
+                "arguments_done": 0,
+                "item_done": 5
+              },
+              "streamed_function_count": 0,
+              "completed_function_snapshots": 0,
+              "final_function_count": 0,
+              "usage": {
+                "input_tokens": 6357,
+                "output_tokens": 2696,
+                "total_tokens": 9053
+              }
+            }
+          ],
+          "transport_observations": [
+            {
+              "validation_passed": true,
+              "mime_category": "absent",
+              "response_bytes": 332470,
+              "eof": true,
+              "reader_shutdown_confirmed": true,
+              "secret_checked": true,
+              "event_counts": {
+                "response.created": 1,
+                "response.in_progress": 1,
+                "response.output_item.added": 5,
+                "response.output_item.done": 5,
+                "response.content_part.added": 1,
+                "response.output_text.delta": 1081,
+                "response.output_text.done": 1,
+                "response.content_part.done": 1,
+                "response.completed": 1
+              },
+              "anomalies": [
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonexecutable_stream_final_mismatch",
+                  "scope": "response",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonexecutable_stream_final_mismatch"
+                },
+                {
+                  "classification": "ANOMALY",
+                  "category": "PROTOCOL_OBSERVATION",
+                  "anomaly_type": "nonstandard_or_absent_mime",
+                  "scope": "request",
+                  "executable_content": false,
+                  "project_mutation": null,
+                  "action": "continue",
+                  "reason": "nonstandard_or_absent_mime"
+                }
+              ],
+              "function_call_count": 0,
+              "item_ids_stable": true,
+              "call_ids_stable": true,
+              "output_indices_stable": true,
+              "arguments_equal": true,
+              "stream_final_bijection": false,
+              "terminal_status": "completed",
+              "transitions": {
+                "item_added": 5,
+                "arguments_delta": 0,
+                "arguments_done": 0,
+                "item_done": 5
+              },
+              "streamed_function_count": 0,
+              "completed_function_snapshots": 0,
+              "final_function_count": 0,
+              "usage": {
+                "input_tokens": 6357,
+                "output_tokens": 2696,
+                "total_tokens": 9053
+              },
+              "missing_mime_tolerated": true
+            }
+          ],
+          "session_observations": {
+            "anomalies": []
+          },
+          "failure_receipt": null,
+          "model_home_removed": true
+        }
+      ],
+      "design_sha256": "58f00e85c9133f6fe82ba9a35b35db76fe39023119f033d9a0eb97b8c21c1f21",
+      "validation": {
+        "design_sha256": "58f00e85c9133f6fe82ba9a35b35db76fe39023119f033d9a0eb97b8c21c1f21",
+        "schema_domain_valid": true,
+        "candidate_exposed": false,
+        "violations": [],
+        "oracle_used": false,
+        "contract_valid": true,
+        "freezeable": true,
+        "review_sha256": "ba6e6799c3fc2b6eac40ebbefd5a9ee666cb919cb702f89c4f174f1a75ffbb56"
+      },
+      "containment": {
+        "production_source_unchanged": true,
+        "credential_store_unchanged": true,
+        "stale_owned_containers": 0,
+        "model_homes_removed": true,
+        "host_fallback": false,
+        "no_host_execution_attempt": true,
+        "disposable_storage_removed": true
+      },
+      "cleanup_passed": true
+    },
+    {
+      "attempt": 4,
+      "model": "gpt-5.6-sol",
+      "reasoning": "medium",
+      "candidate_exposed": false,
+      "previous_design_visible": false,
+      "valid": false,
+      "freezeable": false,
+      "cases": 0,
+      "failure_category": "socket_idle_timeout",
+      "roles": [
+        {
+          "label": "qualification-design",
+          "execution_id": "qualification-4-qualification-design",
+          "task_id": "STAGE20-LABELS",
+          "role": "test_engineer",
+          "phase": "test_design",
+          "contract_version": 1,
+          "workspace_id": "e68335c0a628666aa58523bf0180d467c2a92c76ecec746fd704213a1e3d2fa5",
+          "model": "gpt-5.6-sol",
+          "reasoning": "medium",
+          "completed": false,
+          "execution_status": "unrecoverable",
+          "requests": 1,
+          "tool_calls": 0,
+          "candidate_sha256": null,
+          "frozen_tester_sha256": null,
+          "failure_category": "socket_idle_timeout",
+          "controller_host_process_names": [
+            "codex.exe",
+            "docker",
+            "powershell"
+          ],
+          "seconds": 69.58,
+          "usage": null,
+          "process_exited": true,
+          "gate_observations": [],
+          "transport_observations": [
+            {
+              "validation_passed": false,
+              "mime_category": "absent",
+              "response_bytes": 84435,
+              "eof": false,
+              "reader_shutdown_confirmed": true,
+              "body_failure": "socket_idle_timeout"
+            }
+          ],
+          "session_observations": {
+            "anomalies": []
+          },
+          "failure_receipt": {
+            "schema_version": 1,
+            "invocation_id": "qualification-4-qualification-design",
+            "role": "test_engineer",
+            "model": "gpt-5.6-sol",
+            "reasoning": "medium",
+            "role_status": "failed",
+            "accepted": false,
+            "recorded_at": "2026-10-07T10:01:27.329714+00:00",
+            "failure_category": "socket_idle_timeout",
+            "failure_detail": "socket_idle_timeout",
+            "request_count": 1,
+            "tool_call_count": 0,
+            "completed_tool_call_count": 0,
+            "tool_result_returned": false,
+            "last_completed_phase": "turn_started",
+            "response_validation_passed": false,
+            "eof_observed": false,
+            "reader_shutdown_confirmed": true,
+            "socket_idle_timeout_observed": true,
+            "parser_status": "passed",
+            "handoff_status": "failed",
+            "protocol_bytes": 17489,
+            "stderr_bytes": 0,
+            "protocol_anomaly_counters": {},
+            "candidate_written": false,
+            "candidate_preserved": false,
+            "candidate_archived": false,
+            "candidate_skipped_count": 0,
+            "candidates": []
+          },
+          "model_home_removed": true
+        }
+      ],
+      "failure_reason": "Codex/model protocol denied",
+      "containment": {
+        "production_source_unchanged": true,
+        "credential_store_unchanged": true,
+        "stale_owned_containers": 0,
+        "model_homes_removed": true,
+        "host_fallback": false,
+        "no_host_execution_attempt": true,
+        "disposable_storage_removed": true
+      },
+      "cleanup_passed": true
+    },
+    {
+      "attempt": 5,
+      "model": "gpt-5.6-sol",
+      "reasoning": "medium",
+      "candidate_exposed": false,
+      "previous_design_visible": false,
+      "valid": false,
+      "freezeable": false,
+      "cases": 0,
+      "failure_category": "stream_transport_failure",
+      "roles": [
+        {
+          "label": "qualification-design",
+          "execution_id": "qualification-5-qualification-design",
+          "task_id": "STAGE20-LABELS",
+          "role": "test_engineer",
+          "phase": "test_design",
+          "contract_version": 1,
+          "workspace_id": "86c6f3af48d01779d7f83023203b682c5d249b26f7c463750dbc1df93ea2f0e6",
+          "model": "gpt-5.6-sol",
+          "reasoning": "medium",
+          "completed": false,
+          "execution_status": "unrecoverable",
+          "requests": 1,
+          "tool_calls": 0,
+          "candidate_sha256": null,
+          "frozen_tester_sha256": null,
+          "failure_category": "stream_transport_failure",
+          "controller_host_process_names": [
+            "codex.exe",
+            "docker",
+            "powershell"
+          ],
+          "seconds": 69.0,
+          "usage": null,
+          "process_exited": true,
+          "gate_observations": [],
+          "transport_observations": [
+            {
+              "validation_passed": false,
+              "mime_category": "absent",
+              "response_bytes": 96402,
+              "eof": false,
+              "reader_shutdown_confirmed": true,
+              "body_failure": "body_deadline"
+            }
+          ],
+          "session_observations": {
+            "anomalies": []
+          },
+          "failure_receipt": {
+            "schema_version": 1,
+            "invocation_id": "qualification-5-qualification-design",
+            "role": "test_engineer",
+            "model": "gpt-5.6-sol",
+            "reasoning": "medium",
+            "role_status": "failed",
+            "accepted": false,
+            "recorded_at": "2026-10-07T10:02:58.212015+00:00",
+            "failure_category": "stream_transport_failure",
+            "failure_detail": "body_deadline",
+            "request_count": 1,
+            "tool_call_count": 0,
+            "completed_tool_call_count": 0,
+            "tool_result_returned": false,
+            "last_completed_phase": "turn_started",
+            "response_validation_passed": false,
+            "eof_observed": false,
+            "reader_shutdown_confirmed": true,
+            "socket_idle_timeout_observed": false,
+            "parser_status": "passed",
+            "handoff_status": "failed",
+            "protocol_bytes": 17489,
+            "stderr_bytes": 0,
+            "protocol_anomaly_counters": {},
+            "candidate_written": false,
+            "candidate_preserved": false,
+            "candidate_archived": false,
+            "candidate_skipped_count": 0,
+            "candidates": []
+          },
+          "model_home_removed": true
+        }
+      ],
+      "failure_reason": "Codex/model protocol denied",
+      "containment": {
+        "production_source_unchanged": true,
+        "credential_store_unchanged": true,
+        "stale_owned_containers": 0,
+        "model_homes_removed": true,
+        "host_fallback": false,
+        "no_host_execution_attempt": true,
+        "disposable_storage_removed": true
+      },
+      "cleanup_passed": true
+    }
+  ],
+  "consecutive_valid_designs": 0,
+  "qualified": false
+}

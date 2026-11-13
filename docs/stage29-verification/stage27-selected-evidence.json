@@ -1,0 +1,389 @@
+{
+  "docs/stage27-verification/A/evaluation-summary.json": {
+    "patch_reproduced": true,
+    "external": {
+      "exit_code": 0,
+      "tests": 24,
+      "passed": 24,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 3.8959927558898926
+    },
+    "regression": {
+      "exit_code": 0,
+      "tests": 227,
+      "passed": 227,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 7.255904912948608
+    },
+    "independent": {
+      "exit_code": 0,
+      "tests": 34,
+      "passed": 34,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 4.313756704330444
+    },
+    "mutations": {
+      "naive": {
+        "exit_code": 1,
+        "tests": 34,
+        "passed": 8,
+        "failed": 26,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 5.98894190788269
+      },
+      "drop-final": {
+        "exit_code": 1,
+        "tests": 34,
+        "passed": 10,
+        "failed": 24,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 6.038446426391602
+      }
+    },
+    "external_mutations": {
+      "naive": {
+        "exit_code": 1,
+        "tests": 24,
+        "passed": 6,
+        "failed": 18,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 4.839848041534424
+      },
+      "drop-final": {
+        "exit_code": 1,
+        "tests": 24,
+        "passed": 9,
+        "failed": 15,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 5.457060813903809
+      }
+    }
+  },
+  "docs/stage27-verification/A/permission-probe.json": {
+    "exit_code": 0,
+    "stdout": "{\"/home/ivan/codex-role-wf80jzr4/implementer/src/migrations.py\": {\"readable\": true}, \"/home/ivan/codex-role-wf80jzr4/tester/tests/test_independent.py\": {\"readable\": true}, \"/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/test_external_acceptance.py\": {\"readable\": false, \"errno\": 2}, \"/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/B/candidate/src/migrations.py\": {\"readable\": false, \"errno\": 2}, \"/mnt/c/Users/4ivan/steam-etl/src/migrations.py\": {\"readable\": false, \"errno\": 2}}\n",
+    "stderr": "",
+    "timed_out": false,
+    "owned_process_group_ended": true,
+    "purpose": "Same recorded parent native filesystem profile; retrospective read probe, not a subagent trace or reviewer write probe",
+    "paths": {
+      "/home/ivan/codex-role-wf80jzr4/implementer/src/migrations.py": {
+        "readable": true
+      },
+      "/home/ivan/codex-role-wf80jzr4/tester/tests/test_independent.py": {
+        "readable": true
+      },
+      "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/test_external_acceptance.py": {
+        "readable": false,
+        "errno": 2
+      },
+      "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/B/candidate/src/migrations.py": {
+        "readable": false,
+        "errno": 2
+      },
+      "/mnt/c/Users/4ivan/steam-etl/src/migrations.py": {
+        "readable": false,
+        "errno": 2
+      }
+    }
+  },
+  "docs/stage27-verification/A/results/reviewer-result.json": {
+    "recommendation": "accept",
+    "blockers": [],
+    "findings": [
+      {
+        "id": "lexical-contract",
+        "criterion": 2,
+        "severity": "info",
+        "description": "The splitter handles the required quoted regions, identifier boundaries, nested comments, fragment preservation and unterminated-region errors without adding runtime dependencies.",
+        "evidence": "acceptance/src/sql_statements.py:6-29 and :44-106 implement these behaviors. The frozen independent suite exercises ordinary/E strings, doubled quotes, case-sensitive dollar tags, identifier-embedded dollar sequences, nested comments and required ValueError messages; independent-result.json reports 34 passed.",
+        "already_established_by_acceptance": true
+      },
+      {
+        "id": "migration-compatibility-and-atomicity",
+        "criterion": 6,
+        "severity": "info",
+        "description": "Integration validates each complete file before executing its statements and preserves the existing discovery, ledger, connection patch seam, summaries and commit structure.",
+        "evidence": "acceptance/src/migrations.py:17-38 preserves discovery and bootstrap; :50-68 skips applied filenames, reads UTF-8, splits before execution, records after successful statements and commits per file. Frozen independent PostgreSQL tests verify separate statement execution, rollback of failed-file DDL/data/ledger effects, durability of earlier files and rerun behavior.",
+        "already_established_by_acceptance": true
+      }
+    ],
+    "rationale": "No blocking behavioral defect or regression was found. The implementation is compact and appropriately scoped to statement boundaries, with meaningful candidate tests and independent behavioral coverage spanning all seven requirements. Default-path behavior and exact console wording remain unchanged by direct comparison with the original runner. The independent candidate result provides successful real PostgreSQL evidence; the separately reported original-source setup failure is not candidate evidence. Existing-suite successes are reported in the handoff rather than independently rerun during this review. No executed mutation-sensitivity results were supplied, so that aspect of independent testing quality remains unverified."
+  },
+  "docs/stage27-verification/B/controller-decision.json": {
+    "accepted": false,
+    "workflow_completed": false
+  },
+  "docs/stage27-verification/B/evaluation-summary.json": {
+    "patch_reproduced": true,
+    "external": {
+      "exit_code": 0,
+      "tests": 24,
+      "passed": 24,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 3.689915895462036
+    },
+    "regression": {
+      "exit_code": 0,
+      "tests": 217,
+      "passed": 217,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 6.961513996124268
+    },
+    "independent": {
+      "exit_code": 0,
+      "tests": 40,
+      "passed": 40,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 4.339783668518066
+    },
+    "mutations": {
+      "naive": {
+        "exit_code": 1,
+        "tests": 40,
+        "passed": 4,
+        "failed": 36,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.138220548629761
+      },
+      "drop-final": {
+        "exit_code": 1,
+        "tests": 40,
+        "passed": 12,
+        "failed": 28,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 6.814446687698364
+      }
+    },
+    "external_mutations": {
+      "naive": {
+        "exit_code": 1,
+        "tests": 24,
+        "passed": 6,
+        "failed": 18,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 5.425029993057251
+      },
+      "drop-final": {
+        "exit_code": 1,
+        "tests": 24,
+        "passed": 9,
+        "failed": 15,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 5.262485504150391
+      }
+    }
+  },
+  "docs/stage27-verification/B/reviewer-result.json": {
+    "recommendation": "accept",
+    "blockers": [],
+    "findings": [
+      {
+        "id": "lexical-correctness",
+        "criterion": 2,
+        "severity": "info",
+        "description": "No concrete lexical defect found. Quote handling, identifier boundaries, exact dollar delimiters and nested comments satisfy the inspected contract.",
+        "evidence": "candidate/src/sql_statements.py:13\u201396. Reviewer execution passed 21 lexical cases extracted from candidate.patch and 12 additional boundary/error probes.",
+        "already_established_by_acceptance": false
+      },
+      {
+        "id": "runner-compatibility",
+        "criterion": 5,
+        "severity": "info",
+        "description": "Integration validates the complete file before executing statements and preserves discovery, signature, patch seam, ledger ordering and explicit commits.",
+        "evidence": "candidate/src/migrations.py:7\u201374 versus original/src/migrations.py. Five in-memory runner scenarios passed, including malformed trailing SQL, filename skipping and an execution failure after a committed earlier file.",
+        "already_established_by_acceptance": false
+      },
+      {
+        "id": "verification-limits",
+        "criterion": 7,
+        "severity": "info",
+        "description": "Full unchanged-suite compliance and real PostgreSQL execution remain unverified here, rather than demonstrated defects. Acceptance reports 40 passes and zero skips but provides no test identities. Project tests appear in the patch but are absent from the candidate source snapshot.",
+        "evidence": "acceptance.json functional_result and context; candidate.patch adds tests/test_migration_sql.py with database assertions. The supplied workspace contains neither project test files nor independent test implementation. Reviewer probes used no database.",
+        "already_established_by_acceptance": false
+      },
+      {
+        "id": "independent-test-design",
+        "criterion": 7,
+        "severity": "nonblocking",
+        "description": "The independent design covers requirements 1\u20136 with meaningful behavioral and database assertions, but supplies no predeclared mutation-sensitivity analysis. Requirement 7 is delegated to the controller; exact console wording and default directory behavior are explicitly untested.",
+        "evidence": "test-design.json cases and limitations. Execution coverage cannot be inferred from the aggregate acceptance count.",
+        "already_established_by_acceptance": false
+      }
+    ],
+    "rationale": "Accept the inspected implementation: it is focused, maintainable, introduces no runtime dependency, and has no demonstrated behavioral defect. Acceptance reports 40 passing tests; additional read-only probes passed. Database and full-suite verification remain evidence gaps. The workflow cleanup failure is separate from candidate correctness, and an architecture KEEP/SIMPLIFY/REPLACE decision is INCONCLUSIVE without comparable outcomes and verified isolation."
+  },
+  "docs/stage27-verification/evaluation-summary.json": {
+    "A": {
+      "patch_reproduced": true,
+      "external": {
+        "exit_code": 0,
+        "tests": 24,
+        "passed": 24,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 3.8959927558898926
+      },
+      "regression": {
+        "exit_code": 0,
+        "tests": 227,
+        "passed": 227,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.255904912948608
+      },
+      "independent": {
+        "exit_code": 0,
+        "tests": 34,
+        "passed": 34,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 4.313756704330444
+      },
+      "mutations": {
+        "naive": {
+          "exit_code": 1,
+          "tests": 34,
+          "passed": 8,
+          "failed": 26,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 5.98894190788269
+        },
+        "drop-final": {
+          "exit_code": 1,
+          "tests": 34,
+          "passed": 10,
+          "failed": 24,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 6.038446426391602
+        }
+      },
+      "external_mutations": {
+        "naive": {
+          "exit_code": 1,
+          "tests": 24,
+          "passed": 6,
+          "failed": 18,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 4.839848041534424
+        },
+        "drop-final": {
+          "exit_code": 1,
+          "tests": 24,
+          "passed": 9,
+          "failed": 15,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 5.457060813903809
+        }
+      }
+    },
+    "B": {
+      "patch_reproduced": true,
+      "external": {
+        "exit_code": 0,
+        "tests": 24,
+        "passed": 24,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 3.689915895462036
+      },
+      "regression": {
+        "exit_code": 0,
+        "tests": 217,
+        "passed": 217,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 6.961513996124268
+      },
+      "independent": {
+        "exit_code": 0,
+        "tests": 40,
+        "passed": 40,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 4.339783668518066
+      },
+      "mutations": {
+        "naive": {
+          "exit_code": 1,
+          "tests": 40,
+          "passed": 4,
+          "failed": 36,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 7.138220548629761
+        },
+        "drop-final": {
+          "exit_code": 1,
+          "tests": 40,
+          "passed": 12,
+          "failed": 28,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 6.814446687698364
+        }
+      },
+      "external_mutations": {
+        "naive": {
+          "exit_code": 1,
+          "tests": 24,
+          "passed": 6,
+          "failed": 18,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 5.425029993057251
+        },
+        "drop-final": {
+          "exit_code": 1,
+          "tests": 24,
+          "passed": 9,
+          "failed": 15,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 5.262485504150391
+        }
+      }
+    }
+  },
+  "docs/stage27-verification/final-integrity.json": {
+    "original_unchanged": true,
+    "frozen_artifacts_unchanged": {
+      "task-contract.md": true,
+      "review-rubric.md": true,
+      "test_external_acceptance.py": true,
+      "requirements.txt": true,
+      "experiment.py": true
+    },
+    "framework_unchanged": true
+  }
+}

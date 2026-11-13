@@ -1,0 +1,20 @@
+{
+  "authority": "Controller",
+  "original_criteria_preserved": true,
+  "canonical_sha256": "61a454c99f5a83639485c18ab7b7b8407416f43d9a3af34dce10cf0a56b18e58",
+  "proposal_sha256": "056e165e8d97bdf070c48daede0c0d25a8a6a4e136d9203ff5740ca3d143c2c6",
+  "accepted_clarification_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "accepted_risk_indices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "scope_constraints_and_interface_unchanged": true,
+  "review_basis": "Primary Controller reviewed each selected item against original rules 1-10; only in-scope rule interactions and compact contract risks selected. No added requirement/code/algorithm."
+}

@@ -1,0 +1,63 @@
+{
+  "mission": "Separate Steam Store bronze load preparation from ordered persistence, preserving existing observable behavior.",
+  "source_commit": "0653617666399590c853c39f08e8cf97c9eca45c",
+  "primary_file": "src/load.py",
+  "authorized_files": [
+    "src/load.py",
+    "src/transform.py",
+    "tests/test_refactoring.py"
+  ],
+  "unit_test_files": [
+    "tests/test_load.py",
+    "tests/test_transform.py",
+    "tests/test_main.py",
+    "tests/test_extract.py",
+    "tests/test_migrations.py"
+  ],
+  "public_interface": "Existing authorized interfaces (preserve parameter names, defaults, annotations and import paths):\nsrc.load.load_steam_store_file(file_path: Path, snapshot_date: str) -> str\nsrc.load._load_steam_store_ok(envelope: dict[str, Any], snapshot_date: str, file_path: Path) -> str\nsrc.load._load_steam_store_redirected(envelope: dict[str, Any], appid: int, snapshot_date: str) -> str\nsrc.load.load_data(source: str, file_path: str | Path, snapshot_date: str | None = None) -> int | str | None\nsrc.load.load_transformed_record(cursor, transformed_record: dict[str, Any] | None, snapshot_date: str, fetched_at: str | None = None) -> None\nsrc.load.mark_steam_store_enrichment_result(appid: int, outcome: str, error_message: str | None = None, redirect_to: int | None = None, fetched_at: str | None = None, is_replay: bool = False) -> None\nsrc.transform.parse_steam_store_envelope(raw_data: dict[str, Any]) -> dict[str, Any]\nsrc.transform.transform_steam_store_game(raw_response: dict[str, Any]) -> dict[str, Any] | None\nsrc.load.STEAM_STORE_OUTCOME_MESSAGES equals {'refused': 'Steam Store returned success=false', 'not_found': 'No Steam Store response wrapper found'}.\nPublic test seams: get_db_connection and load_transformed_record in src.load may be patched to observe effects; mark_steam_store_enrichment_result may be patched to observe exact forwarded arguments. No private new helper is an acceptance dependency.\n",
+  "behavior_contract": [
+    "Legacy input remains unconditionally normalized to outcome='ok' with unknown fetched_at; unknown explicit envelope versions raise the existing ValueError. An unparseable ok body with a truthy envelope appid is marked refused with the exact existing message; without that appid it raises the existing path-bearing legacy ValueError before opening a connection.",
+    "transform_steam_store_game continues selecting the first response wrapper and using data.steam_appid as the game identifier. Preserve current truthiness checks, coercions, missing-key failures and malformed-body exceptions; introduce no validation or normalization that changes accepted inputs.",
+    "For non-ok outcomes, a falsy requested appid returns the original outcome without transformation or database access. Redirects load parsable target metadata first, then mark the requested appid using envelope.redirect_to even when it differs from the body's appid; an unparseable target still permits the redirect mark.",
+    "Preserve exact error strings and branch-specific truncation: ordinary non-ok messages are sliced to 1000 characters; the redirected message and invalid-ok message are not. Unknown outcomes with a truthy appid still reach mark_steam_store_enrichment_result and its existing rejection.",
+    "All file-derived outcome marks pass is_replay=True and forward the existing fetched_at value, including transport errors. Preserve timestamp-based counter comparisons, answer-triggered error resets, legacy NULL replay undercounting and SQL updates to load-time timestamps.",
+    "Keep successful metadata writes, genre writes, metadata precedence, generated success behavior and snapshot handling unchanged. Redirect target persistence and requested-appid marking remain separate transactions in that order; failure of target persistence prevents marking, while failure of marking may leave the target committed.",
+    "Non-ok no-appid early return happens before body transformation, including malformed redirect body. Falsy values include missing, None, 0, false and empty string. Missing outcome on an explicit envelope raises KeyError before database access.",
+    "Ordinary transport errors use envelope.error or \"Steam Store transport error\"; refused/not_found use the exported messages, unknown outcomes use \"Steam Store outcome: {outcome}\". Only this ordinary non-ok path slices to 1000 characters. Truthy nonsliceable transport error raises TypeError before the mark. Redirect diagnostic is \"Steam Store redirected appid {appid} to {redirect_to}\" with no truncation. Invalid ok mark diagnostic is \"ok envelope did not yield a parsable game\".",
+    "Legacy invalid ok raises ValueError with exact message: Legacy Steam Store file {file_path} was read as outcome 'ok' (the unconditional legacy fallback) but its body did not yield a parsable game -- most likely an embedded success: false that the legacy shape cannot distinguish from a real ok. Refusing to silently drop it.",
+    "Transformer: falsy body returns None; first wrapper by insertion order alone is inspected; falsy success returns None; data.steam_appid uses int conversion with 0 fallback and nonpositive returns None. Missing name becomes None. Developer/publisher lists join with comma-space, empty lists become None. release_date is the embedded date string, header_image/is_free preserved, genres filter falsy descriptions but retain order/duplicates, source steam_store, snapshot None. Nonempty malformed shapes propagate native AttributeError/TypeError rather than new validation. Inputs are not mutated.",
+    "Unknown explicit envelope versions raise the original ValueError; valid explicit envelopes are returned unchanged by the parser (same object). Non-dict legacy inputs normalize to a legacy ok envelope and then retain native transformer behavior. No bronze rewrite.",
+    "Database counters: fresh answered mark increments attempts, resets errors to 0; transport mark increments errors only. File replay passes is_replay=True and fetched_at exactly, so same fetch leaves counters unchanged, while load timestamps may advance. Existing seeded row with NULL fetched_at and legacy success retains attempts=0. Positive appid and markable-outcome validation remains in the original mark function. Unknown outcome with truthy appid raises its original ValueError.",
+    "Redirect writes use body steam_appid for target, envelope redirect_to for the requested-row pointer; requested metadata is never replaced by target metadata. Target success commits before the separate requested-appid mark; target-write failure prevents marking and rolls back its transaction, mark failure leaves committed target. Empty/unparseable target skips target connection and still marks requested row. No explicit commit is added to these connection context managers.",
+    "All non-Steam-Store loaders, CLI dispatch, SQL persistence statements, schemas/migrations, metadata precedence and existing parser/transformer functions remain unchanged."
+  ],
+  "acceptance_criteria": [
+    "Useful separation of outcome interpretation from ordered database effects across the three related Steam Store loader functions; share duplicated successful-record persistence without generic loader infrastructure. Review must substantiate maintainability value.",
+    "Preserve all authorized existing signatures/imports/constants, dispatch results, successful and legacy metadata semantics; unchanged source tests must pass without edits or skips.",
+    "Preserve all five outcomes, unknown-version/unknown-outcome errors, missing/falsy appid early returns, empty/malformed body behavior, first-wrapper selection, exact diagnostics and branch-specific truncation; no added defensive normalization.",
+    "Preserve fetched_at forwarding, is_replay=True for file marks, attempt/error counters including legacy NULL undercount, and answer-driven error resets; assert concrete PostgreSQL values and replay business state.",
+    "Preserve redirect identity separation, record-before-mark ordering, separate transactions and existing partial-success/failure behavior; test actual rollback and committed target on mark failure.",
+    "Independent tests cover all eight regression categories, freeze before candidate exposure, pass unchanged baseline and candidate, and reject predefined deliberate behavior regressions. Criteria and harness cannot be weakened after candidate implementation.",
+    "Implementer runs unit, full PostgreSQL integration (REQUIRE_DB_TESTS=1), and Ruff checks against its final source bytes before handoff; Controller acceptance rechecks exact patch and full suite in contained execution.",
+    "Only src/load.py, src/transform.py and new tests/test_refactoring.py may change. All existing persistence SQL/functions except the three loader adapters are unchanged, no dependencies/migrations/caller changes; original staged/unstaged/untracked checkout preserved, independent read-only Reviewer and cleanup required."
+  ],
+  "constraints": [
+    "No target checkout modification; isolated fixed source only.",
+    "No original test edits, skips, expectation weakening, new dependency or migration.",
+    "No model/network/backend changes, automatic retries or unsandboxed tests.",
+    "No unrelated functions or persistence SQL changes. Preserve private adapter compatibility."
+  ],
+  "controller_decisions": {
+    "public_interface": "Existing authorized interfaces (preserve parameter names, defaults, annotations and import paths):\nsrc.load.load_steam_store_file(file_path: Path, snapshot_date: str) -> str\nsrc.load._load_steam_store_ok(envelope: dict[str, Any], snapshot_date: str, file_path: Path) -> str\nsrc.load._load_steam_store_redirected(envelope: dict[str, Any], appid: int, snapshot_date: str) -> str\nsrc.load.load_data(source: str, file_path: str | Path, snapshot_date: str | None = None) -> int | str | None\nsrc.load.load_transformed_record(cursor, transformed_record: dict[str, Any] | None, snapshot_date: str, fetched_at: str | None = None) -> None\nsrc.load.mark_steam_store_enrichment_result(appid: int, outcome: str, error_message: str | None = None, redirect_to: int | None = None, fetched_at: str | None = None, is_replay: bool = False) -> None\nsrc.transform.parse_steam_store_envelope(raw_data: dict[str, Any]) -> dict[str, Any]\nsrc.transform.transform_steam_store_game(raw_response: dict[str, Any]) -> dict[str, Any] | None\nsrc.load.STEAM_STORE_OUTCOME_MESSAGES equals {'refused': 'Steam Store returned success=false', 'not_found': 'No Steam Store response wrapper found'}.\nPublic test seams: get_db_connection and load_transformed_record in src.load may be patched to observe effects; mark_steam_store_enrichment_result may be patched to observe exact forwarded arguments. No private new helper is an acceptance dependency.\n",
+    "authorized_files": [
+      "src/load.py",
+      "src/transform.py",
+      "tests/test_refactoring.py"
+    ],
+    "source_provenance": "Architect HEAD is the private snapshot commit, not the upstream commit. Controller git archive of the full fixed SHA and every source manifest hash establish upstream provenance; no source discrepancy exists.",
+    "controlled_mutations": [
+      "load_steam_store_file returns incorrect outcome after ordinary execution",
+      "mark_steam_store_enrichment_result forces is_replay=False causing repeated answered fetch overcount"
+    ]
+  }
+}

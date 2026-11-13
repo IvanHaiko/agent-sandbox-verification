@@ -1,0 +1,670 @@
+{
+  "A/evaluation-summary.json": {
+    "patch_reproduced": true,
+    "external": {
+      "exit_code": 0,
+      "tests": 56,
+      "passed": 56,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 5.053341865539551
+    },
+    "regression": {
+      "exit_code": 0,
+      "tests": 281,
+      "passed": 281,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 9.894318103790283
+    },
+    "independent": {
+      "exit_code": 1,
+      "tests": 69,
+      "passed": 67,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 8.624211549758911
+    },
+    "mutations": {
+      "missing-envelope-validation": {
+        "exit_code": 1,
+        "tests": 69,
+        "passed": 66,
+        "failed": 3,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.69954776763916
+      },
+      "rewrite-replay-timestamp": {
+        "exit_code": 1,
+        "tests": 69,
+        "passed": 63,
+        "failed": 6,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.306702613830566
+      },
+      "commit-partial-file": {
+        "exit_code": 1,
+        "tests": 69,
+        "passed": 64,
+        "failed": 5,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.967312812805176
+      }
+    },
+    "external_mutations": {
+      "missing-envelope-validation": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 54,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 6.892143964767456
+      },
+      "rewrite-replay-timestamp": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 53,
+        "failed": 3,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.75416898727417
+      },
+      "commit-partial-file": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 54,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.089271783828735
+      }
+    }
+  },
+  "A/permission-probe.json": {
+    "exit_code": 0,
+    "stdout": "{\"own_candidate\": {\"readable\": true, \"writable_open_no_bytes\": true}, \"peer_tester\": {\"readable\": true, \"writable_open_no_bytes\": true}, \"held_out_suite\": {\"readable\": false, \"readable_errno\": 2, \"writable_open_no_bytes\": false, \"writable_open_no_bytes_errno\": 2}, \"other_configuration\": {\"readable\": false, \"readable_errno\": 2, \"writable_open_no_bytes\": false, \"writable_open_no_bytes_errno\": 2}, \"original_source\": {\"readable\": false, \"readable_errno\": 2, \"writable_open_no_bytes\": false, \"writable_open_no_bytes_errno\": 2}}\n",
+    "stderr": "",
+    "timed_out": false,
+    "owned_process_group_ended": true,
+    "paths": {
+      "own_candidate": {
+        "readable": true,
+        "writable_open_no_bytes": true
+      },
+      "peer_tester": {
+        "readable": true,
+        "writable_open_no_bytes": true
+      },
+      "held_out_suite": {
+        "readable": false,
+        "readable_errno": 2,
+        "writable_open_no_bytes": false,
+        "writable_open_no_bytes_errno": 2
+      },
+      "other_configuration": {
+        "readable": false,
+        "readable_errno": 2,
+        "writable_open_no_bytes": false,
+        "writable_open_no_bytes_errno": 2
+      },
+      "original_source": {
+        "readable": false,
+        "readable_errno": 2,
+        "writable_open_no_bytes": false,
+        "writable_open_no_bytes_errno": 2
+      }
+    },
+    "scope": "Recorded A parent profile, not a claim about unobserved child profiles. O_WRONLY opens never write/truncate.",
+    "all_target_paths_exist": true
+  },
+  "A/results/reviewer-result.json": {
+    "recommendation": "accept",
+    "blockers": [],
+    "findings": [
+      {
+        "id": "shared-mapping-replay-resolved",
+        "criterion": 6,
+        "severity": "info",
+        "description": "The previously identified shared-Twitch-UID replay defect is resolved. The loader persists only each file's final mapping, preserving existing last-game precedence without transient remapping.",
+        "evidence": "candidate/src/load.py:879-888 resolves final store and category mappings before connecting; lines 899-908 skip superseded entries. The added real PostgreSQL test covers identical replay, reversed precedence, and changed metadata on a superseded game. development-checks.json reports passing integration checks.",
+        "already_established_by_acceptance": false
+      },
+      {
+        "id": "independent-precedence-assumption",
+        "criterion": 7,
+        "severity": "info",
+        "description": "The reported independent precedence failure is a harness expectation defect, not a candidate regression. Website precedence applies to matching (store, store_game_id) keys; different Steam identifiers remain separate links.",
+        "evidence": "acceptance.json reports both Steam IDs 222 and 333 where the harness expects only 333. Original and candidate extract_igdb_store_links both key links by (store, str(store_game_id)) and process websites after external_games, preserving committed semantics.",
+        "already_established_by_acceptance": true
+      },
+      {
+        "id": "independent-dispatch-signature-assumption",
+        "criterion": 7,
+        "severity": "info",
+        "description": "The independent dispatch test invokes an unsupported one-argument API. Its failure leaves a runtime evidence gap for supported dispatch rather than demonstrating a candidate defect.",
+        "evidence": "test_independent.py:255 calls load.load_data(path). Both original and candidate require load_data(source, file_path, snapshot_date=None). Candidate lines 923-955 preserve the signature and source == 'igdb' dispatch.",
+        "already_established_by_acceptance": true
+      },
+      {
+        "id": "write-permission-probe",
+        "criterion": 10,
+        "severity": "info",
+        "description": "Filesystem write denial is not enforced for the probed candidate source. This is an environment observation, not an implementation defect.",
+        "evidence": "os.open('review/candidate/src/transform.py', os.O_WRONLY) succeeded; the descriptor was closed without writing bytes. No truncation flags were used and no input was modified.",
+        "already_established_by_acceptance": false
+      }
+    ],
+    "rationale": "No blocking candidate defect remains in the reviewed bundle. Validation covers the specified envelope, game and nested-field cases before connection acquisition, without mutating input. Empty batches avoid connections. File-wide transaction ownership remains intact, and NULL-safe comparisons preserve replay timestamps while allowing changed values to update. Shared mapping resolution fixes the prior collision defect within the permitted scope and preserves public signatures and transformation semantics. Supplied independent results show 67 passes and two failures attributable to incompatible harness assumptions; development evidence reports passing unit, integration and lint checks, including the new collision regression. No additional database execution was performed during this read-only review."
+  },
+  "B/controller-decision.json": {
+    "accepted": false,
+    "workflow_completed": false
+  },
+  "B/evaluation-summary.json": {
+    "patch_reproduced": true,
+    "external": {
+      "exit_code": 0,
+      "tests": 56,
+      "passed": 56,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 5.175451755523682
+    },
+    "regression": {
+      "exit_code": 0,
+      "tests": 303,
+      "passed": 303,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 11.03815507888794
+    },
+    "independent": {
+      "exit_code": 1,
+      "tests": 75,
+      "passed": 74,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 8.55062198638916
+    },
+    "mutations": {
+      "missing-envelope-validation": {
+        "exit_code": 1,
+        "tests": 75,
+        "passed": 73,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 9.923706769943237
+      },
+      "rewrite-replay-timestamp": {
+        "exit_code": 1,
+        "tests": 75,
+        "passed": 69,
+        "failed": 6,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.711450576782227
+      },
+      "commit-partial-file": {
+        "exit_code": 1,
+        "tests": 75,
+        "passed": 71,
+        "failed": 4,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 6.183883905410767
+      }
+    },
+    "external_mutations": {
+      "missing-envelope-validation": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 54,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 5.474431276321411
+      },
+      "rewrite-replay-timestamp": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 53,
+        "failed": 3,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 6.077060699462891
+      },
+      "commit-partial-file": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 54,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 5.557755947113037
+      }
+    }
+  },
+  "B/reviewer-result.json": {
+    "recommendation": "accept",
+    "blockers": [],
+    "findings": [
+      {
+        "id": "F1",
+        "criterion": 7,
+        "severity": "nonblocking",
+        "description": "The independent mapping-precedence assertion conflicts with committed semantics. Websites replace external links with the same store identifier; distinct identifiers remain separate links. This is a test defect, not a candidate regression.",
+        "evidence": "test_independent.py:279 expects Steam identifier 504 as the sole result despite an external link for 502. In-memory execution of both original and candidate transformers produced ['502', '504']. Both persistence implementations retain those distinct unique identities.",
+        "already_established_by_acceptance": false
+      },
+      {
+        "id": "F2",
+        "criterion": 7,
+        "severity": "info",
+        "description": "Detailed execution evidence is missing. The aggregate failure cannot conclusively be attributed to the incompatible assertion, and candidate development checks are not supplied.",
+        "evidence": "acceptance.json reports 74 passed, 1 failed, no errors or skips, but contains no failing test name or traceback. Candidate tests are visible in candidate.patch; their execution results and the database fixtures are absent. Review additionally verified 53 frozen malformed transformer cases in memory without filesystem writes or database access.",
+        "already_established_by_acceptance": true
+      },
+      {
+        "id": "F3",
+        "criterion": 7,
+        "severity": "info",
+        "description": "Write denial is enforced for the requested candidate-source open probe.",
+        "evidence": "One os.open('candidate/src/transform.py', os.O_WRONLY) attempt failed with OSError errno 30, 'Read-only file system'. No truncation flag was used and no bytes were written.",
+        "already_established_by_acceptance": false
+      }
+    ],
+    "rationale": "No concrete candidate defect found against the seven criteria. Validation precedes connection acquisition, empty batches avoid connections, transaction ownership preserves file rollback, and NULL-safe comparisons protect replay timestamps while allowing changes. Mapping semantics, public signatures, helper compatibility and allowed scope are preserved. The independent harness contains an incompatible expectation; the aggregate failure and missing development results remain evidence limitations."
+  },
+  "evaluation-summary.json": {
+    "A": {
+      "patch_reproduced": true,
+      "external": {
+        "exit_code": 0,
+        "tests": 56,
+        "passed": 56,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 5.053341865539551
+      },
+      "regression": {
+        "exit_code": 0,
+        "tests": 281,
+        "passed": 281,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 9.894318103790283
+      },
+      "independent": {
+        "exit_code": 1,
+        "tests": 69,
+        "passed": 67,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 8.624211549758911
+      },
+      "mutations": {
+        "missing-envelope-validation": {
+          "exit_code": 1,
+          "tests": 69,
+          "passed": 66,
+          "failed": 3,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 7.69954776763916
+        },
+        "rewrite-replay-timestamp": {
+          "exit_code": 1,
+          "tests": 69,
+          "passed": 63,
+          "failed": 6,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 7.306702613830566
+        },
+        "commit-partial-file": {
+          "exit_code": 1,
+          "tests": 69,
+          "passed": 64,
+          "failed": 5,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 7.967312812805176
+        }
+      },
+      "external_mutations": {
+        "missing-envelope-validation": {
+          "exit_code": 1,
+          "tests": 56,
+          "passed": 54,
+          "failed": 2,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 6.892143964767456
+        },
+        "rewrite-replay-timestamp": {
+          "exit_code": 1,
+          "tests": 56,
+          "passed": 53,
+          "failed": 3,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 7.75416898727417
+        },
+        "commit-partial-file": {
+          "exit_code": 1,
+          "tests": 56,
+          "passed": 54,
+          "failed": 2,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 7.089271783828735
+        }
+      }
+    },
+    "B": {
+      "patch_reproduced": true,
+      "external": {
+        "exit_code": 0,
+        "tests": 56,
+        "passed": 56,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 5.175451755523682
+      },
+      "regression": {
+        "exit_code": 0,
+        "tests": 303,
+        "passed": 303,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 11.03815507888794
+      },
+      "independent": {
+        "exit_code": 1,
+        "tests": 75,
+        "passed": 74,
+        "failed": 1,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 8.55062198638916
+      },
+      "mutations": {
+        "missing-envelope-validation": {
+          "exit_code": 1,
+          "tests": 75,
+          "passed": 73,
+          "failed": 2,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 9.923706769943237
+        },
+        "rewrite-replay-timestamp": {
+          "exit_code": 1,
+          "tests": 75,
+          "passed": 69,
+          "failed": 6,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 7.711450576782227
+        },
+        "commit-partial-file": {
+          "exit_code": 1,
+          "tests": 75,
+          "passed": 71,
+          "failed": 4,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 6.183883905410767
+        }
+      },
+      "external_mutations": {
+        "missing-envelope-validation": {
+          "exit_code": 1,
+          "tests": 56,
+          "passed": 54,
+          "failed": 2,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 5.474431276321411
+        },
+        "rewrite-replay-timestamp": {
+          "exit_code": 1,
+          "tests": 56,
+          "passed": 53,
+          "failed": 3,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 6.077060699462891
+        },
+        "commit-partial-file": {
+          "exit_code": 1,
+          "tests": 56,
+          "passed": 54,
+          "failed": 2,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 5.557755947113037
+        }
+      }
+    }
+  },
+  "final-integrity.json": {
+    "original_unchanged": true,
+    "framework_unchanged": true,
+    "frozen_unchanged": {
+      "task-contract.md": true,
+      "review-rubric.md": true,
+      "test_external_acceptance.py": true,
+      "requirements.txt": true,
+      "experiment.py": true
+    },
+    "stage27_adapter_unchanged": true
+  },
+  "quality-analysis.json": {
+    "A": {
+      "unchanged_original_regressions": {
+        "passed": 168,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "independent_preexisting_failures": [
+        [
+          "tests.test_stage28_evaluation",
+          "test_compatibility_raw_json_utc_and_link_precedence"
+        ],
+        [
+          "tests.test_stage28_evaluation",
+          "test_load_data_dispatches_igdb_saved_file"
+        ]
+      ],
+      "mutation_incremental_evidence": {
+        "missing-envelope-validation": {
+          "new_failing_independent_cases": [
+            [
+              "tests.test_stage28_evaluation",
+              "test_invalid_envelopes_raise_before_connection[payload5]"
+            ]
+          ],
+          "independent_new_defect_detected": true,
+          "external_defect_demonstrated": true,
+          "external_errors": 0
+        },
+        "rewrite-replay-timestamp": {
+          "new_failing_independent_cases": [
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_igdb_game]"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_igdb_game_store_link]"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_twitch_category]"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_identical_replay_is_null_safe_and_ignores_json_key_order"
+            ]
+          ],
+          "independent_new_defect_detected": true,
+          "external_defect_demonstrated": true,
+          "external_errors": 0
+        },
+        "commit-partial-file": {
+          "new_failing_independent_cases": [
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_igdb_game]"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_igdb_game_store_link]"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_twitch_category]"
+            ]
+          ],
+          "independent_new_defect_detected": true,
+          "external_defect_demonstrated": true,
+          "external_errors": 0
+        }
+      },
+      "distinct_mutations_detected": 3
+    },
+    "B": {
+      "unchanged_original_regressions": {
+        "passed": 168,
+        "failure": 0,
+        "error": 0,
+        "skipped": 0
+      },
+      "independent_preexisting_failures": [
+        [
+          "tests.test_stage28_evaluation",
+          "test_mapping_precedence_raw_json_enums_and_utc_date"
+        ]
+      ],
+      "mutation_incremental_evidence": {
+        "missing-envelope-validation": {
+          "new_failing_independent_cases": [
+            [
+              "tests.test_stage28_evaluation",
+              "test_malformed_envelopes[payload5]"
+            ]
+          ],
+          "independent_new_defect_detected": true,
+          "external_defect_demonstrated": true,
+          "external_errors": 0
+        },
+        "rewrite-replay-timestamp": {
+          "new_failing_independent_cases": [
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_rollback_previous_file_durability_and_saved_retry[upsert_igdb_game]"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_rollback_previous_file_durability_and_saved_retry[upsert_igdb_game_store_link]"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_rollback_previous_file_durability_and_saved_retry[upsert_twitch_category]"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_null_safe_replay_preserves_every_column_and_timestamp"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_twitch_mapping_changes_advance_timestamp_and_links_remap"
+            ]
+          ],
+          "independent_new_defect_detected": true,
+          "external_defect_demonstrated": true,
+          "external_errors": 0
+        },
+        "commit-partial-file": {
+          "new_failing_independent_cases": [
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_rollback_previous_file_durability_and_saved_retry[upsert_igdb_game]"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_rollback_previous_file_durability_and_saved_retry[upsert_igdb_game_store_link]"
+            ],
+            [
+              "tests.test_stage28_evaluation",
+              "test_file_rollback_previous_file_durability_and_saved_retry[upsert_twitch_category]"
+            ]
+          ],
+          "independent_new_defect_detected": true,
+          "external_defect_demonstrated": true,
+          "external_errors": 0
+        }
+      },
+      "distinct_mutations_detected": 3
+    },
+    "B_repair_validation_diagnostic": {
+      "records": [
+        {
+          "record": "implementer1-execution.json",
+          "native_exit": 0,
+          "shutdown_confirmed": true,
+          "resolved_model": "gpt-6.1-sol",
+          "changed_files": [
+            "handoff/implementation.json",
+            "src/transform.py",
+            "tests/test_igdb_reliability.py"
+          ],
+          "all_changes_authorized": true,
+          "target_changed": false,
+          "original_rejection_preserved": true,
+          "classification": "Stage28 adapter reuse of fixed-target delta validation rejects legitimate transformer-only repairs; not an unauthorized mutation"
+        },
+        {
+          "record": "implementer2-execution.json",
+          "native_exit": 0,
+          "shutdown_confirmed": true,
+          "resolved_model": "gpt-6.1-sol",
+          "changed_files": [
+            "handoff/implementation.json",
+            "src/transform.py",
+            "tests/test_igdb_reliability.py"
+          ],
+          "all_changes_authorized": true,
+          "target_changed": false,
+          "original_rejection_preserved": true,
+          "classification": "Stage28 adapter reuse of fixed-target delta validation rejects legitimate transformer-only repairs; not an unauthorized mutation"
+        }
+      ],
+      "full_archived_candidate_validation": {
+        "valid": true
+      },
+      "original_decision_unchanged": true,
+      "diagnostic_only": true,
+      "new_model_calls": 0,
+      "limit": "Checks archive syntax/handoff/scope, not a substitute for original role validation or functional tests."
+    }
+  }
+}

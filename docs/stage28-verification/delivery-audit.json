@@ -1,0 +1,41 @@
+{
+  "at": 1791539627.834168,
+  "checks": {
+    "original_unchanged": true,
+    "framework_unchanged": true,
+    "frozen_inputs_unchanged": true,
+    "reused_stage27_unchanged": true,
+    "owned_recorded_roots_removed": true,
+    "postgres_pid_absent": true,
+    "runtime_removed": true,
+    "B_original_failed_decision_preserved": true,
+    "A_patch_reproduced": true,
+    "A_external_passed": true,
+    "A_original_regressions_passed": true,
+    "A_three_mutations_detected": true,
+    "A_mutation_defects_demonstrated": true,
+    "A_test_freeze_preserved": true,
+    "A_public_signatures_preserved": true,
+    "B_patch_reproduced": true,
+    "B_external_passed": true,
+    "B_original_regressions_passed": true,
+    "B_three_mutations_detected": true,
+    "B_mutation_defects_demonstrated": true,
+    "B_test_freeze_preserved": true,
+    "B_public_signatures_preserved": true
+  },
+  "all_checks_passed": true,
+  "architecture_recommendation": "INCONCLUSIVE",
+  "clean_independent_acceptance": false,
+  "owned_recorded_roots": [
+    "/home/ivan/codex-role-_sc3jivy",
+    "/home/ivan/codex-role-jynbpc_s",
+    "/home/ivan/codex-role-l2xhjzwc",
+    "/home/ivan/codex-role-lxoxuhl4",
+    "/home/ivan/codex-role-u4u6179g",
+    "/home/ivan/codex-role-x6e74p1l",
+    "/home/ivan/codex-role-za4a819g",
+    "/home/ivan/codex-role-zf0o352_"
+  ],
+  "report_sha256": "452696e663d3c783b22b2796fdef8c4b75fffb5984a15e3dad1a28f852ffdf3a"
+}

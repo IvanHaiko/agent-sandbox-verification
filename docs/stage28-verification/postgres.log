@@ -1,0 +1,332 @@
+2026-10-09 11:09:38.042 CEST [626] LOG:  starting PostgreSQL 18.6 (Ubuntu 18.6-0ubuntu0.26.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0, 64-bit
+2026-10-09 11:09:38.045 CEST [626] LOG:  listening on Unix socket "/home/ivan/codex-role-l2xhjzwc/socket/.s.PGSQL.55425"
+2026-10-09 11:09:38.055 CEST [632] LOG:  database system was shut down at 2026-10-09 11:09:37 CEST
+2026-10-09 11:09:38.063 CEST [626] LOG:  database system is ready to accept connections
+2026-10-09 11:09:47.350 CEST [1017] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 11:09:47.350 CEST [1017] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 11:09:47.350 CEST [1017] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 11:09:47.369 CEST [1019] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 11:09:47.369 CEST [1019] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 11:09:47.369 CEST [1019] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 11:09:47.394 CEST [1021] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 11:09:47.394 CEST [1021] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 11:09:47.3921, 2026-10-09 11:09:47.3921, probably_fine, null, 0, 0, f, null).
+2026-10-09 11:09:47.394 CEST [1021] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 11:09:47.499 CEST [1031] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 11:09:47.499 CEST [1031] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 11:09:47.499 CEST [1031] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 11:09:47.521 CEST [1033] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 11:09:47.521 CEST [1033] DETAIL:  Failing row contains (1, 2026-10-09 11:09:47.520357, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 11:09:47.521 CEST [1033] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 11:09:47.551 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:09:47.594 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 3 SLRU buffers; 1 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.003 s, total=0.044 s; sync files=5, longest=0.001 s, average=0.001 s; distance=6952 kB, estimate=6952 kB; lsn=0/1E2FF80, redo lsn=0/1E2FF28
+2026-10-09 11:11:01.720 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:11:01.738 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.004 s, sync=0.003 s, total=0.018 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5009 kB, estimate=6758 kB; lsn=0/2314760, redo lsn=0/2314708
+2026-10-09 11:16:01.838 CEST [630] LOG:  checkpoint starting: time
+2026-10-09 11:16:06.189 CEST [630] LOG:  checkpoint complete: wrote 43 buffers (0.3%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=4.323 s, sync=0.011 s, total=4.351 s; sync files=11, longest=0.005 s, average=0.001 s; distance=326 kB, estimate=6115 kB; lsn=0/2366210, redo lsn=0/2366180
+2026-10-09 11:17:41.530 CEST [2705] ERROR:  division by zero
+2026-10-09 11:17:41.530 CEST [2705] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:17:41.594 CEST [2714] ERROR:  division by zero
+2026-10-09 11:17:41.594 CEST [2714] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:17:41.663 CEST [2723] ERROR:  division by zero
+2026-10-09 11:17:41.663 CEST [2723] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:17:41.696 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:17:41.716 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.006 s, total=0.021 s; sync files=4, longest=0.005 s, average=0.002 s; distance=5221 kB, estimate=6025 kB; lsn=0/287F5E8, redo lsn=0/287F590
+2026-10-09 11:17:54.369 CEST [2835] ERROR:  division by zero
+2026-10-09 11:17:54.369 CEST [2835] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:17:54.435 CEST [2844] ERROR:  division by zero
+2026-10-09 11:17:54.435 CEST [2844] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:17:54.501 CEST [2853] ERROR:  division by zero
+2026-10-09 11:17:54.501 CEST [2853] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:17:54.535 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:17:54.547 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.003 s, total=0.013 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5221 kB, estimate=5945 kB; lsn=0/2D98C18, redo lsn=0/2D98BC0
+2026-10-09 11:18:09.259 CEST [2965] ERROR:  division by zero
+2026-10-09 11:18:09.259 CEST [2965] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:18:09.322 CEST [2974] ERROR:  division by zero
+2026-10-09 11:18:09.322 CEST [2974] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:18:09.381 CEST [2983] ERROR:  division by zero
+2026-10-09 11:18:09.381 CEST [2983] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:18:10.810 CEST [3139] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 11:18:10.810 CEST [3139] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 11:18:10.810 CEST [3139] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 11:18:10.828 CEST [3141] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 11:18:10.828 CEST [3141] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 11:18:10.828 CEST [3141] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 11:18:10.850 CEST [3143] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 11:18:10.850 CEST [3143] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 11:18:10.848152, 2026-10-09 11:18:10.848152, probably_fine, null, 0, 0, f, null).
+2026-10-09 11:18:10.850 CEST [3143] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 11:18:10.972 CEST [3153] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 11:18:10.972 CEST [3153] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 11:18:10.972 CEST [3153] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 11:18:11.009 CEST [3155] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 11:18:11.009 CEST [3155] DETAIL:  Failing row contains (1, 2026-10-09 11:18:11.008202, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 11:18:11.009 CEST [3155] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 11:18:11.054 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:18:11.077 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.003 s, sync=0.004 s, total=0.023 s; sync files=4, longest=0.003 s, average=0.001 s; distance=7362 kB, estimate=7362 kB; lsn=0/34C9568, redo lsn=0/34C9510
+2026-10-09 11:19:05.271 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:19:05.291 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.002 s, total=0.020 s; sync files=4, longest=0.001 s, average=0.001 s; distance=5116 kB, estimate=7137 kB; lsn=0/39C8578, redo lsn=0/39C8520
+2026-10-09 11:22:57.705 CEST [3853] ERROR:  division by zero
+2026-10-09 11:22:57.705 CEST [3853] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:22:57.762 CEST [3862] ERROR:  division by zero
+2026-10-09 11:22:57.762 CEST [3862] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:22:57.823 CEST [3871] ERROR:  division by zero
+2026-10-09 11:22:57.823 CEST [3871] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:22:57.927 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:22:57.941 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.003 s, total=0.014 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5271 kB, estimate=6951 kB; lsn=0/3EEE3B0, redo lsn=0/3EEE358
+2026-10-09 11:23:07.359 CEST [3993] ERROR:  division by zero
+2026-10-09 11:23:07.359 CEST [3993] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:23:07.418 CEST [4002] ERROR:  division by zero
+2026-10-09 11:23:07.418 CEST [4002] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:23:07.478 CEST [4011] ERROR:  division by zero
+2026-10-09 11:23:07.478 CEST [4011] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:23:08.850 CEST [4179] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 11:23:08.850 CEST [4179] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 11:23:08.850 CEST [4179] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 11:23:08.869 CEST [4181] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 11:23:08.869 CEST [4181] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 11:23:08.869 CEST [4181] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 11:23:08.890 CEST [4183] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 11:23:08.890 CEST [4183] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 11:23:08.888889, 2026-10-09 11:23:08.888889, probably_fine, null, 0, 0, f, null).
+2026-10-09 11:23:08.890 CEST [4183] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 11:23:08.994 CEST [4193] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 11:23:08.994 CEST [4193] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 11:23:08.994 CEST [4193] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 11:23:09.012 CEST [4195] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 11:23:09.012 CEST [4195] DETAIL:  Failing row contains (1, 2026-10-09 11:23:09.011977, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 11:23:09.012 CEST [4195] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 11:23:09.039 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:23:09.058 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.003 s, sync=0.003 s, total=0.019 s; sync files=4, longest=0.002 s, average=0.001 s; distance=7481 kB, estimate=7481 kB; lsn=0/463CAC8, redo lsn=0/463CA70
+2026-10-09 11:23:56.417 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:23:56.437 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.003 s, total=0.020 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5116 kB, estimate=7245 kB; lsn=0/4B3BD68, redo lsn=0/4B3BD10
+2026-10-09 11:28:56.446 CEST [630] LOG:  checkpoint starting: time
+2026-10-09 11:28:56.790 CEST [630] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.108 s, sync=0.226 s, total=0.345 s; sync files=160, longest=0.004 s, average=0.002 s; distance=2 kB, estimate=6520 kB; lsn=0/4FF89F0, redo lsn=0/4B3C618
+2026-10-09 11:28:58.409 CEST [5169] ERROR:  division by zero
+2026-10-09 11:28:58.409 CEST [5169] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:28:58.534 CEST [5178] ERROR:  division by zero
+2026-10-09 11:28:58.534 CEST [5178] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:28:58.644 CEST [5187] ERROR:  division by zero
+2026-10-09 11:28:58.644 CEST [5187] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:28:58.750 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:28:58.766 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.003 s, sync=0.003 s, total=0.016 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5074 kB, estimate=6376 kB; lsn=0/5031188, redo lsn=0/5031130
+2026-10-09 11:29:27.710 CEST [5267] ERROR:  division by zero
+2026-10-09 11:29:27.710 CEST [5267] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:29:27.829 CEST [5276] ERROR:  division by zero
+2026-10-09 11:29:27.829 CEST [5276] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:29:27.939 CEST [5285] ERROR:  division by zero
+2026-10-09 11:29:27.939 CEST [5285] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:29:29.814 CEST [5441] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 11:29:29.814 CEST [5441] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 11:29:29.814 CEST [5441] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 11:29:29.857 CEST [5443] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 11:29:29.857 CEST [5443] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 11:29:29.857 CEST [5443] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 11:29:29.902 CEST [5445] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 11:29:29.902 CEST [5445] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 11:29:29.899838, 2026-10-09 11:29:29.899838, probably_fine, null, 0, 0, f, null).
+2026-10-09 11:29:29.902 CEST [5445] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 11:29:30.103 CEST [5455] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 11:29:30.103 CEST [5455] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 11:29:30.103 CEST [5455] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 11:29:30.139 CEST [5457] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 11:29:30.139 CEST [5457] DETAIL:  Failing row contains (1, 2026-10-09 11:29:30.138365, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 11:29:30.139 CEST [5457] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 11:29:30.187 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:29:30.201 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.002 s, total=0.015 s; sync files=4, longest=0.002 s, average=0.001 s; distance=7221 kB, estimate=7221 kB; lsn=0/573E7A8, redo lsn=0/573E750
+2026-10-09 11:29:57.621 CEST [5538] ERROR:  division by zero
+2026-10-09 11:29:57.621 CEST [5538] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:29:57.686 CEST [5547] ERROR:  division by zero
+2026-10-09 11:29:57.686 CEST [5547] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:29:57.743 CEST [5556] ERROR:  division by zero
+2026-10-09 11:29:57.743 CEST [5556] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:29:57.829 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:29:57.843 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.004 s, total=0.014 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5122 kB, estimate=7011 kB; lsn=0/5C3F298, redo lsn=0/5C3F240
+2026-10-09 11:30:24.312 CEST [5738] ERROR:  division by zero
+2026-10-09 11:30:24.312 CEST [5738] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:30:24.383 CEST [5747] ERROR:  division by zero
+2026-10-09 11:30:24.383 CEST [5747] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:30:24.444 CEST [5756] ERROR:  division by zero
+2026-10-09 11:30:24.444 CEST [5756] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:30:24.930 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:30:24.945 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.003 s, sync=0.003 s, total=0.016 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5350 kB, estimate=6845 kB; lsn=0/6178D10, redo lsn=0/6178CB8
+2026-10-09 11:30:32.172 CEST [5906] ERROR:  division by zero
+2026-10-09 11:30:32.172 CEST [5906] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:30:32.248 CEST [5915] ERROR:  division by zero
+2026-10-09 11:30:32.248 CEST [5915] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:30:32.317 CEST [5924] ERROR:  division by zero
+2026-10-09 11:30:32.317 CEST [5924] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:30:34.192 CEST [6150] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 11:30:34.192 CEST [6150] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 11:30:34.192 CEST [6150] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 11:30:34.216 CEST [6152] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 11:30:34.216 CEST [6152] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 11:30:34.216 CEST [6152] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 11:30:34.238 CEST [6154] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 11:30:34.238 CEST [6154] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 11:30:34.237005, 2026-10-09 11:30:34.237005, probably_fine, null, 0, 0, f, null).
+2026-10-09 11:30:34.238 CEST [6154] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 11:30:34.392 CEST [6164] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 11:30:34.392 CEST [6164] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 11:30:34.392 CEST [6164] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 11:30:34.416 CEST [6166] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 11:30:34.416 CEST [6166] DETAIL:  Failing row contains (1, 2026-10-09 11:30:34.415789, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 11:30:34.416 CEST [6166] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 11:30:34.445 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:30:34.464 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.003 s, total=0.019 s; sync files=4, longest=0.002 s, average=0.001 s; distance=7505 kB, estimate=7505 kB; lsn=0/68CD380, redo lsn=0/68CD328
+2026-10-09 11:35:06.747 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:35:06.773 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 2 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.007 s, sync=0.005 s, total=0.027 s; sync files=4, longest=0.003 s, average=0.001 s; distance=5300 kB, estimate=7285 kB; lsn=0/6DFA660, redo lsn=0/6DFA608
+2026-10-09 11:36:15.759 CEST [7416] ERROR:  division by zero
+2026-10-09 11:36:15.759 CEST [7416] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:36:15.893 CEST [7425] ERROR:  division by zero
+2026-10-09 11:36:15.893 CEST [7425] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:36:16.020 CEST [7434] ERROR:  division by zero
+2026-10-09 11:36:16.020 CEST [7434] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:36:16.772 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:36:16.796 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.004 s, sync=0.005 s, total=0.024 s; sync files=4, longest=0.003 s, average=0.002 s; distance=5397 kB, estimate=7096 kB; lsn=0/733FE38, redo lsn=0/733FDE0
+2026-10-09 11:36:36.684 CEST [7635] ERROR:  division by zero
+2026-10-09 11:36:36.684 CEST [7635] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:36:36.796 CEST [7644] ERROR:  division by zero
+2026-10-09 11:36:36.796 CEST [7644] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:36:36.915 CEST [7653] ERROR:  division by zero
+2026-10-09 11:36:36.915 CEST [7653] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:36:37.664 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:36:37.678 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.003 s, total=0.014 s; sync files=4, longest=0.001 s, average=0.001 s; distance=5398 kB, estimate=6926 kB; lsn=0/7885698, redo lsn=0/7885640
+2026-10-09 11:36:48.585 CEST [7813] ERROR:  division by zero
+2026-10-09 11:36:48.585 CEST [7813] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:36:48.654 CEST [7822] ERROR:  division by zero
+2026-10-09 11:36:48.654 CEST [7822] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:36:48.724 CEST [7831] ERROR:  division by zero
+2026-10-09 11:36:48.724 CEST [7831] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:36:51.619 CEST [8057] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 11:36:51.619 CEST [8057] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 11:36:51.619 CEST [8057] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 11:36:51.664 CEST [8059] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 11:36:51.664 CEST [8059] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 11:36:51.664 CEST [8059] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 11:36:51.708 CEST [8061] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 11:36:51.708 CEST [8061] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 11:36:51.705695, 2026-10-09 11:36:51.705695, probably_fine, null, 0, 0, f, null).
+2026-10-09 11:36:51.708 CEST [8061] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 11:36:51.837 CEST [8071] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 11:36:51.837 CEST [8071] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 11:36:51.837 CEST [8071] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 11:36:51.881 CEST [8073] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 11:36:51.881 CEST [8073] DETAIL:  Failing row contains (1, 2026-10-09 11:36:51.879033, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 11:36:51.881 CEST [8073] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 11:36:51.937 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:36:51.965 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.004 s, total=0.028 s; sync files=4, longest=0.002 s, average=0.001 s; distance=7555 kB, estimate=7555 kB; lsn=0/7FE6598, redo lsn=0/7FE6540
+2026-10-09 11:37:29.066 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:37:29.088 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.004 s, sync=0.004 s, total=0.023 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5302 kB, estimate=7330 kB; lsn=0/8513F20, redo lsn=0/8513EC8
+2026-10-09 11:39:27.880 CEST [9343] ERROR:  division by zero
+2026-10-09 11:39:27.880 CEST [9343] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:39:27.947 CEST [9352] ERROR:  division by zero
+2026-10-09 11:39:27.947 CEST [9352] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:39:28.064 CEST [9361] ERROR:  division by zero
+2026-10-09 11:39:28.064 CEST [9361] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:39:28.953 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:39:28.968 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.003 s, total=0.015 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5399 kB, estimate=7137 kB; lsn=0/8A59CC8, redo lsn=0/8A59C70
+2026-10-09 11:39:39.143 CEST [9544] ERROR:  division by zero
+2026-10-09 11:39:39.143 CEST [9544] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:39:39.213 CEST [9553] ERROR:  division by zero
+2026-10-09 11:39:39.213 CEST [9553] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:39:39.277 CEST [9562] ERROR:  division by zero
+2026-10-09 11:39:39.277 CEST [9562] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:39:41.403 CEST [9788] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 11:39:41.403 CEST [9788] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 11:39:41.403 CEST [9788] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 11:39:41.426 CEST [9790] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 11:39:41.426 CEST [9790] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 11:39:41.426 CEST [9790] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 11:39:41.478 CEST [9792] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 11:39:41.478 CEST [9792] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 11:39:41.474428, 2026-10-09 11:39:41.474428, probably_fine, null, 0, 0, f, null).
+2026-10-09 11:39:41.478 CEST [9792] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 11:39:41.683 CEST [9802] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 11:39:41.683 CEST [9802] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 11:39:41.683 CEST [9802] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 11:39:41.706 CEST [9804] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 11:39:41.706 CEST [9804] DETAIL:  Failing row contains (1, 2026-10-09 11:39:41.705305, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 11:39:41.706 CEST [9804] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 11:39:41.731 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:39:41.750 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.002 s, sync=0.003 s, total=0.019 s; sync files=4, longest=0.002 s, average=0.001 s; distance=7556 kB, estimate=7556 kB; lsn=0/91BB080, redo lsn=0/91BB028
+2026-10-09 11:40:21.914 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:40:21.936 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.005 s, total=0.023 s; sync files=4, longest=0.003 s, average=0.002 s; distance=5302 kB, estimate=7331 kB; lsn=0/96E88B8, redo lsn=0/96E8860
+2026-10-09 11:44:15.240 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:44:15.256 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.002 s, total=0.016 s; sync files=4, longest=0.001 s, average=0.001 s; distance=5020 kB, estimate=7100 kB; lsn=0/9BCFA28, redo lsn=0/9BCF9D0
+2026-10-09 11:44:22.290 CEST [10873] ERROR:  division by zero
+2026-10-09 11:44:22.290 CEST [10873] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:44:22.382 CEST [10882] ERROR:  division by zero
+2026-10-09 11:44:22.382 CEST [10882] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:44:22.465 CEST [10891] ERROR:  division by zero
+2026-10-09 11:44:22.465 CEST [10891] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:44:24.658 CEST [11058] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 11:44:24.658 CEST [11058] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 11:44:24.658 CEST [11058] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 11:44:24.703 CEST [11060] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 11:44:24.703 CEST [11060] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 11:44:24.703 CEST [11060] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 11:44:24.746 CEST [11062] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 11:44:24.746 CEST [11062] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 11:44:24.744111, 2026-10-09 11:44:24.744111, probably_fine, null, 0, 0, f, null).
+2026-10-09 11:44:24.746 CEST [11062] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 11:44:24.960 CEST [11072] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 11:44:24.960 CEST [11072] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 11:44:24.960 CEST [11072] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 11:44:25.002 CEST [11074] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 11:44:25.002 CEST [11074] DETAIL:  Failing row contains (1, 2026-10-09 11:44:24.999884, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 11:44:25.002 CEST [11074] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 11:44:25.612 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:44:25.651 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.006 s, sync=0.006 s, total=0.039 s; sync files=4, longest=0.003 s, average=0.002 s; distance=7631 kB, estimate=7631 kB; lsn=0/A343660, redo lsn=0/A343608
+2026-10-09 11:44:35.295 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:44:35.307 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.002 s, total=0.013 s; sync files=4, longest=0.001 s, average=0.001 s; distance=5119 kB, estimate=7379 kB; lsn=0/A843440, redo lsn=0/A8433E8
+2026-10-09 11:44:44.155 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:44:44.168 CEST [630] LOG:  checkpoint complete: wrote 11 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.004 s, total=0.013 s; sync files=9, longest=0.002 s, average=0.001 s; distance=5176 kB, estimate=7159 kB; lsn=0/AD514B0, redo lsn=0/AD51458
+2026-10-09 11:44:52.123 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:44:52.140 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.003 s, sync=0.004 s, total=0.017 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5113 kB, estimate=6954 kB; lsn=0/B24FC08, redo lsn=0/B24FBB0
+2026-10-09 11:45:00.702 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:45:00.716 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.003 s, total=0.014 s; sync files=4, longest=0.001 s, average=0.001 s; distance=5103 kB, estimate=6769 kB; lsn=0/B74BB00, redo lsn=0/B74BAA8
+2026-10-09 11:45:08.035 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:45:08.058 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.005 s, total=0.024 s; sync files=4, longest=0.003 s, average=0.002 s; distance=5013 kB, estimate=6594 kB; lsn=0/BC310F0, redo lsn=0/BC31098
+2026-10-09 11:45:16.577 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:45:16.594 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.002 s, sync=0.004 s, total=0.018 s; sync files=4, longest=0.003 s, average=0.001 s; distance=5014 kB, estimate=6436 kB; lsn=0/C1169C8, redo lsn=0/C116970
+2026-10-09 11:45:24.482 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:45:24.503 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.004 s, total=0.022 s; sync files=4, longest=0.003 s, average=0.001 s; distance=5008 kB, estimate=6293 kB; lsn=0/C5FAB50, redo lsn=0/C5FAAF8
+2026-10-09 11:45:31.120 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:45:31.135 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.003 s, total=0.015 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5022 kB, estimate=6166 kB; lsn=0/CAE26A8, redo lsn=0/CAE2650
+2026-10-09 11:45:38.373 CEST [12596] ERROR:  division by zero
+2026-10-09 11:45:38.373 CEST [12596] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:45:38.480 CEST [12605] ERROR:  division by zero
+2026-10-09 11:45:38.480 CEST [12605] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:45:38.551 CEST [12614] ERROR:  division by zero
+2026-10-09 11:45:38.551 CEST [12614] STATEMENT:  SELECT 1 / 0
+2026-10-09 11:45:41.446 CEST [12841] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 11:45:41.446 CEST [12841] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 11:45:41.446 CEST [12841] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 11:45:41.482 CEST [12843] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 11:45:41.482 CEST [12843] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 11:45:41.482 CEST [12843] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 11:45:41.532 CEST [12845] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 11:45:41.532 CEST [12845] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 11:45:41.528406, 2026-10-09 11:45:41.528406, probably_fine, null, 0, 0, f, null).
+2026-10-09 11:45:41.532 CEST [12845] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 11:45:41.725 CEST [12855] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 11:45:41.725 CEST [12855] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 11:45:41.725 CEST [12855] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 11:45:41.753 CEST [12857] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 11:45:41.753 CEST [12857] DETAIL:  Failing row contains (1, 2026-10-09 11:45:41.752183, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 11:45:41.753 CEST [12857] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 11:45:42.408 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:45:42.443 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.006 s, sync=0.005 s, total=0.036 s; sync files=4, longest=0.003 s, average=0.002 s; distance=7817 kB, estimate=7817 kB; lsn=0/D284DE0, redo lsn=0/D284D88
+2026-10-09 11:45:51.851 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:45:51.865 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.003 s, total=0.014 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5304 kB, estimate=7566 kB; lsn=0/D7B2FA8, redo lsn=0/D7B2F50
+2026-10-09 11:46:02.344 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:46:02.369 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.005 s, total=0.025 s; sync files=4, longest=0.003 s, average=0.002 s; distance=5304 kB, estimate=7340 kB; lsn=0/DCE12A0, redo lsn=0/DCE1248
+2026-10-09 11:46:11.184 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:46:11.203 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.003 s, sync=0.004 s, total=0.019 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5299 kB, estimate=7136 kB; lsn=0/E20E0A8, redo lsn=0/E20E050
+2026-10-09 11:46:18.060 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:46:18.074 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.003 s, total=0.014 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5296 kB, estimate=6952 kB; lsn=0/E73A128, redo lsn=0/E73A0D0
+2026-10-09 11:46:24.026 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:46:24.040 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.003 s, total=0.015 s; sync files=4, longest=0.001 s, average=0.001 s; distance=5024 kB, estimate=6759 kB; lsn=0/EC221A0, redo lsn=0/EC22148
+2026-10-09 11:46:30.693 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:46:30.716 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.003 s, sync=0.005 s, total=0.023 s; sync files=4, longest=0.002 s, average=0.002 s; distance=5024 kB, estimate=6585 kB; lsn=0/F10A4A0, redo lsn=0/F10A448
+2026-10-09 11:46:36.924 CEST [630] LOG:  checkpoint starting: immediate force wait
+2026-10-09 11:46:36.937 CEST [630] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.003 s, total=0.013 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5018 kB, estimate=6429 kB; lsn=0/F5F0F28, redo lsn=0/F5F0ED0
+2026-10-09 11:49:15.189 CEST [626] LOG:  received fast shutdown request
+2026-10-09 11:49:15.194 CEST [626] LOG:  aborting any active transactions
+2026-10-09 11:49:15.196 CEST [626] LOG:  background worker "logical replication launcher" (PID 635) exited with exit code 1
+2026-10-09 11:49:15.196 CEST [630] LOG:  shutting down
+2026-10-09 11:49:15.200 CEST [630] LOG:  checkpoint starting: shutdown immediate
+2026-10-09 11:49:15.213 CEST [630] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.002 s, total=0.016 s; sync files=2, longest=0.002 s, average=0.001 s; distance=6 kB, estimate=5786 kB; lsn=0/F5F28C8, redo lsn=0/F5F28C8
+2026-10-09 11:49:15.224 CEST [626] LOG:  database system is shut down

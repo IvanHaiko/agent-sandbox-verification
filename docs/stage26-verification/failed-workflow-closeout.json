@@ -1,0 +1,21 @@
+{
+  "candidate_unchanged": true,
+  "original_unchanged": true,
+  "outstanding_reviewer_completed": true,
+  "project_regression": {
+    "returncode": 0,
+    "tests": 210,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "patch_applies_to_fixed_source": true,
+    "candidate_reproduced_exactly": true,
+    "patch_sha256": "8a2e172a824c20979302aa1b7ab909b181a5fc9290ce2ccab75187360cd89c35",
+    "model_requests": 0,
+    "independent_acceptance": "NOT RUN: Tester design/harness rejected; no frozen executable artifacts"
+  },
+  "independent_acceptance_completed": false,
+  "automatic_retry": false,
+  "purpose": "Finish outstanding read-only review and deterministic patch verification without changing failed experiment outcome",
+  "completed_at": 1791459321.355995
+}

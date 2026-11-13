@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-07",
+  "codex_version": "0.160.1",
+  "login": {
+    "outer_sandbox_account": "Not logged in",
+    "normal_windows_user": "Logged in using ChatGPT",
+    "sign_in_required_for_normal_windows_user": false
+  },
+  "doctor": {
+    "supported_command": "codex doctor --json",
+    "outer_sandbox_overall": "fail",
+    "normal_windows_user_overall": "warning",
+    "normal_windows_user_exit": 0,
+    "native_auth_configured": true,
+    "http_provider_reachable": true,
+    "authenticated_websocket_handshake": true,
+    "sandbox_provisioning": "complete",
+    "sandbox_backend": "elevated"
+  },
+  "windows_sandbox": {
+    "supported_command": "codex sandbox",
+    "launched_outside_stage23_runner": true,
+    "launched_as_normal_windows_user": true,
+    "profile": {
+      "filesystem": {
+        ":minimal": "read",
+        ":workspace_roots": {
+          ".": "read",
+          "add_one.py": "write"
+        },
+        ":tmpdir": "deny",
+        ":slash_tmp": "deny"
+      },
+      "network": {
+        "enabled": false
+      }
+    },
+    "exit_code": 1,
+    "error": "windows sandbox failed: elevated Windows sandbox requires effective `:root` read access",
+    "permissions_broadened": false
+  },
+  "wsl": {
+    "distribution": "Ubuntu",
+    "version": 2,
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "linux_started": true,
+    "native_codex_on_path": false,
+    "native_codex_login_status": "not_queryable_without_cli",
+    "linux_codex_installed_during_check": false
+  },
+  "intended_model": "gpt-6.1-sol",
+  "inference_invocations": 0,
+  "real_inference_started": false,
+  "tiny_smoke": "not_started_prerequisite_blocked",
+  "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage23a-native-smoke",
+  "unchanged_stub_hashes": {
+    "add_one.py": "735cc2fd063f1d039125a6c3d4f2bc7f1290a37793a3aca2a5be0fab47358620"
+  },
+  "stub_is_candidate": false,
+  "final_blocker_class": "WSL/native environment",
+  "preceding_blocker_class": "native Windows sandbox",
+  "stage23a_passed": false,
+  "stage23_ready": false,
+  "credentials_extracted_or_copied": false,
+  "stage23_trials_started": false,
+  "cleanup": {
+    "workspace_removed": true,
+    "native_inference_process_created": false,
+    "diagnostic_commands_exited": true,
+    "passed": true
+  }
+}

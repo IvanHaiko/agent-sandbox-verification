@@ -1,0 +1,95 @@
+{
+  "cases": [
+    {
+      "requirement": "boundaries",
+      "test": "test_boundaries_preserve_original_fragments",
+      "assertion": "Ordered original fragments preserve internal whitespace, trim outer whitespace, omit separators and empty fragments, accept a final statement without a semicolon, and leave input unchanged."
+    },
+    {
+      "requirement": "quotes",
+      "test": "test_standard_strings_and_identifiers",
+      "assertion": "Semicolons and doubled quotes inside standard strings and identifiers do not split; standard-conforming backslashes do not escape closing quotes; UTF-8 and comment-looking text are preserved."
+    },
+    {
+      "requirement": "quotes",
+      "test": "test_escape_strings_preserve_escaped_quotes",
+      "assertion": "Both E and e strings retain escaped quotes, doubled quotes, semicolons and even backslash runs without corrupting statement boundaries."
+    },
+    {
+      "requirement": "quotes",
+      "test": "test_escape_prefix_requires_token_boundary",
+      "assertion": "An E/e embedded in an identifier does not enable backslash escaping; an E prefix after an opening parenthesis does."
+    },
+    {
+      "requirement": "dollars",
+      "test": "test_dollar_quote_delimiters_are_exact",
+      "assertion": "Untagged and valid ASCII tagged dollar quotes preserve bodies with semicolons and apparent comments or quotes; closing tags must match case exactly."
+    },
+    {
+      "requirement": "dollars",
+      "test": "test_dollar_sequences_in_identifiers_and_parameters",
+      "assertion": "Dollar sequences within unquoted identifiers and positional parameters are ordinary text; invalid ASCII tag shapes do not open quotes, while valid tags at token boundaries do."
+    },
+    {
+      "requirement": "comments",
+      "test": "test_nested_comments_and_region_precedence",
+      "assertion": "Nested block comments suppress all internal boundaries and quote-like text; apparent comments inside strings or identifiers do not independently open regions."
+    },
+    {
+      "requirement": "comments",
+      "test": "test_line_comments_end_at_cr_or_lf",
+      "assertion": "Line comments end at CR, LF or CRLF, permit EOF, ignore quote and block-comment openers, and remain preserved when attached to a statement."
+    },
+    {
+      "requirement": "errors",
+      "test": "test_unterminated_regions_raise_value_error",
+      "assertion": "Unterminated standard strings, E/e strings, identifiers, dollar quotes and nested block comments raise ValueError starting with Unterminated SQL, including after an earlier complete statement."
+    },
+    {
+      "requirement": "boundaries",
+      "test": "test_comment_only_fragments_do_not_execute",
+      "assertion": "Empty and comment-only fragments are discarded while original leading and trailing comments on executable statements remain intact."
+    },
+    {
+      "requirement": "persistence",
+      "test": "test_postgres_quotes_functions_do_and_nested_comments",
+      "assertion": "Real PostgreSQL executes UTF-8 quoted semicolons, quoted identifiers, a tagged function body, an untagged DO body and nested comments. Every expected original statement is a separate execute call; the file receives one ledger entry and bootstrap plus file commits."
+    },
+    {
+      "requirement": "persistence",
+      "test": "test_failed_file_rolls_back_but_prior_file_stays_committed",
+      "assertion": "A real SQL error rolls back earlier DML and DDL within its file and omits its ledger row, preserves a prior committed file, stops later files, and permits successful retry after correcting only the failed file."
+    },
+    {
+      "requirement": "errors",
+      "test": "test_whole_file_is_validated_before_execution",
+      "assertion": "Malformed trailing string, identifier, dollar quote or block comment prevents even a valid preceding statement from being sent to PostgreSQL; prior committed migration and ledger persist."
+    },
+    {
+      "requirement": "persistence",
+      "test": "test_replay_skips_filenames_even_when_contents_change",
+      "assertion": "Rerun skips an applied filename even after its contents become lexically invalid; data and complete ledger rows remain identical and only bootstrap is committed."
+    },
+    {
+      "requirement": "persistence",
+      "test": "test_empty_comment_files_recorded_once_and_commit_per_file",
+      "assertion": "Empty and comment-only files each receive one ledger row and one explicit file commit, no executable comment statements, and no additional rows or file commits on replay."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_discovery_is_immediate_sql_only_and_filename_sorted",
+      "assertion": "Only immediate .sql files execute in filename order despite reverse creation order; nested SQL and non-SQL files are ignored, UTF-8 values are correct, and the run emits console summary output."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_public_runner_signature_and_empty_directory",
+      "assertion": "The public runner retains its sole optional migrations_dir parameter with default None, accepts keyword invocation and returns None; an empty directory bootstraps an empty isolated ledger with one explicit commit."
+    }
+  ],
+  "limitations": [
+    "No candidate or old implementation is executed during design; only static syntax and design-to-function matching are checked before freeze.",
+    "Database tests depend on the unchanged test_database fixture and provisioned PostgreSQL. They use a unique schema with no public search_path fallback and verify the fixture public ledger is unchanged.",
+    "The default filesystem migration directory and exact legacy summary wording are not asserted; explicit directory discovery, the public default parameter and presence of console output are covered.",
+    "The unchanged project suite is left to the controller. COPY input, transaction-control statements, psql commands, non-ASCII dollar tags, concurrency and checksum tracking are outside the contract."
+  ]
+}

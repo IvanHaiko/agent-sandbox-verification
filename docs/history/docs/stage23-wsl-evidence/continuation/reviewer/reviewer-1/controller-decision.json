@@ -1,0 +1,9 @@
+{
+  "accepted": true,
+  "candidate_sha256": "341037fe750c3613cde3e1ed429ca8b7834a1b38c7b817e3aa6b825f8807bf27",
+  "frozen_tester_sha256": "adcee1aa3e6818445b7f82612d1b4c25f7196f94f1ad194fcea07b61de197b6d",
+  "reviewer_recommendation": "accept",
+  "failure_category": null,
+  "cleanup_passed": true,
+  "source": "Controller verified artifacts, frozen acceptance and optional Reviewer evidence"
+}

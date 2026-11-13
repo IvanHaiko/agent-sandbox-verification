@@ -1,0 +1,170 @@
+{
+  "task_id": "STAGE20-LABELS",
+  "contract_version": 1,
+  "cases": [
+    {
+      "id": "empty-input",
+      "intent": "Empty input returns an empty list.",
+      "input": "",
+      "expected": []
+    },
+    {
+      "id": "repeated-separators",
+      "intent": "Unescaped commas delimit labels, repeated and boundary separators create empty labels that are discarded, and order is retained.",
+      "input": ",,,A,,B,",
+      "expected": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "id": "quoted-comma-and-adjacency",
+      "intent": "A quoted comma is literal, quote delimiters are removed, and adjacent quoted and unquoted text is concatenated.",
+      "input": "pre\"MiD, X\"POST,z",
+      "expected": [
+        "premid, xpost",
+        "z"
+      ]
+    },
+    {
+      "id": "outside-escapes",
+      "intent": "Outside quotes, escaped commas and quotes are literal, escaped backslashes produce one backslash, and escaped characters are lowercased when applicable.",
+      "input": "A\\,B,C\\\"D,E\\\\F",
+      "expected": [
+        "a,b",
+        "c\"d",
+        "e\\f"
+      ]
+    },
+    {
+      "id": "inside-escapes",
+      "intent": "Inside quotes, backslash preserves the next comma, quote, or backslash literally without changing parsing mode.",
+      "input": "\"A\\,B\\\"C\\\\D\"",
+      "expected": [
+        "a,b\"c\\d"
+      ]
+    },
+    {
+      "id": "all-ordinary-whitespace",
+      "intent": "All six ASCII whitespace characters are ordinary when unquoted and unescaped; boundary runs are trimmed and the internal run collapses to one space.",
+      "input": " \tA \r\n\u000b\f B\t ",
+      "expected": [
+        "a b"
+      ]
+    },
+    {
+      "id": "quoted-boundary-whitespace",
+      "intent": "Quoted spaces and tab at label boundaries are protected and preserved exactly while adjacent text is concatenated and lowercased.",
+      "input": "\"  \"A\"\t\"",
+      "expected": [
+        "  a\t"
+      ]
+    },
+    {
+      "id": "escaped-whitespace-breaks-runs",
+      "intent": "An escaped tab is protected and breaks ordinary-whitespace runs on both sides, each of which independently collapses to one space.",
+      "input": "A  \\\t  B",
+      "expected": [
+        "a \t b"
+      ]
+    },
+    {
+      "id": "quoted-whitespace-breaks-runs",
+      "intent": "A quoted space-tab-space sequence remains exact and separates ordinary-whitespace runs on both sides.",
+      "input": "A  \" \t \"  B",
+      "expected": [
+        "a  \t  b"
+      ]
+    },
+    {
+      "id": "ordinary-whitespace-only-labels",
+      "intent": "Labels containing only ordinary whitespace normalize to empty and are discarded along with separator-created empty labels.",
+      "input": " ,\t\r\n\u000b\f, X,",
+      "expected": [
+        "x"
+      ]
+    },
+    {
+      "id": "empty-quotes-and-protected-space",
+      "intent": "An empty quoted label is discarded, while quoted whitespace and an escaped boundary space are protected nonempty labels.",
+      "input": "\"\", \" \t \",\\ ",
+      "expected": [
+        " \t ",
+        " "
+      ]
+    },
+    {
+      "id": "all-protected-whitespace-kinds",
+      "intent": "Quoted space, tab, CR, LF, vertical tab, and form feed are all preserved exactly, making a whitespace-only label nonempty.",
+      "input": "\" \t\r\n\u000b\f \"",
+      "expected": [
+        " \t\r\n\u000b\f "
+      ]
+    },
+    {
+      "id": "deduplicate-after-normalization",
+      "intent": "Case folding, trimming, and quote removal occur before exact deduplication, with first occurrence order retained.",
+      "input": " Foo ,FOO,\"foo\",fOo, Bar ,BAR",
+      "expected": [
+        "foo",
+        "bar"
+      ]
+    },
+    {
+      "id": "protection-affects-spacing-then-dedup",
+      "intent": "Ordinary double spaces collapse, quoted double spaces remain, and escaped-plus-ordinary spaces produce the same two-space string and are deduplicated.",
+      "input": "A  B,\"A  B\",A\\  B",
+      "expected": [
+        "a b",
+        "a  b"
+      ]
+    },
+    {
+      "id": "ascii-case-and-literals",
+      "intent": "ASCII uppercase letters are lowercased while digits and non-delimiter punctuation are preserved exactly.",
+      "input": "AZ09-_.:/[]{}!@#$%^&*()",
+      "expected": [
+        "az09-_.:/[]{}!@#$%^&*()"
+      ]
+    },
+    {
+      "id": "quotes-toggle-anywhere",
+      "intent": "Quotes may toggle anywhere in a label, including an empty quoted segment, and all segments concatenate.",
+      "input": "a\"BC\"d\"\"E",
+      "expected": [
+        "abcde"
+      ]
+    },
+    {
+      "id": "trailing-unpaired-backslash",
+      "intent": "A trailing unpaired backslash raises ValueError for the whole input even after an otherwise valid label.",
+      "input": "ok,bad\\",
+      "expected": null
+    },
+    {
+      "id": "unclosed-quote-after-valid-label",
+      "intent": "An unclosed quote raises ValueError for the whole input; commas encountered while quoted do not delimit labels.",
+      "input": "ok,\"BAD,still",
+      "expected": null
+    },
+    {
+      "id": "escaped-quote-does-not-close",
+      "intent": "A quote escaped inside quoted mode is literal and cannot close the quote, so reaching end of input raises ValueError.",
+      "input": "\"abc\\\"",
+      "expected": null
+    },
+    {
+      "id": "paired-terminal-backslashes",
+      "intent": "Two terminal backslashes form a valid escape pair and emit one literal backslash rather than causing an error.",
+      "input": "A\\\\",
+      "expected": [
+        "a\\"
+      ]
+    }
+  ],
+  "properties": [
+    "unique_nonempty_labels",
+    "ascii_lowercase"
+  ],
+  "rationale": "These deterministic ASCII-only cases cover delimiter handling, repeated separators, quote toggling and concatenation, escaping in both modes, all ordinary ASCII whitespace kinds, protected whitespace at boundaries and within ordinary runs, ASCII lowercasing, literal preservation, empty-label removal, protected whitespace-only retention, post-normalization exact deduplication, empty input, and both whole-input error conditions. Interaction cases distinguish protected from ordinary spacing and verify that deduplication uses only final normalized strings."
+}

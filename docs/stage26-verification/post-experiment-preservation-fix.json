@@ -1,0 +1,10 @@
+{
+  "change": "Archive both unvalidated Tester outputs before requiring successful artifact validation and before cleanup.",
+  "reason": "This experiment lost rejected Tester bytes, retaining only their hashes and validation failure.",
+  "experiment_rerun": false,
+  "criteria_or_validation_weakened": false,
+  "candidate_changed": false,
+  "test_status": "Small collection-order fix; source inspection only, not claimed as a successful failed-role recovery.",
+  "executed_original_driver": "executed-source/validation/steam_refactoring.py",
+  "current_driver": "../../validation/steam_refactoring.py"
+}

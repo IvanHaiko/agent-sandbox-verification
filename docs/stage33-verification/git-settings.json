@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "git",
+    "-C",
+    "/mnt/c/Users/4ivan/ai-adoption",
+    "config",
+    "--show-origin",
+    "--get-regexp",
+    "^(diff\\.(autoRefreshIndex|external)|core\\.(attributesfile|autocrlf|fsmonitor|splitindex|untrackedcache)|index\\..*|extensions\\..*)$"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "",
+  "no_matching_overrides": true
+}

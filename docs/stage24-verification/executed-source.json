@@ -1,0 +1,50 @@
+[
+  {
+    "path": "agent_system/__init__.py",
+    "sha256": "a3b0b025aa6a802f1e3ea2408018e303d7a264083d8a2668988bedf359367b1f"
+  },
+  {
+    "path": "agent_system/artifacts.py",
+    "sha256": "8984c067f5798e2bdb108a89f2d581fc0dcff9b4fb25c18743a75c514c010f9d"
+  },
+  {
+    "path": "agent_system/controller.py",
+    "sha256": "aa05488d60f02de98e069796339c95892f910abbbb8a2f4e9f12e81085b64049"
+  },
+  {
+    "path": "agent_system/native_codex_linux.py",
+    "sha256": "f62e57bf80765c78813aa988a09a9eecd91cfdb36f67684b4c3ca4e372b30a09"
+  },
+  {
+    "path": "agent_system/roles.py",
+    "sha256": "dd199bb0ee7fa83a2cc0ab77d014358dea575450d62361c88bb01e5033a08de8"
+  },
+  {
+    "path": "validation/__init__.py",
+    "sha256": "a8cf7ba6972f9c05990e72c82ec04b25c32b64d63911fc5c2757aa0c7a70b87f"
+  },
+  {
+    "path": "validation/labels_contract.py",
+    "sha256": "5eb5aa9912715147f52efe9351ac7181aaa707fc4e49c5368b6047ac17c5e8ca"
+  },
+  {
+    "path": "validation/native_workflow.py",
+    "sha256": "bfc8a763b1ea687fd3255f21ead66c5f3077a6124953fb67a28b82f07af760ee"
+  },
+  {
+    "path": "tests/test_acceptance.py",
+    "sha256": "2a552693f54196598e3cb4c4c6e8e1e63366d9d53d40c89146214d11a22a8c62"
+  },
+  {
+    "path": "tests/test_controller.py",
+    "sha256": "89392161ba680238c8b2ed15b2d43f5a20594a2e52a62e23be06f0ea8b69e955"
+  },
+  {
+    "path": "tests/test_native_launcher.py",
+    "sha256": "efa553256896047c107c340c1c555421647a92e499c871ca7c35718a73afecc8"
+  },
+  {
+    "path": "tests/test_roles.py",
+    "sha256": "826f692e36190138fc51213db8c3eea5f2847e19ff7572efa2544a989f493327"
+  }
+]

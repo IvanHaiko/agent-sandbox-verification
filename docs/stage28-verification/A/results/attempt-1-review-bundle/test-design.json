@@ -1,0 +1,69 @@
+{
+  "cases": [
+    {
+      "requirement": "envelope",
+      "test": "test_invalid_envelopes_raise_before_connection",
+      "assertion": "Reject missing, null and non-list data plus non-dict envelopes from transformer and saved-file loader without acquiring a connection."
+    },
+    {
+      "requirement": "records",
+      "test": "test_invalid_records_reject_entire_batch",
+      "assertion": "Reject invalid record objects, ids, range, bool ids and blank/non-string names even after a valid first record; preserve input."
+    },
+    {
+      "requirement": "records",
+      "test": "test_duplicate_game_ids_rejected",
+      "assertion": "Reject duplicate ids for both identical and conflicting records before acquiring a connection."
+    },
+    {
+      "requirement": "nested",
+      "test": "test_malformed_nested_data_rejected_before_connection",
+      "assertion": "Reject invalid nested collection containers, non-dict members, non-string urls and invalid uid types across the entire batch."
+    },
+    {
+      "requirement": "nested",
+      "test": "test_valid_nested_empty_and_unknown_values_preserve_input",
+      "assertion": "Allow absent/null/empty nested values, integer or string uid values and unrecognized urls; preserve caller data and deterministic transformation."
+    },
+    {
+      "requirement": "prevalidation",
+      "test": "test_empty_batch_and_malformed_json_never_connect",
+      "assertion": "Explicit empty batches return zero and malformed JSON retains JSONDecodeError; neither acquires a database connection."
+    },
+    {
+      "requirement": "atomicity",
+      "test": "test_file_failure_rolls_back_prior_updates_and_retry_is_durable",
+      "assertion": "Inject failure after the second write through each public persistence seam. All prior-row updates and new rows roll back, earlier files stay durable, and retrying the unchanged saved file succeeds with stable counts."
+    },
+    {
+      "requirement": "replay",
+      "test": "test_identical_replay_is_null_safe_and_ignores_json_key_order",
+      "assertion": "Across separate committed transactions, identical records containing SQL NULLs and reordered nested JSON keys preserve every persisted value and all game/category/link timestamps."
+    },
+    {
+      "requirement": "replay",
+      "test": "test_changed_metadata_and_mapping_advance_timestamps_without_deletion",
+      "assertion": "Changed metadata advances game timestamps, remapped categories advance category timestamps, store identifiers retain unique remapping semantics, and omitted links/categories remain present."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_compatibility_raw_json_utc_and_link_precedence",
+      "assertion": "Persist verbatim names and raw_json, UTC release dates, numeric enums with decoded labels, Steam URL-over-uid and websites-over-external precedence; return distinct game counts."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_public_helpers_remain_compatible_with_fake_connections",
+      "assertion": "Exercise all original persistence helpers through the public loader using a conventional fake connection/cursor."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_load_data_dispatches_igdb_saved_file",
+      "assertion": "The established dispatcher routes an IGDB bronze filename to the public IGDB file loader exactly once."
+    }
+  ],
+  "limitations": [
+    "The supplied public interface does not document exact transformed dictionary keys or helper argument shapes. Compatibility is checked through public loader observations and a conventional fake cursor, rather than inventing private record contracts.",
+    "Enum decoding is checked for retained numeric values and nonempty labels because exact label strings are not supplied in the public contract.",
+    "Tests are authored blind and have not executed candidate code. Real PostgreSQL cases require the unchanged test_database/db fixtures and a reachable fixture database."
+  ]
+}

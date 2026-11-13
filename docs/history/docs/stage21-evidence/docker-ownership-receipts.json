@@ -1,0 +1,106 @@
+[
+  {
+    "execution_id": "0083fd29890b4cdeb9228ef6c892449c",
+    "name": "agentctl-4d81dfc09269-0083fd29890b4cdeb9228ef6c892449c",
+    "owner": "4d81dfc0926942b6b8ece4a0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow\\runtime\\codex-agent-system-3936bf112c92949f\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-06T15:12:41.954967+00:00",
+    "status": "completed",
+    "input_commit": "841f067f3d50191a6bef385881c849697088a6c0",
+    "container_id": "cc464cb250bfb7d9efcc4830ea5e71834f56cb4021c4d47f637f50852bd32d0a",
+    "changed_paths": [
+      "src/normalize_labels.py"
+    ],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "4513dd1af0394943b884d954da73caac",
+    "name": "agentctl-4d81dfc09269-4513dd1af0394943b884d954da73caac",
+    "owner": "4d81dfc0926942b6b8ece4a0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow\\runtime\\codex-agent-system-3936bf112c92949f\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-06T15:15:41.193237+00:00",
+    "status": "completed",
+    "input_commit": "841f067f3d50191a6bef385881c849697088a6c0",
+    "container_id": "596dc4d90c4af14d94a1491b2524f88d3d50697f31c7e9369e4af375943f3010",
+    "changed_paths": [],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "498b4147fe804f9db11dffb98335b102",
+    "name": "agentctl-4d81dfc09269-498b4147fe804f9db11dffb98335b102",
+    "owner": "4d81dfc0926942b6b8ece4a0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow\\runtime\\codex-agent-system-3936bf112c92949f\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-06T15:13:48.176000+00:00",
+    "status": "completed",
+    "input_commit": "841f067f3d50191a6bef385881c849697088a6c0",
+    "container_id": "12780ad7917cf004b38db9e52622500bdbd69bbfddc9159cf3fc33d3d796e211",
+    "changed_paths": [
+      "src/normalize_labels.py"
+    ],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "6b3002c0c7394fbeab78a13310a0fc92",
+    "name": "agentctl-4d81dfc09269-6b3002c0c7394fbeab78a13310a0fc92",
+    "owner": "4d81dfc0926942b6b8ece4a0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow\\runtime\\codex-agent-system-3936bf112c92949f\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-06T15:16:15.468083+00:00",
+    "status": "completed",
+    "input_commit": "841f067f3d50191a6bef385881c849697088a6c0",
+    "container_id": "759e82b4c1817c366ee803525615b84ec2e7c22006498f75c534c2be5277421c",
+    "changed_paths": [
+      "src/normalize_labels.py"
+    ],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "d0e8d51d4a5b4c01aed375f1e75b749c",
+    "name": "agentctl-4d81dfc09269-d0e8d51d4a5b4c01aed375f1e75b749c",
+    "owner": "4d81dfc0926942b6b8ece4a0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow\\runtime\\codex-agent-system-3936bf112c92949f\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-06T15:13:56.269224+00:00",
+    "status": "completed",
+    "input_commit": "841f067f3d50191a6bef385881c849697088a6c0",
+    "container_id": "620904e015919216a36e8e96c4c4a7448a2ff84bb8c722ffa02370dd98463a25",
+    "changed_paths": [],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "f3c1aa421cdb470a931664efeabfcace",
+    "name": "agentctl-4d81dfc09269-f3c1aa421cdb470a931664efeabfcace",
+    "owner": "4d81dfc0926942b6b8ece4a0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow\\runtime\\codex-agent-system-3936bf112c92949f\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-06T15:17:08.100873+00:00",
+    "status": "completed",
+    "input_commit": "841f067f3d50191a6bef385881c849697088a6c0",
+    "container_id": "5da66edfbe1675ecbd2a06b8cad4ce51d468961abef8f28797be4c3487a81649",
+    "changed_paths": [],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "fbaf87f53251450587e61b2caf2cd902",
+    "name": "agentctl-4d81dfc09269-fbaf87f53251450587e61b2caf2cd902",
+    "owner": "4d81dfc0926942b6b8ece4a0",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow\\runtime\\codex-agent-system-3936bf112c92949f\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-06T15:16:49.198813+00:00",
+    "status": "completed",
+    "input_commit": "841f067f3d50191a6bef385881c849697088a6c0",
+    "container_id": "be19e8c3380f7d19a9e3494d0fe03b3855c431bee795bf3eb2cae9cc20350634",
+    "changed_paths": [],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  }
+]

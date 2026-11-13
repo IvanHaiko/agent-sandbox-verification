@@ -1,0 +1,9 @@
+{
+  "archive": "C:\\Users\\4ivan\\codex-multi-agent\\stage29-delivery.zip",
+  "sha256": "100a1802d912abee4cb6bba6c12b9428ba570816ce7c8142316fee5e2d5d0e4d",
+  "bytes": 124581,
+  "manifest_entries": 59,
+  "zip_members": 60,
+  "crc_and_member_hashes_verified": true,
+  "excluded": "Old archives/repos, Stage 29 scratch/canaries, redundant full workspace/after manifests, receipt itself"
+}

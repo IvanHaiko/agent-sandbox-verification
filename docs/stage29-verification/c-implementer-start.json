@@ -1,0 +1,11 @@
+{
+  "at": 1791550064.020243,
+  "freeze": {
+    "design_sha256": "cc585d57ade447083d71b7951869e3036e926b2d5cb082b4cc200835b1aa8945",
+    "harness_sha256": "06486ba1a85de0ad1daaebf189456eded3f7770d514056132857f097909064a3",
+    "contract_sha256": "3d3aa644be4a8af474a2bdcf85354b124fa3919c87924cb9af24639d385201de",
+    "frozen_at": 1791549965.1456323,
+    "candidate_exists": false,
+    "tester_shutdown_confirmed": true
+  }
+}

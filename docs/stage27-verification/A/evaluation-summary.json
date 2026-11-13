@@ -1,0 +1,70 @@
+{
+  "patch_reproduced": true,
+  "external": {
+    "exit_code": 0,
+    "tests": 24,
+    "passed": 24,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 3.8959927558898926
+  },
+  "regression": {
+    "exit_code": 0,
+    "tests": 227,
+    "passed": 227,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 7.255904912948608
+  },
+  "independent": {
+    "exit_code": 0,
+    "tests": 34,
+    "passed": 34,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 4.313756704330444
+  },
+  "mutations": {
+    "naive": {
+      "exit_code": 1,
+      "tests": 34,
+      "passed": 8,
+      "failed": 26,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 5.98894190788269
+    },
+    "drop-final": {
+      "exit_code": 1,
+      "tests": 34,
+      "passed": 10,
+      "failed": 24,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 6.038446426391602
+    }
+  },
+  "external_mutations": {
+    "naive": {
+      "exit_code": 1,
+      "tests": 24,
+      "passed": 6,
+      "failed": 18,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 4.839848041534424
+    },
+    "drop-final": {
+      "exit_code": 1,
+      "tests": 24,
+      "passed": 9,
+      "failed": 15,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 5.457060813903809
+    }
+  }
+}

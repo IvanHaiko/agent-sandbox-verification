@@ -1,0 +1,152 @@
+{
+  "task_id": "STAGE20-LABELS",
+  "contract_version": 1,
+  "cases": [
+    {
+      "id": "empty_input",
+      "intent": "Rule 10: empty input returns an empty list.",
+      "input": "",
+      "expected": []
+    },
+    {
+      "id": "empty_labels_and_separators",
+      "intent": "Rules 1, 2, 5, 6, 9: repeated separators, empty quotes and ordinary-whitespace-only labels disappear.",
+      "input": ",,, \t\r\n\u000b\f,\"\",,\"\"\"\",",
+      "expected": []
+    },
+    {
+      "id": "basic_order_and_case",
+      "intent": "Rules 1, 6, 8, 10: split outside commas, trim, lowercase and keep first occurrence order.",
+      "input": ", ZEBRA ,, Apple ,zebra,BANANA,apple,",
+      "expected": ["zebra", "apple", "banana"]
+    },
+    {
+      "id": "quotes_concatenate_anywhere",
+      "intent": "Rules 2, 8, 10: remove quote delimiters inside labels and concatenate multiple quoted and unquoted segments before deduplication.",
+      "input": "AB\"CD\"EF,\"A\"B\"C\"D,ab\"\"cd,\"\"X\"\"Y\"\"",
+      "expected": ["abcdef", "abcd", "xy"]
+    },
+    {
+      "id": "quoted_commas",
+      "intent": "Rules 1, 2, 8: commas in quoted segments are literals, including a comma-only label.",
+      "input": "A\"B,C\"D,\",\",\"X,Y\",Z",
+      "expected": ["ab,cd", ",", "x,y", "z"]
+    },
+    {
+      "id": "escapes_outside_quotes",
+      "intent": "Rules 1, 3, 8: escaped commas, quotes and backslashes are literals outside quotes; escaped uppercase letters still lowercase.",
+      "input": "A\\,B,C\\\"D,E\\\\F,\\G",
+      "expected": ["a,b", "c\"d", "e\\f", "g"]
+    },
+    {
+      "id": "escapes_inside_quotes",
+      "intent": "Rules 1, 2, 3, 8: escaped commas, quotes, backslashes and uppercase letters stay literal in quoted mode without changing mode.",
+      "input": "\"A\\,B\\\"C\\\\D\\E\",TAIL",
+      "expected": ["a,b\"c\\de", "tail"]
+    },
+    {
+      "id": "escape_is_not_c_style",
+      "intent": "Rules 3, 8: a backslash preserves exactly the following character, without interpreting letter escapes as control characters.",
+      "input": "X\\nY,X\\tY,\"X\\rY\",\\Q\\R",
+      "expected": ["xny", "xty", "xry", "qr"]
+    },
+    {
+      "id": "all_ordinary_whitespace",
+      "intent": "Rules 5, 6, 8: all six ASCII whitespace characters trim at boundaries and collapse together internally.",
+      "input": " \t\r\n\u000b\fA \t\r\n\u000b\fB\f\u000b\n\r\t , C\t\tD ",
+      "expected": ["a b", "c d"]
+    },
+    {
+      "id": "all_quoted_whitespace",
+      "intent": "Rules 2, 5, 7, 8: quoted whitespace preserves all six characters, repeated runs and boundary whitespace exactly.",
+      "input": "\" \t\r\n\u000b\fA  \t\t\r\r\n\n\u000b\u000b\f\fB \t\r\n\u000b\f\"",
+      "expected": [" \t\r\n\u000b\fa  \t\t\r\r\n\n\u000b\u000b\f\fb \t\r\n\u000b\f"]
+    },
+    {
+      "id": "all_escaped_whitespace",
+      "intent": "Rules 3, 5, 7, 8: escaping each of the six actual whitespace characters protects it at either label boundary.",
+      "input": "\\ \\\t\\\r\\\n\\\u000b\\\fA\\ \\\t\\\r\\\n\\\u000b\\\f",
+      "expected": [" \t\r\n\u000b\fa \t\r\n\u000b\f"]
+    },
+    {
+      "id": "protected_only_whitespace",
+      "intent": "Rules 3, 7, 9, 10: protected whitespace-only labels survive; equal quoted and escaped strings deduplicate, while empty and ordinary-only labels vanish.",
+      "input": "\" \t\r\n\u000b\f\",\\ \\\t\\\r\\\n\\\u000b\\\f,\"  \",\\ \\ ,\"\", \t\r\n\u000b\f",
+      "expected": [" \t\r\n\u000b\f", "  "]
+    },
+    {
+      "id": "ordinary_trim_around_protected_boundaries",
+      "intent": "Rules 5, 6, 7, 8: trim ordinary outer whitespace but preserve quoted or escaped boundary whitespace.",
+      "input": " \t\"  A \t\" \r , \n\\ B\\ \t",
+      "expected": ["  a \t", " b "]
+    },
+    {
+      "id": "protected_whitespace_breaks_runs",
+      "intent": "Rules 5, 6, 7: a protected space-tab-space segment separates two ordinary runs, each of which collapses independently.",
+      "input": "A \t\" \t \"\r\n B",
+      "expected": ["a  \t  b"]
+    },
+    {
+      "id": "empty_quotes_do_not_break_runs",
+      "intent": "Rules 2, 5, 6: removed empty quote delimiters add no protected character and do not interrupt ordinary whitespace runs or boundary trimming.",
+      "input": " \t\"\"A \t\"\"\r\n B\"\" \f",
+      "expected": ["a b"]
+    },
+    {
+      "id": "ordinary_whitespace_inside_protected_edges",
+      "intent": "Rules 6, 7: ordinary runs between protected edge spaces and letters are internal and collapse instead of being trimmed.",
+      "input": "\" \" \tA \t\" \"",
+      "expected": ["  a  "]
+    },
+    {
+      "id": "deduplicate_after_normalization",
+      "intent": "Rules 2, 3, 6, 8, 10: deduplicate only after trimming, lowercasing and removing quote and escape syntax, retaining first occurrence order.",
+      "input": " B, a,A,b,\"A\",\\A,C,c ,a ",
+      "expected": ["b", "a", "c"]
+    },
+    {
+      "id": "protected_boundaries_affect_equality",
+      "intent": "Rules 6, 7, 8, 10: protected leading and trailing spaces distinguish labels; equivalent quoted and escaped boundaries deduplicate.",
+      "input": "A,\" A\",A\\ ,\"A \",\"A\",\\ A,\" A \"",
+      "expected": ["a", " a", "a ", " a "]
+    },
+    {
+      "id": "equality_ignores_provenance_after_normalization",
+      "intent": "Rules 5, 6, 7, 10: equal resulting strings deduplicate across ordinary, quoted and escaped origins; protected double spaces remain distinct.",
+      "input": "A B,A\tB,\"A B\",A\\ B,\"A  B\",A\\ \\ B",
+      "expected": ["a b", "a  b"]
+    },
+    {
+      "id": "other_ascii_literals",
+      "intent": "Rule 8: preserve non-delimiter punctuation and digits exactly while lowercasing every ASCII uppercase letter.",
+      "input": "FOO;BAR:42/BAZ_[X]{Y}!@#$%^&*()-+=.?'<>",
+      "expected": ["foo;bar:42/baz_[x]{y}!@#$%^&*()-+=.?'<>"]
+    },
+    {
+      "id": "trailing_escape_outside_after_valid_prefix",
+      "intent": "Rules 4, 9, 10: an outside trailing backslash rejects the whole input despite earlier valid, empty and duplicate labels.",
+      "input": "OK,,ok,\"\",NEXT\\",
+      "expected": null
+    },
+    {
+      "id": "trailing_escape_inside_after_valid_prefix",
+      "intent": "Rules 3, 4: a trailing unpaired backslash inside an unclosed quoted label rejects the whole input after a valid label.",
+      "input": "OK,\"NEXT\\",
+      "expected": null
+    },
+    {
+      "id": "unclosed_midlabel_quote_after_valid_prefix",
+      "intent": "Rules 2, 4, 9, 10: opening a quote in the middle of a later label without closing it invalidates the entire input.",
+      "input": "OK,,ok,\"\",PRE\"NEXT",
+      "expected": null
+    },
+    {
+      "id": "escaped_final_quote_does_not_close",
+      "intent": "Rules 3, 4: an escaped final quote is literal and leaves quoted mode unclosed, invalidating an otherwise valid prefix.",
+      "input": "OK,\"BAD\\\"",
+      "expected": null
+    }
+  ],
+  "properties": ["unique_nonempty_labels", "ascii_lowercase"],
+  "rationale": "The 24 distinct ASCII cases cover all ten rules and their interactions. Expectations apply left-to-right quote and escape parsing before provenance-aware ordinary whitespace trimming and collapse, then ASCII lowercasing, empty removal and stable exact-string deduplication. All six whitespace characters appear as ordinary, quoted and individually escaped characters. Empty quote segments contribute no characters; protected whitespace breaks ordinary runs and remains significant at boundaries. Delimiters and escaped literals are exercised in both modes. Four malformed suffix cases require whole-input ValueError, represented by null, even after valid labels. No Unicode or non-string inputs are included."
+}

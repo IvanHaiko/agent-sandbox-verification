@@ -1,0 +1,18 @@
+{
+  "exit_code": 1,
+  "stdout": "..F.......................F.............................                 [100%]\n=================================== FAILURES ===================================\n______________________ test_malformed_transform[payload2] ______________________\n\npayload = {}\n\n    @pytest.mark.parametrize(\"payload\", BAD)\n    def test_malformed_transform(payload):\n>       with pytest.raises(ValueError):\n             ^^^^^^^^^^^^^^^^^^^^^^^^^\nE       Failed: DID NOT RAISE <class 'ValueError'>\n\ntests/test_stage28_evaluation.py:39: Failed\n__________________ test_malformed_before_connection[payload2] __________________\n\npayload = {}\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x79dfb2707e30>\ntmp_path = PosixPath('/home/ivan/codex-role-66pijnd6/scratch/tmp/test_malformed_before_connecti2')\n\n    @pytest.mark.parametrize(\"payload\", BAD)\n    def test_malformed_before_connection(payload, monkeypatch, tmp_path):\n        calls = []\n        def forbidden():\n            calls.append(True)\n            raise AssertionError(\"database acquired for invalid input\")\n        monkeypatch.setattr(load, \"get_db_connection\", forbidden)\n>       with pytest.raises(ValueError):\n             ^^^^^^^^^^^^^^^^^^^^^^^^^\nE       Failed: DID NOT RAISE <class 'ValueError'>\n\ntests/test_stage28_evaluation.py:50: Failed\n=========================== short test summary info ============================\nFAILED tests/test_stage28_evaluation.py::test_malformed_transform[payload2]\nFAILED tests/test_stage28_evaluation.py::test_malformed_before_connection[payload2]\n2 failed, 54 passed in 2.47s\n",
+  "stderr": "",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "tests": 56,
+  "passed": 54,
+  "failed": 2,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 5.474431276321411,
+  "source_hashes": {
+    "src/load.py": "959d92aef5a169da94a32151aef5cc8ffad2dac898e2286aba3cf76eac9a562d",
+    "src/transform.py": "94abe6532bd635bbe5ad30459909531d59efe89979ac92fbe89b4676d01ec0dc",
+    "tests/test_igdb_reliability.py": "9dfb129c49f9950ef1a5c9ef997aa0455cda9edb8dc534bea6f14770fced9d68"
+  }
+}

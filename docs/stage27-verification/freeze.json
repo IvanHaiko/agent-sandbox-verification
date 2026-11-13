@@ -1,0 +1,30 @@
+{
+  "at": 1791531411.0518608,
+  "commit": "0653617666399590c853c39f08e8cf97c9eca45c",
+  "order": [
+    "A",
+    "B"
+  ],
+  "order_rule": "Predeclared alphabetic labels, no expected-success selection",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "cli": "codex-cli 0.160.1",
+  "sha256": {
+    "task-contract.md": "2db695d741b0b294203f138bf02b7ec3efba6aada3aa212aab1ded4488f575d9",
+    "review-rubric.md": "c672a577b2e7f7ca4a9be4086436b69e6923b241ce95d34fd86da5c862514b56",
+    "test_external_acceptance.py": "f5922ff0866110aa7e20e52112d7b6807521a8e3d6e8225f42d25df4fbbe867e",
+    "requirements.txt": "5320f994c87123c49bfd3e5ec4744bea069654e25ad8c55d162d8393943edf1b",
+    "experiment.py": "38d2b15a26054dc676a6fdaa5c40af77bf8218301935ad59634ca9fef4dce941"
+  },
+  "mutations": [
+    "naive semicolon splitter",
+    "drop final split statement"
+  ],
+  "intervention_policy": "No role retries or coordinator repairs; environment failures retained",
+  "timeouts_seconds": {
+    "implementer": 900,
+    "tester": 900,
+    "reviewer": 360,
+    "A_orchestrator": 2400
+  }
+}

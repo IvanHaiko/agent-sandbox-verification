@@ -1,0 +1,21 @@
+{
+  "role": "implementer",
+  "execution_status": "completed",
+  "model": "gpt-6.1-sol",
+  "changed_files": [
+    "src/normalize_labels.py"
+  ],
+  "candidate_hashes": {
+    "src/normalize_labels.py": "c83955c8b47140e5011440de829c50bba8de2dde2263475878c23f1285d8d6a0"
+  },
+  "diff": "--- a/src/normalize_labels.py\n+++ b/src/normalize_labels.py\n@@ -1,2 +1,47 @@\n def normalize_labels(value: str) -> list[str]:\n-    raise NotImplementedError\n+    labels: list[str] = []\n+    seen: set[str] = set()\n+    characters: list[str] = []\n+    quoted = False\n+    escaped = False\n+    pending_space = False\n+    whitespace = \" \\t\\r\\n\\v\\f\"\n+\n+    def finish_label() -> None:\n+        label = \"\".join(characters)\n+        if label and label not in seen:\n+            seen.add(label)\n+            labels.append(label)\n+        characters.clear()\n+\n+    for character in value:\n+        if escaped:\n+            escaped = False\n+        elif character == \"\\\\\":\n+            escaped = True\n+            continue\n+        elif character == '\"':\n+            quoted = not quoted\n+            continue\n+        elif character == \",\" and not quoted:\n+            finish_label()\n+            pending_space = False\n+            continue\n+        elif character in whitespace and not quoted:\n+            # Delay ordinary whitespace so boundary runs can be discarded.\n+            pending_space = bool(characters)\n+            continue\n+\n+        if pending_space:\n+            characters.append(\" \")\n+            pending_space = False\n+        if \"A\" <= character <= \"Z\":\n+            character = chr(ord(character) + 32)\n+        characters.append(character)\n+\n+    if escaped:\n+        raise ValueError(\"Trailing unpaired backslash\")\n+    if quoted:\n+        raise ValueError(\"Unclosed double quote\")\n+    finish_label()\n+    return labels\n",
+  "mutation_scope_valid": true,
+  "interface_check": {
+    "valid": true,
+    "public_interface_verified": true,
+    "syntax_verified": true
+  },
+  "candidate_status": "unaccepted",
+  "accepted": false,
+  "authority": "controller_observed_artifacts"
+}

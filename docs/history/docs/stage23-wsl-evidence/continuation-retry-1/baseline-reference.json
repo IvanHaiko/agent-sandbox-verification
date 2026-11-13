@@ -1,0 +1,6 @@
+{
+  "reviewer_gate_reused_without_live_restart": true,
+  "source": "../continuation/reviewer/summary.json",
+  "source_sha256": "f1f3b11544c0b903b1114db98aa7c2639ef5008b2799d3fd0cfac3f84dd322ff",
+  "copied_summary_sha256": "f1f3b11544c0b903b1114db98aa7c2639ef5008b2799d3fd0cfac3f84dd322ff"
+}

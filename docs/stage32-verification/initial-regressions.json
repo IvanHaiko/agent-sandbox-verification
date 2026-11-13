@@ -1,0 +1,22 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "........................................................................ [ 50%]\n......................................................................   [100%]\n- generated xml file: /home/ivan/codex-role-vkfd93to/.scratch/regressions.xml --\n142 passed in 5.66s\n",
+  "stderr": "",
+  "argv": [
+    "/usr/bin/env",
+    "TMPDIR=/home/ivan/codex-role-vkfd93to/.scratch",
+    "/home/ivan/codex-role-d84s0i0h/venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "tests",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=.scratch/regressions",
+    "--junitxml=.scratch/regressions.xml"
+  ]
+}

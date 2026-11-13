@@ -1,0 +1,10 @@
+{
+  "design_sha256": "58f00e85c9133f6fe82ba9a35b35db76fe39023119f033d9a0eb97b8c21c1f21",
+  "schema_domain_valid": true,
+  "candidate_exposed": false,
+  "violations": [],
+  "oracle_used": false,
+  "contract_valid": true,
+  "freezeable": true,
+  "review_sha256": "ba6e6799c3fc2b6eac40ebbefd5a9ee666cb919cb702f89c4f174f1a75ffbb56"
+}

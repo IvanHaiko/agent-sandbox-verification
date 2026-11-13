@@ -1,0 +1,9 @@
+{
+  "passed": 40,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "pytest_reported_seconds": 64.85,
+  "command": "python3 -m pytest -q -p no:cacheprovider --basetemp=.test-tmp/stage26-baseline tests",
+  "recording": "Observed tool result before framework edits; baseline JUnit was not requested."
+}

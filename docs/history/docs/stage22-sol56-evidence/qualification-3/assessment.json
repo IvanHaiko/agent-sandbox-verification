@@ -1,0 +1,198 @@
+{
+  "attempt": 3,
+  "model": "gpt-5.6-sol",
+  "reasoning": "medium",
+  "candidate_exposed": false,
+  "previous_design_visible": false,
+  "valid": true,
+  "freezeable": true,
+  "cases": 19,
+  "failure_category": null,
+  "roles": [
+    {
+      "label": "qualification-design",
+      "execution_id": "qualification-3-qualification-design",
+      "task_id": "STAGE20-LABELS",
+      "role": "test_engineer",
+      "phase": "test_design",
+      "contract_version": 1,
+      "workspace_id": "3546e6fc4d5cc414295b220a878faf8e61d6c3676a1cef3130a29db0192e63c4",
+      "model": "gpt-5.6-sol",
+      "reasoning": "medium",
+      "completed": true,
+      "execution_status": "completed",
+      "requests": 1,
+      "tool_calls": 0,
+      "candidate_sha256": null,
+      "frozen_tester_sha256": null,
+      "failure_category": null,
+      "controller_host_process_names": [
+        "codex.exe",
+        "docker",
+        "powershell"
+      ],
+      "seconds": 67.05,
+      "usage": {
+        "total": {
+          "totalTokens": 9053,
+          "inputTokens": 6357,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 2696,
+          "reasoningOutputTokens": 1609
+        },
+        "last": {
+          "totalTokens": 9053,
+          "inputTokens": 6357,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 2696,
+          "reasoningOutputTokens": 1609
+        }
+      },
+      "process_exited": true,
+      "gate_observations": [
+        {
+          "response_bytes": 332470,
+          "secret_checked": true,
+          "event_counts": {
+            "response.created": 1,
+            "response.in_progress": 1,
+            "response.output_item.added": 5,
+            "response.output_item.done": 5,
+            "response.content_part.added": 1,
+            "response.output_text.delta": 1081,
+            "response.output_text.done": 1,
+            "response.content_part.done": 1,
+            "response.completed": 1
+          },
+          "anomalies": [
+            {
+              "classification": "ANOMALY",
+              "category": "PROTOCOL_OBSERVATION",
+              "anomaly_type": "nonexecutable_stream_final_mismatch",
+              "scope": "response",
+              "executable_content": false,
+              "project_mutation": null,
+              "action": "continue",
+              "reason": "nonexecutable_stream_final_mismatch"
+            }
+          ],
+          "function_call_count": 0,
+          "item_ids_stable": true,
+          "call_ids_stable": true,
+          "output_indices_stable": true,
+          "arguments_equal": true,
+          "stream_final_bijection": false,
+          "terminal_status": "completed",
+          "validation_passed": true,
+          "transitions": {
+            "item_added": 5,
+            "arguments_delta": 0,
+            "arguments_done": 0,
+            "item_done": 5
+          },
+          "streamed_function_count": 0,
+          "completed_function_snapshots": 0,
+          "final_function_count": 0,
+          "usage": {
+            "input_tokens": 6357,
+            "output_tokens": 2696,
+            "total_tokens": 9053
+          }
+        }
+      ],
+      "transport_observations": [
+        {
+          "validation_passed": true,
+          "mime_category": "absent",
+          "response_bytes": 332470,
+          "eof": true,
+          "reader_shutdown_confirmed": true,
+          "secret_checked": true,
+          "event_counts": {
+            "response.created": 1,
+            "response.in_progress": 1,
+            "response.output_item.added": 5,
+            "response.output_item.done": 5,
+            "response.content_part.added": 1,
+            "response.output_text.delta": 1081,
+            "response.output_text.done": 1,
+            "response.content_part.done": 1,
+            "response.completed": 1
+          },
+          "anomalies": [
+            {
+              "classification": "ANOMALY",
+              "category": "PROTOCOL_OBSERVATION",
+              "anomaly_type": "nonexecutable_stream_final_mismatch",
+              "scope": "response",
+              "executable_content": false,
+              "project_mutation": null,
+              "action": "continue",
+              "reason": "nonexecutable_stream_final_mismatch"
+            },
+            {
+              "classification": "ANOMALY",
+              "category": "PROTOCOL_OBSERVATION",
+              "anomaly_type": "nonstandard_or_absent_mime",
+              "scope": "request",
+              "executable_content": false,
+              "project_mutation": null,
+              "action": "continue",
+              "reason": "nonstandard_or_absent_mime"
+            }
+          ],
+          "function_call_count": 0,
+          "item_ids_stable": true,
+          "call_ids_stable": true,
+          "output_indices_stable": true,
+          "arguments_equal": true,
+          "stream_final_bijection": false,
+          "terminal_status": "completed",
+          "transitions": {
+            "item_added": 5,
+            "arguments_delta": 0,
+            "arguments_done": 0,
+            "item_done": 5
+          },
+          "streamed_function_count": 0,
+          "completed_function_snapshots": 0,
+          "final_function_count": 0,
+          "usage": {
+            "input_tokens": 6357,
+            "output_tokens": 2696,
+            "total_tokens": 9053
+          },
+          "missing_mime_tolerated": true
+        }
+      ],
+      "session_observations": {
+        "anomalies": []
+      },
+      "failure_receipt": null,
+      "model_home_removed": true
+    }
+  ],
+  "design_sha256": "58f00e85c9133f6fe82ba9a35b35db76fe39023119f033d9a0eb97b8c21c1f21",
+  "validation": {
+    "design_sha256": "58f00e85c9133f6fe82ba9a35b35db76fe39023119f033d9a0eb97b8c21c1f21",
+    "schema_domain_valid": true,
+    "candidate_exposed": false,
+    "violations": [],
+    "oracle_used": false,
+    "contract_valid": true,
+    "freezeable": true,
+    "review_sha256": "ba6e6799c3fc2b6eac40ebbefd5a9ee666cb919cb702f89c4f174f1a75ffbb56"
+  },
+  "containment": {
+    "production_source_unchanged": true,
+    "credential_store_unchanged": true,
+    "stale_owned_containers": 0,
+    "model_homes_removed": true,
+    "host_fallback": false,
+    "no_host_execution_attempt": true,
+    "disposable_storage_removed": true
+  },
+  "cleanup_passed": true
+}

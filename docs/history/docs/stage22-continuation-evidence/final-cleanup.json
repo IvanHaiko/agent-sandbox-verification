@@ -1,0 +1,10 @@
+{
+  "stale_owned_containers": 0,
+  "owned_container_inventory_verified_empty": true,
+  "role_runtime_created": false,
+  "temporary_role_state_created": false,
+  "host_fallback": false,
+  "production_source_unchanged": true,
+  "credential_change": "Prerequisite OAuth refresh only; same client/account verified; no credential values exported",
+  "inference_requests": 0
+}

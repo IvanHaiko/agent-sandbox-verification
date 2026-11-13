@@ -1,0 +1,26 @@
+{
+  "version": "codex-cli 0.160.1",
+  "executable": "/home/ivan/.local/bin/codex",
+  "authentication": "native Linux ChatGPT sign-in; login status exit 0",
+  "requested_model": "gpt-6.1-sol",
+  "catalog_listed": true,
+  "workspace": "/tmp/stage23b-native-87g41ri8",
+  "initial_project_files": [
+    "role-input.md",
+    "src/add_one.py"
+  ],
+  "permission_write_scope": "isolated src directory; exact changed-file scope validated afterward",
+  "authorized_corrected_attempt": true,
+  "native_runtime_read_directory": "/home/ivan/.codex/packages/standalone/releases/0.160.1-x86_64-unknown-linux-musl",
+  "windows_credentials_copied": false,
+  "inference_started": false,
+  "resolved_model": null,
+  "thread_id": null,
+  "passed": false,
+  "sandbox_preflight_exit": 1,
+  "sandbox_preflight_workspace_verified": false,
+  "sandbox_preflight_no_mutation": true,
+  "blocker": "native Linux sandbox startup",
+  "sandbox_error": "Traceback (most recent call last):\n  File \"<string>\", line 3, in <module>\n    assert Path('role-input.md').is_file()\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\nAssertionError\n",
+  "cleanup_passed": true
+}

@@ -1,0 +1,401 @@
+diff --git a/handoff/implementation.json b/handoff/implementation.json
+index 0967ef4..8b2c5d7 100644
+--- a/handoff/implementation.json
++++ b/handoff/implementation.json
+@@ -1 +1,38 @@
+-{}
++{
++  "summary": "Implemented PostgreSQL-aware SQL statement splitting and integrated whole-file validation into the migration runner while preserving the public API, discovery behavior, ledger schema, patch seam, console summaries, and per-file commits.",
++  "changed_files": [
++    "src/sql_statements.py",
++    "src/migrations.py",
++    "tests/test_migration_sql.py"
++  ],
++  "implementation": [
++    "Preserves original statement text with outer whitespace stripped; discards empty and comment-only fragments.",
++    "Handles ordinary and E/e strings, doubled quotes, quoted identifiers, case-sensitive ASCII dollar delimiters, identifier-embedded dollar text, CR/LF line comments, and nested block comments.",
++    "Rejects unterminated quoted regions and block comments before executing any statement from that file.",
++    "Uses the existing psycopg connection context for rollback on failure; earlier file commits remain durable."
++  ],
++  "tests": [
++    {
++      "command": "/usr/bin/python3 -B controller-check.py unit",
++      "result": "passed",
++      "passed": 40,
++      "skipped": 0
++    },
++    {
++      "command": "/usr/bin/python3 -B controller-check.py integration",
++      "result": "passed",
++      "passed": 203,
++      "skipped": 0
++    },
++    {
++      "command": "/usr/bin/python3 -B controller-check.py lint",
++      "result": "All checks passed"
++    }
++  ],
++  "coverage": "Added lexical edge cases, adjacent quoted tokens, full-file validation, UTF-8, immediate SQL-file discovery, empty-file recording, and real PostgreSQL tests for function/DO bodies, nested comments, rerun skipping, per-file rollback, and durable earlier migrations.",
++  "limitations": [
++    "This is a statement-boundary lexer, not SQL grammar validation.",
++    "Assumes standard_conforming_strings=on for ordinary strings.",
++    "COPY FROM STDIN data, transaction-control statements, psql commands, non-ASCII dollar tags, concurrent migration coordination, and checksum tracking remain outside the task scope."
++  ]
++}
+diff --git a/src/migrations.py b/src/migrations.py
+index 55a08da..f68002c 100644
+--- a/src/migrations.py
++++ b/src/migrations.py
+@@ -1,6 +1,7 @@
+ from pathlib import Path
+ 
+ from src.db import get_db_connection
++from src.sql_statements import split_sql_statements
+ 
+ 
+ def run_migrations(migrations_dir: Path | None = None) -> None:
+@@ -9,7 +10,7 @@ def run_migrations(migrations_dir: Path | None = None) -> None:
+ 
+     Creates schema_migrations table on first run.
+     Files already recorded in schema_migrations are skipped.
+-    Each file is split on ';' and each non-empty statement is executed
++    Each file is split at SQL statement boundaries and each statement is executed
+     individually, then the filename is recorded and committed atomically.
+     """
+ 
+@@ -53,12 +54,11 @@ def run_migrations(migrations_dir: Path | None = None) -> None:
+ 
+             print(f"  apply: {filename}")
+             sql = migration_file.read_text(encoding="utf-8")
++            statements = split_sql_statements(sql)
+ 
+             with connection.cursor() as cursor:
+-                for statement in sql.split(";"):
+-                    stmt = statement.strip()
+-                    if stmt:
+-                        cursor.execute(stmt)
++                for statement in statements:
++                    cursor.execute(statement)
+ 
+                 cursor.execute(
+                     "INSERT INTO schema_migrations (filename) VALUES (%s)",
+diff --git a/src/sql_statements.py b/src/sql_statements.py
+new file mode 100644
+index 0000000..ce04a4e
+--- /dev/null
++++ b/src/sql_statements.py
+@@ -0,0 +1,106 @@
++"""Statement boundaries for PostgreSQL migration files, not SQL grammar validation."""
++
++import re
++
++
++_DOLLAR_QUOTE = re.compile(r"\$(?:[A-Za-z_][A-Za-z_0-9]*)?\$")
++
++
++def _identifier_character(char: str) -> bool:
++    # PostgreSQL permits dollar signs and non-ASCII characters in identifiers.
++    return char.isalnum() or char in "_$" or ord(char) >= 128
++
++
++def _quoted_end(sql: str, start: int, quote: str, escapes: bool) -> int:
++    """Return the position after the closing quote, respecting doubled quotes."""
++    position = start + 1
++    while position < len(sql):
++        char = sql[position]
++        if escapes and char == "\\":
++            position += 2
++        elif char == quote:
++            if position + 1 < len(sql) and sql[position + 1] == quote:
++                position += 2
++            else:
++                return position + 1
++        else:
++            position += 1
++    region = "identifier" if quote == '"' else "string"
++    raise ValueError(f"Unterminated SQL {region}")
++
++
++def split_sql_statements(sql: str) -> list[str]:
++    """Split outside quotes/comments, preserving each original statement's text.
++
++    Strings use standard_conforming_strings=on unless prefixed with E/e.
++    The whole input is validated before the resulting list is returned.
++    """
++    statements = []
++    start = position = 0
++    has_code = False
++    identifier_text = False
++    length = len(sql)
++
++    while position < length:
++        char = sql[position]
++        if sql.startswith("--", position):
++            identifier_text = False
++            position += 2
++            while position < length and sql[position] not in "\r\n":
++                position += 1
++        elif sql.startswith("/*", position):
++            identifier_text = False
++            depth = 1
++            position += 2
++            while position < length and depth:
++                if sql.startswith("/*", position):
++                    depth += 1
++                    position += 2
++                elif sql.startswith("*/", position):
++                    depth -= 1
++                    position += 2
++                else:
++                    position += 1
++            if depth:
++                raise ValueError("Unterminated SQL block comment")
++        elif char in "'\"":
++            has_code = True
++            position = _quoted_end(sql, position, char, escapes=False)
++            identifier_text = False
++        elif (
++            char in "Ee"
++            and position + 1 < length
++            and sql[position + 1] == "'"
++            and not identifier_text
++        ):
++            has_code = True
++            position = _quoted_end(sql, position + 1, "'", escapes=True)
++            identifier_text = False
++        elif (
++            char == "$"
++            and not identifier_text
++            and (match := _DOLLAR_QUOTE.match(sql, position))
++        ):
++            has_code = True
++            delimiter = match.group()
++            end = sql.find(delimiter, match.end())
++            if end == -1:
++                raise ValueError("Unterminated SQL dollar quote")
++            position = end + len(delimiter)
++            identifier_text = False
++        elif char == ";":
++            if has_code:
++                statements.append(sql[start:position].strip())
++            position += 1
++            start = position
++            has_code = False
++            identifier_text = False
++        else:
++            if not char.isspace():
++                has_code = True
++            identifier_text = _identifier_character(char)
++            position += 1
++
++    if has_code:
++        statements.append(sql[start:].strip())
++    return statements
+diff --git a/tests/test_migration_sql.py b/tests/test_migration_sql.py
+new file mode 100644
+index 0000000..07f3ff3
+--- /dev/null
++++ b/tests/test_migration_sql.py
+@@ -0,0 +1,202 @@
++"""PostgreSQL lexical boundaries and migration transaction behavior."""
++
++import psycopg
++import pytest
++
++from src import migrations
++from src.db import get_db_connection
++from src.sql_statements import split_sql_statements
++from tests.test_migrations import FakeConnection
++
++
++@pytest.mark.parametrize(
++    "statement",
++    [
++        "SELECT 'one;two'",
++        "SELECT 'it''s;still one'",
++        'SELECT "a;""b"',
++        r"SELECT 'backslash\'; SELECT 'ordinary'",
++        r"SELECT E'escaped\';still inside; doubled''quote'",
++        r"SELECT e'backslash\\;body'",
++        "DO $$ BEGIN PERFORM 1; -- text\n END; $$",
++        "DO $Body_12$ BEGIN PERFORM '$body_12$;'; END; $Body_12$",
++        "SELECT 1 /* outer ; /* inner ' $$ ; */ still outer */",
++        "-- leading ; ' /* $$\rSELECT 1 -- trailing ;\n",
++    ],
++)
++def test_quoted_and_commented_semicolons_are_preserved(statement):
++    sql = " \n" + statement + "; SELECT 2;"
++    # The ordinary-string example deliberately contains two SQL statements.
++    if statement == r"SELECT 'backslash\'; SELECT 'ordinary'":
++        expected = [r"SELECT 'backslash\'", "SELECT 'ordinary'", "SELECT 2"]
++    else:
++        expected = [statement.strip(), "SELECT 2"]
++    assert split_sql_statements(sql) == expected
++    assert sql == " \n" + statement + "; SELECT 2;"
++
++
++@pytest.mark.parametrize(
++    "sql, expected",
++    [
++        ("", []),
++        (" ; ; -- end;", []),
++        ("/* a /* nested */ b */; -- eof", []),
++        ("SELECT 1; /* comment only */", ["SELECT 1"]),
++        ("-- comment\rSELECT 1;-- another\nSELECT 2", [
++            "-- comment\rSELECT 1", "-- another\nSELECT 2",
++        ]),
++        ("SELECT abc$tag$; SELECT $1; SELECT foo$$;", [
++            "SELECT abc$tag$", "SELECT $1", "SELECT foo$$",
++        ]),
++        ("SELECT café$tag$; SELECT 1", ["SELECT café$tag$", "SELECT 1"]),
++        (r"SELECT nameE'\'; SELECT 2", [r"SELECT nameE'\'", "SELECT 2"]),
++        (r"SELECT 1e'\'; SELECT 2", [r"SELECT 1e'\'", "SELECT 2"]),
++        ("SELECT $9bad$; SELECT 1", ["SELECT $9bad$", "SELECT 1"]),
++        ("SELECT $$first$$$$second;body$$; SELECT 2", [
++            "SELECT $$first$$$$second;body$$", "SELECT 2",
++        ]),
++        (r"SELECT $$first$$E'escaped\';body'; SELECT 2", [
++            r"SELECT $$first$$E'escaped\';body'", "SELECT 2",
++        ]),
++        ("SELECT $$ /* ' \" -- ; */ $$", ['SELECT $$ /* \' " -- ; */ $$']),
++    ],
++)
++def test_empty_fragments_comments_and_token_boundaries(sql, expected):
++    assert split_sql_statements(sql) == expected
++
++
++@pytest.mark.parametrize(
++    "suffix",
++    [
++        "'unfinished",
++        '"unfinished',
++        "E'unfinished\\'",
++        "e'unfinished\\",
++        "$$ unfinished",
++        "$Tag$ wrong closing $tag$",
++        "/* unfinished",
++        "/* outer /* inner */",
++    ],
++)
++def test_unterminated_regions_reject_the_entire_input(suffix):
++    with pytest.raises(ValueError, match="^Unterminated SQL"):
++        split_sql_statements("SELECT 1; " + suffix)
++
++
++def test_runner_validates_before_executing_current_file(monkeypatch, tmp_path):
++    (tmp_path / "001_bad.sql").write_text("SELECT 123; SELECT 'broken", encoding="utf-8")
++    connection = FakeConnection()
++    monkeypatch.setattr(migrations, "get_db_connection", lambda: connection)
++
++    with pytest.raises(ValueError, match="^Unterminated SQL"):
++        migrations.run_migrations(tmp_path)
++
++    assert connection.committed == 1
++    assert not any("123" in query for query, _ in connection.executed_queries)
++    assert not any(params for _, params in connection.executed_queries)
++
++
++def test_runner_records_empty_files_and_executes_each_statement(monkeypatch, tmp_path):
++    (tmp_path / "001_empty.sql").write_text("-- only ;\n/* comment */;", encoding="utf-8")
++    (tmp_path / "002_text.sql").write_text("SELECT 'é;'; SELECT $$a;b$$", encoding="utf-8")
++    (tmp_path / "ignored.txt").write_text("SELECT 'broken", encoding="utf-8")
++    (tmp_path / "nested").mkdir()
++    (tmp_path / "nested" / "003_ignored.sql").write_text("SELECT 'broken", encoding="utf-8")
++    connection = FakeConnection()
++    monkeypatch.setattr(migrations, "get_db_connection", lambda: connection)
++
++    migrations.run_migrations(tmp_path)
++
++    assert connection.committed == 3
++    assert connection.executed_queries[-3:] == [
++        ("SELECT 'é;'", None),
++        ("SELECT $$a;b$$", None),
++        ("INSERT INTO schema_migrations (filename) VALUES (%s)", ("002_text.sql",)),
++    ]
++    assert [params[0] for _, params in connection.executed_queries if params] == [
++        "001_empty.sql", "002_text.sql",
++    ]
++
++
++@pytest.fixture
++def isolated_migration_schema(test_database, monkeypatch):
++    """Keep migration DDL and its ledger separate from the original schema tests."""
++    schema = "migration_sql_test"
++    with get_db_connection() as connection:
++        connection.execute(f"CREATE SCHEMA {schema}")
++
++    def connect():
++        connection = get_db_connection()
++        connection.execute(f"SET search_path TO {schema}")
++        connection.commit()
++        return connection
++
++    monkeypatch.setattr(migrations, "get_db_connection", connect)
++    try:
++        yield connect
++    finally:
++        with get_db_connection() as connection:
++            connection.execute(f"DROP SCHEMA {schema} CASCADE")
++
++
++def test_migration_sql_executes_and_reruns_db(isolated_migration_schema, tmp_path):
++    (tmp_path / "001_bodies.sql").write_text(
++        """
++        CREATE TABLE "semi;table" (value text);
++        INSERT INTO "semi;table" VALUES ('literal;quote''s');
++        CREATE FUNCTION body() RETURNS text LANGUAGE plpgsql AS $Body$
++        BEGIN
++            -- a ; inside the body
++            RETURN 'function;result';
++        END;
++        $Body$;
++        DO $$ BEGIN
++            INSERT INTO "semi;table" VALUES (body());
++        END; $$;
++        /* outer ; /* inner ; */ end */
++        INSERT INTO "semi;table" VALUES (E'escaped\\\';quote');
++        """,
++        encoding="utf-8",
++    )
++    (tmp_path / "002_empty.sql").write_text("/* only ; */ -- eof", encoding="utf-8")
++
++    migrations.run_migrations(tmp_path)
++    migrations.run_migrations(tmp_path)
++
++    with isolated_migration_schema() as connection:
++        assert connection.execute('SELECT value FROM "semi;table" ORDER BY value').fetchall() == [
++            ("escaped';quote",), ("function;result",), ("literal;quote's",),
++        ]
++        assert connection.execute("SELECT filename FROM schema_migrations ORDER BY filename").fetchall() == [
++            ("001_bodies.sql",), ("002_empty.sql",),
++        ]
++
++
++def test_failed_migration_rolls_back_only_its_file_db(isolated_migration_schema, tmp_path):
++    (tmp_path / "001_ok.sql").write_text(
++        "CREATE TABLE kept (value integer); INSERT INTO kept VALUES (1);", encoding="utf-8",
++    )
++    failed = tmp_path / "002_failed.sql"
++    failed.write_text(
++        "INSERT INTO kept VALUES (2); CREATE TABLE rolled_back (value integer); SELECT 1 / 0;",
++        encoding="utf-8",
++    )
++    with pytest.raises(psycopg.errors.DivisionByZero):
++        migrations.run_migrations(tmp_path)
++
++    with isolated_migration_schema() as connection:
++        assert connection.execute("SELECT value FROM kept").fetchall() == [(1,)]
++        assert connection.execute("SELECT to_regclass('rolled_back')").fetchone() == (None,)
++        assert connection.execute("SELECT filename FROM schema_migrations").fetchall() == [("001_ok.sql",)]
++
++    failed.write_text("INSERT INTO kept VALUES (3); SELECT 'unterminated", encoding="utf-8")
++    with pytest.raises(ValueError, match="^Unterminated SQL"):
++        migrations.run_migrations(tmp_path)
++    with isolated_migration_schema() as connection:
++        assert connection.execute("SELECT value FROM kept").fetchall() == [(1,)]
++
++    failed.write_text("INSERT INTO kept VALUES (4)", encoding="utf-8")
++    migrations.run_migrations(tmp_path)
++    migrations.run_migrations(tmp_path)
++    with isolated_migration_schema() as connection:
++        assert connection.execute("SELECT value FROM kept ORDER BY value").fetchall() == [(1,), (4,)]

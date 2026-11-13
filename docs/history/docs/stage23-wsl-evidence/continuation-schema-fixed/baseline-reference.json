@@ -1,0 +1,7 @@
+{
+  "reviewer_gate_source": "../continuation/reviewer/summary.json",
+  "architect_1_source": "../continuation-diagnostic/architect/architect-1",
+  "accepted_architect_1_reused_as_completed_workflow_evidence": true,
+  "source_snapshots_preserved_in": "architect/architect-1/executed-source",
+  "successful_trials_restarted": false
+}

@@ -1,0 +1,8 @@
+{
+  "sequence": 2,
+  "exposed_at": 1791381740.6432505,
+  "freeze_receipt_sha256": "dcbb3d77281e850143405578bc4b4d8dd93d84a8d1182e13fc009802fafac09d",
+  "candidate_sha256": "e1f416b51aca5c0af13f8e1e054463b124bf77a42188dafedb2b4d8196cf1809",
+  "recipient": "Controller read-only acceptance sandbox",
+  "tester_session_running": false
+}

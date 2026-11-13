@@ -1,0 +1,13 @@
+{
+  "task_id": "STAGE20-LABELS",
+  "contract_version": 1,
+  "outcome": "completed",
+  "changed_files": [
+    "src/normalize_labels.py"
+  ],
+  "summary": "Implemented left-to-right label parsing with quoted mode, escapes, separator handling, whitespace-provenance-aware normalization, ASCII lowercasing, empty-label removal, and stable deduplication.",
+  "checks_run": [
+    "13 self-chosen cases passed, covering empty/repeated labels, quotes, escaped commas/quotes/backslashes, ordinary and protected whitespace, ASCII case folding, deduplication, trailing backslash errors, and unclosed quote errors. Public interface verified."
+  ],
+  "uncertainty": "Low. Checks passed; Unicode and non-string behavior remain intentionally unspecified by the contract."
+}

@@ -1,0 +1,17 @@
+{
+  "role_process_shutdown_confirmed": true,
+  "catalog_process_stopped": true,
+  "config_probe_process_stopped": true,
+  "trial_workspace_removed": true,
+  "temporary_paths_removed": {
+    ".test-tmp\\stage23-native": true,
+    ".test-tmp\\stage23-schema": true,
+    ".test-tmp\\stage23-unit": true,
+    ".test-tmp\\stage23-unit-final": true
+  },
+  "existing_desktop_processes_untouched": true,
+  "role_session_created": false,
+  "credentials_read_or_copied_by_controller": false,
+  "legacy_backend_deleted": false,
+  "passed": true
+}

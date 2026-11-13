@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "stdout": "........................................................                 [100%]\n56 passed in 1.26s\n",
+  "stderr": "",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "tests": 56,
+  "passed": 56,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 5.175451755523682,
+  "source_hashes": {
+    "src/load.py": "959d92aef5a169da94a32151aef5cc8ffad2dac898e2286aba3cf76eac9a562d",
+    "src/transform.py": "94abe6532bd635bbe5ad30459909531d59efe89979ac92fbe89b4676d01ec0dc",
+    "tests/test_igdb_reliability.py": "9dfb129c49f9950ef1a5c9ef997aa0455cda9edb8dc534bea6f14770fced9d68"
+  }
+}

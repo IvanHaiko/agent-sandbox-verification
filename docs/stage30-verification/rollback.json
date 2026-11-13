@@ -1,0 +1,39 @@
+{
+  "archive_sha256": "d1d34699fdd159e217f5ec642eacf4f66bf713f8d0a967d3c754a6387fe82851",
+  "files": {
+    "agent_system/artifacts.py": "8984c067f5798e2bdb108a89f2d581fc0dcff9b4fb25c18743a75c514c010f9d",
+    "agent_system/controller.py": "aa05488d60f02de98e069796339c95892f910abbbb8a2f4e9f12e81085b64049",
+    "agent_system/native_codex_linux.py": "9cca0fae466f82d59ba75839182eedf286cbcb52ee7bb98b33f610ad56f50f45",
+    "agent_system/roles.py": "dd199bb0ee7fa83a2cc0ab77d014358dea575450d62361c88bb01e5033a08de8",
+    "agent_system/test_environment.py": "b58dfab72263fd420f3827ecaee86e675ea26319cb60bf6277f735b737d23654",
+    "agent_system/__init__.py": "a3b0b025aa6a802f1e3ea2408018e303d7a264083d8a2668988bedf359367b1f",
+    "validation/labels_contract.py": "5eb5aa9912715147f52efe9351ac7181aaa707fc4e49c5368b6047ac17c5e8ca",
+    "validation/native_workflow.py": "bfc8a763b1ea687fd3255f21ead66c5f3077a6124953fb67a28b82f07af760ee",
+    "validation/steam_negative_control.py": "580b136c1bd6a0b09bcbd66ae24d3e4397ed98fff54a3f8329bb76beb32d4487",
+    "validation/steam_refactoring.py": "6501132c853af66a502ab4d3e553898587b3dda4958f5955113207e6e30aa34b",
+    "validation/steam_resume_acceptance.py": "c3e9ba61f94b070c9e381af6a4ed0fa983fa61905746cd611286ef9c3e63f5ea",
+    "validation/steam_runtime.py": "30e8c150c2e55dfbc232f8bb904038c4b959d66e0bf304db6bc1a270a016b97c",
+    "validation/steam_sandbox_probe.py": "b478dc828f7a8bc435f42a19acb08843f6c1741a327cb260d063f3bbfc032d83",
+    "validation/steam_workflow.py": "51a3f8c6ca1333952368cb7e5b9681785c18101ddeef1653547faab4a85360d3",
+    "validation/__init__.py": "a8cf7ba6972f9c05990e72c82ec04b25c32b64d63911fc5c2757aa0c7a70b87f",
+    "tests/test_acceptance.py": "2a552693f54196598e3cb4c4c6e8e1e63366d9d53d40c89146214d11a22a8c62",
+    "tests/test_controller.py": "89392161ba680238c8b2ed15b2d43f5a20594a2e52a62e23be06f0ea8b69e955",
+    "tests/test_native_launcher.py": "03c6d996ae591d3bea6151128ef502da22bd3da84e50d4033d1ba57cf49e063f",
+    "tests/test_roles.py": "826f692e36190138fc51213db8c3eea5f2847e19ff7572efa2544a989f493327",
+    "tests/test_test_environment.py": "df9d8da46b187a5624ae6c0863a8d885183f65e6553a6e008072af4d0e760c1f",
+    "README.md": "c0fe277bc39a7450c4ddcc60aea0968cd7a3ea8e1818a79123d03bb3e4de3d8b",
+    "pyproject.toml": "8d8e8df9f894c3bb698d622d67dc1f8f833bf49047c8fc158ba812564baeb3c6",
+    ".gitignore": "62823b8cfcf1769b2727be5c4d65ccfd6f5b642f918fec24d71bd9261ed2246a"
+  },
+  "active_source_files": 15,
+  "active_physical_lines": 2208,
+  "entry_points": [
+    "validation.native_workflow",
+    "validation.steam_workflow",
+    "validation.steam_refactoring",
+    "validation.steam_runtime",
+    "validation.steam_negative_control",
+    "validation.steam_resume_acceptance",
+    "validation.steam_sandbox_probe"
+  ]
+}

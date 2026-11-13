@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "trials": [
+    {
+      "trial_id": "reviewer-1",
+      "case_count": 24,
+      "contract_consistency_passed": true,
+      "mismatches": []
+    },
+    {
+      "trial_id": "reviewer-2",
+      "case_count": 22,
+      "contract_consistency_passed": true,
+      "mismatches": []
+    }
+  ],
+  "basis": "Preexisting frozen Controller interpreter; independent Tester expectations unchanged"
+}

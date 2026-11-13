@@ -1,0 +1,15 @@
+[
+  {
+    "at": 1791532973.3210137,
+    "kind": "coordinator_evaluation_cleanup_correction",
+    "cause": "Frozen Stage27 adapter called strict artifact cleanup with ordinary pytest scratch symlinks still present",
+    "attribution": "Stage27 coordinator adapter defect; not a candidate defect or demonstrated existing framework defect",
+    "original_result_preserved": "B/assessment.json and B/independent.json unchanged: 40 tests passed, cleanup raised Linked workspace entry",
+    "correction": "Remove verified owned scratch subtree after archiving results, then invoke unchanged strict cleanup",
+    "applied_to": "Both A and B shared evaluations, independent evaluations, and mutation controls equally",
+    "candidate_or_suite_edits": false,
+    "role_retries": 0,
+    "extra_agents": 0,
+    "additional_action": "Run originally scheduled B Reviewer once as failure closeout; do not resume or overwrite B workflow decision"
+  }
+]

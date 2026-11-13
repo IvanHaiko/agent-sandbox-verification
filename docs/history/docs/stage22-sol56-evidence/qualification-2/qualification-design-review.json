@@ -1,0 +1,30 @@
+{
+  "design_sha256": "5c1b4460df276d761cc63410f7c6e5c6f51fb453a270994509fc0ed3485f780f",
+  "candidate_exposed": false,
+  "oracle_used": false,
+  "valid": true,
+  "violations": [],
+  "case_ids": [
+    "empty-input",
+    "repeated-separators",
+    "quoted-comma-and-adjacency",
+    "outside-escapes",
+    "inside-escapes",
+    "all-ordinary-whitespace",
+    "quoted-boundary-whitespace",
+    "escaped-whitespace-breaks-runs",
+    "quoted-whitespace-breaks-runs",
+    "ordinary-whitespace-only-labels",
+    "empty-quotes-and-protected-space",
+    "all-protected-whitespace-kinds",
+    "deduplicate-after-normalization",
+    "protection-affects-spacing-then-dedup",
+    "ascii-case-and-literals",
+    "quotes-toggle-anywhere",
+    "trailing-unpaired-backslash",
+    "unclosed-quote-after-valid-label",
+    "escaped-quote-does-not-close",
+    "paired-terminal-backslashes"
+  ],
+  "reasoning": "Controller examined all 20 cases directly against rules 1-10. Empty and separator-only labels discard; quoted comma and adjacent segments concatenate. Outside/inside escaped comma, quote, and backslash remain literal and uppercase folds. All six ordinary whitespace types trim/collapse; quoted boundaries and all six protected types preserve. Escaped tab splits ordinary runs into space-tab-space; quoted space-tab-space plus adjacent ordinary runs yields two spaces-tab-two spaces. Empty quotes discard, protected whitespace-only labels survive. Case/trim/quote variants deduplicate; A-backslash-space-space-B emits two spaces, matching quoted double-space label and differing from ordinary collapse. Punctuation is literal, quote toggles including empty segment concatenate to abcde. Final unpaired backslash, unclosed quote after earlier label, and escaped nonclosing quote are whole-input ValueErrors. Paired terminal backslashes are valid and yield one literal backslash. No unsupported assumptions or contradictions found; useful interaction coverage present."
+}

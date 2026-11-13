@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "invocation_id": "stage22-synthetic-recovery",
+  "role": "implementer",
+  "model": "gpt-5.6-luna",
+  "reasoning": "low",
+  "role_status": "failed",
+  "accepted": false,
+  "recorded_at": "2026-10-07T09:07:02.134165+00:00",
+  "failure_category": "socket_idle_timeout",
+  "failure_detail": "socket_idle_timeout",
+  "request_count": 1,
+  "tool_call_count": 1,
+  "completed_tool_call_count": 1,
+  "tool_result_returned": false,
+  "last_completed_phase": "controller_artifact_boundary",
+  "response_validation_passed": true,
+  "eof_observed": null,
+  "reader_shutdown_confirmed": null,
+  "socket_idle_timeout_observed": false,
+  "parser_status": "passed",
+  "handoff_status": "failed",
+  "protocol_bytes": 11773,
+  "stderr_bytes": 0,
+  "protocol_anomaly_counters": {},
+  "candidate_written": true,
+  "candidate_preserved": true,
+  "candidate_archived": true,
+  "candidate_skipped_count": 0,
+  "candidates": [
+    {
+      "path": "src/normalize_labels.py",
+      "sha256": "e881ea67e9665a7e66d97784913c96eb77c9d9a638935ba8fc6473b8dd5c8541",
+      "archive_path": "candidates/src/normalize_labels.py",
+      "originating_invocation_id": "stage22-synthetic-recovery",
+      "archived_at": "2026-10-07T09:07:02.133989+00:00",
+      "status": "unaccepted_diagnostic_candidate",
+      "accepted": false
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"own_candidate\": {\"readable\": true, \"writable_open_no_bytes\": true}, \"peer_tester\": {\"readable\": true, \"writable_open_no_bytes\": true}, \"held_out_suite\": {\"readable\": false, \"readable_errno\": 2, \"writable_open_no_bytes\": false, \"writable_open_no_bytes_errno\": 2}, \"other_configuration\": {\"readable\": false, \"readable_errno\": 2, \"writable_open_no_bytes\": false, \"writable_open_no_bytes_errno\": 2}, \"original_source\": {\"readable\": false, \"readable_errno\": 2, \"writable_open_no_bytes\": false, \"writable_open_no_bytes_errno\": 2}}\n",
+  "stderr": "",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "paths": {
+    "own_candidate": {
+      "readable": true,
+      "writable_open_no_bytes": true
+    },
+    "peer_tester": {
+      "readable": true,
+      "writable_open_no_bytes": true
+    },
+    "held_out_suite": {
+      "readable": false,
+      "readable_errno": 2,
+      "writable_open_no_bytes": false,
+      "writable_open_no_bytes_errno": 2
+    },
+    "other_configuration": {
+      "readable": false,
+      "readable_errno": 2,
+      "writable_open_no_bytes": false,
+      "writable_open_no_bytes_errno": 2
+    },
+    "original_source": {
+      "readable": false,
+      "readable_errno": 2,
+      "writable_open_no_bytes": false,
+      "writable_open_no_bytes_errno": 2
+    }
+  },
+  "scope": "Recorded A parent profile, not a claim about unobserved child profiles. O_WRONLY opens never write/truncate.",
+  "all_target_paths_exist": true
+}

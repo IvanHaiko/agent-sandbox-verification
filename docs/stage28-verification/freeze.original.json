@@ -1,0 +1,39 @@
+{
+  "at": 1791536998.0191143,
+  "commit": "0653617666399590c853c39f08e8cf97c9eca45c",
+  "order": [
+    "A",
+    "B"
+  ],
+  "order_rule": "Alphabetical fixed before candidates",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "cli": "codex-cli 0.160.1",
+  "max_candidate_repair_cycles": 2,
+  "repair_feedback": "Frozen independent failures and concrete review findings; external suite held out until final evaluation",
+  "sha256": {
+    "task-contract.md": "eca2fd36966e39aee06e99bf2b4e01a1869c256e6cdef27c6147e3da87b03f22",
+    "review-rubric.md": "7dbcb206946764cd41d1e8573b01922cd3ea8ce26af11d29b4512c4aca92bae3",
+    "test_external_acceptance.py": "f042bb7353b2950fbeace0fb371da7f4a933b45232531bfd86b93902f811d401",
+    "requirements.txt": "5320f994c87123c49bfd3e5ec4744bea069654e25ad8c55d162d8393943edf1b",
+    "experiment.py": "7718695eb71c1cb2fd9a7205cca0228bfca662f452f4f4f9c78eb5c7ebf81eb2"
+  },
+  "reused_stage27_adapter_sha256": "38d2b15a26054dc676a6fdaa5c40af77bf8218301935ad59634ca9fef4dce941",
+  "mutations": {
+    "missing-envelope-validation": {
+      "src/transform.py": "\n_stage28_transform = transform_igdb_search_results\ndef transform_igdb_search_results(raw_data):\n    if isinstance(raw_data, dict) and \"data\" not in raw_data:\n        raw_data = dict(raw_data, data=[])\n    return _stage28_transform(raw_data)\n"
+    },
+    "rewrite-replay-timestamp": {
+      "src/load.py": "\n_stage28_upsert = upsert_igdb_game\ndef upsert_igdb_game(connection, game):\n    _stage28_upsert(connection, game)\n    with connection.cursor() as cursor:\n        cursor.execute(\"UPDATE igdb_games SET updated_at=CURRENT_TIMESTAMP WHERE igdb_game_id=%s\", (game[\"igdb_game_id\"],))\n"
+    },
+    "commit-partial-file": {
+      "src/load.py": "\n_stage28_upsert = upsert_igdb_game\ndef upsert_igdb_game(connection, game):\n    _stage28_upsert(connection, game)\n    connection.commit()\n"
+    }
+  },
+  "timeouts_seconds": {
+    "implementer": 900,
+    "tester": 900,
+    "reviewer": 360,
+    "A_orchestrator": 3600
+  }
+}

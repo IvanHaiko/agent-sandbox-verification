@@ -1,0 +1,76 @@
+2026-10-08 11:33:22.685 CEST [688] LOG:  starting PostgreSQL 18.6 (Ubuntu 18.6-0ubuntu0.26.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0, 64-bit
+2026-10-08 11:33:22.689 CEST [688] LOG:  listening on Unix socket "/home/ivan/codex-role-2x9u3e_e/socket/.s.PGSQL.55425"
+2026-10-08 11:33:22.700 CEST [694] LOG:  database system was shut down at 2026-10-08 11:33:22 CEST
+2026-10-08 11:33:22.708 CEST [688] LOG:  database system is ready to accept connections
+2026-10-08 11:38:22.800 CEST [692] LOG:  checkpoint starting: time
+2026-10-08 11:38:27.038 CEST [692] LOG:  checkpoint complete: wrote 42 buffers (0.3%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=4.224 s, sync=0.004 s, total=4.239 s; sync files=11, longest=0.003 s, average=0.001 s; distance=325 kB, estimate=325 kB; lsn=0/17B7448, redo lsn=0/17B73B8
+2026-10-08 11:50:05.629 CEST [2667] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-08 11:50:05.629 CEST [2667] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-08 11:50:05.629 CEST [2667] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-08 11:50:05.653 CEST [2669] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-08 11:50:05.653 CEST [2669] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-08 11:50:05.653 CEST [2669] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-08 11:50:05.681 CEST [2671] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-08 11:50:05.681 CEST [2671] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-08 11:50:05.679457, 2026-10-08 11:50:05.679457, probably_fine, null, 0, 0, f, null).
+2026-10-08 11:50:05.681 CEST [2671] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-08 11:50:05.805 CEST [2681] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-08 11:50:05.805 CEST [2681] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-08 11:50:05.805 CEST [2681] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-08 11:50:05.824 CEST [2683] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-08 11:50:05.824 CEST [2683] DETAIL:  Failing row contains (1, 2026-10-08 11:50:05.823866, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-08 11:50:05.824 CEST [2683] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-08 11:50:06.000 CEST [2703] ERROR:  acceptance deliberate second-row write failure
+2026-10-08 11:50:06.000 CEST [2703] CONTEXT:  PL/pgSQL function acceptance_fail_second_write() line 4 at RAISE
+2026-10-08 11:50:06.000 CEST [2703] STATEMENT:  
+	            INSERT INTO twitch_game_snapshots (
+	                twitch_game_id,
+	                twitch_game_name,
+	                viewer_count,
+	                stream_count,
+	                sample_time,
+	                sample_hour,
+	                sample_time_source
+	            )
+	            VALUES ($1, $2, $3, $4, $5, $6, 'bronze')
+	            ON CONFLICT (sample_hour, twitch_game_id) DO UPDATE
+	            SET
+	                twitch_game_name = EXCLUDED.twitch_game_name,
+	                viewer_count = EXCLUDED.viewer_count,
+	                stream_count = EXCLUDED.stream_count,
+	                sample_time = EXCLUDED.sample_time,
+	                sample_time_source = EXCLUDED.sample_time_source
+	            
+2026-10-08 11:50:07.332 CEST [2846] ERROR:  division by zero
+2026-10-08 11:50:07.332 CEST [2846] STATEMENT:  SELECT 1 / 0
+2026-10-08 11:50:07.614 CEST [692] LOG:  checkpoint starting: immediate force wait
+2026-10-08 11:50:07.635 CEST [692] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.003 s, sync=0.004 s, total=0.021 s; sync files=4, longest=0.002 s, average=0.001 s; distance=8639 kB, estimate=8639 kB; lsn=0/20271D0, redo lsn=0/2027178
+2026-10-08 11:52:23.420 CEST [3529] ERROR:  acceptance deliberate second-row write failure
+2026-10-08 11:52:23.420 CEST [3529] CONTEXT:  PL/pgSQL function acceptance_fail_second_write() line 4 at RAISE
+2026-10-08 11:52:23.420 CEST [3529] STATEMENT:  
+	            INSERT INTO twitch_game_snapshots (
+	                twitch_game_id,
+	                twitch_game_name,
+	                viewer_count,
+	                stream_count,
+	                sample_time,
+	                sample_hour,
+	                sample_time_source
+	            )
+	            VALUES ($1, $2, $3, $4, $5, $6, 'bronze')
+	            ON CONFLICT (sample_hour, twitch_game_id) DO UPDATE
+	            SET
+	                twitch_game_name = EXCLUDED.twitch_game_name,
+	                viewer_count = EXCLUDED.viewer_count,
+	                stream_count = EXCLUDED.stream_count,
+	                sample_time = EXCLUDED.sample_time,
+	                sample_time_source = EXCLUDED.sample_time_source
+	            
+2026-10-08 11:52:25.624 CEST [692] LOG:  checkpoint starting: immediate force wait
+2026-10-08 11:52:25.650 CEST [692] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.007 s, sync=0.005 s, total=0.026 s; sync files=4, longest=0.003 s, average=0.002 s; distance=6244 kB, estimate=8399 kB; lsn=0/26403D8, redo lsn=0/2640380
+2026-10-08 11:56:56.843 CEST [688] LOG:  received fast shutdown request
+2026-10-08 11:56:56.846 CEST [688] LOG:  aborting any active transactions
+2026-10-08 11:56:56.848 CEST [688] LOG:  background worker "logical replication launcher" (PID 697) exited with exit code 1
+2026-10-08 11:56:56.848 CEST [692] LOG:  shutting down
+2026-10-08 11:56:56.851 CEST [692] LOG:  checkpoint starting: shutdown immediate
+2026-10-08 11:56:56.864 CEST [692] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.002 s, total=0.015 s; sync files=2, longest=0.002 s, average=0.001 s; distance=1 kB, estimate=7560 kB; lsn=0/26408D0, redo lsn=0/26408D0
+2026-10-08 11:56:56.875 CEST [688] LOG:  database system is shut down

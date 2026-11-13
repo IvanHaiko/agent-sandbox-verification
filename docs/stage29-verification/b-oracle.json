@@ -1,0 +1,16 @@
+{
+  "injected_case": {
+    "args": [
+      5,
+      0,
+      3
+    ],
+    "expected": 5
+  },
+  "actual": 3,
+  "syntactic_design_valid": true,
+  "assertion_passed": false,
+  "correct_contract_result": 3,
+  "automatic_candidate_repair_safe": false,
+  "classification": "test-oracle defect; requires semantic adjudication"
+}

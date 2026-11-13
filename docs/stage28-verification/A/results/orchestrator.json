@@ -1,0 +1,141 @@
+{
+  "configuration": "A",
+  "start": 1791537105.597,
+  "roles": {
+    "independent_tester": {
+      "id": "/root/independent_tester",
+      "start": 1791537105.597,
+      "end": 1791537319.9269173,
+      "status": "completed"
+    },
+    "implementer": {
+      "id": "/root/implementer",
+      "start": 1791537333.1912365,
+      "status": "completed",
+      "end": 1791537538.576184,
+      "repairs": [
+        {
+          "cycle": 1,
+          "start": 1791537707.751555,
+          "end": 1791537829.9978108,
+          "status": "completed"
+        }
+      ]
+    },
+    "reviewer": {
+      "id": "/root/reviewer",
+      "start": 1791537584.4413874,
+      "status": "completed",
+      "end": 1791537707.7515497,
+      "followups": [
+        {
+          "attempt": 1,
+          "start": 1791537851.923666,
+          "end": 1791537986.2314308,
+          "status": "completed"
+        }
+      ],
+      "final_end": 1791537986.2314327
+    }
+  },
+  "repair_count": 1,
+  "failures": [
+    {
+      "phase": "independent",
+      "attempt": 0,
+      "failed": 2,
+      "passed": 67,
+      "classification": "reviewer identifies both failures as independent harness errors"
+    },
+    {
+      "phase": "review",
+      "attempt": 0,
+      "blocker": "shared Twitch UID replay advances timestamps"
+    },
+    {
+      "phase": "independent",
+      "attempt": 1,
+      "failed": 2,
+      "passed": 67,
+      "classification": "same two frozen harness errors identified by initial review"
+    }
+  ],
+  "setup_failures": [
+    {
+      "phase": "review",
+      "issue": "O_WRONLY permission probe succeeded; denial not enforced; hashes unchanged"
+    },
+    {
+      "phase": "final review",
+      "issue": "O_WRONLY permission probe again succeeded; denial not enforced; hashes unchanged"
+    }
+  ],
+  "completion": true,
+  "freeze": {
+    "time": 1791537319.9267638,
+    "candidate_visible": false,
+    "files": {
+      "test-design.json": {
+        "sha256": "f526218116a8b7b556218ddbbe6a42da532331405245a09cc7a1f7f002b6c0a1",
+        "size": 4003
+      },
+      "test_independent.py": {
+        "sha256": "0528c7663a3813434f042e68ca2f677bb82f2d3ae5370a616e1dfdcdff0877dd",
+        "size": 11467
+      }
+    },
+    "top_level_tests": 12
+  },
+  "attempts": [
+    {
+      "attempt": 0,
+      "patch": "attempt-0.patch",
+      "sha256": "1b42496b30f127dcae44a8d5be827bdbecc0d673fc60ab4e210625417bce9fe6",
+      "acceptance_start": 1791537538.576229,
+      "acceptance_end": 1791537567.2145848,
+      "acceptance_exit_code": 1,
+      "result": "attempt-0-independent.json"
+    },
+    {
+      "attempt": 1,
+      "patch": "attempt-1.patch",
+      "sha256": "e03972361ac75957a39ee2eacc846525d4765f9c838c0d41687141b3b320650b",
+      "acceptance_start": 1791537829.9978554,
+      "acceptance_end": 1791537851.9236453,
+      "acceptance_exit_code": 1,
+      "result": "attempt-1-independent.json"
+    }
+  ],
+  "end": 1791537986.2314334,
+  "outcome": "completed_with_frozen_harness_errors",
+  "final_recommendation": "accept",
+  "final_independent": {
+    "passed": 67,
+    "failed": 2,
+    "exit_code": 1,
+    "classification": "reviewer-established harness errors; tests unchanged"
+  },
+  "integrity": {
+    "frozen_unchanged": true,
+    "review_inputs_unchanged": true,
+    "candidate_copies_equal": true,
+    "candidate_diff_files": [
+      "src/load.py",
+      "src/transform.py",
+      "tests/test_igdb_reliability.py"
+    ]
+  },
+  "role_configuration": {
+    "count": 3,
+    "model": "gpt-6.1-sol",
+    "reasoning": "medium",
+    "fresh_context": true
+  },
+  "adapter_corrections": [
+    {
+      "phase": "final artifact checks",
+      "issue": "Initial scope assertion included allowed handoff metadata; corrected check to src/tests. Initial reviewer-result overwrite patch rejected duplicate path operations; saved through attempt result then byte copy. No candidate or test edits."
+    }
+  ],
+  "candidate_code_edited_by_orchestrator": false
+}

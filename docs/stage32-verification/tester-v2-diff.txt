@@ -1,0 +1,21 @@
+--- draft-v1
++++ admitted-v2
+@@ -129,7 +129,7 @@
+     failed_repo = sorted(reference_rows)[0]
+     root = tmp_path / "retry"
+     first = FakeHttp()
+-    first.hf_status = {failed_repo: 503}
++    first.hf_status[failed_repo] = 503
+     collect(root, snapshot_date=DAY, http=first, now=utc(DAY, "01:00:00"))
+     successes = hf_successes(root)
+     assert successes
+@@ -158,7 +158,8 @@
+     assert tree(root) == before
+ 
+ 
+-def test_default_partition_uses_utc_today(tmp_path, clock):
++def test_default_partition_uses_utc_today(tmp_path, clock, monkeypatch):
++    monkeypatch.setattr("collector.run.utc_today", lambda: DAY)
+     first = FakeHttp()
+     result = collect(tmp_path, http=first, now=clock)
+     assert first.call_count > 0

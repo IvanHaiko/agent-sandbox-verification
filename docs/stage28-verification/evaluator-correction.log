@@ -1,0 +1,21 @@
+{
+  "at": 1791537061.9895122,
+  "classification": "Shared evaluator syntax defect before candidate exposure",
+  "original_suite": "test_external_acceptance.original.py",
+  "original_result": "baseline-external.json",
+  "original_freeze": "freeze.original.json",
+  "correction": "One closing list bracket; no contract or assertion changes",
+  "candidate_exposure": false,
+  "corrected_baseline": {
+    "exit_code": 1,
+    "tests": 56,
+    "passed": 2,
+    "failed": 54,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 7.719959497451782
+  },
+  "effective_external_sha256": "bea83fdf8d7ecd20c9edd26050cf251fa4ebfab571ee2f1cc7708e5648f80954",
+  "original_sha256": "f042bb7353b2950fbeace0fb371da7f4a933b45232531bfd86b93902f811d401",
+  "limitation": "Original frozen evaluator could not collect. Both candidates use the same corrected, resealed suite established before either candidate existed."
+}

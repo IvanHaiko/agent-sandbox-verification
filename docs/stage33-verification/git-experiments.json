@@ -1,0 +1,421 @@
+{
+  "git_version": "git version 2.53.0",
+  "experiments": [
+    {
+      "experiment": "recorded-sequence-0",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+        "ls-files",
+        "-z"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "b2deea151fa3d1504e4e3d42300fe5a0c9304a08dc55e64e09ac74e17abf4a64",
+      "stderr": "",
+      "before": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "after": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "raw_index_changed": false,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "recorded-sequence-1",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "d109e78ffb8289610e80fe39864610006a38a761ff8db434292d8fa7cb56b9f2",
+      "stderr": "",
+      "before": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "after": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "raw_index_changed": false,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "recorded-sequence-2",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+        "rev-parse",
+        "--git-path",
+        "index"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "742e1586a644af64934a892663d03c75415bfb01edafdfdd924a8627573bfb9c",
+      "stderr": "",
+      "before": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "after": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "raw_index_changed": false,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "recorded-sequence-3",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+        "rev-parse",
+        "HEAD"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "daafd36fd67aaa25b419a57935ae3681040b3ba8f942a0e754c7cc50c794d420",
+      "stderr": "",
+      "before": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "after": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "raw_index_changed": false,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "recorded-sequence-4",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+        "symbolic-ref",
+        "--short",
+        "HEAD"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+      "stderr": "",
+      "before": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "after": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "raw_index_changed": false,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "recorded-sequence-5",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "e065fb859b48331640d07d6971df0411d2507f7a9dad2c8c47a74b72cc411de4",
+      "stderr": "",
+      "before": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "after": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "raw_index_changed": false,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "recorded-sequence-6",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+        "worktree",
+        "list",
+        "--porcelain"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "b2b638cb33bb88d706a81ecd06de488f26c30d26e332a2a8faae2cfce83ee0d4",
+      "stderr": "",
+      "before": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "after": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "raw_index_changed": false,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "recorded-sequence-7",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+        "diff",
+        "--cached",
+        "--binary"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "before": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "after": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "raw_index_changed": false,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "recorded-sequence-8",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+        "diff",
+        "--binary"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "d05cd868db058d84da8eba3f5d76e390044b7d39c400bed32308faf19e13c82a",
+      "stderr": "",
+      "before": {
+        "index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "after": {
+        "index_sha256": "6af778cbf537d6ae4f5d5d1eea37fdb41eba3e2dc683ea4c9bee86df38e5e1bd",
+        "index_size": 46324,
+        "staged_entries_sha256": "2323efb6ea76c6a4faa6678d582aa715c79412eed7c5191e95c41744629c7ae1",
+        "files_sha256": "c480a0ab805284b70573669e8c4ef7d4d885a1e7d09f96e8e04be890b162777d"
+      },
+      "raw_index_changed": true,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "stale-status-optional-locks-disabled",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "476e8dbf96af01140ad48e410e0cfebbf10424d63d2ee7c3bc2c3f83751e66db",
+      "stderr": "",
+      "before": {
+        "index_sha256": "e1b4fec6188c9f62b5407ddf2d69b7f8ce1a70f48ee3386a083a3e3fc844f5fd",
+        "index_size": 286,
+        "staged_entries_sha256": "280e1626a38ae1ad958b0ea4ef5c17e19e31b4b6bd1cdcb70f3d4944d7e4ebd8",
+        "files_sha256": "961cf6319f44493d25f0345deb5b28aac5c7be08744ae2c63aca3ad1abe2bc9a"
+      },
+      "after": {
+        "index_sha256": "e1b4fec6188c9f62b5407ddf2d69b7f8ce1a70f48ee3386a083a3e3fc844f5fd",
+        "index_size": 286,
+        "staged_entries_sha256": "280e1626a38ae1ad958b0ea4ef5c17e19e31b4b6bd1cdcb70f3d4944d7e4ebd8",
+        "files_sha256": "961cf6319f44493d25f0345deb5b28aac5c7be08744ae2c63aca3ad1abe2bc9a"
+      },
+      "raw_index_changed": false,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "stale-diff-optional-locks-disabled",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+        "diff",
+        "--binary"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "b520a60d724e27ff768230b1fe6ee31450027738e917c1d6aaf296de253f0b78",
+      "stderr": "",
+      "before": {
+        "index_sha256": "e1b4fec6188c9f62b5407ddf2d69b7f8ce1a70f48ee3386a083a3e3fc844f5fd",
+        "index_size": 286,
+        "staged_entries_sha256": "280e1626a38ae1ad958b0ea4ef5c17e19e31b4b6bd1cdcb70f3d4944d7e4ebd8",
+        "files_sha256": "961cf6319f44493d25f0345deb5b28aac5c7be08744ae2c63aca3ad1abe2bc9a"
+      },
+      "after": {
+        "index_sha256": "cfae71f7fcb4a6f3791b3e4e156aff280809dc62eaeccafae35dbbc1a2cfd3cb",
+        "index_size": 286,
+        "staged_entries_sha256": "280e1626a38ae1ad958b0ea4ef5c17e19e31b4b6bd1cdcb70f3d4944d7e4ebd8",
+        "files_sha256": "961cf6319f44493d25f0345deb5b28aac5c7be08744ae2c63aca3ad1abe2bc9a"
+      },
+      "raw_index_changed": true,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "stale-status-default-locks",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "GIT_OPTIONAL_LOCKS": "unset",
+      "GIT_INDEX_FILE": null,
+      "exit_code": 0,
+      "stdout_sha256": "476e8dbf96af01140ad48e410e0cfebbf10424d63d2ee7c3bc2c3f83751e66db",
+      "stderr": "",
+      "before": {
+        "index_sha256": "e1b4fec6188c9f62b5407ddf2d69b7f8ce1a70f48ee3386a083a3e3fc844f5fd",
+        "index_size": 286,
+        "staged_entries_sha256": "280e1626a38ae1ad958b0ea4ef5c17e19e31b4b6bd1cdcb70f3d4944d7e4ebd8",
+        "files_sha256": "961cf6319f44493d25f0345deb5b28aac5c7be08744ae2c63aca3ad1abe2bc9a"
+      },
+      "after": {
+        "index_sha256": "cfae71f7fcb4a6f3791b3e4e156aff280809dc62eaeccafae35dbbc1a2cfd3cb",
+        "index_size": 286,
+        "staged_entries_sha256": "280e1626a38ae1ad958b0ea4ef5c17e19e31b4b6bd1cdcb70f3d4944d7e4ebd8",
+        "files_sha256": "961cf6319f44493d25f0345deb5b28aac5c7be08744ae2c63aca3ad1abe2bc9a"
+      },
+      "raw_index_changed": true,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    },
+    {
+      "experiment": "stale-diff-private-index",
+      "repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+        "diff",
+        "--binary"
+      ],
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_INDEX_FILE": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/experiment-private.index",
+      "exit_code": 0,
+      "stdout_sha256": "b520a60d724e27ff768230b1fe6ee31450027738e917c1d6aaf296de253f0b78",
+      "stderr": "",
+      "before": {
+        "index_sha256": "e1b4fec6188c9f62b5407ddf2d69b7f8ce1a70f48ee3386a083a3e3fc844f5fd",
+        "index_size": 286,
+        "staged_entries_sha256": "280e1626a38ae1ad958b0ea4ef5c17e19e31b4b6bd1cdcb70f3d4944d7e4ebd8",
+        "files_sha256": "961cf6319f44493d25f0345deb5b28aac5c7be08744ae2c63aca3ad1abe2bc9a"
+      },
+      "after": {
+        "index_sha256": "e1b4fec6188c9f62b5407ddf2d69b7f8ce1a70f48ee3386a083a3e3fc844f5fd",
+        "index_size": 286,
+        "staged_entries_sha256": "280e1626a38ae1ad958b0ea4ef5c17e19e31b4b6bd1cdcb70f3d4944d7e4ebd8",
+        "files_sha256": "961cf6319f44493d25f0345deb5b28aac5c7be08744ae2c63aca3ad1abe2bc9a"
+      },
+      "raw_index_changed": false,
+      "staged_entries_unchanged": true,
+      "working_files_unchanged": true
+    }
+  ],
+  "private_index_before": "e1b4fec6188c9f62b5407ddf2d69b7f8ce1a70f48ee3386a083a3e3fc844f5fd",
+  "private_index_after": "cfae71f7fcb4a6f3791b3e4e156aff280809dc62eaeccafae35dbbc1a2cfd3cb",
+  "replica_uses_original_objects_read_only": true,
+  "original_index_unchanged": true
+}

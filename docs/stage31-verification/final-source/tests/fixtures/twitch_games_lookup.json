@@ -1,0 +1,94 @@
+{
+ "source": "twitch",
+ "request": "games_lookup",
+ "fetched_at": "2026-05-11T16:10:47.897796+00:00",
+ "game_ids": [
+  "29595",
+  "32399",
+  "509672",
+  "499973",
+  "509667",
+  "518203",
+  "460090",
+  "493057",
+  "515024",
+  "515025",
+  "295550326",
+  "669337588"
+ ],
+ "result_count": 12,
+ "data": [
+  {
+   "id": "29595",
+   "name": "Dota 2",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/29595-{width}x{height}.jpg",
+   "igdb_id": ""
+  },
+  {
+   "id": "32399",
+   "name": "Counter-Strike",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/32399-{width}x{height}.jpg",
+   "igdb_id": ""
+  },
+  {
+   "id": "509672",
+   "name": "IRL",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/509672-{width}x{height}.jpg",
+   "igdb_id": ""
+  },
+  {
+   "id": "499973",
+   "name": "Always On",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/499973-{width}x{height}.jpg",
+   "igdb_id": ""
+  },
+  {
+   "id": "509667",
+   "name": "Food & Drink",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/509667-{width}x{height}.jpg",
+   "igdb_id": ""
+  },
+  {
+   "id": "518203",
+   "name": "Sports",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/518203-{width}x{height}.jpg",
+   "igdb_id": ""
+  },
+  {
+   "id": "460090",
+   "name": "Subnautica",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/460090_IGDB-{width}x{height}.jpg",
+   "igdb_id": "9254"
+  },
+  {
+   "id": "493057",
+   "name": "PUBG: BATTLEGROUNDS",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/493057-{width}x{height}.jpg",
+   "igdb_id": "27789"
+  },
+  {
+   "id": "515024",
+   "name": "Diablo IV",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/515024-{width}x{height}.jpg",
+   "igdb_id": "125165"
+  },
+  {
+   "id": "515025",
+   "name": "Overwatch",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/515025-{width}x{height}.jpg",
+   "igdb_id": "125174"
+  },
+  {
+   "id": "295550326",
+   "name": "Bunny Garden 2",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/295550326_IGDB-{width}x{height}.jpg",
+   "igdb_id": "375379"
+  },
+  {
+   "id": "669337588",
+   "name": "Microsoft Flight Simulator 2024",
+   "box_art_url": "https://static-cdn.jtvnw.net/ttv-boxart/669337588_IGDB-{width}x{height}.jpg",
+   "igdb_id": "252830"
+  }
+ ]
+}

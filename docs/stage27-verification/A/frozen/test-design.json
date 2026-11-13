@@ -1,0 +1,70 @@
+{
+  "cases": [
+    {
+      "requirement": "boundaries",
+      "test": "test_boundaries_preserve_exact_fragments_and_final_statement",
+      "assertion": "Return ordered, outer-stripped original fragments without delimiter semicolons; preserve internal spacing, accept a final undelimited statement, ignore empty fragments, and leave input unchanged."
+    },
+    {
+      "requirement": "quotes",
+      "test": "test_quoted_regions_and_standard_backslash_semantics",
+      "assertion": "Protect semicolons in ordinary strings, doubled string quotes, doubled quoted identifiers, and uppercase/lowercase escape strings; ordinary backslashes do not escape closing quotes. Region-looking text inside quotes remains literal."
+    },
+    {
+      "requirement": "quotes",
+      "test": "test_e_prefix_requires_identifier_token_boundary",
+      "assertion": "An E/e embedded in identifiers, including accented and dollar-containing identifiers, cannot enable backslash escaping; an E/e after an opening parenthesis can."
+    },
+    {
+      "requirement": "dollars",
+      "test": "test_dollar_quotes_keep_bodies_and_case_sensitive_tags",
+      "assertion": "Preserve semicolons and misleading comment/string delimiters inside untagged and legal ASCII tagged dollar bodies; mismatched-case and other dollar tags cannot close the body."
+    },
+    {
+      "requirement": "dollars",
+      "test": "test_dollar_like_identifier_and_parameter_text_is_not_a_quote",
+      "assertion": "Dollar sequences embedded in unquoted identifiers, positional parameters, and invalid tag-shaped sequences cannot begin dollar-quoted regions."
+    },
+    {
+      "requirement": "comments",
+      "test": "test_comments_are_nested_line_terminated_and_preserved",
+      "assertion": "Nested block comments and CR/LF/EOF line comments protect semicolons, remain in statement fragments, and are ignored when they form the entire fragment. Quotes and dollars inside a comment have no meaning."
+    },
+    {
+      "requirement": "errors",
+      "test": "test_unterminated_regions_raise_required_value_error",
+      "assertion": "Unterminated strings, escape strings, identifiers, dollar bodies and nested block comments raise ValueError with the required 'Unterminated SQL' prefix."
+    },
+    {
+      "requirement": "persistence",
+      "test": "test_real_postgres_quoted_function_do_and_nested_comment_execution",
+      "assertion": "Real PostgreSQL executes quoted identifiers/literals, an escape-string-containing function body, a DO body, and nested comments; an execution recorder proves each of five resulting statements is sent separately, with one bootstrap and one file commit."
+    },
+    {
+      "requirement": "persistence",
+      "test": "test_failed_file_rolls_back_ddl_data_and_ledger_but_prior_file_commits",
+      "assertion": "A real division-by-zero failure rolls back prior inserts and CREATE TABLE effects within its file, excludes that filename from the isolated ledger, preserves the preceding file's committed data, and permits a repaired file on rerun."
+    },
+    {
+      "requirement": "errors",
+      "test": "test_malformed_file_is_validated_before_any_of_its_statements_execute",
+      "assertion": "A later unterminated dollar quote causes the required ValueError before even the valid first statement in that file reaches PostgreSQL; earlier files and their ledger rows stay committed."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_discovery_order_utf8_empty_files_and_filename_replay",
+      "assertion": "Immediate SQL files execute in filename order with UTF-8 content; nested SQL and non-SQL files are ignored. Empty/comment-only files receive ledger rows and per-file commits. Replay skips by filename even after an applied file is changed to malformed SQL, with no data duplication; console output remains present."
+    },
+    {
+      "requirement": "compatibility",
+      "test": "test_runner_public_signature_keeps_optional_directory",
+      "assertion": "The runner retains exactly one public parameter named migrations_dir, whose default is None."
+    }
+  ],
+  "limitations": [
+    "No candidate implementation was inspected or executed; only test syntax and design-to-function correspondence were checked before freezing.",
+    "Default-path discovery is checked through the public optional-directory signature rather than modifying the candidate's built-in migration directory.",
+    "The exact pre-existing console message wording was not provided; the suite checks that console summaries remain present.",
+    "Grammar validation, COPY streams, transaction-control SQL, psql commands, non-ASCII dollar tags, concurrency and checksums are outside the required scope."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "role": "implementer",
+  "execution_status": "completed",
+  "failure_category": null,
+  "candidate_files": [
+    "src/normalize_labels.py"
+  ],
+  "candidate_hashes": {
+    "src/normalize_labels.py": "05319f3c1c95c73761b0e1d85e4d002937becc40c7bc1b3e29b87908162108fc"
+  },
+  "diff_summary": "--- a/src/normalize_labels.py\n+++ b/src/normalize_labels.py\n@@ -1,2 +1,64 @@\n+\"\"\"Parsing and normalization of comma-separated labels.\"\"\"\n+\n+\n+_ASCII_WHITESPACE = \" \\t\\r\\n\\v\\f\"\n+\n+\n+def _normalize(parts: list[tuple[str, bool]]) -> str:\n+    \"\"\"Normalize a parsed label, retaining protection information as needed.\"\"\"\n+    start = 0\n+    end = len(parts)\n+    while start < end and not parts[start][1] and parts[start][0] in _ASCII_WHITESPACE:\n+        start += 1\n+    while end > start and not parts[end - 1][1] and parts[end - 1][0] in _ASCII_WHITESPACE:\n+        end -= 1\n+\n+    result: list[str] = []\n+    ordinary_space_pending = False\n+    for char, protected in parts[start:end]:\n+        if not protected and char in _ASCII_WHITESPACE:\n+            ordinary_space_pending = True\n+            continue\n+        if ordinary_space_pending:\n+            result.append(\" \")\n+            ordinary_space_pending = False\n+        if \"A\" <= char <= \"Z\":\n+            char = char.lower()\n+        result.append(char)\n+    return \"\".join(result)\n+\n+\n def normalize_labels(value: str) -> list[str]:\n-    raise NotImplementedError\n+    \"\"\"Parse, normalize, and deduplicate comma-separated labels.\"\"\"\n+    labels: list[str] = []\n+    parts: list[tuple[str, bool]] = []\n+    quoted = False\n+    index = 0\n+\n+    while index < len(value):\n+        char = value[index]\n+        if char == \"\\\\\":\n+            index += 1\n+            if index == len(value):\n+                raise ValueError(\"trailing unpaired backslash\")\n+            parts.append((value[index], True))\n+        elif char == '\"':\n+            quoted = not quoted\n+        elif char == \",\" and not quoted:\n+            labels.append(_normalize(parts))\n+            parts = []\n+        else:\n+            parts.append((char, quoted))\n+        index += 1\n+\n+    if quoted:\n+        raise ValueError(\"unclosed double quote\")\n+    labels.append(_normalize(parts))\n+\n+    result: list[str] = []\n+    seen: set[str] = set()\n+    for label in labels:\n+        if label and label not in seen:\n+            seen.add(label)\n+            result.append(label)\n+    return result\n",
+  "mutation_scope_valid": true,
+  "interface_check": {
+    "public_interface_verified": true,
+    "own_cases_passed": 0
+  },
+  "self_checks": [],
+  "model_handoff_received": false,
+  "accepted": false,
+  "authority": "controller_observed_artifacts"
+}

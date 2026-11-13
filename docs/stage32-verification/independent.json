@@ -1,0 +1,26 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "...............                                                          [100%]\n- generated xml file: /home/ivan/codex-role-vkfd93to/.scratch/independent.xml --\n15 passed in 0.28s\n",
+  "stderr": "",
+  "argv": [
+    "/usr/bin/env",
+    "TMPDIR=/home/ivan/codex-role-vkfd93to/.scratch",
+    "/home/ivan/codex-role-d84s0i0h/venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-p",
+    "tests.conftest",
+    "-c",
+    "pyproject.toml",
+    "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/frozen-v3/tests/test_date_admission.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=.scratch/independent",
+    "--junitxml=.scratch/independent.xml"
+  ]
+}

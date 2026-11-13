@@ -1,0 +1,1496 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="54" skipped="0" tests="56" time="4.383" timestamp="2026-10-09T11:10:57.364781+02:00" hostname="Ivan"><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[None]" time="0.001"><failure message="AttributeError: 'NoneType' object has no attribute 'get'">payload = None
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+        with pytest.raises(ValueError):
+&gt;           transform.transform_igdb_search_results(payload)
+
+tests/test_stage28_evaluation.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_data = None
+
+    def transform_igdb_search_results(raw_data: dict) -&gt; list[dict]:
+        """
+        Transform IGDB search raw JSON into structured records.
+    
+        One raw file can contain multiple IGDB games.
+        """
+    
+        transformed_records = []
+    
+&gt;       for game in raw_data.get("data", []):
+                    ^^^^^^^^^^^^
+E       AttributeError: 'NoneType' object has no attribute 'get'
+
+src/transform.py:643: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload1]" time="0.001"><failure message="AttributeError: 'list' object has no attribute 'get'">payload = []
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+        with pytest.raises(ValueError):
+&gt;           transform.transform_igdb_search_results(payload)
+
+tests/test_stage28_evaluation.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_data = []
+
+    def transform_igdb_search_results(raw_data: dict) -&gt; list[dict]:
+        """
+        Transform IGDB search raw JSON into structured records.
+    
+        One raw file can contain multiple IGDB games.
+        """
+    
+        transformed_records = []
+    
+&gt;       for game in raw_data.get("data", []):
+                    ^^^^^^^^^^^^
+E       AttributeError: 'list' object has no attribute 'get'
+
+src/transform.py:643: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload2]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload3]" time="0.001"><failure message="TypeError: 'NoneType' object is not iterable">payload = {'data': None}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+        with pytest.raises(ValueError):
+&gt;           transform.transform_igdb_search_results(payload)
+
+tests/test_stage28_evaluation.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_data = {'data': None}
+
+    def transform_igdb_search_results(raw_data: dict) -&gt; list[dict]:
+        """
+        Transform IGDB search raw JSON into structured records.
+    
+        One raw file can contain multiple IGDB games.
+        """
+    
+        transformed_records = []
+    
+&gt;       for game in raw_data.get("data", []):
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: 'NoneType' object is not iterable
+
+src/transform.py:643: TypeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload4]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': {}}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload5]" time="0.001"><failure message="AttributeError: 'str' object has no attribute 'get'">payload = {'data': 'bad'}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+        with pytest.raises(ValueError):
+&gt;           transform.transform_igdb_search_results(payload)
+
+tests/test_stage28_evaluation.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/transform.py:646: in transform_igdb_search_results
+    "igdb_game": transform_igdb_game(game),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = 'b'
+
+    def transform_igdb_game(game: dict) -&gt; dict:
+        """
+        Transform one IGDB game object into a flat igdb_games record.
+    
+        game_type and status are stored as both their raw integer value and a
+        human-readable label decoded from the IGDB enum tables.
+        """
+    
+&gt;       game_type = game.get("game_type")
+                    ^^^^^^^^
+E       AttributeError: 'str' object has no attribute 'get'
+
+src/transform.py:444: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload6]" time="0.001"><failure message="AttributeError: 'NoneType' object has no attribute 'get'">payload = {'data': [None]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+        with pytest.raises(ValueError):
+&gt;           transform.transform_igdb_search_results(payload)
+
+tests/test_stage28_evaluation.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/transform.py:646: in transform_igdb_search_results
+    "igdb_game": transform_igdb_game(game),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = None
+
+    def transform_igdb_game(game: dict) -&gt; dict:
+        """
+        Transform one IGDB game object into a flat igdb_games record.
+    
+        game_type and status are stored as both their raw integer value and a
+        human-readable label decoded from the IGDB enum tables.
+        """
+    
+&gt;       game_type = game.get("game_type")
+                    ^^^^^^^^
+E       AttributeError: 'NoneType' object has no attribute 'get'
+
+src/transform.py:444: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload7]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'id': True, 'name': 'x'}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload8]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'id': 0, 'name': 'x'}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload9]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'id': -1, 'name': 'x'}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload10]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'id': 2147483648, 'name': 'x'}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload11]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'id': '1', 'name': 'x'}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload12]" time="0.001"><failure message="KeyError: 'name'">payload = {'data': [{'id': 1}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+        with pytest.raises(ValueError):
+&gt;           transform.transform_igdb_search_results(payload)
+
+tests/test_stage28_evaluation.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/transform.py:646: in transform_igdb_search_results
+    "igdb_game": transform_igdb_game(game),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = {'id': 1}
+
+    def transform_igdb_game(game: dict) -&gt; dict:
+        """
+        Transform one IGDB game object into a flat igdb_games record.
+    
+        game_type and status are stored as both their raw integer value and a
+        human-readable label decoded from the IGDB enum tables.
+        """
+    
+        game_type = game.get("game_type")
+        status = game.get("status")
+    
+        return {
+            "igdb_game_id": game["id"],
+&gt;           "name": game["name"],
+                    ^^^^^^^^^^^^
+            "slug": game.get("slug"),
+            "summary": game.get("summary"),
+            "url": game.get("url"),
+            "first_release_date": unix_timestamp_to_date(game.get("first_release_date")),
+            "rating": game.get("rating"),
+            "rating_count": game.get("rating_count"),
+            "aggregated_rating": game.get("aggregated_rating"),
+            "aggregated_rating_count": game.get("aggregated_rating_count"),
+            "total_rating": game.get("total_rating"),
+            "total_rating_count": game.get("total_rating_count"),
+            "hypes": game.get("hypes"),
+            "follows": game.get("follows"),
+            "game_type": game_type,
+            "game_type_label": IGDB_GAME_TYPES.get(game_type) if game_type is not None else None,
+            "status": status,
+            "status_label": IGDB_STATUSES.get(status) if status is not None else None,
+            "raw_json": game,
+        }
+E       KeyError: 'name'
+
+src/transform.py:449: KeyError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload13]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'id': 1, 'name': '  '}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload14]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'id': 1, 'name': 5}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload15]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 7100...', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload16]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'external_games': {}, 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload17]" time="0.001"><failure message="AttributeError: 'str' object has no attribute 'get'">payload = {'data': [{'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+        with pytest.raises(ValueError):
+&gt;           transform.transform_igdb_search_results(payload)
+
+tests/test_stage28_evaluation.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/transform.py:647: in transform_igdb_search_results
+    "store_links": extract_igdb_store_links(game),
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = {'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}
+
+    def extract_igdb_store_links(game: dict) -&gt; list[dict]:
+        """
+        Extract store links from IGDB external_games and websites.
+    
+        These are distribution/store links:
+        Steam, Epic, GOG, Microsoft/Xbox, PlayStation, Nintendo.
+        """
+    
+        links = {}
+    
+        for item in game.get("external_games", []):
+            url = item.get("url")
+            store = detect_store_from_url(url)
+    
+            if not store:
+                continue
+    
+            store_game_id = item.get("uid")
+    
+            if store == "steam":
+                store_game_id = extract_steam_appid_from_url(url) or store_game_id
+    
+            if not store_game_id:
+                continue
+    
+            key = (store, str(store_game_id))
+    
+            links[key] = {
+                "igdb_game_id": game["id"],
+                "store": store,
+                "store_game_id": str(store_game_id),
+                "store_url": url,
+            }
+    
+        for item in game.get("websites", []):
+&gt;           url = item.get("url")
+                  ^^^^^^^^
+E           AttributeError: 'str' object has no attribute 'get'
+
+src/transform.py:555: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload18]" time="0.001"><failure message="AttributeError: 'NoneType' object has no attribute 'get'">payload = {'data': [{'external_games': [None], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+        with pytest.raises(ValueError):
+&gt;           transform.transform_igdb_search_results(payload)
+
+tests/test_stage28_evaluation.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/transform.py:647: in transform_igdb_search_results
+    "store_links": extract_igdb_store_links(game),
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = {'external_games': [None], 'id': 71001, 'name': 'Example', 'summary': None, ...}
+
+    def extract_igdb_store_links(game: dict) -&gt; list[dict]:
+        """
+        Extract store links from IGDB external_games and websites.
+    
+        These are distribution/store links:
+        Steam, Epic, GOG, Microsoft/Xbox, PlayStation, Nintendo.
+        """
+    
+        links = {}
+    
+        for item in game.get("external_games", []):
+&gt;           url = item.get("url")
+                  ^^^^^^^^
+E           AttributeError: 'NoneType' object has no attribute 'get'
+
+src/transform.py:531: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload19]" time="0.001"><failure message="AttributeError: 'int' object has no attribute 'get'">payload = {'data': [{'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+        with pytest.raises(ValueError):
+&gt;           transform.transform_igdb_search_results(payload)
+
+tests/test_stage28_evaluation.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/transform.py:647: in transform_igdb_search_results
+    "store_links": extract_igdb_store_links(game),
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = {'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}
+
+    def extract_igdb_store_links(game: dict) -&gt; list[dict]:
+        """
+        Extract store links from IGDB external_games and websites.
+    
+        These are distribution/store links:
+        Steam, Epic, GOG, Microsoft/Xbox, PlayStation, Nintendo.
+        """
+    
+        links = {}
+    
+        for item in game.get("external_games", []):
+            url = item.get("url")
+            store = detect_store_from_url(url)
+    
+            if not store:
+                continue
+    
+            store_game_id = item.get("uid")
+    
+            if store == "steam":
+                store_game_id = extract_steam_appid_from_url(url) or store_game_id
+    
+            if not store_game_id:
+                continue
+    
+            key = (store, str(store_game_id))
+    
+            links[key] = {
+                "igdb_game_id": game["id"],
+                "store": store,
+                "store_game_id": str(store_game_id),
+                "store_url": url,
+            }
+    
+        for item in game.get("websites", []):
+&gt;           url = item.get("url")
+                  ^^^^^^^^
+E           AttributeError: 'int' object has no attribute 'get'
+
+src/transform.py:555: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload20]" time="0.001"><failure message="AttributeError: 'int' object has no attribute 'lower'">payload = {'data': [{'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+        with pytest.raises(ValueError):
+&gt;           transform.transform_igdb_search_results(payload)
+
+tests/test_stage28_evaluation.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/transform.py:647: in transform_igdb_search_results
+    "store_links": extract_igdb_store_links(game),
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/transform.py:556: in extract_igdb_store_links
+    store = detect_store_from_url(url)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 7
+
+    def detect_store_from_url(url: str | None) -&gt; str | None:
+        """
+        Detect store name from an external URL.
+        """
+    
+        if not url:
+            return None
+    
+&gt;       normalized_url = url.lower()
+                         ^^^^^^^^^
+E       AttributeError: 'int' object has no attribute 'lower'
+
+src/transform.py:478: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload21]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'external_games': [{'url': []}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload22]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'external_games': [{'uid': True}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload23]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">payload = {'data': [{'external_games': [{'uid': []}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_transform(payload):
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage28_evaluation.py:39: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[None]" time="0.002"><failure message="AttributeError: 'NoneType' object has no attribute 'get'">payload = None
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc921dc770&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti0')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_data = None
+
+    def transform_igdb_search_results(raw_data: dict) -&gt; list[dict]:
+        """
+        Transform IGDB search raw JSON into structured records.
+    
+        One raw file can contain multiple IGDB games.
+        """
+    
+        transformed_records = []
+    
+&gt;       for game in raw_data.get("data", []):
+                    ^^^^^^^^^^^^
+E       AttributeError: 'NoneType' object has no attribute 'get'
+
+src/transform.py:643: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload1]" time="0.002"><failure message="AttributeError: 'list' object has no attribute 'get'">payload = []
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc921dc9d0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti1')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_data = []
+
+    def transform_igdb_search_results(raw_data: dict) -&gt; list[dict]:
+        """
+        Transform IGDB search raw JSON into structured records.
+    
+        One raw file can contain multiple IGDB games.
+        """
+    
+        transformed_records = []
+    
+&gt;       for game in raw_data.get("data", []):
+                    ^^^^^^^^^^^^
+E       AttributeError: 'list' object has no attribute 'get'
+
+src/transform.py:643: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload2]" time="0.002"><failure message="AssertionError: database acquired for invalid input">payload = {}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9210b9b0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti2')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload3]" time="0.001"><failure message="TypeError: 'NoneType' object is not iterable">payload = {'data': None}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9229bdf0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti3')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_data = {'data': None}
+
+    def transform_igdb_search_results(raw_data: dict) -&gt; list[dict]:
+        """
+        Transform IGDB search raw JSON into structured records.
+    
+        One raw file can contain multiple IGDB games.
+        """
+    
+        transformed_records = []
+    
+&gt;       for game in raw_data.get("data", []):
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: 'NoneType' object is not iterable
+
+src/transform.py:643: TypeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload4]" time="0.002"><failure message="AssertionError: database acquired for invalid input">payload = {'data': {}}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9229b8a0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti4')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload5]" time="0.002"><failure message="AttributeError: 'str' object has no attribute 'get'">payload = {'data': 'bad'}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9215ec50&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti5')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/transform.py:646: in transform_igdb_search_results
+    "igdb_game": transform_igdb_game(game),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = 'b'
+
+    def transform_igdb_game(game: dict) -&gt; dict:
+        """
+        Transform one IGDB game object into a flat igdb_games record.
+    
+        game_type and status are stored as both their raw integer value and a
+        human-readable label decoded from the IGDB enum tables.
+        """
+    
+&gt;       game_type = game.get("game_type")
+                    ^^^^^^^^
+E       AttributeError: 'str' object has no attribute 'get'
+
+src/transform.py:444: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload6]" time="0.002"><failure message="AttributeError: 'NoneType' object has no attribute 'get'">payload = {'data': [None]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9215e350&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti6')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/transform.py:646: in transform_igdb_search_results
+    "igdb_game": transform_igdb_game(game),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = None
+
+    def transform_igdb_game(game: dict) -&gt; dict:
+        """
+        Transform one IGDB game object into a flat igdb_games record.
+    
+        game_type and status are stored as both their raw integer value and a
+        human-readable label decoded from the IGDB enum tables.
+        """
+    
+&gt;       game_type = game.get("game_type")
+                    ^^^^^^^^
+E       AttributeError: 'NoneType' object has no attribute 'get'
+
+src/transform.py:444: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload7]" time="0.002"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'id': True, 'name': 'x'}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc92144140&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti7')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload8]" time="0.002"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'id': 0, 'name': 'x'}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc921ab7a0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti8')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload9]" time="0.002"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'id': -1, 'name': 'x'}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc92f34910&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti9')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload10]" time="0.002"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'id': 2147483648, 'name': 'x'}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc92f349f0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti10')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload11]" time="0.002"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'id': '1', 'name': 'x'}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc921435f0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti11')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload12]" time="0.001"><failure message="KeyError: 'name'">payload = {'data': [{'id': 1}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc92117290&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti12')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/transform.py:646: in transform_igdb_search_results
+    "igdb_game": transform_igdb_game(game),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = {'id': 1}
+
+    def transform_igdb_game(game: dict) -&gt; dict:
+        """
+        Transform one IGDB game object into a flat igdb_games record.
+    
+        game_type and status are stored as both their raw integer value and a
+        human-readable label decoded from the IGDB enum tables.
+        """
+    
+        game_type = game.get("game_type")
+        status = game.get("status")
+    
+        return {
+            "igdb_game_id": game["id"],
+&gt;           "name": game["name"],
+                    ^^^^^^^^^^^^
+            "slug": game.get("slug"),
+            "summary": game.get("summary"),
+            "url": game.get("url"),
+            "first_release_date": unix_timestamp_to_date(game.get("first_release_date")),
+            "rating": game.get("rating"),
+            "rating_count": game.get("rating_count"),
+            "aggregated_rating": game.get("aggregated_rating"),
+            "aggregated_rating_count": game.get("aggregated_rating_count"),
+            "total_rating": game.get("total_rating"),
+            "total_rating_count": game.get("total_rating_count"),
+            "hypes": game.get("hypes"),
+            "follows": game.get("follows"),
+            "game_type": game_type,
+            "game_type_label": IGDB_GAME_TYPES.get(game_type) if game_type is not None else None,
+            "status": status,
+            "status_label": IGDB_STATUSES.get(status) if status is not None else None,
+            "raw_json": game,
+        }
+E       KeyError: 'name'
+
+src/transform.py:449: KeyError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload13]" time="0.001"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'id': 1, 'name': '  '}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc92117710&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti13')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload14]" time="0.001"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'id': 1, 'name': 5}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc920052e0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti14')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload15]" time="0.002"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 7100...', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc92004730&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti15')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload16]" time="0.003"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'external_games': {}, 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc92192fd0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti16')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload17]" time="0.002"><failure message="AttributeError: 'str' object has no attribute 'get'">payload = {'data': [{'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc921932f0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti17')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/transform.py:647: in transform_igdb_search_results
+    "store_links": extract_igdb_store_links(game),
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = {'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}
+
+    def extract_igdb_store_links(game: dict) -&gt; list[dict]:
+        """
+        Extract store links from IGDB external_games and websites.
+    
+        These are distribution/store links:
+        Steam, Epic, GOG, Microsoft/Xbox, PlayStation, Nintendo.
+        """
+    
+        links = {}
+    
+        for item in game.get("external_games", []):
+            url = item.get("url")
+            store = detect_store_from_url(url)
+    
+            if not store:
+                continue
+    
+            store_game_id = item.get("uid")
+    
+            if store == "steam":
+                store_game_id = extract_steam_appid_from_url(url) or store_game_id
+    
+            if not store_game_id:
+                continue
+    
+            key = (store, str(store_game_id))
+    
+            links[key] = {
+                "igdb_game_id": game["id"],
+                "store": store,
+                "store_game_id": str(store_game_id),
+                "store_url": url,
+            }
+    
+        for item in game.get("websites", []):
+&gt;           url = item.get("url")
+                  ^^^^^^^^
+E           AttributeError: 'str' object has no attribute 'get'
+
+src/transform.py:555: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload18]" time="0.001"><failure message="AttributeError: 'NoneType' object has no attribute 'get'">payload = {'data': [{'external_games': [None], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc959023c0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti18')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/transform.py:647: in transform_igdb_search_results
+    "store_links": extract_igdb_store_links(game),
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = {'external_games': [None], 'id': 71001, 'name': 'Example', 'summary': None, ...}
+
+    def extract_igdb_store_links(game: dict) -&gt; list[dict]:
+        """
+        Extract store links from IGDB external_games and websites.
+    
+        These are distribution/store links:
+        Steam, Epic, GOG, Microsoft/Xbox, PlayStation, Nintendo.
+        """
+    
+        links = {}
+    
+        for item in game.get("external_games", []):
+&gt;           url = item.get("url")
+                  ^^^^^^^^
+E           AttributeError: 'NoneType' object has no attribute 'get'
+
+src/transform.py:531: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload19]" time="0.002"><failure message="AttributeError: 'int' object has no attribute 'get'">payload = {'data': [{'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9200edd0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti19')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/transform.py:647: in transform_igdb_search_results
+    "store_links": extract_igdb_store_links(game),
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = {'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}
+
+    def extract_igdb_store_links(game: dict) -&gt; list[dict]:
+        """
+        Extract store links from IGDB external_games and websites.
+    
+        These are distribution/store links:
+        Steam, Epic, GOG, Microsoft/Xbox, PlayStation, Nintendo.
+        """
+    
+        links = {}
+    
+        for item in game.get("external_games", []):
+            url = item.get("url")
+            store = detect_store_from_url(url)
+    
+            if not store:
+                continue
+    
+            store_game_id = item.get("uid")
+    
+            if store == "steam":
+                store_game_id = extract_steam_appid_from_url(url) or store_game_id
+    
+            if not store_game_id:
+                continue
+    
+            key = (store, str(store_game_id))
+    
+            links[key] = {
+                "igdb_game_id": game["id"],
+                "store": store,
+                "store_game_id": str(store_game_id),
+                "store_url": url,
+            }
+    
+        for item in game.get("websites", []):
+&gt;           url = item.get("url")
+                  ^^^^^^^^
+E           AttributeError: 'int' object has no attribute 'get'
+
+src/transform.py:555: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload20]" time="0.003"><failure message="AttributeError: 'int' object has no attribute 'lower'">payload = {'data': [{'external_games': [{'uid': '81001', 'url': 'https://www.twitch.tv/directory/category/example'}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc92026850&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti20')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/transform.py:647: in transform_igdb_search_results
+    "store_links": extract_igdb_store_links(game),
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/transform.py:556: in extract_igdb_store_links
+    store = detect_store_from_url(url)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+url = 7
+
+    def detect_store_from_url(url: str | None) -&gt; str | None:
+        """
+        Detect store name from an external URL.
+        """
+    
+        if not url:
+            return None
+    
+&gt;       normalized_url = url.lower()
+                         ^^^^^^^^^
+E       AttributeError: 'int' object has no attribute 'lower'
+
+src/transform.py:478: AttributeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload21]" time="0.002"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'external_games': [{'url': []}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9204be70&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti21')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload22]" time="0.001"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'external_games': [{'uid': True}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9215a2e0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti22')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload23]" time="0.001"><failure message="AssertionError: database acquired for invalid input">payload = {'data': [{'external_games': [{'uid': []}], 'id': 71001, 'name': 'Example', 'summary': None, ...}]}
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9215af20&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_malformed_before_connecti23')
+
+    @pytest.mark.parametrize("payload", BAD)
+    def test_malformed_before_connection(payload, monkeypatch, tmp_path):
+        calls = []
+        def forbidden():
+            calls.append(True)
+            raise AssertionError("database acquired for invalid input")
+        monkeypatch.setattr(load, "get_db_connection", forbidden)
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, payload))
+
+tests/test_stage28_evaluation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def forbidden():
+        calls.append(True)
+&gt;       raise AssertionError("database acquired for invalid input")
+E       AssertionError: database acquired for invalid input
+
+tests/test_stage28_evaluation.py:48: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_late_invalid_before_connection" time="0.002"><failure message="KeyError: 'name'">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9215ab30&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_late_invalid_before_conne0')
+
+    def test_late_invalid_before_connection(monkeypatch, tmp_path):
+        monkeypatch.setattr(load, "get_db_connection", lambda: pytest.fail("late validation"))
+        with pytest.raises(ValueError):
+&gt;           load.load_igdb_file(write(tmp_path, {"data": [game(), {"id": 2}]}))
+
+tests/test_stage28_evaluation.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:817: in load_igdb_file
+    records = transform_igdb_search_results(raw_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/transform.py:646: in transform_igdb_search_results
+    "igdb_game": transform_igdb_game(game),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = {'id': 2}
+
+    def transform_igdb_game(game: dict) -&gt; dict:
+        """
+        Transform one IGDB game object into a flat igdb_games record.
+    
+        game_type and status are stored as both their raw integer value and a
+        human-readable label decoded from the IGDB enum tables.
+        """
+    
+        game_type = game.get("game_type")
+        status = game.get("status")
+    
+        return {
+            "igdb_game_id": game["id"],
+&gt;           "name": game["name"],
+                    ^^^^^^^^^^^^
+            "slug": game.get("slug"),
+            "summary": game.get("summary"),
+            "url": game.get("url"),
+            "first_release_date": unix_timestamp_to_date(game.get("first_release_date")),
+            "rating": game.get("rating"),
+            "rating_count": game.get("rating_count"),
+            "aggregated_rating": game.get("aggregated_rating"),
+            "aggregated_rating_count": game.get("aggregated_rating_count"),
+            "total_rating": game.get("total_rating"),
+            "total_rating_count": game.get("total_rating_count"),
+            "hypes": game.get("hypes"),
+            "follows": game.get("follows"),
+            "game_type": game_type,
+            "game_type_label": IGDB_GAME_TYPES.get(game_type) if game_type is not None else None,
+            "status": status,
+            "status_label": IGDB_STATUSES.get(status) if status is not None else None,
+            "raw_json": game,
+        }
+E       KeyError: 'name'
+
+src/transform.py:449: KeyError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_empty_without_database" time="0.002"><failure message="Failed: empty acquired database">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9215b8c0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_empty_without_database0')
+
+    def test_empty_without_database(monkeypatch, tmp_path):
+        monkeypatch.setattr(load, "get_db_connection", lambda: pytest.fail("empty acquired database"))
+        assert transform.transform_igdb_search_results({"data": []}) == []
+&gt;       assert load.load_igdb_file(write(tmp_path, {"data": []})) == 0
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_stage28_evaluation.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/load.py:823: in load_igdb_file
+    with get_db_connection() as connection:
+         ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+&gt;   monkeypatch.setattr(load, "get_db_connection", lambda: pytest.fail("empty acquired database"))
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: empty acquired database
+
+tests/test_stage28_evaluation.py:62: Failed</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_null_nested_and_input_preservation" time="0.001"><failure message="TypeError: 'NoneType' object is not iterable">def test_null_nested_and_input_preservation():
+        payload = {"data": [{"id": 2147483647, "name": "  Kept  ",
+                             "external_games": None, "websites": None}]}
+        before = copy.deepcopy(payload)
+&gt;       result = transform.transform_igdb_search_results(payload)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_stage28_evaluation.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/transform.py:647: in transform_igdb_search_results
+    "store_links": extract_igdb_store_links(game),
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+game = {'external_games': None, 'id': 2147483647, 'name': '  Kept  ', 'websites': None}
+
+    def extract_igdb_store_links(game: dict) -&gt; list[dict]:
+        """
+        Extract store links from IGDB external_games and websites.
+    
+        These are distribution/store links:
+        Steam, Epic, GOG, Microsoft/Xbox, PlayStation, Nintendo.
+        """
+    
+        links = {}
+    
+&gt;       for item in game.get("external_games", []):
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: 'NoneType' object is not iterable
+
+src/transform.py:530: TypeError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_existing_link_precedence" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_postgres_replay_and_changed_values" time="0.165"><failure message="assert {'igdb_game_s...rrors&quot;:0}',)]} == {'igdb_game_s...rrors&quot;:0}',)]}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'twitch_categories': [('{&quot;twitch_game_id&quot;:&quot;81001&quot;,&quot;twitch_game_name&quot;:&quot;Example&quot;,&quot;is_game&quot;:true,&quot;igdb_game_id&quot;:71001,&quot;m...dated_at&quot;:&quot;2026-10-09T11:11:01.413289&quot;,&quot;last_igdb_search_at&quot;:null,&quot;igdb_search_attempts&quot;:0,&quot;igdb_search_errors&quot;:0}',)]} != {'twitch_categories': [('{&quot;twitch_game_id&quot;:&quot;81001&quot;,&quot;twitch_game_name&quot;:&quot;Example&quot;,&quot;is_game&quot;:true,&quot;igdb_game_id&quot;:71001,&quot;m...D.&quot;,&quot;updated_at&quot;:&quot;2000-01-01T00:00:00&quot;,&quot;last_igdb_search_at&quot;:null,&quot;igdb_search_attempts&quot;:0,&quot;igdb_search_errors&quot;:0}',)]}&#10;  {'igdb_games': [('{&quot;igdb_game_id&quot;...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">test_database = 'stage28_stage28-verification_baseline_external_corrected'
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_postgres_replay_and_chang0')
+
+    def test_postgres_replay_and_changed_values(test_database, tmp_path):
+        payload = {"data": [game()]}
+        path = write(tmp_path, payload)
+        assert load.load_data("igdb", path) == 1
+        before = rows()
+        # A stored sentinel makes a timestamp rewrite visible without sleeps or clock assumptions.
+        with get_db_connection() as conn:
+            conn.execute("UPDATE igdb_games SET updated_at='2000-01-01'")
+            conn.execute("UPDATE twitch_categories SET updated_at='2000-01-01'")
+        before = rows()
+        reordered = {"data": [dict(reversed(list(payload["data"][0].items())))]}
+        assert load.load_igdb_file(write(tmp_path, reordered)) == 1
+&gt;       assert rows() == before
+E       assert {'igdb_game_s...rrors":0}',)]} == {'igdb_game_s...rrors":0}',)]}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'twitch_categories': [('{"twitch_game_id":"81001","twitch_game_name":"Example","is_game":true,"igdb_game_id":71001,"m...dated_at":"2026-10-09T11:11:01.413289","last_igdb_search_at":null,"igdb_search_attempts":0,"igdb_search_errors":0}',)]} != {'twitch_categories': [('{"twitch_game_id":"81001","twitch_game_name":"Example","is_game":true,"igdb_game_id":71001,"m...D.","updated_at":"2000-01-01T00:00:00","last_igdb_search_at":null,"igdb_search_attempts":0,"igdb_search_errors":0}',)]}
+E         {'igdb_games': [('{"igdb_game_id"...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/test_stage28_evaluation.py:107: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_postgres_failure_rolls_back_and_saved_retry[upsert_igdb_game_store_link]" time="0.071"><failure message="assert {'igdb_game_s...rrors&quot;:0}',)]} == {'igdb_game_s...rrors&quot;:0}',)]}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'twitch_categories': [('{&quot;twitch_game_id&quot;:&quot;81001&quot;,&quot;twitch_game_name&quot;:&quot;Updated&quot;,&quot;is_game&quot;:true,&quot;igdb_game_id&quot;:71001,&quot;m...pdated_at&quot;:&quot;2026-10-09T11:11:01.52518&quot;,&quot;last_igdb_search_at&quot;:null,&quot;igdb_search_attempts&quot;:0,&quot;igdb_search_errors&quot;:0}',)]} != {'twitch_categories': [('{&quot;twitch_game_id&quot;:&quot;81001&quot;,&quot;twitch_game_name&quot;:&quot;Updated&quot;,&quot;is_game&quot;:true,&quot;igdb_game_id&quot;:71001,&quot;m...dated_at&quot;:&quot;2026-10-09T11:11:01.511315&quot;,&quot;last_igdb_search_at&quot;:null,&quot;igdb_search_attempts&quot;:0,&quot;igdb_search_errors&quot;:0}',)]}&#10;  {'igdb_games': [('{&quot;igdb_game_id&quot;...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">test_database = 'stage28_stage28-verification_baseline_external_corrected'
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_postgres_failure_rolls_ba0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc9204a9e0&gt;
+seam = 'upsert_igdb_game_store_link'
+
+    @pytest.mark.parametrize("seam", ["upsert_igdb_game_store_link", "upsert_twitch_category"])
+    def test_postgres_failure_rolls_back_and_saved_retry(test_database, tmp_path, monkeypatch, seam):
+        original = {"data": [game()]}
+        load.load_igdb_file(write(tmp_path, original))
+        before = rows()
+        second = game(71002, "Second")
+        second["external_games"][0]["uid"] = "81002"
+        second["websites"][0]["url"] = "https://store.steampowered.com/app/91002/Second"
+        payload = {"data": [dict(game(), name="Updated"), second]}
+        path = write(tmp_path, payload)
+        fn = getattr(load, seam)
+        def failing(conn, record):
+            if record["igdb_game_id"] == 71002:
+                raise RuntimeError("injected write failure")
+            return fn(conn, record)
+        with monkeypatch.context() as patch:
+            patch.setattr(load, seam, failing)
+            with pytest.raises(RuntimeError, match="injected write failure"):
+                load.load_igdb_file(path)
+        assert rows() == before
+        assert load.load_igdb_file(path) == 2
+        final = rows()
+        assert all(len(v) == 2 for v in final.values())
+        assert load.load_igdb_file(path) == 2
+&gt;       assert rows() == final
+E       assert {'igdb_game_s...rrors":0}',)]} == {'igdb_game_s...rrors":0}',)]}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'twitch_categories': [('{"twitch_game_id":"81001","twitch_game_name":"Updated","is_game":true,"igdb_game_id":71001,"m...pdated_at":"2026-10-09T11:11:01.52518","last_igdb_search_at":null,"igdb_search_attempts":0,"igdb_search_errors":0}',)]} != {'twitch_categories': [('{"twitch_game_id":"81001","twitch_game_name":"Updated","is_game":true,"igdb_game_id":71001,"m...dated_at":"2026-10-09T11:11:01.511315","last_igdb_search_at":null,"igdb_search_attempts":0,"igdb_search_errors":0}',)]}
+E         {'igdb_games': [('{"igdb_game_id"...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/test_stage28_evaluation.py:141: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_postgres_failure_rolls_back_and_saved_retry[upsert_twitch_category]" time="0.074"><failure message="assert {'igdb_game_s...rrors&quot;:0}',)]} == {'igdb_game_s...rrors&quot;:0}',)]}&#10;  &#10;  Omitting 1 identical items, use -vv to show&#10;  Differing items:&#10;  {'twitch_categories': [('{&quot;twitch_game_id&quot;:&quot;81001&quot;,&quot;twitch_game_name&quot;:&quot;Updated&quot;,&quot;is_game&quot;:true,&quot;igdb_game_id&quot;:71001,&quot;m...dated_at&quot;:&quot;2026-10-09T11:11:01.627264&quot;,&quot;last_igdb_search_at&quot;:null,&quot;igdb_search_attempts&quot;:0,&quot;igdb_search_errors&quot;:0}',)]} != {'twitch_categories': [('{&quot;twitch_game_id&quot;:&quot;81001&quot;,&quot;twitch_game_name&quot;:&quot;Updated&quot;,&quot;is_game&quot;:true,&quot;igdb_game_id&quot;:71001,&quot;m...dated_at&quot;:&quot;2026-10-09T11:11:01.608587&quot;,&quot;last_igdb_search_at&quot;:null,&quot;igdb_search_attempts&quot;:0,&quot;igdb_search_errors&quot;:0}',)]}&#10;  {'igdb_games': [('{&quot;igdb_game_id&quot;...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">test_database = 'stage28_stage28-verification_baseline_external_corrected'
+tmp_path = PosixPath('/home/ivan/codex-role-fdwcsgwl/scratch/tmp/test_postgres_failure_rolls_ba1')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ecc921b4b40&gt;
+seam = 'upsert_twitch_category'
+
+    @pytest.mark.parametrize("seam", ["upsert_igdb_game_store_link", "upsert_twitch_category"])
+    def test_postgres_failure_rolls_back_and_saved_retry(test_database, tmp_path, monkeypatch, seam):
+        original = {"data": [game()]}
+        load.load_igdb_file(write(tmp_path, original))
+        before = rows()
+        second = game(71002, "Second")
+        second["external_games"][0]["uid"] = "81002"
+        second["websites"][0]["url"] = "https://store.steampowered.com/app/91002/Second"
+        payload = {"data": [dict(game(), name="Updated"), second]}
+        path = write(tmp_path, payload)
+        fn = getattr(load, seam)
+        def failing(conn, record):
+            if record["igdb_game_id"] == 71002:
+                raise RuntimeError("injected write failure")
+            return fn(conn, record)
+        with monkeypatch.context() as patch:
+            patch.setattr(load, seam, failing)
+            with pytest.raises(RuntimeError, match="injected write failure"):
+                load.load_igdb_file(path)
+        assert rows() == before
+        assert load.load_igdb_file(path) == 2
+        final = rows()
+        assert all(len(v) == 2 for v in final.values())
+        assert load.load_igdb_file(path) == 2
+&gt;       assert rows() == final
+E       assert {'igdb_game_s...rrors":0}',)]} == {'igdb_game_s...rrors":0}',)]}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'twitch_categories': [('{"twitch_game_id":"81001","twitch_game_name":"Updated","is_game":true,"igdb_game_id":71001,"m...dated_at":"2026-10-09T11:11:01.627264","last_igdb_search_at":null,"igdb_search_attempts":0,"igdb_search_errors":0}',)]} != {'twitch_categories': [('{"twitch_game_id":"81001","twitch_game_name":"Updated","is_game":true,"igdb_game_id":71001,"m...dated_at":"2026-10-09T11:11:01.608587","last_igdb_search_at":null,"igdb_search_attempts":0,"igdb_search_errors":0}',)]}
+E         {'igdb_games': [('{"igdb_game_id"...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/test_stage28_evaluation.py:141: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_postgres_remap_and_no_absence_delete" time="0.075" /></testsuite></testsuites>

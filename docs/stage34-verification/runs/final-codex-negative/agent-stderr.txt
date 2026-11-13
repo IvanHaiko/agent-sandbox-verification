@@ -1,0 +1,14 @@
+2026-11-13T12:35:33.224472Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.2 seconds
+Output:
+Failed to write file /home/ivan/codex-role-zgcorkhj/tests/w1
+
+2026-11-13T12:35:35.824073Z ERROR codex_core::tools::router: error=Exit code: 1
+Wall time: 0.2 seconds
+Output:
+Failed to write file /home/ivan/codex-role-zgcorkhj/tests/w2
+
+2026-11-13T12:35:39.323011Z ERROR codex_core::tools::router: error=patch rejected: writing outside of the project; rejected by user approval settings
+2026-11-13T12:35:41.678702Z ERROR codex_core::tools::router: error=patch rejected: writing outside of the project; rejected by user approval settings
+2026-11-13T12:35:44.505282Z ERROR codex_core::tools::router: error=patch rejected: writing outside of the project; rejected by user approval settings
+2026-11-13T12:35:47.330191Z ERROR codex_core::tools::router: error=patch rejected: writing outside of the project; rejected by user approval settings

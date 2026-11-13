@@ -1,0 +1,13 @@
+{
+  "version": "v2",
+  "frozen_at": "2026-10-10T10:23:01.525337+00:00",
+  "hashes": {
+    "CONTRACT.md": "b8857ea91e699a2cc60bf04f7d4e278ca2eaa447c8a57ff2a6da30e188d048c5",
+    "tests/coverage.md": "40b88f81e41b7bbfcde27d43d87bdeab38353e584c362d84b8ff06d80058b95b",
+    "tests/test_date_admission.py": "693edc9581ca1104600469b772cf7f20fc3b147d1a8de6d6ec099985512e3dfc"
+  },
+  "implementer_not_launched": true,
+  "excluded_generated_cache": [
+    "tests/__pycache__/test_date_admission.cpython-314.pyc"
+  ]
+}

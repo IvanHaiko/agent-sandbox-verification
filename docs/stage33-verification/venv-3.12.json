@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/provision/bin/uv",
+    "venv",
+    "--python",
+    "3.12",
+    "--managed-python",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/venv-3.12"
+  ],
+  "cwd": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Using CPython 3.12.15\nCreating virtual environment at: venv-3.12\nActivate with: source venv-3.12/bin/activate\n",
+  "elapsed_seconds": 3.427935464999962,
+  "provisioning_only": true
+}

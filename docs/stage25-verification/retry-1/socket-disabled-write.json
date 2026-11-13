@@ -1,0 +1,9 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import socket, json; s=socket.socket(socket.AF_UNIX); s.settimeout(3); s.connect('/home/ivan/codex-role-ggkhpmyc/socket/probe.sock'); s.sendall(b\"STAGE25_PING\"); print(s.recv(32)); s.close()\n                                                                           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 1] Operation not permitted\n",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "profile": "{filesystem={\":minimal\"=\"read\",\"/home/ivan/.codex/packages/standalone/releases/0.160.1-x86_64-unknown-linux-musl\"=\"read\",\"/home/ivan/codex-role-ggkhpmyc/socket\"=\"write\",\":workspace_roots\"={\".\"=\"read\"},\":tmpdir\"=\"deny\",\":slash_tmp\"=\"deny\"},network={enabled=false,unix_sockets={\"/home/ivan/codex-role-ggkhpmyc/socket/probe.sock\"=\"allow\"}}}",
+  "server_messages": []
+}

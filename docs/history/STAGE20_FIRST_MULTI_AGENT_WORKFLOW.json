@@ -1,0 +1,289 @@
+{
+  "stage": 20,
+  "task": {
+    "task_id": "STAGE20-SLUGIFY",
+    "contract_version": 1,
+    "public_interface": "def slugify(value: str) -> str",
+    "file": "src/slugify.py",
+    "acceptance_criteria": [
+      "Lowercase ASCII letters; retain ASCII letters and digits.",
+      "Trim whitespace and replace every whitespace run with one hyphen (including tabs/newlines).",
+      "Remove ASCII punctuation except hyphen, including underscore; removal does not insert a separator.",
+      "Collapse repeated hyphens and strip edge hyphens.",
+      "Empty or whitespace-only strings return the empty string."
+    ],
+    "examples": [
+      [
+        "Hello World",
+        "hello-world"
+      ],
+      [
+        "  Hello   World ",
+        "hello-world"
+      ],
+      [
+        "Hello, World!",
+        "hello-world"
+      ],
+      [
+        "a---b",
+        "a-b"
+      ],
+      [
+        "---Hello---",
+        "hello"
+      ],
+      [
+        "",
+        ""
+      ]
+    ],
+    "constraints": [
+      "Pure Python, standard library only, no external dependencies or I/O.",
+      "ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.",
+      "Do not add features or mutate any file other than src/slugify.py."
+    ]
+  },
+  "verdict": "PASS_MULTI_AGENT_WORKFLOW",
+  "accepted": true,
+  "routing_resolution": "Account catalog listed gpt-6-astra and gpt-5.6-sol. gpt-6-sol was absent; available Sol High explicitly disclosed before inference.",
+  "roles": [
+    {
+      "role": "orchestrator",
+      "model": "gpt-6-astra",
+      "reasoning": "medium",
+      "sessions": 1,
+      "requests": 1,
+      "tool_calls": 0,
+      "completed": true,
+      "usage": {
+        "totalTokens": 7016,
+        "inputTokens": 6711,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 305,
+        "reasoningOutputTokens": 0
+      }
+    },
+    {
+      "role": "implementer",
+      "model": "gpt-5.6-sol",
+      "reasoning": "high",
+      "sessions": 1,
+      "requests": 6,
+      "tool_calls": 5,
+      "completed": true,
+      "usage": {
+        "totalTokens": 44537,
+        "inputTokens": 42945,
+        "cachedInputTokens": 12288,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1592,
+        "reasoningOutputTokens": 431
+      }
+    },
+    {
+      "role": "test_engineer",
+      "model": "gpt-5.6-sol",
+      "reasoning": "high",
+      "sessions": 2,
+      "requests": 3,
+      "tool_calls": 1,
+      "completed": true,
+      "usage": {
+        "totalTokens": 22418,
+        "inputTokens": 20336,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 2082,
+        "reasoningOutputTokens": 1088
+      }
+    },
+    {
+      "role": "reviewer",
+      "model": "gpt-6-astra",
+      "reasoning": "medium",
+      "sessions": 1,
+      "requests": 1,
+      "tool_calls": 0,
+      "completed": true,
+      "usage": {
+        "totalTokens": 9268,
+        "inputTokens": 9153,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 115,
+        "reasoningOutputTokens": 0
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "label": "architect",
+      "role": "orchestrator",
+      "model": "gpt-6-astra",
+      "reasoning": "medium",
+      "completed": true,
+      "requests": 1,
+      "tool_calls": 0,
+      "seconds": 22.62,
+      "usage": {
+        "totalTokens": 7016,
+        "inputTokens": 6711,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 305,
+        "reasoningOutputTokens": 0
+      }
+    },
+    {
+      "label": "implementer",
+      "role": "implementer",
+      "model": "gpt-5.6-sol",
+      "reasoning": "high",
+      "completed": true,
+      "requests": 6,
+      "tool_calls": 5,
+      "seconds": 111.67,
+      "usage": {
+        "totalTokens": 44537,
+        "inputTokens": 42945,
+        "cachedInputTokens": 12288,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1592,
+        "reasoningOutputTokens": 431
+      }
+    },
+    {
+      "label": "test-design",
+      "role": "test_engineer",
+      "model": "gpt-5.6-sol",
+      "reasoning": "high",
+      "completed": true,
+      "requests": 1,
+      "tool_calls": 0,
+      "seconds": 47.89,
+      "usage": {
+        "totalTokens": 8017,
+        "inputTokens": 6133,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1884,
+        "reasoningOutputTokens": 1088
+      }
+    },
+    {
+      "label": "test-execution",
+      "role": "test_engineer",
+      "model": "gpt-5.6-sol",
+      "reasoning": "high",
+      "completed": true,
+      "requests": 2,
+      "tool_calls": 1,
+      "seconds": 26.27,
+      "usage": {
+        "totalTokens": 14401,
+        "inputTokens": 14203,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 198,
+        "reasoningOutputTokens": 0
+      }
+    },
+    {
+      "label": "reviewer",
+      "role": "reviewer",
+      "model": "gpt-6-astra",
+      "reasoning": "medium",
+      "completed": true,
+      "requests": 1,
+      "tool_calls": 0,
+      "seconds": 15.97,
+      "usage": {
+        "totalTokens": 9268,
+        "inputTokens": 9153,
+        "cachedInputTokens": 0,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 115,
+        "reasoningOutputTokens": 0
+      }
+    }
+  ],
+  "total_model_requests": 11,
+  "total_model_tool_calls": 6,
+  "controller_checks": 1,
+  "independent_tests": {
+    "cases": 18,
+    "properties": [
+      "idempotence",
+      "output_shape",
+      "input_unchanged"
+    ],
+    "passed": true,
+    "implementer_own_case_counts": [
+      12
+    ],
+    "caught_implementation_defects": false
+  },
+  "review": {
+    "task_id": "STAGE20-SLUGIFY",
+    "contract_version": 1,
+    "recommendation": "accept",
+    "rationale": "The supplied final diff preserves the required interface and satisfies every frozen acceptance criterion, including punctuation deletion without separators, mixed whitespace normalization, and hyphen collapse after punctuation removal. Changes are confined to src/slugify.py, with no dependencies or I/O. Independent acceptance evidence reports passing cases, interface, and property tests, supported by 12 passing implementer cases. No in-scope defects identified.",
+    "unresolved_risks": []
+  },
+  "role_isolation": {
+    "previous_conversations_shared": false,
+    "test_design_candidate_visible": false,
+    "test_design_context_keys": [
+      "contract",
+      "task"
+    ],
+    "design_frozen_before_candidate_exposure": true,
+    "hidden_reasoning_shared": false,
+    "unexpected_context_leakage_observed": false
+  },
+  "containment": {
+    "production_source_unchanged": true,
+    "credential_store_unchanged": true,
+    "stale_owned_containers": 0,
+    "model_homes_removed": true,
+    "role_network": "none",
+    "host_fallback": false,
+    "independent_context_before_candidate": true,
+    "docker_cleanup_confirmed": true,
+    "disposable_role_storage_removed": true
+  },
+  "capability_violations": [],
+  "protocol_anomalies": [
+    "completed_function_omitted_from_final",
+    "nonexecutable_stream_final_mismatch",
+    "nonstandard_or_absent_mime"
+  ],
+  "accepted_commit": "7bba581c95cc4796215641bf6f59a3e34076c365",
+  "project_path": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage20-workflow\\project",
+  "changed_files": [
+    "src/slugify.py"
+  ],
+  "fix_cycles": 0,
+  "driver_validation": {
+    "checks_passed": 7,
+    "live_model_calls": 0,
+    "real_codex_docker_synthetic_roundtrip": true,
+    "cleanup_regression_passed": true,
+    "cleanup_test_setup_observation": "First post-run cleanup test setup could not access shared host pytest temp; rerun with an owned workspace basetemp passed. No workflow rerun."
+  },
+  "containment_admission": "Inherited signed Stage19 proofs after verification of identical engine, image, configuration, containment code and Codex; rebound only to fresh project. New task actions verified with real Codex/Docker synthetic roundtrip.",
+  "workflow_expense": "The second Tester session mainly reports a deterministic test result; each fresh Codex session repeats instruction/schema overhead. Two Implementer inspections repeated data already in its prompt. The input_unchanged property adds little for immutable Python strings. Architect and Reviewer added boundary clarification and confirmation but found no implementation defect.",
+  "stage21_recommendation": "Review this evidence first. Consider a single bounded task with a less obvious behavioral defect, retain independent test freezing, and let Controller execute frozen tests without a second Tester narration session. Do not benchmark or redesign transport based on this run.",
+  "evidence_path": "docs/stage20-evidence/assessment.json",
+  "cleanup_observation": {
+    "initial_provisional_verdict": "FAIL_CAPABILITY_BOUNDARY",
+    "failure_cause": "Readonly copied Git object files",
+    "model_requests": 0,
+    "tool_calls": 0,
+    "disposable_role_storage_removed": true,
+    "readonly_files_repaired": 12
+  },
+  "controller_cleanup_fix": "Readonly handling added only to the Stage20 disposal helper after execution; executed-driver.py preserves the actual live driver. No role was rerun."
+}

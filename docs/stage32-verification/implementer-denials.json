@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "[{\"path\": \"/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/frozen-v3/tests/test_date_admission.py\", \"mode\": \"read\", \"allowed\": false, \"errno\": 2}, {\"path\": \"/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/frozen-v3/tests/test_date_admission.py\", \"mode\": \"write\", \"allowed\": false, \"errno\": 2}, {\"path\": \"/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/freeze-v3.json\", \"mode\": \"write\", \"allowed\": false, \"errno\": 2}]\n",
+  "stderr": ""
+}

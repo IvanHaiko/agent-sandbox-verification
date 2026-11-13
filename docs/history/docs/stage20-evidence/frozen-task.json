@@ -1,0 +1,44 @@
+{
+  "task_id": "STAGE20-SLUGIFY",
+  "contract_version": 1,
+  "public_interface": "def slugify(value: str) -> str",
+  "file": "src/slugify.py",
+  "acceptance_criteria": [
+    "Lowercase ASCII letters; retain ASCII letters and digits.",
+    "Trim whitespace and replace every whitespace run with one hyphen (including tabs/newlines).",
+    "Remove ASCII punctuation except hyphen, including underscore; removal does not insert a separator.",
+    "Collapse repeated hyphens and strip edge hyphens.",
+    "Empty or whitespace-only strings return the empty string."
+  ],
+  "examples": [
+    [
+      "Hello World",
+      "hello-world"
+    ],
+    [
+      "  Hello   World ",
+      "hello-world"
+    ],
+    [
+      "Hello, World!",
+      "hello-world"
+    ],
+    [
+      "a---b",
+      "a-b"
+    ],
+    [
+      "---Hello---",
+      "hello"
+    ],
+    [
+      "",
+      ""
+    ]
+  ],
+  "constraints": [
+    "Pure Python, standard library only, no external dependencies or I/O.",
+    "ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.",
+    "Do not add features or mutate any file other than src/slugify.py."
+  ]
+}

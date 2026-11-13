@@ -1,0 +1,7 @@
+{
+  "accepted": true,
+  "candidate_sha256": "0b68590187179e355f86587d774eda9658a78a9375672aa96aa89fcbc3923b85",
+  "frozen_tester_sha256": "358b4182f6f7e104ea8d71007751a90225c91aed6c9fef42150d03ab982bd282",
+  "source": "Controller executed frozen independent tests",
+  "no_model_narration_dependency": true
+}

@@ -1,0 +1,86 @@
+{
+  "gate": "passed",
+  "workflows": [
+    {
+      "workflow": "before/native-baseline",
+      "accepted": true,
+      "case_count": 23,
+      "roles": [
+        {
+          "role": "implementer",
+          "session": "01a1170d-049e-7352-a5c3-89101bf9f298",
+          "seconds": 26.732
+        },
+        {
+          "role": "independent_tester",
+          "session": "01a1170d-6d5c-7561-9102-b11a81f1fccc",
+          "seconds": 88.242
+        }
+      ],
+      "candidate_sha256": "69f5492cb2dae605d313a39e16a93ef9af0af6a37dd80ecdc3440bec85e5dc95",
+      "frozen_design_sha256": "daf8c2934fd59bc9ee67d974c274e54b30fb4f052e1018a6a0a46be143eb7805",
+      "cleanup_verified": true
+    },
+    {
+      "workflow": "after/minimal",
+      "accepted": true,
+      "case_count": 24,
+      "roles": [
+        {
+          "role": "implementer",
+          "session": "01a11714-b4d8-7691-b826-d59306a6a1b1",
+          "seconds": 25.91
+        },
+        {
+          "role": "independent_tester",
+          "session": "01a11715-1ac8-7a31-a26d-b049206efa85",
+          "seconds": 86.686
+        }
+      ],
+      "candidate_sha256": "c83955c8b47140e5011440de829c50bba8de2dde2263475878c23f1285d8d6a0",
+      "frozen_design_sha256": "1cf9125c592f3d550ef1e7f114d8dfb741daaf55c48aaea64fbd353f5d130c99",
+      "cleanup_verified": true
+    },
+    {
+      "workflow": "after/full",
+      "accepted": true,
+      "case_count": 24,
+      "roles": [
+        {
+          "role": "architect",
+          "session": "01a11718-4e03-76e1-8fd7-4a62d427ee11",
+          "seconds": 27.537
+        },
+        {
+          "role": "implementer",
+          "session": "01a1171a-231c-7903-86ea-6db3815811e6",
+          "seconds": 22.784
+        },
+        {
+          "role": "independent_tester",
+          "session": "01a1171a-7ce2-70f3-89f8-95c083cd2272",
+          "seconds": 65.025
+        },
+        {
+          "role": "reviewer",
+          "session": "01a1171b-7cb0-7c31-a175-0b1ac9e926ab",
+          "seconds": 28.075
+        }
+      ],
+      "candidate_sha256": "0b2ce5ad60e46b898a9b1da9eccdbe4e9c514950a3aa7c0d8d502a8aeba08f49",
+      "frozen_design_sha256": "77a9fbbfa9c1b6de9fd538caa65ef8f3c71652bff3797c29b4726958165f65bc",
+      "cleanup_verified": true
+    }
+  ],
+  "distinct_contexts": 8,
+  "owned_repositories_verified_absent": 11,
+  "source_hashes_match_execution_snapshot": true,
+  "archive_hash_verified": true,
+  "original_contract_semantics_unchanged": true,
+  "fixture_identity_rename": {
+    "before": "STAGE20-LABELS",
+    "after": "LABEL-NORMALIZATION"
+  },
+  "original_harness_interface_design_validation_and_failure_interpreter_unchanged": true,
+  "no_model_or_acceptance_calls_in_this_audit": true
+}

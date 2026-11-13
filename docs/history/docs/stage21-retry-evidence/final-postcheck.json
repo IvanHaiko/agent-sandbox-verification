@@ -1,0 +1,11 @@
+{
+  "stale_owned_containers": 0,
+  "role_runtime_absent": true,
+  "production_source_and_configuration_unchanged": true,
+  "credential_store_unchanged": true,
+  "baseline_project_clean": true,
+  "test_freeze_exists": false,
+  "candidate_exposure_exists": false,
+  "accepted": false,
+  "additional_model_requests": 0
+}

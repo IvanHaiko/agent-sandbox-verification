@@ -1,0 +1,15 @@
+{
+  "branch": "stage31/migration-sql",
+  "baseline_commit": "c507bf15048cea275d7aa58595bca5d592abe292",
+  "engineering_commit": "68edb39dec6a1ea0cdc99b8ac0ef1a107a7d4f38",
+  "source_files": 99,
+  "changed_files": [
+    "src/migrations.py",
+    "tests/test_migrations.py",
+    "tests/test_migrations_db.py"
+  ],
+  "tested_scoped_bytes_match": true,
+  "patch_sha256": "d7259bdbab70e1f9eca82efb5cc5d9a8c904606b487f953f0903392289d81090",
+  "bundle_sha256": "7d1128f9d8d9bfe9fb59d28f485056fbc8ae20f90fcb851743bc068c0205044a",
+  "accepted": true
+}

@@ -1,0 +1,87 @@
+{
+  "outside": "/home/ivan/sandbox-probe-ffd37d582836",
+  "plan": {
+    "create": [
+      [
+        "workspace-root",
+        "probe-escape.txt"
+      ],
+      [
+        "private-dir",
+        "/home/ivan/codex-role-n92og91_/probe-escape.txt"
+      ],
+      [
+        "home-canary-dir",
+        "/home/ivan/sandbox-probe-ffd37d582836/probe-escape.txt"
+      ],
+      [
+        "tests",
+        "tests/probe-ok.txt"
+      ],
+      [
+        "slash-tmp",
+        "/tmp/sandbox-probe-c462093bac75"
+      ]
+    ],
+    "dns_host": "example.com",
+    "env_digest": "21bcbd6393045bd574d73dd7ee7c75f12daa8d006f9b1b2a7e6588aa8ab8441b",
+    "list": [
+      [
+        "private-dir",
+        "/home/ivan/codex-role-n92og91_"
+      ],
+      [
+        "home-canary-dir",
+        "/home/ivan/sandbox-probe-ffd37d582836"
+      ]
+    ],
+    "read": [
+      [
+        "private-canary",
+        "/home/ivan/codex-role-n92og91_/candidate.txt"
+      ],
+      [
+        "home-canary",
+        "/home/ivan/sandbox-probe-ffd37d582836/secret.txt"
+      ],
+      [
+        "contract",
+        "CONTRACT.md"
+      ],
+      [
+        "codex-auth",
+        "/home/ivan/.codex/auth.json"
+      ]
+    ],
+    "sensitive": [
+      "OPENAI_API_KEY",
+      "CODEX_API_KEY",
+      "ANTHROPIC_API_KEY",
+      "ANTHROPIC_AUTH_TOKEN",
+      "CLAUDE_CODE_OAUTH_TOKEN"
+    ],
+    "symlink": "tests/probe-link",
+    "symlink_target": "/home/ivan/codex-role-n92og91_/candidate.txt",
+    "tcp_host": "1.1.1.1",
+    "write": [
+      [
+        "contract",
+        "CONTRACT.md"
+      ],
+      [
+        "claude-settings",
+        ".claude/settings.json"
+      ],
+      [
+        "codex-config",
+        ".codex/config.toml"
+      ],
+      [
+        "private-canary",
+        "/home/ivan/codex-role-n92og91_/candidate.txt"
+      ]
+    ]
+  },
+  "private": "/home/ivan/codex-role-n92og91_",
+  "workspace": "/home/ivan/codex-role-lcj1vfhx"
+}

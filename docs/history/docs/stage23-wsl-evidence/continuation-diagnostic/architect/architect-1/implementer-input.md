@@ -1,0 +1,73 @@
+Role: Implementer. Implement the frozen complete contract below.
+Read role-input.md, TASK.json and src/normalize_labels.py.
+Only src/normalize_labels.py may change. Preserve the exact typed public interface.
+No other files, imports with external dependencies, I/O, network, commits, subagents,
+other workspaces, credentials or previous role histories. No extra features.
+End immediately after the native file edit; no final summary is required.
+Controller derives the handoff and acceptance from artifacts, not your narration.
+{
+  "task_id": "STAGE20-LABELS",
+  "contract_version": 1,
+  "public_interface": "def normalize_labels(value: str) -> list[str]",
+  "file": "src/normalize_labels.py",
+  "acceptance_criteria": [
+    "Scan ASCII strings left to right. An unescaped comma outside double quotes ends a label; repeated separators are allowed.",
+    "An unescaped double quote toggles quoted mode anywhere within a label; quote delimiters are removed and adjacent quoted/unquoted text concatenates.",
+    "Backslash escapes exactly the next character in either mode: remove the backslash, preserve the next character literally, and do not treat it as a quote or separator.",
+    "A trailing unpaired backslash or unclosed double quote raises ValueError for the whole input, even after otherwise valid labels.",
+    "Only ASCII whitespace (space, tab, CR, LF, vertical tab, form feed) that was neither quoted nor escaped is ordinary whitespace.",
+    "Trim ordinary whitespace from each label boundary before collapsing internal ordinary-whitespace runs to one ASCII space.",
+    "Quoted or escaped whitespace is protected: preserve its exact characters and multiplicity, including at label boundaries; it also breaks ordinary-whitespace runs.",
+    "Lowercase ASCII A-Z in all emitted characters; preserve other non-delimiter literal characters exactly.",
+    "After parsing and normalization, discard labels whose resulting string is empty. Whitespace-only protected labels are nonempty and retained.",
+    "Deduplicate normalized strings by exact equality, retaining first occurrence order. Empty input returns an empty list."
+  ],
+  "constraints": [
+    "Pure Python, standard library only, no external dependencies or I/O.",
+    "ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.",
+    "Do not add features or mutate any file other than src/normalize_labels.py."
+  ],
+  "clarifications": [
+    {
+      "rules": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "clarification": "Escaped commas remain literal in either mode; escaped quotes do not toggle mode. Any trailing unpaired backslash or unclosed quote invalidates the entire input, including preceding valid labels."
+    },
+    {
+      "rules": [
+        2,
+        5,
+        6,
+        7
+      ],
+      "clarification": "Whitespace treatment depends on whether each character was quoted or escaped, even after quote delimiters are removed. Protected whitespace remains exact and interrupts ordinary-whitespace runs; only ordinary whitespace at label boundaries is trimmed."
+    },
+    {
+      "rules": [
+        3,
+        7,
+        8
+      ],
+      "clarification": "Quote and escape protection preserves whitespace and prevents delimiter interpretation; it does not exempt emitted ASCII A-Z from lowercasing."
+    },
+    {
+      "rules": [
+        6,
+        7,
+        9,
+        10
+      ],
+      "clarification": "Emptiness and duplicate equality concern the final normalized strings. Protected whitespace alone constitutes a retained label, and equal normalized labels retain only their first occurrence."
+    }
+  ],
+  "risks": [
+    "Losing whitespace provenance can incorrectly trim or collapse protected characters.",
+    "Treating escaped delimiters as syntax can change label boundaries or quote state.",
+    "Returning preceding labels despite a malformed suffix violates whole-input failure.",
+    "Deduplicating before normalization or ignoring protected whitespace can change results or first-occurrence order."
+  ]
+}

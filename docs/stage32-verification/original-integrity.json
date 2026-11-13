@@ -1,0 +1,30 @@
+{
+  "unchanged": false,
+  "matched_fields": [
+    "repository",
+    "head",
+    "branch",
+    "status",
+    "worktrees",
+    "staged_sha256",
+    "working_sha256",
+    "files",
+    "historical"
+  ],
+  "differing_fields": [
+    "index_sha256"
+  ],
+  "before_index_sha256": "c963d3c70bbf461abb021dcb37173f9c8e8c2d203e22d649f96436cb2388b3fc",
+  "after_index_sha256": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+  "index_after_size": 46324,
+  "index_after_mtime_ns": 1791627350253401700,
+  "historical_files": 316,
+  "source_and_data_files": 407,
+  "index_semantics": {
+    "head_unchanged": true,
+    "status_unchanged": true,
+    "staged_diff_unchanged": true,
+    "working_diff_unchanged": true
+  },
+  "limitation": "Original raw index bytes were not saved, only their hash. Cause of byte drift is undetermined; do not infer semantic changes or external causation. No original-repository write or restoration was issued."
+}

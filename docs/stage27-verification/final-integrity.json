@@ -1,0 +1,11 @@
+{
+  "original_unchanged": true,
+  "frozen_artifacts_unchanged": {
+    "task-contract.md": true,
+    "review-rubric.md": true,
+    "test_external_acceptance.py": true,
+    "requirements.txt": true,
+    "experiment.py": true
+  },
+  "framework_unchanged": true
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "execution_id": "19174bb556d9432592d32555792846d3",
+    "name": "agentctl-3264ff325487-19174bb556d9432592d32555792846d3",
+    "owner": "3264ff325487b08b67c51045",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-workflow\\synthetic-recovery\\runtime\\codex-agent-system-ba8435ac6517d0e3\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-07T09:06:58.294962+00:00",
+    "status": "completed",
+    "input_commit": "a4bad9cdac43da028b402b7592ba383faa40b344",
+    "container_id": "c7235253cfc59182dc9e075764da2d9c1f8313081a15243145072a1f9bbc1a9c",
+    "changed_paths": [
+      "src/normalize_labels.py"
+    ],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "e715970fa337426c9ba1467e858e0062",
+    "name": "agentctl-3264ff325487-e715970fa337426c9ba1467e858e0062",
+    "owner": "3264ff325487b08b67c51045",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-workflow\\synthetic-recovery\\runtime\\codex-agent-system-ba8435ac6517d0e3\\worktrees\\STAGE20-LABELS\\tester",
+    "created_at": "2026-10-07T09:07:12.650364+00:00",
+    "status": "completed",
+    "input_commit": "a4bad9cdac43da028b402b7592ba383faa40b344",
+    "container_id": "ff5443859cf121aba1e8a9b05ae25d6809bdca9bbe4ad9c65aa7ca2a41a80eba",
+    "changed_paths": [],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "f64ac0bc8c3f44279e7ea17719e55575",
+    "name": "agentctl-3264ff325487-f64ac0bc8c3f44279e7ea17719e55575",
+    "owner": "3264ff325487b08b67c51045",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-workflow\\synthetic-recovery\\runtime\\codex-agent-system-ba8435ac6517d0e3\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-07T09:07:03.852271+00:00",
+    "status": "completed",
+    "input_commit": "a4bad9cdac43da028b402b7592ba383faa40b344",
+    "container_id": "2a46c09b1ff381ab425f13330cd60003bec12a2496edabc9b6b2c71e733a332d",
+    "changed_paths": [],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  }
+]

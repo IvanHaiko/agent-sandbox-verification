@@ -1,0 +1,45 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"candidate.txt\": {\"allowed\": true, \"operation\": \"read\"}, \"handoff.txt\": {\"allowed\": true, \"operation\": \"read\"}, \"other-config.txt\": {\"allowed\": true, \"operation\": \"read\"}, \"review-write\": {\"allowed\": false, \"operation\": \"write\", \"errno\": 30, \"error\": \"[Errno 30] Read-only file system: '/home/ivan/codex-role-tpf5mzyr/src/candidate.py'\"}}\n",
+  "stderr": "",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "command": [
+    "/home/ivan/.local/bin/codex",
+    "-c",
+    "permissions.stage29_read_only={filesystem={\":root\"=\"read\",\":workspace_roots\"={\".\"=\"read\"},\":tmpdir\"=\"deny\",\":slash_tmp\"=\"deny\"},network={enabled=false}}",
+    "sandbox",
+    "--permission-profile",
+    "stage29_read_only",
+    "--cd",
+    "/home/ivan/codex-role-tpf5mzyr",
+    "/usr/bin/python3",
+    "-I",
+    "-B",
+    "-c",
+    "import os,json\nresults={}\nfor name,path,mode in [('candidate.txt', '/home/ivan/codex-role-xjjny7w6/candidate.txt', 'read'), ('handoff.txt', '/home/ivan/codex-role-xjjny7w6/handoff.txt', 'read'), ('other-config.txt', '/home/ivan/codex-role-xjjny7w6/other-config.txt', 'read'), ('review-write', '/home/ivan/codex-role-tpf5mzyr/src/candidate.py', 'write')]:\n    try:\n        fd=os.open(path,os.O_RDONLY if mode=='read' else os.O_WRONLY)\n        os.close(fd)\n        results[name]={'allowed':True,'operation':mode}\n    except OSError as e:\n        results[name]={'allowed':False,'operation':mode,'errno':e.errno,'error':str(e)}\nprint(json.dumps(results))\n"
+  ],
+  "canaries_exist": true,
+  "observations": {
+    "candidate.txt": {
+      "allowed": true,
+      "operation": "read"
+    },
+    "handoff.txt": {
+      "allowed": true,
+      "operation": "read"
+    },
+    "other-config.txt": {
+      "allowed": true,
+      "operation": "read"
+    },
+    "review-write": {
+      "allowed": false,
+      "operation": "write",
+      "errno": 30,
+      "error": "[Errno 30] Read-only file system: '/home/ivan/codex-role-tpf5mzyr/src/candidate.py'"
+    }
+  },
+  "inputs_unchanged": true,
+  "note": "Direct native named permission profile; prior shorthand failure preserved in experiment-a.json"
+}

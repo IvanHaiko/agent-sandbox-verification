@@ -1,0 +1,7 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import psycopg, pytest; connection = psycopg.connect(dbname=\"postgres\", user=\"stage25\", host='/home/ivan/codex-role-gy4sdnag/socket', port=55425); print(connection.execute(\"SELECT current_database(), version()\").fetchone()); connection.close()\n                                         ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python/lib/python3.14/site-packages/psycopg/connection.py\", line 122, in connect\n    raise last_ex.with_traceback(None)\npsycopg.OperationalError: connection is bad: connection to server on socket \"/home/ivan/codex-role-gy4sdnag/socket/.s.PGSQL.55425\" failed: Operation not permitted\n\tIs the server running locally and accepting connections on that socket?\n",
+  "timed_out": false,
+  "owned_process_group_ended": true
+}

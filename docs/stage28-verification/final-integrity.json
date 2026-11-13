@@ -1,0 +1,12 @@
+{
+  "original_unchanged": true,
+  "framework_unchanged": true,
+  "frozen_unchanged": {
+    "task-contract.md": true,
+    "review-rubric.md": true,
+    "test_external_acceptance.py": true,
+    "requirements.txt": true,
+    "experiment.py": true
+  },
+  "stage27_adapter_unchanged": true
+}

@@ -1,0 +1,13 @@
+{
+  "mechanism": "native app-server thread/start configuration probe; no turn/start",
+  "inference_requested": false,
+  "thread_created": false,
+  "requested_model": "gpt-6.1-sol",
+  "rpc_error_code": -32603,
+  "error": "error creating thread: failed to load AGENTS.md instructions for environment local: failed to prepare fs sandbox: failed to prepare windows sandbox wrapper: open sandbox provisioning pipe",
+  "config_only_process_exit_code": 0,
+  "process_stopped": true,
+  "native_login_status": "Not logged in",
+  "credentials_inspected": false,
+  "interpretation": "Native sandbox provisioning is inaccessible from the current execution boundary; authentication/inference access remains unverified."
+}

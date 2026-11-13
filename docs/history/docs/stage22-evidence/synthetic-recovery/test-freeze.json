@@ -1,0 +1,7 @@
+{
+  "design_sha256": "1fb283aec5872fca4769f5e7787ffe456a9724e0509c59761cd7e47654d70c60",
+  "harness_sha256": "cd18164b2d0ab454262e7da3a10ce975d077103ed8c87eb5927e41049da376b1",
+  "frozen_at": 1791364027.6713772,
+  "candidate_visible_during_design": false,
+  "reused_independent_live_design": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage22-evidence\\scoped-p1-t1\\test-design-result.json"
+}

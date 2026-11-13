@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/provision/bin/uv",
+    "venv",
+    "--python",
+    "3.10",
+    "--managed-python",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/venv-3.10"
+  ],
+  "cwd": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Using CPython 3.10.22\nwarning: The requested interpreter resolved to Python 3.10.22, which is incompatible with the project's Python requirement: `>=3.11` (from `project.requires-python`)\nCreating virtual environment at: venv-3.10\nActivate with: source venv-3.10/bin/activate\n",
+  "elapsed_seconds": 4.859114323,
+  "provisioning_only": true
+}

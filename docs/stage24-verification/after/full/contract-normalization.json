@@ -1,0 +1,13 @@
+{
+  "authority": "Controller",
+  "original_criteria_preserved": true,
+  "canonical_sha256": "84dae5f9c93dbdb7ed37eaa11155b195e621cef53740e4b2e84f305ae2047a5e",
+  "proposal_sha256": "44824757649561006ecf70e6a6f1708950bb865e00e7fdb6bbaf5a3fdfda5ba6",
+  "review": "Reviewed all four clarifications and four risks against the original ten criteria. All restate existing rules; no code, algorithm, scope expansion or changed requirement is adopted.",
+  "selected_clarifications": [
+    1,
+    2,
+    3,
+    4
+  ]
+}

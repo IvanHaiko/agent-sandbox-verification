@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "basis": "Existing frozen Controller contract interpreter, preserved before candidate generation; expectations unchanged",
+  "acceptance_expectation_author": "Independent Tester",
+  "trials": [
+    {
+      "trial_id": "minimal-1",
+      "case_count": 24,
+      "contract_consistency_passed": true,
+      "mismatches": []
+    },
+    {
+      "trial_id": "minimal-2",
+      "case_count": 23,
+      "contract_consistency_passed": true,
+      "mismatches": []
+    },
+    {
+      "trial_id": "minimal-3",
+      "case_count": 23,
+      "contract_consistency_passed": true,
+      "mismatches": []
+    }
+  ]
+}

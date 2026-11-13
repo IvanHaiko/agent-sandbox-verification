@@ -1,0 +1,12 @@
+[
+  {
+    "action": [
+      "acceptance"
+    ],
+    "read_only": true,
+    "changed_paths": [],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_cases (tests.test_acceptance.Acceptance.test_cases) ... ok\ntest_interface (tests.test_acceptance.Acceptance.test_interface) ... ok\ntest_properties (tests.test_acceptance.Acceptance.test_properties) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK\n"
+  }
+]

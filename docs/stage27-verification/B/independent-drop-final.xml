@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="28" skipped="0" tests="40" time="2.637" timestamp="2026-10-09T10:04:06.338221+02:00" hostname="Ivan"><testcase classname="tests.test_stage27_evaluation" name="test_boundaries_preserve_original_fragments" time="0.002"><failure message="AssertionError: assert ['SELECT  1\n...', 'SELECT 3'] == ['SELECT  1\n...', 'SELECT 4']&#10;  &#10;  Right contains one more item: 'SELECT 4'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;
+
+    def test_boundaries_preserve_original_fragments(split_sql):
+        source = " \t; SELECT  1\n + 2 ;\r\nSELECT 3\t; ; SELECT 4  "
+        original = source[:]
+&gt;       assert split_sql(source) == ["SELECT  1\n + 2", "SELECT 3", "SELECT 4"]
+E       AssertionError: assert ['SELECT  1\n...', 'SELECT 3'] == ['SELECT  1\n...', 'SELECT 4']
+E         
+E         Right contains one more item: 'SELECT 4'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:19: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_standard_strings_and_identifiers" time="0.001"><failure message="assert [&quot;SELECT 'a;b...backslash\\'&quot;] == [&quot;SELECT 'a;b...-- ;', 'é;雪'&quot;]&#10;  &#10;  Right contains one more item: &quot;SELECT '/* -- $$ ; */', '-- ;', 'é;雪'&quot;&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;
+
+    def test_standard_strings_and_identifiers(split_sql):
+        statements = [
+            "SELECT 'a;b''c;d'",
+            'SELECT "a;b""c;d" FROM "t;u"',
+            "SELECT 'backslash\\'",  # Standard strings do not backslash-escape quotes.
+            "SELECT '/* -- $$ ; */', '-- ;', 'é;雪'",
+        ]
+&gt;       assert split_sql(";\n".join(statements) + ";") == statements
+E       assert ["SELECT 'a;b...backslash\\'"] == ["SELECT 'a;b...-- ;', 'é;雪'"]
+E         
+E         Right contains one more item: "SELECT '/* -- $$ ; */', '-- ;', 'é;雪'"
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:32: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_escape_strings_preserve_escaped_quotes[E]" time="0.001"><failure message="assert [&quot;SELECT E'on...hree'';four'&quot;] == [&quot;SELECT E'on...&quot;, 'SELECT 7']&#10;  &#10;  Right contains one more item: 'SELECT 7'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, prefix = 'E'
+
+    @pytest.mark.parametrize("prefix", ["E", "e"])
+    def test_escape_strings_preserve_escaped_quotes(split_sql, prefix):
+        statement = "SELECT " + prefix + r"'one\';two\\;three'';four'"
+&gt;       assert split_sql(statement + "; SELECT 7;") == [statement, "SELECT 7"]
+E       assert ["SELECT E'on...hree'';four'"] == ["SELECT E'on...", 'SELECT 7']
+E         
+E         Right contains one more item: 'SELECT 7'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:38: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_escape_strings_preserve_escaped_quotes[e]" time="0.001"><failure message="assert [&quot;SELECT e'on...hree'';four'&quot;] == [&quot;SELECT e'on...&quot;, 'SELECT 7']&#10;  &#10;  Right contains one more item: 'SELECT 7'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, prefix = 'e'
+
+    @pytest.mark.parametrize("prefix", ["E", "e"])
+    def test_escape_strings_preserve_escaped_quotes(split_sql, prefix):
+        statement = "SELECT " + prefix + r"'one\';two\\;three'';four'"
+&gt;       assert split_sql(statement + "; SELECT 7;") == [statement, "SELECT 7"]
+E       assert ["SELECT e'on...hree'';four'"] == ["SELECT e'on...", 'SELECT 7']
+E         
+E         Right contains one more item: 'SELECT 7'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:38: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_escape_prefix_requires_token_boundary[nameE]" time="0.002"><failure message="assert [&quot;SELECT nameE'tail\\'&quot;] == [&quot;SELECT name...&quot;, 'SELECT 2']&#10;  &#10;  Right contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;
+identifier = 'nameE'
+
+    @pytest.mark.parametrize("identifier", ["nameE", "namee", "_E", "field1E"])
+    def test_escape_prefix_requires_token_boundary(split_sql, identifier):
+        statement = "SELECT " + identifier + "'tail\\'"
+&gt;       assert split_sql(statement + ";SELECT 2;") == [statement, "SELECT 2"]
+E       assert ["SELECT nameE'tail\\'"] == ["SELECT name...", 'SELECT 2']
+E         
+E         Right contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:46: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_escape_prefix_requires_token_boundary[namee]" time="0.001"><failure message="assert [&quot;SELECT namee'tail\\'&quot;] == [&quot;SELECT name...&quot;, 'SELECT 2']&#10;  &#10;  Right contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;
+identifier = 'namee'
+
+    @pytest.mark.parametrize("identifier", ["nameE", "namee", "_E", "field1E"])
+    def test_escape_prefix_requires_token_boundary(split_sql, identifier):
+        statement = "SELECT " + identifier + "'tail\\'"
+&gt;       assert split_sql(statement + ";SELECT 2;") == [statement, "SELECT 2"]
+E       assert ["SELECT namee'tail\\'"] == ["SELECT name...", 'SELECT 2']
+E         
+E         Right contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:46: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_escape_prefix_requires_token_boundary[_E]" time="0.001"><failure message="assert [&quot;SELECT _E'tail\\'&quot;] == [&quot;SELECT _E't...&quot;, 'SELECT 2']&#10;  &#10;  Right contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, identifier = '_E'
+
+    @pytest.mark.parametrize("identifier", ["nameE", "namee", "_E", "field1E"])
+    def test_escape_prefix_requires_token_boundary(split_sql, identifier):
+        statement = "SELECT " + identifier + "'tail\\'"
+&gt;       assert split_sql(statement + ";SELECT 2;") == [statement, "SELECT 2"]
+E       assert ["SELECT _E'tail\\'"] == ["SELECT _E't...", 'SELECT 2']
+E         
+E         Right contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:46: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_escape_prefix_requires_token_boundary[field1E]" time="0.001"><failure message="assert [&quot;SELECT field1E'tail\\'&quot;] == [&quot;SELECT fiel...&quot;, 'SELECT 2']&#10;  &#10;  Right contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;
+identifier = 'field1E'
+
+    @pytest.mark.parametrize("identifier", ["nameE", "namee", "_E", "field1E"])
+    def test_escape_prefix_requires_token_boundary(split_sql, identifier):
+        statement = "SELECT " + identifier + "'tail\\'"
+&gt;       assert split_sql(statement + ";SELECT 2;") == [statement, "SELECT 2"]
+E       assert ["SELECT field1E'tail\\'"] == ["SELECT fiel...", 'SELECT 2']
+E         
+E         Right contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:46: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_quote_delimiters_are_exact[]" time="0.001"><failure message="AssertionError: assert ['SELECT $$on...tag$ ; two$$'] == ['SELECT $$on...', 'SELECT 2']&#10;  &#10;  Right contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, tag = ''
+
+    @pytest.mark.parametrize("tag", ["", "a", "_", "a_09", "Tag"])
+    def test_dollar_quote_delimiters_are_exact(split_sql, tag):
+        delimiter = "$" + tag + "$"
+        body = "one; ' \" -- /* $$ $other$ $tag$ ; two"
+        # An untagged body must not contain its own closing delimiter.
+        if not tag:
+            body = body.replace("$$", "$x$")
+        statement = "SELECT " + delimiter + body + delimiter
+&gt;       assert split_sql(statement + ";SELECT 2") == [statement, "SELECT 2"]
+E       AssertionError: assert ['SELECT $$on...tag$ ; two$$'] == ['SELECT $$on...', 'SELECT 2']
+E         
+E         Right contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:59: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_quote_delimiters_are_exact[a]" time="0.001"><failure message="AssertionError: assert ['SELECT $a$o...ag$ ; two$a$'] == ['SELECT $a$o...', 'SELECT 2']&#10;  &#10;  Right contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, tag = 'a'
+
+    @pytest.mark.parametrize("tag", ["", "a", "_", "a_09", "Tag"])
+    def test_dollar_quote_delimiters_are_exact(split_sql, tag):
+        delimiter = "$" + tag + "$"
+        body = "one; ' \" -- /* $$ $other$ $tag$ ; two"
+        # An untagged body must not contain its own closing delimiter.
+        if not tag:
+            body = body.replace("$$", "$x$")
+        statement = "SELECT " + delimiter + body + delimiter
+&gt;       assert split_sql(statement + ";SELECT 2") == [statement, "SELECT 2"]
+E       AssertionError: assert ['SELECT $a$o...ag$ ; two$a$'] == ['SELECT $a$o...', 'SELECT 2']
+E         
+E         Right contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:59: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_quote_delimiters_are_exact[_]" time="0.001"><failure message="AssertionError: assert ['SELECT $_$o...ag$ ; two$_$'] == ['SELECT $_$o...', 'SELECT 2']&#10;  &#10;  Right contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, tag = '_'
+
+    @pytest.mark.parametrize("tag", ["", "a", "_", "a_09", "Tag"])
+    def test_dollar_quote_delimiters_are_exact(split_sql, tag):
+        delimiter = "$" + tag + "$"
+        body = "one; ' \" -- /* $$ $other$ $tag$ ; two"
+        # An untagged body must not contain its own closing delimiter.
+        if not tag:
+            body = body.replace("$$", "$x$")
+        statement = "SELECT " + delimiter + body + delimiter
+&gt;       assert split_sql(statement + ";SELECT 2") == [statement, "SELECT 2"]
+E       AssertionError: assert ['SELECT $_$o...ag$ ; two$_$'] == ['SELECT $_$o...', 'SELECT 2']
+E         
+E         Right contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:59: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_quote_delimiters_are_exact[a_09]" time="0.001"><failure message="AssertionError: assert ['SELECT $a_0... ; two$a_09$'] == ['SELECT $a_0...', 'SELECT 2']&#10;  &#10;  Right contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, tag = 'a_09'
+
+    @pytest.mark.parametrize("tag", ["", "a", "_", "a_09", "Tag"])
+    def test_dollar_quote_delimiters_are_exact(split_sql, tag):
+        delimiter = "$" + tag + "$"
+        body = "one; ' \" -- /* $$ $other$ $tag$ ; two"
+        # An untagged body must not contain its own closing delimiter.
+        if not tag:
+            body = body.replace("$$", "$x$")
+        statement = "SELECT " + delimiter + body + delimiter
+&gt;       assert split_sql(statement + ";SELECT 2") == [statement, "SELECT 2"]
+E       AssertionError: assert ['SELECT $a_0... ; two$a_09$'] == ['SELECT $a_0...', 'SELECT 2']
+E         
+E         Right contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:59: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_quote_delimiters_are_exact[Tag]" time="0.001"><failure message="AssertionError: assert ['SELECT $Tag...$ ; two$Tag$'] == ['SELECT $Tag...', 'SELECT 2']&#10;  &#10;  Right contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, tag = 'Tag'
+
+    @pytest.mark.parametrize("tag", ["", "a", "_", "a_09", "Tag"])
+    def test_dollar_quote_delimiters_are_exact(split_sql, tag):
+        delimiter = "$" + tag + "$"
+        body = "one; ' \" -- /* $$ $other$ $tag$ ; two"
+        # An untagged body must not contain its own closing delimiter.
+        if not tag:
+            body = body.replace("$$", "$x$")
+        statement = "SELECT " + delimiter + body + delimiter
+&gt;       assert split_sql(statement + ";SELECT 2") == [statement, "SELECT 2"]
+E       AssertionError: assert ['SELECT $Tag...$ ; two$Tag$'] == ['SELECT $Tag...', 'SELECT 2']
+E         
+E         Right contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:59: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_sequences_in_identifiers_and_parameters" time="0.001"><failure message="AssertionError: assert ['SELECT foo$...SELECT $a-b$'] == ['SELECT foo$...T $a-b$', ...]&#10;  &#10;  Right contains one more item: 'SELECT($ok$a;b$ok$)'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;
+
+    def test_dollar_sequences_in_identifiers_and_parameters(split_sql):
+        statements = [
+            "SELECT foo$tag$bar", "SELECT foo$$bar", "SELECT _x$Tag$y",
+            "SELECT $1, $12", "SELECT $9bad$", "SELECT $a-b$",
+            "SELECT($ok$a;b$ok$)",
+        ]
+&gt;       assert split_sql(";".join(statements) + ";") == statements
+E       AssertionError: assert ['SELECT foo$...SELECT $a-b$'] == ['SELECT foo$...T $a-b$', ...]
+E         
+E         Right contains one more item: 'SELECT($ok$a;b$ok$)'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:70: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_nested_comments_and_region_precedence" time="0.001"><failure message="assert [&quot;/* outer ; ... */ SELECT 1&quot;] == [&quot;/* outer ; ...railing ; */&quot;]&#10;  &#10;  Right contains one more item: 'SELECT \'/* not comment ; */\', &quot;-- ;&quot; /* trailing ; */'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;
+
+    def test_nested_comments_and_region_precedence(split_sql):
+        first = "/* outer ; ' \" $$ /* nested ; */ still ; */ SELECT 1"
+        second = "SELECT '/* not comment ; */', \"-- ;\" /* trailing ; */"
+&gt;       assert split_sql(first + ";" + second + ";") == [first, second]
+E       assert ["/* outer ; ... */ SELECT 1"] == ["/* outer ; ...railing ; */"]
+E         
+E         Right contains one more item: 'SELECT \'/* not comment ; */\', "-- ;" /* trailing ; */'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:76: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_line_comments_end_at_cr_or_lf[\r]" time="0.001"><failure message="assert ['-- ; \' &quot; /* $$\rSELECT 1'] == ['-- ; \' &quot; /... ;\rSELECT 2']&#10;  &#10;  Right contains one more item: '-- another ;\rSELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, newline = '\r'
+
+    @pytest.mark.parametrize("newline", ["\r", "\n", "\r\n"])
+    def test_line_comments_end_at_cr_or_lf(split_sql, newline):
+        first = "-- ; ' \" /* $$" + newline + "SELECT 1"
+        second = "-- another ;" + newline + "SELECT 2"
+&gt;       assert split_sql(first + ";" + second + "; -- eof ' /*") == [first, second]
+E       assert ['-- ; \' " /* $$\rSELECT 1'] == ['-- ; \' " /... ;\rSELECT 2']
+E         
+E         Right contains one more item: '-- another ;\rSELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:87: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_line_comments_end_at_cr_or_lf[\n]" time="0.001"><failure message="assert ['-- ; \' &quot; /* $$\nSELECT 1'] == ['-- ; \' &quot; /... ;\nSELECT 2']&#10;  &#10;  Right contains one more item: '-- another ;\nSELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, newline = '\n'
+
+    @pytest.mark.parametrize("newline", ["\r", "\n", "\r\n"])
+    def test_line_comments_end_at_cr_or_lf(split_sql, newline):
+        first = "-- ; ' \" /* $$" + newline + "SELECT 1"
+        second = "-- another ;" + newline + "SELECT 2"
+&gt;       assert split_sql(first + ";" + second + "; -- eof ' /*") == [first, second]
+E       assert ['-- ; \' " /* $$\nSELECT 1'] == ['-- ; \' " /... ;\nSELECT 2']
+E         
+E         Right contains one more item: '-- another ;\nSELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:87: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_line_comments_end_at_cr_or_lf[\r\n]" time="0.001"><failure message="assert ['-- ; \' &quot; /...\r\nSELECT 1'] == ['-- ; \' &quot; /...\r\nSELECT 2']&#10;  &#10;  Right contains one more item: '-- another ;\r\nSELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;, newline = '\r\n'
+
+    @pytest.mark.parametrize("newline", ["\r", "\n", "\r\n"])
+    def test_line_comments_end_at_cr_or_lf(split_sql, newline):
+        first = "-- ; ' \" /* $$" + newline + "SELECT 1"
+        second = "-- another ;" + newline + "SELECT 2"
+&gt;       assert split_sql(first + ";" + second + "; -- eof ' /*") == [first, second]
+E       assert ['-- ; \' " /...\r\nSELECT 1'] == ['-- ; \' " /...\r\nSELECT 2']
+E         
+E         Right contains one more item: '-- another ;\r\nSELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:87: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[SELECT 'open]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[SELECT &quot;open]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[SELECT E'escaped\\']" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[SELECT e'open]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[SELECT $$open]" time="0.000" /><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[SELECT $Tag$open $tag$]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[/* open]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[/* outer /* inner */]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[SELECT 1; SELECT 'open]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[SELECT 1; SELECT &quot;open]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_value_error[SELECT 1; /* outer /* inner */]" time="0.000" /><testcase classname="tests.test_stage27_evaluation" name="test_comment_only_fragments_do_not_execute" time="0.001"><failure message="AssertionError: assert [] == ['SELECT 1']&#10;  &#10;  Right contains one more item: 'SELECT 1'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x7d5d96b80670&gt;
+
+    def test_comment_only_fragments_do_not_execute(split_sql):
+        source = "; /* a ; */; -- b ;\r; /* c /* d */ */; SELECT 1; /* eof */"
+&gt;       assert split_sql(source) == ["SELECT 1"]
+E       AssertionError: assert [] == ['SELECT 1']
+E         
+E         Right contains one more item: 'SELECT 1'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:105: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_postgres_quotes_functions_do_and_nested_comments" time="0.153"><failure message="assert [('function;v... (&quot;été;雪's&quot;,)] == [('function;v... (&quot;été;雪's&quot;,)]&#10;  &#10;  At index 1 diff: (&quot;été;雪's&quot;,) != ('last;value',)&#10;  Right contains one more item: (&quot;été;雪's&quot;,)&#10;  Use -v to get more diff">migration_db = (&lt;function run_migrations at 0x7d5d96bda770&gt;, &lt;psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage27_B_i...EATE FUNCTION make_text() RETURNS text LANGUAGE plpgsql AS $Body$\nBEGIN RETURN 'function;value'; END;\n$Body$"), ...])
+tmp_path = PosixPath('/home/ivan/codex-role-mty1pef2/scratch/tmp/test_postgres_quotes_functions0')
+
+    def test_postgres_quotes_functions_do_and_nested_comments(migration_db, tmp_path):
+        run, observer, events = migration_db
+        statements = [
+            'CREATE TABLE "values;table" ("text;value" text)',
+            "INSERT INTO \"values;table\" VALUES ('été;雪''s')",
+            "CREATE FUNCTION make_text() RETURNS text LANGUAGE plpgsql AS $Body$\n"
+            "BEGIN RETURN 'function;value'; END;\n$Body$",
+            "DO $$ BEGIN INSERT INTO \"values;table\" VALUES (make_text()); END; $$",
+            "/* outer ; /* nested ; */ done */ INSERT INTO \"values;table\" VALUES ('last;value')",
+        ]
+        _write(tmp_path, "001_complex.sql", ";\n".join(statements) + ";")
+        run(migrations_dir=tmp_path)
+&gt;       assert observer.execute('SELECT "text;value" FROM "values;table" ORDER BY 1').fetchall() == [
+            ("function;value",), ("last;value",), ("été;雪's",)
+        ]
+E       assert [('function;v... ("été;雪's",)] == [('function;v... ("été;雪's",)]
+E         
+E         At index 1 diff: ("été;雪's",) != ('last;value',)
+E         Right contains one more item: ("été;雪's",)
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:230: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_failed_file_rolls_back_but_prior_file_stays_committed" time="0.042"><failure message="Failed: DID NOT RAISE &lt;class 'psycopg.Error'&gt;">migration_db = (&lt;function run_migrations at 0x7d5d96bda770&gt;, &lt;psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage27_B_i... TABLE kept (n integer)'), ('execute', 'INSERT INTO schema_migrations (filename) VALUES (%s)'), ('commit', None), ...])
+tmp_path = PosixPath('/home/ivan/codex-role-mty1pef2/scratch/tmp/test_failed_file_rolls_back_bu0')
+
+    def test_failed_file_rolls_back_but_prior_file_stays_committed(migration_db, tmp_path):
+        from psycopg import Error
+    
+        run, observer, events = migration_db
+        _write(tmp_path, "001_good.sql", "CREATE TABLE kept (n integer); INSERT INTO kept VALUES (1);")
+        _write(tmp_path, "002_bad.sql", "INSERT INTO kept VALUES (2); CREATE TABLE vanished (n integer); SELECT 1 / 0;")
+        _write(tmp_path, "003_later.sql", "INSERT INTO kept VALUES (3);")
+&gt;       with pytest.raises(Error):
+             ^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'psycopg.Error'&gt;
+
+tests/test_stage27_evaluation.py:247: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_whole_file_is_validated_before_execution[SELECT 'open]" time="0.038"><failure message="assert [] == [(1,)]&#10;  &#10;  Right contains one more item: (1,)&#10;  Use -v to get more diff">migration_db = (&lt;function run_migrations at 0x7d5d96bda770&gt;, &lt;psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage27_B_i...ATE TABLE stable (n integer)'), ('execute', 'INSERT INTO schema_migrations (filename) VALUES (%s)'), ('commit', None)])
+tmp_path = PosixPath('/home/ivan/codex-role-mty1pef2/scratch/tmp/test_whole_file_is_validated_b0')
+tail = "SELECT 'open"
+
+    @pytest.mark.parametrize("tail", ["SELECT 'open", 'SELECT "open', "DO $Body$ BEGIN;", "/* unclosed"])
+    def test_whole_file_is_validated_before_execution(migration_db, tmp_path, tail):
+        run, observer, events = migration_db
+        _write(tmp_path, "001_first.sql", "CREATE TABLE stable (n integer); INSERT INTO stable VALUES (1);")
+        first = "INSERT INTO stable VALUES (2)"
+        _write(tmp_path, "002_invalid.sql", first + ";" + tail)
+        with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+            run(tmp_path)
+&gt;       assert observer.execute("SELECT n FROM stable").fetchall() == [(1,)]
+E       assert [] == [(1,)]
+E         
+E         Right contains one more item: (1,)
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:266: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_whole_file_is_validated_before_execution[SELECT &quot;open]" time="0.036"><failure message="assert [] == [(1,)]&#10;  &#10;  Right contains one more item: (1,)&#10;  Use -v to get more diff">migration_db = (&lt;function run_migrations at 0x7d5d96bda770&gt;, &lt;psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage27_B_i...ATE TABLE stable (n integer)'), ('execute', 'INSERT INTO schema_migrations (filename) VALUES (%s)'), ('commit', None)])
+tmp_path = PosixPath('/home/ivan/codex-role-mty1pef2/scratch/tmp/test_whole_file_is_validated_b1')
+tail = 'SELECT "open'
+
+    @pytest.mark.parametrize("tail", ["SELECT 'open", 'SELECT "open', "DO $Body$ BEGIN;", "/* unclosed"])
+    def test_whole_file_is_validated_before_execution(migration_db, tmp_path, tail):
+        run, observer, events = migration_db
+        _write(tmp_path, "001_first.sql", "CREATE TABLE stable (n integer); INSERT INTO stable VALUES (1);")
+        first = "INSERT INTO stable VALUES (2)"
+        _write(tmp_path, "002_invalid.sql", first + ";" + tail)
+        with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+            run(tmp_path)
+&gt;       assert observer.execute("SELECT n FROM stable").fetchall() == [(1,)]
+E       assert [] == [(1,)]
+E         
+E         Right contains one more item: (1,)
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:266: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_whole_file_is_validated_before_execution[DO $Body$ BEGIN;]" time="0.038"><failure message="assert [] == [(1,)]&#10;  &#10;  Right contains one more item: (1,)&#10;  Use -v to get more diff">migration_db = (&lt;function run_migrations at 0x7d5d96bda770&gt;, &lt;psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage27_B_i...ATE TABLE stable (n integer)'), ('execute', 'INSERT INTO schema_migrations (filename) VALUES (%s)'), ('commit', None)])
+tmp_path = PosixPath('/home/ivan/codex-role-mty1pef2/scratch/tmp/test_whole_file_is_validated_b2')
+tail = 'DO $Body$ BEGIN;'
+
+    @pytest.mark.parametrize("tail", ["SELECT 'open", 'SELECT "open', "DO $Body$ BEGIN;", "/* unclosed"])
+    def test_whole_file_is_validated_before_execution(migration_db, tmp_path, tail):
+        run, observer, events = migration_db
+        _write(tmp_path, "001_first.sql", "CREATE TABLE stable (n integer); INSERT INTO stable VALUES (1);")
+        first = "INSERT INTO stable VALUES (2)"
+        _write(tmp_path, "002_invalid.sql", first + ";" + tail)
+        with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+            run(tmp_path)
+&gt;       assert observer.execute("SELECT n FROM stable").fetchall() == [(1,)]
+E       assert [] == [(1,)]
+E         
+E         Right contains one more item: (1,)
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:266: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_whole_file_is_validated_before_execution[/* unclosed]" time="0.039"><failure message="assert [] == [(1,)]&#10;  &#10;  Right contains one more item: (1,)&#10;  Use -v to get more diff">migration_db = (&lt;function run_migrations at 0x7d5d96bda770&gt;, &lt;psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage27_B_i...ATE TABLE stable (n integer)'), ('execute', 'INSERT INTO schema_migrations (filename) VALUES (%s)'), ('commit', None)])
+tmp_path = PosixPath('/home/ivan/codex-role-mty1pef2/scratch/tmp/test_whole_file_is_validated_b3')
+tail = '/* unclosed'
+
+    @pytest.mark.parametrize("tail", ["SELECT 'open", 'SELECT "open', "DO $Body$ BEGIN;", "/* unclosed"])
+    def test_whole_file_is_validated_before_execution(migration_db, tmp_path, tail):
+        run, observer, events = migration_db
+        _write(tmp_path, "001_first.sql", "CREATE TABLE stable (n integer); INSERT INTO stable VALUES (1);")
+        first = "INSERT INTO stable VALUES (2)"
+        _write(tmp_path, "002_invalid.sql", first + ";" + tail)
+        with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+            run(tmp_path)
+&gt;       assert observer.execute("SELECT n FROM stable").fetchall() == [(1,)]
+E       assert [] == [(1,)]
+E         
+E         Right contains one more item: (1,)
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:266: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_replay_skips_filenames_even_when_contents_change" time="0.040"><failure message="assert [] == [(1,)]&#10;  &#10;  Right contains one more item: (1,)&#10;  Use -v to get more diff">migration_db = (&lt;function run_migrations at 0x7d5d96bda770&gt;, &lt;psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage27_B_i...     )\n                '), ('commit', None), ('execute', 'SELECT filename FROM schema_migrations ORDER BY filename')])
+tmp_path = PosixPath('/home/ivan/codex-role-mty1pef2/scratch/tmp/test_replay_skips_filenames_ev0')
+
+    def test_replay_skips_filenames_even_when_contents_change(migration_db, tmp_path):
+        run, observer, events = migration_db
+        _write(tmp_path, "001_replay.sql", "CREATE TABLE replayed (n integer); INSERT INTO replayed VALUES (1);")
+        run(tmp_path)
+        ledger_before = observer.execute("SELECT to_jsonb(t) FROM schema_migrations t").fetchall()
+        _write(tmp_path, "001_replay.sql", "SELECT 'unterminated")
+        events.clear()
+        run(tmp_path)
+&gt;       assert observer.execute("SELECT n FROM replayed").fetchall() == [(1,)]
+E       assert [] == [(1,)]
+E         
+E         Right contains one more item: (1,)
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:281: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_empty_comment_files_recorded_once_and_commit_per_file" time="0.037"><failure message="assert [] == [(9,)]&#10;  &#10;  Right contains one more item: (9,)&#10;  Use -v to get more diff">migration_db = (&lt;function run_migrations at 0x7d5d96bda770&gt;, &lt;psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage27_B_i... (filename) VALUES (%s)'), ('commit', None), ('execute', 'INSERT INTO schema_migrations (filename) VALUES (%s)'), ...])
+tmp_path = PosixPath('/home/ivan/codex-role-mty1pef2/scratch/tmp/test_empty_comment_files_recor0')
+
+    def test_empty_comment_files_recorded_once_and_commit_per_file(migration_db, tmp_path):
+        run, observer, events = migration_db
+        _write(tmp_path, "001_empty.sql", "")
+        _write(tmp_path, "002_comments.sql", "; /* outer /* inner */ */; -- EOF ; ' $$")
+        _write(tmp_path, "003_value.sql", "CREATE TABLE single_value (n integer); INSERT INTO single_value VALUES (9)")
+        run(tmp_path)
+        assert sorted(_ledger_names(observer)) == ["001_empty.sql", "002_comments.sql", "003_value.sql"]
+        assert sum(kind == "commit" for kind, _ in events) == 4
+&gt;       assert observer.execute("SELECT n FROM single_value").fetchall() == [(9,)]
+E       assert [] == [(9,)]
+E         
+E         Right contains one more item: (9,)
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:295: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_discovery_is_immediate_sql_only_and_filename_sorted" time="0.040"><failure message="psycopg.errors.UndefinedTable: relation &quot;ordered&quot; does not exist&#10;LINE 1: SELECT value FROM ordered&#10;                          ^">migration_db = (&lt;function run_migrations at 0x7d5d96bda770&gt;, &lt;psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage27_B_i... (filename) VALUES (%s)'), ('commit', None), ('execute', 'INSERT INTO schema_migrations (filename) VALUES (%s)'), ...])
+tmp_path = PosixPath('/home/ivan/codex-role-mty1pef2/scratch/tmp/test_discovery_is_immediate_sq0')
+capsys = &lt;_pytest.capture.CaptureFixture object at 0x7d5d96ff7770&gt;
+
+    def test_discovery_is_immediate_sql_only_and_filename_sorted(migration_db, tmp_path, capsys):
+        run, observer, events = migration_db
+        # Write in reverse order; dependencies force filename rather than creation order.
+        _write(tmp_path, "020_insert.sql", "INSERT INTO ordered VALUES ('UTF-8: 雪;é');")
+        _write(tmp_path, "010_create.sql", "CREATE TABLE ordered (value text);")
+        _write(tmp_path, "000_ignored.txt", "SELECT 1 / 0;")
+        nested = tmp_path / "nested"
+        nested.mkdir()
+        _write(nested, "000_nested.sql", "SELECT 1 / 0;")
+        run(migrations_dir=tmp_path)
+&gt;       assert observer.execute("SELECT value FROM ordered").fetchall() == [("UTF-8: 雪;é",)]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_stage27_evaluation.py:312: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;psycopg.Connection [IDLE] (port=55425 user=stage25 database=stage27_B_independent_drop_final) at 0x7d5d96768b90&gt;
+query = 'SELECT value FROM ordered', params = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -&gt; Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.UndefinedTable: relation "ordered" does not exist
+E           LINE 1: SELECT value FROM ordered
+E                                     ^
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/.stage26-runtime/python/lib/python3.14/site-packages/psycopg/connection.py:300: UndefinedTable</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_public_runner_signature_and_empty_directory" time="0.069" /></testsuite></testsuites>

@@ -1,0 +1,9 @@
+{
+  "authority": "Controller",
+  "approved_at": 1791458420.376889,
+  "original_criteria_preserved": true,
+  "canonical_sha256": "1c47ea6f0a0563cd78cd9e757fde1e4c4a20ba4c142d56fcf9a14d27c1566bb1",
+  "proposal_sha256": "1bba512b26a091a8792e97f552d1a3b45c26882a8f8da42be8e8c49669911793",
+  "provenance_resolution": "Architect HEAD is the private snapshot commit, not the upstream commit. Controller git archive of the full fixed SHA and every source manifest hash establish upstream provenance; no source discrepancy exists.",
+  "scope_decision": "Keep existing tests immutable; add focused new regression module instead of modifying the three proposed existing test modules. All compatibility criteria retained."
+}

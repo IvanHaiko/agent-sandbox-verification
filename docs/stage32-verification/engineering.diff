@@ -1,0 +1,146 @@
+--- a/README.md
++++ b/README.md
+@@ -280,7 +280,7 @@
+ ```bash
+ pip install -r requirements-dev.txt
+ python -m collector                 # today, UTC
+-python -m collector --date 2026-08-28
++python -m collector --date YYYY-MM-DD # explicit UTC collection date
+ pytest -q && ruff check .
+ ```
+ 
+@@ -372,6 +372,16 @@
+ 
+ ## Partial days
+ 
+-A transient failure (timeout, 5xx, 429) leaves the day `partial` and the next
+-run picks up exactly what is missing — it does not re-fetch what already
+-landed. `tests/test_resume.py` covers both halves.
++A transient failure (timeout, 5xx, 429) leaves the day `partial`. A same-day
++retry picks up exactly what is missing and preserves successful observations.
++`tests/test_resume.py` covers both halves.
++
++The daily snapshot date is the UTC collection date, not a historical source
++date. The default remains today UTC. Before a new or unfinished pass does any
++work, its requested date must match the UTC date of its start timestamp. A
++past or future date raises `ValueError` before any HTTP request or file write;
++the CLI exits nonzero. An old incomplete day cannot be resumed with live data.
++Already complete days, including historical days with absent newer legs,
++remain zero-call, zero-write no-ops. This admission check does not prevent a
++pass from spanning UTC midnight. The separate arXiv backfill command retains
++its retrospective namespace.
+--- a/collector/run.py
++++ b/collector/run.py
+@@ -72,6 +72,16 @@
+         return manifest
+ 
+     started_at = now()
++    # Python 3.10 needs an explicit UTC offset instead of the ISO Z suffix.
++    collection_date = dt.datetime.fromisoformat(
++        started_at.replace("Z", "+00:00")
++    ).date().isoformat()
++    if snapshot_date != collection_date:
++        raise ValueError(
++            f"Cannot collect unfinished snapshot {snapshot_date}: "
++            f"the pass starts on UTC date {collection_date}. "
++            "Live observations can only be collected into the current UTC day."
++        )
+     for leg, module in (
+         ("openrouter_models", openrouter_models),
+         ("openrouter_rankings", openrouter_rankings),
+--- a/tests/test_collection_date.py
++++ b/tests/test_collection_date.py
+@@ -0,0 +1,93 @@
++"""Daily live observations must be admitted under their UTC collection date."""
++from __future__ import annotations
++
++import pytest
++
++from collector import manifest as mf
++from collector import paths
++from collector.run import collect
++from collector.storage import write_gzip
++from tests.conftest import RANKINGS_URL, FakeHttp
++
++DATE = "2026-08-29"
++
++
++def tree_bytes(root):
++    """Include directories so rejection cannot silently create an empty day."""
++    return {
++        str(path.relative_to(root)): path.read_bytes() if path.is_file() else None
++        for path in root.rglob("*")
++    }
++
++
++@pytest.mark.parametrize("date", ["2026-08-28", "2026-08-30"])
++@pytest.mark.parametrize("status", [None, mf.PENDING, mf.PARTIAL])
++def test_off_date_pass_is_rejected_without_calls_or_writes(tmp_path, clock, date, status):
++    if status is not None:
++        manifest = mf.empty(date)
++        manifest["status"] = status
++        # An unfinished legacy manifest must not admit newly introduced legs.
++        del manifest["legs"]["hf_inference_providers"]
++        manifest["legs"]["openrouter_models"] = {"status": mf.OK}
++        mf.save(paths.manifest_path(tmp_path, date), manifest)
++        write_gzip(paths.leg_path(tmp_path, date, "openrouter_models"), b"saved payload")
++    before = tree_bytes(tmp_path)
++    http = FakeHttp()
++
++    with pytest.raises(ValueError) as error:
++        collect(tmp_path, snapshot_date=date, http=http, now=clock)
++
++    assert date in str(error.value)
++    assert DATE in str(error.value)
++    assert http.calls == []
++    assert tree_bytes(tmp_path) == before
++
++
++def test_complete_historical_legacy_day_is_an_exact_noop(tmp_path):
++    date = "2026-08-28"
++    manifest = mf.empty(date)
++    manifest["status"] = mf.COMPLETE
++    del manifest["legs"]["hf_inference_providers"]
++    mf.save(paths.manifest_path(tmp_path, date), manifest)
++    write_gzip(paths.leg_path(tmp_path, date, "openrouter_models"), b"saved payload")
++    before = tree_bytes(tmp_path)
++    http = FakeHttp()
++
++    def unused_clock():
++        raise AssertionError("complete days must not ask the clock")
++
++    result = collect(tmp_path, snapshot_date=date, http=http, now=unused_clock)
++
++    assert result["status"] == mf.COMPLETE
++    assert result["legs"]["hf_inference_providers"]["status"] == mf.NOT_APPLICABLE
++    assert http.calls == []
++    assert tree_bytes(tmp_path) == before
++
++
++@pytest.mark.parametrize("timestamp", ["2026-08-29T00:00:00+00:00", "2026-08-29T12:00:00Z"])
++def test_same_day_retry_preserves_successful_files(tmp_path, timestamp):
++    def clock():
++        return timestamp
++
++    first = collect(
++        tmp_path, snapshot_date=DATE,
++        http=FakeHttp(fail_urls={RANKINGS_URL: 503}), now=clock,
++    )
++    assert first["status"] == mf.PARTIAL
++    successful = {
++        paths.leg_path(tmp_path, DATE, leg): paths.leg_path(tmp_path, DATE, leg).read_bytes()
++        for leg in mf.LEGS if first["legs"][leg]["status"] == mf.OK
++    }
++    http = FakeHttp()
++
++    result = collect(tmp_path, snapshot_date=DATE, http=http, now=clock)
++
++    assert result["status"] == mf.COMPLETE
++    assert first["runs"][0]["started_at"] == timestamp
++    assert result["runs"][-1]["started_at"] == timestamp
++    assert http.calls == [RANKINGS_URL]
++    assert all(path.read_bytes() == content for path, content in successful.items())
++    before = tree_bytes(tmp_path)
++    collect(tmp_path, snapshot_date=DATE, http=http, now=clock)
++    assert http.calls == [RANKINGS_URL]
++    assert tree_bytes(tmp_path) == before

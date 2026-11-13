@@ -1,0 +1,294 @@
+{
+  "trial_id": "terra-p1-t1",
+  "phase": 1,
+  "task_id": "STAGE20-LABELS",
+  "accepted": false,
+  "workflow_completed": false,
+  "failure_category": "socket_idle_timeout",
+  "roles": [
+    {
+      "label": "implementer",
+      "execution_id": "terra-p1-t1-implementer",
+      "task_id": "STAGE20-LABELS",
+      "role": "implementer",
+      "phase": "implementation",
+      "contract_version": 1,
+      "workspace_id": "b445b6a9013d5994958056447e69f9afed5bcbddb6878260dbf7106e3de1f3de",
+      "model": "gpt-5.6-luna",
+      "reasoning": "low",
+      "completed": true,
+      "execution_status": "completed",
+      "requests": 1,
+      "tool_calls": 1,
+      "candidate_sha256": "7b44755b8f6c8d47fe66696fe1bc6f920b7ab67b24a7c1da6e8a9efd00f7cced",
+      "frozen_tester_sha256": null,
+      "failure_category": null,
+      "controller_host_process_names": [
+        "codex.exe",
+        "docker",
+        "git",
+        "powershell",
+        "python.exe"
+      ],
+      "seconds": 31.16,
+      "usage": null,
+      "process_exited": true,
+      "gate_observations": [
+        {
+          "response_bytes": 197743,
+          "secret_checked": true,
+          "event_counts": {
+            "response.created": 1,
+            "response.in_progress": 1,
+            "response.output_item.added": 2,
+            "response.output_item.done": 2,
+            "response.function_call_arguments.delta": 699,
+            "response.function_call_arguments.done": 1,
+            "response.completed": 1
+          },
+          "anomalies": [
+            {
+              "classification": "ANOMALY",
+              "category": "PROTOCOL_OBSERVATION",
+              "anomaly_type": "nonexecutable_stream_final_mismatch",
+              "scope": "response",
+              "executable_content": false,
+              "project_mutation": null,
+              "action": "continue",
+              "reason": "nonexecutable_stream_final_mismatch"
+            },
+            {
+              "classification": "ANOMALY",
+              "category": "PROTOCOL_OBSERVATION",
+              "anomaly_type": "completed_function_omitted_from_final",
+              "scope": "response",
+              "executable_content": true,
+              "project_mutation": null,
+              "action": "continue",
+              "reason": "completed_function_omitted_from_final"
+            }
+          ],
+          "function_call_count": 1,
+          "item_ids_stable": true,
+          "call_ids_stable": true,
+          "output_indices_stable": true,
+          "arguments_equal": true,
+          "stream_final_bijection": false,
+          "terminal_status": "completed",
+          "validation_passed": true,
+          "transitions": {
+            "item_added": 2,
+            "arguments_delta": 699,
+            "arguments_done": 1,
+            "item_done": 2
+          },
+          "executable_content_seen": true,
+          "streamed_function_count": 1,
+          "completed_function_snapshots": 1,
+          "final_function_count": 0,
+          "completed_calls_omitted_from_final": 1,
+          "usage": {
+            "input_tokens": 5529,
+            "output_tokens": 900,
+            "total_tokens": 6429
+          }
+        }
+      ],
+      "transport_observations": [
+        {
+          "validation_passed": true,
+          "mime_category": "absent",
+          "response_bytes": 197743,
+          "eof": true,
+          "reader_shutdown_confirmed": true,
+          "secret_checked": true,
+          "event_counts": {
+            "response.created": 1,
+            "response.in_progress": 1,
+            "response.output_item.added": 2,
+            "response.output_item.done": 2,
+            "response.function_call_arguments.delta": 699,
+            "response.function_call_arguments.done": 1,
+            "response.completed": 1
+          },
+          "anomalies": [
+            {
+              "classification": "ANOMALY",
+              "category": "PROTOCOL_OBSERVATION",
+              "anomaly_type": "nonexecutable_stream_final_mismatch",
+              "scope": "response",
+              "executable_content": false,
+              "project_mutation": null,
+              "action": "continue",
+              "reason": "nonexecutable_stream_final_mismatch"
+            },
+            {
+              "classification": "ANOMALY",
+              "category": "PROTOCOL_OBSERVATION",
+              "anomaly_type": "completed_function_omitted_from_final",
+              "scope": "response",
+              "executable_content": true,
+              "project_mutation": null,
+              "action": "continue",
+              "reason": "completed_function_omitted_from_final"
+            },
+            {
+              "classification": "ANOMALY",
+              "category": "PROTOCOL_OBSERVATION",
+              "anomaly_type": "nonstandard_or_absent_mime",
+              "scope": "request",
+              "executable_content": true,
+              "project_mutation": null,
+              "action": "continue",
+              "reason": "nonstandard_or_absent_mime"
+            }
+          ],
+          "function_call_count": 1,
+          "item_ids_stable": true,
+          "call_ids_stable": true,
+          "output_indices_stable": true,
+          "arguments_equal": true,
+          "stream_final_bijection": false,
+          "terminal_status": "completed",
+          "transitions": {
+            "item_added": 2,
+            "arguments_delta": 699,
+            "arguments_done": 1,
+            "item_done": 2
+          },
+          "executable_content_seen": true,
+          "streamed_function_count": 1,
+          "completed_function_snapshots": 1,
+          "final_function_count": 0,
+          "completed_calls_omitted_from_final": 1,
+          "usage": {
+            "input_tokens": 5529,
+            "output_tokens": 900,
+            "total_tokens": 6429
+          },
+          "missing_mime_tolerated": true
+        }
+      ],
+      "session_observations": {
+        "anomalies": []
+      },
+      "failure_receipt": null,
+      "model_home_removed": true,
+      "termination": "controller_after_successful_write"
+    },
+    {
+      "label": "test-design",
+      "execution_id": "terra-p1-t1-test-design",
+      "task_id": "STAGE20-LABELS",
+      "role": "test_engineer",
+      "phase": "test_design",
+      "contract_version": 1,
+      "workspace_id": "756dc14ba539abaca908b887d6ead120787df5462d66ead2bd19b6f963f54149",
+      "model": "gpt-5.6-terra",
+      "reasoning": "medium",
+      "completed": false,
+      "execution_status": "unrecoverable",
+      "requests": 1,
+      "tool_calls": 0,
+      "candidate_sha256": null,
+      "frozen_tester_sha256": null,
+      "failure_category": "socket_idle_timeout",
+      "controller_host_process_names": [
+        "codex.exe",
+        "docker",
+        "powershell"
+      ],
+      "seconds": 24.06,
+      "usage": null,
+      "process_exited": true,
+      "gate_observations": [],
+      "transport_observations": [
+        {
+          "validation_passed": false,
+          "mime_category": "absent",
+          "response_bytes": 7578,
+          "eof": false,
+          "reader_shutdown_confirmed": true,
+          "body_failure": "socket_idle_timeout"
+        }
+      ],
+      "session_observations": {
+        "anomalies": []
+      },
+      "failure_receipt": {
+        "schema_version": 1,
+        "invocation_id": "terra-p1-t1-test-design",
+        "role": "test_engineer",
+        "model": "gpt-5.6-terra",
+        "reasoning": "medium",
+        "role_status": "failed",
+        "accepted": false,
+        "recorded_at": "2026-10-07T09:10:14.612161+00:00",
+        "failure_category": "socket_idle_timeout",
+        "failure_detail": "socket_idle_timeout",
+        "request_count": 1,
+        "tool_call_count": 0,
+        "completed_tool_call_count": 0,
+        "tool_result_returned": false,
+        "last_completed_phase": "turn_started",
+        "response_validation_passed": false,
+        "eof_observed": false,
+        "reader_shutdown_confirmed": true,
+        "socket_idle_timeout_observed": true,
+        "parser_status": "passed",
+        "handoff_status": "failed",
+        "protocol_bytes": 17548,
+        "stderr_bytes": 0,
+        "protocol_anomaly_counters": {},
+        "candidate_written": false,
+        "candidate_preserved": false,
+        "candidate_archived": false,
+        "candidate_skipped_count": 0,
+        "candidates": []
+      },
+      "model_home_removed": true
+    }
+  ],
+  "tester_reached": true,
+  "acceptance_reached": false,
+  "review": null,
+  "candidate_sha256": "7b44755b8f6c8d47fe66696fe1bc6f920b7ab67b24a7c1da6e8a9efd00f7cced",
+  "frozen_tester_sha256": null,
+  "implementation": {
+    "role": "implementer",
+    "execution_status": "completed",
+    "failure_category": null,
+    "candidate_files": [
+      "src/normalize_labels.py"
+    ],
+    "candidate_hashes": {
+      "src/normalize_labels.py": "7b44755b8f6c8d47fe66696fe1bc6f920b7ab67b24a7c1da6e8a9efd00f7cced"
+    },
+    "diff_summary": "--- a/src/normalize_labels.py\n+++ b/src/normalize_labels.py\n@@ -1,2 +1,69 @@\n+\"\"\"Normalize comma-separated labels according to the label grammar.\"\"\"\n+\n+\n+_ASCII_WHITESPACE = \" \\t\\r\\n\\v\\f\"\n+\n+\n+def _lower_ascii(character: str) -> str:\n+    if \"A\" <= character <= \"Z\":\n+        return chr(ord(character) + (ord(\"a\") - ord(\"A\")))\n+    return character\n+\n+\n def normalize_labels(value: str) -> list[str]:\n-    raise NotImplementedError\n+    \"\"\"Parse, normalize, and deduplicate comma-separated labels.\"\"\"\n+    labels: list[str] = []\n+    current: list[tuple[str, bool]] = []\n+    quoted = False\n+    index = 0\n+\n+    while index < len(value):\n+        character = value[index]\n+        if character == \"\\\\\":\n+            index += 1\n+            if index == len(value):\n+                raise ValueError(\"trailing escape\")\n+            current.append((value[index], True))\n+        elif character == '\"':\n+            quoted = not quoted\n+        elif character == \",\" and not quoted:\n+            labels.append(_normalize_label(current))\n+            current = []\n+        else:\n+            current.append((character, quoted))\n+        index += 1\n+\n+    if quoted:\n+        raise ValueError(\"unclosed quote\")\n+    labels.append(_normalize_label(current))\n+\n+    result: list[str] = []\n+    seen: set[str] = set()\n+    for label in labels:\n+        if label and label not in seen:\n+            seen.add(label)\n+            result.append(label)\n+    return result\n+\n+\n+def _normalize_label(items: list[tuple[str, bool]]) -> str:\n+    start = 0\n+    end = len(items)\n+    while start < end and not items[start][1] and items[start][0] in _ASCII_WHITESPACE:\n+        start += 1\n+    while end > start and not items[end - 1][1] and items[end - 1][0] in _ASCII_WHITESPACE:\n+        end -= 1\n+\n+    output: list[str] = []\n+    index = start\n+    while index < end:\n+        character, protected = items[index]\n+        if not protected and character in _ASCII_WHITESPACE:\n+            output.append(\" \")\n+            index += 1\n+            while index < end and not items[index][1] and items[index][0] in _ASCII_WHITESPACE:\n+                index += 1\n+        else:\n+            output.append(_lower_ascii(character))\n+            index += 1\n+    return \"\".join(output)\n",
+    "mutation_scope_valid": true,
+    "interface_check": {
+      "public_interface_verified": true,
+      "own_cases_passed": 0
+    },
+    "self_checks": [],
+    "model_handoff_received": false,
+    "accepted": false,
+    "authority": "controller_observed_artifacts"
+  },
+  "failed_stage": "test_design",
+  "failure_type": "AgentSystemError",
+  "failure_reason": "Codex/model protocol denied",
+  "cleanup_result": "passed",
+  "containment": {
+    "production_source_unchanged_during_trial": true,
+    "credential_store_unchanged": true,
+    "stale_owned_containers": 0,
+    "docker_cleanup_confirmed": true,
+    "model_homes_removed": true,
+    "role_network": "none",
+    "host_fallback": false,
+    "no_host_execution_attempt": true,
+    "disposable_storage_removed": true
+  },
+  "elapsed_seconds": 73.47
+}

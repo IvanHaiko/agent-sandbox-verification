@@ -1,0 +1,134 @@
+{
+  "identity": {
+    "execution_id": "terra-p1-t1-test-design",
+    "task_id": "STAGE20-LABELS",
+    "role": "test_engineer",
+    "phase": "test_design",
+    "contract_version": 1,
+    "workspace_id": "756dc14ba539abaca908b887d6ead120787df5462d66ead2bd19b6f963f54149"
+  },
+  "model": "gpt-5.6-terra",
+  "reasoning": "medium",
+  "bundle": {
+    "task": {
+      "task_id": "STAGE20-LABELS",
+      "contract_version": 1,
+      "public_interface": "def normalize_labels(value: str) -> list[str]",
+      "file": "src/normalize_labels.py",
+      "acceptance_criteria": [
+        "Scan ASCII strings left to right. An unescaped comma outside double quotes ends a label; repeated separators are allowed.",
+        "An unescaped double quote toggles quoted mode anywhere within a label; quote delimiters are removed and adjacent quoted/unquoted text concatenates.",
+        "Backslash escapes exactly the next character in either mode: remove the backslash, preserve the next character literally, and do not treat it as a quote or separator.",
+        "A trailing unpaired backslash or unclosed double quote raises ValueError for the whole input, even after otherwise valid labels.",
+        "Only ASCII whitespace (space, tab, CR, LF, vertical tab, form feed) that was neither quoted nor escaped is ordinary whitespace.",
+        "Trim ordinary whitespace from each label boundary before collapsing internal ordinary-whitespace runs to one ASCII space.",
+        "Quoted or escaped whitespace is protected: preserve its exact characters and multiplicity, including at label boundaries; it also breaks ordinary-whitespace runs.",
+        "Lowercase ASCII A-Z in all emitted characters; preserve other non-delimiter literal characters exactly.",
+        "After parsing and normalization, discard labels whose resulting string is empty. Whitespace-only protected labels are nonempty and retained.",
+        "Deduplicate normalized strings by exact equality, retaining first occurrence order. Empty input returns an empty list."
+      ],
+      "constraints": [
+        "Pure Python, standard library only, no external dependencies or I/O.",
+        "ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.",
+        "Do not add features or mutate any file other than src/normalize_labels.py."
+      ]
+    },
+    "public_interface": "def normalize_labels(value: str) -> list[str]",
+    "acceptance_rules": [
+      "Scan ASCII strings left to right. An unescaped comma outside double quotes ends a label; repeated separators are allowed.",
+      "An unescaped double quote toggles quoted mode anywhere within a label; quote delimiters are removed and adjacent quoted/unquoted text concatenates.",
+      "Backslash escapes exactly the next character in either mode: remove the backslash, preserve the next character literally, and do not treat it as a quote or separator.",
+      "A trailing unpaired backslash or unclosed double quote raises ValueError for the whole input, even after otherwise valid labels.",
+      "Only ASCII whitespace (space, tab, CR, LF, vertical tab, form feed) that was neither quoted nor escaped is ordinary whitespace.",
+      "Trim ordinary whitespace from each label boundary before collapsing internal ordinary-whitespace runs to one ASCII space.",
+      "Quoted or escaped whitespace is protected: preserve its exact characters and multiplicity, including at label boundaries; it also breaks ordinary-whitespace runs.",
+      "Lowercase ASCII A-Z in all emitted characters; preserve other non-delimiter literal characters exactly.",
+      "After parsing and normalization, discard labels whose resulting string is empty. Whitespace-only protected labels are nonempty and retained.",
+      "Deduplicate normalized strings by exact equality, retaining first occurrence order. Empty input returns an empty list."
+    ]
+  },
+  "instruction": "Independently design 10-24 deterministic ASCII-only cases covering rules, interacting quoting/escaping/ordinary versus protected whitespace, deduplication, empty input and whole-input errors. Unicode and non-string inputs are unspecified: NEVER test them. expected is a string list or null meaning ValueError. Carefully verify each expectation against ALL rules; ASCII uppercase is lowercased even when quoted or escaped, while protected whitespace is preserved. No implementation, tools or candidate. Your structured design is frozen before exposure and Controller-executed; there is no second Tester session.",
+  "result_schema": {
+    "type": "object",
+    "properties": {
+      "task_id": {
+        "type": "string",
+        "const": "STAGE20-LABELS"
+      },
+      "contract_version": {
+        "type": "integer",
+        "const": 1
+      },
+      "cases": {
+        "type": "array",
+        "minItems": 10,
+        "maxItems": 24,
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "intent": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "input": {
+              "type": "string",
+              "maxLength": 1000,
+              "pattern": "^[\\x00-\\x7f]*$"
+            },
+            "expected": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string",
+                "maxLength": 1000,
+                "pattern": "^[\\x00-\\x7f]*$"
+              },
+              "maxItems": 100
+            }
+          },
+          "required": [
+            "id",
+            "intent",
+            "input",
+            "expected"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "properties": {
+        "type": "array",
+        "uniqueItems": true,
+        "maxItems": 2,
+        "items": {
+          "type": "string",
+          "enum": [
+            "unique_nonempty_labels",
+            "ascii_lowercase"
+          ]
+        }
+      },
+      "rationale": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      }
+    },
+    "required": [
+      "task_id",
+      "contract_version",
+      "cases",
+      "properties",
+      "rationale"
+    ],
+    "additionalProperties": false
+  },
+  "previous_conversation_visible": false
+}

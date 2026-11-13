@@ -1,0 +1,231 @@
+2026-10-09 09:36:38.720 CEST [616] LOG:  starting PostgreSQL 18.6 (Ubuntu 18.6-0ubuntu0.26.04.1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0, 64-bit
+2026-10-09 09:36:38.723 CEST [616] LOG:  listening on Unix socket "/home/ivan/codex-role-mprqzu_h/socket/.s.PGSQL.55425"
+2026-10-09 09:36:38.738 CEST [622] LOG:  database system was shut down at 2026-10-09 09:36:38 CEST
+2026-10-09 09:36:38.747 CEST [616] LOG:  database system is ready to accept connections
+2026-10-09 09:36:50.488 CEST [1011] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 09:36:50.488 CEST [1011] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 09:36:50.488 CEST [1011] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 09:36:50.512 CEST [1013] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 09:36:50.512 CEST [1013] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 09:36:50.512 CEST [1013] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 09:36:50.534 CEST [1015] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 09:36:50.534 CEST [1015] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 09:36:50.531439, 2026-10-09 09:36:50.531439, probably_fine, null, 0, 0, f, null).
+2026-10-09 09:36:50.534 CEST [1015] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 09:36:50.646 CEST [1025] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 09:36:50.646 CEST [1025] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 09:36:50.646 CEST [1025] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 09:36:50.664 CEST [1027] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 09:36:50.664 CEST [1027] DETAIL:  Failing row contains (1, 2026-10-09 09:36:50.66317, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 09:36:50.664 CEST [1027] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 09:36:50.693 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 09:36:50.730 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 3 SLRU buffers; 1 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.004 s, total=0.038 s; sync files=5, longest=0.002 s, average=0.001 s; distance=6952 kB, estimate=6952 kB; lsn=0/1E2FF90, redo lsn=0/1E2FF38
+2026-10-09 09:41:50.831 CEST [620] LOG:  checkpoint starting: time
+2026-10-09 09:41:55.175 CEST [620] LOG:  checkpoint complete: wrote 43 buffers (0.3%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=4.322 s, sync=0.008 s, total=4.345 s; sync files=11, longest=0.003 s, average=0.001 s; distance=326 kB, estimate=6289 kB; lsn=0/1E81A28, redo lsn=0/1E819D0
+2026-10-09 09:45:01.528 CEST [2466] ERROR:  division by zero
+2026-10-09 09:45:01.528 CEST [2466] STATEMENT:  SELECT 1 / 0
+2026-10-09 09:45:01.603 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 09:45:01.630 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.004 s, sync=0.004 s, total=0.028 s; sync files=4, longest=0.003 s, average=0.001 s; distance=4964 kB, estimate=6157 kB; lsn=0/235AC70, redo lsn=0/235AC18
+2026-10-09 09:45:13.708 CEST [2610] ERROR:  division by zero
+2026-10-09 09:45:13.708 CEST [2610] STATEMENT:  SELECT 1 / 0
+2026-10-09 09:45:15.098 CEST [2704] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 09:45:15.098 CEST [2704] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 09:45:15.098 CEST [2704] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 09:45:15.143 CEST [2706] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 09:45:15.143 CEST [2706] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 09:45:15.143 CEST [2706] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 09:45:15.189 CEST [2709] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 09:45:15.189 CEST [2709] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 09:45:15.184828, 2026-10-09 09:45:15.184828, probably_fine, null, 0, 0, f, null).
+2026-10-09 09:45:15.189 CEST [2709] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 09:45:15.401 CEST [2719] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 09:45:15.401 CEST [2719] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 09:45:15.401 CEST [2719] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 09:45:15.442 CEST [2721] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 09:45:15.442 CEST [2721] DETAIL:  Failing row contains (1, 2026-10-09 09:45:15.440896, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 09:45:15.442 CEST [2721] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 09:45:15.500 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 09:45:15.524 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.004 s, total=0.024 s; sync files=4, longest=0.003 s, average=0.001 s; distance=7119 kB, estimate=7119 kB; lsn=0/2A4EC38, redo lsn=0/2A4EBE0
+2026-10-09 09:46:31.540 CEST [2969] ERROR:  division by zero
+2026-10-09 09:46:31.540 CEST [2969] STATEMENT:  SELECT 1 / 0
+2026-10-09 09:46:31.617 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 09:46:31.642 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.005 s, sync=0.005 s, total=0.025 s; sync files=4, longest=0.004 s, average=0.002 s; distance=4957 kB, estimate=6903 kB; lsn=0/2F26130, redo lsn=0/2F260D8
+2026-10-09 09:46:43.406 CEST [3124] ERROR:  division by zero
+2026-10-09 09:46:43.406 CEST [3124] STATEMENT:  SELECT 1 / 0
+2026-10-09 09:46:44.903 CEST [3219] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 09:46:44.903 CEST [3219] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 09:46:44.903 CEST [3219] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 09:46:44.946 CEST [3221] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 09:46:44.946 CEST [3221] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 09:46:44.946 CEST [3221] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 09:46:44.990 CEST [3223] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 09:46:44.990 CEST [3223] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 09:46:44.986551, 2026-10-09 09:46:44.986551, probably_fine, null, 0, 0, f, null).
+2026-10-09 09:46:44.990 CEST [3223] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 09:46:45.215 CEST [3233] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 09:46:45.215 CEST [3233] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 09:46:45.215 CEST [3233] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 09:46:45.238 CEST [3235] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 09:46:45.238 CEST [3235] DETAIL:  Failing row contains (1, 2026-10-09 09:46:45.237588, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 09:46:45.238 CEST [3235] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 09:46:45.265 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 09:46:45.284 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.002 s, sync=0.003 s, total=0.020 s; sync files=4, longest=0.002 s, average=0.001 s; distance=7122 kB, estimate=7122 kB; lsn=0/361A9A8, redo lsn=0/361A950
+2026-10-09 09:47:41.826 CEST [3477] ERROR:  unterminated quoted identifier at or near ""semi" at character 14
+2026-10-09 09:47:41.826 CEST [3477] STATEMENT:  CREATE TABLE "semi
+2026-10-09 09:47:41.974 CEST [3481] ERROR:  unterminated quoted string at or near "'kept" at character 26
+2026-10-09 09:47:41.974 CEST [3481] STATEMENT:  INSERT INTO kept VALUES ('kept
+2026-10-09 09:47:41.986 CEST [3482] ERROR:  relation "kept" does not exist at character 15
+2026-10-09 09:47:41.986 CEST [3482] STATEMENT:  SELECT * FROM kept
+2026-10-09 09:47:42.169 CEST [3486] ERROR:  unterminated quoted string at or near "'before" at character 30
+2026-10-09 09:47:42.169 CEST [3486] STATEMENT:  INSERT INTO retained VALUES ('before
+2026-10-09 09:47:42.299 CEST [3495] ERROR:  unterminated quoted string at or near "'naïve" at character 30
+2026-10-09 09:47:42.299 CEST [3495] STATEMENT:  INSERT INTO ordering VALUES ('naïve
+2026-10-09 09:47:42.352 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 09:47:42.371 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.005 s, total=0.019 s; sync files=4, longest=0.003 s, average=0.002 s; distance=5113 kB, estimate=6921 kB; lsn=0/3B18E18, redo lsn=0/3B18DC0
+2026-10-09 09:48:07.197 CEST [3603] ERROR:  division by zero
+2026-10-09 09:48:07.197 CEST [3603] STATEMENT:  SELECT 1 / 0
+2026-10-09 09:48:07.462 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 09:48:07.486 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.004 s, sync=0.004 s, total=0.024 s; sync files=4, longest=0.003 s, average=0.001 s; distance=5149 kB, estimate=6744 kB; lsn=0/40205F0, redo lsn=0/4020598
+2026-10-09 09:53:07.586 CEST [620] LOG:  checkpoint starting: time
+2026-10-09 09:53:07.713 CEST [620] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.104 s, sync=0.006 s, total=0.127 s; sync files=2, longest=0.004 s, average=0.003 s; distance=1 kB, estimate=6069 kB; lsn=0/4020DC8, redo lsn=0/4020D70
+2026-10-09 09:53:36.712 CEST [4414] ERROR:  division by zero
+2026-10-09 09:53:36.712 CEST [4414] STATEMENT:  SELECT 1 / 0
+2026-10-09 09:53:36.777 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 09:53:36.799 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.005 s, total=0.022 s; sync files=4, longest=0.003 s, average=0.002 s; distance=4992 kB, estimate=5962 kB; lsn=0/4501138, redo lsn=0/45010E0
+2026-10-09 09:53:52.201 CEST [4550] ERROR:  division by zero
+2026-10-09 09:53:52.201 CEST [4550] STATEMENT:  SELECT 1 / 0
+2026-10-09 09:53:53.094 CEST [4642] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 09:53:53.094 CEST [4642] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 09:53:53.094 CEST [4642] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 09:53:53.117 CEST [4644] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 09:53:53.117 CEST [4644] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 09:53:53.117 CEST [4644] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 09:53:53.141 CEST [4646] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 09:53:53.141 CEST [4646] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 09:53:53.137951, 2026-10-09 09:53:53.137951, probably_fine, null, 0, 0, f, null).
+2026-10-09 09:53:53.141 CEST [4646] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 09:53:53.359 CEST [4656] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 09:53:53.359 CEST [4656] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 09:53:53.359 CEST [4656] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 09:53:53.404 CEST [4658] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 09:53:53.404 CEST [4658] DETAIL:  Failing row contains (1, 2026-10-09 09:53:53.402322, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 09:53:53.404 CEST [4658] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 09:53:53.472 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 09:53:53.503 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.006 s, total=0.031 s; sync files=4, longest=0.004 s, average=0.002 s; distance=7153 kB, estimate=7153 kB; lsn=0/4BFD6D8, redo lsn=0/4BFD680
+2026-10-09 09:58:53.604 CEST [620] LOG:  checkpoint starting: time
+2026-10-09 09:58:53.730 CEST [620] LOG:  checkpoint complete: wrote 1 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.104 s, sync=0.004 s, total=0.127 s; sync files=2, longest=0.003 s, average=0.002 s; distance=2 kB, estimate=6438 kB; lsn=0/4BFDFC8, redo lsn=0/4BFDF70
+2026-10-09 09:59:54.811 CEST [9385] ERROR:  division by zero
+2026-10-09 09:59:54.811 CEST [9385] STATEMENT:  SELECT 1 / 0
+2026-10-09 09:59:55.140 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 09:59:55.158 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.002 s, sync=0.003 s, total=0.018 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5542 kB, estimate=6348 kB; lsn=0/5167B48, redo lsn=0/5167AF0
+2026-10-09 10:02:58.337 CEST [10066] ERROR:  column "no_such_column" does not exist at character 8
+2026-10-09 10:02:58.337 CEST [10066] STATEMENT:  SELECT no_such_column FROM sample
+2026-10-09 10:03:04.835 CEST [10305] ERROR:  division by zero
+2026-10-09 10:03:04.835 CEST [10305] STATEMENT:  SELECT 1 / 0
+2026-10-09 10:03:05.686 CEST [10399] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 10:03:05.686 CEST [10399] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 10:03:05.686 CEST [10399] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 10:03:05.709 CEST [10401] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 10:03:05.709 CEST [10401] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 10:03:05.709 CEST [10401] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 10:03:05.736 CEST [10403] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 10:03:05.736 CEST [10403] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 10:03:05.733579, 2026-10-09 10:03:05.733579, probably_fine, null, 0, 0, f, null).
+2026-10-09 10:03:05.736 CEST [10403] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 10:03:05.840 CEST [10413] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 10:03:05.840 CEST [10413] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 10:03:05.840 CEST [10413] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 10:03:05.860 CEST [10415] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 10:03:05.860 CEST [10415] DETAIL:  Failing row contains (1, 2026-10-09 10:03:05.859737, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 10:03:05.860 CEST [10415] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 10:03:05.964 CEST [10422] ERROR:  column "no_such_column" does not exist at character 8
+2026-10-09 10:03:05.964 CEST [10422] STATEMENT:  SELECT no_such_column FROM sample
+2026-10-09 10:03:06.035 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 10:03:06.065 CEST [620] LOG:  checkpoint complete: wrote 60 buffers (0.4%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.016 s, total=0.031 s; sync files=60, longest=0.002 s, average=0.001 s; distance=7544 kB, estimate=7544 kB; lsn=0/58C5EA0, redo lsn=0/58C5E48
+2026-10-09 10:03:11.014 CEST [10607] ERROR:  division by zero
+2026-10-09 10:03:11.014 CEST [10607] STATEMENT:  SELECT 1 / 0
+2026-10-09 10:03:11.157 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 10:03:11.170 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.003 s, total=0.013 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5150 kB, estimate=7305 kB; lsn=0/5DCD9F8, redo lsn=0/5DCD9A0
+2026-10-09 10:03:17.465 CEST [10785] ERROR:  unterminated quoted identifier at or near ""semi" at character 14
+2026-10-09 10:03:17.465 CEST [10785] STATEMENT:  CREATE TABLE "semi
+2026-10-09 10:03:17.558 CEST [10789] ERROR:  unterminated quoted string at or near "'kept" at character 26
+2026-10-09 10:03:17.558 CEST [10789] STATEMENT:  INSERT INTO kept VALUES ('kept
+2026-10-09 10:03:17.562 CEST [10790] ERROR:  relation "kept" does not exist at character 15
+2026-10-09 10:03:17.562 CEST [10790] STATEMENT:  SELECT * FROM kept
+2026-10-09 10:03:17.643 CEST [10794] ERROR:  unterminated quoted string at or near "'before" at character 30
+2026-10-09 10:03:17.643 CEST [10794] STATEMENT:  INSERT INTO retained VALUES ('before
+2026-10-09 10:03:17.725 CEST [10798] ERROR:  unterminated quoted string at or near "'naïve" at character 30
+2026-10-09 10:03:17.725 CEST [10798] STATEMENT:  INSERT INTO ordering VALUES ('naïve
+2026-10-09 10:03:17.810 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 10:03:17.826 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.002 s, sync=0.003 s, total=0.016 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5114 kB, estimate=7086 kB; lsn=0/62CC368, redo lsn=0/62CC310
+2026-10-09 10:03:24.366 CEST [10953] ERROR:  relation "ordering" does not exist at character 15
+2026-10-09 10:03:24.366 CEST [10953] STATEMENT:  SELECT * FROM ordering
+2026-10-09 10:03:24.461 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 10:03:24.474 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.002 s, total=0.013 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5067 kB, estimate=6884 kB; lsn=0/67BF108, redo lsn=0/67BF0B0
+2026-10-09 10:03:29.769 CEST [11073] ERROR:  unterminated /* comment at or near "/* nested /*" at character 1
+2026-10-09 10:03:29.769 CEST [11073] STATEMENT:  /* nested /*
+2026-10-09 10:03:29.866 CEST [11076] ERROR:  unterminated quoted string at or near "'partial" at character 28
+2026-10-09 10:03:29.866 CEST [11076] STATEMENT:  INSERT INTO sample VALUES ('partial
+2026-10-09 10:03:35.905 CEST [11196] ERROR:  relation "sample" does not exist at character 13
+2026-10-09 10:03:35.905 CEST [11196] QUERY:  INSERT INTO sample VALUES (val())
+2026-10-09 10:03:35.905 CEST [11196] CONTEXT:  PL/pgSQL function inline_code_block line 1 at SQL statement
+2026-10-09 10:03:35.905 CEST [11196] STATEMENT:  DO $$ BEGIN INSERT INTO sample VALUES (val()); END $$
+2026-10-09 10:03:40.997 CEST [11332] ERROR:  column "no_such_column" does not exist at character 8
+2026-10-09 10:03:40.997 CEST [11332] STATEMENT:  SELECT no_such_column FROM sample
+2026-10-09 10:03:47.301 CEST [11528] ERROR:  division by zero
+2026-10-09 10:03:47.301 CEST [11528] STATEMENT:  SELECT 1 / 0
+2026-10-09 10:03:48.185 CEST [11620] ERROR:  duplicate key value violates unique constraint "game_snapshots_appid_snapshot_date_key"
+2026-10-09 10:03:48.185 CEST [11620] DETAIL:  Key (appid, snapshot_date)=(1, 2026-05-09) already exists.
+2026-10-09 10:03:48.185 CEST [11620] STATEMENT:  INSERT INTO game_snapshots (appid, snapshot_date) VALUES (1, '2026-05-09')
+2026-10-09 10:03:48.207 CEST [11622] ERROR:  duplicate key value violates unique constraint "twitch_game_snapshots_sample_hour_twitch_game_id_key"
+2026-10-09 10:03:48.207 CEST [11622] DETAIL:  Key (sample_hour, twitch_game_id)=(2026-05-14 09:00:00, 32399) already exists.
+2026-10-09 10:03:48.207 CEST [11622] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, viewer_count, stream_count) VALUES ('2026-05-14 09:00', '32399', 'Counter-Strike', 100, 5)
+2026-10-09 10:03:48.228 CEST [11624] ERROR:  new row for relation "games" violates check constraint "games_steam_store_outcome_check"
+2026-10-09 10:03:48.228 CEST [11624] DETAIL:  Failing row contains (2, y, null, null, null, null, null, null, null, 2026-10-09 10:03:48.227037, 2026-10-09 10:03:48.227037, probably_fine, null, 0, 0, f, null).
+2026-10-09 10:03:48.228 CEST [11624] STATEMENT:  UPDATE games SET steam_store_outcome = 'probably_fine' WHERE appid = 2
+2026-10-09 10:03:48.335 CEST [11634] ERROR:  column "steam_store_success" can only be updated to DEFAULT
+2026-10-09 10:03:48.335 CEST [11634] DETAIL:  Column "steam_store_success" is a generated column.
+2026-10-09 10:03:48.335 CEST [11634] STATEMENT:  UPDATE games SET steam_store_success = true WHERE appid = 4
+2026-10-09 10:03:48.356 CEST [11636] ERROR:  new row for relation "twitch_game_snapshots" violates check constraint "twitch_game_snapshots_sample_time_source_check"
+2026-10-09 10:03:48.356 CEST [11636] DETAIL:  Failing row contains (1, 2026-10-09 10:03:48.355599, 1, a, 0, 0, twitch, null, 2026-05-14 10:00:00, probably_bronze).
+2026-10-09 10:03:48.356 CEST [11636] STATEMENT:  INSERT INTO twitch_game_snapshots (sample_hour, twitch_game_id, twitch_game_name, sample_time_source) VALUES ('2026-05-14 10:00', '1', 'a', 'probably_bronze')
+2026-10-09 10:03:48.432 CEST [11648] ERROR:  column "no_such_column" does not exist at character 8
+2026-10-09 10:03:48.432 CEST [11648] STATEMENT:  SELECT no_such_column FROM sample
+2026-10-09 10:03:48.486 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 10:03:48.532 CEST [620] LOG:  checkpoint complete: wrote 86 buffers (0.5%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.005 s, sync=0.027 s, total=0.047 s; sync files=87, longest=0.005 s, average=0.001 s; distance=7840 kB, estimate=7840 kB; lsn=0/6F673B8, redo lsn=0/6F67360
+2026-10-09 10:03:53.328 CEST [11788] ERROR:  division by zero
+2026-10-09 10:03:53.328 CEST [11788] STATEMENT:  SELECT 1 / 0
+2026-10-09 10:03:53.645 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 10:03:53.665 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 2 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.004 s, sync=0.004 s, total=0.020 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5544 kB, estimate=7611 kB; lsn=0/74D1450, redo lsn=0/74D13F8
+2026-10-09 10:04:00.560 CEST [11939] ERROR:  unterminated quoted identifier at or near ""values" at character 14
+2026-10-09 10:04:00.560 CEST [11939] STATEMENT:  CREATE TABLE "values
+2026-10-09 10:04:00.691 CEST [11942] ERROR:  division by zero
+2026-10-09 10:04:00.691 CEST [11942] STATEMENT:  SELECT 1 / 0
+2026-10-09 10:04:00.735 CEST [11946] ERROR:  unterminated quoted string at or near "'open" at character 8
+2026-10-09 10:04:00.735 CEST [11946] STATEMENT:  SELECT 'open
+2026-10-09 10:04:00.815 CEST [11949] ERROR:  unterminated quoted identifier at or near ""open" at character 8
+2026-10-09 10:04:00.815 CEST [11949] STATEMENT:  SELECT "open
+2026-10-09 10:04:00.902 CEST [11952] ERROR:  unterminated dollar-quoted string at or near "$Body$ BEGIN" at character 4
+2026-10-09 10:04:00.902 CEST [11952] STATEMENT:  DO $Body$ BEGIN
+2026-10-09 10:04:01.051 CEST [11955] ERROR:  unterminated /* comment at or near "/* unclosed" at character 1
+2026-10-09 10:04:01.051 CEST [11955] STATEMENT:  /* unclosed
+2026-10-09 10:04:01.192 CEST [11962] ERROR:  unterminated quoted string at or near "' $$" at character 1
+2026-10-09 10:04:01.192 CEST [11962] STATEMENT:  ' $$
+2026-10-09 10:04:01.269 CEST [11965] ERROR:  unterminated quoted string at or near "'UTF-8: 雪" at character 29
+2026-10-09 10:04:01.269 CEST [11965] STATEMENT:  INSERT INTO ordered VALUES ('UTF-8: 雪
+2026-10-09 10:04:01.390 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 10:04:01.405 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.004 s, sync=0.003 s, total=0.016 s; sync files=4, longest=0.002 s, average=0.001 s; distance=5522 kB, estimate=7402 kB; lsn=0/7A36048, redo lsn=0/7A35FD8
+2026-10-09 10:04:08.851 CEST [12115] ERROR:  relation "ordered" does not exist at character 19
+2026-10-09 10:04:08.851 CEST [12115] STATEMENT:  SELECT value FROM ordered
+2026-10-09 10:04:08.938 CEST [620] LOG:  checkpoint starting: immediate force wait
+2026-10-09 10:04:08.959 CEST [620] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.003 s, sync=0.005 s, total=0.021 s; sync files=4, longest=0.002 s, average=0.002 s; distance=5436 kB, estimate=7205 kB; lsn=0/7F852E8, redo lsn=0/7F85290
+2026-10-09 10:04:14.844 CEST [12237] ERROR:  unterminated /* comment at or near "/* nested /*" at character 1
+2026-10-09 10:04:14.844 CEST [12237] STATEMENT:  /* nested /*
+2026-10-09 10:04:14.911 CEST [12240] ERROR:  unterminated quoted string at or near "'partial" at character 28
+2026-10-09 10:04:14.911 CEST [12240] STATEMENT:  INSERT INTO sample VALUES ('partial
+2026-10-09 10:04:20.736 CEST [12376] ERROR:  relation "sample" does not exist at character 13
+2026-10-09 10:04:20.736 CEST [12376] QUERY:  INSERT INTO sample VALUES (val())
+2026-10-09 10:04:20.736 CEST [12376] CONTEXT:  PL/pgSQL function inline_code_block line 1 at SQL statement
+2026-10-09 10:04:20.736 CEST [12376] STATEMENT:  DO $$ BEGIN INSERT INTO sample VALUES (val()); END $$
+2026-10-09 10:07:08.472 CEST [616] LOG:  received fast shutdown request
+2026-10-09 10:07:08.476 CEST [616] LOG:  aborting any active transactions
+2026-10-09 10:07:08.485 CEST [616] LOG:  background worker "logical replication launcher" (PID 625) exited with exit code 1
+2026-10-09 10:07:08.485 CEST [620] LOG:  shutting down
+2026-10-09 10:07:08.488 CEST [620] LOG:  checkpoint starting: shutdown immediate
+2026-10-09 10:07:08.519 CEST [620] LOG:  checkpoint complete: wrote 83 buffers (0.5%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 1 recycled; write=0.006 s, sync=0.014 s, total=0.034 s; sync files=67, longest=0.002 s, average=0.001 s; distance=607 kB, estimate=6545 kB; lsn=0/801D250, redo lsn=0/801D250
+2026-10-09 10:07:08.529 CEST [616] LOG:  database system is shut down

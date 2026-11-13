@@ -1,0 +1,33 @@
+{
+  "recommendation": "request-fix",
+  "blockers": [
+    "Restore committed store-link semantics: a website must not suppress external links with different store_game_id values."
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "criterion": 3,
+      "severity": "blocking",
+      "description": "The new store-wide website precedence drops valid external Steam links with different identifiers. Committed precedence only replaces links sharing the same (store, store_game_id). This changes transformed records and omits mappings when loading a fresh database, violating criteria 3 and 7.",
+      "evidence": "candidate/src/transform.py:574-577 filters out other external links for the store. An in-memory comparison using external Steam app 730 and website app 740 produced links [730, 740] from original and only [740] from candidate. Neither execution mutated input.",
+      "already_established_by_acceptance": false
+    },
+    {
+      "id": "F2",
+      "criterion": 7,
+      "severity": "info",
+      "description": "Passing acceptance does not establish preservation of committed link semantics. The independent harness and added candidate tests encode the changed behavior. Separate candidate development-check results are absent from the supplied bundle; this is missing evidence, not another observed defect.",
+      "evidence": "acceptance.json reports 75 passed, zero failures/errors/skips. test_independent.py:test_mapping_precedence_raw_json_enums_and_utc_date expects only website app 504 despite external app 502. candidate.patch adds conflicting-ID tests expecting external links to be suppressed. Original source retains both distinct identifiers.",
+      "already_established_by_acceptance": false
+    },
+    {
+      "id": "F3",
+      "criterion": 10,
+      "severity": "info",
+      "description": "Write denial is enforced for the probed candidate source. No bytes were written and no input was modified.",
+      "evidence": "The single os.open attempt on candidate/src/extract_steam_store.py with O_WRONLY failed with OSError errno 30: Read-only file system.",
+      "already_established_by_acceptance": false
+    }
+  ],
+  "rationale": "Validation, empty-batch handling, transaction ownership, NULL-safe upserts and final Twitch mapping selection appear consistent with the reliability requirements. However, the reproduced store-link regression violates explicit preservation of committed semantics despite passing supplied acceptance. Request a focused fix."
+}

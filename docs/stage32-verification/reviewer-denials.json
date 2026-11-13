@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "[{\"path\": \"/home/ivan/codex-role-gt_bfsqw/candidate/collector/run.py\", \"allowed\": false, \"errno\": 30}, {\"path\": \"/home/ivan/codex-role-gt_bfsqw/frozen-v3/tests/test_date_admission.py\", \"allowed\": false, \"errno\": 30}, {\"path\": \"/home/ivan/codex-role-acdminwu/project/collector/run.py\", \"allowed\": false, \"errno\": 2}, {\"path\": \"/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/frozen-v3/tests/test_date_admission.py\", \"allowed\": false, \"errno\": 2}]\n",
+  "stderr": ""
+}

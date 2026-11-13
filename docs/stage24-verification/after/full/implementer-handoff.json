@@ -1,0 +1,21 @@
+{
+  "role": "implementer",
+  "execution_status": "completed",
+  "model": "gpt-6.1-sol",
+  "changed_files": [
+    "src/normalize_labels.py"
+  ],
+  "candidate_hashes": {
+    "src/normalize_labels.py": "0b2ce5ad60e46b898a9b1da9eccdbe4e9c514950a3aa7c0d8d502a8aeba08f49"
+  },
+  "diff": "--- a/src/normalize_labels.py\n+++ b/src/normalize_labels.py\n@@ -1,2 +1,48 @@\n def normalize_labels(value: str) -> list[str]:\n-    raise NotImplementedError\n+    labels: list[str] = []\n+    seen: set[str] = set()\n+    characters: list[str] = []\n+    quoted = False\n+    escaped = False\n+    pending_whitespace = False\n+    whitespace = \" \\t\\r\\n\\v\\f\"\n+\n+    def finish_label() -> None:\n+        label = \"\".join(characters)\n+        if label and label not in seen:\n+            seen.add(label)\n+            labels.append(label)\n+        characters.clear()\n+\n+    for character in value:\n+        if escaped:\n+            escaped = False\n+        elif character == \"\\\\\":\n+            escaped = True\n+            continue\n+        elif character == '\"':\n+            quoted = not quoted\n+            continue\n+        elif character == \",\" and not quoted:\n+            finish_label()\n+            pending_whitespace = False\n+            continue\n+        elif character in whitespace and not quoted:\n+            # Delay ordinary whitespace to trim boundaries and collapse runs.\n+            if characters:\n+                pending_whitespace = True\n+            continue\n+\n+        if pending_whitespace:\n+            characters.append(\" \")\n+            pending_whitespace = False\n+        if \"A\" <= character <= \"Z\":\n+            character = chr(ord(character) + 32)\n+        characters.append(character)\n+\n+    if escaped:\n+        raise ValueError(\"Trailing unpaired backslash\")\n+    if quoted:\n+        raise ValueError(\"Unclosed double quote\")\n+    finish_label()\n+    return labels\n",
+  "mutation_scope_valid": true,
+  "interface_check": {
+    "valid": true,
+    "public_interface_verified": true,
+    "syntax_verified": true
+  },
+  "candidate_status": "unaccepted",
+  "accepted": false,
+  "authority": "controller_observed_artifacts"
+}

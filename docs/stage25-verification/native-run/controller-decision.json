@@ -1,0 +1,8 @@
+{
+  "outcome": "FAIL",
+  "accepted": false,
+  "workflow_completed": false,
+  "failure_category": "native_database_sandbox_capability_not_demonstrated",
+  "cleanup_passed": true,
+  "original_unchanged": true
+}

@@ -1,0 +1,20 @@
+{
+  "note": "Initial source export excluded .env.example with .env*. Added only the public tracked template from HEAD, without loading any credential file.",
+  "argv": [
+    "git",
+    "-C",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/original-replica",
+    "diff",
+    "--binary"
+  ],
+  "exit_code": 0,
+  "GIT_OPTIONAL_LOCKS": "0",
+  "index_before": "ffeadd5362e1a64618e5e6d21cc8e061892ec37371f02e31da2b487d2f6f2c75",
+  "index_after": "902def7c355c28af2b4231e36cc211f262aff795c5163bb9a590db34657137a8",
+  "raw_index_changed": true,
+  "staged_entries_unchanged": true,
+  "working_files_unchanged": true,
+  "working_diff_sha256": "ca2db30b0a6ee7bcc940c9f7f676e84c1d7379257b2816f4a3f7f5b54d3a8dec",
+  "original_working_diff_sha256": "ca2db30b0a6ee7bcc940c9f7f676e84c1d7379257b2816f4a3f7f5b54d3a8dec",
+  "working_diff_matches_original": true
+}

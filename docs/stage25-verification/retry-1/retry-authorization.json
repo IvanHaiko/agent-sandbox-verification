@@ -1,0 +1,10 @@
+{
+  "authorization": "Human explicitly requested another attempt and proper testing",
+  "prior_outcome": "FAIL",
+  "prior_evidence": "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage25-verification/native-run",
+  "automatic_retry": false,
+  "architect": "Previously completed read-only proposal reused unchanged; no additional Architect model call",
+  "isolation_change": "Controller acceptance only: unshare user/network namespace, native filesystem sandbox, Unix IPC enabled. Model roles retain network=false and no database access.",
+  "proof": "socket-namespace-ipc.json demonstrates allowed private filesystem IPC and inaccessible host pathname/abstract/TCP services",
+  "started_at": 1791452066.220979
+}

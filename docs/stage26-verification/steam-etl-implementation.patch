@@ -1,0 +1,573 @@
+diff --git a/src/load.py b/src/load.py
+index 6c25f49..3263efd 100644
+--- a/src/load.py
++++ b/src/load.py
+@@ -8,24 +8,17 @@ from src.db import get_db_connection
+ from src.transform import (
+     parse_steam_store_envelope,
+     transform_igdb_search_results,
+-    transform_steam_store_game,
++    STEAM_STORE_OUTCOME_MESSAGES as STEAM_STORE_OUTCOME_MESSAGES,
++    _SteamStoreLoad,
++    _prepare_steam_store_load,
++    _prepare_steam_store_ok,
++    _prepare_steam_store_redirected,
+     transform_steamspy_game,
+     transform_twitch_games_lookup,
+     transform_twitch_streams,
+ )
+ 
+ 
+-# Fixed messages for the two envelope outcomes that do not carry their own
+-# error text (fetch_appdetails only fills "error" for transport_error).
+-# refused and not_found used to collapse into the same free-text string in
+-# steam_store_last_error; keeping them as distinct constants is what keeps
+-# them apart in the column.
+-STEAM_STORE_OUTCOME_MESSAGES = {
+-    "refused": "Steam Store returned success=false",
+-    "not_found": "No Steam Store response wrapper found",
+-}
+-
+-
+ def load_json_file(file_path: Path) -> dict[str, Any]:
+     """
+     Load a JSON file and return its content as a Python object.
+@@ -589,72 +582,36 @@ def load_steamspy_file(file_path: Path, snapshot_date: str) -> None:
+                 load_transformed_record(cursor, transformed_record, snapshot_date)
+ 
+ 
+-def _load_steam_store_ok(
+-    envelope: dict[str, Any],
+-    snapshot_date: str,
+-    file_path: Path,
+-) -> str:
+-    """
+-    Load the games-table side of an "ok" envelope.
++def _execute_steam_store_load(prepared: _SteamStoreLoad, snapshot_date: str) -> str:
++    """Persist metadata before marking, with the original transaction boundaries."""
+ 
+-    Returns the outcome actually recorded, which is "ok" unless the body
+-    turns out not to parse into a game after all (see below).
+-    """
++    if prepared.record is not None:
++        with get_db_connection() as connection:
++            with connection.cursor() as cursor:
++                load_transformed_record(
++                    cursor,
++                    prepared.record,
++                    snapshot_date,
++                    fetched_at=prepared.fetched_at,
++                )
+ 
+-    transformed_record = transform_steam_store_game(envelope["body"])
++    # Exiting the target's connection context commits before the separate mark.
++    if prepared.mark is not None:
++        mark_steam_store_enrichment_result(**prepared.mark)
+ 
+-    if transformed_record is None:
+-        # An envelope claiming "ok" whose body does not actually parse
+-        # into a game (e.g. no steam_appid, or -- for a legacy file --
+-        # an embedded success: false that the legacy shape cannot tell
+-        # apart from a real ok) is a data problem worth surfacing, not a
+-        # silent no-op.
+-        appid = envelope.get("appid")
+-
+-        if appid:
+-            # Real envelopes always carry an appid, so this is the
+-            # ordinary path: record it as "refused" (we have no confirmed
+-            # game data for this appid, the same fact "refused" already
+-            # means) with a message that says specifically why.
+-            mark_steam_store_enrichment_result(
+-                appid=appid,
+-                outcome="refused",
+-                error_message="ok envelope did not yield a parsable game",
+-                fetched_at=envelope.get("fetched_at"),
+-                is_replay=True,
+-            )
++    return prepared.outcome
+ 
+-            return "refused"
+-
+-        # Only a legacy file (no "envelope" key) ever reaches here with
+-        # no appid -- parse_steam_store_envelope's legacy fallback always
+-        # sets appid to None, and legacy files are unconditionally read
+-        # as outcome "ok" regardless of what their embedded body actually
+-        # says. If that body's real success field is false, transform
+-        # correctly returns None here, but with no appid there is no
+-        # games row to mark against -- previously this branch was a
+-        # complete no-op: no exception, no log line, no database write.
+-        # None of the 3 194 files on disk hit this today (checked while
+-        # writing this fix), but the path must be loud the day one does,
+-        # not silently vanish it.
+-        raise ValueError(
+-            f"Legacy Steam Store file {file_path} was read as outcome "
+-            "'ok' (the unconditional legacy fallback) but its body did "
+-            "not yield a parsable game -- most likely an embedded "
+-            "success: false that the legacy shape cannot distinguish "
+-            "from a real ok. Refusing to silently drop it."
+-        )
+ 
+-    with get_db_connection() as connection:
+-        with connection.cursor() as cursor:
+-            load_transformed_record(
+-                cursor,
+-                transformed_record,
+-                snapshot_date,
+-                fetched_at=envelope.get("fetched_at"),
+-            )
++def _load_steam_store_ok(
++    envelope: dict[str, Any],
++    snapshot_date: str,
++    file_path: Path,
++) -> str:
++    """Compatibility adapter for an ok envelope, including invalid-body fallback."""
+ 
+-    return "ok"
++    return _execute_steam_store_load(
++        _prepare_steam_store_ok(envelope, file_path), snapshot_date
++    )
+ 
+ 
+ def _load_steam_store_redirected(
+@@ -662,103 +619,22 @@ def _load_steam_store_redirected(
+     appid: int,
+     snapshot_date: str,
+ ) -> str:
+-    """
+-    Load the games-table side of a "redirected" envelope.
+-
+-    The body is a real Steam Store answer -- just about a different
+-    appid than the one requested. It is loaded into the games table under
+-    the appid Steam actually described (transform_steam_store_game reads
+-    appid from data.steam_appid, not from the envelope), exactly as an
+-    "ok" response for that appid would be. The *requested* appid's own
+-    row never receives this game's metadata -- that would put, for
+-    example, appid 100's name on Counter-Strike: Condition Zero's data,
+-    which is appid 80's game. It only records the fact and direction of
+-    the redirect via mark_steam_store_enrichment_result below, which is
+-    also what makes the requested appid terminal in
+-    get_games_for_store_enrichment's backlog query.
+-    """
+-
+-    redirect_to = envelope.get("redirect_to")
+-    target_record = transform_steam_store_game(envelope["body"])
+-
+-    if target_record is not None:
+-        with get_db_connection() as connection:
+-            with connection.cursor() as cursor:
+-                load_transformed_record(
+-                    cursor,
+-                    target_record,
+-                    snapshot_date,
+-                    fetched_at=envelope.get("fetched_at"),
+-                )
++    """Load target metadata, then mark the independently identified requested row."""
+ 
+-    mark_steam_store_enrichment_result(
+-        appid=appid,
+-        outcome="redirected",
+-        error_message=f"Steam Store redirected appid {appid} to {redirect_to}",
+-        redirect_to=redirect_to,
+-        fetched_at=envelope.get("fetched_at"),
+-        is_replay=True,
++    return _execute_steam_store_load(
++        _prepare_steam_store_redirected(envelope, appid), snapshot_date
+     )
+ 
+-    return "redirected"
+-
+ 
+ def load_steam_store_file(file_path: Path, snapshot_date: str) -> str:
+-    """
+-    Load a Steam Store appdetails bronze file into PostgreSQL.
+-
+-    The file may hold any of five outcomes (see
+-    transform.parse_steam_store_envelope): "ok" and "redirected" both load
+-    game metadata (for the requested appid and the target appid,
+-    respectively); "refused", "not_found" and "transport_error" already
+-    have their bronze on disk by the time this runs, and only update the
+-    games row's steam_store_outcome / steam_store_last_error via
+-    mark_steam_store_enrichment_result, so a refusal is recorded rather
+-    than silently producing no database change at all.
+-
+-    Returns the outcome that was recorded, so a caller (run_steam_store_
+-    enrich in src/main.py) can tally all five outcomes separately instead
+-    of treating every non-exception return as "processed".
+-    """
++    """Prepare a bronze outcome, persist its ordered effects, and return the outcome."""
+ 
+     raw_data = load_json_file(file_path)
+     envelope = parse_steam_store_envelope(raw_data)
+-    outcome = envelope["outcome"]
+-
+-    if outcome == "ok":
+-        return _load_steam_store_ok(envelope, snapshot_date, file_path)
+-
+-    appid = envelope.get("appid")
+-
+-    if not appid:
+-        # No business key to mark against; the bronze file on disk is
+-        # still the record of what happened. This should not occur for
+-        # any file this loader actually wrote (fetch_appdetails always
+-        # carries appid), only if a hand-edited file omitted it.
+-        return outcome
+-
+-    if outcome == "redirected":
+-        return _load_steam_store_redirected(envelope, appid, snapshot_date)
+-
+-    if outcome == "transport_error":
+-        error_message = envelope.get("error") or "Steam Store transport error"
+-    else:
+-        error_message = STEAM_STORE_OUTCOME_MESSAGES.get(
+-            outcome, f"Steam Store outcome: {outcome}"
+-        )
+-
+-    fetched_at = envelope.get("fetched_at")
+-
+-    mark_steam_store_enrichment_result(
+-        appid=appid,
+-        outcome=outcome,
+-        error_message=error_message[:1000],
+-        fetched_at=fetched_at,
+-        is_replay=True,
++    return _execute_steam_store_load(
++        _prepare_steam_store_load(envelope, file_path), snapshot_date
+     )
+ 
+-    return outcome
+-
+ 
+ def load_twitch_file(file_path: str | Path) -> int:
+     """
+diff --git a/src/transform.py b/src/transform.py
+index d93f920..0697a94 100644
+--- a/src/transform.py
++++ b/src/transform.py
+@@ -1,4 +1,6 @@
++from dataclasses import dataclass
+ from datetime import datetime, timezone
++from pathlib import Path
+ from typing import Any
+ 
+ from src.extract_steam_store import ENVELOPE_VERSION as STEAM_STORE_ENVELOPE_VERSION
+@@ -304,6 +306,95 @@ def transform_steam_store_game(raw_response: dict[str, Any]) -> dict[str, Any] |
+     }
+ 
+ 
++# Fixed messages for the two envelope outcomes that do not carry their own
++# error text (fetch_appdetails only fills "error" for transport_error).
++# refused and not_found used to collapse into the same free-text string in
++# steam_store_last_error; keeping them as distinct constants is what keeps
++# them apart in the column.
++STEAM_STORE_OUTCOME_MESSAGES = {
++    "refused": "Steam Store returned success=false",
++    "not_found": "No Steam Store response wrapper found",
++}
++
++
++
++@dataclass(frozen=True)
++class _SteamStoreLoad:
++    """Prepared metadata and optional mark, executed in that order by the loader."""
++
++    outcome: str
++    record: dict[str, Any] | None = None
++    fetched_at: str | None = None
++    mark: dict[str, Any] | None = None
++
++
++def _prepare_steam_store_ok(envelope: dict[str, Any], file_path: Path) -> _SteamStoreLoad:
++    record = transform_steam_store_game(envelope["body"])
++    if record is not None:
++        return _SteamStoreLoad("ok", record, envelope.get("fetched_at"))
++
++    appid = envelope.get("appid")
++    if appid:
++        return _SteamStoreLoad("refused", mark={
++            "appid": appid,
++            "outcome": "refused",
++            "error_message": "ok envelope did not yield a parsable game",
++            "fetched_at": envelope.get("fetched_at"),
++            "is_replay": True,
++        })
++
++    raise ValueError(
++        f"Legacy Steam Store file {file_path} was read as outcome "
++        "'ok' (the unconditional legacy fallback) but its body did "
++        "not yield a parsable game -- most likely an embedded "
++        "success: false that the legacy shape cannot distinguish "
++        "from a real ok. Refusing to silently drop it."
++    )
++
++
++def _prepare_steam_store_redirected(
++    envelope: dict[str, Any], appid: int,
++) -> _SteamStoreLoad:
++    redirect_to = envelope.get("redirect_to")
++    record = transform_steam_store_game(envelope["body"])
++    fetched_at = envelope.get("fetched_at")
++    return _SteamStoreLoad("redirected", record, fetched_at, {
++        "appid": appid,
++        "outcome": "redirected",
++        "error_message": f"Steam Store redirected appid {appid} to {redirect_to}",
++        "redirect_to": redirect_to,
++        "fetched_at": fetched_at,
++        "is_replay": True,
++    })
++
++
++def _prepare_steam_store_load(envelope: dict[str, Any], file_path: Path) -> _SteamStoreLoad:
++    """Interpret outcomes without database effects or additional input validation."""
++
++    outcome = envelope["outcome"]
++    if outcome == "ok":
++        return _prepare_steam_store_ok(envelope, file_path)
++
++    appid = envelope.get("appid")
++    if not appid:
++        return _SteamStoreLoad(outcome)
++    if outcome == "redirected":
++        return _prepare_steam_store_redirected(envelope, appid)
++
++    if outcome == "transport_error":
++        message = envelope.get("error") or "Steam Store transport error"
++    else:
++        message = STEAM_STORE_OUTCOME_MESSAGES.get(outcome, f"Steam Store outcome: {outcome}")
++
++    return _SteamStoreLoad(outcome, mark={
++        "appid": appid,
++        "outcome": outcome,
++        "error_message": message[:1000],
++        "fetched_at": envelope.get("fetched_at"),
++        "is_replay": True,
++    })
++
++
+ def parse_twitch_fetched_at(raw_data: dict) -> datetime:
+     """
+     Parse the fetched_at timestamp written by the Twitch extractor.
+diff --git a/tests/test_refactoring.py b/tests/test_refactoring.py
+new file mode 100644
+index 0000000..7307650
+--- /dev/null
++++ b/tests/test_refactoring.py
+@@ -0,0 +1,219 @@
++"""Focused contracts for Steam Store preparation and ordered persistence."""
++
++import copy
++from pathlib import Path
++from unittest.mock import MagicMock
++
++import pytest
++
++from src import load
++from src.db import get_db_connection
++from src.extract_steam_store import ENVELOPE_VERSION
++from src.transform import _prepare_steam_store_load
++
++FETCHED_AT = "2026-08-12T12:00:00+00:00"
++
++
++def envelope(outcome, **changes):
++    result = {
++        "envelope": ENVELOPE_VERSION,
++        "outcome": outcome,
++        "appid": 100,
++        "fetched_at": FETCHED_AT,
++        "body": {"80": {"success": True, "data": {"steam_appid": 80, "name": "target"}}},
++        "redirect_to": 90,
++    }
++    result.update(changes)
++    return result
++
++
++def run_file(monkeypatch, payload):
++    monkeypatch.setattr(load, "load_json_file", lambda path: payload)
++    return load.load_steam_store_file(Path("bronze.json"), "2026-08-12")
++
++
++@pytest.mark.parametrize("appid", [None, 0, False, ""])
++@pytest.mark.parametrize("outcome", ["refused", "not_found", "transport_error", "redirected", "unknown"])
++def test_falsy_appid_precedes_malformed_body(monkeypatch, appid, outcome):
++    def forbidden(*args, **kwargs):
++        pytest.fail("early return performed a database effect")
++
++    monkeypatch.setattr(load, "get_db_connection", forbidden)
++    monkeypatch.setattr(load, "mark_steam_store_enrichment_result", forbidden)
++    assert run_file(monkeypatch, envelope(outcome, appid=appid, body=[1])) == outcome
++
++
++@pytest.mark.parametrize("outcome, changes, message", [
++    ("refused", {}, "Steam Store returned success=false"),
++    ("not_found", {}, "No Steam Store response wrapper found"),
++    ("transport_error", {}, "Steam Store transport error"),
++    ("transport_error", {"error": "x" * 1001}, "x" * 1000),
++    ("ok", {"body": {}}, "ok envelope did not yield a parsable game"),
++    ("unknown", {}, "Steam Store outcome: unknown"),
++])
++def test_exact_file_mark_arguments(monkeypatch, outcome, changes, message):
++    mark = MagicMock()
++    monkeypatch.setattr(load, "mark_steam_store_enrichment_result", mark)
++    expected_outcome = "refused" if outcome == "ok" else outcome
++    assert run_file(monkeypatch, envelope(outcome, **changes)) == expected_outcome
++    mark.assert_called_once_with(
++        appid=100, outcome=expected_outcome, error_message=message,
++        fetched_at=FETCHED_AT, is_replay=True,
++    )
++
++
++def test_preparation_is_pure_and_keeps_redirect_identities():
++    payload = envelope("redirected")
++    before = copy.deepcopy(payload)
++    prepared = _prepare_steam_store_load(payload, Path("bronze.json"))
++    assert payload == before
++    assert prepared.record["game"]["appid"] == 80
++    assert prepared.mark == {
++        "appid": 100, "outcome": "redirected", "redirect_to": 90,
++        "error_message": "Steam Store redirected appid 100 to 90",
++        "fetched_at": FETCHED_AT, "is_replay": True,
++    }
++
++
++@pytest.mark.parametrize("payload, error", [
++    (envelope("transport_error", error=123), TypeError),
++    (envelope("ok", body=[1]), AttributeError),
++    ({"envelope": ENVELOPE_VERSION}, KeyError),
++    ({"envelope": "unsupported"}, ValueError),
++])
++def test_native_errors_before_effects(monkeypatch, payload, error):
++    connection = MagicMock()
++    mark = MagicMock()
++    monkeypatch.setattr(load, "get_db_connection", connection)
++    monkeypatch.setattr(load, "mark_steam_store_enrichment_result", mark)
++    with pytest.raises(error):
++        run_file(monkeypatch, payload)
++    connection.assert_not_called()
++    mark.assert_not_called()
++
++
++def test_legacy_invalid_body_exact_error(monkeypatch):
++    with pytest.raises(ValueError) as caught:
++        run_file(monkeypatch, {"100": {"success": False}})
++    assert str(caught.value) == (
++        "Legacy Steam Store file bronze.json was read as outcome 'ok' "
++        "(the unconditional legacy fallback) but its body did not yield a parsable "
++        "game -- most likely an embedded success: false that the legacy shape "
++        "cannot distinguish from a real ok. Refusing to silently drop it."
++    )
++
++
++def seed_requested():
++    with get_db_connection() as connection:
++        connection.execute("INSERT INTO games (appid, name) VALUES (100, 'requested')")
++
++
++def stored_rows():
++    with get_db_connection() as connection:
++        return connection.execute(
++            "SELECT appid, name, steam_store_outcome, steam_store_redirect_to, "
++            "steam_store_attempts, steam_store_errors FROM games ORDER BY appid"
++        ).fetchall()
++
++
++@pytest.mark.parametrize("outcome, changes, expected", [
++    ("not_found", {}, ("not_found", 1, 0)),
++    ("transport_error", {"error": "offline"}, ("transport_error", 0, 1)),
++    ("ok", {"body": {}}, ("refused", 1, 0)),
++])
++def test_database_counters_and_replay(test_database, monkeypatch, outcome, changes, expected):
++    seed_requested()
++    payload = envelope(outcome, **changes)
++    expected_outcome, attempts, errors = expected
++    assert run_file(monkeypatch, payload) == expected_outcome
++    first = stored_rows()
++    assert first == [(100, "requested", expected_outcome, None, attempts, errors)]
++    assert run_file(monkeypatch, payload) == expected_outcome
++    assert stored_rows() == first
++
++
++def test_redirect_commits_target_before_mark_failure(test_database, monkeypatch):
++    seed_requested()
++
++    def fail_mark(**kwargs):
++        assert stored_rows() == [
++            (80, "target", "ok", None, 1, 0),
++            (100, "requested", None, None, 0, 0),
++        ]
++        raise RuntimeError("mark failed")
++
++    monkeypatch.setattr(load, "mark_steam_store_enrichment_result", fail_mark)
++    with pytest.raises(RuntimeError, match="mark failed"):
++        run_file(monkeypatch, envelope("redirected"))
++    assert stored_rows()[0] == (80, "target", "ok", None, 1, 0)
++
++
++def test_redirect_target_failure_rolls_back_and_suppresses_mark(test_database, monkeypatch):
++    seed_requested()
++    original = load.load_transformed_record
++    mark = MagicMock()
++
++    def fail_after_write(*args, **kwargs):
++        original(*args, **kwargs)
++        raise RuntimeError("target failed")
++
++    monkeypatch.setattr(load, "load_transformed_record", fail_after_write)
++    monkeypatch.setattr(load, "mark_steam_store_enrichment_result", mark)
++    with pytest.raises(RuntimeError, match="target failed"):
++        run_file(monkeypatch, envelope("redirected"))
++    mark.assert_not_called()
++    assert stored_rows() == [(100, "requested", None, None, 0, 0)]
++
++
++def test_redirect_database_identity_and_replay(test_database, monkeypatch):
++    seed_requested()
++    payload = envelope("redirected")
++    assert run_file(monkeypatch, payload) == "redirected"
++    first = stored_rows()
++    assert first == [
++        (80, "target", "ok", None, 1, 0),
++        (100, "requested", "redirected", 90, 1, 0),
++    ]
++    assert run_file(monkeypatch, payload) == "redirected"
++    assert stored_rows() == first
++
++
++def test_empty_redirect_marks_without_target_connection(monkeypatch):
++    connection = MagicMock()
++    mark = MagicMock()
++    monkeypatch.setattr(load, "get_db_connection", connection)
++    monkeypatch.setattr(load, "mark_steam_store_enrichment_result", mark)
++    assert run_file(monkeypatch, envelope("redirected", body={})) == "redirected"
++    connection.assert_not_called()
++    mark.assert_called_once_with(
++        appid=100, outcome="redirected", redirect_to=90,
++        error_message="Steam Store redirected appid 100 to 90",
++        fetched_at=FETCHED_AT, is_replay=True,
++    )
++
++
++def test_redirect_diagnostic_is_not_truncated():
++    redirect_to = "9" * 1001
++    prepared = _prepare_steam_store_load(
++        envelope("redirected", redirect_to=redirect_to), Path("bronze.json")
++    )
++    assert prepared.mark["error_message"] == f"Steam Store redirected appid 100 to {redirect_to}"
++
++
++def test_missing_appid_and_unknown_outcome(monkeypatch):
++    payload = envelope("redirected", body=[1])
++    del payload["appid"]
++    assert run_file(monkeypatch, payload) == "redirected"
++    with pytest.raises(ValueError, match="does not accept"):
++        run_file(monkeypatch, envelope("unknown"))
++
++
++def test_answer_resets_transport_errors(test_database, monkeypatch):
++    seed_requested()
++    assert run_file(monkeypatch, envelope("transport_error")) == "transport_error"
++    assert stored_rows() == [(100, "requested", "transport_error", None, 0, 1)]
++    payload = envelope("not_found", fetched_at="2026-08-13T12:00:00+00:00")
++    assert run_file(monkeypatch, payload) == "not_found"
++    assert stored_rows() == [(100, "requested", "not_found", None, 1, 0)]
++    assert run_file(monkeypatch, payload) == "not_found"
++    assert stored_rows() == [(100, "requested", "not_found", None, 1, 0)]

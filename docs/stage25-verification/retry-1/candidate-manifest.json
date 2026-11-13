@@ -1,0 +1,7 @@
+{
+  "docs/TWITCH_HOUR_REPLACEMENT.md": "88cb9f3ef38b29faa5a99aebbc14edc9391ab7334dd3f64ea06099b6a84df428",
+  "src/load.py": "107385b954bac8b0720264ac677ec87a39a47fa3c725bb5efe31331cc776abe0",
+  "src/transform.py": "957d0ecdaa4e201f55c99a362b03843b64dd3149c08928f4f58af8433ebf2309",
+  "tests/test_load.py": "75cab91a816951d8478b9d487b49cdd3fe9e63a325bcf9cfc571b1ef02dab89c",
+  "tests/test_twitch_hour_replacement.py": "0cd3ed45b3a391179731b5fa5a671a94133b037dbabb5e85f28c23511992096c"
+}

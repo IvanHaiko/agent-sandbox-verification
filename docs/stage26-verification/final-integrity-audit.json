@@ -1,0 +1,30 @@
+{
+  "original_unchanged": true,
+  "candidate_origin_implementer": true,
+  "candidate_archive_unchanged": true,
+  "patch_applies_to_fixed_source": true,
+  "patch_sha256": "8a2e172a824c20979302aa1b7ab909b181a5fc9290ce2ccab75187360cd89c35",
+  "final_implementer_checks": {
+    "unit": {
+      "exit_code": 0,
+      "source_hashes_match_candidate": true
+    },
+    "integration": {
+      "exit_code": 0,
+      "source_hashes_match_candidate": true
+    },
+    "lint": {
+      "exit_code": 0,
+      "source_hashes_match_candidate": true
+    }
+  },
+  "canonical_contract_unchanged": true,
+  "independent_freeze_present": false,
+  "independent_candidate_exposure_present": false,
+  "independent_acceptance": "NOT RUN",
+  "rejected_tester_bytes_available": false,
+  "all_role_workspaces_removed": true,
+  "postgresql_pid_absent": true,
+  "runtime_removed": true,
+  "owned_role_directories_remaining": []
+}

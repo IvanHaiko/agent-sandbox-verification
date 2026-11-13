@@ -1,0 +1,35 @@
+{
+  "verdict": "STAGE23_PASS_NATIVE_BACKEND",
+  "gates": {
+    "smoke": "3/3 PASS",
+    "minimal": "3/3 PASS",
+    "reviewer": "2/2 PASS",
+    "architect": "2/2 PASS after native output-schema repair",
+    "full_chain": "1/1 PASS"
+  },
+  "preserved_successful_trials_not_reexecuted": true,
+  "successful_native_role_executions_stage23": 27,
+  "failed_architect_launches_stage23": 3,
+  "failed_launches_without_recoverable_error": 2,
+  "confirmed_repaired_failure": {
+    "message": "Invalid schema for response_format 'codex_output_schema': context=('properties', 'allowed_mutation_scope'), Unexpected constant value: ['src/normalize_labels.py'].",
+    "type": "invalid_request_error",
+    "code": "invalid_json_schema",
+    "param": "text.format.schema"
+  },
+  "model": "gpt-6.1-sol",
+  "continuation_effort": "medium",
+  "new_frozen_cases_passed": 69,
+  "all_frozen_cases_passed": 185,
+  "new_successful_native_contexts": 12,
+  "new_successful_workflow_repositories_removed": 15,
+  "all_stage23_wsl_repositories_removed": 38,
+  "fresh_contexts_blindness_freeze_readonly_roles_verified": true,
+  "integrity_audit_passed": true,
+  "full_test_suite_run_during_latest_debugging": false,
+  "targeted_architect_guard_passed": true,
+  "production_defaults_changed": false,
+  "custom_transport_changed": false,
+  "windows_sandbox_changed": false,
+  "stage24_started": false
+}

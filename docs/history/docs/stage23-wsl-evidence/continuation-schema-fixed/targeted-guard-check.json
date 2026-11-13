@@ -1,0 +1,8 @@
+{
+  "test": "test_architect_cannot_change_original_acceptance_or_scope",
+  "passed": true,
+  "runs": 2,
+  "scope": "Only this guard; second run added reordered/duplicated criteria assertions.",
+  "full_suite_run": false,
+  "native_inference_requests": 0
+}

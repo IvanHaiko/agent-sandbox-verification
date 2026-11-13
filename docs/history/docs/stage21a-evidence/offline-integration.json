@@ -1,0 +1,117 @@
+{
+  "provider": "synthetic-localhost-only",
+  "real_model_requests": 0,
+  "astra_calls": 0,
+  "validation_route": "gpt-6-luna",
+  "reasoning": "low",
+  "workflow_status": "failed",
+  "accepted": false,
+  "docker_mode": "existing private pre-admission bootstrap; no production admission issued",
+  "source_sha256": {
+    "agent_system/codex_tool_session.py": "74877daf95cbf539d79b6c20764375c19a8d91e6a0e4ee4a6c4d10a3f70c067b",
+    "agent_system/model_tool_boundary.py": "13efed74558c1d2bfe9c0369a73d101d5f29513631e3b3534a6879e5be1a695a",
+    "agent_system/runtime_observability.py": "107850053a6ba4dc179d4885675617b9ea79974053f53ecd4e9e3498c8ad308f",
+    "validation/stage21a_observability.py": "dfa4723d9fdc595d1d76c017077a6817c7bbf0722d5c772037f61ce6afe03fd2"
+  },
+  "receipt": {
+    "schema_version": 1,
+    "invocation_id": "synthetic-failure-after-write",
+    "role": "implementer",
+    "model": "gpt-6-luna",
+    "reasoning": "low",
+    "role_status": "failed",
+    "accepted": false,
+    "recorded_at": "2026-10-06T16:28:29.558672+00:00",
+    "failure_category": "handoff_schema_failure",
+    "failure_detail": "Structured Codex role result schema mismatch",
+    "request_count": 3,
+    "tool_call_count": 2,
+    "completed_tool_call_count": 2,
+    "tool_result_returned": true,
+    "last_completed_phase": "turn_completed",
+    "response_validation_passed": true,
+    "eof_observed": null,
+    "reader_shutdown_confirmed": null,
+    "socket_idle_timeout_observed": false,
+    "parser_status": "passed",
+    "handoff_status": "failed",
+    "protocol_bytes": 13784,
+    "stderr_bytes": 0,
+    "protocol_anomaly_counters": {},
+    "candidate_written": true,
+    "candidate_preserved": true,
+    "candidate_archived": true,
+    "candidate_skipped_count": 0,
+    "candidates": [
+      {
+        "path": "src/utility.py",
+        "sha256": "0b97c8dee8923810d0489ef3b21b88bf27e3636b2c0010f4e10d3c65272c8c70",
+        "archive_path": "candidates/src/utility.py",
+        "originating_invocation_id": "synthetic-failure-after-write",
+        "archived_at": "2026-10-06T16:28:29.558482+00:00",
+        "status": "unaccepted_diagnostic_candidate",
+        "accepted": false
+      }
+    ]
+  },
+  "original_candidate_path": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21a-offline\\runtime\\codex-agent-system-5afe42350c3960a7\\worktrees\\STAGE21A\\implementer\\src\\utility.py",
+  "archived_diagnostic_path": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage21a-evidence\\diagnostic\\candidates\\src\\utility.py",
+  "synthetic_requests": 3,
+  "docker_tool_actions": [
+    {
+      "write": true,
+      "returncode": 0,
+      "changed_paths": [
+        "src/utility.py"
+      ],
+      "ownership": {
+        "execution_id": "273046a6d8154eb692dad06440ed63e4",
+        "name": "agentctl-b76c37478766-273046a6d8154eb692dad06440ed63e4",
+        "owner": "b76c3747876649eba2eb2804",
+        "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21a-offline\\runtime\\codex-agent-system-5afe42350c3960a7\\worktrees\\STAGE21A\\implementer",
+        "created_at": "2026-10-06T16:28:22.407468+00:00",
+        "status": "completed",
+        "input_commit": "a53e9ab13ec106ed19ee30542521122ab4c9b28d",
+        "container_id": "1bdb6f908bb7d8630a7c862773b8d87007a57d7203ac26a5c0e811f9aa1b9939",
+        "changed_paths": [
+          "src/utility.py"
+        ],
+        "returncode": 0,
+        "cleanup": "confirmed",
+        "storage_cleanup": "confirmed"
+      }
+    },
+    {
+      "write": false,
+      "returncode": 0,
+      "changed_paths": [],
+      "ownership": {
+        "execution_id": "716ca3769c5149928e9ed9358b86be8c",
+        "name": "agentctl-b76c37478766-716ca3769c5149928e9ed9358b86be8c",
+        "owner": "b76c3747876649eba2eb2804",
+        "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21a-offline\\runtime\\codex-agent-system-5afe42350c3960a7\\worktrees\\STAGE21A\\implementer",
+        "created_at": "2026-10-06T16:28:26.115204+00:00",
+        "status": "completed",
+        "input_commit": "a53e9ab13ec106ed19ee30542521122ab4c9b28d",
+        "container_id": "76244f829cd1544c57cc550e3b02720e4f50769a86fa20599ea9ba04e2c2a3a5",
+        "changed_paths": [],
+        "returncode": 0,
+        "cleanup": "confirmed",
+        "storage_cleanup": "confirmed"
+      }
+    }
+  ],
+  "host_execution_trap_passed": true,
+  "controller_host_process_names": [
+    "codex.exe",
+    "docker",
+    "git",
+    "python.exe"
+  ],
+  "codex_process_exited": true,
+  "stale_owned_containers": 0,
+  "diagnostic_survives_runtime_cleanup": true,
+  "model_homes_removed": true,
+  "disposable_checkout_removed": true,
+  "disposable_validation_project_removed": true
+}

@@ -1,0 +1,13 @@
+{
+  "removed": [
+    {
+      "path": "/home/ivan/.local/bin/python3.10",
+      "target": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/interpreters/cpython-3.10-linux-x86_64-gnu/bin/python3.10"
+    },
+    {
+      "path": "/home/ivan/.local/bin/python3.12",
+      "target": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/interpreters/cpython-3.12-linux-x86_64-gnu/bin/python3.12"
+    }
+  ],
+  "interpreter_runtimes_retained": true
+}

@@ -1,0 +1,33 @@
+{
+  "at": 1791533537.9940493,
+  "checks": {
+    "frozen_inputs_unchanged": true,
+    "original_checkout_unchanged": true,
+    "framework_unchanged": true,
+    "owned_resources_removed": true,
+    "A_candidate_hashes": true,
+    "A_patch_reproduced": true,
+    "A_external_passed": true,
+    "A_unchanged_regressions_passed": true,
+    "A_final_development_checks": true,
+    "A_both_independent_mutations_detected": true,
+    "A_candidate_modification_scope": true,
+    "B_candidate_hashes": true,
+    "B_patch_reproduced": true,
+    "B_external_passed": true,
+    "B_unchanged_regressions_passed": true,
+    "B_final_development_checks": true,
+    "B_both_independent_mutations_detected": true,
+    "B_candidate_modification_scope": true,
+    "A_independent_artifacts_frozen": true,
+    "A_freeze_before_implementation": true,
+    "B_independent_artifacts_frozen": true,
+    "B_original_failed_decision_preserved": true,
+    "B_scheduled_review_read_only": true,
+    "both_reviewers_accept_inspected_code": true
+  },
+  "architecture_recommendation": "INCONCLUSIVE",
+  "report_sha256": "ae318414ba2217cd5b8542733ce9ac3ef789f312c32f9495584a80cc10f60f84",
+  "measurement_window_seconds_provisioning_start_to_seal": 2296.5413949489594,
+  "measurement_limit": "Excludes preliminary source/brief inspection and contract/suite authoring; includes coordinator gaps, failure closeout, evaluation and report writing; package compression follows."
+}

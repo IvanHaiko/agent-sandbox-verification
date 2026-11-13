@@ -1,0 +1,155 @@
+{
+  "task_id": "STAGE20-LABELS",
+  "contract_version": 1,
+  "cases": [
+    {
+      "id": "empty-input",
+      "intent": "Empty input returns no labels.",
+      "input": "",
+      "expected": []
+    },
+    {
+      "id": "repeated-separators-and-empty-labels",
+      "intent": "Repeated commas and whitespace-only ordinary labels are discarded.",
+      "input": " , , ",
+      "expected": []
+    },
+    {
+      "id": "trim-collapse-lowercase",
+      "intent": "Trim ordinary boundary whitespace, collapse internal ordinary runs, and lowercase ASCII letters.",
+      "input": "  Foo \t bar \n ",
+      "expected": [
+        "foo bar"
+      ]
+    },
+    {
+      "id": "quoted-comma-and-adjacency",
+      "intent": "A comma inside quotes is literal, quote delimiters are removed, and adjacent text concatenates.",
+      "input": "pre\"A,B\"post",
+      "expected": [
+        "prea,bpost"
+      ]
+    },
+    {
+      "id": "quoted-quote-toggle-anywhere",
+      "intent": "Quoted and unquoted fragments concatenate when quote delimiters occur within a label.",
+      "input": "ab\"CD\"ef,\"g\"HI",
+      "expected": [
+        "abcdef",
+        "ghi"
+      ]
+    },
+    {
+      "id": "escaped-delimiters",
+      "intent": "Escaped comma, quote, and backslash are preserved literally and do not act as delimiters.",
+      "input": "a\\,b\\\"c\\\\d,e",
+      "expected": [
+        "a,b\"c\\d",
+        "e"
+      ]
+    },
+    {
+      "id": "escaped-whitespace-protected",
+      "intent": "Escaped boundary whitespace remains protected with exact content and multiplicity.",
+      "input": "\\ A\\ ",
+      "expected": [
+        " a "
+      ]
+    },
+    {
+      "id": "quoted-whitespace-protected",
+      "intent": "Quoted whitespace at label boundaries is preserved rather than trimmed.",
+      "input": "  \" x  \"  ",
+      "expected": [
+        " x  "
+      ]
+    },
+    {
+      "id": "protected-breaks-ordinary-runs",
+      "intent": "Protected whitespace breaks ordinary whitespace runs while each ordinary run collapses independently.",
+      "input": "a \" \"  b",
+      "expected": [
+        "a   b"
+      ]
+    },
+    {
+      "id": "quoted-comma-with-escaped-quote",
+      "intent": "An escaped quote inside quoted mode is literal and a quoted comma remains part of the label.",
+      "input": "\"x\\\"y,z\",q",
+      "expected": [
+        "x\"y,z",
+        "q"
+      ]
+    },
+    {
+      "id": "case-fold-preserve-other-characters",
+      "intent": "Lowercase only ASCII A-Z while preserving punctuation and other literal characters.",
+      "input": "ÄX-9_#Z",
+      "expected": [
+        "Äx-9_#z"
+      ]
+    },
+    {
+      "id": "deduplicate-first-order",
+      "intent": "Normalized duplicate labels are discarded after preserving the first occurrence order.",
+      "input": " Foo,foo,\"FOO\",Bar, bar ",
+      "expected": [
+        "foo",
+        "bar"
+      ]
+    },
+    {
+      "id": "protected-whitespace-only",
+      "intent": "A label containing only quoted whitespace is nonempty and retained exactly.",
+      "input": "\" \t \"",
+      "expected": [
+        " \t "
+      ]
+    },
+    {
+      "id": "mixed-empty-and-valid",
+      "intent": "Empty labels from separators are discarded while valid labels remain in order.",
+      "input": ",,A,,\"\",, B ,,",
+      "expected": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "id": "trailing-backslash-error",
+      "intent": "A trailing unpaired backslash raises ValueError for the whole input even after a valid label.",
+      "input": "ok,bad\\",
+      "expected": null
+    },
+    {
+      "id": "unclosed-quote-error",
+      "intent": "An unclosed quote raises ValueError for the whole input after an otherwise valid preceding label.",
+      "input": "ok,\"bad",
+      "expected": null
+    },
+    {
+      "id": "escaped-comma-and-quoted-mode",
+      "intent": "Escaped comma does not split, while a later unescaped comma outside quotes does split.",
+      "input": "one\\,two,\"three,four\",five",
+      "expected": [
+        "one,two",
+        "three,four",
+        "five"
+      ]
+    },
+    {
+      "id": "ordinary-whitespace-around-protected",
+      "intent": "Ordinary whitespace is trimmed at true boundaries but protected whitespace remains adjacent to content.",
+      "input": " \t\" A \" \n, B \t C ",
+      "expected": [
+        " A ",
+        "b c"
+      ]
+    }
+  ],
+  "properties": [
+    "unique_nonempty_labels",
+    "ascii_lowercase"
+  ],
+  "rationale": "These deterministic cases cover empty input and empty labels, separator handling, quote toggling and adjacency, escaped delimiters and whitespace, ordinary versus protected whitespace normalization, ASCII-only lowercasing, preservation of other characters, deduplication order, whitespace-only protected labels, and whole-input errors for trailing backslashes and unclosed quotes."
+}

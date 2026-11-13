@@ -1,0 +1,19 @@
+You are the separate native Implementer. Read STAGE32_CONTRACT.md and
+the authorized project source under project/. Independent acceptance has already been frozen;
+it is deliberately inaccessible. Address the actual collection-pass temporal
+integrity risk with the smallest maintainable change using project conventions.
+Authorized changed paths ONLY: project/collector/run.py, project/README.md, and new
+project/tests/test_collection_date.py. All contract paths are relative to project/.
+Filesystem confinement grants writes to this disposable project directory; the
+parent's final gate rejects every changed path outside the exact three-file list.
+No other changes, new dependencies, historical data,
+schemas, collectors, persistence redesign, production access or new infrastructure.
+Keep complete historical days as exact zero-call/no-write no-ops. Reject off-date
+unfinished/new passes with descriptive ValueError before calls or writes. Preserve
+same-day retry and existing default date/clock semantics. Document behavior in
+README and add focused implementation-local tests if useful. Source-only export
+has no real archive data; parent owns the actual frozen tests and full verification.
+Do not access other workspaces, frozen tests, credentials, network, or subagents.
+Only exact authorized files may remain changed. Use compile() without cache if
+checking syntax; parent runs actual pytest/Ruff in read-only source export.
+End after saving and report changed paths and compatibility considerations.

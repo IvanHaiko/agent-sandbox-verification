@@ -1,0 +1,27 @@
+{
+  "original_loader": {
+    "function_names": [
+      "_load_steam_store_ok",
+      "_load_steam_store_redirected",
+      "load_steam_store_file"
+    ],
+    "record_persistence_call_sites": 2,
+    "conditionals_in_loader_functions": 7
+  },
+  "candidate_loader": {
+    "function_names": [
+      "_execute_steam_store_load",
+      "_load_steam_store_ok",
+      "_load_steam_store_redirected",
+      "load_steam_store_file"
+    ],
+    "record_persistence_call_sites": 1,
+    "conditionals_in_loader_functions": 2
+  },
+  "interpretation_complexity": "Outcome branching moved into pure preparation; semantic branching remains necessary, not eliminated.",
+  "new_abstractions": "One private frozen dataclass with four fields, three pure preparation functions, one effect executor; existing private adapters retained.",
+  "new_dependencies": [],
+  "unchanged_existing_function_count": 38,
+  "maintainability_basis": "One metadata persistence sequence; preparation testable without I/O; ordered transaction effects centralized, identities and replay mark arguments explicit.",
+  "costs": "Private cross-module preparation imports and a shallow frozen result add indirection; preserved legacy partial-success and counter quirks remain."
+}

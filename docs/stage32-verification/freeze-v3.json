@@ -1,0 +1,12 @@
+{
+  "version": "v3",
+  "supersedes": "v2",
+  "frozen_at": "2026-10-10T10:25:01.983979+00:00",
+  "hashes": {
+    "CONTRACT.md": "b8857ea91e699a2cc60bf04f7d4e278ca2eaa447c8a57ff2a6da30e188d048c5",
+    "tests/coverage.md": "ba3db8268e0c6631f130310e96db08e6abead13f6cd9394c3b40cf2839ba9297",
+    "tests/test_date_admission.py": "41daeca67ab3008a42ecf1e166d30574905ae27137361c81d51e98cc9e3bdc1a"
+  },
+  "implementer_not_launched": true,
+  "adjudication": "FROZEN_V2_ADJUDICATION.md"
+}

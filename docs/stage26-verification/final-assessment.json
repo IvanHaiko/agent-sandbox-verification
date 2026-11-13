@@ -1,0 +1,32 @@
+{
+  "verdict": "PARTIAL",
+  "accepted": false,
+  "native_workflow_outcome": "FAIL",
+  "reason": "Useful reviewable candidate and working Implementer tests delivered, but Independent Tester artifact validation failed and rejected raw outputs were lost; frozen independent acceptance and mutation evidence are unavailable. Reviewer rejects full acceptance for that gap.",
+  "separate_outcomes": {
+    "functional_correctness": "PARTIAL: 210 project tests pass; independent acceptance unavailable",
+    "backward_compatibility": "PARTIAL: original regression suite, 42 added tests, unchanged-function checks and static review support preservation; blind baseline/candidate check unavailable",
+    "code_quality": "PASS WITH NONBLOCKING LIMITATION: Reviewer confirms genuine engineering value; mutable dictionary internal contract adds coupling",
+    "test_independence": "PARTIAL: fresh blind context and scope verified; no valid frozen design/harness",
+    "execution_autonomy": "PARTIAL: Implementer independently invoked successful final checks; workflow halted and required one Controller failure closeout",
+    "framework_reliability": "FAIL: design/harness validation rejected artifacts and failed-output cleanup ordering lost their bytes",
+    "resource_efficiency": "PARTIAL: 4 native roles, 742.170 role seconds; no successful full independent outcome to compare"
+  },
+  "deliverables": {
+    "steam_patch": true,
+    "implementer_results": true,
+    "frozen_independent_design_and_acceptance": false,
+    "reviewer_assessment": true,
+    "assessment_document": true
+  },
+  "manual_interventions": {
+    "human_user": 0,
+    "controller_failure_closeout": 1,
+    "post_experiment_preservation_fix": 1,
+    "environment_startup_continuations": 0,
+    "role_retries": 0
+  },
+  "metrics": "metrics.json",
+  "original_failed_assessment": "assessment.json",
+  "review": "reject"
+}

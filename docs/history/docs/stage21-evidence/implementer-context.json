@@ -1,0 +1,129 @@
+{
+  "identity": {
+    "execution_id": "stage21-implementer",
+    "task_id": "STAGE20-LABELS",
+    "role": "implementer",
+    "phase": "implementation",
+    "contract_version": 1,
+    "workspace_id": "e622676823ddeb483d96e627ab02be9fe631c82cdd52a1ea70b3fd99e52af18e"
+  },
+  "model": "gpt-5.6-sol",
+  "reasoning": "high",
+  "bundle": {
+    "task": {
+      "task_id": "STAGE20-LABELS",
+      "contract_version": 1,
+      "public_interface": "def normalize_labels(value: str) -> list[str]",
+      "file": "src/normalize_labels.py",
+      "acceptance_criteria": [
+        "Scan ASCII strings left to right. An unescaped comma outside double quotes ends a label; repeated separators are allowed.",
+        "An unescaped double quote toggles quoted mode anywhere within a label; quote delimiters are removed and adjacent quoted/unquoted text concatenates.",
+        "Backslash escapes exactly the next character in either mode: remove the backslash, preserve the next character literally, and do not treat it as a quote or separator.",
+        "A trailing unpaired backslash or unclosed double quote raises ValueError for the whole input, even after otherwise valid labels.",
+        "Only ASCII whitespace (space, tab, CR, LF, vertical tab, form feed) that was neither quoted nor escaped is ordinary whitespace.",
+        "Trim ordinary whitespace from each label boundary before collapsing internal ordinary-whitespace runs to one ASCII space.",
+        "Quoted or escaped whitespace is protected: preserve its exact characters and multiplicity, including at label boundaries; it also breaks ordinary-whitespace runs.",
+        "Lowercase ASCII A-Z in all emitted characters; preserve other non-delimiter literal characters exactly.",
+        "After parsing and normalization, discard labels whose resulting string is empty. Whitespace-only protected labels are nonempty and retained.",
+        "Deduplicate normalized strings by exact equality, retaining first occurrence order. Empty input returns an empty list."
+      ],
+      "constraints": [
+        "Pure Python, standard library only, no external dependencies or I/O.",
+        "ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.",
+        "Do not add features or mutate any file other than src/normalize_labels.py."
+      ]
+    },
+    "contract": {
+      "task_id": "STAGE20-LABELS",
+      "contract_version": 1,
+      "public_interface": "def normalize_labels(value: str) -> list[str]",
+      "acceptance_criteria": [
+        "Scan ASCII strings left to right. An unescaped comma outside double quotes ends a label; repeated separators are allowed.",
+        "An unescaped double quote toggles quoted mode anywhere within a label; quote delimiters are removed and adjacent quoted/unquoted text concatenates.",
+        "Backslash escapes exactly the next character in either mode: remove the backslash, preserve the next character literally, and do not treat it as a quote or separator.",
+        "A trailing unpaired backslash or unclosed double quote raises ValueError for the whole input, even after otherwise valid labels.",
+        "Only ASCII whitespace (space, tab, CR, LF, vertical tab, form feed) that was neither quoted nor escaped is ordinary whitespace.",
+        "Trim ordinary whitespace from each label boundary before collapsing internal ordinary-whitespace runs to one ASCII space.",
+        "Quoted or escaped whitespace is protected: preserve its exact characters and multiplicity, including at label boundaries; it also breaks ordinary-whitespace runs.",
+        "Lowercase ASCII A-Z in all emitted characters; preserve other non-delimiter literal characters exactly.",
+        "After parsing and normalization, discard labels whose resulting string is empty. Whitespace-only protected labels are nonempty and retained.",
+        "Deduplicate normalized strings by exact equality, retaining first occurrence order. Empty input returns an empty list."
+      ],
+      "allowed_mutation_scope": [
+        "src/normalize_labels.py"
+      ],
+      "constraints": [
+        "Pure Python, standard library only, no external dependencies or I/O.",
+        "ASCII string inputs are in scope; Unicode and non-string behavior are unspecified.",
+        "Do not add features or mutate any file other than src/normalize_labels.py."
+      ],
+      "risks": [
+        "Removing whitespace provenance before normalization makes ordinary and protected whitespace indistinguishable; generic strip or split operations can destroy protected boundary whitespace and multiplicity.",
+        "Escape handling must precede quote and separator interpretation in both modes; escaped quotes must not toggle mode, and escaped commas must remain literal.",
+        "Quote delimiters emit no characters; empty quoted spans must not introduce spaces or prevent adjacent quoted and unquoted text from concatenating.",
+        "Returning accumulated labels before validating the entire input can miss a trailing unpaired backslash or unclosed quote.",
+        "Deduplicating before normalization or emitting directly from an unordered set can retain normalized duplicates or lose first occurrence order."
+      ]
+    }
+  },
+  "instruction": "Implement normalize_labels normally in the owned Docker workspace. One implementation pass plus useful bounded self-checks is preferred. Use write then check with self-chosen cases. For check, stdin is JSON [[input,expected],...] where expected is a list of strings, or null for expected ValueError. inspect/status only if useful. No raw commands. Report actual completion, changed files, summary, self-check results and uncertainty.",
+  "result_schema": {
+    "type": "object",
+    "properties": {
+      "task_id": {
+        "type": "string",
+        "const": "STAGE20-LABELS"
+      },
+      "contract_version": {
+        "type": "integer",
+        "const": 1
+      },
+      "outcome": {
+        "type": "string",
+        "enum": [
+          "completed",
+          "failed"
+        ]
+      },
+      "changed_files": {
+        "type": "array",
+        "items": {
+          "enum": [
+            "src/normalize_labels.py"
+          ],
+          "type": "string"
+        },
+        "maxItems": 1
+      },
+      "summary": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      },
+      "checks_run": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "maxItems": 20
+      },
+      "uncertainty": {
+        "type": "string",
+        "maxLength": 2000
+      }
+    },
+    "required": [
+      "task_id",
+      "contract_version",
+      "outcome",
+      "changed_files",
+      "summary",
+      "checks_run",
+      "uncertainty"
+    ],
+    "additionalProperties": false
+  },
+  "previous_conversation_visible": false
+}

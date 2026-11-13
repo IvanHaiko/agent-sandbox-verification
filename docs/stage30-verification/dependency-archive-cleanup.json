@@ -1,0 +1,30 @@
+[
+  {
+    "path": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage30-verification\\project\\runtime-closeout.zip",
+    "discarded_bytes": 94423951,
+    "archive_sha256": "191ab7cb47ef73f9efeaa028eed9a896f47c6814a88479ecf8f1d256ccae34ee",
+    "diagnostics": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage30-verification\\project\\runtime-diagnostics.zip",
+    "preserved_members": [
+      "files/.codex-owned",
+      "files/purpose.txt",
+      "files/postgres.log",
+      "outcome.json",
+      "links.json"
+    ],
+    "reason": "Downloaded dependencies and stopped empty test cluster; source and test outputs retained separately"
+  },
+  {
+    "path": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage30-verification\\project-direct\\runtime-closeout.zip",
+    "discarded_bytes": 94424592,
+    "archive_sha256": "cf76de6d9f204a1103686a01c3e1cc3474a2fa68326378c1a76e0d86b46643ad",
+    "diagnostics": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage30-verification\\project-direct\\runtime-diagnostics.zip",
+    "preserved_members": [
+      "files/.codex-owned",
+      "files/purpose.txt",
+      "files/postgres.log",
+      "outcome.json",
+      "links.json"
+    ],
+    "reason": "Downloaded dependencies and stopped empty test cluster; source and test outputs retained separately"
+  }
+]

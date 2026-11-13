@@ -1,0 +1,96 @@
+{
+  "attempt": 1,
+  "model": "gpt-5.6-sol",
+  "reasoning": "medium",
+  "candidate_exposed": false,
+  "previous_design_visible": false,
+  "valid": false,
+  "freezeable": false,
+  "cases": 0,
+  "failure_category": "socket_idle_timeout",
+  "roles": [
+    {
+      "label": "qualification-design",
+      "execution_id": "qualification-1-qualification-design",
+      "task_id": "STAGE20-LABELS",
+      "role": "test_engineer",
+      "phase": "test_design",
+      "contract_version": 1,
+      "workspace_id": "6f505c76e067a599350794e7e0ba513816c8f0abf1f33c10060c8dc4a8ddf5f8",
+      "model": "gpt-5.6-sol",
+      "reasoning": "medium",
+      "completed": false,
+      "execution_status": "unrecoverable",
+      "requests": 1,
+      "tool_calls": 0,
+      "candidate_sha256": null,
+      "frozen_tester_sha256": null,
+      "failure_category": "socket_idle_timeout",
+      "controller_host_process_names": [
+        "codex.exe",
+        "docker",
+        "powershell"
+      ],
+      "seconds": 40.67,
+      "usage": null,
+      "process_exited": true,
+      "gate_observations": [],
+      "transport_observations": [
+        {
+          "validation_passed": false,
+          "mime_category": "absent",
+          "response_bytes": 13702,
+          "eof": false,
+          "reader_shutdown_confirmed": true,
+          "body_failure": "socket_idle_timeout"
+        }
+      ],
+      "session_observations": {
+        "anomalies": []
+      },
+      "failure_receipt": {
+        "schema_version": 1,
+        "invocation_id": "qualification-1-qualification-design",
+        "role": "test_engineer",
+        "model": "gpt-5.6-sol",
+        "reasoning": "medium",
+        "role_status": "failed",
+        "accepted": false,
+        "recorded_at": "2026-10-07T09:53:55.822818+00:00",
+        "failure_category": "socket_idle_timeout",
+        "failure_detail": "socket_idle_timeout",
+        "request_count": 1,
+        "tool_call_count": 0,
+        "completed_tool_call_count": 0,
+        "tool_result_returned": false,
+        "last_completed_phase": "turn_started",
+        "response_validation_passed": false,
+        "eof_observed": false,
+        "reader_shutdown_confirmed": true,
+        "socket_idle_timeout_observed": true,
+        "parser_status": "passed",
+        "handoff_status": "failed",
+        "protocol_bytes": 17489,
+        "stderr_bytes": 0,
+        "protocol_anomaly_counters": {},
+        "candidate_written": false,
+        "candidate_preserved": false,
+        "candidate_archived": false,
+        "candidate_skipped_count": 0,
+        "candidates": []
+      },
+      "model_home_removed": true
+    }
+  ],
+  "failure_reason": "Codex/model protocol denied",
+  "containment": {
+    "production_source_unchanged": true,
+    "credential_store_unchanged": true,
+    "stale_owned_containers": 0,
+    "model_homes_removed": true,
+    "host_fallback": false,
+    "no_host_execution_attempt": true,
+    "disposable_storage_removed": true
+  },
+  "cleanup_passed": true
+}

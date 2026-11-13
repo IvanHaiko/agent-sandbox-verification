@@ -1,0 +1,18 @@
+cached.txt
+  ctime: 1791638400:845250100
+  mtime: 1791638400:845250100
+  dev: 67	ino: 1836002
+  uid: 1000	gid: 1000
+  size: 9	flags: 0
+staged.txt
+  ctime: 1791638401:430769200
+  mtime: 1791638401:430769200
+  dev: 67	ino: 1836003
+  uid: 1000	gid: 1000
+  size: 14	flags: 0
+unstaged.txt
+  ctime: 1791638400:857994400
+  mtime: 1791638400:857994400
+  dev: 67	ino: 1836004
+  uid: 1000	gid: 1000
+  size: 9	flags: 0

@@ -1,0 +1,9 @@
+You are the independent Tester continuing pre-freeze test admission.
+Read CONTRACT.md, ADJUDICATION.md and your own tests/ files. No Implementer has
+launched and no candidate exists. Parent adjudication identifies two fixture
+mistakes in your draft, reproduced on baseline: default UTC-date injection and
+removal of an unrelated permanent HTTP failure. Correct only these two tests in
+tests/test_date_admission.py using the documented public interfaces. Preserve
+all meaningful defect/compatibility assertions. Document v2 corrections in
+tests/coverage.md. Do not read implementation paths or other workspaces.
+Only tests/ is writable, no network or subagents. Syntax-compile after saving.

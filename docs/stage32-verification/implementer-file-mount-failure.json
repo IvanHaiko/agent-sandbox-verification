@@ -1,0 +1,8 @@
+{
+  "exit_code": 101,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "",
+  "stderr": "bwrap: Can't mkdir parents for /home/ivan/codex-role-dq4dprtj/README.md/.git: Not a directory\n\nthread 'main' (480) panicked at linux-sandbox/src/linux_run_main.rs:1271:21:\nfailed to inspect synthetic bubblewrap mount target /home/ivan/codex-role-dq4dprtj/collector/run.py/.aws: Not a directory (os error 20)\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n"
+}

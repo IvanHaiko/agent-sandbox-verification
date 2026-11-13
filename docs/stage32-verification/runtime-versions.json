@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "{\"python\": \"3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]\", \"requests\": \"2.32.3\", \"pytest\": \"8.3.3\", \"pyarrow\": \"25.0.1\"}\n",
+  "stderr": ""
+}

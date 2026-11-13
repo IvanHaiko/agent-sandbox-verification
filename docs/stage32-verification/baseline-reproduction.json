@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "{\"first_status\": \"partial\", \"retry_status\": \"complete\", \"retry_calls\": [\"https://huggingface.co/api/models/Vendor/Beta\"], \"partition\": \"2026-08-29\", \"stored_rows\": [{\"hf_id\": \"Vendor/Alpha\", \"fetched_at\": \"2026-08-29T12:00:00+00:00\"}, {\"hf_id\": \"Vendor/Beta\", \"fetched_at\": \"2026-08-30T12:00:00+00:00\"}]}\n",
+  "stderr": ""
+}

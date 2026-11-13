@@ -1,0 +1,238 @@
+{
+  "STAGE29_ARCHITECTURE_DECISION.md": {
+    "sha256": "713af3a7180d505b41a5f8f120ade60527d90f05840ffabb3530831e7ae52456",
+    "bytes": 41087
+  },
+  "STAGE29_SIMPLIFICATION_PLAN.md": {
+    "sha256": "f419648e1408420472b77b0c7ec93be7c7858809723891ecd790286367475706",
+    "bytes": 17430
+  },
+  "docs/stage29-verification/b-controller-malformed-artifact/assessment.json": {
+    "sha256": "aa1be97cb41e02e35c3e770734c7578586ae80ea4106209f1a96b58578da979f",
+    "bytes": 8071
+  },
+  "docs/stage29-verification/b-controller-malformed-artifact/controller-decision.json": {
+    "sha256": "3244778728087a098bbff12a3e573b5fbd1cb5c782f47580eb7c0b3fb6e1db50",
+    "bytes": 298
+  },
+  "docs/stage29-verification/b-controller-malformed-artifact/frozen-task.json": {
+    "sha256": "11d671fdc0913a7b23560f9db988996b588a3b1580fcad690b894c92cf1ddf6d",
+    "bytes": 1886
+  },
+  "docs/stage29-verification/b-controller-malformed-artifact/implementer-execution.json": {
+    "sha256": "3f03c94cffc59daf47135aa12125dbb13be900909e193bf6fe8d70d6b3eba578",
+    "bytes": 7073
+  },
+  "docs/stage29-verification/b-controller-malformed-artifact/implementer-input.md": {
+    "sha256": "cf426e6d6b3e63945ee1a0dad02de11fc6714689cd0bdfa5dfe613dcd73782a7",
+    "bytes": 2414
+  },
+  "docs/stage29-verification/b-controller-nonzero-with-partial-output/assessment.json": {
+    "sha256": "eb64798615d2973ab37052430a163059af349981017d0e984765cac98a7472d6",
+    "bytes": 8026
+  },
+  "docs/stage29-verification/b-controller-nonzero-with-partial-output/controller-decision.json": {
+    "sha256": "3244778728087a098bbff12a3e573b5fbd1cb5c782f47580eb7c0b3fb6e1db50",
+    "bytes": 298
+  },
+  "docs/stage29-verification/b-controller-nonzero-with-partial-output/frozen-task.json": {
+    "sha256": "11d671fdc0913a7b23560f9db988996b588a3b1580fcad690b894c92cf1ddf6d",
+    "bytes": 1886
+  },
+  "docs/stage29-verification/b-controller-nonzero-with-partial-output/implementer-execution.json": {
+    "sha256": "3e949e5ac0945480da20a4a816b66f3f86105cada7c63a9f1b887ca34ae81f95",
+    "bytes": 7023
+  },
+  "docs/stage29-verification/b-controller-nonzero-with-partial-output/implementer-input.md": {
+    "sha256": "cf426e6d6b3e63945ee1a0dad02de11fc6714689cd0bdfa5dfe613dcd73782a7",
+    "bytes": 2414
+  },
+  "docs/stage29-verification/b-controller-out-of-scope-file/assessment.json": {
+    "sha256": "12fd7a3c3f920746603af992737fb2096933a5185a0cd0aee517f60b5dfbd78c",
+    "bytes": 8039
+  },
+  "docs/stage29-verification/b-controller-out-of-scope-file/controller-decision.json": {
+    "sha256": "3244778728087a098bbff12a3e573b5fbd1cb5c782f47580eb7c0b3fb6e1db50",
+    "bytes": 298
+  },
+  "docs/stage29-verification/b-controller-out-of-scope-file/frozen-task.json": {
+    "sha256": "11d671fdc0913a7b23560f9db988996b588a3b1580fcad690b894c92cf1ddf6d",
+    "bytes": 1886
+  },
+  "docs/stage29-verification/b-controller-out-of-scope-file/implementer-execution.json": {
+    "sha256": "fdf8c020de0c55a5007021e45f95fc87af574edee1f0d4307041613779155904",
+    "bytes": 7054
+  },
+  "docs/stage29-verification/b-controller-out-of-scope-file/implementer-input.md": {
+    "sha256": "cf426e6d6b3e63945ee1a0dad02de11fc6714689cd0bdfa5dfe613dcd73782a7",
+    "bytes": 2414
+  },
+  "docs/stage29-verification/b-controller-valid-authorized-secondary-only-repair/assessment.json": {
+    "sha256": "a6faffe778825f41470e4d899fa08e177c3569dda8438236ab54fcea101ca423",
+    "bytes": 7947
+  },
+  "docs/stage29-verification/b-controller-valid-authorized-secondary-only-repair/controller-decision.json": {
+    "sha256": "3244778728087a098bbff12a3e573b5fbd1cb5c782f47580eb7c0b3fb6e1db50",
+    "bytes": 298
+  },
+  "docs/stage29-verification/b-controller-valid-authorized-secondary-only-repair/frozen-task.json": {
+    "sha256": "11d671fdc0913a7b23560f9db988996b588a3b1580fcad690b894c92cf1ddf6d",
+    "bytes": 1886
+  },
+  "docs/stage29-verification/b-controller-valid-authorized-secondary-only-repair/implementer-execution.json": {
+    "sha256": "763bc0c662ff1a4885c237d689d94f8ee531c0f5f460a6ebf274e0931b8de1fd",
+    "bytes": 6949
+  },
+  "docs/stage29-verification/b-controller-valid-authorized-secondary-only-repair/implementer-input.md": {
+    "sha256": "cf426e6d6b3e63945ee1a0dad02de11fc6714689cd0bdfa5dfe613dcd73782a7",
+    "bytes": 2414
+  },
+  "docs/stage29-verification/b-oracle.json": {
+    "sha256": "f47571f7e9c69246ba2e444b698e102cacd4e06a672a0ad4af384635fe523e62",
+    "bytes": 322
+  },
+  "docs/stage29-verification/c-acceptance.json": {
+    "sha256": "d528b8177440edef5301fba188158074726c4a8cb5e59ee9ab230f6e823fa60c",
+    "bytes": 268
+  },
+  "docs/stage29-verification/c-candidate.py.txt": {
+    "sha256": "6b55270993d7ea17e3d5fe35be0f6dccf1c67c8fc5c7d0cb6d7098f161035040",
+    "bytes": 167
+  },
+  "docs/stage29-verification/c-contract.md": {
+    "sha256": "3d3aa644be4a8af474a2bdcf85354b124fa3919c87924cb9af24639d385201de",
+    "bytes": 236
+  },
+  "docs/stage29-verification/c-design-unvalidated.json": {
+    "sha256": "cc585d57ade447083d71b7951869e3036e926b2d5cb082b4cc200835b1aa8945",
+    "bytes": 1315
+  },
+  "docs/stage29-verification/c-freeze.json": {
+    "sha256": "d68b766c225a33ed80d5d4b6467b419ce1ecfa614466ff7a4593a2965f495cb2",
+    "bytes": 368
+  },
+  "docs/stage29-verification/c-frozen-acceptance.py": {
+    "sha256": "06486ba1a85de0ad1daaebf189456eded3f7770d514056132857f097909064a3",
+    "bytes": 790
+  },
+  "docs/stage29-verification/c-frozen-design.json": {
+    "sha256": "cc585d57ade447083d71b7951869e3036e926b2d5cb082b4cc200835b1aa8945",
+    "bytes": 1315
+  },
+  "docs/stage29-verification/c-implementer-execution.json": {
+    "sha256": "a13b3711141c3346aab11e94c3690df15f8fd1f0f0d9cd23516aece6e5955acc",
+    "bytes": 7014
+  },
+  "docs/stage29-verification/c-implementer-start.json": {
+    "sha256": "1b5f9613a011335dcc61b03f757a90b2b641621decaa6d0e4ca2f7058bf22d91",
+    "bytes": 425
+  },
+  "docs/stage29-verification/c-review-integrity.json": {
+    "sha256": "d737b5c2553960961009e9d26bf260c59b1bd7fd000e159d9980bc2185e77f14",
+    "bytes": 149
+  },
+  "docs/stage29-verification/c-reviewer-execution.json": {
+    "sha256": "0d30cc070a895a69c8da0367e9c929cb24d27faf35e9c887c00a73c1038991b6",
+    "bytes": 6522
+  },
+  "docs/stage29-verification/c-reviewer-result.json": {
+    "sha256": "553ef5f8d26c00b110cb8e7d7dd44ddefc368f6e6d5c92f38fdd46564a9bb259",
+    "bytes": 586
+  },
+  "docs/stage29-verification/c-tester-execution.json": {
+    "sha256": "7643a1e1f9a58bdc70e193ef846cf8a024e9f73635cccda2a73c734fe2cf7ef1",
+    "bytes": 8361
+  },
+  "docs/stage29-verification/c-tester-input.md": {
+    "sha256": "123c2b5ee766ee1a202168a2af1c50a4a4532400f683f8c7b3a2e356ab8abb06",
+    "bytes": 886
+  },
+  "docs/stage29-verification/cleanup.json": {
+    "sha256": "4dc4ca819be743bc0dab460282ad77f57e670f71f8194ca45e85333901b63885",
+    "bytes": 832
+  },
+  "docs/stage29-verification/experiment-a-native-explicit.json": {
+    "sha256": "4fe09de5ea3252e0f786f21e6cc82e700245f2217cfc1df6f0926cfe240fb09a",
+    "bytes": 2199
+  },
+  "docs/stage29-verification/experiment-a.json": {
+    "sha256": "b31fbd0ba528ba8a320f2495bc5852b3a3471b9d4c948f58147eb841a6d91b60",
+    "bytes": 5616
+  },
+  "docs/stage29-verification/experiment-b.json": {
+    "sha256": "d2e3c585639538d1f99f20b6bb740092500fd436863c258b1b08273753879137",
+    "bytes": 34126
+  },
+  "docs/stage29-verification/final-summary.json": {
+    "sha256": "1e1b9ec8c4f027070c100968482ae629f6070c309db3eebf23fe967b8873656a",
+    "bytes": 1254
+  },
+  "docs/stage29-verification/finalize.py": {
+    "sha256": "0b728612ca443c351a2680d1d973f5c1e829a8e5d4b6538f01ad4a03c70e9ff4",
+    "bytes": 5552
+  },
+  "docs/stage29-verification/framework-regression.txt": {
+    "sha256": "de61109d710d58548d0e2dfb2860ee1548f6e3af32d24fb1e6a562bec1baf40d",
+    "bytes": 100
+  },
+  "docs/stage29-verification/framework-regression.xml": {
+    "sha256": "0201e865a230588686e82313d5f0286f54e679f52a9dac260cd194418192454e",
+    "bytes": 5741
+  },
+  "docs/stage29-verification/inspect_evidence.py": {
+    "sha256": "0c50c8fea553c21c66c21831868a63eac855e120a93cf9f64e6a60c55da9db51",
+    "bytes": 4115
+  },
+  "docs/stage29-verification/native-agent-probe.json": {
+    "sha256": "cb59d3a154ed77f854f0b70a7b5c3733c9ba86e63486f8882b1a5bc662b3ae80",
+    "bytes": 2931
+  },
+  "docs/stage29-verification/native-config-key-inventory.json": {
+    "sha256": "eac0adeaddda306577780d035f9a2728bcb57153aefc867e5802a5de0d5dc3ed",
+    "bytes": 129
+  },
+  "docs/stage29-verification/native-features.txt": {
+    "sha256": "4dbe6285cb5aa18ab44e1a07620887185463994f0f94daafb1befaccfd5a2c1c",
+    "bytes": 10112
+  },
+  "docs/stage29-verification/original-before.json": {
+    "sha256": "fa764f2c4ab67865540f3870e755eb648cc63516904cd86f2ce65dded68b0396",
+    "bytes": 12156
+  },
+  "docs/stage29-verification/original-integrity.json": {
+    "sha256": "1ae748d5796cc995906ddf0fba5e5626f9c1c6ac79cec8fb465106e92254a77b",
+    "bytes": 24
+  },
+  "docs/stage29-verification/owned.json": {
+    "sha256": "4a9c11e837708bfd8330f5ab8c468ed08cc0d11db486e3f144e64f6ff20ef84e",
+    "bytes": 471
+  },
+  "docs/stage29-verification/previous-archives-audit.json": {
+    "sha256": "645e51a76c50eb4eb24df04d12b04590d51d019988d1dee0de08f5fcf95135ae",
+    "bytes": 3509
+  },
+  "docs/stage29-verification/probes.py": {
+    "sha256": "548642ad5a9155897c2e1f8107f7549487437aa5a352c9c4f14f598378f11a4b",
+    "bytes": 16281
+  },
+  "docs/stage29-verification/REPRODUCE.md": {
+    "sha256": "dcf5af4208de21272017c7543e9ddc8eaf260438378117a6210a46c0b7eff266",
+    "bytes": 8458
+  },
+  "docs/stage29-verification/source-inventory.json": {
+    "sha256": "fff66b10a690b460247425650a336982231dee58e26800d52b6ea032453e142f",
+    "bytes": 22237
+  },
+  "docs/stage29-verification/stage27-selected-evidence.json": {
+    "sha256": "724f39e1ce9898850ad7669b4ee5bfd56e88ab910fc09133ac5c3158f5c7c281",
+    "bytes": 14194
+  },
+  "docs/stage29-verification/stage28-selected-evidence.json": {
+    "sha256": "20117fc383ad71981d9d3933fd0ee76ffd3118949e503f92ac0020b63063c943",
+    "bytes": 24031
+  },
+  "docs/stage29-verification/workspace-integrity.json": {
+    "sha256": "c0a114e5e77fdf0f0d8330a9c1b6a4b2ab00f8461f4f92c7bc25a61cec7d0476",
+    "bytes": 197
+  }
+}

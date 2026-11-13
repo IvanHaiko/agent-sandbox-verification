@@ -1,0 +1,20 @@
+{
+  "focused": {
+    "passed": 95,
+    "skipped": 1,
+    "failed": 0,
+    "evidence": "focused-checks.xml",
+    "skip_reason": "Prior Stage21 one-shot runtime already removed"
+  },
+  "synthetic_real_codex_docker_recovery": {
+    "passed": 1,
+    "live_model_requests": 0,
+    "evidence": "synthetic-recovery/result.json"
+  },
+  "current_source_bound_admission": {
+    "passed": 1,
+    "live_model_requests": 0,
+    "evidence": "fresh-admission.json"
+  },
+  "broader_default_regression": "Interrupted after stop condition; no complete full-suite result or pass claimed"
+}

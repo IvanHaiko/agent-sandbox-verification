@@ -1,0 +1,37 @@
+-- Migration 015: make steam_store_attempts / steam_store_errors
+-- idempotent under a bronze replay.
+--
+-- Found while verifying migration 014's own retry policy: loading the
+-- same Steam Store bronze file twice through load_data (an expected
+-- recovery path -- rule 2 says a failed *load* re-runs without
+-- re-hitting the API) bumped steam_store_attempts from 1 to 3 across two
+-- replays, because insert_game and mark_steam_store_enrichment_result
+-- both did a plain "+ 1" on every call, with no way to tell "Steam
+-- answered again" from "we re-read the same answer off disk". For
+-- transport_error specifically this is not just a cosmetic count: two
+-- loads of one real failure could trip the 3-attempt ceiling on a game
+-- Steam only ever actually failed to answer once.
+--
+-- steam_store_fetched_at stores the envelope's own fetch timestamp
+-- (extract_steam_store.py's fetched_at, the moment the HTTP request
+-- actually happened) as its own column, separate from
+-- steam_store_updated_at (which keeps meaning "when this row was last
+-- written", i.e. the load time). This is the identical distinction
+-- already made for Twitch in migration 010 -- sample_time is the real
+-- observation instant, snapshot_time is the load clock -- applied here
+-- to Steam Store instead of invented fresh.
+--
+-- steam_store_attempts and steam_store_errors now increment only when
+-- the incoming fetched_at differs from the one already stored on the
+-- row (see src/load.py) -- an exact match means this call is a replay of
+-- an already-recorded fetch, and both counters are left untouched.
+--
+-- No backfill for existing rows: steam_store_fetched_at is left NULL
+-- for all 45 502 games exactly as steam_store_attempts and
+-- steam_store_errors were left at 0 in migration 014, for the same
+-- reason -- no cooldown or ceiling reads steam_store_fetched_at
+-- directly, it only gates future increments, so there is nothing an
+-- invented historical value would protect.
+
+ALTER TABLE games
+ADD COLUMN steam_store_fetched_at TIMESTAMPTZ;

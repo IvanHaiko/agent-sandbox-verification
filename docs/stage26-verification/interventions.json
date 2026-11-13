@@ -1,0 +1,26 @@
+{
+  "human_user_interventions": 0,
+  "manual_environment_startup_continuations": 0,
+  "automatic_role_retries": 0,
+  "model_switches": 0,
+  "controller_operations": [
+    "Read actual source and preserve dirty checkout fingerprint.",
+    "Implement and focus-test reusable check facility and local dependency provisioning.",
+    "Approve/freeze Architect proposal; resolve private snapshot HEAD using archive source manifest.",
+    "Collect exact candidate, freeze blind tests, run deterministic controls/acceptance and read-only review."
+  ],
+  "environment_observations": [
+    {
+      "event": "Initial Windows sandbox git -C outside-workspace read returned Permission denied.",
+      "recovery": "Authorized Controller read through reviewed escalation; target was read-only. This occurred during baseline inspection, not a model or acceptance startup."
+    },
+    {
+      "event": "Stage25 functional blocker diagnosed from retained evidence: denied temporary paths and globally satisfied dependencies outside sandbox visibility.",
+      "recovery": "Controller-provided scratch, private pinned installs, and native contained predefined checks; verified before roles began."
+    }
+  ],
+  "implementer_internal_correction": "One F401 unused re-export lint failure; Implementer corrected its own candidate and reran all three checks in its original invocation. Not a Controller repair or role retry.",
+  "controller_manual_failure_closeouts": 1,
+  "post_experiment_artifact_preservation_fixes": 1,
+  "failure_closeout": "Original failed workflow remains immutable. Controller separately reproduced/tested the candidate and invoked only the outstanding Reviewer; no independent freeze/acceptance or role retry occurred."
+}

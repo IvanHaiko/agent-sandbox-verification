@@ -1,0 +1,32 @@
+[
+  {
+    "execution_id": "8bd5eef2903b48cd90d3b9eef3edac00",
+    "name": "agentctl-88fa0fe06cb4-8bd5eef2903b48cd90d3b9eef3edac00",
+    "owner": "88fa0fe06cb490768d7b0a98",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow-retry3\\runtime\\codex-agent-system-a51ec738ea1eca8b\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-07T08:36:42.846784+00:00",
+    "status": "completed",
+    "input_commit": "a63f7767dd913c302a6dfd5b81eb3914f6e701dc",
+    "container_id": "8f38241f4c6628657d765389602006fe59eaddb57bd7da70f7081904d4418583",
+    "changed_paths": [],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  },
+  {
+    "execution_id": "c6a191e0efbf4baaa46ccaac424f5726",
+    "name": "agentctl-88fa0fe06cb4-c6a191e0efbf4baaa46ccaac424f5726",
+    "owner": "88fa0fe06cb490768d7b0a98",
+    "workspace": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow-retry3\\runtime\\codex-agent-system-a51ec738ea1eca8b\\worktrees\\STAGE20-LABELS\\implementer",
+    "created_at": "2026-10-07T08:37:22.217815+00:00",
+    "status": "completed",
+    "input_commit": "a63f7767dd913c302a6dfd5b81eb3914f6e701dc",
+    "container_id": "241d162628a1852ee6de02bd4094b88caaa6b2f34d859449f6325604d920f8ea",
+    "changed_paths": [
+      "src/normalize_labels.py"
+    ],
+    "returncode": 0,
+    "cleanup": "confirmed",
+    "storage_cleanup": "confirmed"
+  }
+]

@@ -1,0 +1,176 @@
+{
+  "summary": "Implemented atomic complete nonempty Twitch hour replacement with UTC fetched_at ordering, stale no-op, identical replay without writes, and equal-time conflict rejection. Validates observations before connecting; serializes transactions at READ COMMITTED with a SHARE ROW EXCLUSIVE table lock, upserts retained games and deletes absent games in one transaction.",
+  "files_changed": [
+    "src/load.py",
+    "src/transform.py",
+    "tests/test_load.py",
+    "tests/test_twitch_hour_replacement.py",
+    "docs/TWITCH_HOUR_REPLACEMENT.md",
+    "handoff/implementation.json"
+  ],
+  "compatibility": "Preserves integer loader returns, CLI dispatch, per-row helper interface, retained row IDs and snapshot_time, bronze provenance, unrelated hours/loaders and historical files/migrations. Legacy nonempty observations remain accepted. Existing SQL mocks only adjusted to allow transaction statements and inspect INSERT statements among lock/read/delete statements.",
+  "tests": [
+    {
+      "command": [
+        "/usr/bin/env",
+        "POSTGRES_HOST=/home/ivan/codex-role-2x9u3e_e/socket",
+        "POSTGRES_PORT=55425",
+        "POSTGRES_USER=stage25",
+        "POSTGRES_PASSWORD=disposable-local-only",
+        "POSTGRES_DB=stage25_unused",
+        "POSTGRES_TEST_DB=stage25_implementer",
+        "REQUIRE_DB_TESTS=1",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp=tests/.stage25-tmp",
+        "tests/test_load.py",
+        "tests/test_transform.py",
+        "tests/test_main.py",
+        "tests/test_extract.py",
+        "tests/test_migrations.py",
+        "tests/test_twitch_hour_replacement.py",
+        "-k",
+        "not test_db_"
+      ],
+      "exit_code": 1,
+      "result": "Failed before collection: pytest fd capture could not create a native temporary file. No tests executed."
+    },
+    {
+      "command": [
+        "/usr/bin/env",
+        "POSTGRES_HOST=/home/ivan/codex-role-2x9u3e_e/socket",
+        "POSTGRES_PORT=55425",
+        "POSTGRES_USER=stage25",
+        "POSTGRES_PASSWORD=disposable-local-only",
+        "POSTGRES_DB=stage25_unused",
+        "POSTGRES_TEST_DB=stage25_implementer",
+        "REQUIRE_DB_TESTS=1",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "TMPDIR=/home/ivan/codex-role-fp7kjd04/tests/.stage25-tmp",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp=tests/.stage25-tmp",
+        "tests/test_load.py",
+        "tests/test_transform.py",
+        "tests/test_main.py",
+        "tests/test_extract.py",
+        "tests/test_migrations.py",
+        "tests/test_twitch_hour_replacement.py",
+        "-k",
+        "not test_db_"
+      ],
+      "preparation": "mkdir -p tests/.stage25-tmp",
+      "exit_code": 4,
+      "result": "Failed importing tests/conftest.py: ModuleNotFoundError: No module named 'dotenv'. No tests executed, no database connection attempted. No packages installed or import substitutes introduced."
+    },
+    {
+      "command": [
+        "/usr/bin/env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python/bin/python",
+        "-B",
+        "-m",
+        "ruff",
+        "check",
+        "src/load.py",
+        "src/transform.py",
+        "tests/test_load.py",
+        "tests/test_twitch_hour_replacement.py"
+      ],
+      "result": "Initial lint invocation failed because the default .ruff_cache is outside authorized writable paths; rerun used --no-cache."
+    },
+    {
+      "command": [
+        "/usr/bin/env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "/mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python/bin/python",
+        "-B",
+        "-m",
+        "ruff",
+        "check",
+        "--no-cache",
+        "src/load.py",
+        "src/transform.py",
+        "tests/test_load.py",
+        "tests/test_twitch_hour_replacement.py"
+      ],
+      "exit_code": 0,
+      "result": "All checks passed on final files."
+    },
+    {
+      "command": [
+        "/mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python/bin/python",
+        "-B",
+        "-"
+      ],
+      "script": "import ast\nfrom pathlib import Path\nfor filename in ('src/load.py', 'src/transform.py', 'tests/test_load.py', 'tests/test_twitch_hour_replacement.py'):\n    ast.parse(Path(filename).read_text(), filename=filename)",
+      "exit_code": 0,
+      "result": "All four changed Python files parse successfully."
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "result": "No whitespace errors."
+    }
+  ],
+  "controller_database_tests": {
+    "status": "Designed only; not executed by Implementer, respecting the database socket capability boundary.",
+    "command": [
+      "/usr/bin/env",
+      "POSTGRES_HOST=/home/ivan/codex-role-2x9u3e_e/socket",
+      "POSTGRES_PORT=55425",
+      "POSTGRES_USER=stage25",
+      "POSTGRES_PASSWORD=disposable-local-only",
+      "POSTGRES_DB=stage25_unused",
+      "POSTGRES_TEST_DB=stage25_implementer",
+      "REQUIRE_DB_TESTS=1",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "TMPDIR=/home/ivan/codex-role-fp7kjd04/tests/.stage25-tmp",
+      "/mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python/bin/python",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp=tests/.stage25-tmp",
+      "tests/test_twitch_hour_replacement.py",
+      "tests/test_loaders_idempotent_db.py"
+    ],
+    "preparation": "Provide the declared project dependencies (python-dotenv is missing in this runtime), create tests/.stage25-tmp, and remove that owned temporary directory after execution.",
+    "coverage": [
+      "initial load and identical replay including ID/insertion time equality",
+      "changed membership and aggregate values",
+      "stale no-op and equal-time conflict",
+      "UTC normalization and independent hours",
+      "rollback after actual SQL failure following a successful upsert",
+      "load_clock history and unknown bronze time rejection",
+      "same-hour concurrency for absent and populated hours, both arrival orders, with bounded pg_locks confirmation of lock contention"
+    ],
+    "fixture": "Existing tests/conftest.py separate-database lifecycle and full migration chain; REQUIRE_DB_TESTS=1."
+  },
+  "limitations": [
+    "Functional pytest verification is blocked before collection by missing python-dotenv in the supplied runtime. This is not a passing test result; Controller must run acceptance in a dependency-complete environment.",
+    "Database correctness and concurrency tests are unexecuted by design; only Controller may use the database socket.",
+    "The conservative table lock serializes writes across different hours as well as the same hour.",
+    "No authoritative empty replacement is supported: without a durable watermark it could permit stale resurrection.",
+    "Legacy saved observations have no pagination completion proof; unmarked upstream truncation cannot be detected.",
+    "Per-row helper calls alone do not implement full-observation replacement or ordering."
+  ],
+  "cleanup": "Removed tests/.stage25-tmp; bytecode disabled, pytest cache disabled, final Ruff run used --no-cache. No packages, network operations, subagents, commits or database execution."
+}

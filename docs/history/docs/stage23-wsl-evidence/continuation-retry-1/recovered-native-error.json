@@ -1,0 +1,7 @@
+{
+  "thread_id": "01a11698-9739-7733-866d-f9f471b63c58",
+  "diagnostic_rows_checked": 0,
+  "schema_errors": [],
+  "source": "Native bounded diagnostic store, read-only, exact thread and WARN/ERROR filter",
+  "credentials_or_rollout_files_read": false
+}

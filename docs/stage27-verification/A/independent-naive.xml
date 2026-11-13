@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="26" skipped="0" tests="34" time="2.310" timestamp="2026-10-09T10:03:15.531346+02:00" hostname="Ivan"><testcase classname="tests.test_stage27_evaluation" name="test_boundaries_preserve_exact_fragments_and_final_statement" time="0.002" /><testcase classname="tests.test_stage27_evaluation" name="test_quoted_regions_and_standard_backslash_semantics[SELECT 'left;right', 'it''s;quoted']" time="0.001"><failure message="assert [&quot;SELECT 'lef...&quot;, 'SELECT 9'] == [&quot;SELECT 'lef...&quot;, 'SELECT 9']&#10;  &#10;  At index 0 diff: &quot;SELECT 'left&quot; != &quot;SELECT 'left;right', 'it''s;quoted'&quot;&#10;  Left contains 2 more items, first extra item: &quot;quoted'&quot;&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = "SELECT 'left;right', 'it''s;quoted'"
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "SELECT 'left;right', 'it''s;quoted'",
+            'SELECT "semi;colon", "double"";quote" FROM "t;able"',
+            r"SELECT E'left\';right;end', E'it''s;fine'",
+            r"SELECT e'back\\slash;end', e'\";/*literal*/'",
+            r"SELECT 'back\'; SELECT 'standard;string'",
+            "SELECT '/* -- $$ ; */', \"--/*;$$\"",
+        ],
+    )
+    def test_quoted_regions_and_standard_backslash_semantics(split_sql, statement):
+        # One case intentionally contains two statements: a standard string's
+        # backslash does not escape its closing quote.
+        expected = (
+            [r"SELECT 'back\'", "SELECT 'standard;string'"]
+            if statement == r"SELECT 'back\'; SELECT 'standard;string'"
+            else [statement]
+        )
+&gt;       assert split_sql(statement + "; SELECT 9;") == expected + ["SELECT 9"]
+E       assert ["SELECT 'lef...", 'SELECT 9'] == ["SELECT 'lef...", 'SELECT 9']
+E         
+E         At index 0 diff: "SELECT 'left" != "SELECT 'left;right', 'it''s;quoted'"
+E         Left contains 2 more items, first extra item: "quoted'"
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:45: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_quoted_regions_and_standard_backslash_semantics[SELECT &quot;semi;colon&quot;, &quot;double&quot;&quot;;quote&quot; FROM &quot;t;able&quot;]" time="0.001"><failure message="assert ['SELECT &quot;sem...', 'SELECT 9'] == ['SELECT &quot;sem...', 'SELECT 9']&#10;  &#10;  At index 0 diff: 'SELECT &quot;semi' != 'SELECT &quot;semi;colon&quot;, &quot;double&quot;&quot;;quote&quot; FROM &quot;t;able&quot;'&#10;  Left contains 3 more items, first extra item: 'quote&quot; FROM &quot;t'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = 'SELECT "semi;colon", "double"";quote" FROM "t;able"'
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "SELECT 'left;right', 'it''s;quoted'",
+            'SELECT "semi;colon", "double"";quote" FROM "t;able"',
+            r"SELECT E'left\';right;end', E'it''s;fine'",
+            r"SELECT e'back\\slash;end', e'\";/*literal*/'",
+            r"SELECT 'back\'; SELECT 'standard;string'",
+            "SELECT '/* -- $$ ; */', \"--/*;$$\"",
+        ],
+    )
+    def test_quoted_regions_and_standard_backslash_semantics(split_sql, statement):
+        # One case intentionally contains two statements: a standard string's
+        # backslash does not escape its closing quote.
+        expected = (
+            [r"SELECT 'back\'", "SELECT 'standard;string'"]
+            if statement == r"SELECT 'back\'; SELECT 'standard;string'"
+            else [statement]
+        )
+&gt;       assert split_sql(statement + "; SELECT 9;") == expected + ["SELECT 9"]
+E       assert ['SELECT "sem...', 'SELECT 9'] == ['SELECT "sem...', 'SELECT 9']
+E         
+E         At index 0 diff: 'SELECT "semi' != 'SELECT "semi;colon", "double"";quote" FROM "t;able"'
+E         Left contains 3 more items, first extra item: 'quote" FROM "t'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:45: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_quoted_regions_and_standard_backslash_semantics[SELECT E'left\\';right;end', E'it''s;fine']" time="0.002"><failure message="assert [&quot;SELECT E'le...&quot;, 'SELECT 9'] == [&quot;SELECT E'le...&quot;, 'SELECT 9']&#10;  &#10;  At index 0 diff: &quot;SELECT E'left\\'&quot; != &quot;SELECT E'left\\';right;end', E'it''s;fine'&quot;&#10;  Left contains 3 more items, first extra item: &quot;end', E'it''s&quot;&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = "SELECT E'left\\';right;end', E'it''s;fine'"
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "SELECT 'left;right', 'it''s;quoted'",
+            'SELECT "semi;colon", "double"";quote" FROM "t;able"',
+            r"SELECT E'left\';right;end', E'it''s;fine'",
+            r"SELECT e'back\\slash;end', e'\";/*literal*/'",
+            r"SELECT 'back\'; SELECT 'standard;string'",
+            "SELECT '/* -- $$ ; */', \"--/*;$$\"",
+        ],
+    )
+    def test_quoted_regions_and_standard_backslash_semantics(split_sql, statement):
+        # One case intentionally contains two statements: a standard string's
+        # backslash does not escape its closing quote.
+        expected = (
+            [r"SELECT 'back\'", "SELECT 'standard;string'"]
+            if statement == r"SELECT 'back\'; SELECT 'standard;string'"
+            else [statement]
+        )
+&gt;       assert split_sql(statement + "; SELECT 9;") == expected + ["SELECT 9"]
+E       assert ["SELECT E'le...", 'SELECT 9'] == ["SELECT E'le...", 'SELECT 9']
+E         
+E         At index 0 diff: "SELECT E'left\\'" != "SELECT E'left\\';right;end', E'it''s;fine'"
+E         Left contains 3 more items, first extra item: "end', E'it''s"
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:45: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_quoted_regions_and_standard_backslash_semantics[SELECT e'back\\\\slash;end', e'\\&quot;;/*literal*/']" time="0.001"><failure message="assert [&quot;SELECT e'ba...&quot;, 'SELECT 9'] == ['SELECT e\'b...', 'SELECT 9']&#10;  &#10;  At index 0 diff: &quot;SELECT e'back\\\\slash&quot; != 'SELECT e\'back\\\\slash;end\', e\'\\&quot;;/*literal*/\''&#10;  Left contains 2 more items, first extra item: &quot;/*literal*/'&quot;&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = 'SELECT e\'back\\\\slash;end\', e\'\\";/*literal*/\''
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "SELECT 'left;right', 'it''s;quoted'",
+            'SELECT "semi;colon", "double"";quote" FROM "t;able"',
+            r"SELECT E'left\';right;end', E'it''s;fine'",
+            r"SELECT e'back\\slash;end', e'\";/*literal*/'",
+            r"SELECT 'back\'; SELECT 'standard;string'",
+            "SELECT '/* -- $$ ; */', \"--/*;$$\"",
+        ],
+    )
+    def test_quoted_regions_and_standard_backslash_semantics(split_sql, statement):
+        # One case intentionally contains two statements: a standard string's
+        # backslash does not escape its closing quote.
+        expected = (
+            [r"SELECT 'back\'", "SELECT 'standard;string'"]
+            if statement == r"SELECT 'back\'; SELECT 'standard;string'"
+            else [statement]
+        )
+&gt;       assert split_sql(statement + "; SELECT 9;") == expected + ["SELECT 9"]
+E       assert ["SELECT e'ba...", 'SELECT 9'] == ['SELECT e\'b...', 'SELECT 9']
+E         
+E         At index 0 diff: "SELECT e'back\\\\slash" != 'SELECT e\'back\\\\slash;end\', e\'\\";/*literal*/\''
+E         Left contains 2 more items, first extra item: "/*literal*/'"
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:45: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_quoted_regions_and_standard_backslash_semantics[SELECT 'back\\'; SELECT 'standard;string']" time="0.001"><failure message="assert [&quot;SELECT 'bac...&quot;, 'SELECT 9'] == [&quot;SELECT 'bac...&quot;, 'SELECT 9']&#10;  &#10;  At index 1 diff: &quot;SELECT 'standard&quot; != &quot;SELECT 'standard;string'&quot;&#10;  Left contains one more item: 'SELECT 9'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = "SELECT 'back\\'; SELECT 'standard;string'"
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "SELECT 'left;right', 'it''s;quoted'",
+            'SELECT "semi;colon", "double"";quote" FROM "t;able"',
+            r"SELECT E'left\';right;end', E'it''s;fine'",
+            r"SELECT e'back\\slash;end', e'\";/*literal*/'",
+            r"SELECT 'back\'; SELECT 'standard;string'",
+            "SELECT '/* -- $$ ; */', \"--/*;$$\"",
+        ],
+    )
+    def test_quoted_regions_and_standard_backslash_semantics(split_sql, statement):
+        # One case intentionally contains two statements: a standard string's
+        # backslash does not escape its closing quote.
+        expected = (
+            [r"SELECT 'back\'", "SELECT 'standard;string'"]
+            if statement == r"SELECT 'back\'; SELECT 'standard;string'"
+            else [statement]
+        )
+&gt;       assert split_sql(statement + "; SELECT 9;") == expected + ["SELECT 9"]
+E       assert ["SELECT 'bac...", 'SELECT 9'] == ["SELECT 'bac...", 'SELECT 9']
+E         
+E         At index 1 diff: "SELECT 'standard" != "SELECT 'standard;string'"
+E         Left contains one more item: 'SELECT 9'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:45: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_quoted_regions_and_standard_backslash_semantics[SELECT '/* -- $$ ; */', &quot;--/*;$$&quot;]" time="0.001"><failure message="assert [&quot;SELECT '/* ...', 'SELECT 9'] == ['SELECT \'/*...', 'SELECT 9']&#10;  &#10;  At index 0 diff: &quot;SELECT '/* -- $$&quot; != 'SELECT \'/* -- $$ ; */\', &quot;--/*;$$&quot;'&#10;  Left contains 2 more items, first extra item: '$$&quot;'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = 'SELECT \'/* -- $$ ; */\', "--/*;$$"'
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "SELECT 'left;right', 'it''s;quoted'",
+            'SELECT "semi;colon", "double"";quote" FROM "t;able"',
+            r"SELECT E'left\';right;end', E'it''s;fine'",
+            r"SELECT e'back\\slash;end', e'\";/*literal*/'",
+            r"SELECT 'back\'; SELECT 'standard;string'",
+            "SELECT '/* -- $$ ; */', \"--/*;$$\"",
+        ],
+    )
+    def test_quoted_regions_and_standard_backslash_semantics(split_sql, statement):
+        # One case intentionally contains two statements: a standard string's
+        # backslash does not escape its closing quote.
+        expected = (
+            [r"SELECT 'back\'", "SELECT 'standard;string'"]
+            if statement == r"SELECT 'back\'; SELECT 'standard;string'"
+            else [statement]
+        )
+&gt;       assert split_sql(statement + "; SELECT 9;") == expected + ["SELECT 9"]
+E       assert ["SELECT '/* ...', 'SELECT 9'] == ['SELECT \'/*...', 'SELECT 9']
+E         
+E         At index 0 diff: "SELECT '/* -- $$" != 'SELECT \'/* -- $$ ; */\', "--/*;$$"'
+E         Left contains 2 more items, first extra item: '$$"'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:45: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_e_prefix_requires_identifier_token_boundary" time="0.001"><failure message="assert [&quot;SELECT (E't...&quot;, 'SELECT 2'] == [&quot;SELECT (E't...&quot;, 'SELECT 2']&#10;  &#10;  At index 0 diff: &quot;SELECT (E'text\\'&quot; != &quot;SELECT (E'text\\';still inside')&quot;&#10;  Left contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+
+    def test_e_prefix_requires_identifier_token_boundary(split_sql):
+        for prefix in ("nameE", "namee", "_E", "x1e", "caféE", "name$E"):
+            statement = "SELECT " + prefix + "'text\\'"
+            assert split_sql(statement + "; SELECT 2;") == [statement, "SELECT 2"]
+        for prefix in ("E", "e"):
+            statement = "SELECT (" + prefix + "'text\\';still inside')"
+&gt;           assert split_sql(statement + "; SELECT 2;") == [statement, "SELECT 2"]
+E           assert ["SELECT (E't...", 'SELECT 2'] == ["SELECT (E't...", 'SELECT 2']
+E             
+E             At index 0 diff: "SELECT (E'text\\'" != "SELECT (E'text\\';still inside')"
+E             Left contains one more item: 'SELECT 2'
+E             Use -v to get more diff
+
+tests/test_stage27_evaluation.py:54: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_quotes_keep_bodies_and_case_sensitive_tags[DO $$ BEGIN RAISE NOTICE 'a;b'; /* ; */ END $$]" time="0.001"><failure message="assert [&quot;DO $$ BEGIN..., 'SELECT 42'] == ['DO $$ BEGIN..., 'SELECT 42']&#10;  &#10;  At index 0 diff: &quot;DO $$ BEGIN RAISE NOTICE 'a&quot; != &quot;DO $$ BEGIN RAISE NOTICE 'a;b'; /* ; */ END $$&quot;&#10;  Left contains 3 more items, first extra item: '/*'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = "DO $$ BEGIN RAISE NOTICE 'a;b'; /* ; */ END $$"
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "DO $$ BEGIN RAISE NOTICE 'a;b'; /* ; */ END $$",
+            "SELECT $tag$one; ' -- /* $$ two$tag$",
+            "SELECT $_tag9$one;$other$two;$_tag9$",
+            "SELECT $A$one;$a$two;$A$",
+            "SELECT $a$one;$A$two;$a$",
+        ],
+    )
+    def test_dollar_quotes_keep_bodies_and_case_sensitive_tags(split_sql, statement):
+&gt;       assert split_sql(statement + "; SELECT 42") == [statement, "SELECT 42"]
+E       assert ["DO $$ BEGIN..., 'SELECT 42'] == ['DO $$ BEGIN..., 'SELECT 42']
+E         
+E         At index 0 diff: "DO $$ BEGIN RAISE NOTICE 'a" != "DO $$ BEGIN RAISE NOTICE 'a;b'; /* ; */ END $$"
+E         Left contains 3 more items, first extra item: '/*'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:68: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_quotes_keep_bodies_and_case_sensitive_tags[SELECT $tag$one; ' -- /* $$ two$tag$]" time="0.001"><failure message="assert ['SELECT $tag..., 'SELECT 42'] == ['SELECT $tag..., 'SELECT 42']&#10;  &#10;  At index 0 diff: 'SELECT $tag$one' != &quot;SELECT $tag$one; ' -- /* $$ two$tag$&quot;&#10;  Left contains one more item: 'SELECT 42'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = "SELECT $tag$one; ' -- /* $$ two$tag$"
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "DO $$ BEGIN RAISE NOTICE 'a;b'; /* ; */ END $$",
+            "SELECT $tag$one; ' -- /* $$ two$tag$",
+            "SELECT $_tag9$one;$other$two;$_tag9$",
+            "SELECT $A$one;$a$two;$A$",
+            "SELECT $a$one;$A$two;$a$",
+        ],
+    )
+    def test_dollar_quotes_keep_bodies_and_case_sensitive_tags(split_sql, statement):
+&gt;       assert split_sql(statement + "; SELECT 42") == [statement, "SELECT 42"]
+E       assert ['SELECT $tag..., 'SELECT 42'] == ['SELECT $tag..., 'SELECT 42']
+E         
+E         At index 0 diff: 'SELECT $tag$one' != "SELECT $tag$one; ' -- /* $$ two$tag$"
+E         Left contains one more item: 'SELECT 42'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:68: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_quotes_keep_bodies_and_case_sensitive_tags[SELECT $_tag9$one;$other$two;$_tag9$]" time="0.001"><failure message="AssertionError: assert ['SELECT $_ta..., 'SELECT 42'] == ['SELECT $_ta..., 'SELECT 42']&#10;  &#10;  At index 0 diff: 'SELECT $_tag9$one' != 'SELECT $_tag9$one;$other$two;$_tag9$'&#10;  Left contains 2 more items, first extra item: '$_tag9$'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = 'SELECT $_tag9$one;$other$two;$_tag9$'
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "DO $$ BEGIN RAISE NOTICE 'a;b'; /* ; */ END $$",
+            "SELECT $tag$one; ' -- /* $$ two$tag$",
+            "SELECT $_tag9$one;$other$two;$_tag9$",
+            "SELECT $A$one;$a$two;$A$",
+            "SELECT $a$one;$A$two;$a$",
+        ],
+    )
+    def test_dollar_quotes_keep_bodies_and_case_sensitive_tags(split_sql, statement):
+&gt;       assert split_sql(statement + "; SELECT 42") == [statement, "SELECT 42"]
+E       AssertionError: assert ['SELECT $_ta..., 'SELECT 42'] == ['SELECT $_ta..., 'SELECT 42']
+E         
+E         At index 0 diff: 'SELECT $_tag9$one' != 'SELECT $_tag9$one;$other$two;$_tag9$'
+E         Left contains 2 more items, first extra item: '$_tag9$'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:68: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_quotes_keep_bodies_and_case_sensitive_tags[SELECT $A$one;$a$two;$A$]" time="0.001"><failure message="AssertionError: assert ['SELECT $A$o..., 'SELECT 42'] == ['SELECT $A$o..., 'SELECT 42']&#10;  &#10;  At index 0 diff: 'SELECT $A$one' != 'SELECT $A$one;$a$two;$A$'&#10;  Left contains 2 more items, first extra item: '$A$'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = 'SELECT $A$one;$a$two;$A$'
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "DO $$ BEGIN RAISE NOTICE 'a;b'; /* ; */ END $$",
+            "SELECT $tag$one; ' -- /* $$ two$tag$",
+            "SELECT $_tag9$one;$other$two;$_tag9$",
+            "SELECT $A$one;$a$two;$A$",
+            "SELECT $a$one;$A$two;$a$",
+        ],
+    )
+    def test_dollar_quotes_keep_bodies_and_case_sensitive_tags(split_sql, statement):
+&gt;       assert split_sql(statement + "; SELECT 42") == [statement, "SELECT 42"]
+E       AssertionError: assert ['SELECT $A$o..., 'SELECT 42'] == ['SELECT $A$o..., 'SELECT 42']
+E         
+E         At index 0 diff: 'SELECT $A$one' != 'SELECT $A$one;$a$two;$A$'
+E         Left contains 2 more items, first extra item: '$A$'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:68: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_quotes_keep_bodies_and_case_sensitive_tags[SELECT $a$one;$A$two;$a$]" time="0.001"><failure message="AssertionError: assert ['SELECT $a$o..., 'SELECT 42'] == ['SELECT $a$o..., 'SELECT 42']&#10;  &#10;  At index 0 diff: 'SELECT $a$one' != 'SELECT $a$one;$A$two;$a$'&#10;  Left contains 2 more items, first extra item: '$a$'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+statement = 'SELECT $a$one;$A$two;$a$'
+
+    @pytest.mark.parametrize(
+        "statement",
+        [
+            "DO $$ BEGIN RAISE NOTICE 'a;b'; /* ; */ END $$",
+            "SELECT $tag$one; ' -- /* $$ two$tag$",
+            "SELECT $_tag9$one;$other$two;$_tag9$",
+            "SELECT $A$one;$a$two;$A$",
+            "SELECT $a$one;$A$two;$a$",
+        ],
+    )
+    def test_dollar_quotes_keep_bodies_and_case_sensitive_tags(split_sql, statement):
+&gt;       assert split_sql(statement + "; SELECT 42") == [statement, "SELECT 42"]
+E       AssertionError: assert ['SELECT $a$o..., 'SELECT 42'] == ['SELECT $a$o..., 'SELECT 42']
+E         
+E         At index 0 diff: 'SELECT $a$one' != 'SELECT $a$one;$A$two;$a$'
+E         Left contains 2 more items, first extra item: '$a$'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:68: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_dollar_like_identifier_and_parameter_text_is_not_a_quote[SELECT identifier$tag$]" time="0.000" /><testcase classname="tests.test_stage27_evaluation" name="test_dollar_like_identifier_and_parameter_text_is_not_a_quote[SELECT identifier$$text]" time="0.000" /><testcase classname="tests.test_stage27_evaluation" name="test_dollar_like_identifier_and_parameter_text_is_not_a_quote[SELECT caf\xe9$tag$]" time="0.000" /><testcase classname="tests.test_stage27_evaluation" name="test_dollar_like_identifier_and_parameter_text_is_not_a_quote[SELECT $1, $12]" time="0.000" /><testcase classname="tests.test_stage27_evaluation" name="test_dollar_like_identifier_and_parameter_text_is_not_a_quote[SELECT $9tag$]" time="0.000" /><testcase classname="tests.test_stage27_evaluation" name="test_dollar_like_identifier_and_parameter_text_is_not_a_quote[SELECT $a-b$]" time="0.000" /><testcase classname="tests.test_stage27_evaluation" name="test_comments_are_nested_line_terminated_and_preserved" time="0.001"><failure message="assert ['-- lead', '...-- tail', ...] == ['-- lead; \'...tail;\r\n+ 3']&#10;  &#10;  At index 0 diff: '-- lead' != '-- lead; \' &quot; $$\rSELECT 1 /* outer; /* inner ; */ tail */'&#10;  Left contains 6 more items, first extra item: '/* inner'&#10;  Use -v to get more diff">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+
+    def test_comments_are_nested_line_terminated_and_preserved(split_sql):
+        first = "-- lead; ' \" $$\rSELECT 1 /* outer; /* inner ; */ tail */"
+        second = "-- other;\nSELECT 2 -- tail;\r\n+ 3"
+&gt;       assert split_sql(first + ";" + second + "; -- EOF comment;") == [first, second]
+E       assert ['-- lead', '...-- tail', ...] == ['-- lead; \'...tail;\r\n+ 3']
+E         
+E         At index 0 diff: '-- lead' != '-- lead; \' " $$\rSELECT 1 /* outer; /* inner ; */ tail */'
+E         Left contains 6 more items, first extra item: '/* inner'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:89: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_required_value_error[SELECT 'never closed]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+source = "SELECT 'never closed"
+
+    @pytest.mark.parametrize(
+        "source",
+        [
+            "SELECT 'never closed",
+            'SELECT "never closed',
+            r"SELECT E'escaped closing\'",
+            "SELECT e'ends with backslash\\",
+            "SELECT $$never closed;",
+            "SELECT $tag$closed with wrong case$TAG$",
+            "SELECT $_x1$never closed",
+            "SELECT 1; /* not closed",
+            "/* outer /* inner */",
+        ],
+    )
+    def test_unterminated_regions_raise_required_value_error(split_sql, source):
+&gt;       with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:111: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_required_value_error[SELECT &quot;never closed]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+source = 'SELECT "never closed'
+
+    @pytest.mark.parametrize(
+        "source",
+        [
+            "SELECT 'never closed",
+            'SELECT "never closed',
+            r"SELECT E'escaped closing\'",
+            "SELECT e'ends with backslash\\",
+            "SELECT $$never closed;",
+            "SELECT $tag$closed with wrong case$TAG$",
+            "SELECT $_x1$never closed",
+            "SELECT 1; /* not closed",
+            "/* outer /* inner */",
+        ],
+    )
+    def test_unterminated_regions_raise_required_value_error(split_sql, source):
+&gt;       with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:111: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_required_value_error[SELECT E'escaped closing\\']" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+source = "SELECT E'escaped closing\\'"
+
+    @pytest.mark.parametrize(
+        "source",
+        [
+            "SELECT 'never closed",
+            'SELECT "never closed',
+            r"SELECT E'escaped closing\'",
+            "SELECT e'ends with backslash\\",
+            "SELECT $$never closed;",
+            "SELECT $tag$closed with wrong case$TAG$",
+            "SELECT $_x1$never closed",
+            "SELECT 1; /* not closed",
+            "/* outer /* inner */",
+        ],
+    )
+    def test_unterminated_regions_raise_required_value_error(split_sql, source):
+&gt;       with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:111: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_required_value_error[SELECT e'ends with backslash\\]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+source = "SELECT e'ends with backslash\\"
+
+    @pytest.mark.parametrize(
+        "source",
+        [
+            "SELECT 'never closed",
+            'SELECT "never closed',
+            r"SELECT E'escaped closing\'",
+            "SELECT e'ends with backslash\\",
+            "SELECT $$never closed;",
+            "SELECT $tag$closed with wrong case$TAG$",
+            "SELECT $_x1$never closed",
+            "SELECT 1; /* not closed",
+            "/* outer /* inner */",
+        ],
+    )
+    def test_unterminated_regions_raise_required_value_error(split_sql, source):
+&gt;       with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:111: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_required_value_error[SELECT $$never closed;]" time="0.003"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+source = 'SELECT $$never closed;'
+
+    @pytest.mark.parametrize(
+        "source",
+        [
+            "SELECT 'never closed",
+            'SELECT "never closed',
+            r"SELECT E'escaped closing\'",
+            "SELECT e'ends with backslash\\",
+            "SELECT $$never closed;",
+            "SELECT $tag$closed with wrong case$TAG$",
+            "SELECT $_x1$never closed",
+            "SELECT 1; /* not closed",
+            "/* outer /* inner */",
+        ],
+    )
+    def test_unterminated_regions_raise_required_value_error(split_sql, source):
+&gt;       with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:111: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_required_value_error[SELECT $tag$closed with wrong case$TAG$]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+source = 'SELECT $tag$closed with wrong case$TAG$'
+
+    @pytest.mark.parametrize(
+        "source",
+        [
+            "SELECT 'never closed",
+            'SELECT "never closed',
+            r"SELECT E'escaped closing\'",
+            "SELECT e'ends with backslash\\",
+            "SELECT $$never closed;",
+            "SELECT $tag$closed with wrong case$TAG$",
+            "SELECT $_x1$never closed",
+            "SELECT 1; /* not closed",
+            "/* outer /* inner */",
+        ],
+    )
+    def test_unterminated_regions_raise_required_value_error(split_sql, source):
+&gt;       with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:111: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_required_value_error[SELECT $_x1$never closed]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+source = 'SELECT $_x1$never closed'
+
+    @pytest.mark.parametrize(
+        "source",
+        [
+            "SELECT 'never closed",
+            'SELECT "never closed',
+            r"SELECT E'escaped closing\'",
+            "SELECT e'ends with backslash\\",
+            "SELECT $$never closed;",
+            "SELECT $tag$closed with wrong case$TAG$",
+            "SELECT $_x1$never closed",
+            "SELECT 1; /* not closed",
+            "/* outer /* inner */",
+        ],
+    )
+    def test_unterminated_regions_raise_required_value_error(split_sql, source):
+&gt;       with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:111: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_required_value_error[SELECT 1; /* not closed]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+source = 'SELECT 1; /* not closed'
+
+    @pytest.mark.parametrize(
+        "source",
+        [
+            "SELECT 'never closed",
+            'SELECT "never closed',
+            r"SELECT E'escaped closing\'",
+            "SELECT e'ends with backslash\\",
+            "SELECT $$never closed;",
+            "SELECT $tag$closed with wrong case$TAG$",
+            "SELECT $_x1$never closed",
+            "SELECT 1; /* not closed",
+            "/* outer /* inner */",
+        ],
+    )
+    def test_unterminated_regions_raise_required_value_error(split_sql, source):
+&gt;       with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:111: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_regions_raise_required_value_error[/* outer /* inner */]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split_sql = &lt;function split_sql_statements at 0x70a0c093be20&gt;
+source = '/* outer /* inner */'
+
+    @pytest.mark.parametrize(
+        "source",
+        [
+            "SELECT 'never closed",
+            'SELECT "never closed',
+            r"SELECT E'escaped closing\'",
+            "SELECT e'ends with backslash\\",
+            "SELECT $$never closed;",
+            "SELECT $tag$closed with wrong case$TAG$",
+            "SELECT $_x1$never closed",
+            "SELECT 1; /* not closed",
+            "/* outer /* inner */",
+        ],
+    )
+    def test_unterminated_regions_raise_required_value_error(split_sql, source):
+&gt;       with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:111: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_real_postgres_quoted_function_do_and_nested_comment_execution" time="0.165"><failure message="psycopg.errors.SyntaxError: unterminated quoted identifier at or near &quot;&quot;semi&quot;&#10;LINE 1: CREATE TABLE &quot;semi&#10;                     ^">isolated_runner = (&lt;function run_migrations at 0x70a0c09a7110&gt;, &lt;function isolated_runner.&lt;locals&gt;.rows at 0x70a0c09a6cf0&gt;, ['\n        ...       )\n                ', 'SELECT filename FROM schema_migrations ORDER BY filename', 'CREATE TABLE "semi'], [True])
+tmp_path = PosixPath('/home/ivan/codex-role-ivaa6nyk/scratch/tmp/test_real_postgres_quoted_func0')
+
+    def test_real_postgres_quoted_function_do_and_nested_comment_execution(isolated_runner, tmp_path):
+        run, rows, executions, commits = isolated_runner
+        statements = [
+            'CREATE TABLE "semi;table" (id integer PRIMARY KEY, note text)',
+            'INSERT INTO "semi;table" VALUES (1, \'café;it\'\'s\')',
+            '''CREATE FUNCTION add_row() RETURNS void LANGUAGE plpgsql AS $body$
+    BEGIN
+        INSERT INTO "semi;table" VALUES (2, E'escaped\\\';quote');
+    END
+    $body$''',
+            "SELECT add_row()",
+            '''/* outer; /* nested; */ tail */ DO $$ BEGIN
+        INSERT INTO "semi;table" VALUES (3, 'DO;body');
+    END $$''',
+        ]
+        _write(tmp_path, "001_complex.sql", ";\n".join(statements) + ";")
+&gt;       run(tmp_path)
+
+tests/test_stage27_evaluation.py:218: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/migrations.py:61: in run_migrations
+    cursor.execute(statement)
+tests/test_stage27_evaluation.py:129: in execute
+    return self.cursor.execute(query, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;psycopg.Cursor [closed] [BAD] at 0x70a0c05e90d0&gt;
+query = 'CREATE TABLE "semi', params = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -&gt; Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.SyntaxError: unterminated quoted identifier at or near ""semi"
+E           LINE 1: CREATE TABLE "semi
+E                                ^
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/.stage26-runtime/python/lib/python3.14/site-packages/psycopg/cursor.py:117: SyntaxError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_failed_file_rolls_back_ddl_data_and_ledger_but_prior_file_commits" time="0.037"><failure message="psycopg.errors.UndefinedTable: relation &quot;kept&quot; does not exist&#10;LINE 1: SELECT * FROM kept&#10;                      ^">isolated_runner = (&lt;function run_migrations at 0x70a0c09a7110&gt;, &lt;function isolated_runner.&lt;locals&gt;.rows at 0x70a0c09a7ab0&gt;, ['\n        ... FROM schema_migrations ORDER BY filename', 'CREATE TABLE kept (note text)', "INSERT INTO kept VALUES ('kept"], [True])
+tmp_path = PosixPath('/home/ivan/codex-role-ivaa6nyk/scratch/tmp/test_failed_file_rolls_back_dd0')
+
+    def test_failed_file_rolls_back_ddl_data_and_ledger_but_prior_file_commits(isolated_runner, tmp_path):
+        from psycopg import Error
+    
+        run, rows, executions, commits = isolated_runner
+        _write(tmp_path, "001_keep.sql", "CREATE TABLE kept (note text); INSERT INTO kept VALUES ('kept;value');")
+        bad = _write(tmp_path, "002_fail.sql", "INSERT INTO kept VALUES ('lost'); CREATE TABLE lost (id integer); SELECT 1 / 0;")
+        with pytest.raises(Error):
+            run(tmp_path)
+&gt;       assert rows("SELECT * FROM kept") == [("kept;value",)]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_stage27_evaluation.py:235: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_stage27_evaluation.py:185: in rows
+    return connection.execute(query).fetchall()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;psycopg.Connection [BAD] at 0x70a0c05c3110&gt;
+query = 'SELECT * FROM kept', params = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool = False,
+    ) -&gt; Cursor[Row]:
+        """Execute a query and return a cursor to read its results."""
+        try:
+            cur = self.cursor()
+            if binary:
+                cur.format = BINARY
+    
+            if isinstance(query, Template):
+                if params is not None:
+                    raise TypeError(
+                        "'execute()' with string template query doesn't support parameters"
+                    )
+                return cur.execute(query, prepare=prepare)
+            else:
+                return cur.execute(query, params, prepare=prepare)
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.UndefinedTable: relation "kept" does not exist
+E           LINE 1: SELECT * FROM kept
+E                                 ^
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/.stage26-runtime/python/lib/python3.14/site-packages/psycopg/connection.py:300: UndefinedTable</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_malformed_file_is_validated_before_any_of_its_statements_execute" time="0.032"><failure message="psycopg.errors.SyntaxError: unterminated quoted string at or near &quot;'before&quot;&#10;LINE 1: INSERT INTO retained VALUES ('before&#10;                                     ^">isolated_runner = (&lt;function run_migrations at 0x70a0c09a7110&gt;, &lt;function isolated_runner.&lt;locals&gt;.rows at 0x70a0c014c1a0&gt;, ['\n        ...ma_migrations ORDER BY filename', 'CREATE TABLE retained (note text)', "INSERT INTO retained VALUES ('before"], [True])
+tmp_path = PosixPath('/home/ivan/codex-role-ivaa6nyk/scratch/tmp/test_malformed_file_is_validat0')
+
+    def test_malformed_file_is_validated_before_any_of_its_statements_execute(isolated_runner, tmp_path):
+        run, rows, executions, commits = isolated_runner
+        _write(tmp_path, "001_good.sql", "CREATE TABLE retained (note text); INSERT INTO retained VALUES ('before;failure');")
+        first = "INSERT INTO retained VALUES ('must never execute')"
+        _write(tmp_path, "002_bad.sql", first + "; SELECT $wrong$unfinished")
+        with pytest.raises(ValueError, match=r"^Unterminated SQL"):
+&gt;           run(tmp_path)
+
+tests/test_stage27_evaluation.py:253: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/migrations.py:61: in run_migrations
+    cursor.execute(statement)
+tests/test_stage27_evaluation.py:129: in execute
+    return self.cursor.execute(query, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;psycopg.Cursor [closed] [BAD] at 0x70a0c05e9490&gt;
+query = "INSERT INTO retained VALUES ('before", params = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -&gt; Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.SyntaxError: unterminated quoted string at or near "'before"
+E           LINE 1: INSERT INTO retained VALUES ('before
+E                                                ^
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/.stage26-runtime/python/lib/python3.14/site-packages/psycopg/cursor.py:117: SyntaxError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_discovery_order_utf8_empty_files_and_filename_replay" time="0.045"><failure message="psycopg.errors.SyntaxError: unterminated quoted string at or near &quot;'naïve&quot;&#10;LINE 1: INSERT INTO ordering VALUES ('naïve&#10;                                     ^">isolated_runner = (&lt;function run_migrations at 0x70a0c09a7110&gt;, &lt;function isolated_runner.&lt;locals&gt;.rows at 0x70a0c014cca0&gt;, ['\n        ...e text)', 'INSERT INTO schema_migrations (filename) VALUES (%s)', "INSERT INTO ordering VALUES ('naïve"], [True, True])
+tmp_path = PosixPath('/home/ivan/codex-role-ivaa6nyk/scratch/tmp/test_discovery_order_utf8_empt0')
+capsys = &lt;_pytest.capture.CaptureFixture object at 0x70a0c0dff380&gt;
+
+    def test_discovery_order_utf8_empty_files_and_filename_replay(isolated_runner, tmp_path, capsys):
+        run, rows, executions, commits = isolated_runner
+        _write(tmp_path, "030_empty.sql", " ; ; \n")
+        _write(tmp_path, "020_comments.sql", "-- semicolon;\r/* outer /* inner */ end */;")
+        changed = _write(tmp_path, "010_data.sql", "INSERT INTO ordering VALUES ('naïve;雪')")
+        _write(tmp_path, "001_table.sql", "CREATE TABLE ordering (note text);")
+        _write(tmp_path, "000_ignored.txt", "SELECT broken syntax")
+        nested = tmp_path / "nested"
+        nested.mkdir()
+        _write(nested, "000_ignored.sql", "SELECT broken syntax")
+&gt;       run(tmp_path)
+
+tests/test_stage27_evaluation.py:270: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/migrations.py:61: in run_migrations
+    cursor.execute(statement)
+tests/test_stage27_evaluation.py:129: in execute
+    return self.cursor.execute(query, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;psycopg.Cursor [closed] [BAD] at 0x70a0c05e9b50&gt;
+query = "INSERT INTO ordering VALUES ('naïve", params = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -&gt; Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.SyntaxError: unterminated quoted string at or near "'naïve"
+E           LINE 1: INSERT INTO ordering VALUES ('naïve
+E                                                ^
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/.stage26-runtime/python/lib/python3.14/site-packages/psycopg/cursor.py:117: SyntaxError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_runner_public_signature_keeps_optional_directory" time="0.036" /></testsuite></testsuites>

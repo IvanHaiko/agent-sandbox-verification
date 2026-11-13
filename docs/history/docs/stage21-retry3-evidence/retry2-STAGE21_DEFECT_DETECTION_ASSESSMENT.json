@@ -1,0 +1,139 @@
+{
+  "stage": 21,
+  "attempt": 2,
+  "explicitly_user_authorized_retry": true,
+  "task_id": "STAGE20-LABELS",
+  "accepted": false,
+  "verdict": "FAIL_WORKFLOW_COORDINATION",
+  "fix_cycles": 0,
+  "repair_limit": 2,
+  "failed_stage": "implementation",
+  "failure_type": "AgentSystemError",
+  "failure_reason": "Codex/model protocol denied",
+  "containment": {
+    "production_source_unchanged": true,
+    "credential_store_unchanged": true,
+    "stale_owned_containers": 0,
+    "model_homes_removed": true,
+    "role_network": "none",
+    "host_fallback": false,
+    "isolation_preserved": true,
+    "docker_cleanup_confirmed": true,
+    "disposable_role_storage_removed": true
+  },
+  "roles": [
+    {
+      "label": "architect",
+      "role": "orchestrator",
+      "model": "gpt-6-astra",
+      "reasoning": "medium",
+      "completed": true,
+      "requests": 1,
+      "tool_calls": 0,
+      "seconds": 24.57,
+      "usage": {
+        "total": {
+          "totalTokens": 7565,
+          "inputTokens": 7029,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 536,
+          "reasoningOutputTokens": 0
+        },
+        "last": {
+          "totalTokens": 7565,
+          "inputTokens": 7029,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 536,
+          "reasoningOutputTokens": 0
+        }
+      },
+      "process_exited": true
+    },
+    {
+      "label": "implementer",
+      "role": "implementer",
+      "model": "gpt-5.6-sol",
+      "reasoning": "high",
+      "completed": false,
+      "requests": 3,
+      "tool_calls": 2,
+      "seconds": 69.88,
+      "usage": {
+        "total": {
+          "totalTokens": 15092,
+          "inputTokens": 13644,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 1448,
+          "reasoningOutputTokens": 409
+        },
+        "last": {
+          "totalTokens": 7951,
+          "inputTokens": 7179,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 772,
+          "reasoningOutputTokens": 409
+        }
+      },
+      "process_exited": true
+    }
+  ],
+  "protocol_anomalies": [
+    "completed_function_omitted_from_final",
+    "nonexecutable_stream_final_mismatch",
+    "nonstandard_or_absent_mime"
+  ],
+  "implementer_transport": [
+    {
+      "validation_passed": true,
+      "eof": true,
+      "reader_shutdown_confirmed": true,
+      "body_failure": null,
+      "response_bytes": 184297
+    },
+    {
+      "validation_passed": true,
+      "eof": true,
+      "reader_shutdown_confirmed": true,
+      "body_failure": null,
+      "response_bytes": 107780
+    },
+    {
+      "validation_passed": true,
+      "eof": true,
+      "reader_shutdown_confirmed": true,
+      "body_failure": null,
+      "response_bytes": 54371
+    }
+  ],
+  "model_requests": 4,
+  "model_tool_calls": 2,
+  "both_attempts_model_requests": 11,
+  "both_attempts_tool_calls": 6,
+  "self_check_counts": [
+    16
+  ],
+  "actions": [
+    [
+      "write",
+      "src/normalize_labels.py"
+    ],
+    [
+      "check"
+    ]
+  ],
+  "candidate_archived": false,
+  "role_sessions": 2,
+  "tester_design_sessions": 0,
+  "tester_execution_sessions": 0,
+  "reviewer_sessions": 0,
+  "controller_acceptance_executions": 0,
+  "independent_testing_value": "not evaluated",
+  "final_artifact_status": "not accepted; no completed Implementer handoff or archived retry candidate; baseline repository retained",
+  "previous_attempt_assessment": "C:/Users/4ivan/codex-multi-agent/docs/stage21-evidence/STAGE21_DEFECT_DETECTION_ASSESSMENT.md",
+  "automatic_retries": 0,
+  "third_attempt": false
+}

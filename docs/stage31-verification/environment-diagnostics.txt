@@ -1,0 +1,13 @@
+Observed restricted Windows shell diagnostics during initial read-only discovery:
+
+wsl.exe -e bash -lc <runtime-location inspection>
+Access is denied.
+Error code: Wsl/E_ACCESSDENIED
+
+git -C C:/Users/4ivan/steam-etl status --short
+fatal: cannot change to 'C:/Users/4ivan/steam-etl': Permission denied
+
+Resolution: approved require_escalated read-only original Git operations and WSL
+project test execution. Original writes were never requested. No auto-review
+rejection occurred. No repeated identical failing invocation. No credentials or
+ignored project data copied.

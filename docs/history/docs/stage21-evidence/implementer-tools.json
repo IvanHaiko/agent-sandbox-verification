@@ -1,0 +1,126 @@
+[
+  {
+    "action": [
+      "inspect",
+      "src/normalize_labels.py"
+    ],
+    "read_only": true,
+    "changed_paths": [],
+    "self_check_cases": null,
+    "returncode": 0,
+    "stdout": "def normalize_labels(value: str) -> list[str]:\n    raise NotImplementedError\n\n",
+    "stderr": ""
+  },
+  {
+    "action": [
+      "write",
+      "src/normalize_labels.py"
+    ],
+    "read_only": false,
+    "changed_paths": [
+      "src/normalize_labels.py"
+    ],
+    "self_check_cases": null,
+    "returncode": 0,
+    "stdout": "written: src/normalize_labels.py\n",
+    "stderr": ""
+  },
+  {
+    "action": [
+      "check"
+    ],
+    "read_only": true,
+    "changed_paths": [],
+    "self_check_cases": [
+      [
+        "",
+        []
+      ],
+      [
+        ",,,",
+        []
+      ],
+      [
+        " Foo  BAR ,foo bar,BAZ",
+        [
+          "foo bar",
+          "baz"
+        ]
+      ],
+      [
+        "pre\"Mi,X\"post,, \" Q \" ,PRE\"mi,x\"POST",
+        [
+          "premi,xpost",
+          " q "
+        ]
+      ],
+      [
+        "  \" \tA  \"  ",
+        [
+          " \ta  "
+        ]
+      ],
+      [
+        "\\ Foo\\ ",
+        [
+          " foo "
+        ]
+      ],
+      [
+        "A\\,B, X\\\"Y, C\\\\D",
+        [
+          "a,b",
+          "x\"y",
+          "c\\d"
+        ]
+      ],
+      [
+        "A \t \"  \" \r B",
+        [
+          "a    b"
+        ]
+      ],
+      [
+        "one,ONE,\"one\",o\"ne\"",
+        [
+          "one"
+        ]
+      ],
+      [
+        "\"\", ,x",
+        [
+          "x"
+        ]
+      ],
+      [
+        "\"\t\",\\\n",
+        [
+          "\t",
+          "\n"
+        ]
+      ],
+      [
+        "ok,\\",
+        null
+      ],
+      [
+        "ok,\"bad",
+        null
+      ]
+    ],
+    "returncode": 0,
+    "stdout": "{\"public_interface_verified\": true, \"own_cases_passed\": 13}\n",
+    "stderr": ""
+  },
+  {
+    "action": [
+      "status"
+    ],
+    "read_only": true,
+    "changed_paths": [],
+    "self_check_cases": null,
+    "returncode": 0,
+    "stdout": "diff --git a/src/normalize_labels.py b/src/normalize_labels.py\nindex 52607b6..9886b02 100644\n--- a/src/normalize_labels.py\n+++ b/src/normalize_labels.py\n@@ -1,2 +1,74 @@\n+\"\"\"Parsing and normalization for comma-separated labels.\"\"\"\n+\n+_ASCII_WHITESPACE = \" \\t\\r\\n\\v\\f\"\n+\n+\n+def _ascii_lower(character: str) -> str:\n+    if \"A\" <= character <= \"Z\":\n+        return chr(ord(character) + (ord(\"a\") - ord(\"A\")))\n+    return character\n+\n+\n+def _normalize_label(characters: list[tuple[str, bool]]) -> str:\n+    \"\"\"Normalize one label; the boolean marks ordinary whitespace.\"\"\"\n+    start = 0\n+    end = len(characters)\n+    while start < end and characters[start][1]:\n+        start += 1\n+    while end > start and characters[end - 1][1]:\n+        end -= 1\n+\n+    normalized: list[str] = []\n+    ordinary_whitespace_pending = False\n+    for character, is_ordinary_whitespace in characters[start:end]:\n+        if is_ordinary_whitespace:\n+            ordinary_whitespace_pending = True\n+            continue\n+        if ordinary_whitespace_pending:\n+            normalized.append(\" \")\n+            ordinary_whitespace_pending = False\n+        normalized.append(_ascii_lower(character))\n+\n+    return \"\".join(normalized)\n+\n+\n def normalize_labels(value: str) -> list[str]:\n-    raise NotImplementedError\n+    \"\"\"Parse, normalize, and stably deduplicate labels from *value*.\"\"\"\n+    labels: list[str] = []\n+    current: list[tuple[str, bool]] = []\n+    quoted = False\n+    index = 0\n+\n+    while index < len(value):\n+        character = value[index]\n+\n+        if character == \"\\\\\":\n+            index += 1\n+            if index == len(value):\n+                raise ValueError(\"trailing unpaired backslash\")\n+            current.append((value[index], False))\n+        elif character == '\"':\n+            quoted = not quoted\n+        elif character == \",\" and not quoted:\n+            labels.append(_normalize_label(current))\n+            current = []\n+        else:\n+            is_ordinary_whitespace = (\n+                not quoted and character in _ASCII_WHITESPACE\n+            )\n+            current.append((character, is_ordinary_whitespace))\n+\n+        index += 1\n+\n+    if quoted:\n+        raise ValueError(\"unclosed double quote\")\n+\n+    labels.append(_normalize_label(current))\n+\n+    result: list[str] = []\n+    seen: set[str] = set()\n+    for label in labels:\n+        if label and label not in seen:\n+            seen.add(label)\n+            result.append(label)\n+    return result\n",
+    "stderr": ""
+  }
+]

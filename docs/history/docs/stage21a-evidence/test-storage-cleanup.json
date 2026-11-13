@@ -1,0 +1,11 @@
+{
+  "removed": [
+    "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21a-core-1",
+    "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21a-focused-1",
+    "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21a-regression-1",
+    "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21a-final-focused",
+    "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21a-focused-2",
+    "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21a-final-check"
+  ],
+  "remaining_owned_test_directories": 0
+}

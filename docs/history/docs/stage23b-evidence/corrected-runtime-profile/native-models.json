@@ -1,0 +1,68 @@
+{
+  "version": "codex-cli 0.160.1",
+  "supported_command": "codex debug models",
+  "models": [
+    {
+      "slug": "gpt-6.1-sol",
+      "id": null,
+      "model": null,
+      "display_name": "GPT-6.1-Sol"
+    },
+    {
+      "slug": "gpt-6-astra",
+      "id": null,
+      "model": null,
+      "display_name": "GPT-6-Astra"
+    },
+    {
+      "slug": "gpt-6-sol",
+      "id": null,
+      "model": null,
+      "display_name": "GPT-6-Sol"
+    },
+    {
+      "slug": "gpt-6-luna",
+      "id": null,
+      "model": null,
+      "display_name": "GPT-6-Luna"
+    },
+    {
+      "slug": "gpt-reserve",
+      "id": null,
+      "model": null,
+      "display_name": "GPT-Reserve"
+    },
+    {
+      "slug": "gpt-5.6-sol",
+      "id": null,
+      "model": null,
+      "display_name": "GPT-5.6-Sol"
+    },
+    {
+      "slug": "gpt-5.6-terra",
+      "id": null,
+      "model": null,
+      "display_name": "GPT-5.6-Terra"
+    },
+    {
+      "slug": "gpt-5.6-luna",
+      "id": null,
+      "model": null,
+      "display_name": "GPT-5.6-Luna"
+    },
+    {
+      "slug": "gpt-5.5",
+      "id": null,
+      "model": null,
+      "display_name": "GPT-5.5"
+    },
+    {
+      "slug": "codex-auto-review",
+      "id": null,
+      "model": null,
+      "display_name": "Codex Auto Review"
+    }
+  ],
+  "requested_model": "gpt-6.1-sol",
+  "listed": true
+}

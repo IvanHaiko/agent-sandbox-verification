@@ -1,0 +1,1019 @@
+{
+  "trial_id": "full",
+  "accepted": true,
+  "workflow_completed": true,
+  "roles": [
+    {
+      "trial_id": "full",
+      "role": "architect",
+      "model": "gpt-6.1-sol",
+      "reasoning": "medium",
+      "codex_version": "codex-cli 0.160.1",
+      "workspace": "/home/ivan/codex-role-mu_qlwda",
+      "workspace_identity": "3cfb13a7e794407de4a63e79f5484aa0d17dc682a9bc14f097c704fda19be7f1",
+      "prompt_sha256": "c1e0bea4a820586a47b8ade01b217433cada6132c1d039747553b06d9c5e1d84",
+      "fresh_context": true,
+      "ephemeral": true,
+      "conversation_history_inherited": false,
+      "invocation_mode": "native CLI exec; output-schema; output-last-message",
+      "execution_status": "completed",
+      "thread_id": "01a11718-4e03-76e1-8fd7-4a62d427ee11",
+      "resolved_model": "gpt-6.1-sol",
+      "baseline_hashes": {
+        "TASK.json": "11d671fdc0913a7b23560f9db988996b588a3b1580fcad690b894c92cf1ddf6d",
+        "schema.json": "0def7f90f696f95d89f140a632835722c0924b286794c99131538ad760fd6160",
+        "role-input.md": "c1e0bea4a820586a47b8ade01b217433cada6132c1d039747553b06d9c5e1d84",
+        "bundle.json": "92415e85aacdb301dbd6720aa78747ba575fd0b5e79911cb9b87a2110b55594b",
+        ".git/index": "05669ce3f0f922a522f02416d26de56086b2307e9cc76268e22b8d9174169fc5",
+        ".git/HEAD": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80",
+        ".git/COMMIT_EDITMSG": "674b3d9e45a73cc5c252c49737271d37236644cd81992585924948857baa69ad",
+        ".git/config": "cfe7ba1238c9a78be7535d7c63bcaf5a4d5011d46b07c9b45d3bbf7d6c312dfe",
+        ".git/description": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+        ".git/info/exclude": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+        ".git/hooks/fsmonitor-watchman.sample": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0",
+        ".git/hooks/prepare-commit-msg.sample": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619",
+        ".git/hooks/update.sample": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106",
+        ".git/hooks/push-to-checkout.sample": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f",
+        ".git/hooks/sendemail-validate.sample": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92",
+        ".git/hooks/pre-applypatch.sample": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475",
+        ".git/hooks/pre-merge-commit.sample": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53",
+        ".git/hooks/applypatch-msg.sample": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7",
+        ".git/hooks/pre-receive.sample": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989",
+        ".git/hooks/pre-commit.sample": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b",
+        ".git/hooks/pre-push.sample": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a",
+        ".git/hooks/pre-rebase.sample": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3",
+        ".git/hooks/commit-msg.sample": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437",
+        ".git/hooks/post-update.sample": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5",
+        ".git/logs/HEAD": "21ec3014813aa68e58845e8dd9877b4c889709544d02e44b66387a8464c8ee70",
+        ".git/logs/refs/heads/main": "21ec3014813aa68e58845e8dd9877b4c889709544d02e44b66387a8464c8ee70",
+        ".git/refs/heads/main": "dee5f308f1f452f658a7b557f9db7b541ae0ca6463ebceeb1aa083d61eb5793c",
+        ".git/objects/f1/de3efccd3fc6926e5a19edf14fa411283e4006": "db3ab6a6d2dd354f97c1f05c26e0cb889561f2ffcc65c42774c1a16b86508793",
+        ".git/objects/2e/634cd4bb4f5a61a22f9bede0e5032bc292d84d": "114d84a85a8a717a8c5c1972c89de303a44254fbd75dc49e97a4ff61ab077130",
+        ".git/objects/14/47b7b40c59e86e270e12cd3ba536a29964519a": "5e07db5200ee0efedbfab958534a4e756405d69ac7581ca75cd7cd73ce88091b",
+        ".git/objects/94/0a67fb3a4dc41a2b77e86402785c3f52662cb0": "75ec4689b26b271deaa21c6c7549570b7dee7fa0c0747466e8e06e91633cce26",
+        ".git/objects/84/49cbebb4c82e23eab9a24f86a8084311432091": "8958b9eb4dd24a93d8f1fcb7f2afadcaaad479cd4b3911ff2206df84abf4169b",
+        ".git/objects/31/1273c43e2a885304d76ad26eb311549a986949": "97c5bdbd8f151a56e39b95ccce43de1e73927e7c1fe9fb70bad3ae84914b93b8"
+      },
+      "read_only": true,
+      "sandbox_preflight_passed": true,
+      "command": [
+        "/home/ivan/.local/bin/codex",
+        "--no-daemon",
+        "-a",
+        "never",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--cd",
+        "/home/ivan/codex-role-mu_qlwda",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "model_reasoning_effort=\"medium\"",
+        "-c",
+        "shell_environment_policy.inherit=\"core\"",
+        "-c",
+        "features.multi_agent=false",
+        "-c",
+        "web_search=\"disabled\"",
+        "-c",
+        "default_permissions=\"role_workspace\"",
+        "-c",
+        "permissions.role_workspace={filesystem={\":minimal\"=\"read\",\"/home/ivan/.codex/packages/standalone/releases/0.160.1-x86_64-unknown-linux-musl\"=\"read\",\":workspace_roots\"={\".\"=\"read\"},\":tmpdir\"=\"deny\",\":slash_tmp\"=\"deny\"},network={enabled=false}}",
+        "--output-schema",
+        "/home/ivan/codex-role-mu_qlwda/schema.json",
+        "--output-last-message",
+        "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage24-verification/after/full/architect-result.json",
+        "-"
+      ],
+      "elapsed_seconds": 27.537,
+      "process_exit_code": 0,
+      "timed_out": false,
+      "shutdown_confirmed": true,
+      "provider": "openai",
+      "sandbox_banner": "read-only",
+      "changed_files": [],
+      "mutation_scope_valid": true,
+      "artifact_sha256": "44824757649561006ecf70e6a6f1708950bb865e00e7fdb6bbaf5a3fdfda5ba6",
+      "artifact_check": {
+        "valid": true,
+        "schema_valid": true
+      },
+      "cleanup_passed": true
+    },
+    {
+      "trial_id": "full",
+      "role": "implementer",
+      "model": "gpt-6.1-sol",
+      "reasoning": "medium",
+      "codex_version": "codex-cli 0.160.1",
+      "invocation_mode": "native Linux CLI exec",
+      "workspace": "/home/ivan/codex-role-edfypf44",
+      "workspace_identity": "e4c6eb46d8982c894d46c7d15fb824c0f574b2fc66f149a0ea9eeca05df5fe3e",
+      "initial_files": [
+        ".git/COMMIT_EDITMSG",
+        ".git/HEAD",
+        ".git/config",
+        ".git/description",
+        ".git/hooks/applypatch-msg.sample",
+        ".git/hooks/commit-msg.sample",
+        ".git/hooks/fsmonitor-watchman.sample",
+        ".git/hooks/post-update.sample",
+        ".git/hooks/pre-applypatch.sample",
+        ".git/hooks/pre-commit.sample",
+        ".git/hooks/pre-merge-commit.sample",
+        ".git/hooks/pre-push.sample",
+        ".git/hooks/pre-rebase.sample",
+        ".git/hooks/pre-receive.sample",
+        ".git/hooks/prepare-commit-msg.sample",
+        ".git/hooks/push-to-checkout.sample",
+        ".git/hooks/sendemail-validate.sample",
+        ".git/hooks/update.sample",
+        ".git/index",
+        ".git/info/exclude",
+        ".git/logs/HEAD",
+        ".git/logs/refs/heads/main",
+        ".git/objects/0b/9a7bde6d401fb725a26f8d8fce3e620d533a47",
+        ".git/objects/52/607b6c5f9b4b2065bf6a510af4c8f49e590e02",
+        ".git/objects/58/5ba7f935ff9098770aeba2cd3d6f5c2374f67c",
+        ".git/objects/58/798972d821976c8438261da4e3dc92f546ff0c",
+        ".git/objects/b7/b95e1468dcb0316d99442e4a0b00f9caa1e863",
+        ".git/objects/e4/1ddfb6d039f34f3643cd6e00b6e07d15d762df",
+        ".git/refs/heads/main",
+        "TASK.json",
+        "role-input.md",
+        "src/normalize_labels.py"
+      ],
+      "baseline_hashes": {
+        "TASK.json": "2388b02b17db0e33ffbe8de964ab7c7845559419e291205c33d1ff4db6021ae4",
+        "role-input.md": "5458602fbe3ede65eb06c1d3046d5ef9f9143616f600b201d212482d94dab08d",
+        "src/normalize_labels.py": "5bfab0cfd0cbbb836c8ef1f5d34c677441c5da1ff2b3f20b36f6e69a7ff66674",
+        ".git/index": "e06e2e434203fe2e67592d98448bc085cb4ce8747a58e10333def2308943b533",
+        ".git/HEAD": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80",
+        ".git/COMMIT_EDITMSG": "674b3d9e45a73cc5c252c49737271d37236644cd81992585924948857baa69ad",
+        ".git/config": "cfe7ba1238c9a78be7535d7c63bcaf5a4d5011d46b07c9b45d3bbf7d6c312dfe",
+        ".git/description": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+        ".git/info/exclude": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+        ".git/hooks/fsmonitor-watchman.sample": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0",
+        ".git/hooks/prepare-commit-msg.sample": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619",
+        ".git/hooks/update.sample": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106",
+        ".git/hooks/push-to-checkout.sample": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f",
+        ".git/hooks/sendemail-validate.sample": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92",
+        ".git/hooks/pre-applypatch.sample": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475",
+        ".git/hooks/pre-merge-commit.sample": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53",
+        ".git/hooks/applypatch-msg.sample": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7",
+        ".git/hooks/pre-receive.sample": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989",
+        ".git/hooks/pre-commit.sample": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b",
+        ".git/hooks/pre-push.sample": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a",
+        ".git/hooks/pre-rebase.sample": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3",
+        ".git/hooks/commit-msg.sample": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437",
+        ".git/hooks/post-update.sample": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5",
+        ".git/logs/HEAD": "af78e3ff4e41a7a6c2a3efc3623119f37360ce6d1b3bb1d927e57afbec86b987",
+        ".git/logs/refs/heads/main": "af78e3ff4e41a7a6c2a3efc3623119f37360ce6d1b3bb1d927e57afbec86b987",
+        ".git/refs/heads/main": "c8251dbdd138a4c76059db5a0609e1a50b0c7e4cd9a283fe398a4a48c21c7f31",
+        ".git/objects/0b/9a7bde6d401fb725a26f8d8fce3e620d533a47": "9d4b3946931174c2cc7518ee3a8c1d8ea3d372354140d914852928d344cf4813",
+        ".git/objects/58/5ba7f935ff9098770aeba2cd3d6f5c2374f67c": "0c3ff66539f209719652d49e89562ede34fa70ae0cceee7fd73b706d5dc82b25",
+        ".git/objects/58/798972d821976c8438261da4e3dc92f546ff0c": "e1a9a84913cffd42e6c29ec9a30c0e19f26ac606a75b6e0e9599e6bf1f141eeb",
+        ".git/objects/b7/b95e1468dcb0316d99442e4a0b00f9caa1e863": "258a43ad6957b5db3e88eb77368b949340d40804e5e22488e182f6717f15aa6f",
+        ".git/objects/e4/1ddfb6d039f34f3643cd6e00b6e07d15d762df": "5ced5248d8bbdd87f61f8c0d0524cddafac5df181f1c0b5e10ad61e6f936b464",
+        ".git/objects/52/607b6c5f9b4b2065bf6a510af4c8f49e590e02": "d1d8a1ef9ee4af3fc3e127b1769e810f9166a6ef28ebfdb532fc18fbe30aa41e"
+      },
+      "prompt_sha256": "5458602fbe3ede65eb06c1d3046d5ef9f9143616f600b201d212482d94dab08d",
+      "fresh_context": true,
+      "ephemeral": true,
+      "conversation_history_inherited": false,
+      "thread_id": "01a1171a-231c-7903-86ea-6db3815811e6",
+      "resolved_model": "gpt-6.1-sol",
+      "execution_status": "completed",
+      "failure_category": null,
+      "candidate_status": "unaccepted",
+      "permitted_artifact": "src/normalize_labels.py",
+      "sandbox_preflight_passed": true,
+      "command": [
+        "/home/ivan/.local/bin/codex",
+        "--no-daemon",
+        "-a",
+        "never",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--cd",
+        "/home/ivan/codex-role-edfypf44",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "model_reasoning_effort=\"medium\"",
+        "-c",
+        "shell_environment_policy.inherit=\"core\"",
+        "-c",
+        "features.multi_agent=false",
+        "-c",
+        "web_search=\"disabled\"",
+        "-c",
+        "default_permissions=\"role_workspace\"",
+        "-c",
+        "permissions.role_workspace={filesystem={\":minimal\"=\"read\",\"/home/ivan/.codex/packages/standalone/releases/0.160.1-x86_64-unknown-linux-musl\"=\"read\",\":workspace_roots\"={\".\"=\"read\",\"src\"=\"write\"},\":tmpdir\"=\"deny\",\":slash_tmp\"=\"deny\"},network={enabled=false}}",
+        "-"
+      ],
+      "elapsed_seconds": 22.784,
+      "process_exit_code": 0,
+      "timed_out": false,
+      "shutdown_confirmed": true,
+      "provider": "openai",
+      "sandbox_banner": "custom permissions",
+      "changed_files": [
+        "src/normalize_labels.py"
+      ],
+      "mutation_scope_valid": true,
+      "artifact_hashes": {
+        "src/normalize_labels.py": "0b2ce5ad60e46b898a9b1da9eccdbe4e9c514950a3aa7c0d8d502a8aeba08f49"
+      },
+      "artifact_check": {
+        "valid": true,
+        "public_interface_verified": true,
+        "syntax_verified": true
+      },
+      "diff": "--- a/src/normalize_labels.py\n+++ b/src/normalize_labels.py\n@@ -1,2 +1,48 @@\n def normalize_labels(value: str) -> list[str]:\n-    raise NotImplementedError\n+    labels: list[str] = []\n+    seen: set[str] = set()\n+    characters: list[str] = []\n+    quoted = False\n+    escaped = False\n+    pending_whitespace = False\n+    whitespace = \" \\t\\r\\n\\v\\f\"\n+\n+    def finish_label() -> None:\n+        label = \"\".join(characters)\n+        if label and label not in seen:\n+            seen.add(label)\n+            labels.append(label)\n+        characters.clear()\n+\n+    for character in value:\n+        if escaped:\n+            escaped = False\n+        elif character == \"\\\\\":\n+            escaped = True\n+            continue\n+        elif character == '\"':\n+            quoted = not quoted\n+            continue\n+        elif character == \",\" and not quoted:\n+            finish_label()\n+            pending_whitespace = False\n+            continue\n+        elif character in whitespace and not quoted:\n+            # Delay ordinary whitespace to trim boundaries and collapse runs.\n+            if characters:\n+                pending_whitespace = True\n+            continue\n+\n+        if pending_whitespace:\n+            characters.append(\" \")\n+            pending_whitespace = False\n+        if \"A\" <= character <= \"Z\":\n+            character = chr(ord(character) + 32)\n+        characters.append(character)\n+\n+    if escaped:\n+        raise ValueError(\"Trailing unpaired backslash\")\n+    if quoted:\n+        raise ValueError(\"Unclosed double quote\")\n+    finish_label()\n+    return labels\n",
+      "cleanup_passed": true
+    },
+    {
+      "trial_id": "full",
+      "role": "independent_tester",
+      "model": "gpt-6.1-sol",
+      "reasoning": "medium",
+      "codex_version": "codex-cli 0.160.1",
+      "invocation_mode": "native Linux CLI exec",
+      "workspace": "/home/ivan/codex-role-pqv4p6xo",
+      "workspace_identity": "07d617ab566dd798fc2726cd6f17da02d2f05cb150632cd98f733e73394f6b51",
+      "initial_files": [
+        ".git/COMMIT_EDITMSG",
+        ".git/HEAD",
+        ".git/config",
+        ".git/description",
+        ".git/hooks/applypatch-msg.sample",
+        ".git/hooks/commit-msg.sample",
+        ".git/hooks/fsmonitor-watchman.sample",
+        ".git/hooks/post-update.sample",
+        ".git/hooks/pre-applypatch.sample",
+        ".git/hooks/pre-commit.sample",
+        ".git/hooks/pre-merge-commit.sample",
+        ".git/hooks/pre-push.sample",
+        ".git/hooks/pre-rebase.sample",
+        ".git/hooks/pre-receive.sample",
+        ".git/hooks/prepare-commit-msg.sample",
+        ".git/hooks/push-to-checkout.sample",
+        ".git/hooks/sendemail-validate.sample",
+        ".git/hooks/update.sample",
+        ".git/index",
+        ".git/info/exclude",
+        ".git/logs/HEAD",
+        ".git/logs/refs/heads/main",
+        ".git/objects/09/67ef424bce6791893e9a57bb952f80fd536e93",
+        ".git/objects/0f/eb2ddf7c0ad8061b217da87cdb104849f9b49d",
+        ".git/objects/2a/3ee413a002fe21ddf1512b5ff69665b76f12c3",
+        ".git/objects/35/0ad2c81c51edf21ca039b55d0091a29b6c5ad9",
+        ".git/objects/b7/b95e1468dcb0316d99442e4a0b00f9caa1e863",
+        ".git/objects/e5/4868bbf0b02d9e1e3c0fc25619054fc2788d9a",
+        ".git/objects/f6/5baa8490dbc1b9827c6c046f30accd0840dcf8",
+        ".git/refs/heads/main",
+        "TASK.json",
+        "role-input.md",
+        "schema.json",
+        "tests/test-design.json"
+      ],
+      "baseline_hashes": {
+        "TASK.json": "2388b02b17db0e33ffbe8de964ab7c7845559419e291205c33d1ff4db6021ae4",
+        "schema.json": "63c635fb89df0e4f9164108c99d6374ffdd3d1e123c947f307cb0795ab0d0b1b",
+        "role-input.md": "56796fc02a3b028656a9439f8de93561b6771d28202bdbc28a70d1131fd894c9",
+        "tests/test-design.json": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+        ".git/index": "bcf6eb557e6d78c8727f76bb5cd0779f60590ad362d34c6638b379747a918956",
+        ".git/HEAD": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80",
+        ".git/COMMIT_EDITMSG": "674b3d9e45a73cc5c252c49737271d37236644cd81992585924948857baa69ad",
+        ".git/config": "cfe7ba1238c9a78be7535d7c63bcaf5a4d5011d46b07c9b45d3bbf7d6c312dfe",
+        ".git/description": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+        ".git/info/exclude": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+        ".git/hooks/fsmonitor-watchman.sample": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0",
+        ".git/hooks/prepare-commit-msg.sample": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619",
+        ".git/hooks/update.sample": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106",
+        ".git/hooks/push-to-checkout.sample": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f",
+        ".git/hooks/sendemail-validate.sample": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92",
+        ".git/hooks/pre-applypatch.sample": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475",
+        ".git/hooks/pre-merge-commit.sample": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53",
+        ".git/hooks/applypatch-msg.sample": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7",
+        ".git/hooks/pre-receive.sample": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989",
+        ".git/hooks/pre-commit.sample": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b",
+        ".git/hooks/pre-push.sample": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a",
+        ".git/hooks/pre-rebase.sample": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3",
+        ".git/hooks/commit-msg.sample": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437",
+        ".git/hooks/post-update.sample": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5",
+        ".git/logs/HEAD": "4dca75e76c9bf9ac3029ab7f918dd7c0e7896dda015e0cc868ba110e2e632ab9",
+        ".git/logs/refs/heads/main": "4dca75e76c9bf9ac3029ab7f918dd7c0e7896dda015e0cc868ba110e2e632ab9",
+        ".git/refs/heads/main": "4f55f5c6f8d01796ddc2e40f4e8cdd9686a0f55a07dccf1338ce99b1ab243140",
+        ".git/objects/f6/5baa8490dbc1b9827c6c046f30accd0840dcf8": "21821ba0aa6ead74e08700fcfc15cbc4f94c239bea4668155db04eec780b71d7",
+        ".git/objects/2a/3ee413a002fe21ddf1512b5ff69665b76f12c3": "3450a6c1873437f9cab7819abfad3852b54f906684b35e44b77171173520b190",
+        ".git/objects/35/0ad2c81c51edf21ca039b55d0091a29b6c5ad9": "24d4927ebe6c24242d1c77180f74af1b07913361804e34d149f96bd672c9c3db",
+        ".git/objects/b7/b95e1468dcb0316d99442e4a0b00f9caa1e863": "258a43ad6957b5db3e88eb77368b949340d40804e5e22488e182f6717f15aa6f",
+        ".git/objects/e5/4868bbf0b02d9e1e3c0fc25619054fc2788d9a": "9f1bb55039a303e3a8706dff6a25e753bbe00fec9a0cf8017fd4c8e282c33386",
+        ".git/objects/0f/eb2ddf7c0ad8061b217da87cdb104849f9b49d": "5891e6df595b9d3b99b28d546ef3b57f7ff0fb62692458cb5bd25801392747ea",
+        ".git/objects/09/67ef424bce6791893e9a57bb952f80fd536e93": "46b02e172649b9b5678722535f3c3d127e8a9bcfcd8a92227abd3b3eac395356"
+      },
+      "prompt_sha256": "56796fc02a3b028656a9439f8de93561b6771d28202bdbc28a70d1131fd894c9",
+      "fresh_context": true,
+      "ephemeral": true,
+      "conversation_history_inherited": false,
+      "thread_id": "01a1171a-7ce2-70f3-89f8-95c083cd2272",
+      "resolved_model": "gpt-6.1-sol",
+      "execution_status": "completed",
+      "failure_category": null,
+      "candidate_status": "design_validated",
+      "permitted_artifact": "tests/test-design.json",
+      "sandbox_preflight_passed": true,
+      "command": [
+        "/home/ivan/.local/bin/codex",
+        "--no-daemon",
+        "-a",
+        "never",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--cd",
+        "/home/ivan/codex-role-pqv4p6xo",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "model_reasoning_effort=\"medium\"",
+        "-c",
+        "shell_environment_policy.inherit=\"core\"",
+        "-c",
+        "features.multi_agent=false",
+        "-c",
+        "web_search=\"disabled\"",
+        "-c",
+        "default_permissions=\"role_workspace\"",
+        "-c",
+        "permissions.role_workspace={filesystem={\":minimal\"=\"read\",\"/home/ivan/.codex/packages/standalone/releases/0.160.1-x86_64-unknown-linux-musl\"=\"read\",\":workspace_roots\"={\".\"=\"read\",\"tests\"=\"write\"},\":tmpdir\"=\"deny\",\":slash_tmp\"=\"deny\"},network={enabled=false}}",
+        "-"
+      ],
+      "elapsed_seconds": 65.025,
+      "process_exit_code": 0,
+      "timed_out": false,
+      "shutdown_confirmed": true,
+      "provider": "openai",
+      "sandbox_banner": "custom permissions",
+      "changed_files": [
+        "tests/test-design.json"
+      ],
+      "mutation_scope_valid": true,
+      "artifact_hashes": {
+        "tests/test-design.json": "77a9fbbfa9c1b6de9fd538caa65ef8f3c71652bff3797c29b4726958165f65bc"
+      },
+      "artifact_check": {
+        "valid": true,
+        "case_count": 24,
+        "schema_valid": true,
+        "ascii_domain_valid": true,
+        "unique_ids": true
+      },
+      "diff": "--- a/tests/test-design.json\n+++ b/tests/test-design.json\n@@ -1 +1,152 @@\n-{}\n+{\n+  \"task_id\": \"LABEL-NORMALIZATION\",\n+  \"contract_version\": 1,\n+  \"cases\": [\n+    {\n+      \"id\": \"empty-input\",\n+      \"intent\": \"Rule 10: empty input returns an empty list.\",\n+      \"input\": \"\",\n+      \"expected\": []\n+    },\n+    {\n+      \"id\": \"empty-label-forms\",\n+      \"intent\": \"Rules 1, 2, 5, 6, 9: separators, empty quotes and ordinary whitespace produce no labels.\",\n+      \"input\": \",,,\\\"\\\", \\t\\r\\n\\u000b\\f,\\\"\\\"\\\"\\\",,\",\n+      \"expected\": []\n+    },\n+    {\n+      \"id\": \"separator-order\",\n+      \"intent\": \"Rules 1, 6, 8, 10: repeated separators preserve first occurrence order after trimming and lowercasing.\",\n+      \"input\": \", BETA ,, Alpha, GAMMA, beta, ,\",\n+      \"expected\": [\"beta\", \"alpha\", \"gamma\"]\n+    },\n+    {\n+      \"id\": \"quote-concatenation\",\n+      \"intent\": \"Rules 2, 8: quote toggles anywhere concatenate adjacent fragments and lowercase all letters.\",\n+      \"input\": \"PRE\\\"MiD\\\"POST,\\\"A\\\"B\\\"C\\\"\\\"D\\\",X\\\"\\\"Y\",\n+      \"expected\": [\"premidpost\", \"abcd\", \"xy\"]\n+    },\n+    {\n+      \"id\": \"quoted-commas\",\n+      \"intent\": \"Rules 1, 2, 8: commas in quotes remain literal even in a partially quoted label.\",\n+      \"input\": \"\\\"A,B,,C\\\",D\\\",E\\\"F,\\\",\\\"\",\n+      \"expected\": [\"a,b,,c\", \"d,ef\", \",\"]\n+    },\n+    {\n+      \"id\": \"escaped-delimiters-outside\",\n+      \"intent\": \"Rules 1, 2, 3, 8: escaped comma, quote and backslash are literals outside quotes.\",\n+      \"input\": \"A\\\\,B,A\\\\\\\"B,A\\\\\\\\B\",\n+      \"expected\": [\"a,b\", \"a\\\"b\", \"a\\\\b\"]\n+    },\n+    {\n+      \"id\": \"escaped-delimiters-inside\",\n+      \"intent\": \"Rules 1, 2, 3, 8: the same escapes are literals inside quotes and escaped quotes do not toggle mode.\",\n+      \"input\": \"\\\"A\\\\,B\\\\\\\"C\\\\\\\\D\\\",END\",\n+      \"expected\": [\"a,b\\\"c\\\\d\", \"end\"]\n+    },\n+    {\n+      \"id\": \"all-ordinary-whitespace\",\n+      \"intent\": \"Rules 5, 6, 8: all six ASCII whitespace characters trim at boundaries and collapse together internally.\",\n+      \"input\": \" \\t\\r\\n\\u000b\\fA \\t\\r\\n\\u000b\\f B\\f\\u000b\\n\\r\\t \",\n+      \"expected\": [\"a b\"]\n+    },\n+    {\n+      \"id\": \"all-quoted-whitespace\",\n+      \"intent\": \"Rules 2, 5, 7, 8: quoted whitespace preserves every character and repetition at boundaries and internally.\",\n+      \"input\": \"\\\" \\t\\r\\n\\u000b\\fA  \\t\\tB\\f\\u000b\\n\\r\\t \\\"\",\n+      \"expected\": [\" \\t\\r\\n\\u000b\\fa  \\t\\tb\\f\\u000b\\n\\r\\t \"]\n+    },\n+    {\n+      \"id\": \"all-escaped-whitespace\",\n+      \"intent\": \"Rules 3, 5, 7, 8: escaping each of the six whitespace characters protects it, including label boundaries.\",\n+      \"input\": \"\\\\ \\\\\\t\\\\\\r\\\\\\n\\\\\\u000b\\\\\\fA\\\\ \\\\ B\\\\\\f\\\\\\u000b\\\\\\n\\\\\\r\\\\\\t\\\\ \",\n+      \"expected\": [\" \\t\\r\\n\\u000b\\fa  b\\f\\u000b\\n\\r\\t \"]\n+    },\n+    {\n+      \"id\": \"protected-breaks-runs\",\n+      \"intent\": \"Rules 5, 6, 7: quoted and escaped whitespace break ordinary runs, which collapse separately on each side.\",\n+      \"input\": \"A \\t\\\"\\t\\t\\\"\\r\\n B,A \\t\\\\\\t\\r\\n B\",\n+      \"expected\": [\"a \\t\\t b\", \"a \\t b\"]\n+    },\n+    {\n+      \"id\": \"mixed-protected-boundaries\",\n+      \"intent\": \"Rules 6, 7, 8: outer ordinary whitespace trims while protected spaces and tabs remain at boundaries.\",\n+      \"input\": \" \\t\\\"  \\\"A\\\"\\t\\\" \\r, \\n\\\\ B\\\\\\t\\f \",\n+      \"expected\": [\"  a\\t\", \" b\\t\"]\n+    },\n+    {\n+      \"id\": \"empty-quotes-do-not-break-runs\",\n+      \"intent\": \"Rules 2, 6, 9: removed empty quote delimiters emit nothing and do not separate ordinary whitespace runs.\",\n+      \"input\": \" \\\"\\\" A \\t\\\"\\\"\\r\\n B \\\"\\\" ,\\\"\\\" \\t\\\"\\\"\",\n+      \"expected\": [\"a b\"]\n+    },\n+    {\n+      \"id\": \"protected-only-and-dedup\",\n+      \"intent\": \"Rules 7, 9, 10: protected whitespace-only labels survive and deduplicate by exact output, retaining distinct lengths.\",\n+      \"input\": \"\\\" \\t\\r\\n\\u000b\\f\\\",\\\\ ,\\\" \\\",\\\"  \\\",\\\"\\\", \\t\",\n+      \"expected\": [\" \\t\\r\\n\\u000b\\f\", \" \", \"  \"]\n+    },\n+    {\n+      \"id\": \"dedup-after-all-normalization\",\n+      \"intent\": \"Rules 2, 3, 6, 8, 10: equivalent quoted, escaped, trimmed and case-varied labels deduplicate in first occurrence order.\",\n+      \"input\": \" Z,ALPHA,\\\"z\\\",a\\\\LPHA, alpha ,BETA,Z,\\\"BE\\\"TA\",\n+      \"expected\": [\"z\", \"alpha\", \"beta\"]\n+    },\n+    {\n+      \"id\": \"exact-whitespace-equality\",\n+      \"intent\": \"Rules 6, 7, 10: equality uses normalized strings regardless of protection while distinct protected spacing stays distinct.\",\n+      \"input\": \"A B,A\\tB,\\\"A B\\\",\\\"A  B\\\",A\\\\ B,\\\" A B \\\"\",\n+      \"expected\": [\"a b\", \"a  b\", \" a b \"]\n+    },\n+    {\n+      \"id\": \"other-ascii-literals\",\n+      \"intent\": \"Rules 5, 8: punctuation, digits and non-whitespace ASCII controls remain exact while letters lowercase.\",\n+      \"input\": \"AZ09!@#$%^&*()_+-=[]{};:'/?<>.|~`\\u0000\\u001b\\u007f\",\n+      \"expected\": [\"az09!@#$%^&*()_+-=[]{};:'/?<>.|~`\\u0000\\u001b\\u007f\"]\n+    },\n+    {\n+      \"id\": \"escaped-uppercase-both-modes\",\n+      \"intent\": \"Rules 3, 8, 10: escapes consume exactly one character and escaped uppercase lowercases in either mode.\",\n+      \"input\": \"\\\\A\\\\Z,\\\"\\\\A\\\\Z\\\",\\\\n\\\\t\\\\r\",\n+      \"expected\": [\"az\", \"ntr\"]\n+    },\n+    {\n+      \"id\": \"paired-backslash-before-delimiter\",\n+      \"intent\": \"Rules 1, 2, 3: paired backslashes emit a literal backslash and leave the following comma or quote active.\",\n+      \"input\": \"A\\\\\\\\,B,\\\"C\\\\\\\\\\\",D\\\\\\\\\",\n+      \"expected\": [\"a\\\\\", \"b\", \"c\\\\\", \"d\\\\\"]\n+    },\n+    {\n+      \"id\": \"trailing-escape-outside\",\n+      \"intent\": \"Rules 4, 9, 10: a trailing unpaired escape invalidates the whole input after valid, duplicate and empty labels.\",\n+      \"input\": \"OK,ok,,\\\"\\\",BAD\\\\\",\n+      \"expected\": null\n+    },\n+    {\n+      \"id\": \"trailing-escape-inside\",\n+      \"intent\": \"Rules 3, 4: a trailing unpaired escape inside a quote invalidates all preceding valid labels.\",\n+      \"input\": \"OK,\\\"BAD\\\\\",\n+      \"expected\": null\n+    },\n+    {\n+      \"id\": \"unclosed-quote-after-valid-labels\",\n+      \"intent\": \"Rules 2, 4, 10: a quote opened mid-label and left unclosed invalidates previously valid labels.\",\n+      \"input\": \"OK,ok,NEXT,PRE\\\"BAD,TAIL\",\n+      \"expected\": null\n+    },\n+    {\n+      \"id\": \"escaped-quote-does-not-close\",\n+      \"intent\": \"Rules 2, 3, 4: an escaped final quote is literal and cannot close quoted mode.\",\n+      \"input\": \"OK,\\\"BAD\\\\\\\"\",\n+      \"expected\": null\n+    },\n+    {\n+      \"id\": \"empty-normalization-cannot-hide-error\",\n+      \"intent\": \"Rules 4, 9: empty and ordinary whitespace labels cannot suppress a later unclosed quote.\",\n+      \"input\": \",\\\"\\\", \\t,\\\"\",\n+      \"expected\": null\n+    }\n+  ],\n+  \"properties\": [\"unique_nonempty_labels\", \"ascii_lowercase\"],\n+  \"rationale\": \"The 24 deterministic ASCII cases cover all ten rules and their interactions. Expectations follow left-to-right delimiter and escape handling, retain per-character whitespace protection, trim only ordinary boundaries, collapse only ordinary runs, lowercase every emitted ASCII uppercase letter, then remove empty strings and deduplicate by exact equality in first occurrence order. Separate cases exercise all six whitespace characters as ordinary, quoted and escaped characters; empty quotes; protected run separators and boundaries; exact protected-only equality; literal ASCII controls; and paired escape parity. Malformed endings require whole-input ValueError even after valid, duplicate or empty labels, represented by null. No Unicode or non-string behavior is assumed.\"\n+}\n",
+      "cleanup_passed": true
+    },
+    {
+      "trial_id": "full",
+      "role": "reviewer",
+      "model": "gpt-6.1-sol",
+      "reasoning": "medium",
+      "codex_version": "codex-cli 0.160.1",
+      "workspace": "/home/ivan/codex-role-bhjrhh9c",
+      "workspace_identity": "8340e4ceb87916e4fbb122ca570b3c4f4ea36363ecf7917a0f12c83cec304ec8",
+      "prompt_sha256": "8739fb8bede8e6816bc118cca0189a5b0d9a5dea36ac1a3ed8c0f84ec26b4e85",
+      "fresh_context": true,
+      "ephemeral": true,
+      "conversation_history_inherited": false,
+      "invocation_mode": "native CLI exec; output-schema; output-last-message",
+      "execution_status": "completed",
+      "thread_id": "01a1171b-7cb0-7c31-a175-0b1ac9e926ab",
+      "resolved_model": "gpt-6.1-sol",
+      "baseline_hashes": {
+        "TASK.json": "11d671fdc0913a7b23560f9db988996b588a3b1580fcad690b894c92cf1ddf6d",
+        "schema.json": "b2e71103e8f4fb967c92711ec94d9e29fc1ba6144d7fe36eee29ceec8cbb902a",
+        "role-input.md": "8739fb8bede8e6816bc118cca0189a5b0d9a5dea36ac1a3ed8c0f84ec26b4e85",
+        "bundle.json": "a51284d4a406fa6505a291a80f4950f701f6eb666b25b0de8d7937577be9647a",
+        ".git/index": "cb702683d669546678491fb153d262f24da3581b4702e9c39a3734e59e3db75f",
+        ".git/HEAD": "28d25bf82af4c0e2b72f50959b2beb859e3e60b9630a5e8c603dad4ddb2b6e80",
+        ".git/COMMIT_EDITMSG": "674b3d9e45a73cc5c252c49737271d37236644cd81992585924948857baa69ad",
+        ".git/config": "cfe7ba1238c9a78be7535d7c63bcaf5a4d5011d46b07c9b45d3bbf7d6c312dfe",
+        ".git/description": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee",
+        ".git/info/exclude": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1",
+        ".git/hooks/fsmonitor-watchman.sample": "e0549964e93897b519bd8e333c037e51fff0f88ba13e086a331592bf801fa1d0",
+        ".git/hooks/prepare-commit-msg.sample": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619",
+        ".git/hooks/update.sample": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106",
+        ".git/hooks/push-to-checkout.sample": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f",
+        ".git/hooks/sendemail-validate.sample": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92",
+        ".git/hooks/pre-applypatch.sample": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475",
+        ".git/hooks/pre-merge-commit.sample": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53",
+        ".git/hooks/applypatch-msg.sample": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7",
+        ".git/hooks/pre-receive.sample": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989",
+        ".git/hooks/pre-commit.sample": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b",
+        ".git/hooks/pre-push.sample": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a",
+        ".git/hooks/pre-rebase.sample": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3",
+        ".git/hooks/commit-msg.sample": "1f74d5e9292979b573ebd59741d46cb93ff391acdd083d340b94370753d92437",
+        ".git/hooks/post-update.sample": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5",
+        ".git/logs/HEAD": "4819b9fb7e3c3639c87eb40447ece902442d733b73b4fa9f60a253d510db0cb8",
+        ".git/logs/refs/heads/main": "4819b9fb7e3c3639c87eb40447ece902442d733b73b4fa9f60a253d510db0cb8",
+        ".git/refs/heads/main": "ba2a6e66ed1c8bd1b4f9b0a11af86db275ec662df7e21b999b499cc705c5c9c9",
+        ".git/objects/3e/ce474db5880ad2d85c59b5f2b90a47581edaee": "52d9bf2e709fdf6cc3f31de9d55e1e2d21ad00f747f7e79aa48437f2c8b2349b",
+        ".git/objects/62/05f033db2aaf1935e149dc3ae76d06f1711fd1": "bee0f1b0a1d6efd33b8ad96d3f8f2462cab27c45864e9677d15387f75faa580a",
+        ".git/objects/33/f4ed0d7ab034dbbaa52a1548e796296eeea1a2": "002d4bb5c6934b9d91be7532bb851eb26f37e6157b6c0d67e471cf85e0490997",
+        ".git/objects/4d/41f4abc45b0592609a5a66a28f4fe7d718cf65": "1c9852d093b3262f4c17d430e406e2ac4ae2687bfdf03d3f3a9d98e8d31ea440",
+        ".git/objects/84/49cbebb4c82e23eab9a24f86a8084311432091": "8958b9eb4dd24a93d8f1fcb7f2afadcaaad479cd4b3911ff2206df84abf4169b",
+        ".git/objects/f0/44d362c355f9a5f7cf49129489983ac444ed1b": "b7b909b61ee0189f5c0145af7068b078a31e1a704a01a7c2d8e9b11575d2c7ec"
+      },
+      "read_only": true,
+      "sandbox_preflight_passed": true,
+      "command": [
+        "/home/ivan/.local/bin/codex",
+        "--no-daemon",
+        "-a",
+        "never",
+        "exec",
+        "--ignore-user-config",
+        "--ephemeral",
+        "--color",
+        "never",
+        "--cd",
+        "/home/ivan/codex-role-bhjrhh9c",
+        "--model",
+        "gpt-6.1-sol",
+        "-c",
+        "model_reasoning_effort=\"medium\"",
+        "-c",
+        "shell_environment_policy.inherit=\"core\"",
+        "-c",
+        "features.multi_agent=false",
+        "-c",
+        "web_search=\"disabled\"",
+        "-c",
+        "default_permissions=\"role_workspace\"",
+        "-c",
+        "permissions.role_workspace={filesystem={\":minimal\"=\"read\",\"/home/ivan/.codex/packages/standalone/releases/0.160.1-x86_64-unknown-linux-musl\"=\"read\",\":workspace_roots\"={\".\"=\"read\"},\":tmpdir\"=\"deny\",\":slash_tmp\"=\"deny\"},network={enabled=false}}",
+        "--output-schema",
+        "/home/ivan/codex-role-bhjrhh9c/schema.json",
+        "--output-last-message",
+        "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage24-verification/after/full/reviewer-result.json",
+        "-"
+      ],
+      "elapsed_seconds": 28.075,
+      "process_exit_code": 0,
+      "timed_out": false,
+      "shutdown_confirmed": true,
+      "provider": "openai",
+      "sandbox_banner": "read-only",
+      "changed_files": [],
+      "mutation_scope_valid": true,
+      "artifact_sha256": "2f7bbdd07cbba8909bfe6b0f75e9f6732234d58307afd366473d789a1c327086",
+      "artifact_check": {
+        "valid": true,
+        "schema_valid": true
+      },
+      "cleanup_passed": true
+    }
+  ],
+  "failure_category": null,
+  "cleanup_passed": true,
+  "candidate_sha256": "0b2ce5ad60e46b898a9b1da9eccdbe4e9c514950a3aa7c0d8d502a8aeba08f49",
+  "frozen_tester_sha256": "77a9fbbfa9c1b6de9fd538caa65ef8f3c71652bff3797c29b4726958165f65bc",
+  "case_count": 24,
+  "tester_candidate_blind_before_freeze": true,
+  "acceptance": {
+    "model_requests": 0,
+    "tester_sessions": 0,
+    "returncode": 0,
+    "design_sha256": "77a9fbbfa9c1b6de9fd538caa65ef8f3c71652bff3797c29b4726958165f65bc",
+    "harness_sha256": "6537706d40983836632d206be534a6ef67c4edaa58c03a3e8cb32fec33d54b82",
+    "candidate_sha256_before": "0b2ce5ad60e46b898a9b1da9eccdbe4e9c514950a3aa7c0d8d502a8aeba08f49",
+    "candidate_sha256_after": "0b2ce5ad60e46b898a9b1da9eccdbe4e9c514950a3aa7c0d8d502a8aeba08f49",
+    "mutation_scope_valid": true,
+    "result": {
+      "passed": true,
+      "interface": true,
+      "cases": [
+        {
+          "id": "empty-input",
+          "input": "",
+          "expected": [],
+          "actual": [],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "empty-label-forms",
+          "input": ",,,\"\", \t\r\n\u000b\f,\"\"\"\",,",
+          "expected": [],
+          "actual": [],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "separator-order",
+          "input": ", BETA ,, Alpha, GAMMA, beta, ,",
+          "expected": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "actual": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "quote-concatenation",
+          "input": "PRE\"MiD\"POST,\"A\"B\"C\"\"D\",X\"\"Y",
+          "expected": [
+            "premidpost",
+            "abcd",
+            "xy"
+          ],
+          "actual": [
+            "premidpost",
+            "abcd",
+            "xy"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "quoted-commas",
+          "input": "\"A,B,,C\",D\",E\"F,\",\"",
+          "expected": [
+            "a,b,,c",
+            "d,ef",
+            ","
+          ],
+          "actual": [
+            "a,b,,c",
+            "d,ef",
+            ","
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "escaped-delimiters-outside",
+          "input": "A\\,B,A\\\"B,A\\\\B",
+          "expected": [
+            "a,b",
+            "a\"b",
+            "a\\b"
+          ],
+          "actual": [
+            "a,b",
+            "a\"b",
+            "a\\b"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "escaped-delimiters-inside",
+          "input": "\"A\\,B\\\"C\\\\D\",END",
+          "expected": [
+            "a,b\"c\\d",
+            "end"
+          ],
+          "actual": [
+            "a,b\"c\\d",
+            "end"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "all-ordinary-whitespace",
+          "input": " \t\r\n\u000b\fA \t\r\n\u000b\f B\f\u000b\n\r\t ",
+          "expected": [
+            "a b"
+          ],
+          "actual": [
+            "a b"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "all-quoted-whitespace",
+          "input": "\" \t\r\n\u000b\fA  \t\tB\f\u000b\n\r\t \"",
+          "expected": [
+            " \t\r\n\u000b\fa  \t\tb\f\u000b\n\r\t "
+          ],
+          "actual": [
+            " \t\r\n\u000b\fa  \t\tb\f\u000b\n\r\t "
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "all-escaped-whitespace",
+          "input": "\\ \\\t\\\r\\\n\\\u000b\\\fA\\ \\ B\\\f\\\u000b\\\n\\\r\\\t\\ ",
+          "expected": [
+            " \t\r\n\u000b\fa  b\f\u000b\n\r\t "
+          ],
+          "actual": [
+            " \t\r\n\u000b\fa  b\f\u000b\n\r\t "
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "protected-breaks-runs",
+          "input": "A \t\"\t\t\"\r\n B,A \t\\\t\r\n B",
+          "expected": [
+            "a \t\t b",
+            "a \t b"
+          ],
+          "actual": [
+            "a \t\t b",
+            "a \t b"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "mixed-protected-boundaries",
+          "input": " \t\"  \"A\"\t\" \r, \n\\ B\\\t\f ",
+          "expected": [
+            "  a\t",
+            " b\t"
+          ],
+          "actual": [
+            "  a\t",
+            " b\t"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "empty-quotes-do-not-break-runs",
+          "input": " \"\" A \t\"\"\r\n B \"\" ,\"\" \t\"\"",
+          "expected": [
+            "a b"
+          ],
+          "actual": [
+            "a b"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "protected-only-and-dedup",
+          "input": "\" \t\r\n\u000b\f\",\\ ,\" \",\"  \",\"\", \t",
+          "expected": [
+            " \t\r\n\u000b\f",
+            " ",
+            "  "
+          ],
+          "actual": [
+            " \t\r\n\u000b\f",
+            " ",
+            "  "
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "dedup-after-all-normalization",
+          "input": " Z,ALPHA,\"z\",a\\LPHA, alpha ,BETA,Z,\"BE\"TA",
+          "expected": [
+            "z",
+            "alpha",
+            "beta"
+          ],
+          "actual": [
+            "z",
+            "alpha",
+            "beta"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "exact-whitespace-equality",
+          "input": "A B,A\tB,\"A B\",\"A  B\",A\\ B,\" A B \"",
+          "expected": [
+            "a b",
+            "a  b",
+            " a b "
+          ],
+          "actual": [
+            "a b",
+            "a  b",
+            " a b "
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "other-ascii-literals",
+          "input": "AZ09!@#$%^&*()_+-=[]{};:'/?<>.|~`\u0000\u001b\u007f",
+          "expected": [
+            "az09!@#$%^&*()_+-=[]{};:'/?<>.|~`\u0000\u001b\u007f"
+          ],
+          "actual": [
+            "az09!@#$%^&*()_+-=[]{};:'/?<>.|~`\u0000\u001b\u007f"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "escaped-uppercase-both-modes",
+          "input": "\\A\\Z,\"\\A\\Z\",\\n\\t\\r",
+          "expected": [
+            "az",
+            "ntr"
+          ],
+          "actual": [
+            "az",
+            "ntr"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "paired-backslash-before-delimiter",
+          "input": "A\\\\,B,\"C\\\\\",D\\\\",
+          "expected": [
+            "a\\",
+            "b",
+            "c\\",
+            "d\\"
+          ],
+          "actual": [
+            "a\\",
+            "b",
+            "c\\",
+            "d\\"
+          ],
+          "error": null,
+          "passed": true
+        },
+        {
+          "id": "trailing-escape-outside",
+          "input": "OK,ok,,\"\",BAD\\",
+          "expected": null,
+          "actual": null,
+          "error": "ValueError",
+          "passed": true
+        },
+        {
+          "id": "trailing-escape-inside",
+          "input": "OK,\"BAD\\",
+          "expected": null,
+          "actual": null,
+          "error": "ValueError",
+          "passed": true
+        },
+        {
+          "id": "unclosed-quote-after-valid-labels",
+          "input": "OK,ok,NEXT,PRE\"BAD,TAIL",
+          "expected": null,
+          "actual": null,
+          "error": "ValueError",
+          "passed": true
+        },
+        {
+          "id": "escaped-quote-does-not-close",
+          "input": "OK,\"BAD\\\"",
+          "expected": null,
+          "actual": null,
+          "error": "ValueError",
+          "passed": true
+        },
+        {
+          "id": "empty-normalization-cannot-hide-error",
+          "input": ",\"\", \t,\"",
+          "expected": null,
+          "actual": null,
+          "error": "ValueError",
+          "passed": true
+        }
+      ],
+      "properties": [
+        {
+          "case": "empty-input",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "empty-input",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "empty-label-forms",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "empty-label-forms",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "separator-order",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "separator-order",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "quote-concatenation",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "quote-concatenation",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "quoted-commas",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "quoted-commas",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "escaped-delimiters-outside",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "escaped-delimiters-outside",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "escaped-delimiters-inside",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "escaped-delimiters-inside",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "all-ordinary-whitespace",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "all-ordinary-whitespace",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "all-quoted-whitespace",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "all-quoted-whitespace",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "all-escaped-whitespace",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "all-escaped-whitespace",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "protected-breaks-runs",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "protected-breaks-runs",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "mixed-protected-boundaries",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "mixed-protected-boundaries",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "empty-quotes-do-not-break-runs",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "empty-quotes-do-not-break-runs",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "protected-only-and-dedup",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "protected-only-and-dedup",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "dedup-after-all-normalization",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "dedup-after-all-normalization",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "exact-whitespace-equality",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "exact-whitespace-equality",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "other-ascii-literals",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "other-ascii-literals",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "escaped-uppercase-both-modes",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "escaped-uppercase-both-modes",
+          "property": "ascii_lowercase",
+          "passed": true
+        },
+        {
+          "case": "paired-backslash-before-delimiter",
+          "property": "unique_nonempty_labels",
+          "passed": true
+        },
+        {
+          "case": "paired-backslash-before-delimiter",
+          "property": "ascii_lowercase",
+          "passed": true
+        }
+      ]
+    },
+    "executed_at": 1791389039.4981484,
+    "sandbox": "native Linux Codex; read-only workspace; no project network"
+  },
+  "review": {
+    "recommendation": "accept",
+    "blockers": [],
+    "findings": [],
+    "rationale": "Controller evidence establishes that all 24 frozen acceptance cases and reported properties passed, the interface and mutation scope are valid, and the candidate hash remained unchanged. Additional static review of the supplied diff found no in-scope defects: escape handling precedes delimiter handling, protected whitespace remains literal, pending ordinary whitespace implements trimming and collapsing, malformed input raises before return, and deduplication uses normalized strings in first-occurrence order. The implementation uses only Python built-ins and performs no I/O. Acceptance was not rerun."
+  },
+  "owned_workspaces": [
+    "/home/ivan/codex-role-mu_qlwda",
+    "/home/ivan/codex-role-edfypf44",
+    "/home/ivan/codex-role-pqv4p6xo",
+    "/home/ivan/codex-role-jkh900j_",
+    "/home/ivan/codex-role-bhjrhh9c"
+  ],
+  "cleanup_failures": []
+}

@@ -1,0 +1,30 @@
+{
+  "changes": {
+    "README.md": [
+      {
+        "tag": "replace",
+        "baseline_start": 282,
+        "baseline_end": 283,
+        "candidate_start": 282,
+        "candidate_end": 283
+      },
+      {
+        "tag": "replace",
+        "baseline_start": 374,
+        "baseline_end": 377,
+        "candidate_start": 374,
+        "candidate_end": 387
+      }
+    ],
+    "collector/run.py": [
+      {
+        "tag": "insert",
+        "baseline_start": 74,
+        "baseline_end": 74,
+        "candidate_start": 74,
+        "candidate_end": 84
+      }
+    ]
+  },
+  "note": "Initial display diff normalized candidate line endings while preserving baseline CRLF; corrected generator reads bytes on both sides. Initial reviewer inputs and display retained. Actual unchanged line bytes are preserved."
+}

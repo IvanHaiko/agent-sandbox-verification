@@ -1,0 +1,38 @@
+{
+  "summary": "Implemented PostgreSQL-aware SQL statement splitting and integrated whole-file validation into the migration runner while preserving the public API, discovery behavior, ledger schema, patch seam, console summaries, and per-file commits.",
+  "changed_files": [
+    "src/sql_statements.py",
+    "src/migrations.py",
+    "tests/test_migration_sql.py"
+  ],
+  "implementation": [
+    "Preserves original statement text with outer whitespace stripped; discards empty and comment-only fragments.",
+    "Handles ordinary and E/e strings, doubled quotes, quoted identifiers, case-sensitive ASCII dollar delimiters, identifier-embedded dollar text, CR/LF line comments, and nested block comments.",
+    "Rejects unterminated quoted regions and block comments before executing any statement from that file.",
+    "Uses the existing psycopg connection context for rollback on failure; earlier file commits remain durable."
+  ],
+  "tests": [
+    {
+      "command": "/usr/bin/python3 -B controller-check.py unit",
+      "result": "passed",
+      "passed": 40,
+      "skipped": 0
+    },
+    {
+      "command": "/usr/bin/python3 -B controller-check.py integration",
+      "result": "passed",
+      "passed": 203,
+      "skipped": 0
+    },
+    {
+      "command": "/usr/bin/python3 -B controller-check.py lint",
+      "result": "All checks passed"
+    }
+  ],
+  "coverage": "Added lexical edge cases, adjacent quoted tokens, full-file validation, UTF-8, immediate SQL-file discovery, empty-file recording, and real PostgreSQL tests for function/DO bodies, nested comments, rerun skipping, per-file rollback, and durable earlier migrations.",
+  "limitations": [
+    "This is a statement-boundary lexer, not SQL grammar validation.",
+    "Assumes standard_conforming_strings=on for ordinary strings.",
+    "COPY FROM STDIN data, transaction-control statements, psql commands, non-ASCII dollar tags, concurrent migration coordination, and checksum tracking remain outside the task scope."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "handoff": {
+    "summary": [
+      "Validate the explicit IGDB envelope and entire game batch before transformation or connection acquisition; reject malformed IDs, names, duplicates and nested URL/UID types without mutating input.",
+      "Treat absent/null nested collections as empty while preserving raw_json, field values, decoding and link precedence; return zero for an explicit empty batch without connecting.",
+      "Use NULL-safe persisted-value comparisons in IGDB game, store-link and Twitch mapping upserts so identical replay preserves timestamps and changed records update normally.",
+      "Retain existing file-wide transaction boundaries and public helper signatures and fake-connection compatibility.",
+      "Resolve each file's shared Twitch UID and store key to its last mapping before persistence, preventing transient remappings and replay timestamp changes while preserving existing last-game precedence."
+    ],
+    "changed_files": [
+      "src/transform.py",
+      "src/load.py",
+      "tests/test_igdb_reliability.py"
+    ],
+    "tests": {
+      "unit": {
+        "command": "/usr/bin/python3 -B controller-check.py unit",
+        "result": "118 passed"
+      },
+      "integration": {
+        "command": "/usr/bin/python3 -B controller-check.py integration",
+        "result": "225 passed"
+      },
+      "lint": {
+        "command": "/usr/bin/python3 -B controller-check.py lint",
+        "result": "All checks passed"
+      },
+      "coverage": [
+        "Malformed envelopes, games and nested entries raise ValueError from transformer and loader before opening a connection.",
+        "Empty batches and malformed JSON do not acquire a connection.",
+        "Valid name preservation, raw_json preservation, UTC release date, enum decoding, URL-over-uid and website precedence, and null nested collections.",
+        "Separate-transaction identical replay including JSON key reorder preserves all persisted values; changes advance game and Twitch timestamps.",
+        "Store-link remapping retains unique keys and created_at; omitted links and categories remain persisted.",
+        "Failures injected at each persistence helper after earlier writes, both Python exceptions and real PostgreSQL errors, roll back inserts and previous-row updates; saved-file retries succeed and remain replay-safe.",
+        "Shared Twitch UID and store key in one valid batch: replay preserves every row and timestamp; reversing order legitimately remaps to the last game; changing superseded game metadata leaves final mapping timestamps unchanged."
+      ],
+      "initial_self_check": "Initial unit run reported two failures in new tests because migrations append columns after timestamp columns. Corrected test queries to select named timestamps explicitly, then reran all required checks on final source/test bytes."
+    },
+    "limitations": [
+      "Unrelated optional scalar fields retain existing transformation behavior, as required.",
+      "No API calls, schema/dependency changes, existing-test edits, or independent-test inspection were performed."
+    ],
+    "repair_cycles": [
+      {
+        "cycle": 1,
+        "trigger": "Concrete reviewer blocker: identical batch replay with distinct games sharing one Twitch UID transiently remapped the category and advanced updated_at.",
+        "change": "Resolve final mappings before persistence for both shared Twitch UIDs and analogous unique store keys; skip superseded entries.",
+        "checks": {
+          "unit": "118 passed",
+          "integration": "225 passed",
+          "lint": "All checks passed"
+        },
+        "limitations": "Collision resolution applies to one file; later files retain existing upsert-only behavior."
+      }
+    ]
+  },
+  "checks": {
+    "response.json": {
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    }
+  }
+}

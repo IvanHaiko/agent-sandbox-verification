@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "All checks passed!\n",
+  "stderr": "",
+  "argv": [
+    "/home/ivan/codex-role-d84s0i0h/venv/bin/ruff",
+    "check",
+    "--no-cache",
+    "."
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "src/migrations.py": "03f0773f64b5d06131f5aead7aceaa130b8ebf91045a62d7c2e1765355f927c2",
+  "src/sql_statements.py": "f3c6b0f8631f81393c2a517f11118de1c7558a25d8f5d72939b01f209c507656",
+  "tests/test_migration_sql.py": "3392c3ac31a54a4cc975e454ebb4f0b41a5d104512f0158dbbd67b5ff6ff2442"
+}

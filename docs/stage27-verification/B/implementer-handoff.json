@@ -1,0 +1,36 @@
+{
+  "summary": "Added a PostgreSQL-aware SQL statement splitter and integrated eager whole-file validation into the migration runner. Statements retain original internal text and comments; empty and comment-only fragments are ignored. Existing migration discovery, connection patch seam, ledger, commit behavior, signatures, and console summaries are preserved.",
+  "files": [
+    "src/migrations.py",
+    "src/sql_statements.py",
+    "tests/test_migration_sql.py"
+  ],
+  "tests": [
+    {
+      "command": "/usr/bin/python3 -B controller-check.py unit",
+      "result": "passed",
+      "details": "30 passed in 0.65s; no skips"
+    },
+    {
+      "command": "/usr/bin/python3 -B controller-check.py integration",
+      "result": "passed",
+      "details": "193 passed in 4.44s; no skips"
+    },
+    {
+      "command": "/usr/bin/python3 -B controller-check.py lint",
+      "result": "passed",
+      "details": "All checks passed"
+    }
+  ],
+  "coverage": [
+    "Standard strings, escape strings, doubled quotes, quoted identifiers, case-sensitive dollar tags, identifier boundaries, and positional parameters",
+    "CR/LF/EOF line comments, nested block comments, preserved text, comment-only fragments, and unterminated-region errors",
+    "Whole-file validation before any migration statement execution; immediate file discovery, filename order, UTF-8, and empty-file ledger recording",
+    "Real PostgreSQL function and DO bodies, quoted semicolons, rerun skipping, and per-file rollback with earlier commits preserved"
+  ],
+  "limitations": [
+    "Ordinary strings assume standard_conforming_strings=on, as required.",
+    "SQL grammar validation, COPY FROM STDIN data, transaction-control statements, psql meta commands, non-ASCII dollar tags, concurrent migration coordination, and checksum tracking remain outside scope.",
+    "Independent tests were not inspected or executed by the implementer."
+  ]
+}

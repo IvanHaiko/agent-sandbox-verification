@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "trials": [
+    {
+      "trial_id": "minimal-1",
+      "case_count": 24,
+      "archive_hashes_verified": true,
+      "freeze_preceded_exposure": true,
+      "frozen_tests_unchanged": true,
+      "candidate_unchanged": true,
+      "all_frozen_cases_passed": true,
+      "cleanup_independently_verified": true
+    },
+    {
+      "trial_id": "minimal-2",
+      "case_count": 23,
+      "archive_hashes_verified": true,
+      "freeze_preceded_exposure": true,
+      "frozen_tests_unchanged": true,
+      "candidate_unchanged": true,
+      "all_frozen_cases_passed": true,
+      "cleanup_independently_verified": true
+    },
+    {
+      "trial_id": "minimal-3",
+      "case_count": 23,
+      "archive_hashes_verified": true,
+      "freeze_preceded_exposure": true,
+      "frozen_tests_unchanged": true,
+      "candidate_unchanged": true,
+      "all_frozen_cases_passed": true,
+      "cleanup_independently_verified": true
+    }
+  ],
+  "distinct_native_role_sessions": 6,
+  "no_session_reused_from_prerequisite_or_smoke": true,
+  "driver_and_contract_unchanged_during_trials": true,
+  "all_nine_owned_role_acceptance_repositories_removed": true,
+  "total_frozen_cases": 70
+}

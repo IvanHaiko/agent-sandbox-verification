@@ -1,0 +1,10 @@
+{
+  "started_at": 1791452998.6241565,
+  "model_roles_retried": 0,
+  "candidate_changed": false,
+  "frozen_tests_changed": false,
+  "design_sha256": "afc6cf88988fe1ad69f9e6803fb78218f348499b2527c3908c817060ce53208e",
+  "harness_sha256": "8a4b94498c423d3f90ab932fa1b5158fac7858fc19fc56d020e0dda2be76a1a9",
+  "patch_sha256": "98faa8b05509d33576bd7872a37498b7e58510dca8e69373e4da4d4e896c1e8a",
+  "reason": "First pytest process failed before collection because native temporary dirs were denied. Correct Controller TMPDIR and localize pinned dependencies; continue same frozen artifacts with the single outstanding Reviewer."
+}

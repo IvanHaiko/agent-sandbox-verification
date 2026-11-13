@@ -1,0 +1,41 @@
+{
+  "bundle": {
+    "acceptance.json": "be39d498cafebcb6289a6ed31abc2b96d55334cc92f23c4eed4ef70afc5c10aa",
+    "development-checks.json": "8686038f2e7da2583edec1889ee1790e323da1a9ecb98d75195e1609a42decaf",
+    "test_independent.py": "0528c7663a3813434f042e68ca2f677bb82f2d3ae5370a616e1dfdcdff0877dd",
+    "TASK.md": "eca2fd36966e39aee06e99bf2b4e01a1869c256e6cdef27c6147e3da87b03f22",
+    "candidate.patch": "1b42496b30f127dcae44a8d5be827bdbecc0d673fc60ab4e210625417bce9fe6",
+    "schema.json": "ada688bf14f51eb08c67f88ca23df7bfc9d8a2f990f2d37c7585ae13f6fe97f1",
+    "test-design.json": "f526218116a8b7b556218ddbbe6a42da532331405245a09cc7a1f7f002b6c0a1",
+    "review-rubric.md": "7dbcb206946764cd41d1e8573b01922cd3ea8ce26af11d29b4512c4aca92bae3",
+    "original/src/migrations.py": "eec752411255d1115e54de1e0656c116f8370f0190f0ce9e4266c0f007edc6b3",
+    "original/src/extract_steamspy.py": "b08b0d391843a8f726f97d2dfd2c086e79e5052e139bf3cf3115e6001cca0e61",
+    "original/src/transform.py": "0d4472328df63ecb8776c5a13cb0e8d6cfc6b1b0aebdf574d7b8426e808cb43a",
+    "original/src/extract_twitch.py": "21d370f52e0ee341890b69357f763010b85f8b32d2c5bab56406d2f355077611",
+    "original/src/extract_igdb.py": "a9c2a389775aa9a5da52b392af0b91414186ff8932502f3228f43e2c3bdbf0d2",
+    "original/src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "original/src/extract_steam_store.py": "e477c56195462b40ce2df6300c6099825f0082133893858bed9822af4805b65e",
+    "original/src/main.py": "fc691a46b1b2dbff8d8b088f0b2245385e64049aefa9bafd4193284a29f507d3",
+    "original/src/db.py": "005faa025e9c3b022841ab8505f1a59ac93e8bb739439ad7c3dbbc1ebefeef37",
+    "original/src/load.py": "d119ceddd946eedec15c3bb92473e16199cf1c99d120e027c79b1c33d2655105",
+    "candidate/src/migrations.py": "eec752411255d1115e54de1e0656c116f8370f0190f0ce9e4266c0f007edc6b3",
+    "candidate/src/extract_steamspy.py": "b08b0d391843a8f726f97d2dfd2c086e79e5052e139bf3cf3115e6001cca0e61",
+    "candidate/src/transform.py": "da3690fa2d8ba89369be7ac4b4ba4f53b240ac59656a592e6dc632f62b39b779",
+    "candidate/src/extract_twitch.py": "21d370f52e0ee341890b69357f763010b85f8b32d2c5bab56406d2f355077611",
+    "candidate/src/extract_igdb.py": "a9c2a389775aa9a5da52b392af0b91414186ff8932502f3228f43e2c3bdbf0d2",
+    "candidate/src/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "candidate/src/extract_steam_store.py": "e477c56195462b40ce2df6300c6099825f0082133893858bed9822af4805b65e",
+    "candidate/src/main.py": "fc691a46b1b2dbff8d8b088f0b2245385e64049aefa9bafd4193284a29f507d3",
+    "candidate/src/db.py": "005faa025e9c3b022841ab8505f1a59ac93e8bb739439ad7c3dbbc1ebefeef37",
+    "candidate/src/load.py": "04aca1923d087ee847bd48f19db517e186edbbe24553a08d9f235633bb762f4e"
+  },
+  "candidate": {
+    "implementer/src/load.py": "04aca1923d087ee847bd48f19db517e186edbbe24553a08d9f235633bb762f4e",
+    "implementer/src/transform.py": "da3690fa2d8ba89369be7ac4b4ba4f53b240ac59656a592e6dc632f62b39b779",
+    "implementer/tests/test_igdb_reliability.py": "c3d12cbbaf102cb290d7c6ba2b0876e42f82b9c9b60c4710e4279d68d781fcd3",
+    "acceptance/src/load.py": "04aca1923d087ee847bd48f19db517e186edbbe24553a08d9f235633bb762f4e",
+    "acceptance/src/transform.py": "da3690fa2d8ba89369be7ac4b4ba4f53b240ac59656a592e6dc632f62b39b779",
+    "acceptance/tests/test_igdb_reliability.py": "c3d12cbbaf102cb290d7c6ba2b0876e42f82b9c9b60c4710e4279d68d781fcd3"
+  },
+  "unchanged": true
+}

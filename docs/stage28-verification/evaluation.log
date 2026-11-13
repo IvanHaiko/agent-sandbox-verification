@@ -1,0 +1,178 @@
+{
+  "A": {
+    "patch_reproduced": true,
+    "external": {
+      "exit_code": 0,
+      "tests": 56,
+      "passed": 56,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 5.053341865539551
+    },
+    "regression": {
+      "exit_code": 0,
+      "tests": 281,
+      "passed": 281,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 9.894318103790283
+    },
+    "independent": {
+      "exit_code": 1,
+      "tests": 69,
+      "passed": 67,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 8.624211549758911
+    },
+    "mutations": {
+      "missing-envelope-validation": {
+        "exit_code": 1,
+        "tests": 69,
+        "passed": 66,
+        "failed": 3,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.69954776763916
+      },
+      "rewrite-replay-timestamp": {
+        "exit_code": 1,
+        "tests": 69,
+        "passed": 63,
+        "failed": 6,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.306702613830566
+      },
+      "commit-partial-file": {
+        "exit_code": 1,
+        "tests": 69,
+        "passed": 64,
+        "failed": 5,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.967312812805176
+      }
+    },
+    "external_mutations": {
+      "missing-envelope-validation": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 54,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 6.892143964767456
+      },
+      "rewrite-replay-timestamp": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 53,
+        "failed": 3,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.75416898727417
+      },
+      "commit-partial-file": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 54,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.089271783828735
+      }
+    }
+  },
+  "B": {
+    "patch_reproduced": true,
+    "external": {
+      "exit_code": 0,
+      "tests": 56,
+      "passed": 56,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 5.175451755523682
+    },
+    "regression": {
+      "exit_code": 0,
+      "tests": 303,
+      "passed": 303,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 11.03815507888794
+    },
+    "independent": {
+      "exit_code": 1,
+      "tests": 75,
+      "passed": 74,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 8.55062198638916
+    },
+    "mutations": {
+      "missing-envelope-validation": {
+        "exit_code": 1,
+        "tests": 75,
+        "passed": 73,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 9.923706769943237
+      },
+      "rewrite-replay-timestamp": {
+        "exit_code": 1,
+        "tests": 75,
+        "passed": 69,
+        "failed": 6,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 7.711450576782227
+      },
+      "commit-partial-file": {
+        "exit_code": 1,
+        "tests": 75,
+        "passed": 71,
+        "failed": 4,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 6.183883905410767
+      }
+    },
+    "external_mutations": {
+      "missing-envelope-validation": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 54,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 5.474431276321411
+      },
+      "rewrite-replay-timestamp": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 53,
+        "failed": 3,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 6.077060699462891
+      },
+      "commit-partial-file": {
+        "exit_code": 1,
+        "tests": 56,
+        "passed": 54,
+        "failed": 2,
+        "errors": 0,
+        "skipped": 0,
+        "elapsed_seconds": 5.557755947113037
+      }
+    }
+  }
+}

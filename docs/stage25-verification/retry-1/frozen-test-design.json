@@ -1,0 +1,62 @@
+{
+  "cases": [
+    {
+      "requirement": "initial",
+      "test": "test_initial_load_and_public_time_semantics",
+      "assertion": "A real loader call stores exactly two game aggregates (100 viewers / 2 streams and 7 / 1), with fetched_at converted from +02:00 to naive UTC, UTC hour floor, bronze source, and non-null snapshot_time. Public parser preserves legacy naive UTC and transform returns two aggregates."
+    },
+    {
+      "requirement": "replay",
+      "test": "test_identical_replay_has_no_persisted_writes",
+      "assertion": "Legacy nonempty bronze without optional metadata loads and replays with count 2. All persisted columns, IDs and PostgreSQL xmin row versions remain identical, proving no writes on identical replay."
+    },
+    {
+      "requirement": "membership",
+      "test": "test_same_hour_replaces_membership_and_preserves_retained_identity",
+      "assertion": "Loading A/B/C followed by later A/C/D leaves exactly A=150 viewers/2 streams, C=350/1, D=400/1. B is absent; every row uses the later bronze time/hour; retained IDs and snapshot_time remain unchanged."
+    },
+    {
+      "requirement": "rollback",
+      "test": "test_replacement_database_failure_rolls_back_complete_observation",
+      "assertion": "A real PostgreSQL AFTER INSERT OR UPDATE trigger raises on the second row write. A nontransactional sequence proves the injected failure was reached after earlier write progress. Every persisted prior column and membership survives intact; after trigger cleanup the replacement succeeds."
+    },
+    {
+      "requirement": "hours",
+      "test": "test_other_hours_are_completely_unchanged",
+      "assertion": "Neighboring 13:59:59 and 15:00:00 observations share a game with the replaced 14h hour. All columns in both neighboring hours stay exactly unchanged, while 14h contains only its complete newest observation."
+    },
+    {
+      "requirement": "ordering",
+      "test": "test_stale_ordering_equal_conflict_and_equivalent_offsets",
+      "assertion": "Older observation with disjoint membership and an equivalent UTC offset returns 0 and changes no row. Equivalent offset/time and reversed raw order replay successfully. Equal observation timestamp with conflicting metrics and membership raises ValueError without any mutation."
+    },
+    {
+      "requirement": "ordering",
+      "test": "test_historical_load_clock_does_not_block_bronze",
+      "assertion": "Rows marked load_clock with later clock timestamps do not make an earlier fetched_at bronze observation stale. Incoming complete bronze membership, values and timestamps replace the historical hour."
+    },
+    {
+      "requirement": "invalid_or_incomplete",
+      "test": "test_invalid_or_incomplete_observation_preserves_previous_hour",
+      "assertion": "Parameterized real-loader cases reject empty, absent/non-list data, invalid/missing fetched_at, explicit incomplete/complete=false/success=false/error/failure, wrong source/request, mismatched/noninteger/bool counts, malformed records, missing/invalid viewers and all-blank categories. Rejection raises a validation error or returns 0, and every prior persisted column remains intact."
+    },
+    {
+      "requirement": "invalid_or_incomplete",
+      "test": "test_valid_unassigned_category_is_filtered",
+      "assertion": "A legitimate blank unassigned game is filtered while the other valid stream persists as the exact single-game bronze observation, retaining legacy filtering semantics."
+    },
+    {
+      "requirement": "concurrency",
+      "test": "test_concurrent_same_hour_is_one_complete_newest_observation",
+      "assertion": "Run for both an initially absent and a preexisting hour. Two threads cross a timed barrier; an ACCESS EXCLUSIVE table gate holds them until pg_stat_activity proves both real sessions overlap at database locks. After release bounded real connections finish without errors. Final full membership, counts and bronze timestamp are exactly the newer observation; older returns either accepted-before-newer count or stale 0. A later old replay returns 0 without resurrection."
+    }
+  ],
+  "limitations": [
+    "Blind design inspected only TASK.json, PUBLIC_INTERFACE.md, schema.json and unchanged tests/conftest.py; no implementation, source tree, candidate, history, credentials, network or subagents were inspected or used. No acceptance execution or verdict occurs in this phase.",
+    "Controller must run with REQUIRE_DB_TESTS=1 and a reachable disposable PostgreSQL server. The unchanged test_database fixture creates and migrates the database and performs per-test cleanup; its default behavior otherwise permits database-unavailable skips.",
+    "Concurrency delegates to real psycopg.connect while tagging worker application_name and setting connect/lock/statement timeouts. PostgreSQL activity visibility and permission to terminate own timed-out worker sessions are required. This finite two-worker schedule challenges absent-hour and existing-hour races but is not an exhaustive proof over every interleaving.",
+    "No private schema was read. Persisted metric names are resolved from explicit conventional alternatives at execution; all observation membership, metrics and time assertions are independently derived from raw inputs. Replay, rollback and hour isolation compare all actual persisted columns.",
+    "Legacy nonempty files are accepted per contract; unmarked upstream truncation has no completion evidence and cannot be detected. Empty observations are rejected rather than used as authoritative clears.",
+    "CLI dispatch, unrelated loaders, static preservation of migrations/bronze files and null-time legacy bronze ordering are not fully exercised by this public-loader database suite; controller/reviewer evidence must cover those remaining constraints."
+  ]
+}

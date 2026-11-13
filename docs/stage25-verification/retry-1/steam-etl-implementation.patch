@@ -1,0 +1,501 @@
+diff --git a/docs/TWITCH_HOUR_REPLACEMENT.md b/docs/TWITCH_HOUR_REPLACEMENT.md
+new file mode 100644
+index 0000000..4ef28fb
+--- /dev/null
++++ b/docs/TWITCH_HOUR_REPLACEMENT.md
+@@ -0,0 +1,55 @@
++# Twitch hour replacement
++
++`load_twitch_file(str | Path) -> int` treats each nonempty bronze streams file as
++one complete configured top-stream sample. It validates and aggregates the whole
++file before opening a database connection. The existing CLI and dispatch remain
++compatible. Accepted loads and identical replays return the aggregate count;
++stale observations return 0. Invalid input and equal-time conflicting observations
++raise `ValueError`.
++
++`fetched_at` is the observation instant recorded after the extractor's pagination
++loop. Aware offsets are normalized to naive UTC; legacy naive datetimes mean UTC.
++`sample_time` carries that instant and `sample_hour` is its UTC hour floor.
++Incoming rows retain `sample_time_source = 'bronze'`. `snapshot_time` still means
++row insertion time. Retained game IDs and insertion times are preserved by upsert.
++
++A single READ COMMITTED transaction acquires a SHARE ROW EXCLUSIVE table lock,
++then reads the hour in a separate statement. This serializes writers even for an
++initially absent hour; the read sees the preceding committed writer. It also
++serializes different-hour writes, a deliberate conservative throughput tradeoff.
++Readers retain PostgreSQL MVCC behavior. Upserts and deletion of absent games
++commit together; errors roll back the transaction. Other hours are untouched.
++The per-row insertion helper alone does not enforce whole-observation ordering.
++
++The newest existing bronze `sample_time` establishes observation order, including
++hours containing old mixed observations. Older arrivals perform no writes. Equal
++timestamps require equality of the entire hour's logical contents (game ID/name,
++viewer and stream counts, sample time and provenance), otherwise loading fails.
++Historical `load_clock` rows are proxies and do not establish observation order.
++An existing bronze row with a missing time causes failure rather than a guess.
++
++Empty or zero-aggregate observations always fail, including observations consisting
++only of legitimate blank unassigned categories. Clearing an hour would discard
++its ordering watermark and allow an older observation to resurrect it. Supporting
++authoritative empty replacement requires a durable watermark and is outside this
++change's no-migration scope.
++
++Legacy nonempty `fetched_at`/`data` files remain supported. Optional `source` and
++`request` must identify Twitch streams; optional integer `stream_count` must match
++the raw list length. Missing/non-list data, malformed stream records, invalid
++timestamps, negative/noninteger viewers, and explicit failure or incompleteness
++markers fail before mutation. Numeric viewer strings remain supported. Blank
++unassigned category strings retain the previous filtering behavior.
++
++Completeness describes the configured sample, not every live Twitch stream. The
++extractor records no pagination completion proof: matching counts and nonempty
++data cannot detect an unmarked upstream truncation. Compatibility trusts the
++saved observation contract. No bronze files, migrations, downstream queries or
++unrelated loaders are changed.
++
++`tests/test_twitch_hour_replacement.py` includes local validation tests and real
++PostgreSQL tests using the existing separate-database fixture. Database tests cover
++replacement, replay, ordering, hour isolation, retained identity, rollback after
++an actual SQL failure, historical provenance, and overlapping same-hour loads
++with bounded waits. They are designed for Controller execution; model roles do
++not have the database socket capability.
+diff --git a/src/load.py b/src/load.py
+index 6c25f49..421fb8f 100644
+--- a/src/load.py
++++ b/src/load.py
+@@ -286,10 +286,9 @@ def insert_twitch_game_snapshot(connection, snapshot: dict) -> None:
+     before bronze existed, in migration 010; the loader itself never has a
+     reason to write it.
+ 
+-    A conflict on the same hour means a retried or re-run load for that
+-    sampling window -- typically an Airflow retry after a partial failure --
+-    so the most recent attempt is assumed to be the more complete one and
+-    wins.
++    This helper does not commit or enforce observation ordering. Whole-hour
++    serialization, ordering and membership replacement belong to
++    load_twitch_file; retained row IDs and snapshot_time stay unchanged.
+     """
+ 
+     sample_time = snapshot["sample_time"]
+@@ -761,24 +760,63 @@ def load_steam_store_file(file_path: Path, snapshot_date: str) -> str:
+ 
+ 
+ def load_twitch_file(file_path: str | Path) -> int:
+-    """
+-    Load Twitch raw streams JSON into twitch_game_snapshots.
++    """Atomically replace one nonempty complete sample, ordered by fetched_at.
+ 
+-    Raw Twitch data contains individual streams.
+-    We transform them into aggregated game-level snapshots first.
++    Return the aggregate count for accepted observations and identical replays,
++    or zero for an older observation. Equal-time conflicting contents fail.
+     """
+-
+     raw_data = load_json_file(Path(file_path))
+     snapshots = transform_twitch_streams(raw_data)
++    if not snapshots:
++        raise ValueError("Cannot replace a Twitch hour with zero game aggregates.")
++
++    sample_time = snapshots[0]["sample_time"]
++    sample_hour = sample_time.replace(minute=0, second=0, microsecond=0)
++    incoming = {
++        (row["twitch_game_id"], row["twitch_game_name"], row["viewer_count"],
++         row["stream_count"], sample_time, "bronze")
++        for row in snapshots
++    }
+ 
+     with get_db_connection() as connection:
++        with connection.cursor() as cursor:
++            # A separate READ COMMITTED read after the lock sees the preceding
++            # writer's commit. The table lock also covers initially absent hours
++            # and conflicts with ordinary INSERT/UPDATE/DELETE writers.
++            cursor.execute("SET TRANSACTION ISOLATION LEVEL READ COMMITTED")
++            cursor.execute("LOCK TABLE twitch_game_snapshots IN SHARE ROW EXCLUSIVE MODE")
++            cursor.execute(
++                "SELECT twitch_game_id, twitch_game_name, viewer_count, stream_count, "
++                "sample_time, sample_time_source FROM twitch_game_snapshots "
++                "WHERE sample_hour = %s",
++                (sample_hour,),
++            )
++            existing = cursor.fetchall()
++            bronze_times = [row[4] for row in existing if row[5] == "bronze"]
++            if any(time is None for time in bronze_times):
++                raise ValueError("Existing Twitch bronze rows have unknown observation times.")
++            if bronze_times:
++                newest = max(bronze_times)
++                if sample_time < newest:
++                    print("Ignored stale Twitch observation")
++                    return 0
++                if sample_time == newest:
++                    if set(existing) != incoming:
++                        raise ValueError("Conflicting Twitch observations have equal fetched_at.")
++                    print(f"Replayed {len(snapshots)} Twitch game snapshots")
++                    return len(snapshots)
++
+         for snapshot in snapshots:
+             insert_twitch_game_snapshot(connection, snapshot)
+-
++        with connection.cursor() as cursor:
++            cursor.execute(
++                "DELETE FROM twitch_game_snapshots WHERE sample_hour = %s "
++                "AND NOT (twitch_game_id = ANY(%s))",
++                (sample_hour, [row["twitch_game_id"] for row in snapshots]),
++            )
+         connection.commit()
+ 
+     print(f"Loaded {len(snapshots)} Twitch game snapshots")
+-
+     return len(snapshots)
+ 
+ 
+diff --git a/src/transform.py b/src/transform.py
+index d93f920..cc1d1fb 100644
+--- a/src/transform.py
++++ b/src/transform.py
+@@ -317,6 +317,9 @@ def parse_twitch_fetched_at(raw_data: dict) -> datetime:
+     unparseable value is a hard failure, not a silent substitution.
+     """
+ 
++    if not isinstance(raw_data, dict):
++        raise ValueError("Twitch raw data must be an object.")
++
+     fetched_at_raw = raw_data.get("fetched_at")
+ 
+     if not fetched_at_raw:
+@@ -325,6 +328,10 @@ def parse_twitch_fetched_at(raw_data: dict) -> datetime:
+         )
+ 
+     try:
++        if not isinstance(fetched_at_raw, str) or not any(
++            separator in fetched_at_raw for separator in ("T", " ")
++        ):
++            raise ValueError("Expected an ISO datetime, not a date.")
+         parsed = datetime.fromisoformat(fetched_at_raw)
+     except (TypeError, ValueError) as error:
+         raise ValueError(
+@@ -363,14 +370,47 @@ def transform_twitch_streams(raw_data: dict) -> list[dict]:
+ 
+     sample_time = parse_twitch_fetched_at(raw_data)
+ 
+-    streams = raw_data.get("data", [])
++    for key, expected in (("source", "twitch"), ("request", "streams")):
++        if key in raw_data and raw_data[key] != expected:
++            raise ValueError(f"Invalid Twitch {key}: {raw_data[key]!r}")
++    if (
++        raw_data.get("incomplete")
++        or raw_data.get("complete") is False
++        or raw_data.get("success") is False
++        or raw_data.get("error")
++        or raw_data.get("failure")
++        or raw_data.get("failed")
++        or ("outcome" in raw_data and raw_data["outcome"] not in ("ok", "success"))
++        or raw_data.get("status") in ("error", "failure", "failed", "incomplete")
++    ):
++        raise ValueError("Twitch observation reports failure or incompleteness.")
++
++    streams = raw_data.get("data")
++    if not isinstance(streams, list):
++        raise ValueError("Twitch observation 'data' must be a list.")
++    if "stream_count" in raw_data:
++        count = raw_data["stream_count"]
++        if type(count) is not int or count != len(streams):
++            raise ValueError("Twitch stream_count must equal the raw stream count.")
+ 
+     games = {}
+ 
+     for stream in streams:
++        if not isinstance(stream, dict):
++            raise ValueError("Twitch stream records must be objects.")
+         game_id = stream.get("game_id")
+         game_name = stream.get("game_name")
+-        viewer_count = to_int(stream.get("viewer_count")) or 0
++        viewers = stream.get("viewer_count")
++        if not isinstance(game_id, str) or not isinstance(game_name, str):
++            raise ValueError("Twitch streams require string game_id and game_name.")
++        if type(viewers) is int:
++            viewer_count = viewers
++        elif isinstance(viewers, str) and viewers.isascii() and viewers.isdecimal():
++            viewer_count = int(viewers)
++        else:
++            raise ValueError("Twitch viewer_count must be a nonnegative integer.")
++        if viewer_count < 0:
++            raise ValueError("Twitch viewer_count must be a nonnegative integer.")
+ 
+         # Some Twitch streams may not have a game assigned.
+         # We skip them because they cannot be grouped by game.
+diff --git a/tests/test_load.py b/tests/test_load.py
+index 405aa25..23e6275 100644
+--- a/tests/test_load.py
++++ b/tests/test_load.py
+@@ -16,7 +16,7 @@ class FakeCursor:
+     def __exit__(self, exc_type, exc_value, traceback):
+         return None
+ 
+-    def execute(self, query, params):
++    def execute(self, query, params=None):
+         self.connection.executed_queries.append((query, params))
+ 
+     def fetchall(self):
+@@ -84,11 +84,12 @@ def test_load_twitch_file_inserts_snapshots(monkeypatch, tmp_path):
+ 
+     assert result == 2
+     assert fake_connection.committed is True
+-    assert len(fake_connection.executed_queries) == 2
++    assert len(fake_connection.executed_queries) == 6
+ 
+     inserted_params = [
+         params
+         for query, params in fake_connection.executed_queries
++        if "INSERT INTO twitch_game_snapshots" in query
+     ]
+ 
+     sample_time = datetime(2026, 5, 13, 12, 28, 52, 40293)
+@@ -138,6 +139,7 @@ def test_load_twitch_file_uses_on_conflict_do_update_on_sample_hour(monkeypatch,
+     insert_queries = [
+         query
+         for query, _params in fake_connection.executed_queries
++        if "INSERT INTO twitch_game_snapshots" in query
+     ]
+ 
+     assert all(
+@@ -181,7 +183,10 @@ def test_load_twitch_file_always_writes_bronze_sample_time_source(monkeypatch, t
+ 
+     load.load_twitch_file(file_path)
+ 
+-    executed_query, _params = fake_connection.executed_queries[0]
++    executed_query = next(
++        query for query, _params in fake_connection.executed_queries
++        if "INSERT INTO twitch_game_snapshots" in query
++    )
+ 
+     assert "sample_time_source" in executed_query
+     assert "'bronze'" in executed_query
+diff --git a/tests/test_twitch_hour_replacement.py b/tests/test_twitch_hour_replacement.py
+new file mode 100644
+index 0000000..159f782
+--- /dev/null
++++ b/tests/test_twitch_hour_replacement.py
+@@ -0,0 +1,223 @@
++"""Unit validation and real PostgreSQL tests (database execution is Controller-only)."""
++import json
++from concurrent.futures import ThreadPoolExecutor
++from datetime import datetime
++from threading import Event
++from time import monotonic, sleep
++
++import psycopg
++import pytest
++
++from src import load
++from src.db import get_db_connection
++from src.transform import parse_twitch_fetched_at, transform_twitch_streams
++
++
++def observation(time="2026-05-13T14:10:00+00:00", games=("A", "B", "C")):
++    return {
++        "source": "twitch", "request": "streams", "fetched_at": time,
++        "stream_count": len(games),
++        "data": [
++            {"game_id": game, "game_name": game, "viewer_count": 100 + i}
++            for i, game in enumerate(games)
++        ],
++    }
++
++
++def save(tmp_path, payload, name="streams.json"):
++    path = tmp_path / name
++    path.write_text(json.dumps(payload), encoding="utf-8")
++    return path
++
++
++def stored():
++    with get_db_connection() as connection:
++        return connection.execute(
++            "SELECT id, twitch_game_id, twitch_game_name, viewer_count, stream_count, "
++            "sample_time, sample_hour, sample_time_source, snapshot_time "
++            "FROM twitch_game_snapshots ORDER BY sample_hour, twitch_game_id"
++        ).fetchall()
++
++
++@pytest.mark.parametrize("change", [
++    {"data": None}, {"data": {}}, {"data": []}, {"data": [None]},
++    {"stream_count": True}, {"stream_count": 2}, {"source": "other"},
++    {"request": "games"}, {"complete": False}, {"incomplete": True},
++    {"success": False}, {"error": "API failed"}, {"failure": True},
++    {"outcome": "transport_error"}, {"fetched_at": None},
++    {"fetched_at": "2026-05-13"}, {"fetched_at": "invalid"},
++    {"data": [{"game_id": "A", "game_name": "A", "viewer_count": -1}]},
++    {"data": [{"game_id": "A", "game_name": "A", "viewer_count": 1.5}]},
++    {"data": [{"game_id": "A", "game_name": "A", "viewer_count": True}]},
++    {"data": [{"game_id": "A", "game_name": "A"}]},
++    {"data": [{"game_name": "A", "viewer_count": 1}]},
++    {"data": [{"game_id": "A", "viewer_count": 1}]},
++    {"data": [{"game_id": "", "game_name": "", "viewer_count": 1}]},
++])
++def test_invalid_input_never_connects(monkeypatch, tmp_path, change):
++    payload = observation(games=("A",))
++    payload.update(change)
++
++    def forbidden_connection():
++        pytest.fail("Invalid observation opened a database connection")
++
++    monkeypatch.setattr(load, "get_db_connection", forbidden_connection)
++    with pytest.raises(ValueError):
++        load.load_twitch_file(save(tmp_path, payload))
++
++
++@pytest.mark.parametrize("payload", [[], None, {}, {"fetched_at": "2026-05-13T14:10:00"}])
++def test_invalid_shape(payload):
++    with pytest.raises(ValueError):
++        transform_twitch_streams(payload)
++
++
++def test_legacy_and_unassigned_streams():
++    payload = observation(games=("A",))
++    for key in ("source", "request", "stream_count"):
++        del payload[key]
++    payload["data"].append({"game_id": "", "game_name": "", "viewer_count": 9})
++    payload["data"][0]["viewer_count"] = "12"
++    rows = transform_twitch_streams(payload)
++    assert len(rows) == 1
++    assert rows[0]["viewer_count"] == 12
++    assert rows[0]["stream_count"] == 1
++
++
++def test_timestamp_normalization():
++    expected = datetime(2026, 5, 13, 14, 10)
++    for time in ("2026-05-13T16:10:00+02:00", "2026-05-13T14:10:00Z",
++                 "2026-05-13T14:10:00"):
++        assert parse_twitch_fetched_at({"fetched_at": time}) == expected
++
++
++def test_db_membership_replay_order_and_hour_isolation(test_database, tmp_path):
++    first = save(tmp_path, observation(), "first.json")
++    assert load.load_twitch_file(first) == 3
++    original = stored()
++    assert {row[1] for row in original} == {"A", "B", "C"}
++    assert all(row[5] == datetime(2026, 5, 13, 14, 10) for row in original)
++    assert all(row[7] == "bronze" for row in original)
++    assert load.load_twitch_file(first) == 3
++    assert stored() == original
++
++    other = save(tmp_path, observation("2026-05-13T15:10:00Z", ("E",)), "other.json")
++    load.load_twitch_file(other)
++    other_rows = [row for row in stored() if row[6].hour == 15]
++    second = save(tmp_path, observation("2026-05-13T16:45:00+02:00", ("A", "C", "D")), "second.json")
++    assert load.load_twitch_file(second) == 3
++    replacement = stored()
++    hour = [row for row in replacement if row[6].hour == 14]
++    assert {row[1] for row in hour} == {"A", "C", "D"}
++    assert {row[1]: row[3] for row in hour} == {"A": 100, "C": 101, "D": 102}
++    assert all(row[5] == datetime(2026, 5, 13, 14, 45) for row in hour)
++    for row in hour:
++        old = next((old for old in original if old[1] == row[1]), None)
++        if old:
++            assert (row[0], row[8]) == (old[0], old[8])
++    assert [row for row in replacement if row[6].hour == 15] == other_rows
++    assert load.load_twitch_file(first) == 0
++    assert stored() == replacement
++    conflict = save(tmp_path, observation("2026-05-13T14:45:00Z", ("X",)), "conflict.json")
++    with pytest.raises(ValueError, match="equal fetched_at"):
++        load.load_twitch_file(conflict)
++    assert stored() == replacement
++
++
++def test_db_insertion_failure_rolls_back(test_database, tmp_path, monkeypatch):
++    load.load_twitch_file(save(tmp_path, observation()))
++    original = stored()
++    insert = load.insert_twitch_game_snapshot
++    calls = 0
++
++    def fail_second(connection, snapshot):
++        nonlocal calls
++        calls += 1
++        if calls == 2:
++            # Real SQL failure after the first upsert, not only a Python exception.
++            connection.execute("SELECT 1 / 0")
++        insert(connection, snapshot)
++
++    monkeypatch.setattr(load, "insert_twitch_game_snapshot", fail_second)
++    with pytest.raises(psycopg.errors.DivisionByZero):
++        load.load_twitch_file(save(tmp_path, observation("2026-05-13T14:45:00Z", ("D", "A"))))
++    assert calls == 2
++    assert stored() == original
++
++
++def test_db_historical_provenance_and_unknown_bronze_time(test_database, tmp_path):
++    with get_db_connection() as connection:
++        connection.execute(
++            "INSERT INTO twitch_game_snapshots (twitch_game_id, twitch_game_name, "
++            "viewer_count, stream_count, sample_time, sample_hour, sample_time_source) "
++            "VALUES ('old', 'old', 1, 1, '2026-05-13 14:59', '2026-05-13 14:00', 'load_clock')"
++        )
++    path = save(tmp_path, observation())
++    assert load.load_twitch_file(path) == 3
++    assert {row[1] for row in stored()} == {"A", "B", "C"}
++    with get_db_connection() as connection:
++        connection.execute("UPDATE twitch_game_snapshots SET sample_time = NULL WHERE twitch_game_id = 'A'")
++    original = stored()
++    with pytest.raises(ValueError, match="unknown observation times"):
++        load.load_twitch_file(save(tmp_path, observation("2026-05-13T14:45:00Z")))
++    assert stored() == original
++
++
++@pytest.mark.parametrize("first_is_newer", [False, True])
++@pytest.mark.parametrize("seed_hour", [False, True])
++def test_db_concurrent_same_hour(test_database, tmp_path, monkeypatch, first_is_newer, seed_hour):
++    if seed_hour:
++        load.load_twitch_file(save(tmp_path, observation(), "seed.json"))
++    older = save(tmp_path, observation("2026-05-13T14:20:00Z", ("A", "X")), "older.json")
++    newer = save(tmp_path, observation("2026-05-13T14:45:00Z", ("A", "Y")), "newer.json")
++    first, second = (newer, older) if first_is_newer else (older, newer)
++    locked, release, second_connected = Event(), Event(), Event()
++    insert = load.insert_twitch_game_snapshot
++    connect = load.get_db_connection
++    second_pid = []
++    first_time = parse_twitch_fetched_at(json.loads(first.read_text()))
++
++    def pause_first(connection, snapshot):
++        if snapshot["sample_time"] == first_time and not locked.is_set():
++            locked.set()
++            assert release.wait(10), "Timed out waiting to release first writer"
++        insert(connection, snapshot)
++
++    def bounded_connection():
++        connection = connect()
++        connection.execute("SET statement_timeout = '8s'")
++        connection.commit()
++        if locked.is_set():
++            second_pid.append(connection.info.backend_pid)
++            second_connected.set()
++        return connection
++
++    monkeypatch.setattr(load, "insert_twitch_game_snapshot", pause_first)
++    monkeypatch.setattr(load, "get_db_connection", bounded_connection)
++    with ThreadPoolExecutor(max_workers=2) as pool:
++        first_future = pool.submit(load.load_twitch_file, first)
++        try:
++            assert locked.wait(10), "First writer did not acquire serialization"
++            second_future = pool.submit(load.load_twitch_file, second)
++            assert second_connected.wait(10), "Second writer did not connect"
++            # Prove the second transaction is actually waiting on serialization
++            # before allowing the first to commit; scheduler overlap alone is weak.
++            deadline = monotonic() + 5
++            with connect() as observer:
++                while monotonic() < deadline:
++                    waiting = observer.execute(
++                        "SELECT EXISTS (SELECT 1 FROM pg_locks WHERE pid = %s "
++                        "AND relation = 'twitch_game_snapshots'::regclass "
++                        "AND NOT granted)", (second_pid[0],),
++                    ).fetchone()[0]
++                    if waiting:
++                        break
++                    sleep(0.01)
++                assert waiting, "Second writer never waited on the table lock"
++        finally:
++            release.set()
++        assert first_future.result(timeout=12) == 2
++        assert second_future.result(timeout=12) == (0 if first_is_newer else 2)
++    rows = stored()
++    assert {row[1]: row[3] for row in rows} == {"A": 100, "Y": 101}
++    assert all(row[5] == datetime(2026, 5, 13, 14, 45) for row in rows)

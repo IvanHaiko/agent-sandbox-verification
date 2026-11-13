@@ -1,0 +1,36 @@
+{
+  "date_local": "2026-10-09",
+  "timezone": "Europe/Berlin",
+  "decision": "SIMPLIFY",
+  "active_source_unchanged": true,
+  "preexisting_readable_workspace_files_unchanged": true,
+  "workspace_entries_recorded": 25120,
+  "historical_unreadable_entries": 65,
+  "original_checkout_unchanged": true,
+  "owned_resources_cleaned": true,
+  "previous_archive_digests_and_crcs_valid": true,
+  "framework_regression": {
+    "passed": 43,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "minimal_acceptance": {
+    "passed": 10,
+    "failed": 0
+  },
+  "review_recommendation": "accept",
+  "strict_cli_role_calls": 3,
+  "strict_cli_role_retries": 0,
+  "native_context_canary_children": 1,
+  "native_default_child_private_reads_allowed": true,
+  "native_default_child_review_write_open_allowed": true,
+  "narrow_native_profiles_deny_private_reads_and_review_writes": true,
+  "base_controller_rejected_bytes_lost": true,
+  "authorized_secondary_only_repair_falsely_rejected": true,
+  "wrong_oracle_semantically_identified": true,
+  "frozen_and_review_bytes_unchanged": true,
+  "native_shorthand_probe_failed_before_execution": true,
+  "migration_implemented": false,
+  "runtime_token_or_dollar_comparison": "unknown"
+}

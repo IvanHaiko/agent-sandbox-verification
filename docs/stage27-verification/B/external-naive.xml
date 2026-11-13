@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="18" skipped="0" tests="24" time="1.627" timestamp="2026-10-09T10:04:13.374655+02:00" hostname="Ivan"><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[ ; ; \n-expected0]" time="0.002" /><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[-- only ; ' $$\r/* outer /* inner ; */ end */;-expected1]" time="0.001"><failure message="assert ['-- only', &quot;..., '*/ end */'] == []&#10;  &#10;  Left contains 3 more items, first extra item: '-- only'&#10;  Use -v to get more diff">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = "-- only ; ' $$\r/* outer /* inner ; */ end */;", expected = []
+
+    @pytest.mark.parametrize(("source", "expected"), [
+        (" ; ; \n", []),
+        ("-- only ; ' $$\r/* outer /* inner ; */ end */;", []),
+        (" SELECT 1 ; SELECT 2 ", ["SELECT 1", "SELECT 2"]),
+        ("SELECT 'a;b'';c';SELECT 2;", ["SELECT 'a;b'';c'", "SELECT 2"]),
+        ('SELECT "a;""b"; SELECT 2', ['SELECT "a;""b"', "SELECT 2"]),
+        (r"SELECT E'a\';b', e'c\\';SELECT 2", [r"SELECT E'a\';b', e'c\\'", "SELECT 2"]),
+        ("SELECT 'a\\';SELECT 2", ["SELECT 'a\\'", "SELECT 2"]),
+        ("DO $$ BEGIN PERFORM ';'; END $$; SELECT 2", ["DO $$ BEGIN PERFORM ';'; END $$", "SELECT 2"]),
+        ("SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2", ["SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$", "SELECT 2"]),
+        ("SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof", ["SELECT 1 /* a ; /* ' $$ */ b */", "-- comment ;\rSELECT 2"]),
+        ("SELECT 1-- ;\n;SELECT 2", ["SELECT 1-- ;", "SELECT 2"]),
+        ("SELECT a$tag$, $1; SELECT 2", ["SELECT a$tag$, $1", "SELECT 2"]),
+        ("SELECT someE'x\\';SELECT 2", ["SELECT someE'x\\'", "SELECT 2"]),
+        ("/* retained */ SELECT 1; /* comment only */", ["/* retained */ SELECT 1"]),
+    ])
+    def test_lexical_regions(split, source, expected):
+&gt;       assert split(source) == expected
+E       assert ['-- only', "..., '*/ end */'] == []
+E         
+E         Left contains 3 more items, first extra item: '-- only'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:34: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[ SELECT 1 ; SELECT 2 -expected2]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[SELECT 'a;b'';c';SELECT 2;-expected3]" time="0.001"><failure message="assert [&quot;SELECT 'a&quot;,...&quot;, 'SELECT 2'] == [&quot;SELECT 'a;b...&quot;, 'SELECT 2']&#10;  &#10;  At index 0 diff: &quot;SELECT 'a&quot; != &quot;SELECT 'a;b'';c'&quot;&#10;  Left contains 2 more items, first extra item: &quot;c'&quot;&#10;  Use -v to get more diff">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = "SELECT 'a;b'';c';SELECT 2;"
+expected = ["SELECT 'a;b'';c'", 'SELECT 2']
+
+    @pytest.mark.parametrize(("source", "expected"), [
+        (" ; ; \n", []),
+        ("-- only ; ' $$\r/* outer /* inner ; */ end */;", []),
+        (" SELECT 1 ; SELECT 2 ", ["SELECT 1", "SELECT 2"]),
+        ("SELECT 'a;b'';c';SELECT 2;", ["SELECT 'a;b'';c'", "SELECT 2"]),
+        ('SELECT "a;""b"; SELECT 2', ['SELECT "a;""b"', "SELECT 2"]),
+        (r"SELECT E'a\';b', e'c\\';SELECT 2", [r"SELECT E'a\';b', e'c\\'", "SELECT 2"]),
+        ("SELECT 'a\\';SELECT 2", ["SELECT 'a\\'", "SELECT 2"]),
+        ("DO $$ BEGIN PERFORM ';'; END $$; SELECT 2", ["DO $$ BEGIN PERFORM ';'; END $$", "SELECT 2"]),
+        ("SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2", ["SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$", "SELECT 2"]),
+        ("SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof", ["SELECT 1 /* a ; /* ' $$ */ b */", "-- comment ;\rSELECT 2"]),
+        ("SELECT 1-- ;\n;SELECT 2", ["SELECT 1-- ;", "SELECT 2"]),
+        ("SELECT a$tag$, $1; SELECT 2", ["SELECT a$tag$, $1", "SELECT 2"]),
+        ("SELECT someE'x\\';SELECT 2", ["SELECT someE'x\\'", "SELECT 2"]),
+        ("/* retained */ SELECT 1; /* comment only */", ["/* retained */ SELECT 1"]),
+    ])
+    def test_lexical_regions(split, source, expected):
+&gt;       assert split(source) == expected
+E       assert ["SELECT 'a",...", 'SELECT 2'] == ["SELECT 'a;b...", 'SELECT 2']
+E         
+E         At index 0 diff: "SELECT 'a" != "SELECT 'a;b'';c'"
+E         Left contains 2 more items, first extra item: "c'"
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:34: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[SELECT &quot;a;&quot;&quot;b&quot;; SELECT 2-expected4]" time="0.001"><failure message="assert ['SELECT &quot;a',...', 'SELECT 2'] == ['SELECT &quot;a;&quot;&quot;b&quot;', 'SELECT 2']&#10;  &#10;  At index 0 diff: 'SELECT &quot;a' != 'SELECT &quot;a;&quot;&quot;b&quot;'&#10;  Left contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = 'SELECT "a;""b"; SELECT 2', expected = ['SELECT "a;""b"', 'SELECT 2']
+
+    @pytest.mark.parametrize(("source", "expected"), [
+        (" ; ; \n", []),
+        ("-- only ; ' $$\r/* outer /* inner ; */ end */;", []),
+        (" SELECT 1 ; SELECT 2 ", ["SELECT 1", "SELECT 2"]),
+        ("SELECT 'a;b'';c';SELECT 2;", ["SELECT 'a;b'';c'", "SELECT 2"]),
+        ('SELECT "a;""b"; SELECT 2', ['SELECT "a;""b"', "SELECT 2"]),
+        (r"SELECT E'a\';b', e'c\\';SELECT 2", [r"SELECT E'a\';b', e'c\\'", "SELECT 2"]),
+        ("SELECT 'a\\';SELECT 2", ["SELECT 'a\\'", "SELECT 2"]),
+        ("DO $$ BEGIN PERFORM ';'; END $$; SELECT 2", ["DO $$ BEGIN PERFORM ';'; END $$", "SELECT 2"]),
+        ("SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2", ["SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$", "SELECT 2"]),
+        ("SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof", ["SELECT 1 /* a ; /* ' $$ */ b */", "-- comment ;\rSELECT 2"]),
+        ("SELECT 1-- ;\n;SELECT 2", ["SELECT 1-- ;", "SELECT 2"]),
+        ("SELECT a$tag$, $1; SELECT 2", ["SELECT a$tag$, $1", "SELECT 2"]),
+        ("SELECT someE'x\\';SELECT 2", ["SELECT someE'x\\'", "SELECT 2"]),
+        ("/* retained */ SELECT 1; /* comment only */", ["/* retained */ SELECT 1"]),
+    ])
+    def test_lexical_regions(split, source, expected):
+&gt;       assert split(source) == expected
+E       assert ['SELECT "a',...', 'SELECT 2'] == ['SELECT "a;""b"', 'SELECT 2']
+E         
+E         At index 0 diff: 'SELECT "a' != 'SELECT "a;""b"'
+E         Left contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:34: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[SELECT E'a\\';b', e'c\\\\';SELECT 2-expected5]" time="0.001"><failure message="assert [&quot;SELECT E'a\...&quot;, 'SELECT 2'] == [&quot;SELECT E'a\...&quot;, 'SELECT 2']&#10;  &#10;  At index 0 diff: &quot;SELECT E'a\\'&quot; != &quot;SELECT E'a\\';b', e'c\\\\'&quot;&#10;  Left contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = "SELECT E'a\\';b', e'c\\\\';SELECT 2"
+expected = ["SELECT E'a\\';b', e'c\\\\'", 'SELECT 2']
+
+    @pytest.mark.parametrize(("source", "expected"), [
+        (" ; ; \n", []),
+        ("-- only ; ' $$\r/* outer /* inner ; */ end */;", []),
+        (" SELECT 1 ; SELECT 2 ", ["SELECT 1", "SELECT 2"]),
+        ("SELECT 'a;b'';c';SELECT 2;", ["SELECT 'a;b'';c'", "SELECT 2"]),
+        ('SELECT "a;""b"; SELECT 2', ['SELECT "a;""b"', "SELECT 2"]),
+        (r"SELECT E'a\';b', e'c\\';SELECT 2", [r"SELECT E'a\';b', e'c\\'", "SELECT 2"]),
+        ("SELECT 'a\\';SELECT 2", ["SELECT 'a\\'", "SELECT 2"]),
+        ("DO $$ BEGIN PERFORM ';'; END $$; SELECT 2", ["DO $$ BEGIN PERFORM ';'; END $$", "SELECT 2"]),
+        ("SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2", ["SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$", "SELECT 2"]),
+        ("SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof", ["SELECT 1 /* a ; /* ' $$ */ b */", "-- comment ;\rSELECT 2"]),
+        ("SELECT 1-- ;\n;SELECT 2", ["SELECT 1-- ;", "SELECT 2"]),
+        ("SELECT a$tag$, $1; SELECT 2", ["SELECT a$tag$, $1", "SELECT 2"]),
+        ("SELECT someE'x\\';SELECT 2", ["SELECT someE'x\\'", "SELECT 2"]),
+        ("/* retained */ SELECT 1; /* comment only */", ["/* retained */ SELECT 1"]),
+    ])
+    def test_lexical_regions(split, source, expected):
+&gt;       assert split(source) == expected
+E       assert ["SELECT E'a\...", 'SELECT 2'] == ["SELECT E'a\...", 'SELECT 2']
+E         
+E         At index 0 diff: "SELECT E'a\\'" != "SELECT E'a\\';b', e'c\\\\'"
+E         Left contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:34: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[SELECT 'a\\';SELECT 2-expected6]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[DO $$ BEGIN PERFORM ';'; END $$; SELECT 2-expected7]" time="0.001"><failure message="assert [&quot;DO $$ BEGIN...', 'SELECT 2'] == [&quot;DO $$ BEGIN...&quot;, 'SELECT 2']&#10;  &#10;  At index 0 diff: &quot;DO $$ BEGIN PERFORM '&quot; != &quot;DO $$ BEGIN PERFORM ';'; END $$&quot;&#10;  Left contains 2 more items, first extra item: 'END $$'&#10;  Use -v to get more diff">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = "DO $$ BEGIN PERFORM ';'; END $$; SELECT 2"
+expected = ["DO $$ BEGIN PERFORM ';'; END $$", 'SELECT 2']
+
+    @pytest.mark.parametrize(("source", "expected"), [
+        (" ; ; \n", []),
+        ("-- only ; ' $$\r/* outer /* inner ; */ end */;", []),
+        (" SELECT 1 ; SELECT 2 ", ["SELECT 1", "SELECT 2"]),
+        ("SELECT 'a;b'';c';SELECT 2;", ["SELECT 'a;b'';c'", "SELECT 2"]),
+        ('SELECT "a;""b"; SELECT 2', ['SELECT "a;""b"', "SELECT 2"]),
+        (r"SELECT E'a\';b', e'c\\';SELECT 2", [r"SELECT E'a\';b', e'c\\'", "SELECT 2"]),
+        ("SELECT 'a\\';SELECT 2", ["SELECT 'a\\'", "SELECT 2"]),
+        ("DO $$ BEGIN PERFORM ';'; END $$; SELECT 2", ["DO $$ BEGIN PERFORM ';'; END $$", "SELECT 2"]),
+        ("SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2", ["SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$", "SELECT 2"]),
+        ("SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof", ["SELECT 1 /* a ; /* ' $$ */ b */", "-- comment ;\rSELECT 2"]),
+        ("SELECT 1-- ;\n;SELECT 2", ["SELECT 1-- ;", "SELECT 2"]),
+        ("SELECT a$tag$, $1; SELECT 2", ["SELECT a$tag$, $1", "SELECT 2"]),
+        ("SELECT someE'x\\';SELECT 2", ["SELECT someE'x\\'", "SELECT 2"]),
+        ("/* retained */ SELECT 1; /* comment only */", ["/* retained */ SELECT 1"]),
+    ])
+    def test_lexical_regions(split, source, expected):
+&gt;       assert split(source) == expected
+E       assert ["DO $$ BEGIN...', 'SELECT 2'] == ["DO $$ BEGIN...", 'SELECT 2']
+E         
+E         At index 0 diff: "DO $$ BEGIN PERFORM '" != "DO $$ BEGIN PERFORM ';'; END $$"
+E         Left contains 2 more items, first extra item: 'END $$'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:34: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2-expected8]" time="0.001"><failure message="assert [&quot;SELECT $Ab_...', 'SELECT 2'] == ['SELECT $Ab_...', 'SELECT 2']&#10;  &#10;  At index 0 diff: &quot;SELECT $Ab_9$ '&quot; != &quot;SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$&quot;&#10;  Left contains one more item: 'SELECT 2'&#10;  Use -v to get more diff">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = "SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2"
+expected = ["SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$", 'SELECT 2']
+
+    @pytest.mark.parametrize(("source", "expected"), [
+        (" ; ; \n", []),
+        ("-- only ; ' $$\r/* outer /* inner ; */ end */;", []),
+        (" SELECT 1 ; SELECT 2 ", ["SELECT 1", "SELECT 2"]),
+        ("SELECT 'a;b'';c';SELECT 2;", ["SELECT 'a;b'';c'", "SELECT 2"]),
+        ('SELECT "a;""b"; SELECT 2', ['SELECT "a;""b"', "SELECT 2"]),
+        (r"SELECT E'a\';b', e'c\\';SELECT 2", [r"SELECT E'a\';b', e'c\\'", "SELECT 2"]),
+        ("SELECT 'a\\';SELECT 2", ["SELECT 'a\\'", "SELECT 2"]),
+        ("DO $$ BEGIN PERFORM ';'; END $$; SELECT 2", ["DO $$ BEGIN PERFORM ';'; END $$", "SELECT 2"]),
+        ("SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2", ["SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$", "SELECT 2"]),
+        ("SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof", ["SELECT 1 /* a ; /* ' $$ */ b */", "-- comment ;\rSELECT 2"]),
+        ("SELECT 1-- ;\n;SELECT 2", ["SELECT 1-- ;", "SELECT 2"]),
+        ("SELECT a$tag$, $1; SELECT 2", ["SELECT a$tag$, $1", "SELECT 2"]),
+        ("SELECT someE'x\\';SELECT 2", ["SELECT someE'x\\'", "SELECT 2"]),
+        ("/* retained */ SELECT 1; /* comment only */", ["/* retained */ SELECT 1"]),
+    ])
+    def test_lexical_regions(split, source, expected):
+&gt;       assert split(source) == expected
+E       assert ["SELECT $Ab_...', 'SELECT 2'] == ['SELECT $Ab_...', 'SELECT 2']
+E         
+E         At index 0 diff: "SELECT $Ab_9$ '" != "SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$"
+E         Left contains one more item: 'SELECT 2'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:34: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof-expected9]" time="0.001"><failure message="assert ['SELECT 1 /*... 2', '-- eof'] == [&quot;SELECT 1 /*... ;\rSELECT 2']&#10;  &#10;  At index 0 diff: 'SELECT 1 /* a' != &quot;SELECT 1 /* a ; /* ' $$ */ b */&quot;&#10;  Left contains 3 more items, first extra item: '-- comment'&#10;  Use -v to get more diff">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = "SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof"
+expected = ["SELECT 1 /* a ; /* ' $$ */ b */", '-- comment ;\rSELECT 2']
+
+    @pytest.mark.parametrize(("source", "expected"), [
+        (" ; ; \n", []),
+        ("-- only ; ' $$\r/* outer /* inner ; */ end */;", []),
+        (" SELECT 1 ; SELECT 2 ", ["SELECT 1", "SELECT 2"]),
+        ("SELECT 'a;b'';c';SELECT 2;", ["SELECT 'a;b'';c'", "SELECT 2"]),
+        ('SELECT "a;""b"; SELECT 2', ['SELECT "a;""b"', "SELECT 2"]),
+        (r"SELECT E'a\';b', e'c\\';SELECT 2", [r"SELECT E'a\';b', e'c\\'", "SELECT 2"]),
+        ("SELECT 'a\\';SELECT 2", ["SELECT 'a\\'", "SELECT 2"]),
+        ("DO $$ BEGIN PERFORM ';'; END $$; SELECT 2", ["DO $$ BEGIN PERFORM ';'; END $$", "SELECT 2"]),
+        ("SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2", ["SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$", "SELECT 2"]),
+        ("SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof", ["SELECT 1 /* a ; /* ' $$ */ b */", "-- comment ;\rSELECT 2"]),
+        ("SELECT 1-- ;\n;SELECT 2", ["SELECT 1-- ;", "SELECT 2"]),
+        ("SELECT a$tag$, $1; SELECT 2", ["SELECT a$tag$, $1", "SELECT 2"]),
+        ("SELECT someE'x\\';SELECT 2", ["SELECT someE'x\\'", "SELECT 2"]),
+        ("/* retained */ SELECT 1; /* comment only */", ["/* retained */ SELECT 1"]),
+    ])
+    def test_lexical_regions(split, source, expected):
+&gt;       assert split(source) == expected
+E       assert ['SELECT 1 /*... 2', '-- eof'] == ["SELECT 1 /*... ;\rSELECT 2']
+E         
+E         At index 0 diff: 'SELECT 1 /* a' != "SELECT 1 /* a ; /* ' $$ */ b */"
+E         Left contains 3 more items, first extra item: '-- comment'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:34: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[SELECT 1-- ;\n;SELECT 2-expected10]" time="0.001"><failure message="AssertionError: assert ['SELECT 1--', 'SELECT 2'] == ['SELECT 1-- ;', 'SELECT 2']&#10;  &#10;  At index 0 diff: 'SELECT 1--' != 'SELECT 1-- ;'&#10;  Use -v to get more diff">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = 'SELECT 1-- ;\n;SELECT 2', expected = ['SELECT 1-- ;', 'SELECT 2']
+
+    @pytest.mark.parametrize(("source", "expected"), [
+        (" ; ; \n", []),
+        ("-- only ; ' $$\r/* outer /* inner ; */ end */;", []),
+        (" SELECT 1 ; SELECT 2 ", ["SELECT 1", "SELECT 2"]),
+        ("SELECT 'a;b'';c';SELECT 2;", ["SELECT 'a;b'';c'", "SELECT 2"]),
+        ('SELECT "a;""b"; SELECT 2', ['SELECT "a;""b"', "SELECT 2"]),
+        (r"SELECT E'a\';b', e'c\\';SELECT 2", [r"SELECT E'a\';b', e'c\\'", "SELECT 2"]),
+        ("SELECT 'a\\';SELECT 2", ["SELECT 'a\\'", "SELECT 2"]),
+        ("DO $$ BEGIN PERFORM ';'; END $$; SELECT 2", ["DO $$ BEGIN PERFORM ';'; END $$", "SELECT 2"]),
+        ("SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2", ["SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$", "SELECT 2"]),
+        ("SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof", ["SELECT 1 /* a ; /* ' $$ */ b */", "-- comment ;\rSELECT 2"]),
+        ("SELECT 1-- ;\n;SELECT 2", ["SELECT 1-- ;", "SELECT 2"]),
+        ("SELECT a$tag$, $1; SELECT 2", ["SELECT a$tag$, $1", "SELECT 2"]),
+        ("SELECT someE'x\\';SELECT 2", ["SELECT someE'x\\'", "SELECT 2"]),
+        ("/* retained */ SELECT 1; /* comment only */", ["/* retained */ SELECT 1"]),
+    ])
+    def test_lexical_regions(split, source, expected):
+&gt;       assert split(source) == expected
+E       AssertionError: assert ['SELECT 1--', 'SELECT 2'] == ['SELECT 1-- ;', 'SELECT 2']
+E         
+E         At index 0 diff: 'SELECT 1--' != 'SELECT 1-- ;'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:34: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[SELECT a$tag$, $1; SELECT 2-expected11]" time="0.001" /><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[SELECT someE'x\\';SELECT 2-expected12]" time="0.000" /><testcase classname="tests.test_stage27_evaluation" name="test_lexical_regions[/* retained */ SELECT 1; /* comment only */-expected13]" time="0.001"><failure message="AssertionError: assert ['/* retained...ment only */'] == ['/* retained */ SELECT 1']&#10;  &#10;  Left contains one more item: '/* comment only */'&#10;  Use -v to get more diff">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = '/* retained */ SELECT 1; /* comment only */'
+expected = ['/* retained */ SELECT 1']
+
+    @pytest.mark.parametrize(("source", "expected"), [
+        (" ; ; \n", []),
+        ("-- only ; ' $$\r/* outer /* inner ; */ end */;", []),
+        (" SELECT 1 ; SELECT 2 ", ["SELECT 1", "SELECT 2"]),
+        ("SELECT 'a;b'';c';SELECT 2;", ["SELECT 'a;b'';c'", "SELECT 2"]),
+        ('SELECT "a;""b"; SELECT 2', ['SELECT "a;""b"', "SELECT 2"]),
+        (r"SELECT E'a\';b', e'c\\';SELECT 2", [r"SELECT E'a\';b', e'c\\'", "SELECT 2"]),
+        ("SELECT 'a\\';SELECT 2", ["SELECT 'a\\'", "SELECT 2"]),
+        ("DO $$ BEGIN PERFORM ';'; END $$; SELECT 2", ["DO $$ BEGIN PERFORM ';'; END $$", "SELECT 2"]),
+        ("SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$;SELECT 2", ["SELECT $Ab_9$ '; $$ $ab_9$ -- /* $Ab_9$", "SELECT 2"]),
+        ("SELECT 1 /* a ; /* ' $$ */ b */;-- comment ;\rSELECT 2;-- eof", ["SELECT 1 /* a ; /* ' $$ */ b */", "-- comment ;\rSELECT 2"]),
+        ("SELECT 1-- ;\n;SELECT 2", ["SELECT 1-- ;", "SELECT 2"]),
+        ("SELECT a$tag$, $1; SELECT 2", ["SELECT a$tag$, $1", "SELECT 2"]),
+        ("SELECT someE'x\\';SELECT 2", ["SELECT someE'x\\'", "SELECT 2"]),
+        ("/* retained */ SELECT 1; /* comment only */", ["/* retained */ SELECT 1"]),
+    ])
+    def test_lexical_regions(split, source, expected):
+&gt;       assert split(source) == expected
+E       AssertionError: assert ['/* retained...ment only */'] == ['/* retained */ SELECT 1']
+E         
+E         Left contains one more item: '/* comment only */'
+E         Use -v to get more diff
+
+tests/test_stage27_evaluation.py:34: AssertionError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_rejected[SELECT 1; SELECT 'broken]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = "SELECT 1; SELECT 'broken"
+
+    @pytest.mark.parametrize("source", [
+        "SELECT 1; SELECT 'broken", 'SELECT 1; SELECT "broken',
+        "SELECT 1; DO $$broken", "SELECT $tag$broken$TAG$",
+        "SELECT 1; /* outer /* inner */", r"SELECT E'broken\'",
+    ])
+    def test_unterminated_rejected(split, source):
+&gt;       with pytest.raises(ValueError, match="^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:43: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_rejected[SELECT 1; SELECT &quot;broken]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = 'SELECT 1; SELECT "broken'
+
+    @pytest.mark.parametrize("source", [
+        "SELECT 1; SELECT 'broken", 'SELECT 1; SELECT "broken',
+        "SELECT 1; DO $$broken", "SELECT $tag$broken$TAG$",
+        "SELECT 1; /* outer /* inner */", r"SELECT E'broken\'",
+    ])
+    def test_unterminated_rejected(split, source):
+&gt;       with pytest.raises(ValueError, match="^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:43: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_rejected[SELECT 1; DO $$broken]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = 'SELECT 1; DO $$broken'
+
+    @pytest.mark.parametrize("source", [
+        "SELECT 1; SELECT 'broken", 'SELECT 1; SELECT "broken',
+        "SELECT 1; DO $$broken", "SELECT $tag$broken$TAG$",
+        "SELECT 1; /* outer /* inner */", r"SELECT E'broken\'",
+    ])
+    def test_unterminated_rejected(split, source):
+&gt;       with pytest.raises(ValueError, match="^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:43: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_rejected[SELECT $tag$broken$TAG$]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = 'SELECT $tag$broken$TAG$'
+
+    @pytest.mark.parametrize("source", [
+        "SELECT 1; SELECT 'broken", 'SELECT 1; SELECT "broken',
+        "SELECT 1; DO $$broken", "SELECT $tag$broken$TAG$",
+        "SELECT 1; /* outer /* inner */", r"SELECT E'broken\'",
+    ])
+    def test_unterminated_rejected(split, source):
+&gt;       with pytest.raises(ValueError, match="^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:43: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_rejected[SELECT 1; /* outer /* inner */]" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = 'SELECT 1; /* outer /* inner */'
+
+    @pytest.mark.parametrize("source", [
+        "SELECT 1; SELECT 'broken", 'SELECT 1; SELECT "broken',
+        "SELECT 1; DO $$broken", "SELECT $tag$broken$TAG$",
+        "SELECT 1; /* outer /* inner */", r"SELECT E'broken\'",
+    ])
+    def test_unterminated_rejected(split, source):
+&gt;       with pytest.raises(ValueError, match="^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:43: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_unterminated_rejected[SELECT E'broken\\']" time="0.000"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">split = &lt;function split_sql_statements at 0x73be7ed1a090&gt;
+source = "SELECT E'broken\\'"
+
+    @pytest.mark.parametrize("source", [
+        "SELECT 1; SELECT 'broken", 'SELECT 1; SELECT "broken',
+        "SELECT 1; DO $$broken", "SELECT $tag$broken$TAG$",
+        "SELECT 1; /* outer /* inner */", r"SELECT E'broken\'",
+    ])
+    def test_unterminated_rejected(split, source):
+&gt;       with pytest.raises(ValueError, match="^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:43: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_postgresql_dollar_body_and_replay" time="0.030"><failure message="psycopg.errors.SyntaxError: unterminated /* comment at or near &quot;/* nested /*&quot;&#10;LINE 1: /* nested /*&#10;        ^">isolated_db = &lt;function isolated_db.&lt;locals&gt;.connection at 0x73be7ed8a770&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-m2t6gczx/scratch/tmp/test_postgresql_dollar_body_an0')
+
+    def test_postgresql_dollar_body_and_replay(isolated_db, tmp_path):
+        from src.migrations import run_migrations
+        write(tmp_path, "002_values.sql", """/* nested /* ; */ done */
+            CREATE FUNCTION val() RETURNS text LANGUAGE plpgsql AS $body$
+            BEGIN RETURN 'Grüße;it''s fine'; END; $body$;
+            DO $$ BEGIN INSERT INTO sample VALUES (val()); END $$;
+            INSERT INTO sample VALUES (E'escaped\\';semicolon');
+        """)
+        write(tmp_path, "001_table.sql", "CREATE TABLE sample (value text)")
+        write(tmp_path, "003_empty.sql", "-- nothing ;\n/* /* nested */ */")
+        (tmp_path / "ignored.txt").write_text("INVALID SQL")
+        (tmp_path / "nested").mkdir()
+        write(tmp_path / "nested", "000_nested.sql", "INVALID SQL")
+&gt;       run_migrations(tmp_path)
+
+tests/test_stage27_evaluation.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/migrations.py:61: in run_migrations
+    cursor.execute(statement)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;psycopg.Cursor [closed] [BAD] at 0x73be7ed9fa10&gt;, query = '/* nested /*'
+params = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -&gt; Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.SyntaxError: unterminated /* comment at or near "/* nested /*"
+E           LINE 1: /* nested /*
+E                   ^
+
+/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/.stage26-runtime/python/lib/python3.14/site-packages/psycopg/cursor.py:117: SyntaxError</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_postgresql_file_rollback_and_prior_commit" time="0.035" /><testcase classname="tests.test_stage27_evaluation" name="test_file_validated_before_execute" time="0.006"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x73be7f1c27b0&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-m2t6gczx/scratch/tmp/test_file_validated_before_exe0')
+
+    def test_file_validated_before_execute(monkeypatch, tmp_path):
+        from src import migrations
+        from tests.test_migrations import FakeConnection
+        write(tmp_path, "001_bad.sql", "SELECT 'valid'; SELECT 'unterminated")
+        conn = FakeConnection()
+        monkeypatch.setattr(migrations, "get_db_connection", lambda: conn)
+&gt;       with pytest.raises(ValueError, match="^Unterminated SQL"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/test_stage27_evaluation.py:115: Failed</failure></testcase><testcase classname="tests.test_stage27_evaluation" name="test_statement_calls_and_empty_recording" time="0.002"><failure message="assert &quot;SELECT 'a;b'&quot; in ['\n                CREATE TABLE IF NOT EXISTS schema_migrations (\n                    filename TEXT PRIMARY KEY,\n  ...rations ORDER BY filename', &quot;SELECT 'a&quot;, &quot;b'&quot;, 'SELECT 2', 'INSERT INTO schema_migrations (filename) VALUES (%s)', ...]">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x73be7ed4a140&gt;
+tmp_path = PosixPath('/home/ivan/codex-role-m2t6gczx/scratch/tmp/test_statement_calls_and_empty0')
+
+    def test_statement_calls_and_empty_recording(monkeypatch, tmp_path):
+        from src import migrations
+        from tests.test_migrations import FakeConnection
+        write(tmp_path, "001_ok.sql", "SELECT 'a;b'; SELECT 2;")
+        write(tmp_path, "002_empty.sql", "/* comment */; -- eof")
+        conn = FakeConnection()
+        monkeypatch.setattr(migrations, "get_db_connection", lambda: conn)
+        migrations.run_migrations(tmp_path)
+        queries = [q for q, _ in conn.executed_queries]
+&gt;       assert "SELECT 'a;b'" in queries
+E       assert "SELECT 'a;b'" in ['\n                CREATE TABLE IF NOT EXISTS schema_migrations (\n                    filename TEXT PRIMARY KEY,\n  ...rations ORDER BY filename', "SELECT 'a", "b'", 'SELECT 2', 'INSERT INTO schema_migrations (filename) VALUES (%s)', ...]
+
+tests/test_stage27_evaluation.py:130: AssertionError</failure></testcase></testsuite></testsuites>

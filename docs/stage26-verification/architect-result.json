@@ -1,0 +1,45 @@
+{
+  "problem": "src/load.py mixes Steam Store response interpretation with database effects across load_steam_store_file, _load_steam_store_ok and _load_steam_store_redirected. The ok and redirected helpers duplicate body transformation and successful-record persistence, while outcome classification, fallback messages and replay arguments are scattered across three branches. Existing unit tests exercise these decisions through mocked connections; PostgreSQL tests cover successful, refused, redirected and legacy replay behavior but leave several edge cases uncovered. Select one bounded refactoring: separate pure Steam Store load preparation from ordered persistence. Provenance limitation: TASK.json pins 0653617666399590c853c39f08e8cf97c9eca45c, but that object is unavailable locally; the inspected isolated checkout is 9d808b569c2f25f9b27a94d7ef31ab885d6b3f0f. Exact agreement with the pinned commit cannot be established in this workspace.",
+  "affected_components": [
+    "src/transform.py: add pure Steam Store load-preparation helpers beside parse_steam_store_envelope and transform_steam_store_game; retain both existing functions' behavior.",
+    "src/load.py: load_steam_store_file, _load_steam_store_ok and _load_steam_store_redirected become preparation/persistence adapters sharing one private executor.",
+    "src/load.py: load_transformed_record and mark_steam_store_enrichment_result remain the persistence boundary; preserve their SQL and signatures.",
+    "tests/test_transform.py: independently characterize prepared records, outcome marks, messages and exceptional inputs.",
+    "tests/test_load.py: characterize persistence ordering, connection boundaries, forwarded arguments and failures.",
+    "tests/test_loaders_idempotent_db.py: extend real PostgreSQL validation of Steam Store outcomes and replay counters."
+  ],
+  "public_interfaces": "Preserve all existing function signatures, import paths, return values and exceptions, including load_data, load_steam_store_file, parse_steam_store_envelope, transform_steam_store_game, load_transformed_record and mark_steam_store_enrichment_result. Retain the signatures and behavior of the existing private ok/redirect helpers as compatibility adapters. Keep STEAM_STORE_OUTCOME_MESSAGES accessible from src.load if its definition moves. Add only an internal preparation result and private persistence executor; no CLI, schema, migration, dependency or caller changes.",
+  "unchanged_behavior": [
+    "Legacy input remains unconditionally normalized to outcome='ok' with unknown fetched_at; unknown explicit envelope versions raise the existing ValueError. An unparseable ok body with a truthy envelope appid is marked refused with the exact existing message; without that appid it raises the existing path-bearing legacy ValueError before opening a connection.",
+    "transform_steam_store_game continues selecting the first response wrapper and using data.steam_appid as the game identifier. Preserve current truthiness checks, coercions, missing-key failures and malformed-body exceptions; introduce no validation or normalization that changes accepted inputs.",
+    "For non-ok outcomes, a falsy requested appid returns the original outcome without transformation or database access. Redirects load parsable target metadata first, then mark the requested appid using envelope.redirect_to even when it differs from the body's appid; an unparseable target still permits the redirect mark.",
+    "Preserve exact error strings and branch-specific truncation: ordinary non-ok messages are sliced to 1000 characters; the redirected message and invalid-ok message are not. Unknown outcomes with a truthy appid still reach mark_steam_store_enrichment_result and its existing rejection.",
+    "All file-derived outcome marks pass is_replay=True and forward the existing fetched_at value, including transport errors. Preserve timestamp-based counter comparisons, answer-triggered error resets, legacy NULL replay undercounting and SQL updates to load-time timestamps.",
+    "Keep successful metadata writes, genre writes, metadata precedence, generated success behavior and snapshot handling unchanged. Redirect target persistence and requested-appid marking remain separate transactions in that order; failure of target persistence prevents marking, while failure of marking may leave the target committed."
+  ],
+  "expected_improvement": "Outcome interpretation becomes testable without files or database mocks, and one executor owns the repeated successful-record persistence sequence. Reviewers can inspect a prepared result containing the transformed record, optional mark arguments and returned outcome independently from connection handling. The separation makes future maintenance less likely to mix requested and target identifiers or alter replay behavior.",
+  "approach": "After controller approval and resolution of the source provenance discrepancy, introduce a small internal preparation result containing an optional transformed record, optional outcome-mark arguments and the final outcome. Pure preparation uses the existing parser/transformer and reproduces the current branch order, messages and exceptions without database access or input mutation. Pass file_path only to preserve the legacy error text. The loader reads JSON and parses the envelope as before; compatibility adapters and dispatch use shared preparation helpers. A private executor persists any prepared record through load_transformed_record within the existing connection/cursor contexts, exits that transaction, then invokes mark_steam_store_enrichment_result if required, and returns the prepared outcome. Do not prevalidate mark arguments or merge transactions. Keep persistence SQL untouched. Restrict the work to Steam Store; do not generalize other source loaders.",
+  "risks": [
+    "Preparing redirect metadata before checking the requested appid would introduce exceptions on inputs that currently return without database access.",
+    "Treating envelope appid, redirect_to and body steam_appid as interchangeable would corrupt requested-row metadata or change redirect bookkeeping.",
+    "Combining redirect writes into one transaction, or moving the mark ahead of target persistence, would change observable partial-success behavior.",
+    "Uniform error truncation, defensive input validation or new exception wrapping would change awkward but observable legacy behavior.",
+    "Dropping is_replay=True, replacing fetched_at with a load clock or changing NULL comparisons would alter attempt/error counters and retry eligibility.",
+    "The pinned source object is unavailable. The controller must establish that the inspected snapshot is the intended baseline or provide the pinned source before implementation."
+  ],
+  "authorized_files": [
+    "src/load.py",
+    "src/transform.py",
+    "tests/test_load.py",
+    "tests/test_transform.py",
+    "tests/test_loaders_idempotent_db.py"
+  ],
+  "proposed_acceptance_criteria": [
+    "Controller approves this specific contract and resolves the pinned-source discrepancy before implementation. Only the five allowed files change; persistence SQL, migrations, extractors and orchestrators remain unchanged.",
+    "Pure preparation tests cover all five outcomes, legacy success and refusal, unknown envelope versions, invalid ok bodies with/without appid, missing/falsy non-ok appids, unknown outcomes, unparsable redirects, mismatched redirect identifiers and first-wrapper selection. Assert exact outcomes, messages, truncation, fetched_at and replay arguments; verify inputs are not mutated.",
+    "Loader tests assert record-before-mark execution, separate redirect connection contexts, zero database access for early returns/errors, unchanged helper signatures and dispatch returns. Inject target-write and mark failures to verify mark suppression and existing transaction boundaries.",
+    "Retain existing PostgreSQL replay assertions, including seeded legacy success yielding zero attempts. Add real-database cases for not_found, transport_error and invalid-ok-to-refused fallback, asserting concrete attempt/error counts and outcomes rather than only equality across replays.",
+    "PostgreSQL redirect validation asserts requested-row metadata remains unchanged, target metadata uses the body's appid, the stored redirect uses envelope.redirect_to, and replay preserves counters and business state. Include a mark-failure case demonstrating that target metadata remains committed.",
+    "During implementation validation, run the existing unit suite and PostgreSQL suite in the isolated test database using REQUIRE_DB_TESTS=1 so skipped database tests do not count as success. Compare replay digests using existing business-state columns while separately preserving expected load-time timestamp updates. No tests or database connections were run during this read-only proposal."
+  ]
+}

@@ -1,0 +1,523 @@
+diff --git a/src/load.py b/src/load.py
+index 6c25f49..be8ffcb 100644
+--- a/src/load.py
++++ b/src/load.py
+@@ -385,6 +385,45 @@ def upsert_igdb_game(connection, game: dict) -> None:
+                 status_label = EXCLUDED.status_label,
+                 raw_json = EXCLUDED.raw_json,
+                 updated_at = CURRENT_TIMESTAMP
++            WHERE (
++                igdb_games.name,
++                igdb_games.slug,
++                igdb_games.summary,
++                igdb_games.url,
++                igdb_games.first_release_date,
++                igdb_games.rating,
++                igdb_games.rating_count,
++                igdb_games.aggregated_rating,
++                igdb_games.aggregated_rating_count,
++                igdb_games.total_rating,
++                igdb_games.total_rating_count,
++                igdb_games.hypes,
++                igdb_games.follows,
++                igdb_games.game_type,
++                igdb_games.game_type_label,
++                igdb_games.status,
++                igdb_games.status_label,
++                igdb_games.raw_json
++            ) IS DISTINCT FROM (
++                EXCLUDED.name,
++                EXCLUDED.slug,
++                EXCLUDED.summary,
++                EXCLUDED.url,
++                EXCLUDED.first_release_date,
++                EXCLUDED.rating,
++                EXCLUDED.rating_count,
++                EXCLUDED.aggregated_rating,
++                EXCLUDED.aggregated_rating_count,
++                EXCLUDED.total_rating,
++                EXCLUDED.total_rating_count,
++                EXCLUDED.hypes,
++                EXCLUDED.follows,
++                EXCLUDED.game_type,
++                EXCLUDED.game_type_label,
++                EXCLUDED.status,
++                EXCLUDED.status_label,
++                EXCLUDED.raw_json
++            )
+             """,
+             (
+                 game["igdb_game_id"],
+@@ -475,6 +514,23 @@ def upsert_twitch_category(connection, category: dict) -> None:
+                 mapping_confidence = EXCLUDED.mapping_confidence,
+                 notes = EXCLUDED.notes,
+                 updated_at = CURRENT_TIMESTAMP
++            WHERE (
++                twitch_categories.twitch_game_name,
++                twitch_categories.is_game,
++                twitch_categories.igdb_game_id,
++                twitch_categories.mapping_status,
++                twitch_categories.mapping_method,
++                twitch_categories.mapping_confidence,
++                twitch_categories.notes
++            ) IS DISTINCT FROM (
++                EXCLUDED.twitch_game_name,
++                EXCLUDED.is_game,
++                EXCLUDED.igdb_game_id,
++                EXCLUDED.mapping_status,
++                EXCLUDED.mapping_method,
++                EXCLUDED.mapping_confidence,
++                EXCLUDED.notes
++            )
+             """,
+             (
+                 category["twitch_game_id"],
+@@ -816,10 +872,21 @@ def load_igdb_file(file_path: str | Path) -> int:
+     raw_data = load_json_file(Path(file_path))
+     records = transform_igdb_search_results(raw_data)
+ 
++    if not records:
++        return 0
++
+     loaded_games = 0
+     loaded_store_links = 0
+     loaded_twitch_categories = 0
+ 
++    # Multiple games can claim the same category. Keep the existing last-game
++    # precedence without transient remapping that advances updated_at on replay.
++    final_categories = {
++        category["twitch_game_id"]: category
++        for record in records
++        for category in record["twitch_categories"]
++    }
++
+     with get_db_connection() as connection:
+         for record in records:
+             upsert_igdb_game(connection, record["igdb_game"])
+@@ -830,7 +897,8 @@ def load_igdb_file(file_path: str | Path) -> int:
+                 loaded_store_links += 1
+ 
+             for category in record["twitch_categories"]:
+-                upsert_twitch_category(connection, category)
++                if final_categories[category["twitch_game_id"]] is category:
++                    upsert_twitch_category(connection, category)
+                 loaded_twitch_categories += 1
+ 
+         connection.commit()
+diff --git a/src/transform.py b/src/transform.py
+index d93f920..5dce4c9 100644
+--- a/src/transform.py
++++ b/src/transform.py
+@@ -527,7 +527,7 @@ def extract_igdb_store_links(game: dict) -> list[dict]:
+ 
+     links = {}
+ 
+-    for item in game.get("external_games", []):
++    for item in (game.get("external_games") or []):
+         url = item.get("url")
+         store = detect_store_from_url(url)
+ 
+@@ -551,7 +551,7 @@ def extract_igdb_store_links(game: dict) -> list[dict]:
+             "store_url": url,
+         }
+ 
+-    for item in game.get("websites", []):
++    for item in (game.get("websites") or []):
+         url = item.get("url")
+         store = detect_store_from_url(url)
+ 
+@@ -567,6 +567,8 @@ def extract_igdb_store_links(game: dict) -> list[dict]:
+             continue
+ 
+         key = (store, str(store_game_id))
++        # Websites replace only the matching store identifier; distinct
++        # external mappings remain valid links for the same store.
+ 
+         links[key] = {
+             "igdb_game_id": game["id"],
+@@ -604,7 +606,7 @@ def extract_igdb_twitch_categories(game: dict) -> list[dict]:
+ 
+     categories = {}
+ 
+-    for item in game.get("external_games", []):
++    for item in (game.get("external_games") or []):
+         url = item.get("url")
+ 
+         if not url or "twitch.tv/directory/" not in url.lower():
+@@ -638,9 +640,45 @@ def transform_igdb_search_results(raw_data: dict) -> list[dict]:
+     One raw file can contain multiple IGDB games.
+     """
+ 
++    if not isinstance(raw_data, dict) or not isinstance(raw_data.get("data"), list):
++        raise ValueError("IGDB envelope must contain an explicit data list")
++
++    seen_ids = set()
++    for game in raw_data["data"]:
++        if not isinstance(game, dict):
++            raise ValueError("Each IGDB game must be a dict")
++        game_id = game.get("id")
++        if (not isinstance(game_id, int) or isinstance(game_id, bool)
++                or not 1 <= game_id <= 2147483647):
++            raise ValueError("IGDB game id must be a positive PostgreSQL INTEGER")
++        if game_id in seen_ids:
++            raise ValueError("Duplicate IGDB game id in batch")
++        seen_ids.add(game_id)
++        name = game.get("name")
++        if not isinstance(name, str) or not name.strip():
++            raise ValueError("IGDB game name must be a nonblank string")
++        for field in ("external_games", "websites"):
++            items = game.get(field)
++            if items is None:
++                continue
++            if not isinstance(items, list):
++                raise ValueError(f"IGDB {field} must be a list or null")
++            for item in items:
++                if not isinstance(item, dict):
++                    raise ValueError(f"IGDB {field} entries must be dicts")
++                url = item.get("url")
++                if url is not None and not isinstance(url, str):
++                    raise ValueError("IGDB nested url must be a string or null")
++                if field == "external_games":
++                    uid = item.get("uid")
++                    if uid is not None and (
++                        isinstance(uid, bool) or not isinstance(uid, (str, int))
++                    ):
++                        raise ValueError("IGDB external uid must be a string, integer or null")
++
+     transformed_records = []
+ 
+-    for game in raw_data.get("data", []):
++    for game in raw_data["data"]:
+         transformed_records.append(
+             {
+                 "igdb_game": transform_igdb_game(game),
+diff --git a/tests/test_igdb_reliability.py b/tests/test_igdb_reliability.py
+new file mode 100644
+index 0000000..1747c20
+--- /dev/null
++++ b/tests/test_igdb_reliability.py
+@@ -0,0 +1,324 @@
++"""IGDB bronze validation, timestamp stability and file recovery contracts."""
++
++import copy
++import json
++from datetime import date
++
++import psycopg
++import pytest
++
++from src import load
++from src.transform import transform_igdb_search_results
++
++
++def save_payload(tmp_path, payload):
++    path = tmp_path / "igdb.json"
++    path.write_text(json.dumps(payload), encoding="utf-8")
++    return path
++
++
++INVALID_ENVELOPES = [None, [], "data", 1, {}, {"data": None},
++                     {"data": {}}, {"data": "[]"}, {"data": 0}]
++INVALID_GAMES = [None, [], "game", {}, {"id": 1}, {"name": "Game"}]
++INVALID_GAMES += [{"id": value, "name": "Game"}
++                  for value in [None, True, False, 0, -1, 2147483648, "1", 1.0]]
++INVALID_GAMES += [{"id": 1, "name": value}
++                  for value in [None, 1, True, "", " \t\n"]]
++for nested_field in ("external_games", "websites"):
++    for invalid_items in ({}, "", 0, False, [None], [1], [[]], ["item"]):
++        INVALID_GAMES.append({"id": 1, "name": "Game", nested_field: invalid_items})
++    for invalid_url in (1, False, [], {}):
++        INVALID_GAMES.append({"id": 1, "name": "Game",
++                              nested_field: [{"url": invalid_url}]})
++for invalid_uid in (True, False, 1.5, [], {}):
++    INVALID_GAMES.append({"id": 1, "name": "Game",
++                          "external_games": [{"uid": invalid_uid}]})
++INVALID_PAYLOADS = INVALID_ENVELOPES + [
++    {"data": [{"id": 99, "name": "Valid first"}, game]}
++    for game in INVALID_GAMES
++] + [{"data": [{"id": 1, "name": "Game"}] * 2}]
++
++
++@pytest.mark.parametrize("payload", INVALID_PAYLOADS)
++def test_invalid_batch_rejected_before_connection(payload, monkeypatch, tmp_path):
++    original = copy.deepcopy(payload)
++
++    def forbidden_connection():
++        pytest.fail("Invalid batch acquired a database connection")
++
++    monkeypatch.setattr(load, "get_db_connection", forbidden_connection)
++    with pytest.raises(ValueError):
++        transform_igdb_search_results(payload)
++    assert payload == original
++    with pytest.raises(ValueError):
++        load.load_igdb_file(save_payload(tmp_path, payload))
++
++
++def test_empty_and_malformed_json_do_not_connect(monkeypatch, tmp_path):
++    def forbidden_connection():
++        pytest.fail("Empty or malformed file acquired a connection")
++
++    monkeypatch.setattr(load, "get_db_connection", forbidden_connection)
++    payload = {"data": [], "metadata": {"ignored": True}}
++    assert transform_igdb_search_results(payload) == []
++    path = save_payload(tmp_path, payload)
++    assert load.load_data("igdb", path) == 0
++    path.write_text('{"data": [', encoding="utf-8")
++    with pytest.raises(json.JSONDecodeError):
++        load.load_igdb_file(path)
++
++
++@pytest.mark.parametrize("value", [None, []])
++def test_nullable_collections_and_identifier_boundaries(value):
++    game = {"id": 2147483647, "name": "  Verbatim name  ",
++            "external_games": value, "websites": value}
++    original = copy.deepcopy(game)
++    record = transform_igdb_search_results({"data": [game]})[0]
++    assert record["igdb_game"]["name"] == game["name"]
++    assert record["igdb_game"]["raw_json"] == original
++    assert record["store_links"] == record["twitch_categories"] == []
++    assert game == original
++
++
++def test_valid_nested_fields_preserve_precedence_and_raw_json():
++    website_url = "https://store.steampowered.com/app/730/website"
++    game = {"id": 1, "name": " Game ", "first_release_date": 0,
++            "game_type": 0, "status": 4,
++            "external_games": [
++                {"uid": "wrong", "url": "https://store.steampowered.com/app/730/external"},
++                {"uid": 55, "url": "https://twitch.tv/directory/game/game"},
++                {"uid": 9, "url": "https://www.gog.com/game/game"},
++                {}, {"url": None, "uid": None}, {"url": "", "uid": ""},
++                {"uid": "ignored", "url": "https://example.com"},
++                {"uid": 0, "url": "https://www.gog.com/game/empty"}],
++            "websites": [{"url": website_url}, {}, {"url": None}]}
++    original = copy.deepcopy(game)
++    record = transform_igdb_search_results({"data": [game], "ignored": 3})[0]
++    assert set(record) == {"igdb_game", "store_links", "twitch_categories"}
++    assert record["igdb_game"]["raw_json"] == original
++    assert record["igdb_game"]["first_release_date"] == date(1970, 1, 1)
++    assert record["igdb_game"]["game_type_label"] == "main_game"
++    assert record["igdb_game"]["status_label"] == "early_access"
++    assert record["store_links"] == [
++        {"igdb_game_id": 1, "store": "steam", "store_game_id": "730",
++         "store_url": website_url},
++        {"igdb_game_id": 1, "store": "gog", "store_game_id": "9",
++         "store_url": "https://www.gog.com/game/game"}]
++    assert record["twitch_categories"][0]["twitch_game_id"] == "55"
++    assert game == original
++
++
++def linked_game(game_id=1, name="Game"):
++    return {"id": game_id, "name": name, "summary": None,
++            "external_games": [
++                {"uid": "category", "url": "https://twitch.tv/directory/game/game"}],
++            "websites": [{"url": "https://store.steampowered.com/app/730/game"}]}
++
++
++@pytest.mark.parametrize("website_urls,expected_ids", [
++    (["https://store.steampowered.com/app/740/website"], ["730", "740"]),
++    (["https://store.steampowered.com/app/730/website"], ["730"]),
++    (["https://store.steampowered.com/app/740/first",
++      "https://store.steampowered.com/app/750/second"], ["730", "740", "750"]),
++    (["https://store.steampowered.com/app/740/first",
++      "https://store.steampowered.com/app/730/replacement",
++      "https://store.steampowered.com/app/740/replacement"], ["730", "740"]),
++    ([None, "https://example.com", "https://store.steampowered.com/app/bad"],
++     ["730"]),
++])
++def test_steam_website_precedence_with_conflicting_ids(website_urls, expected_ids):
++    game = linked_game()
++    game["external_games"].extend([
++        {"uid": "wrong", "url": "https://store.steampowered.com/app/730/external"},
++        {"uid": "9", "url": "https://www.gog.com/game/game"}])
++    game["websites"] = [{"url": url} for url in website_urls]
++    original = copy.deepcopy(game)
++    record = transform_igdb_search_results({"data": [game]})[0]
++    steam_links = [link for link in record["store_links"] if link["store"] == "steam"]
++    assert [link["store_game_id"] for link in steam_links] == expected_ids
++    expected_urls = {"730": game["external_games"][1]["url"]}
++    for url in website_urls:
++        if url and url.rsplit("/", 2)[-2].isdigit():
++            expected_urls[url.rsplit("/", 2)[-2]] = url
++    assert {link["store_game_id"]: link["store_url"] for link in steam_links} == expected_urls
++    assert [link["store_game_id"] for link in record["store_links"]
++            if link["store"] == "gog"] == ["9"]
++    assert record["twitch_categories"][0]["twitch_game_id"] == "category"
++    assert record["igdb_game"]["raw_json"] == original
++    assert game == original
++
++
++def test_conflicting_steam_website_is_persisted_and_replayed(test_database, tmp_path):
++    game = linked_game()
++    game["external_games"].append(
++        {"uid": "wrong", "url": "https://store.steampowered.com/app/720/external"})
++    path = save_payload(tmp_path, {"data": [game]})
++    assert load.load_igdb_file(path) == 1
++    with load.get_db_connection() as connection:
++        assert connection.execute(
++            "SELECT store_game_id, store_url FROM igdb_game_store_links "
++            "WHERE store='steam' ORDER BY store_game_id"
++        ).fetchall() == [("720", game["external_games"][1]["url"]),
++                         ("730", game["websites"][0]["url"])]
++    first = database_rows()
++    assert load.load_igdb_file(path) == 1
++    assert database_rows() == first
++
++    # A later website adds its new mapping without deleting committed links.
++    game["websites"][0]["url"] = "https://store.steampowered.com/app/740/website"
++    assert load.load_igdb_file(save_payload(tmp_path, {"data": [game]})) == 1
++    with load.get_db_connection() as connection:
++        assert connection.execute(
++            "SELECT store_game_id FROM igdb_game_store_links ORDER BY store_game_id"
++        ).fetchall() == [("720",), ("730",), ("740",)]
++
++
++def database_rows():
++    """Read all persisted values, including timestamps, in a fresh transaction."""
++    with load.get_db_connection() as connection:
++        return {
++            table: connection.execute(
++                f"SELECT *, {timestamp} FROM {table} ORDER BY 1"
++            ).fetchall()
++            for table, timestamp in (("igdb_games", "updated_at"),
++                                     ("igdb_game_store_links", "created_at"),
++                                     ("twitch_categories", "updated_at"))
++        }
++
++
++def test_replay_and_changes_across_transactions(test_database, tmp_path):
++    game = linked_game()
++    path = save_payload(tmp_path, {"data": [game]})
++    assert load.load_igdb_file(path) == 1
++    first = database_rows()
++    assert [len(rows) for rows in first.values()] == [1, 1, 1]
++    reordered = dict(reversed(list(game.items())))
++    assert load.load_igdb_file(save_payload(tmp_path, {"data": [reordered]})) == 1
++    assert database_rows() == first
++
++    game["summary"] = "Changed from null"
++    load.load_igdb_file(save_payload(tmp_path, {"data": [game]}))
++    second = database_rows()
++    assert second["igdb_games"][0][-1] > first["igdb_games"][0][-1]
++    assert second["twitch_categories"] == first["twitch_categories"]
++    assert second["igdb_game_store_links"] == first["igdb_game_store_links"]
++    game["summary"] = None
++    game["name"] = "Renamed"
++    load.load_igdb_file(save_payload(tmp_path, {"data": [game]}))
++    third = database_rows()
++    assert third["igdb_games"][0][1] == "Renamed"
++    assert third["igdb_games"][0][3] is None
++    assert third["igdb_games"][0][-1] > second["igdb_games"][0][-1]
++    assert third["twitch_categories"][0][1] == "Renamed"
++    assert third["twitch_categories"][0][-1] > second["twitch_categories"][0][-1]
++    assert third["igdb_game_store_links"] == first["igdb_game_store_links"]
++
++    # Missing links in a later answer leave previous mappings intact.
++    load.load_igdb_file(save_payload(tmp_path, {"data": [{"id": 1, "name": "Renamed"}]}))
++    fourth = database_rows()
++    assert fourth["igdb_game_store_links"] == third["igdb_game_store_links"]
++    assert fourth["twitch_categories"] == third["twitch_categories"]
++
++
++def test_store_and_category_remapping(test_database, tmp_path):
++    load.load_igdb_file(save_payload(tmp_path, {"data": [linked_game()]}))
++    first = database_rows()
++    remapped = linked_game(2, "Other game")
++    remapped["websites"][0]["url"] += "/new"
++    load.load_igdb_file(save_payload(tmp_path, {"data": [remapped]}))
++    second = database_rows()
++    assert [len(rows) for rows in second.values()] == [2, 1, 1]
++    assert second["igdb_game_store_links"][0][1] == 2
++    assert second["igdb_game_store_links"][0][4].endswith("/new")
++    assert second["igdb_game_store_links"][0][-1] == first["igdb_game_store_links"][0][-1]
++    assert second["twitch_categories"][0][3] == 2
++    assert second["twitch_categories"][0][-1] > first["twitch_categories"][0][-1]
++    load.load_igdb_file(save_payload(tmp_path, {"data": [remapped]}))
++    assert database_rows() == second
++
++
++@pytest.mark.parametrize("helper_name", [
++    "upsert_igdb_game", "upsert_igdb_game_store_link", "upsert_twitch_category"])
++def test_write_failure_rolls_back_entire_file_and_saved_retry_succeeds(
++    test_database, tmp_path, monkeypatch, helper_name
++):
++    load.load_igdb_file(save_payload(tmp_path, {"data": [linked_game()]}))
++    prior = database_rows()
++    batch = [linked_game(1, "Updated prior row"), linked_game(2, "New row")]
++    batch[1]["external_games"][0]["uid"] = "new-category"
++    path = save_payload(tmp_path, {"data": batch})
++    original = getattr(load, helper_name)
++    calls = 0
++
++    def fail_after_write(connection, record):
++        nonlocal calls
++        original(connection, record)
++        calls += 1
++        if calls == 2:
++            # A real SQL error aborts the transaction after earlier writes.
++            connection.execute("SELECT 1 / 0")
++
++    with monkeypatch.context() as patch:
++        patch.setattr(load, helper_name, fail_after_write)
++        with pytest.raises(psycopg.errors.DivisionByZero):
++            load.load_igdb_file(path)
++    assert calls == 2
++    assert database_rows() == prior
++    assert load.load_igdb_file(path) == 2
++    recovered = database_rows()
++    assert [len(rows) for rows in recovered.values()] == [2, 1, 2]
++    assert recovered["igdb_games"][0][1] == "Updated prior row"
++    assert recovered["igdb_game_store_links"][0][1] == 2
++    assert recovered["twitch_categories"][0][3] == 1
++    assert recovered["twitch_categories"][1][3] == 2
++    assert load.load_igdb_file(path) == 2
++    assert database_rows() == recovered
++
++
++def test_shared_category_keeps_last_game_precedence_on_replay(test_database, tmp_path):
++    path = save_payload(tmp_path, {"data": [linked_game(1), linked_game(2, "Winner")]})
++    assert load.load_igdb_file(path) == 2
++    first = database_rows()
++    assert [len(rows) for rows in first.values()] == [2, 1, 1]
++    assert first["twitch_categories"][0][3] == 2
++    assert first["igdb_game_store_links"][0][1] == 2
++    assert load.load_igdb_file(path) == 2
++    assert database_rows() == first
++
++
++@pytest.mark.parametrize("field,value", [
++    ("is_game", False), ("igdb_game_id", 1), ("mapping_method", "manual"),
++    ("mapping_confidence", 0.5), ("notes", "Reviewed")])
++def test_category_helper_null_safe_updates(test_database, field, value):
++    record = transform_igdb_search_results({"data": [linked_game()]})[0]
++    category = record["twitch_categories"][0].copy()
++    category[field] = None
++    with load.get_db_connection() as connection:
++        load.upsert_igdb_game(connection, record["igdb_game"])
++        load.upsert_twitch_category(connection, category)
++    first = database_rows()["twitch_categories"]
++    with load.get_db_connection() as connection:
++        load.upsert_twitch_category(connection, category)
++    assert database_rows()["twitch_categories"] == first
++
++    category[field] = value
++    with load.get_db_connection() as connection:
++        load.upsert_twitch_category(connection, category)
++    second = database_rows()["twitch_categories"]
++    assert second[0][-1] > first[0][-1]
++    with load.get_db_connection() as connection:
++        assert connection.execute(
++            f"SELECT {field} FROM twitch_categories"
++        ).fetchone()[0] == value
++    category[field] = None
++    with load.get_db_connection() as connection:
++        load.upsert_twitch_category(connection, category)
++    third = database_rows()["twitch_categories"]
++    assert third[0][-1] > second[0][-1]
++    with load.get_db_connection() as connection:
++        assert connection.execute(
++            f"SELECT {field} FROM twitch_categories"
++        ).fetchone()[0] is None
++    with load.get_db_connection() as connection:
++        load.upsert_twitch_category(connection, category)
++    assert database_rows()["twitch_categories"] == third

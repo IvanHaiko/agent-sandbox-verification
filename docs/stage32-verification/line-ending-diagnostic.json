@@ -1,0 +1,14 @@
+{
+  "README.md": {
+    "baseline_crlf": 258,
+    "candidate_crlf": 268,
+    "baseline_lf": 377,
+    "candidate_lf": 387
+  },
+  "collector/run.py": {
+    "baseline_crlf": 93,
+    "candidate_crlf": 100,
+    "baseline_lf": 101,
+    "candidate_lf": 108
+  }
+}

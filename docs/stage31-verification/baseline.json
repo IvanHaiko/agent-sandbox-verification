@@ -1,0 +1,8 @@
+{
+  "candidate": "C:\\Users\\4ivan\\codex-multi-agent\\.agent_worktrees\\stage31-steam",
+  "baseline_commit": "c507bf15048cea275d7aa58595bca5d592abe292",
+  "source_head": "0653617666399590c853c39f08e8cf97c9eca45c",
+  "baseline_archive_sha256": "93c0ff48c2df38c70aa61bb990a7a5b39846673d0e558c8c4db1fa69938d39dd",
+  "files": 98,
+  "branch": "stage31/migration-sql"
+}

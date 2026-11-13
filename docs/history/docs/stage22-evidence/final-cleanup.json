@@ -1,0 +1,21 @@
+{
+  "stale_owned_containers": 0,
+  "docker_inventory_verified_empty": true,
+  "credential_store_unchanged": true,
+  "temporary_roots_removed": {
+    "stage22-admission": true,
+    "stage22-admission2": true,
+    "stage22-unit": true,
+    "stage22-unit2": true,
+    "stage22-final-focused": true,
+    "stage22-regression": true,
+    "stage22-workflow": true,
+    "stage22-recovery-check": true
+  },
+  "all_temporary_roots_removed": true,
+  "host_fallback": false,
+  "production_existing_files_unchanged": true,
+  "accepted_and_diagnostic_artifacts_separated": true,
+  "initial_unsandboxed_test_storage_removal_denied": true,
+  "resolved_in_creating_sandbox_context": true
+}

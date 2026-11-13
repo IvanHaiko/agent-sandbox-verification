@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "fresh_context_and_workspace": true,
+  "failed_retry_repository_removed": true,
+  "required_architect_artifact_absent": true,
+  "scope_unchanged": true,
+  "exact_model_requested": "gpt-6.1-sol",
+  "effort": "medium",
+  "native_inference_response_confirmed": false,
+  "executed_source_hashes": {
+    "contract-harness.py": "e3983597d31d095f0a44b83061956eb644b200fa992f43907cd5928d1282ed26",
+    "executed-driver.py": "72be0b89a0bdb3403dae291ea41406b493d0bb266e72a59a9f72ed77c5371e4b",
+    "native-runner.py": "708a0bf663ab2f620b9e6e02537dc62c58c95f75b026ba7f05a759302740c972",
+    "workflow-driver.py": "0355ccf0af120e8ba0504ebf3bd4f68c026eba3ac25759e9c0f29de8c19665cf"
+  }
+}

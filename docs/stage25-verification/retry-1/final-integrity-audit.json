@@ -1,0 +1,66 @@
+{
+  "source_commit": "0653617666399590c853c39f08e8cf97c9eca45c",
+  "original_unchanged": true,
+  "candidate_unchanged_after_review": true,
+  "patch_sha256": "98faa8b05509d33576bd7872a37498b7e58510dca8e69373e4da4d4e896c1e8a",
+  "patch_applies_to_source": true,
+  "role_contexts_distinct": true,
+  "tester_blindness_verified": true,
+  "freeze_before_exposure_verified": true,
+  "acceptance": {
+    "passed": 234,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "independent_passed": 29,
+    "groups": {
+      "tests.test_extract": 16,
+      "tests.test_load": 21,
+      "tests.test_loaders_idempotent_db": 13,
+      "tests.test_main": 38,
+      "tests.test_migrations": 5,
+      "tests.test_queries_execute_db": 23,
+      "tests.test_schema_db": 12,
+      "tests.test_stage25_acceptance": 29,
+      "tests.test_transform": 40,
+      "tests.test_twitch_hour_replacement": 37
+    }
+  },
+  "negative_control": {
+    "failed": 22,
+    "passed": 7,
+    "membership_defect_detected": true
+  },
+  "framework": {
+    "passed": 40,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "cleanup_passed": true,
+  "owned_postmaster_absent": true,
+  "remaining_role_workspaces": [],
+  "runtime_removed": true,
+  "native_role_seconds": 815.934,
+  "reported_tokens_available_roles": {
+    "implementer": 69054,
+    "independent_tester": 43826,
+    "reviewer": 47430
+  },
+  "reported_tokens_partial_total": 160310,
+  "architect_tokens_unavailable": true,
+  "architect_reused_from_prior_attempt": true,
+  "automatic_model_retries": 0,
+  "implementation_resamples": 0,
+  "tester_resamples": 0,
+  "pytest_startup_failure_preserved": true,
+  "acceptance_environment_continuations": 1,
+  "active_framework_sources": {
+    "agent_system/native_codex_linux.py": "3e926cac941f6e78a431ae7e03efef83f7e521c1c1d8e09c82ae7eabe504ebd0",
+    "validation/steam_workflow.py": "550080ce1a346a321f70f058c45f58eb8da109b7835bb432bf7c0f26f6ee0c22",
+    "validation/steam_runtime.py": "3fac69d174d8843d7cde6dcbdee7d718d393b3b8a2812014e43ba35a731bc4c8",
+    "validation/steam_resume_acceptance.py": "c3e9ba61f94b070c9e381af6a4ed0fa983fa61905746cd611286ef9c3e63f5ea",
+    "validation/steam_negative_control.py": "580b136c1bd6a0b09bcbd66ae24d3e4397ed98fff54a3f8329bb76beb32d4487",
+    "tests/test_native_launcher.py": "03c6d996ae591d3bea6151128ef502da22bd3da84e50d4033d1ba57cf49e063f"
+  }
+}

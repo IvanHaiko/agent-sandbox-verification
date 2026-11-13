@@ -1,0 +1,13 @@
+{
+  "changed_files": [
+    "agent_system/codex_tool_session.py",
+    "agent_system/model_tool_boundary.py",
+    "agent_system/runners/chatgpt_plan.py",
+    "agent_system/runners/tool_docker.py",
+    "agent_system/runtime_observability.py",
+    "validation/stage21a_observability.py"
+  ],
+  "configuration_unchanged": true,
+  "stage21_drivers_unchanged": true,
+  "stage21_routing_timeouts_task_unchanged": true
+}

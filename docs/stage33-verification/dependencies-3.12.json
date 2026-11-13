@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/provision/bin/uv",
+    "pip",
+    "install",
+    "--python",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/venv-3.12/bin/python",
+    "-r",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.agent_worktrees/stage32-ai-model-lifecycle/requirements-dev.txt"
+  ],
+  "cwd": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Using Python 3.12.15 environment at: venv-3.12\nResolved 11 packages in 232ms\nDownloading pyarrow (47.8MiB)\n Downloaded pyarrow\nPrepared 2 packages in 11.99s\nInstalled 11 packages in 12.75s\n + certifi==2026.7.22\n + charset-normalizer==3.5.2\n + idna==3.20\n + iniconfig==2.3.1\n + packaging==26.3\n + pluggy==1.6.0\n + pyarrow==25.0.1\n + pytest==8.3.3\n + requests==2.32.3\n + ruff==0.6.9\n + urllib3==2.8.0\n",
+  "elapsed_seconds": 25.90385849400002,
+  "provisioning_only": true
+}

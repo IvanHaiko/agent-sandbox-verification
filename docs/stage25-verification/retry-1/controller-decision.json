@@ -1,0 +1,12 @@
+{
+  "outcome": "PASS",
+  "accepted": true,
+  "workflow_completed": true,
+  "acceptance_passed": true,
+  "reviewer_recommendation": "accept",
+  "cleanup_passed": true,
+  "original_unchanged": true,
+  "patch_sha256": "98faa8b05509d33576bd7872a37498b7e58510dca8e69373e4da4d4e896c1e8a",
+  "source_commit": "0653617666399590c853c39f08e8cf97c9eca45c",
+  "basis": "Frozen independent real PostgreSQL tests, full regressions, read-only review, negative control and final integrity audit"
+}

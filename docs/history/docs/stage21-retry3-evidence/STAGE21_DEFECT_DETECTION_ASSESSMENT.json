@@ -1,0 +1,171 @@
+{
+  "stage": 21,
+  "attempt": 3,
+  "label": "Retry #3 after accepted Stage21A observability patch",
+  "date": "2026-10-07",
+  "timezone": "Europe/Berlin",
+  "result": "FAIL",
+  "accepted": false,
+  "completed_workflow": false,
+  "conclusion": "STAGE21_OPERATIONAL_FAIL_NOT_EVALUATED",
+  "final_artifact_status": "unaccepted_diagnostic_candidate",
+  "independent_testing_value": "not evaluated",
+  "reviewer_value": "not evaluated",
+  "repair_cycles": 0,
+  "repair_limit": 2,
+  "failed_stage": "implementation",
+  "failure_category": "socket_idle_timeout",
+  "safe_failure_receipt": {
+    "schema_version": 1,
+    "invocation_id": "stage21-retry3-implementer",
+    "role": "implementer",
+    "model": "gpt-5.6-sol",
+    "reasoning": "high",
+    "role_status": "failed",
+    "accepted": false,
+    "recorded_at": "2026-10-07T08:37:52.401913+00:00",
+    "failure_category": "socket_idle_timeout",
+    "failure_detail": "socket_idle_timeout",
+    "request_count": 3,
+    "tool_call_count": 2,
+    "completed_tool_call_count": 2,
+    "tool_result_returned": true,
+    "last_completed_phase": "tool_result_returned",
+    "response_validation_passed": true,
+    "eof_observed": false,
+    "reader_shutdown_confirmed": true,
+    "socket_idle_timeout_observed": true,
+    "parser_status": "passed",
+    "handoff_status": "failed",
+    "protocol_bytes": 41929,
+    "stderr_bytes": 0,
+    "protocol_anomaly_counters": {
+      "nonexecutable_stream_final_mismatch": 4,
+      "completed_function_omitted_from_final": 4,
+      "nonstandard_or_absent_mime": 2
+    },
+    "candidate_written": true,
+    "candidate_preserved": true,
+    "candidate_archived": true,
+    "candidate_skipped_count": 0,
+    "candidates": [
+      {
+        "path": "src/normalize_labels.py",
+        "sha256": "7aad35443570f8bd44062784217f79c25f807e4fded59473454e231cf6a2717d",
+        "archive_path": "candidates/src/normalize_labels.py",
+        "originating_invocation_id": "stage21-retry3-implementer",
+        "archived_at": "2026-10-07T08:37:52.401678+00:00",
+        "status": "unaccepted_diagnostic_candidate",
+        "accepted": false
+      }
+    ]
+  },
+  "candidate_path": "C:\\Users\\4ivan\\codex-multi-agent\\docs\\stage21-retry3-evidence\\diagnostics\\implementer\\candidates\\src\\normalize_labels.py",
+  "candidate_sha256": "7aad35443570f8bd44062784217f79c25f807e4fded59473454e231cf6a2717d",
+  "candidate_accepted": false,
+  "role_sessions": 2,
+  "completed_role_sessions": 1,
+  "live_model_requests": 4,
+  "model_selected_docker_actions": 2,
+  "controller_acceptance_executions": 0,
+  "tester_sessions": 0,
+  "second_tester_session": false,
+  "auxiliary_live_model_requests": 0,
+  "astra_auxiliary_requests": 0,
+  "data_auditor_invocations": 0,
+  "helper_agents": 0,
+  "roles": [
+    {
+      "label": "architect",
+      "role": "orchestrator",
+      "model": "gpt-6-astra",
+      "reasoning": "medium",
+      "completed": true,
+      "requests": 1,
+      "tool_calls": 0,
+      "seconds": 26.28,
+      "usage": {
+        "total": {
+          "totalTokens": 7571,
+          "inputTokens": 7029,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 542,
+          "reasoningOutputTokens": 0
+        },
+        "last": {
+          "totalTokens": 7571,
+          "inputTokens": 7029,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 542,
+          "reasoningOutputTokens": 0
+        }
+      }
+    },
+    {
+      "label": "implementer",
+      "role": "implementer",
+      "model": "gpt-5.6-sol",
+      "reasoning": "high",
+      "completed": false,
+      "requests": 3,
+      "tool_calls": 2,
+      "seconds": 84.65,
+      "usage": {
+        "total": {
+          "totalTokens": 14458,
+          "inputTokens": 13179,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 1279,
+          "reasoningOutputTokens": 379
+        },
+        "last": {
+          "totalTokens": 7800,
+          "inputTokens": 6708,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 1092,
+          "reasoningOutputTokens": 357
+        }
+      }
+    }
+  ],
+  "containment": {
+    "production_source_unchanged": true,
+    "credential_store_unchanged": true,
+    "stale_owned_containers": 0,
+    "model_homes_removed": true,
+    "role_network": "none",
+    "host_fallback": false,
+    "isolation_preserved": true,
+    "docker_cleanup_confirmed": true,
+    "disposable_role_storage_removed": true,
+    "diagnostic_candidates_survive": true
+  },
+  "final_cleanup": {
+    "all_retry3_disposable_storage_removed": true,
+    "removed_paths": [
+      "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-retry3-admission",
+      "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-retry3-driver-checks",
+      "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow-retry3"
+    ],
+    "diagnostic_candidate_survives_final_cleanup": true,
+    "synthetic_admission_role_and_model_homes_removed": true,
+    "production_source_and_configuration_unchanged": true,
+    "cleanup_context_note": "Each owned temporary tree removed in its creating execution context; no production ACL or cleanup policy change"
+  },
+  "credential_integrity": {
+    "unchanged_since_authorized_reconnection": true,
+    "file_count": 3,
+    "file_sha256": {
+      "credentials.json": "259b106e849b3ea3fa4fa4a096e6c6b2164154586ff07ad205c34afe189265c0",
+      "host.json": "b0ba883433265036bf2e7f22cd245350b1b2024a3be09a555a6fd71bde3447e3",
+      "registration.json": "82b96c146ef0ddd131530f6ec02aa2e665ef236112bb2e85e5fd93cb8dce9010"
+    },
+    "credential_values_exported": false
+  },
+  "one_retry_only": true,
+  "production_source_config_unchanged_from_accepted_stage21a": true
+}

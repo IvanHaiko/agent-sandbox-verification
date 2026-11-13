@@ -1,0 +1,11 @@
+{
+  "checked_at": 1791367453.170746,
+  "stale_owned_containers": 0,
+  "production_source_unchanged": true,
+  "credential_store_unchanged": true,
+  "disposable_storage_removed": true,
+  "role_homes_removed": true,
+  "host_fallback": false,
+  "candidate_exposures": 0,
+  "raw_credentials_exported": false
+}

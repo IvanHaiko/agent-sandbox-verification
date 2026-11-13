@@ -1,0 +1,921 @@
+{
+  "source": "igdb",
+  "request": "games_search",
+  "search_term": "Anno 2070\u2122",
+  "fetched_at": "2026-05-11T12:50:26.573098+00:00",
+  "result_count": 4,
+  "data": [
+    {
+      "id": 8228,
+      "external_games": [
+        {
+          "id": 2053955,
+          "uid": "204290",
+          "url": "https://store.steampowered.com/app/204290"
+        }
+      ],
+      "first_release_date": 1349308800,
+      "game_modes": [
+        {
+          "id": 1,
+          "name": "Single player"
+        },
+        {
+          "id": 2,
+          "name": "Multiplayer"
+        }
+      ],
+      "genres": [
+        {
+          "id": 11,
+          "name": "Real Time Strategy (RTS)"
+        },
+        {
+          "id": 13,
+          "name": "Simulator"
+        },
+        {
+          "id": 15,
+          "name": "Strategy"
+        }
+      ],
+      "involved_companies": [
+        {
+          "id": 19912,
+          "company": {
+            "id": 647,
+            "name": "Related Designs"
+          },
+          "developer": true,
+          "publisher": false
+        },
+        {
+          "id": 339080,
+          "company": {
+            "id": 7923,
+            "name": "Blue Byte"
+          },
+          "developer": true,
+          "publisher": false
+        },
+        {
+          "id": 339096,
+          "company": {
+            "id": 104,
+            "name": "Ubisoft Entertainment"
+          },
+          "developer": false,
+          "publisher": true
+        }
+      ],
+      "name": "Anno 2070: Deep Ocean",
+      "parent_game": 2959,
+      "platforms": [
+        {
+          "id": 6,
+          "name": "PC (Microsoft Windows)"
+        }
+      ],
+      "player_perspectives": [
+        {
+          "id": 3,
+          "name": "Bird view / Isometric"
+        }
+      ],
+      "rating": 70.04830562882402,
+      "rating_count": 7,
+      "release_dates": [
+        {
+          "id": 790234,
+          "date": 1349308800,
+          "platform": {
+            "id": 6,
+            "name": "PC (Microsoft Windows)"
+          }
+        }
+      ],
+      "slug": "anno-2070-deep-ocean",
+      "summary": "Anno is a real-time strategy video game series with business simulation and city building elements. It involves colony building and resource management on a series of small islands. It includes aspects of exploration, combat, diplomacy and trade",
+      "themes": [
+        {
+          "id": 18,
+          "name": "Science fiction"
+        },
+        {
+          "id": 33,
+          "name": "Sandbox"
+        }
+      ],
+      "total_rating": 70.04830562882402,
+      "total_rating_count": 7,
+      "url": "https://www.igdb.com/games/anno-2070-deep-ocean",
+      "websites": [
+        {
+          "id": 136000,
+          "url": "https://anno2070.fandom.com/wiki/Anno_2070_Wiki"
+        },
+        {
+          "id": 136001,
+          "url": "https://en.wikipedia.org/wiki/Anno_2070"
+        },
+        {
+          "id": 190992,
+          "url": "https://store.steampowered.com/app/204290"
+        },
+        {
+          "id": 958934,
+          "url": "http://anno.ubi.com"
+        }
+      ],
+      "collections": [
+        {
+          "id": 158,
+          "name": "Anno"
+        }
+      ],
+      "game_type": 1
+    },
+    {
+      "id": 2959,
+      "aggregated_rating": 75.0,
+      "aggregated_rating_count": 1,
+      "external_games": [
+        {
+          "id": 125526,
+          "uid": "34703",
+          "url": "https://www.giantbomb.com/games/3030-34703/"
+        },
+        {
+          "id": 2626188,
+          "uid": "afded2bee4b4421981e30547bfe30636",
+          "url": "https://store.epicgames.com/en-US/p/anno-2070"
+        },
+        {
+          "id": 2118024,
+          "uid": "98ffbc8a-f4e7-4bd8-9bd0-c7acfd55408f",
+          "url": "https://www.epicgames.com/store/p/anno-2070"
+        },
+        {
+          "id": 13920,
+          "uid": "48240",
+          "url": "https://store.steampowered.com/app/48240"
+        },
+        {
+          "id": 281471,
+          "uid": "31169",
+          "url": "https://www.twitch.tv/directory/game/Anno 2070"
+        }
+      ],
+      "first_release_date": 1321488000,
+      "game_modes": [
+        {
+          "id": 1,
+          "name": "Single player"
+        },
+        {
+          "id": 2,
+          "name": "Multiplayer"
+        },
+        {
+          "id": 3,
+          "name": "Co-operative"
+        }
+      ],
+      "genres": [
+        {
+          "id": 11,
+          "name": "Real Time Strategy (RTS)"
+        },
+        {
+          "id": 13,
+          "name": "Simulator"
+        },
+        {
+          "id": 15,
+          "name": "Strategy"
+        }
+      ],
+      "involved_companies": [
+        {
+          "id": 7231,
+          "company": {
+            "id": 647,
+            "name": "Related Designs"
+          },
+          "developer": true,
+          "publisher": false
+        },
+        {
+          "id": 306168,
+          "company": {
+            "id": 104,
+            "name": "Ubisoft Entertainment"
+          },
+          "developer": false,
+          "publisher": true
+        },
+        {
+          "id": 339078,
+          "company": {
+            "id": 7923,
+            "name": "Blue Byte"
+          },
+          "developer": true,
+          "publisher": false
+        }
+      ],
+      "keywords": [
+        {
+          "id": 72,
+          "name": "exploration"
+        },
+        {
+          "id": 923,
+          "name": "futuristic"
+        },
+        {
+          "id": 993,
+          "name": "real-time"
+        },
+        {
+          "id": 994,
+          "name": "management"
+        },
+        {
+          "id": 1143,
+          "name": "diplomacy"
+        },
+        {
+          "id": 1159,
+          "name": "trading"
+        },
+        {
+          "id": 1333,
+          "name": "online"
+        },
+        {
+          "id": 1379,
+          "name": "campaign"
+        },
+        {
+          "id": 1403,
+          "name": "building"
+        },
+        {
+          "id": 2002,
+          "name": "economy"
+        },
+        {
+          "id": 2177,
+          "name": "mining"
+        },
+        {
+          "id": 2426,
+          "name": "story rich"
+        },
+        {
+          "id": 3533,
+          "name": "city builder"
+        },
+        {
+          "id": 4239,
+          "name": "platform exclusive"
+        },
+        {
+          "id": 4650,
+          "name": "year in the title"
+        },
+        {
+          "id": 4767,
+          "name": "resource gathering"
+        },
+        {
+          "id": 5476,
+          "name": "commerce"
+        },
+        {
+          "id": 5657,
+          "name": "gamersgate"
+        },
+        {
+          "id": 6019,
+          "name": "tech trees"
+        },
+        {
+          "id": 6645,
+          "name": "colony"
+        },
+        {
+          "id": 8146,
+          "name": "naval warfare"
+        },
+        {
+          "id": 9952,
+          "name": "gamescom 2011"
+        }
+      ],
+      "name": "Anno 2070",
+      "platforms": [
+        {
+          "id": 6,
+          "name": "PC (Microsoft Windows)"
+        }
+      ],
+      "player_perspectives": [
+        {
+          "id": 3,
+          "name": "Bird view / Isometric"
+        }
+      ],
+      "rating": 75.29090927674557,
+      "rating_count": 93,
+      "release_dates": [
+        {
+          "id": 790233,
+          "date": 1321488000,
+          "platform": {
+            "id": 6,
+            "name": "PC (Microsoft Windows)"
+          }
+        }
+      ],
+      "slug": "anno-2070",
+      "storyline": "The scenario is set in the year 2070. Global warming has melted the Arctic ice cap, which has raised the global sea level so that the coasts were inundated.[4] As a result, many old cities have vanished under the ocean, and much of what was once highland has been turned into chains of new islands. Responsibility for settling and exploiting these new frontiers is given to a select group of people, who captain mobile ocean-going bases known as Arks.\n\nThe game has three factions: The Eden Initiative (referred to as the \"Ecos\"), Global Trust (referred to as the \"Tycoons\"), and the S.A.A.T. (referred to as the \"Techs\"). Ecos are environmental and build sustainable cities, but are inefficient and slow to expand. Tycoons are industrious and expand quickly, but have problems with pollution and dwindling resources. The Tech is a support faction available to the other two, and they are useful in researching the latest and most powerful technologies. The Techs are only available later in the game when you donate 10,000 credits to their cause.",
+      "summary": "Anno 2070 is a city-building and economic simulation game, with real-time strategy elements. It is the 5th game of the Anno series. It was released on 17 November 2011, and was co-developed by the German studios Related Designs and Ubisoft Blue Byte, and published by Ubisoft. Anno 2070 requires Uplay to operate.",
+      "themes": [
+        {
+          "id": 18,
+          "name": "Science fiction"
+        },
+        {
+          "id": 33,
+          "name": "Sandbox"
+        }
+      ],
+      "total_rating": 75.14545463837278,
+      "total_rating_count": 94,
+      "url": "https://www.igdb.com/games/anno-2070",
+      "websites": [
+        {
+          "id": 341733,
+          "url": "https://www.twitch.tv/directory/game/Anno%202070"
+        },
+        {
+          "id": 221155,
+          "url": "https://www.epicgames.com/store/p/anno-2070"
+        },
+        {
+          "id": 122339,
+          "url": "https://anno2070.fandom.com/wiki/Anno_2070_Wiki"
+        },
+        {
+          "id": 66937,
+          "url": "http://anno.ubi.com"
+        },
+        {
+          "id": 18795,
+          "url": "https://store.steampowered.com/app/48240"
+        },
+        {
+          "id": 122340,
+          "url": "https://en.wikipedia.org/wiki/Anno_2070"
+        }
+      ],
+      "collections": [
+        {
+          "id": 158,
+          "name": "Anno"
+        }
+      ],
+      "game_type": 0
+    },
+    {
+      "id": 362774,
+      "external_games": [
+        {
+          "id": 2996647,
+          "category": 1,
+          "uid": "204281,204282,204283,204284,204285,204286,204287,204288,204289",
+          "url": "https://store.steampowered.com/app/204281,204282,204283,204284,204285,204286,204287,204288,204289"
+        }
+      ],
+      "first_release_date": 1358380800,
+      "involved_companies": [
+        {
+          "id": 339100,
+          "company": {
+            "id": 7923,
+            "name": "Blue Byte"
+          },
+          "developer": true,
+          "publisher": false
+        },
+        {
+          "id": 339102,
+          "company": {
+            "id": 104,
+            "name": "Ubisoft Entertainment"
+          },
+          "developer": false,
+          "publisher": true
+        },
+        {
+          "id": 339101,
+          "company": {
+            "id": 647,
+            "name": "Related Designs"
+          },
+          "developer": true,
+          "publisher": false
+        }
+      ],
+      "name": "Anno 2070 DLC Complete Pack",
+      "platforms": [
+        {
+          "id": 6,
+          "name": "PC (Microsoft Windows)"
+        }
+      ],
+      "release_dates": [
+        {
+          "id": 790242,
+          "date": 1358380800,
+          "platform": {
+            "id": 6,
+            "name": "PC (Microsoft Windows)"
+          }
+        }
+      ],
+      "slug": "anno-2070-dlc-complete-pack",
+      "url": "https://www.igdb.com/games/anno-2070-dlc-complete-pack",
+      "game_type": 3
+    },
+    {
+      "id": 114795,
+      "aggregated_rating": 88.0,
+      "aggregated_rating_count": 11,
+      "external_games": [
+        {
+          "id": 1708267,
+          "uid": "UCWznb9zpmeoIywRPEez8VKw",
+          "url": "https://www.youtube.com/watch?v=UCWznb9zpmeoIywRPEez8VKw"
+        },
+        {
+          "id": 1746711,
+          "uid": "72014",
+          "url": "https://www.giantbomb.com/games/3030-72014/"
+        },
+        {
+          "id": 1945229,
+          "uid": "1172470",
+          "url": "https://store.steampowered.com/app/1172470"
+        },
+        {
+          "id": 3019058,
+          "uid": "5b1f9703f99e446eb634fcd64c07fac0",
+          "url": "https://store.epicgames.com/en-US/p/apex-legends-006cde"
+        },
+        {
+          "id": 1935629,
+          "uid": "B07XQ715FG"
+        },
+        {
+          "id": 1930388,
+          "uid": "B07XNQLLZ6",
+          "url": "https://amazon.co.jp/dp/B07XNQLLZ6"
+        },
+        {
+          "id": 2175672,
+          "uid": "232352",
+          "url": "https://store.playstation.com/en-us/concept/232352"
+        },
+        {
+          "id": 1706649,
+          "uid": "511224",
+          "url": "https://www.twitch.tv/directory/game/Apex Legends"
+        }
+      ],
+      "first_release_date": 1549238400,
+      "game_modes": [
+        {
+          "id": 2,
+          "name": "Multiplayer"
+        },
+        {
+          "id": 3,
+          "name": "Co-operative"
+        },
+        {
+          "id": 6,
+          "name": "Battle Royale"
+        }
+      ],
+      "genres": [
+        {
+          "id": 5,
+          "name": "Shooter"
+        },
+        {
+          "id": 24,
+          "name": "Tactical"
+        }
+      ],
+      "involved_companies": [
+        {
+          "id": 74172,
+          "company": {
+            "id": 1002,
+            "name": "Respawn Entertainment"
+          },
+          "developer": true,
+          "publisher": false
+        },
+        {
+          "id": 128109,
+          "company": {
+            "id": 1,
+            "name": "Electronic Arts"
+          },
+          "developer": false,
+          "publisher": true
+        }
+      ],
+      "keywords": [
+        {
+          "id": 368,
+          "name": "thief"
+        },
+        {
+          "id": 470,
+          "name": "comics"
+        },
+        {
+          "id": 494,
+          "name": "squad based"
+        },
+        {
+          "id": 510,
+          "name": "crafting"
+        },
+        {
+          "id": 546,
+          "name": "pvp"
+        },
+        {
+          "id": 562,
+          "name": "soldier"
+        },
+        {
+          "id": 575,
+          "name": "robots"
+        },
+        {
+          "id": 588,
+          "name": "androids"
+        },
+        {
+          "id": 789,
+          "name": "doctor"
+        },
+        {
+          "id": 962,
+          "name": "female protagonist"
+        },
+        {
+          "id": 1293,
+          "name": "achievements"
+        },
+        {
+          "id": 1385,
+          "name": "wall climbing"
+        },
+        {
+          "id": 1422,
+          "name": "portals"
+        },
+        {
+          "id": 1628,
+          "name": "in-game currency"
+        },
+        {
+          "id": 1986,
+          "name": "teleportation"
+        },
+        {
+          "id": 2115,
+          "name": "mad scientist"
+        },
+        {
+          "id": 2137,
+          "name": "melee combat"
+        },
+        {
+          "id": 2385,
+          "name": "free-to-play"
+        },
+        {
+          "id": 2439,
+          "name": "hunter"
+        },
+        {
+          "id": 2724,
+          "name": "hacker"
+        },
+        {
+          "id": 2746,
+          "name": "drone"
+        },
+        {
+          "id": 3892,
+          "name": "hitman"
+        },
+        {
+          "id": 4358,
+          "name": "loot boxes"
+        },
+        {
+          "id": 4366,
+          "name": "daily login rewards"
+        },
+        {
+          "id": 4392,
+          "name": "bow and arrow"
+        },
+        {
+          "id": 4400,
+          "name": "microtransaction"
+        },
+        {
+          "id": 4621,
+          "name": "hologram"
+        },
+        {
+          "id": 4884,
+          "name": "black market"
+        },
+        {
+          "id": 4891,
+          "name": "melee"
+        },
+        {
+          "id": 4903,
+          "name": "grapple"
+        },
+        {
+          "id": 5106,
+          "name": "in-game achievement menu"
+        },
+        {
+          "id": 5114,
+          "name": "in-game achievements"
+        },
+        {
+          "id": 5310,
+          "name": "respawning"
+        },
+        {
+          "id": 5323,
+          "name": "mercenary"
+        },
+        {
+          "id": 5455,
+          "name": "squad"
+        },
+        {
+          "id": 5494,
+          "name": "scientist"
+        },
+        {
+          "id": 5591,
+          "name": "healer"
+        },
+        {
+          "id": 6244,
+          "name": "squad based shooter"
+        },
+        {
+          "id": 6367,
+          "name": "mechanic"
+        },
+        {
+          "id": 6619,
+          "name": "invisibility"
+        },
+        {
+          "id": 6730,
+          "name": "air strike"
+        },
+        {
+          "id": 7152,
+          "name": "crow"
+        },
+        {
+          "id": 8305,
+          "name": "seasons"
+        },
+        {
+          "id": 9737,
+          "name": "passive ability"
+        },
+        {
+          "id": 23933,
+          "name": "male protagonist"
+        },
+        {
+          "id": 24930,
+          "name": "lesbian"
+        },
+        {
+          "id": 25964,
+          "name": "nonbinary protagonist"
+        },
+        {
+          "id": 28651,
+          "name": "gay protagonist"
+        }
+      ],
+      "name": "Apex Legends",
+      "platforms": [
+        {
+          "id": 169,
+          "name": "Xbox Series X|S"
+        },
+        {
+          "id": 48,
+          "name": "PlayStation 4"
+        },
+        {
+          "id": 508,
+          "name": "Nintendo Switch 2"
+        },
+        {
+          "id": 6,
+          "name": "PC (Microsoft Windows)"
+        },
+        {
+          "id": 167,
+          "name": "PlayStation 5"
+        },
+        {
+          "id": 49,
+          "name": "Xbox One"
+        },
+        {
+          "id": 130,
+          "name": "Nintendo Switch"
+        }
+      ],
+      "player_perspectives": [
+        {
+          "id": 1,
+          "name": "First person"
+        }
+      ],
+      "rating": 75.38116707816313,
+      "rating_count": 643,
+      "release_dates": [
+        {
+          "id": 778524,
+          "date": 1615248000,
+          "platform": {
+            "id": 130,
+            "name": "Nintendo Switch"
+          }
+        },
+        {
+          "id": 778525,
+          "date": 1549238400,
+          "platform": {
+            "id": 6,
+            "name": "PC (Microsoft Windows)"
+          }
+        },
+        {
+          "id": 778529,
+          "date": 1648512000,
+          "platform": {
+            "id": 169,
+            "name": "Xbox Series X|S"
+          }
+        },
+        {
+          "id": 778530,
+          "date": 1754352000,
+          "platform": {
+            "id": 508,
+            "name": "Nintendo Switch 2"
+          }
+        },
+        {
+          "id": 778526,
+          "date": 1549238400,
+          "platform": {
+            "id": 48,
+            "name": "PlayStation 4"
+          }
+        },
+        {
+          "id": 778527,
+          "date": 1648512000,
+          "platform": {
+            "id": 167,
+            "name": "PlayStation 5"
+          }
+        },
+        {
+          "id": 778528,
+          "date": 1549238400,
+          "platform": {
+            "id": 49,
+            "name": "Xbox One"
+          }
+        }
+      ],
+      "slug": "apex-legends",
+      "storyline": "A WORLD WHERE ANYTHING GOES\n\nThe Frontier War is over. After hundreds of years of conflict between the Interstellar Manufacturing Corporation and the Militia founded to fight them, the far-off region of space known as the Frontier can finally know peace.\n\nBut liberation can come at a cost: when the IMC and the Militia departed, they took everything of value and left the Frontier worlds in disarray. With no way to support themselves, the people of the Frontier had no choice but to leave their homes. The brave relocated to the Outlands.\n\nA remote cluster of planets on the fringes of the Frontier, the Outlands are untouched by war and teeming with resources and opportunity. But life is cheap here, and danger lurks around every corner. Its pioneers, explorers, and outlaws used to spend their lives locked in an endless power struggle \u2013 now, they settle their differences in the Apex Games, a bloodsport where Legends from all corners of the Frontier compete for money, fame, and glory.",
+      "summary": "Conquer with character in Apex Legends, a free-to-play Hero shooter where legendary characters with powerful abilities team up to battle for fame & fortune on the fringes of the Frontier.\n\nMaster an ever-growing roster of diverse Legends, deep tactical squad play and bold new innovations that go beyond the Battle Royale experience\u2014all within a rugged world where anything goes. Welcome to the next evolution of Hero Shooter.",
+      "themes": [
+        {
+          "id": 1,
+          "name": "Action"
+        },
+        {
+          "id": 18,
+          "name": "Science fiction"
+        }
+      ],
+      "total_rating": 81.69058353908156,
+      "total_rating_count": 654,
+      "url": "https://www.igdb.com/games/apex-legends",
+      "websites": [
+        {
+          "id": 99646,
+          "url": "https://www.ea.com/games/apex-legends"
+        },
+        {
+          "id": 99650,
+          "url": "https://www.instagram.com/playapex"
+        },
+        {
+          "id": 105911,
+          "url": "https://www.youtube.com/channel/UC0ZV6M2THA81QT9hrVWJG3A"
+        },
+        {
+          "id": 791528,
+          "url": "https://store.playstation.com/en-us/concept/232352"
+        },
+        {
+          "id": 791529,
+          "url": "https://www.nintendo.com/games/detail/apex-legends-switch/"
+        },
+        {
+          "id": 791527,
+          "url": "https://www.xbox.com/en-US/games/store/apex-legends/bv9ml45j2q5v"
+        },
+        {
+          "id": 144738,
+          "url": "https://store.steampowered.com/app/1172470"
+        },
+        {
+          "id": 99648,
+          "url": "https://twitter.com/PlayApex"
+        },
+        {
+          "id": 99647,
+          "url": "https://www.facebook.com/playapex"
+        },
+        {
+          "id": 615383,
+          "url": "https://apexlegends.wiki.gg/"
+        },
+        {
+          "id": 157977,
+          "url": "https://discord.gg/apexlegends"
+        },
+        {
+          "id": 105912,
+          "url": "https://www.reddit.com/r/apexlegends"
+        },
+        {
+          "id": 351259,
+          "url": "https://www.twitch.tv/directory/game/Apex%20Legends"
+        },
+        {
+          "id": 658614,
+          "url": "https://store.epicgames.com/en-US/p/apex-legends-006cde"
+        },
+        {
+          "id": 105910,
+          "url": "https://en.wikipedia.org/wiki/Apex_Legends"
+        }
+      ],
+      "collections": [
+        {
+          "id": 2045,
+          "name": "Titanfall"
+        }
+      ],
+      "game_type": 0
+    }
+  ]
+}

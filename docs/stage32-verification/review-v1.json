@@ -1,0 +1,33 @@
+{
+  "accepted": false,
+  "blockers": [
+    "candidate/collector/run.py:75 introduces a Python 3.10 compatibility regression: datetime.fromisoformat(started_at) rejects valid UTC ISO timestamps ending in Z on Python 3.10. A same-day initial collection or retry with now=lambda: '2026-08-29T12:00:00Z' therefore raises ValueError instead of collecting. The contract preserves UTC ISO clock inputs and Python >=3.10 support. Frozen tests exercise Z timestamps, but execution on Python 3.14 misses this failure."
+  ],
+  "notes": [
+    "Admission precedes HTTP requests and writes, follows the complete-manifest early return, and reuses the original start timestamp. Complete historical manifests retain byte-identical no-op behavior, including absent legacy legs.",
+    "Same-day retry logic, successful observation bytes, identity mappings, schemas, payloads, source-event times and ingestion provenance remain unchanged. Silver, Gold and temporal consumers are unchanged.",
+    "Supersession respected the contract. Draft corrections preserved unrelated permanent HF failures and controlled the existing default-date interface. Frozen-v3 correctly replaced an invalid partial-aggregate gzip immutability oracle while retaining successful-envelope preservation, completed-leg byte checks and complete-rerun guarantees.",
+    "Both frozen versions match their receipt hashes. Preserved baseline results progress from 13 failures/2 passes to 12 failures/3 passes to 11 admission failures/4 passes before implementation. Candidate evidence records 15 independent and 142 project tests passing; these results do not establish Python 3.10 compatibility.",
+    "Only the three authorized engineering paths changed. README also contains unnecessary line-ending normalization, increasing diff noise without changing behavior.",
+    "Midnight-spanning passes, concurrency, malformed/non-UTC clocks, manifest-partition disagreement, direct source calls and retrospective arXiv remain outside scope.",
+    "Review was read-only; no repairs, network access, subagents or other-workspace access occurred. Tests were assessed from preserved evidence rather than rerun with writable fixtures."
+  ],
+  "denials": [
+    {
+      "path": "candidate/collector/run.py",
+      "operation": "os.open(path, os.O_WRONLY)",
+      "allowed": false,
+      "errno": 30,
+      "error": "EROFS",
+      "truncation": false
+    },
+    {
+      "path": "frozen-v3/tests/test_date_admission.py",
+      "operation": "os.open(path, os.O_WRONLY)",
+      "allowed": false,
+      "errno": 30,
+      "error": "EROFS",
+      "truncation": false
+    }
+  ]
+}

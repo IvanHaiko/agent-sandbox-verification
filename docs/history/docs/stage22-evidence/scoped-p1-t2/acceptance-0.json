@@ -1,0 +1,404 @@
+{
+  "epoch": 0,
+  "design_sha256": "9dadce16ec25267548b32e52855fd6a80ff1cf7ffe9a9869ca144ed0cad008db",
+  "harness_sha256": "de7a68459ed668a10866f8135db110a5ec6f906a4e40d1a66b937f240b0739f5",
+  "candidate_sha256_before": "ad16e2153cc52314e5eebdd3f1b06f9b4a4efcc80dba37aee2f88d2afeb9af54",
+  "candidate_sha256_after": "ad16e2153cc52314e5eebdd3f1b06f9b4a4efcc80dba37aee2f88d2afeb9af54",
+  "executed_at": 1791364031.2595696,
+  "returncode": 1,
+  "stdout": "{\"passed\": false, \"interface\": true, \"cases\": [{\"id\": \"empty-input\", \"input\": \"\", \"expected\": [], \"actual\": [], \"error\": null, \"passed\": true}, {\"id\": \"repeated-separators-and-empty-labels\", \"input\": \" , ,  ,\", \"expected\": [], \"actual\": [], \"error\": null, \"passed\": true}, {\"id\": \"basic-scan-and-lowercase\", \"input\": \" Alpha, BETA,,gamma \", \"expected\": [\"alpha\", \"beta\", \"gamma\"], \"actual\": [\"alpha\", \"beta\", \"gamma\"], \"error\": null, \"passed\": true}, {\"id\": \"ordinary-whitespace-normalization\", \"input\": \"  Alpha \\t beta\\r\\n gamma  \", \"expected\": [\"alpha beta gamma\"], \"actual\": [\"alpha beta gamma\"], \"error\": null, \"passed\": true}, {\"id\": \"quoted-concatenation\", \"input\": \"foo\\\" BAR \\\"baz\", \"expected\": [\"foo bar baz\"], \"actual\": [\"foo bar baz\"], \"error\": null, \"passed\": true}, {\"id\": \"quoted-comma\", \"input\": \"\\\"x,y\\\",z\", \"expected\": [\"x,y\", \"z\"], \"actual\": [\"x,y\", \"z\"], \"error\": null, \"passed\": true}, {\"id\": \"escaped-delimiters\", \"input\": \"a\\\\,b,c\\\\\\\"d\", \"expected\": [\"a,b\", \"c\\\"d\"], \"actual\": [\"a,b\", \"c\\\"d\"], \"error\": null, \"passed\": true}, {\"id\": \"protected-boundary-whitespace\", \"input\": \"  \\\" A  \\\"  \", \"expected\": [\" a  \"], \"actual\": [\" a  \"], \"error\": null, \"passed\": true}, {\"id\": \"escaped-whitespace-protection\", \"input\": \"a\\\\ b  c\", \"expected\": [\"a  c\"], \"actual\": [\"a b c\"], \"error\": null, \"passed\": false}, {\"id\": \"quoted-and-escaped-uppercase\", \"input\": \"\\\"ABC\\\"\\\\D\\\\ E\", \"expected\": [\"abcd e\"], \"actual\": [\"abcd e\"], \"error\": null, \"passed\": true}, {\"id\": \"deduplication-after-normalization\", \"input\": \" Foo,foo,\\\"F\\\"oo,f\\\\ o\", \"expected\": [\"foo\", \"f o\"], \"actual\": [\"foo\", \"f o\"], \"error\": null, \"passed\": true}, {\"id\": \"protected-whitespace-only-label\", \"input\": \"a,\\\"\\\",,   ,\\\" \\\"\", \"expected\": [\"a\", \" \"], \"actual\": [\"a\", \" \"], \"error\": null, \"passed\": true}, {\"id\": \"escaped-quote-and-comma-in-quotes\", \"input\": \"\\\"a\\\\\\\"b,c\\\",d\", \"expected\": [\"a\\\"b,c\", \"d\"], \"actual\": [\"a\\\"b,c\", \"d\"], \"error\": null, \"passed\": true}, {\"id\": \"ordinary-and-protected-mixed-whitespace\", \"input\": \"x \\\"a \\t b\\\" y\", \"expected\": [\"x a \\t b y\"], \"actual\": [\"x a \\t b y\"], \"error\": null, \"passed\": true}, {\"id\": \"literal-character-preservation\", \"input\": \"ID-42_A!\", \"expected\": [\"id-42_a!\"], \"actual\": [\"id-42_a!\"], \"error\": null, \"passed\": true}, {\"id\": \"trailing-backslash-error\", \"input\": \"ok,done\\\\\", \"expected\": null, \"actual\": null, \"error\": \"ValueError\", \"passed\": true}, {\"id\": \"unclosed-quote-error\", \"input\": \"ok,\\\"bad\", \"expected\": null, \"actual\": null, \"error\": \"ValueError\", \"passed\": true}, {\"id\": \"escaped-backslash\", \"input\": \"path\\\\\\\\,end\", \"expected\": [\"path\\\\\", \"end\"], \"actual\": [\"path\\\\\", \"end\"], \"error\": null, \"passed\": true}], \"properties\": [{\"case\": \"empty-input\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"empty-input\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"repeated-separators-and-empty-labels\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"repeated-separators-and-empty-labels\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"basic-scan-and-lowercase\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"basic-scan-and-lowercase\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"ordinary-whitespace-normalization\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"ordinary-whitespace-normalization\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"quoted-concatenation\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"quoted-concatenation\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"quoted-comma\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"quoted-comma\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"escaped-delimiters\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"escaped-delimiters\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"protected-boundary-whitespace\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"protected-boundary-whitespace\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"escaped-whitespace-protection\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"escaped-whitespace-protection\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"quoted-and-escaped-uppercase\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"quoted-and-escaped-uppercase\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"deduplication-after-normalization\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"deduplication-after-normalization\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"protected-whitespace-only-label\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"protected-whitespace-only-label\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"escaped-quote-and-comma-in-quotes\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"escaped-quote-and-comma-in-quotes\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"ordinary-and-protected-mixed-whitespace\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"ordinary-and-protected-mixed-whitespace\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"literal-character-preservation\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"literal-character-preservation\", \"property\": \"ascii_lowercase\", \"passed\": true}, {\"case\": \"escaped-backslash\", \"property\": \"unique_nonempty_labels\", \"passed\": true}, {\"case\": \"escaped-backslash\", \"property\": \"ascii_lowercase\", \"passed\": true}]}\n",
+  "stderr": "",
+  "host_observation": {
+    "controller_host_process_names": [
+      "docker",
+      "git",
+      "python.exe"
+    ]
+  },
+  "result": {
+    "passed": false,
+    "interface": true,
+    "cases": [
+      {
+        "id": "empty-input",
+        "input": "",
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "repeated-separators-and-empty-labels",
+        "input": " , ,  ,",
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "basic-scan-and-lowercase",
+        "input": " Alpha, BETA,,gamma ",
+        "expected": [
+          "alpha",
+          "beta",
+          "gamma"
+        ],
+        "actual": [
+          "alpha",
+          "beta",
+          "gamma"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "ordinary-whitespace-normalization",
+        "input": "  Alpha \t beta\r\n gamma  ",
+        "expected": [
+          "alpha beta gamma"
+        ],
+        "actual": [
+          "alpha beta gamma"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quoted-concatenation",
+        "input": "foo\" BAR \"baz",
+        "expected": [
+          "foo bar baz"
+        ],
+        "actual": [
+          "foo bar baz"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quoted-comma",
+        "input": "\"x,y\",z",
+        "expected": [
+          "x,y",
+          "z"
+        ],
+        "actual": [
+          "x,y",
+          "z"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escaped-delimiters",
+        "input": "a\\,b,c\\\"d",
+        "expected": [
+          "a,b",
+          "c\"d"
+        ],
+        "actual": [
+          "a,b",
+          "c\"d"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "protected-boundary-whitespace",
+        "input": "  \" A  \"  ",
+        "expected": [
+          " a  "
+        ],
+        "actual": [
+          " a  "
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escaped-whitespace-protection",
+        "input": "a\\ b  c",
+        "expected": [
+          "a  c"
+        ],
+        "actual": [
+          "a b c"
+        ],
+        "error": null,
+        "passed": false
+      },
+      {
+        "id": "quoted-and-escaped-uppercase",
+        "input": "\"ABC\"\\D\\ E",
+        "expected": [
+          "abcd e"
+        ],
+        "actual": [
+          "abcd e"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "deduplication-after-normalization",
+        "input": " Foo,foo,\"F\"oo,f\\ o",
+        "expected": [
+          "foo",
+          "f o"
+        ],
+        "actual": [
+          "foo",
+          "f o"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "protected-whitespace-only-label",
+        "input": "a,\"\",,   ,\" \"",
+        "expected": [
+          "a",
+          " "
+        ],
+        "actual": [
+          "a",
+          " "
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escaped-quote-and-comma-in-quotes",
+        "input": "\"a\\\"b,c\",d",
+        "expected": [
+          "a\"b,c",
+          "d"
+        ],
+        "actual": [
+          "a\"b,c",
+          "d"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "ordinary-and-protected-mixed-whitespace",
+        "input": "x \"a \t b\" y",
+        "expected": [
+          "x a \t b y"
+        ],
+        "actual": [
+          "x a \t b y"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "literal-character-preservation",
+        "input": "ID-42_A!",
+        "expected": [
+          "id-42_a!"
+        ],
+        "actual": [
+          "id-42_a!"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "trailing-backslash-error",
+        "input": "ok,done\\",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      },
+      {
+        "id": "unclosed-quote-error",
+        "input": "ok,\"bad",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      },
+      {
+        "id": "escaped-backslash",
+        "input": "path\\\\,end",
+        "expected": [
+          "path\\",
+          "end"
+        ],
+        "actual": [
+          "path\\",
+          "end"
+        ],
+        "error": null,
+        "passed": true
+      }
+    ],
+    "properties": [
+      {
+        "case": "empty-input",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "empty-input",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "repeated-separators-and-empty-labels",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "repeated-separators-and-empty-labels",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "basic-scan-and-lowercase",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "basic-scan-and-lowercase",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "ordinary-whitespace-normalization",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "ordinary-whitespace-normalization",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quoted-concatenation",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quoted-concatenation",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quoted-comma",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quoted-comma",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escaped-delimiters",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escaped-delimiters",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "protected-boundary-whitespace",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "protected-boundary-whitespace",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escaped-whitespace-protection",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escaped-whitespace-protection",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quoted-and-escaped-uppercase",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quoted-and-escaped-uppercase",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "deduplication-after-normalization",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "deduplication-after-normalization",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "protected-whitespace-only-label",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "protected-whitespace-only-label",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escaped-quote-and-comma-in-quotes",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escaped-quote-and-comma-in-quotes",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "ordinary-and-protected-mixed-whitespace",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "ordinary-and-protected-mixed-whitespace",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "literal-character-preservation",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "literal-character-preservation",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escaped-backslash",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escaped-backslash",
+        "property": "ascii_lowercase",
+        "passed": true
+      }
+    ]
+  },
+  "model_requests": 0,
+  "tester_sessions": 0
+}

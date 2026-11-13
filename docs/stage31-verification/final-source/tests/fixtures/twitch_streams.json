@@ -1,0 +1,533 @@
+{
+ "source": "twitch",
+ "request": "streams",
+ "fetched_at": "2026-05-10T13:17:24.117094+00:00",
+ "stream_count": 25,
+ "data": [
+  {
+   "id": "315536341458",
+   "user_id": "92038375",
+   "user_login": "caedrel",
+   "user_name": "Caedrel",
+   "game_id": "21779",
+   "game_name": "League of Legends",
+   "type": "live",
+   "title": "🔴LEC KC VS GX🔴 !discord !operagx FOLLOW @caedrel247",
+   "viewer_count": 48352,
+   "started_at": "2026-05-10T07:30:47Z",
+   "language": "en",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_caedrel-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "English",
+    "LPL",
+    "LCK",
+    "LEC",
+    "Worlds",
+    "Esports"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "319134943065",
+   "user_id": "28575692",
+   "user_login": "mistermv",
+   "user_name": "mistermv",
+   "game_id": "509663",
+   "game_name": "Special Events",
+   "type": "live",
+   "title": "SpeeDons au profit de Médecins du Monde - Portal 2 Coop par savvydruid & @zadadaz",
+   "viewer_count": 41415,
+   "started_at": "2026-05-09T15:01:52Z",
+   "language": "fr",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_mistermv-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Français",
+    "Roguelite",
+    "humour",
+    "Rogue",
+    "Speedrun",
+    "DropsActivés"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "316018182102",
+   "user_id": "233741947",
+   "user_login": "strogo",
+   "user_name": "StRoGo",
+   "game_id": "32399",
+   "game_name": "Counter-Strike",
+   "type": "live",
+   "title": "🔴 FALCONS 0:0 9Z | PGL Astana 2026 | @stanislaw9 @skywhywalker",
+   "viewer_count": 40039,
+   "started_at": "2026-05-10T08:24:22Z",
+   "language": "ru",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_strogo-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Русский",
+    "English"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "317305938278",
+   "user_id": "21681549",
+   "user_login": "pgl",
+   "user_name": "PGL",
+   "game_id": "32399",
+   "game_name": "Counter-Strike",
+   "type": "live",
+   "title": "[A] Team Falcons vs. 9z Globant - PGL Astana 2026 - Group Stage: Round 2 High Match (1-0)",
+   "viewer_count": 32017,
+   "started_at": "2026-05-10T04:24:37Z",
+   "language": "en",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_pgl-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Esports",
+    "English"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "316711884772",
+   "user_id": "27115917",
+   "user_login": "kamet0",
+   "user_name": "Kamet0",
+   "game_id": "21779",
+   "game_name": "League of Legends",
+   "type": "live",
+   "title": "KARMINE CORP 0 vs 0 GIANTX | LEC Spring Roadtrip (BO3) #WatchLEC 🔵 (!razer) (!extension)",
+   "viewer_count": 31699,
+   "started_at": "2026-05-10T12:51:51Z",
+   "language": "fr",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_kamet0-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Français",
+    "LEC",
+    "leagueoflegends",
+    "esport",
+    "RLCS",
+    "VCT",
+    "Valorant",
+    "KCORP",
+    "Kameto",
+    "30ans"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "318526092252",
+   "user_id": "66418614",
+   "user_login": "gofns",
+   "user_name": "GOFNS",
+   "game_id": "516575",
+   "game_name": "VALORANT",
+   "type": "live",
+   "title": "EG SUDOWOODO | PRX vs KRX - VCT Pacific Playoffs #VCTWatchparty | !inzone !socials",
+   "viewer_count": 22041,
+   "started_at": "2026-05-10T07:52:50Z",
+   "language": "en",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_gofns-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "English"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "319214308314",
+   "user_id": "523335089",
+   "user_login": "ardasaatci1",
+   "user_name": "ardasaatci1",
+   "game_id": "509663",
+   "game_name": "Special Events",
+   "type": "live",
+   "title": "🇺🇸 RED BULL \"CYBORG SEASON 26\" ULTRA 600 🇺🇸 | Arda Saatci",
+   "viewer_count": 21122,
+   "started_at": "2026-05-10T13:10:26Z",
+   "language": "de",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_ardasaatci1-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Deutsch",
+    "Sport",
+    "RedBull"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "319213928410",
+   "user_id": "83232866",
+   "user_login": "ibai",
+   "user_name": "ibai",
+   "game_id": "21779",
+   "game_name": "League of Legends",
+   "type": "live",
+   "title": "MKOI vs G2 | TODO O NADA POR EL TOP 4 | KC vs GX | SE DECIDE TODO #WatchLEC",
+   "viewer_count": 15799,
+   "started_at": "2026-05-10T12:20:52Z",
+   "language": "es",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_ibai-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Español",
+    "IRL",
+    "Chatting",
+    "KOI"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "317230986085",
+   "user_id": "430023505",
+   "user_login": "xrohat",
+   "user_name": "xRohat",
+   "game_id": "509658",
+   "game_name": "Just Chatting",
+   "type": "live",
+   "title": "LIVE bis Arda fertig ist | Cyborg Season 26' Watchparty | !call !sourire !kc !whatsapp",
+   "viewer_count": 15611,
+   "started_at": "2026-05-09T13:29:29Z",
+   "language": "de",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_xrohat-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Deutsch"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "317091033831",
+   "user_id": "194407709",
+   "user_login": "morphe_ya",
+   "user_name": "morphe_ya",
+   "game_id": "509672",
+   "game_name": "IRL",
+   "type": "live",
+   "title": "Индия. Мумбай. Дей 3 @dangerlyoha | !tg !winline !яндекс !мышки",
+   "viewer_count": 15525,
+   "started_at": "2026-05-10T10:17:43Z",
+   "language": "ru",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_morphe_ya-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Русский"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "317241197285",
+   "user_id": "622498423",
+   "user_login": "otplol_",
+   "user_name": "otplol_",
+   "game_id": "21779",
+   "game_name": "League of Legends",
+   "type": "live",
+   "title": "LEC SPRING 2026 - KC vs GX & G2 vs MKOI - WEEK 7 DAY 3 - BO3",
+   "viewer_count": 15362,
+   "started_at": "2026-05-10T11:54:58Z",
+   "language": "fr",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_otplol_-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Français"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "315930759027",
+   "user_id": "752988454",
+   "user_login": "yuyuta0702",
+   "user_name": "ゆゆうた押忍",
+   "game_id": "1099705332",
+   "game_name": "Tomodachi Life: Living the Dream",
+   "type": "live",
+   "title": "トモダチコレクション わくわく生活 初見プレイ",
+   "viewer_count": 14565,
+   "started_at": "2026-05-10T09:00:19Z",
+   "language": "ja",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_yuyuta0702-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "日本語"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "317305920870",
+   "user_id": "884930411",
+   "user_login": "cs2_paragon_ru",
+   "user_name": "cs2_paragon_ru",
+   "game_id": "32399",
+   "game_name": "Counter-Strike",
+   "type": "live",
+   "title": "[RU] Team Falcons [0:0] 9z Globant | PGL Astana 2026: Group Stage | BO3 | @little_cs & @siberiancaster",
+   "viewer_count": 14111,
+   "started_at": "2026-05-10T04:18:58Z",
+   "language": "ru",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_cs2_paragon_ru-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Русский",
+    "Esports",
+    "Киберспорт"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "317089090023",
+   "user_id": "38759871",
+   "user_login": "bysl4m",
+   "user_name": "bySL4M",
+   "game_id": "32399",
+   "game_name": "Counter-Strike",
+   "type": "live",
+   "title": "[RU] Falcons [0:0] 9z | BO3 | PGL Astana 2026 Group Stage | Day 2 w/ @WorldEdit",
+   "viewer_count": 13397,
+   "started_at": "2026-05-10T04:30:36Z",
+   "language": "ru",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_bysl4m-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Русский",
+    "PGLASTANA2026",
+    "Esports",
+    "Киберспорт"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "315875992434",
+   "user_id": "48677263",
+   "user_login": "lazvell",
+   "user_name": "Lazvell",
+   "game_id": "516575",
+   "game_name": "VALORANT",
+   "type": "live",
+   "title": "T1 vs RRQ / PRX vs KRX - Playoffs Day4 - VCT Pacific 2026 Stage1 #VCTWatchParty",
+   "viewer_count": 12774,
+   "started_at": "2026-05-10T07:43:15Z",
+   "language": "ja",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_lazvell-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "日本語",
+    "チル"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "316019630294",
+   "user_id": "86277097",
+   "user_login": "buster",
+   "user_name": "buster",
+   "game_id": "32399",
+   "game_name": "Counter-Strike",
+   "type": "live",
+   "title": "➰ Falcons 0:0 9z ➰ PGL Astana 2026 ➰ Розыгрыш ножей в !tg ➰",
+   "viewer_count": 12310,
+   "started_at": "2026-05-10T12:59:44Z",
+   "language": "ru",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_buster-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Русский",
+    "Полковник",
+    "Бустеренко",
+    "WW",
+    "Киберспорт",
+    "Бабочка",
+    "buster",
+    "эшкере",
+    "evelone"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "318503119452",
+   "user_id": "598713647",
+   "user_login": "angryginge13",
+   "user_name": "angryginge13",
+   "game_id": "509672",
+   "game_name": "IRL",
+   "type": "live",
+   "title": "🔥HORSE RIDING WITH ALHAN & TAYS!!🔥LIVE ALL WEEKEND!🔥YANITED!🔥SOCCER AID MOTM!!🔥GAMING!🔥KING!🔥",
+   "viewer_count": 11014,
+   "started_at": "2026-05-09T11:06:08Z",
+   "language": "en",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_angryginge13-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "English"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "315930767091",
+   "user_id": "44525650",
+   "user_login": "k4sen",
+   "user_name": "k4sen",
+   "game_id": "21779",
+   "game_name": "League of Legends",
+   "type": "live",
+   "title": "LTK 仮想CCvsIT 答え合わせ編",
+   "viewer_count": 10681,
+   "started_at": "2026-05-10T09:02:36Z",
+   "language": "ja",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_k4sen-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "日本語",
+    "ネタバレNG",
+    "ネタバレ注意",
+    "聞いてないアドバイス禁止"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "317307437798",
+   "user_id": "85397463",
+   "user_login": "noway4u_sir",
+   "user_name": "NoWay4u_Sir",
+   "game_id": "1985775240",
+   "game_name": "Unrailed 2: Back on Track",
+   "type": "live",
+   "title": "XXL Winchallenge mit 2 IRL Challenges pro Tag! | !xxl !wingsforlife",
+   "viewer_count": 9853,
+   "started_at": "2026-05-10T09:24:46Z",
+   "language": "de",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_noway4u_sir-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Deutsch",
+    "English"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "316017845974",
+   "user_id": "181718577",
+   "user_login": "guacamolemolly",
+   "user_name": "GUACAMOLEMOLLY",
+   "game_id": "509658",
+   "game_name": "Just Chatting",
+   "type": "live",
+   "title": "МОСКОВСКИЕ ДВИЖЕНИЯ @leva2k | ДОРОГОЙ ЗАКУП В ЦУМЕ",
+   "viewer_count": 9303,
+   "started_at": "2026-05-10T06:51:44Z",
+   "language": "ru",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_guacamolemolly-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Русский"
+   ],
+   "is_mature": true
+  },
+  {
+   "id": "315930660851",
+   "user_id": "24150891",
+   "user_login": "kokujintv",
+   "user_name": "kokujintv",
+   "game_id": "21779",
+   "game_name": "League of Legends",
+   "type": "live",
+   "title": "5/10【LOL】ついにあれやります #LTK",
+   "viewer_count": 8646,
+   "started_at": "2026-05-10T08:29:44Z",
+   "language": "ja",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_kokujintv-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "日本語"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "317239827429",
+   "user_id": "46571894",
+   "user_login": "alohadancetv",
+   "user_name": "ALOHADANCETV",
+   "game_id": "29595",
+   "game_name": "Dota 2",
+   "type": "live",
+   "title": "PlayTime[0:0] Yellow Submarine | PLAY OFF BO3 1win Essence I !tg розыгрыш аркан",
+   "viewer_count": 8174,
+   "started_at": "2026-05-10T08:53:49Z",
+   "language": "ru",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_alohadancetv-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "Русский"
+   ],
+   "is_mature": true
+  },
+  {
+   "id": "315170167920",
+   "user_id": "610457628",
+   "user_login": "valorant_pacific",
+   "user_name": "VALORANT_Pacific",
+   "game_id": "516575",
+   "game_name": "VALORANT",
+   "type": "live",
+   "title": "RRQ vs T1 / KRX vs PRX - VCT Pacific - Stage 1 - Playoffs - Day 4",
+   "viewer_count": 8082,
+   "started_at": "2026-05-10T07:00:42Z",
+   "language": "en",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_valorant_pacific-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "VCTPacific",
+    "VCT",
+    "VALORANT",
+    "English",
+    "VCTP",
+    "EARNEVERTHING"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "315930180083",
+   "user_id": "41952329",
+   "user_login": "bijusan",
+   "user_name": "Bijusan",
+   "game_id": "516575",
+   "game_name": "VALORANT",
+   "type": "live",
+   "title": "VCT Pacific 2026 : STAGE 1 - PLAYOFFS - DAY 4 おひるは",
+   "viewer_count": 7997,
+   "started_at": "2026-05-10T06:14:17Z",
+   "language": "ja",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_bijusan-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "日本語"
+   ],
+   "is_mature": false
+  },
+  {
+   "id": "318616197856",
+   "user_id": "23220337",
+   "user_login": "emongg",
+   "user_name": "Emongg",
+   "game_id": "515025",
+   "game_name": "Overwatch",
+   "type": "live",
+   "title": "[!DROPS ENABLED] GAMING",
+   "viewer_count": 7768,
+   "started_at": "2026-05-10T05:20:53Z",
+   "language": "en",
+   "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_emongg-{width}x{height}.jpg",
+   "tag_ids": [],
+   "tags": [
+    "English",
+    "DropsEnabled"
+   ],
+   "is_mature": false
+  }
+ ]
+}

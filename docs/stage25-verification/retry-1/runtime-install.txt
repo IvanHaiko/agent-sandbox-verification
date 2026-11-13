@@ -1,0 +1,74 @@
+Collecting certifi==2026.4.22 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 1))
+  Using cached certifi-2026.4.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting charset-normalizer==3.4.7 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 2))
+  Using cached charset_normalizer-3.4.7-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Collecting colorama==0.4.6 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 3))
+  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting idna==3.13 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 4))
+  Using cached idna-3.13-py3-none-any.whl.metadata (8.0 kB)
+Collecting iniconfig==2.3.0 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 5))
+  Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging==26.2 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 6))
+  Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: pluggy==1.6.0 in /usr/lib/python3/dist-packages (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 7)) (1.6.0)
+Collecting psycopg==3.3.4 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 8))
+  Using cached psycopg-3.3.4-py3-none-any.whl.metadata (4.3 kB)
+Collecting psycopg-binary==3.3.4 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 9))
+  Using cached psycopg_binary-3.3.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+Collecting Pygments==2.20.0 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 10))
+  Using cached pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting pytest==9.0.3 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 11))
+  Using cached pytest-9.0.3-py3-none-any.whl.metadata (7.6 kB)
+Requirement already satisfied: python-dotenv==1.2.2 in /home/ivan/.local/lib/python3.14/site-packages (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 12)) (1.2.2)
+Collecting RapidFuzz==3.14.5 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 13))
+  Using cached rapidfuzz-3.14.5-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (12 kB)
+Collecting requests==2.33.1 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 14))
+  Using cached requests-2.33.1-py3-none-any.whl.metadata (4.8 kB)
+Collecting ruff==0.15.12 (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 15))
+  Using cached ruff-0.15.12-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (26 kB)
+Requirement already satisfied: tzdata==2026.2 in /home/ivan/.local/lib/python3.14/site-packages (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 16)) (2026.2)
+Requirement already satisfied: urllib3==2.6.3 in /usr/lib/python3/dist-packages (from -r /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/requirements.txt (line 17)) (2.6.3)
+Using cached certifi-2026.4.22-py3-none-any.whl (135 kB)
+Using cached charset_normalizer-3.4.7-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (215 kB)
+Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Using cached idna-3.13-py3-none-any.whl (68 kB)
+Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Using cached packaging-26.2-py3-none-any.whl (100 kB)
+Using cached psycopg-3.3.4-py3-none-any.whl (213 kB)
+Using cached psycopg_binary-3.3.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.2 MB)
+Using cached pygments-2.20.0-py3-none-any.whl (1.2 MB)
+Using cached pytest-9.0.3-py3-none-any.whl (375 kB)
+Using cached rapidfuzz-3.14.5-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (3.2 MB)
+Using cached requests-2.33.1-py3-none-any.whl (64 kB)
+Using cached ruff-0.15.12-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.3 MB)
+Installing collected packages: ruff, RapidFuzz, Pygments, psycopg-binary, psycopg, packaging, iniconfig, idna, colorama, charset-normalizer, certifi, requests, pytest
+  Attempting uninstall: Pygments
+    Found existing installation: Pygments 2.19.2
+    Not uninstalling pygments at /usr/lib/python3/dist-packages, outside environment /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python
+    Can't uninstall 'Pygments'. No files were found to uninstall.
+  Attempting uninstall: packaging
+    Found existing installation: packaging 26.0
+    Not uninstalling packaging at /usr/lib/python3/dist-packages, outside environment /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python
+    Can't uninstall 'packaging'. No files were found to uninstall.
+  Attempting uninstall: iniconfig
+    Found existing installation: iniconfig 2.1.0
+    Not uninstalling iniconfig at /usr/lib/python3/dist-packages, outside environment /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python
+    Can't uninstall 'iniconfig'. No files were found to uninstall.
+  Attempting uninstall: idna
+    Found existing installation: idna 3.11
+    Not uninstalling idna at /usr/lib/python3/dist-packages, outside environment /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python
+    Can't uninstall 'idna'. No files were found to uninstall.
+  Attempting uninstall: certifi
+    Found existing installation: certifi 2026.1.4
+    Not uninstalling certifi at /usr/lib/python3/dist-packages, outside environment /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python
+    Can't uninstall 'certifi'. No files were found to uninstall.
+  Attempting uninstall: requests
+    Found existing installation: requests 2.32.5
+    Not uninstalling requests at /usr/lib/python3/dist-packages, outside environment /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python
+    Can't uninstall 'requests'. No files were found to uninstall.
+  Attempting uninstall: pytest
+    Found existing installation: pytest 9.0.2
+    Not uninstalling pytest at /usr/lib/python3/dist-packages, outside environment /mnt/c/Users/4ivan/codex-multi-agent/.stage25-runtime/python
+    Can't uninstall 'pytest'. No files were found to uninstall.
+
+Successfully installed Pygments-2.20.0 RapidFuzz-3.14.5 certifi-2026.4.22 charset-normalizer-3.4.7 colorama-0.4.6 idna-3.13 iniconfig-2.3.0 packaging-26.2 psycopg-3.3.4 psycopg-binary-3.3.4 pytest-9.0.3 requests-2.33.1 ruff-0.15.12

@@ -1,0 +1,94 @@
+{
+  "before": {
+    "all_active_files": 15,
+    "all_active_lines": 2208,
+    "package_files": 6,
+    "package_lines": 817,
+    "test_files": 5,
+    "runtime_dependencies": [
+      "jsonschema>=4.18,<5"
+    ],
+    "workflow_entry_points": 3,
+    "other_runtime_control_probe_entry_points": 4
+  },
+  "after": {
+    "all_active_files": 5,
+    "all_active_lines": 680,
+    "package_files": 3,
+    "package_lines": 296,
+    "test_files": 1,
+    "test_lines": 159,
+    "runtime_dependencies": [],
+    "workflow_entry_points": 0,
+    "standalone_examples": 1,
+    "project_recipes": 1
+  },
+  "active_source": [
+    {
+      "path": "agent_system/acceptance.py",
+      "physical_lines": 186,
+      "sha256": "a82b7a28844e2b70fd92226a072cd23341020bdffa69c4c90c01611433bf4176",
+      "imports": [
+        "hashlib",
+        "json",
+        "os",
+        "pathlib",
+        "shutil",
+        "stat",
+        "tempfile",
+        "zipfile"
+      ]
+    },
+    {
+      "path": "agent_system/execution.py",
+      "physical_lines": 109,
+      "sha256": "43855bb3433dc9235bd6f9b387133420a5ba5d08afd5ee628b0d272d6a6f914f",
+      "imports": [
+        "json",
+        "os",
+        "pathlib",
+        "shutil",
+        "signal",
+        "subprocess"
+      ]
+    },
+    {
+      "path": "agent_system/__init__.py",
+      "physical_lines": 1,
+      "sha256": "db9191342899582b4b8f22ef121965c351f02c33468859ef578628c049948dcf",
+      "imports": []
+    },
+    {
+      "path": "examples/native_smoke.py",
+      "physical_lines": 246,
+      "sha256": "50cf69025c613e443bb3f1d282de7bf607043cbcf1bf777b9a3d0b40f885f618",
+      "imports": [
+        "agent_system.acceptance",
+        "agent_system.execution",
+        "difflib",
+        "json",
+        "pathlib",
+        "sys"
+      ]
+    },
+    {
+      "path": "project_tooling/steam/verify.py",
+      "physical_lines": 138,
+      "sha256": "8ef1774a7946a7060b69dc7ab2c11b41d6be974844eecb9410c9cddf23d6ff37",
+      "imports": [
+        "agent_system.acceptance",
+        "agent_system.execution",
+        "io",
+        "json",
+        "os",
+        "pathlib",
+        "shutil",
+        "subprocess",
+        "sys",
+        "tarfile"
+      ]
+    }
+  ],
+  "project_tests": 168,
+  "database_tests": 48
+}

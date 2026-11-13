@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"passed\": true, \"cases\": 10, \"failures\": []}\n",
+  "stderr": "",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "inputs_unchanged": true,
+  "result": {
+    "passed": true,
+    "cases": 10,
+    "failures": []
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "{\"/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/project-3.10/collector/run.py\": 30, \"/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/project-3.10/data/raw/2026-08-28/_manifest.json\": 30, \"/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/frozen-v3/tests/test_date_admission.py\": 30, \"/mnt/c/Users/4ivan/ai-adoption/.git/index\": 2, \"network\": 1}\n",
+  "stderr": "",
+  "argv": [
+    "/usr/bin/env",
+    "-i",
+    "PATH=/usr/bin:/bin",
+    "HOME=/nonexistent",
+    "TMPDIR=/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/project-3.10/.scratch",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/venv-3.10/bin/python",
+    "-B",
+    "-c",
+    "import json,socket\nfrom pathlib import Path\nr={}\nfor name in ['/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/project-3.10/collector/run.py', '/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/project-3.10/data/raw/2026-08-28/_manifest.json', '/mnt/c/Users/4ivan/codex-multi-agent/docs/stage32-verification/frozen-v3/tests/test_date_admission.py', '/mnt/c/Users/4ivan/ai-adoption/.git/index']:\n try:\n  with open(name,\"r+b\"): pass\n  r[name]=\"WRITE_ALLOWED\"\n except OSError as e: r[name]=e.errno\ntry:\n socket.socket(socket.AF_INET,socket.SOCK_STREAM); r[\"network\"]=\"ALLOWED\"\nexcept OSError as e: r[\"network\"]=e.errno\nprint(json.dumps(r))\nassert all(isinstance(v,int) for v in r.values())"
+  ],
+  "cwd": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/project-3.10",
+  "interpreter": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/venv-3.10/bin/python",
+  "network_disabled": true,
+  "source_and_fixtures_read_only": true
+}

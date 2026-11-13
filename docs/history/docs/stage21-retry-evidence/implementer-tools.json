@@ -1,0 +1,120 @@
+[
+  {
+    "action": [
+      "write",
+      "src/normalize_labels.py"
+    ],
+    "read_only": false,
+    "changed_paths": [
+      "src/normalize_labels.py"
+    ],
+    "self_check_cases": null,
+    "returncode": 0,
+    "stdout": "written: src/normalize_labels.py\n",
+    "stderr": ""
+  },
+  {
+    "action": [
+      "check"
+    ],
+    "read_only": true,
+    "changed_paths": [],
+    "self_check_cases": [
+      [
+        "",
+        []
+      ],
+      [
+        ",,,",
+        []
+      ],
+      [
+        " Alpha,\tBETA  GAMMA,alpha ",
+        [
+          "alpha",
+          "beta gamma"
+        ]
+      ],
+      [
+        "pre\"QUOTED\"post",
+        [
+          "prequotedpost"
+        ]
+      ],
+      [
+        "\"A,B\",C\\,D",
+        [
+          "a,b",
+          "c,d"
+        ]
+      ],
+      [
+        "a\\\"b,\"c\\\"d\"",
+        [
+          "a\"b",
+          "c\"d"
+        ]
+      ],
+      [
+        "  A \t B  ",
+        [
+          "a b"
+        ]
+      ],
+      [
+        "\"  A\tB  \"",
+        [
+          "  a\tb  "
+        ]
+      ],
+      [
+        "\\ A\\ ",
+        [
+          " a "
+        ]
+      ],
+      [
+        "\" \"",
+        [
+          " "
+        ]
+      ],
+      [
+        "a  \"\" \t b",
+        [
+          "a b"
+        ]
+      ],
+      [
+        "a  \" \" \t b",
+        [
+          "a   b"
+        ]
+      ],
+      [
+        "X,x,\"X\"",
+        [
+          "x"
+        ]
+      ],
+      [
+        "valid,broken\\",
+        null
+      ],
+      [
+        "valid,\"broken",
+        null
+      ],
+      [
+        "A\\\\,B",
+        [
+          "a\\",
+          "b"
+        ]
+      ]
+    ],
+    "returncode": 0,
+    "stdout": "{\"public_interface_verified\": true, \"own_cases_passed\": 16}\n",
+    "stderr": ""
+  }
+]

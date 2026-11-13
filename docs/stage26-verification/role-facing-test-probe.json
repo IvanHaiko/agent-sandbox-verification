@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "stdout": "........................................................................ [ 42%]\n........................................................................ [ 85%]\n........................                                                 [100%]\n168 passed in 4.25s\n\n",
+  "stderr": "\n",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "role_network_enabled": false,
+  "workspace_unchanged": true,
+  "model_requests": 0
+}

@@ -1,0 +1,44 @@
+{
+  "verdict": "STAGE23_PARTIAL_PASS",
+  "smoke_gate": {
+    "accepted": 3,
+    "required": 3,
+    "gate": "passed",
+    "restarted": false
+  },
+  "minimal_gate": {
+    "accepted": 3,
+    "required": 3,
+    "gate": "passed",
+    "restarted": false
+  },
+  "reviewer_gate": {
+    "accepted": 2,
+    "required": 2,
+    "gate": "passed",
+    "frozen_cases_passed": 46
+  },
+  "architect_gate": {
+    "accepted": 0,
+    "required": 2,
+    "attempted": 1,
+    "gate": "failed"
+  },
+  "full_chain": {
+    "accepted": 0,
+    "required": 1,
+    "attempted": 0,
+    "gate": "not_started"
+  },
+  "stop_reason": "Native exec exited 1 after 3.199 seconds without architect-result.json; stderr error not retained.",
+  "live_retry_count": 0,
+  "stage24_started": false,
+  "production_defaults_changed": false,
+  "custom_transport_changed": false,
+  "windows_permissions_changed": false,
+  "new_native_successes": 6,
+  "new_failed_native_launches": 1,
+  "new_removed_repositories": 9,
+  "integrity_audit_passed": true,
+  "offline_guard_tests_passed": 7
+}

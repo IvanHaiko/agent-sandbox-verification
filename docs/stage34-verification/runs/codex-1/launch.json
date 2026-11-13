@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "/home/ivan/.local/bin/codex",
+    "--no-daemon",
+    "-a",
+    "never",
+    "exec",
+    "--ignore-user-config",
+    "--ephemeral",
+    "--json",
+    "--color",
+    "never",
+    "--skip-git-repo-check",
+    "--cd",
+    "/home/ivan/codex-role-a8_q4z4_",
+    "-c",
+    "shell_environment_policy.inherit=\"core\"",
+    "-c",
+    "features.multi_agent=false",
+    "-c",
+    "web_search=\"disabled\"",
+    "-c",
+    "default_permissions=\"bounded\"",
+    "-c",
+    "permissions.bounded={filesystem={\":minimal\"=\"read\",\"/home/ivan/.codex/packages/standalone/releases/0.160.1-x86_64-unknown-linux-musl\"=\"read\",\":workspace_roots\"={\".\"=\"read\",\"tests\"=\"write\"},\":tmpdir\"=\"deny\",\":slash_tmp\"=\"deny\"},network={enabled=false}}",
+    "-"
+  ]
+}

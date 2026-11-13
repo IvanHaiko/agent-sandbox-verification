@@ -1,0 +1,21 @@
+{
+  "role": "implementer",
+  "execution_status": "abnormal_recoverable",
+  "failure_category": "socket_idle_timeout",
+  "candidate_files": [
+    "src/normalize_labels.py"
+  ],
+  "candidate_hashes": {
+    "src/normalize_labels.py": "e881ea67e9665a7e66d97784913c96eb77c9d9a638935ba8fc6473b8dd5c8541"
+  },
+  "diff_summary": "--- a/src/normalize_labels.py\n+++ b/src/normalize_labels.py\n@@ -1,2 +1,80 @@\n+\"\"\"Normalize comma-separated labels with quoting and escaping.\"\"\"\n+\n+\n+_ASCII_WHITESPACE = {\" \", \"\\t\", \"\\r\", \"\\n\", \"\\v\", \"\\f\"}\n+\n+\n+def _lower_ascii(character: str) -> str:\n+    if \"A\" <= character <= \"Z\":\n+        return chr(ord(character) + (ord(\"a\") - ord(\"A\")))\n+    return character\n+\n+\n+def _normalize_label(characters: list[tuple[str, bool]]) -> str:\n+    \"\"\"Normalize a parsed label; the boolean marks protected characters.\"\"\"\n+    start = 0\n+    end = len(characters)\n+\n+    while start < end:\n+        character, protected = characters[start]\n+        if protected or character not in _ASCII_WHITESPACE:\n+            break\n+        start += 1\n+    while end > start:\n+        character, protected = characters[end - 1]\n+        if protected or character not in _ASCII_WHITESPACE:\n+            break\n+        end -= 1\n+\n+    result: list[str] = []\n+    index = start\n+    while index < end:\n+        character, protected = characters[index]\n+        if not protected and character in _ASCII_WHITESPACE:\n+            result.append(\" \")\n+            index += 1\n+            while index < end:\n+                next_character, next_protected = characters[index]\n+                if next_protected or next_character not in _ASCII_WHITESPACE:\n+                    break\n+                index += 1\n+            continue\n+        result.append(_lower_ascii(character))\n+        index += 1\n+    return \"\".join(result)\n+\n+\n def normalize_labels(value: str) -> list[str]:\n-    raise NotImplementedError\n+    \"\"\"Parse and normalize an ASCII comma-separated label string.\"\"\"\n+    labels: list[str] = []\n+    current: list[tuple[str, bool]] = []\n+    quoted = False\n+    index = 0\n+\n+    while index < len(value):\n+        character = value[index]\n+        if character == \"\\\\\":\n+            index += 1\n+            if index >= len(value):\n+                raise ValueError(\"trailing escape\")\n+            current.append((value[index], True))\n+        elif character == '\"':\n+            quoted = not quoted\n+        elif character == \",\" and not quoted:\n+            labels.append(_normalize_label(current))\n+            current = []\n+        else:\n+            current.append((character, quoted))\n+        index += 1\n+\n+    if quoted:\n+        raise ValueError(\"unclosed quote\")\n+    labels.append(_normalize_label(current))\n+\n+    unique: list[str] = []\n+    seen: set[str] = set()\n+    for label in labels:\n+        if label and label not in seen:\n+            seen.add(label)\n+            unique.append(label)\n+    return unique\n",
+  "mutation_scope_valid": true,
+  "interface_check": {
+    "public_interface_verified": true,
+    "own_cases_passed": 0
+  },
+  "self_checks": [],
+  "model_handoff_received": false,
+  "accepted": false,
+  "authority": "controller_observed_artifacts"
+}

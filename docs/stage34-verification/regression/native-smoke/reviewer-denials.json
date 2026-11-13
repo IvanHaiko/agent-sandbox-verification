@@ -1,0 +1,26 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "descendants_killed": false,
+  "stdout": "{\"candidate\": {\"allowed\": false, \"errno\": 30}, \"tests\": {\"allowed\": false, \"errno\": 30}, \"authoritative-candidate\": {\"allowed\": false, \"errno\": 2}, \"authoritative-tests\": {\"allowed\": false, \"errno\": 2}}\n",
+  "stderr": "",
+  "observations": {
+    "candidate": {
+      "allowed": false,
+      "errno": 30
+    },
+    "tests": {
+      "allowed": false,
+      "errno": 30
+    },
+    "authoritative-candidate": {
+      "allowed": false,
+      "errno": 2
+    },
+    "authoritative-tests": {
+      "allowed": false,
+      "errno": 2
+    }
+  }
+}

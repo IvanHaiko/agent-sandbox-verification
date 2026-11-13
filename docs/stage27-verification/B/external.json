@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "stdout": "........................                                                 [100%]\n24 passed in 0.16s\n",
+  "stderr": "",
+  "timed_out": false,
+  "owned_process_group_ended": true,
+  "tests": 24,
+  "passed": 24,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 3.689915895462036
+}

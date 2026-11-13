@@ -1,0 +1,7 @@
+{
+  "measured_stage_started_at": 1791457798.1885266,
+  "measured_stage_started_utc": "2026-10-08T11:09:58.188527+00:00",
+  "boundary": "Creation of framework baseline test directory; earlier brief/repository reads are excluded because no trustworthy start timestamp was retained.",
+  "manual_user_interventions": 0,
+  "environment_startup_continuations": 0
+}

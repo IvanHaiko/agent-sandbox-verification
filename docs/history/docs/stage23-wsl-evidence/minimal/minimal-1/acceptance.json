@@ -1,0 +1,530 @@
+{
+  "model_requests": 0,
+  "tester_sessions": 0,
+  "returncode": 0,
+  "design_sha256": "358b4182f6f7e104ea8d71007751a90225c91aed6c9fef42150d03ab982bd282",
+  "harness_sha256": "c3b5331f97a84686a33e1a8c85ea7066b9ad515b673773373e200e33a320d8ca",
+  "candidate_sha256_before": "0b68590187179e355f86587d774eda9658a78a9375672aa96aa89fcbc3923b85",
+  "candidate_sha256_after": "0b68590187179e355f86587d774eda9658a78a9375672aa96aa89fcbc3923b85",
+  "mutation_scope_valid": true,
+  "result": {
+    "passed": true,
+    "interface": true,
+    "cases": [
+      {
+        "id": "empty_input",
+        "input": "",
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "repeated_separators",
+        "input": ",,ALPHA,,,BETA,,",
+        "expected": [
+          "alpha",
+          "beta"
+        ],
+        "actual": [
+          "alpha",
+          "beta"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "ordinary_whitespace_only",
+        "input": " \t\r\n\u000b\f,\f\u000b\n\r\t ",
+        "expected": [],
+        "actual": [],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "ordinary_whitespace_runs",
+        "input": " \t\r\n\u000b\fALPHA \t\r\n\u000b\fBETA\f\u000b\n\r\t ",
+        "expected": [
+          "alpha beta"
+        ],
+        "actual": [
+          "alpha beta"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quote_concatenation",
+        "input": "PRE\"MID\"POST,\"A\"B\"C\",X\"\"Y,\"\"Z\"\"",
+        "expected": [
+          "premidpost",
+          "abc",
+          "xy",
+          "z"
+        ],
+        "actual": [
+          "premidpost",
+          "abc",
+          "xy",
+          "z"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quoted_commas",
+        "input": "\"A,,B\",C\",D\"E,\",\",TAIL",
+        "expected": [
+          "a,,b",
+          "c,de",
+          ",",
+          "tail"
+        ],
+        "actual": [
+          "a,,b",
+          "c,de",
+          ",",
+          "tail"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escapes_outside_quotes",
+        "input": "A\\,B,C\\\"D,E\\\\F,\\G",
+        "expected": [
+          "a,b",
+          "c\"d",
+          "e\\f",
+          "g"
+        ],
+        "actual": [
+          "a,b",
+          "c\"d",
+          "e\\f",
+          "g"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escapes_inside_quotes",
+        "input": "\"A\\,B\\\"C\\\\D\\E\",NEXT",
+        "expected": [
+          "a,b\"c\\de",
+          "next"
+        ],
+        "actual": [
+          "a,b\"c\\de",
+          "next"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escape_exactly_one_character",
+        "input": "\\\\,NEXT,\\\\\"A,B\"",
+        "expected": [
+          "\\",
+          "next",
+          "\\a,b"
+        ],
+        "actual": [
+          "\\",
+          "next",
+          "\\a,b"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quoted_whitespace_only",
+        "input": "\"  \t\r\n\u000b\f\",\"\t\t\",\" \"",
+        "expected": [
+          "  \t\r\n\u000b\f",
+          "\t\t",
+          " "
+        ],
+        "actual": [
+          "  \t\r\n\u000b\f",
+          "\t\t",
+          " "
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escaped_whitespace_only",
+        "input": "\\ \\ \\\t\\\r\\\n\\\u000b\\\f",
+        "expected": [
+          "  \t\r\n\u000b\f"
+        ],
+        "actual": [
+          "  \t\r\n\u000b\f"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "quoted_boundaries",
+        "input": "  \" \t\"  A  \"\r \"  ",
+        "expected": [
+          " \t a \r "
+        ],
+        "actual": [
+          " \t a \r "
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "escaped_boundaries",
+        "input": " \t\\ A\\ \r\n",
+        "expected": [
+          " a "
+        ],
+        "actual": [
+          " a "
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "protected_breaks_runs",
+        "input": "A \t\"\t\t\" \r B,C \n\\\t \f D",
+        "expected": [
+          "a \t\t b",
+          "c \t d"
+        ],
+        "actual": [
+          "a \t\t b",
+          "c \t d"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "empty_quotes_do_not_break_runs",
+        "input": " \tA \t\"\" \rB \n ",
+        "expected": [
+          "a b"
+        ],
+        "actual": [
+          "a b"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "empty_quotes_and_mixed_empty_labels",
+        "input": "\"\", \"\" ,\"\"\"\",,\" \"",
+        "expected": [
+          " "
+        ],
+        "actual": [
+          " "
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "deduplication_first_occurrence",
+        "input": " BETA,ALPHA,beta,\"Al\"PHA, GAMMA,\\BETA,\"gamma\",delta,ALPHA",
+        "expected": [
+          "beta",
+          "alpha",
+          "gamma",
+          "delta"
+        ],
+        "actual": [
+          "beta",
+          "alpha",
+          "gamma",
+          "delta"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "deduplication_exact_whitespace",
+        "input": "A B,\"A B\",A\tB,\"A  B\",A\\ B,\"A\tB\",a b",
+        "expected": [
+          "a b",
+          "a  b",
+          "a\tb"
+        ],
+        "actual": [
+          "a b",
+          "a  b",
+          "a\tb"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "other_ascii_literals",
+        "input": "A_9-+.:;!?/[]{}'@#=\u0000\u001c\u007fZ",
+        "expected": [
+          "a_9-+.:;!?/[]{}'@#=\u0000\u001c\u007fz"
+        ],
+        "actual": [
+          "a_9-+.:;!?/[]{}'@#=\u0000\u001c\u007fz"
+        ],
+        "error": null,
+        "passed": true
+      },
+      {
+        "id": "trailing_escape_after_valid_labels",
+        "input": "OK,\"GOOD\",BAD\\",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      },
+      {
+        "id": "trailing_escape_inside_quote",
+        "input": "OK,\"BAD\\",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      },
+      {
+        "id": "unclosed_quote_after_valid_labels",
+        "input": "OK,GOOD,PRE\"BAD,TAIL",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      },
+      {
+        "id": "escaped_final_quote_is_not_closure",
+        "input": "OK,\"BAD\\\"",
+        "expected": null,
+        "actual": null,
+        "error": "ValueError",
+        "passed": true
+      },
+      {
+        "id": "escaped_quotes_do_not_open_mode",
+        "input": "\\\"A,B\\\",\\\"",
+        "expected": [
+          "\"a",
+          "b\"",
+          "\""
+        ],
+        "actual": [
+          "\"a",
+          "b\"",
+          "\""
+        ],
+        "error": null,
+        "passed": true
+      }
+    ],
+    "properties": [
+      {
+        "case": "empty_input",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "empty_input",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "repeated_separators",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "repeated_separators",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "ordinary_whitespace_only",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "ordinary_whitespace_only",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "ordinary_whitespace_runs",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "ordinary_whitespace_runs",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quote_concatenation",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quote_concatenation",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quoted_commas",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quoted_commas",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escapes_outside_quotes",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escapes_outside_quotes",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escapes_inside_quotes",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escapes_inside_quotes",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escape_exactly_one_character",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escape_exactly_one_character",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quoted_whitespace_only",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quoted_whitespace_only",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escaped_whitespace_only",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escaped_whitespace_only",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "quoted_boundaries",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "quoted_boundaries",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escaped_boundaries",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escaped_boundaries",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "protected_breaks_runs",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "protected_breaks_runs",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "empty_quotes_do_not_break_runs",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "empty_quotes_do_not_break_runs",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "empty_quotes_and_mixed_empty_labels",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "empty_quotes_and_mixed_empty_labels",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "deduplication_first_occurrence",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "deduplication_first_occurrence",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "deduplication_exact_whitespace",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "deduplication_exact_whitespace",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "other_ascii_literals",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "other_ascii_literals",
+        "property": "ascii_lowercase",
+        "passed": true
+      },
+      {
+        "case": "escaped_quotes_do_not_open_mode",
+        "property": "unique_nonempty_labels",
+        "passed": true
+      },
+      {
+        "case": "escaped_quotes_do_not_open_mode",
+        "property": "ascii_lowercase",
+        "passed": true
+      }
+    ]
+  },
+  "executed_at": 1791375551.7651508,
+  "sandbox": "native Linux Codex; read-only workspace; no project network"
+}

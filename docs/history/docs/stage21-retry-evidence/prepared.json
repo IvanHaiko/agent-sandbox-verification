@@ -1,0 +1,59 @@
+{
+  "project": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow-retry\\project",
+  "binding": {
+    "backend": "docker_isolated",
+    "image": "sha256:6c07868196d1880d956f4b5ddf50244bc281faab39704a8940b1c1f3159a145e",
+    "engine": {
+      "ID": "08073c92-26e8-4704-96c9-2a6fe97c07a3",
+      "ServerVersion": "29.7.2",
+      "KernelVersion": "6.6.87.2-microsoft-standard-WSL2",
+      "Driver": "overlayfs",
+      "SecurityOptions": [
+        "name=seccomp,profile=builtin",
+        "name=cgroupns"
+      ]
+    },
+    "settings": "8e090833f93e8d931f7283795c7375aff8a1170e183c17d23f59a1cfe908b4cc",
+    "implementation": "3d42116a91cf90ce208a6facc041ae82c6dabee2b37e555b920cf2a48536701a",
+    "project": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow-retry\\project",
+    "stage18c": {
+      "topology": "trusted-codex-gated-responses-dynamic-docker-tools",
+      "protocol": 1,
+      "implementation": "87caae67b93800863713c6554a132182de67a6a61111065ec0131452567c0d60",
+      "model_route": "https://api.openai.com/v1/responses",
+      "role_network": "none",
+      "ipc": "trusted-loopback-model-relay; trusted-stdio-codex; docker-attach-tools",
+      "codex": {
+        "path": "C:\\Users\\4ivan\\AppData\\Local\\OpenAI\\Codex\\bin\\5ea220ae823df3d7\\codex.exe",
+        "sha256": "3b8f6e33caa75f232558a3cf76ff9b87bb5ef6dbcf4996372f24e55c78b1b916"
+      }
+    }
+  },
+  "manifest": {
+    "task_id": "STAGE20-LABELS",
+    "base_commit": "76ac0eb9c2a7a2ce8c99eea4d3f75e289024c2cc",
+    "worktrees": {
+      "orchestrator": {
+        "path": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow-retry\\runtime\\codex-agent-system-a74baefa9a4d5ad0\\worktrees\\STAGE20-LABELS\\orchestrator",
+        "kind": "isolated_checkout"
+      },
+      "implementer": {
+        "path": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow-retry\\runtime\\codex-agent-system-a74baefa9a4d5ad0\\worktrees\\STAGE20-LABELS\\implementer",
+        "kind": "isolated_checkout"
+      },
+      "tester": {
+        "path": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow-retry\\runtime\\codex-agent-system-a74baefa9a4d5ad0\\worktrees\\STAGE20-LABELS\\tester",
+        "kind": "isolated_checkout"
+      },
+      "reviewer": {
+        "path": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow-retry\\runtime\\codex-agent-system-a74baefa9a4d5ad0\\worktrees\\STAGE20-LABELS\\reviewer",
+        "kind": "isolated_checkout"
+      }
+    }
+  },
+  "inherited_admission": true,
+  "fresh_adversarial_probes": false,
+  "source": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage19g-live-admission-4\\test_fresh_repaired_transport_0\\runtime\\codex-agent-system-0fb9224e1e356957\\docker-runner\\attestations\\c1a4f35f2dd5ffed0b2c605f121bf0d0fce30412153d41f989eccede8494810f",
+  "task_sha256": "8eaca586f99d875e2fffdad88751269468f29da2ffca68f716744e32d1a701d3",
+  "driver_sha256": "2ebf84622e216eb0a436fffb369c9d6f9e71adb7af878856b10d8eb99eea710b"
+}

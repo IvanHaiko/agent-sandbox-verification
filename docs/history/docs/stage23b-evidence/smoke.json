@@ -1,0 +1,22 @@
+{
+  "version": "codex-cli 0.160.1",
+  "executable": "/home/ivan/.local/bin/codex",
+  "authentication": "native Linux ChatGPT sign-in; login status exit 0",
+  "requested_model": "gpt-6.1-sol",
+  "catalog_listed": true,
+  "workspace": "/tmp/stage23b-native-b70fqele",
+  "initial_project_files": [
+    "role-input.md",
+    "src/add_one.py"
+  ],
+  "windows_credentials_copied": false,
+  "inference_started": false,
+  "resolved_model": null,
+  "thread_id": null,
+  "passed": false,
+  "sandbox_preflight_exit": 101,
+  "sandbox_preflight_workspace_verified": false,
+  "blocker": "native Linux sandbox startup",
+  "sandbox_error": "bwrap: Can't create file at /tmp/stage23b-native-b70fqele/src/add_one.py: Read-only file system\n\nthread 'main' (1281) panicked at linux-sandbox/src/linux_run_main.rs:1271:21:\nfailed to inspect synthetic bubblewrap mount target /tmp/stage23b-native-b70fqele/src/add_one.py/.aws: Not a directory (os error 20)\nnote: run with `RUST_BACKTRACE=1` environment variable to display a backtrace\n",
+  "cleanup_passed": true
+}

@@ -1,0 +1,17 @@
+{
+  "baseline_driver_sha256": "2ebf84622e216eb0a436fffb369c9d6f9e71adb7af878856b10d8eb99eea710b",
+  "retry3_driver_sha256": "03041f5d9fb1bc7dc982a9e3d8bb3d257dd5ec82aa17688aafc96f88bc17820d",
+  "task_contract_routes_reasoning_equal": true,
+  "timeouts_and_policy_equal": true,
+  "action_boundary_equal": true,
+  "repair_ceiling_equal": true,
+  "controller_frozen_test_execution_equal": true,
+  "tester_context_and_schemas_equal": true,
+  "driver_changes": [
+    "unique retry3 evidence/runtime/invocation identifiers",
+    "current Stage21A source-bound admission reference",
+    "fresh no-credit attestation retaining existing OFF preference",
+    "mandatory durable Stage21A receipt/candidate exports",
+    "retry label and diagnostic survival check"
+  ]
+}

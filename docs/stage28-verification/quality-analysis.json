@@ -1,0 +1,191 @@
+{
+  "A": {
+    "unchanged_original_regressions": {
+      "passed": 168,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "independent_preexisting_failures": [
+      [
+        "tests.test_stage28_evaluation",
+        "test_compatibility_raw_json_utc_and_link_precedence"
+      ],
+      [
+        "tests.test_stage28_evaluation",
+        "test_load_data_dispatches_igdb_saved_file"
+      ]
+    ],
+    "mutation_incremental_evidence": {
+      "missing-envelope-validation": {
+        "new_failing_independent_cases": [
+          [
+            "tests.test_stage28_evaluation",
+            "test_invalid_envelopes_raise_before_connection[payload5]"
+          ]
+        ],
+        "independent_new_defect_detected": true,
+        "external_defect_demonstrated": true,
+        "external_errors": 0
+      },
+      "rewrite-replay-timestamp": {
+        "new_failing_independent_cases": [
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_igdb_game]"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_igdb_game_store_link]"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_twitch_category]"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_identical_replay_is_null_safe_and_ignores_json_key_order"
+          ]
+        ],
+        "independent_new_defect_detected": true,
+        "external_defect_demonstrated": true,
+        "external_errors": 0
+      },
+      "commit-partial-file": {
+        "new_failing_independent_cases": [
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_igdb_game]"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_igdb_game_store_link]"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_failure_rolls_back_prior_updates_and_retry_is_durable[upsert_twitch_category]"
+          ]
+        ],
+        "independent_new_defect_detected": true,
+        "external_defect_demonstrated": true,
+        "external_errors": 0
+      }
+    },
+    "distinct_mutations_detected": 3
+  },
+  "B": {
+    "unchanged_original_regressions": {
+      "passed": 168,
+      "failure": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "independent_preexisting_failures": [
+      [
+        "tests.test_stage28_evaluation",
+        "test_mapping_precedence_raw_json_enums_and_utc_date"
+      ]
+    ],
+    "mutation_incremental_evidence": {
+      "missing-envelope-validation": {
+        "new_failing_independent_cases": [
+          [
+            "tests.test_stage28_evaluation",
+            "test_malformed_envelopes[payload5]"
+          ]
+        ],
+        "independent_new_defect_detected": true,
+        "external_defect_demonstrated": true,
+        "external_errors": 0
+      },
+      "rewrite-replay-timestamp": {
+        "new_failing_independent_cases": [
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_rollback_previous_file_durability_and_saved_retry[upsert_igdb_game]"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_rollback_previous_file_durability_and_saved_retry[upsert_igdb_game_store_link]"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_rollback_previous_file_durability_and_saved_retry[upsert_twitch_category]"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_null_safe_replay_preserves_every_column_and_timestamp"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_twitch_mapping_changes_advance_timestamp_and_links_remap"
+          ]
+        ],
+        "independent_new_defect_detected": true,
+        "external_defect_demonstrated": true,
+        "external_errors": 0
+      },
+      "commit-partial-file": {
+        "new_failing_independent_cases": [
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_rollback_previous_file_durability_and_saved_retry[upsert_igdb_game]"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_rollback_previous_file_durability_and_saved_retry[upsert_igdb_game_store_link]"
+          ],
+          [
+            "tests.test_stage28_evaluation",
+            "test_file_rollback_previous_file_durability_and_saved_retry[upsert_twitch_category]"
+          ]
+        ],
+        "independent_new_defect_detected": true,
+        "external_defect_demonstrated": true,
+        "external_errors": 0
+      }
+    },
+    "distinct_mutations_detected": 3
+  },
+  "B_repair_validation_diagnostic": {
+    "records": [
+      {
+        "record": "implementer1-execution.json",
+        "native_exit": 0,
+        "shutdown_confirmed": true,
+        "resolved_model": "gpt-6.1-sol",
+        "changed_files": [
+          "handoff/implementation.json",
+          "src/transform.py",
+          "tests/test_igdb_reliability.py"
+        ],
+        "all_changes_authorized": true,
+        "target_changed": false,
+        "original_rejection_preserved": true,
+        "classification": "Stage28 adapter reuse of fixed-target delta validation rejects legitimate transformer-only repairs; not an unauthorized mutation"
+      },
+      {
+        "record": "implementer2-execution.json",
+        "native_exit": 0,
+        "shutdown_confirmed": true,
+        "resolved_model": "gpt-6.1-sol",
+        "changed_files": [
+          "handoff/implementation.json",
+          "src/transform.py",
+          "tests/test_igdb_reliability.py"
+        ],
+        "all_changes_authorized": true,
+        "target_changed": false,
+        "original_rejection_preserved": true,
+        "classification": "Stage28 adapter reuse of fixed-target delta validation rejects legitimate transformer-only repairs; not an unauthorized mutation"
+      }
+    ],
+    "full_archived_candidate_validation": {
+      "valid": true
+    },
+    "original_decision_unchanged": true,
+    "diagnostic_only": true,
+    "new_model_calls": 0,
+    "limit": "Checks archive syntax/handoff/scope, not a substitute for original role validation or functional tests."
+  }
+}

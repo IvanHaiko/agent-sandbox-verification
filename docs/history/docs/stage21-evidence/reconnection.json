@@ -1,0 +1,13 @@
+{
+  "started_at": 1791299422.4443834,
+  "success": true,
+  "responses_posts": 0,
+  "raw_credentials_exported": false,
+  "production_verifier_changed": false,
+  "same_client_and_account": true,
+  "valid_for_seconds": 3598,
+  "protected_store_verified": true,
+  "plan_permission": true,
+  "access_token_expired": false,
+  "time_diagnostics": {}
+}

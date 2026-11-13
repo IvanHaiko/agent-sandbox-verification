@@ -1,0 +1,12 @@
+You are the independent Tester. Read CONTRACT.md and
+FROZEN_V2_ADJUDICATION.md. Candidate work is stopped and no Implementer has launched.
+Assess the parent's explicit oracle adjudication. If you disagree, report the
+blocker and do not change tests. If you agree, correct only the same-day retry
+gzip heuristic in your tests/test_date_admission.py; preserve successful envelope
+byte checks and unaffected completed-leg byte checks. Public manifest schema is
+schema_version=1, snapshot_date, status, runs, legs keyed by known leg names;
+per-leg status='ok' identifies success and file names recorded for stored legs.
+Public manifest_path and leg_path remain available. Document your agreement and
+v3 correction in tests/coverage.md. Parent retains frozen v2 unchanged, and will
+validate your new draft before a fresh v3 freeze. Only tests/ is writable.
+No implementation reads, other workspaces, network or subagents.

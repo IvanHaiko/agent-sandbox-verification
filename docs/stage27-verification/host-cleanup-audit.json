@@ -1,0 +1,14 @@
+{
+  "at": 1791533534.642215,
+  "owned_paths_absent": {
+    "/home/ivan/codex-role-0ceb46u5": true,
+    "/home/ivan/codex-role-f2dwgn0u": true,
+    "/home/ivan/codex-role-hrxnq_cd": true,
+    "/home/ivan/codex-role-lgytjtm9": true,
+    "/home/ivan/codex-role-mprqzu_h": true,
+    "/home/ivan/codex-role-wf80jzr4": true,
+    "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage27-verification/.stage26-runtime": true
+  },
+  "recorded_postmaster_pid": 616,
+  "recorded_postmaster_pid_absent": true
+}

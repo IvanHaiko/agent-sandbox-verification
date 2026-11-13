@@ -1,0 +1,28 @@
+{
+  "owned_workspaces": [
+    "/home/ivan/codex-role-mim8q3gu",
+    "/home/ivan/codex-role-jlis7v10",
+    "/home/ivan/codex-role-dthdncd2",
+    "/home/ivan/codex-role-vmaqesi2",
+    "/home/ivan/codex-role-kbqhio9o",
+    "/home/ivan/codex-role-evygautk",
+    "/home/ivan/codex-role-b7s5apvi",
+    "/home/ivan/codex-role-t4tmo6kp",
+    "/home/ivan/codex-role-xjjny7w6",
+    "/home/ivan/codex-role-tpf5mzyr",
+    "/home/ivan/codex-role-rtr442ke",
+    "/home/ivan/codex-role-o8j9ilrn",
+    "/home/ivan/codex-role-9k29r4nk"
+  ],
+  "all_removed": true,
+  "stage29_scratch": [
+    {
+      "path": "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage29-verification/pytest-tmp",
+      "removed": true
+    },
+    {
+      "path": "/mnt/c/Users/4ivan/codex-multi-agent/docs/stage29-verification/native-canaries",
+      "removed": true
+    }
+  ]
+}

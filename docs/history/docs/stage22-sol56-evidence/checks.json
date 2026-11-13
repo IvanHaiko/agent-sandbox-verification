@@ -1,0 +1,20 @@
+{
+  "synthetic_admission": {
+    "command": "python -m pytest validation/test_stage22_sol56_admission.py -q --basetemp .test-tmp/stage22-sol56-admission",
+    "passed": 1,
+    "live_inference_requests": 0,
+    "seconds": 73.19,
+    "warning": "Pytest cache path access denied; test itself passed"
+  },
+  "structural_gate_smoke": {
+    "completed": true,
+    "valid_design_accepted": true,
+    "duplicate_id_rejected": true,
+    "uppercase_expected_rejected": true,
+    "wrong_empty_input_expected_rejected": true,
+    "unicode_input_rejected": true,
+    "oracle_used": false
+  },
+  "full_regression_run": false,
+  "production_files_changed": []
+}

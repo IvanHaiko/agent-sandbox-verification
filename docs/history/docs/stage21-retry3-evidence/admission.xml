@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="84.017" timestamp="2026-10-07T10:32:08.801871+02:00" hostname="Ivan"><testcase classname="validation.test_stage21_retry3_admission" name="test_current_stage21a_transport_admission" time="83.753" /></testsuite></testsuites>

@@ -1,0 +1,27 @@
+{
+  "initial_disposable_storage_cleanup_failed": true,
+  "initial_provisional_verdict": "FAIL_CAPABILITY_BOUNDARY",
+  "retry_scope": "Controller storage disposal only; no model, project execution or code changes",
+  "model_requests": 0,
+  "tool_calls": 0,
+  "readonly_files_remaining": 12,
+  "permission_repairs": [
+    "worktrees/STAGE20-SLUGIFY/implementer/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.idx",
+    "worktrees/STAGE20-SLUGIFY/implementer/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.pack",
+    "worktrees/STAGE20-SLUGIFY/implementer/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.rev",
+    "worktrees/STAGE20-SLUGIFY/orchestrator/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.idx",
+    "worktrees/STAGE20-SLUGIFY/orchestrator/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.pack",
+    "worktrees/STAGE20-SLUGIFY/orchestrator/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.rev",
+    "worktrees/STAGE20-SLUGIFY/reviewer/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.idx",
+    "worktrees/STAGE20-SLUGIFY/reviewer/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.pack",
+    "worktrees/STAGE20-SLUGIFY/reviewer/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.rev",
+    "worktrees/STAGE20-SLUGIFY/tester/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.idx",
+    "worktrees/STAGE20-SLUGIFY/tester/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.pack",
+    "worktrees/STAGE20-SLUGIFY/tester/.git/objects/pack/pack-adbeda0fa966ba8328b953cb72c615e4834f6410.rev"
+  ],
+  "resolved_target": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage20-workflow\\runtime\\codex-agent-system-388a3df4e61d8853",
+  "checked_parent": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage20-workflow\\runtime",
+  "completed_at": 1791297527.1919134,
+  "disposable_role_storage_removed": true,
+  "failure_cause": "Readonly copied Git object files"
+}

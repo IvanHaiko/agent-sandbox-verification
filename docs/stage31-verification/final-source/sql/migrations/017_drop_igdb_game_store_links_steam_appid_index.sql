@@ -1,0 +1,59 @@
+-- Migration 017: drop idx_igdb_game_store_links_steam_appid, added one
+-- migration ago in 016.
+--
+-- 016's comment justified the index on a stated assumption -- "the marts
+-- join on it" -- that was never checked against a plan before the index
+-- was created. Read afterwards (ARCHITECTURE.md 2.2, hard rule 9: read the
+-- plan before theorising about performance), it is false. EXPLAIN on the
+-- exact compiled SQL of all three marts that reference steam_appid, with
+-- the index temporarily recreated so the planner had the option:
+--
+--   mart_igdb_coverage      -- Hash Right Join, Seq Scan on
+--                               igdb_game_store_links (16 366 rows)
+--   mart_top_games_by_ccu   -- Hash Left Join, same Seq Scan
+--   mart_top_twitch_games   -- Hash Right Join (nested inside a Hash Left
+--                               Join), same Seq Scan
+--
+-- every one of them reads igdb_game_store_links with a Seq Scan feeding a
+-- hash join, never an index probe -- a hash join over the whole table is
+-- cheaper than 16 366 index probes when nearly the whole table is read
+-- anyway. (A trimmed-down version of these queries, selecting only a
+-- couple of columns instead of the mart's full SELECT list, did pick the
+-- index for mart_top_games_by_ccu on a Nested Loop plan -- checked and
+-- discarded once compared against the real compiled SQL, which is the
+-- version that actually runs and does not use it. Recorded here so the
+-- next person reading this doesn't have to rediscover that a plan is only
+-- as trustworthy as how closely the EXPLAIN'd query matches the real one.)
+-- The index is a B-tree built for point lookups (WHERE steam_appid =
+-- 204290), and nothing in this repository performs one.
+--
+-- The index is dropped rather than kept and its justification comment
+-- rewritten to fit, so that 016's comment stays what it actually was when
+-- 016 ran -- a real but wrong assumption -- instead of being quietly
+-- corrected after the fact into a decision that looks better-informed than
+-- it was. 016's own comment is edited (comment only, no DDL touched) to
+-- point here instead of restating the false claim.
+--
+-- Cost being removed: roughly 456 kB of index storage plus the write
+-- amplification of maintaining it on every igdb_game_store_links insert
+-- or update, for a structure the planner never reads.
+--
+-- pg_depend check (adapted from migration 014's, run before this DROP):
+--
+--   SELECT DISTINCT dependent.relname, dependent.relkind, d.deptype
+--   FROM pg_depend d
+--   JOIN pg_rewrite r ON r.oid = d.objid
+--   JOIN pg_class dependent ON dependent.oid = r.ev_class
+--   WHERE d.refobjid = 'idx_igdb_game_store_links_steam_appid'::regclass;
+--
+-- returns zero rows -- no view or other object depends on this index.
+-- (The only pg_depend row naming the index at all is its own internal
+-- dependency on the table it indexes, deptype 'i', which every index has
+-- and which DROP INDEX handles on its own.) An index is an unlikely thing
+-- to have a dependent, but the check is cheap and the rule from 014 is not
+-- "check when it seems likely."
+--
+-- steam_appid and is_bundle themselves are untouched -- this migration
+-- drops only the index, not the generated columns 016 added.
+
+DROP INDEX IF EXISTS idx_igdb_game_store_links_steam_appid;

@@ -1,0 +1,34 @@
+{
+  "A": {
+    "src/load.py": {
+      "original_public_functions": 22,
+      "signatures_unchanged": true
+    },
+    "src/transform.py": {
+      "original_public_functions": 17,
+      "signatures_unchanged": true
+    },
+    "test_artifact_validation": {
+      "valid": true,
+      "top_level_tests": 12
+    },
+    "tester_archive_matches_freeze": true,
+    "patch_sha256": "e03972361ac75957a39ee2eacc846525d4765f9c838c0d41687141b3b320650b"
+  },
+  "B": {
+    "src/load.py": {
+      "original_public_functions": 22,
+      "signatures_unchanged": true
+    },
+    "src/transform.py": {
+      "original_public_functions": 17,
+      "signatures_unchanged": true
+    },
+    "test_artifact_validation": {
+      "valid": true,
+      "top_level_tests": 17
+    },
+    "tester_archive_matches_freeze": true,
+    "patch_sha256": "988354306de34473e53874555c38a27b2981f08a4d7272dfe29d796d5fdbdbd7"
+  }
+}

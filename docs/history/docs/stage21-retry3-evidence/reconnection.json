@@ -1,0 +1,14 @@
+{
+  "human_requested_browser_sign_in": true,
+  "started_at": 1791361856.5875206,
+  "success": true,
+  "responses_posts": 0,
+  "raw_credentials_exported": false,
+  "production_verifier_changed": false,
+  "same_client_and_account": true,
+  "valid_for_seconds": 3597,
+  "protected_store_verified": true,
+  "plan_permission": true,
+  "access_token_expired": false,
+  "time_diagnostics": {}
+}

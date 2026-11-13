@@ -1,0 +1,123 @@
+{
+  "stage": 21,
+  "task_id": "STAGE20-LABELS",
+  "accepted": false,
+  "verdict": "FAIL_WORKFLOW_COORDINATION",
+  "fix_cycles": 0,
+  "repair_limit": 2,
+  "failed_stage": "test_design",
+  "failure_type": "AgentSystemError",
+  "failure_reason": "Codex/model protocol denied",
+  "containment": {
+    "production_source_unchanged": true,
+    "credential_store_unchanged": true,
+    "stale_owned_containers": 0,
+    "model_homes_removed": true,
+    "role_network": "none",
+    "host_fallback": false,
+    "isolation_preserved": true,
+    "docker_cleanup_confirmed": true,
+    "disposable_role_storage_removed": true
+  },
+  "roles": [
+    {
+      "label": "architect",
+      "role": "orchestrator",
+      "model": "gpt-6-astra",
+      "reasoning": "medium",
+      "completed": true,
+      "requests": 1,
+      "tool_calls": 0,
+      "seconds": 30.04,
+      "usage": {
+        "total": {
+          "totalTokens": 7554,
+          "inputTokens": 7015,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 539,
+          "reasoningOutputTokens": 0
+        },
+        "last": {
+          "totalTokens": 7554,
+          "inputTokens": 7015,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 539,
+          "reasoningOutputTokens": 0
+        }
+      },
+      "process_exited": true
+    },
+    {
+      "label": "implementer",
+      "role": "implementer",
+      "model": "gpt-5.6-sol",
+      "reasoning": "high",
+      "completed": true,
+      "requests": 5,
+      "tool_calls": 4,
+      "seconds": 118.64,
+      "usage": {
+        "total": {
+          "totalTokens": 41711,
+          "inputTokens": 39206,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 2505,
+          "reasoningOutputTokens": 972
+        },
+        "last": {
+          "totalTokens": 9852,
+          "inputTokens": 9653,
+          "cachedInputTokens": 0,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 199,
+          "reasoningOutputTokens": 47
+        }
+      },
+      "process_exited": true
+    },
+    {
+      "label": "test-design",
+      "role": "test_engineer",
+      "model": "gpt-5.6-sol",
+      "reasoning": "high",
+      "completed": false,
+      "requests": 1,
+      "tool_calls": 0,
+      "seconds": 67.95,
+      "usage": null,
+      "process_exited": true
+    }
+  ],
+  "protocol_anomalies": [
+    "completed_function_omitted_from_final",
+    "nonexecutable_stream_final_mismatch",
+    "nonstandard_or_absent_mime"
+  ],
+  "tester_transport_observations": [
+    {
+      "validation_passed": false,
+      "mime_category": "absent",
+      "response_bytes": 32331,
+      "eof": false,
+      "reader_shutdown_confirmed": true,
+      "body_failure": "socket_idle_timeout"
+    }
+  ],
+  "total_model_requests": 7,
+  "total_model_tool_calls": 4,
+  "role_sessions": 3,
+  "controller_acceptance_executions": 0,
+  "tester_execution_sessions": 0,
+  "reviewer_sessions": 0,
+  "independent_test_artifact_frozen": false,
+  "candidate_exposed_to_tester": false,
+  "independent_defect_detection": "not evaluated: Tester design response incomplete",
+  "implementation_self_checks_passed": 13,
+  "final_artifact_status": "candidate preserved; not accepted or integrated",
+  "candidate_sha256": "5ab073fdd83200e97d35b51754d7347e8fd3ad893598207306b9d922f340d235",
+  "next_recommendation": "Inspect the recorded idle-timeout failure before authorizing any further run; no architecture expansion or routing optimization is justified.",
+  "stop": "Single attempted workflow stopped, rejected, cleaned and assessed; no retry or additional experiment."
+}

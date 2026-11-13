@@ -1,0 +1,12 @@
+{
+  "all_retry3_disposable_storage_removed": true,
+  "removed_paths": [
+    "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-retry3-admission",
+    "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-retry3-driver-checks",
+    "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-workflow-retry3"
+  ],
+  "diagnostic_candidate_survives_final_cleanup": true,
+  "synthetic_admission_role_and_model_homes_removed": true,
+  "production_source_and_configuration_unchanged": true,
+  "cleanup_context_note": "Each owned temporary tree removed in its creating execution context; no production ACL or cleanup policy change"
+}

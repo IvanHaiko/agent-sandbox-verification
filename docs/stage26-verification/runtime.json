@@ -1,0 +1,10 @@
+{
+  "root": "/mnt/c/Users/4ivan/codex-multi-agent/.stage26-runtime",
+  "python": "/mnt/c/Users/4ivan/codex-multi-agent/.stage26-runtime/python/bin/python",
+  "database_workspace": "/home/ivan/codex-role-hahwxqlj",
+  "binary": "/mnt/c/Users/4ivan/codex-multi-agent/.stage26-runtime/postgres/usr/lib/postgresql/18/bin",
+  "library": "/mnt/c/Users/4ivan/codex-multi-agent/.stage26-runtime/postgres/usr/lib/x86_64-linux-gnu",
+  "socket": "/home/ivan/codex-role-hahwxqlj/socket",
+  "database_version": "postgres (PostgreSQL) 18.6 (Ubuntu 18.6-0ubuntu0.26.04.1)",
+  "postmaster_pid": 720
+}

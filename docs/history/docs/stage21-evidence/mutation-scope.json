@@ -1,0 +1,9 @@
+{
+  "changed_files": [
+    "src/normalize_labels.py"
+  ],
+  "allowed_paths": [
+    "src/normalize_labels.py"
+  ],
+  "passed": true
+}

@@ -1,0 +1,56 @@
+{
+  "checked_at": 1791299583.618065,
+  "credentials_valid": true,
+  "catalog_requests": 1,
+  "responses_posts": 0,
+  "refresh_attempts": 0,
+  "models": [
+    {
+      "model": "gpt-6-astra",
+      "reasoning": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ]
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "reasoning": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ]
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "reasoning": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "ultra"
+      ]
+    },
+    {
+      "model": "gpt-5.6-luna",
+      "reasoning": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ]
+    }
+  ],
+  "catalog_success": true,
+  "credential_storage_permissions_verified": true,
+  "credentials_present": true,
+  "credentials_expired": false
+}

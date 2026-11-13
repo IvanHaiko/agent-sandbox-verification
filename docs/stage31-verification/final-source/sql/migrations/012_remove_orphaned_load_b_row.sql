@@ -1,0 +1,42 @@
+-- Migration 012: make sample_hour 2026-05-14 09:00 represent exactly one
+-- observation.
+--
+-- Corrects a factual claim in 010, which said the 40 rows migration 008
+-- deleted were identical duplicates and that MIN(id) versus MAX(id) picked
+-- between two rows holding the same values. That is wrong. The claim was
+-- generalised from a sample of 5 of the 40 pairs and never checked against
+-- the rest.
+--
+-- A dump of twitch_game_snapshots taken before 008 was applied settles it.
+-- Hour 2026-05-14 09:00 held two loads, 41 rows each, four milliseconds
+-- apart. They are two different observations, not one load run twice:
+--
+--   only in load A 09:12:11.980187 - Chess
+--   only in load B 09:12:11.984499 - Total War: WARHAMMER III
+--   Overwatch      A 13269 viewers / 4 streams, B 14788 / 5
+--   Just Chatting  A 73747 viewers / 11 streams, B 69549 / 10
+--   sum viewers    A 366083, B 363174
+--
+-- transform_twitch_streams builds its output from one JSON file keyed by
+-- game_id, so the same file in gives the same game set out. Two loads whose
+-- game sets differ therefore came from two raw files fetched minutes apart
+-- and loaded back to back. Their bronze is gone, so the true observation
+-- time of either is unrecoverable, and both were backfilled from the load
+-- clock into the same hour.
+--
+-- 008 kept MIN(id), so 40 rows of observation B were deleted as duplicates
+-- and one row survived only because A had no row for that game. The hour
+-- then described no single observation: 41 rows from A plus 1 from B.
+--
+-- Owner's decision: make the hour exactly observation A. A known gap is
+-- preferable to a plausible-looking mixture, and restoring B would need an
+-- observation time that no longer exists. The deleted rows are archived
+-- outside git at data/audit/ so the choice stays reversible.
+--
+-- The going-forward rule is unchanged and lives in src/load.py: on conflict
+-- within a sample_hour the most recent write wins, because that is normally
+-- a retry carrying more complete data.
+
+DELETE FROM twitch_game_snapshots
+WHERE sample_hour = '2026-05-14 09:00:00'
+    AND snapshot_time = '2026-05-14 09:12:11.984499';

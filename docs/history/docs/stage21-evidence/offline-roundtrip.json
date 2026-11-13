@@ -1,0 +1,44 @@
+{
+  "real_codex": true,
+  "real_docker": true,
+  "provider": "synthetic-local-only",
+  "real_model_requests": 0,
+  "synthetic_requests": 3,
+  "tools": [
+    {
+      "action": [
+        "write",
+        "src/normalize_labels.py"
+      ],
+      "read_only": false,
+      "changed_paths": [
+        "src/normalize_labels.py"
+      ],
+      "self_check_cases": null,
+      "returncode": 0,
+      "stdout": "written: src/normalize_labels.py\n",
+      "stderr": ""
+    },
+    {
+      "action": [
+        "check"
+      ],
+      "read_only": true,
+      "changed_paths": [],
+      "self_check_cases": [
+        [
+          "hello",
+          [
+            "hello"
+          ]
+        ]
+      ],
+      "returncode": 0,
+      "stdout": "{\"public_interface_verified\": true, \"own_cases_passed\": 1}\n",
+      "stderr": ""
+    }
+  ],
+  "host_trap_passed": true,
+  "cleanup_confirmed": true,
+  "driver_sha256": "20c6c76cf74f8d783760524abd700798941464e8400fa73657b8cd714f3e2bd0"
+}

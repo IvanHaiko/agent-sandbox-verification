@@ -1,0 +1,7 @@
+{
+  "authority": "Controller",
+  "canonical_sha256": "c70d766363d49f471f2c80450dd4352d24fa7fb123d80f218210c99bdb19c70a",
+  "approved_architect_proposal_sha256": "baca6e9501245319e5cea414fae598b448be3b6bdf97fba3f27604e8dfa63510",
+  "original_criteria_preserved": true,
+  "notes": "Original task fields preserved; additive interface correction, necessary test-file scope and behavioral policies approved by Controller."
+}

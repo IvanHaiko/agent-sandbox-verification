@@ -1,0 +1,21 @@
+{
+  "command": "codex doctor --json",
+  "exit_code": 0,
+  "codex_version": "0.160.1",
+  "overall_status": "warning",
+  "checks": {
+    "installation": "ok",
+    "auth.credentials": "ok",
+    "config.load": "ok",
+    "network.provider_reachability": "ok",
+    "network.websocket_reachability": "ok",
+    "sandbox.helpers": "ok",
+    "state.paths": "ok",
+    "terminal.env": "warning"
+  },
+  "warning": "Non-interactive terminal reports 1x1 size.",
+  "runtime_failure_cause_established": false,
+  "receipt_source": "Controller transcription of supported redacted diagnostic report",
+  "credentials_read_copied_exported_by_controller": false,
+  "native_inference_requested_by_controller": false
+}

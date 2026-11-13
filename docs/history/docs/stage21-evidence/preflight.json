@@ -1,0 +1,17 @@
+{
+  "checked_at": 1791299582.0254784,
+  "read_only_preflight": true,
+  "responses_posts": 0,
+  "live_role_executions": 0,
+  "stage21_scope_selected": false,
+  "stage19_passed": true,
+  "stage19_proof_execution": "stage19g-smoke-8",
+  "source_bundle_unchanged": true,
+  "source_bundle_sha256": "da8df712ee7f9f7b6f7c0887bbd9789cd384aab308e566aa29c3d1df1c341f0b",
+  "current_codex_docker_engine_image_config_binding_verified": true,
+  "existing_signed_transport_admission_verified": true,
+  "stale_owned_containers": 0,
+  "credential_storage_permissions_verified": true,
+  "credentials_valid": true,
+  "common_prerequisites_passed": true
+}

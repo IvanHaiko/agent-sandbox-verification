@@ -1,0 +1,14 @@
+{
+  "task_id": "STAGE20-SLUGIFY",
+  "contract_version": 1,
+  "outcome": "completed",
+  "changed_files": [
+    "src/slugify.py"
+  ],
+  "summary": "Implemented single-pass ASCII slugification with lowercase conversion, whitespace normalization, punctuation removal, hyphen collapsing, and edge trimming.",
+  "checks_run": [
+    "Successful write to src/slugify.py.",
+    "Check passed 12/12 cases covering examples, tabs/newlines, whitespace-only input, underscore and punctuation removal, digits, and repeated/edge hyphens.",
+    "Status confirmed src/slugify.py is the only changed file."
+  ]
+}

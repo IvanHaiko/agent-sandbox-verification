@@ -1,0 +1,2406 @@
+.env.example
+  ctime: 1790789706:363469100
+  mtime: 1787957643:817528400
+  dev: 67	ino: 77585
+  uid: 1000	gid: 1000
+  size: 364	flags: 0
+.gitattributes
+  ctime: 1791011685:175596100
+  mtime: 1791011685:175596100
+  dev: 67	ino: 64907
+  uid: 1000	gid: 1000
+  size: 106	flags: 0
+.github/workflows/ci.yml
+  ctime: 1787957657:476809800
+  mtime: 1787959854:81294200
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 802	flags: 0
+.github/workflows/collect.yml
+  ctime: 1787957657:448631600
+  mtime: 1787999243:838633400
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2962	flags: 0
+.gitignore
+  ctime: 1787957643:782985400
+  mtime: 1791007736:523158300
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 497	flags: 0
+OPEN_MODEL_LIFECYCLE_GOLD_FINDINGS.md
+  ctime: 1790810163:879329000
+  mtime: 1790810005:112353500
+  dev: 67	ino: 161424
+  uid: 1000	gid: 1000
+  size: 10067	flags: 0
+OPEN_MODEL_LIFECYCLE_PROVIDER_EXPANSION_FINDINGS.md
+  ctime: 1790816348:305198100
+  mtime: 1790816348:305198100
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4929	flags: 0
+OPEN_MODEL_LIFECYCLE_SILVER_FINDINGS.md
+  ctime: 1790809991:981744400
+  mtime: 1790809991:981744400
+  dev: 67	ino: 942781
+  uid: 1000	gid: 1000
+  size: 9932	flags: 0
+README.md
+  ctime: 1787957743:360167300
+  mtime: 1790816360:843743500
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 19278	flags: 0
+collector/__init__.py
+  ctime: 1790789706:393236200
+  mtime: 1787957442:238829400
+  dev: 67	ino: 603687
+  uid: 1000	gid: 1000
+  size: 244	flags: 0
+collector/__main__.py
+  ctime: 1787957562:473246800
+  mtime: 1787999062:517144300
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2101	flags: 0
+collector/arxiv_backfill.py
+  ctime: 1790806571:753138500
+  mtime: 1790806571:753138500
+  dev: 67	ino: 942769
+  uid: 1000	gid: 1000
+  size: 1854	flags: 0
+collector/arxiv_ids.py
+  ctime: 1790809910:910629500
+  mtime: 1790809910:910629500
+  dev: 67	ino: 486367
+  uid: 1000	gid: 1000
+  size: 7572	flags: 0
+collector/audit.py
+  ctime: 1787958860:129294800
+  mtime: 1787999062:518144600
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 12428	flags: 0
+collector/fetch.py
+  ctime: 1787959529:98716800
+  mtime: 1787961775:616122200
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3764	flags: 0
+collector/manifest.py
+  ctime: 1787957481:106845900
+  mtime: 1790815992:152523800
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2947	flags: 0
+collector/paths.py
+  ctime: 1787957442:253350400
+  mtime: 1790815991:679204000
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 1179	flags: 0
+collector/run.py
+  ctime: 1787957547:624093500
+  mtime: 1790816056:618078200
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3114	flags: 0
+collector/sources/__init__.py
+  ctime: 1790789706:392236000
+  mtime: 1787957506:640822800
+  dev: 67	ino: 603722
+  uid: 1000	gid: 1000
+  size: 75	flags: 0
+collector/sources/arxiv.py
+  ctime: 1790807055:276677000
+  mtime: 1790807055:276677000
+  dev: 67	ino: 56025
+  uid: 1000	gid: 1000
+  size: 5570	flags: 0
+collector/sources/hf_inference_providers.py
+  ctime: 1790816074:85797200
+  mtime: 1790816074:85797200
+  dev: 67	ino: 129942
+  uid: 1000	gid: 1000
+  size: 3395	flags: 0
+collector/sources/hf_list.py
+  ctime: 1790789706:391236300
+  mtime: 1787999024:639573400
+  dev: 67	ino: 85265
+  uid: 1000	gid: 1000
+  size: 3254	flags: 0
+collector/sources/hf_models.py
+  ctime: 1787957525:469847700
+  mtime: 1787957532:375283600
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3788	flags: 0
+collector/sources/hf_new_models.py
+  ctime: 1790789706:391236300
+  mtime: 1787999044:894425000
+  dev: 67	ino: 334475
+  uid: 1000	gid: 1000
+  size: 1808	flags: 0
+collector/sources/hf_top_models.py
+  ctime: 1790789706:392236000
+  mtime: 1787999034:636298700
+  dev: 67	ino: 19192
+  uid: 1000	gid: 1000
+  size: 1915	flags: 0
+collector/sources/openrouter_models.py
+  ctime: 1790868890:974874800
+  mtime: 1787957506:668465000
+  dev: 67	ino: 603723
+  uid: 1000	gid: 1000
+  size: 729	flags: 0
+collector/sources/openrouter_rankings.py
+  ctime: 1790868907:134278000
+  mtime: 1787957506:694143300
+  dev: 67	ino: 603725
+  uid: 1000	gid: 1000
+  size: 790	flags: 0
+collector/storage.py
+  ctime: 1790789706:393236200
+  mtime: 1787957469:855831400
+  dev: 67	ino: 364065
+  uid: 1000	gid: 1000
+  size: 1942	flags: 0
+data/backfill/arxiv/2026-09-01_2026-09-07/cs.AI_cs.CL_cs.LG/_manifest.json
+  ctime: 1790808120:768050900
+  mtime: 1790808120:767053200
+  dev: 67	ino: 361832
+  uid: 1000	gid: 1000
+  size: 622	flags: 0
+data/backfill/arxiv/2026-09-01_2026-09-07/cs.AI_cs.CL_cs.LG/arxiv.jsonl.gz
+  ctime: 1790808120:754477400
+  mtime: 1790808120:750471300
+  dev: 67	ino: 341149
+  uid: 1000	gid: 1000
+  size: 4846115	flags: 0
+data/backfill/arxiv/2026-09-08_2026-09-14/cs.AI_cs.CL_cs.LG/_manifest.json
+  ctime: 1790808145:624520300
+  mtime: 1790808145:623525200
+  dev: 67	ino: 451307
+  uid: 1000	gid: 1000
+  size: 621	flags: 0
+data/backfill/arxiv/2026-09-08_2026-09-14/cs.AI_cs.CL_cs.LG/arxiv.jsonl.gz
+  ctime: 1790808145:613787300
+  mtime: 1790808145:610541200
+  dev: 67	ino: 451073
+  uid: 1000	gid: 1000
+  size: 3924744	flags: 0
+data/backfill/arxiv/2026-09-15_2026-09-21/cs.AI_cs.CL_cs.LG/_manifest.json
+  ctime: 1790808169:211134500
+  mtime: 1790808169:209620400
+  dev: 67	ino: 477722
+  uid: 1000	gid: 1000
+  size: 621	flags: 0
+data/backfill/arxiv/2026-09-15_2026-09-21/cs.AI_cs.CL_cs.LG/arxiv.jsonl.gz
+  ctime: 1790808169:197028500
+  mtime: 1790808169:193020900
+  dev: 67	ino: 477690
+  uid: 1000	gid: 1000
+  size: 4247700	flags: 0
+data/backfill/arxiv/2026-09-22_2026-09-28/cs.AI_cs.CL_cs.LG/_manifest.json
+  ctime: 1790808197:408344300
+  mtime: 1790808197:406856500
+  dev: 67	ino: 481716
+  uid: 1000	gid: 1000
+  size: 621	flags: 0
+data/backfill/arxiv/2026-09-22_2026-09-28/cs.AI_cs.CL_cs.LG/arxiv.jsonl.gz
+  ctime: 1790808197:391875600
+  mtime: 1790808197:385012800
+  dev: 67	ino: 481712
+  uid: 1000	gid: 1000
+  size: 4877073	flags: 0
+data/backfill/arxiv/2026-09-29_2026-09-30/cs.AI_cs.CL_cs.LG/_manifest.json
+  ctime: 1790808042:255285400
+  mtime: 1790808042:253777900
+  dev: 67	ino: 190398
+  uid: 1000	gid: 1000
+  size: 621	flags: 0
+data/backfill/arxiv/2026-09-29_2026-09-30/cs.AI_cs.CL_cs.LG/arxiv.jsonl.gz
+  ctime: 1790808042:236742700
+  mtime: 1790808042:232747900
+  dev: 67	ino: 171986
+  uid: 1000	gid: 1000
+  size: 5493694	flags: 0
+data/enrichment/arxiv_ids/_manifest.json
+  ctime: 1790809435:524655300
+  mtime: 1790809435:520209500
+  dev: 67	ino: 486377
+  uid: 1000	gid: 1000
+  size: 1392923	flags: 0
+data/enrichment/arxiv_ids/batch-01cf35d18fdf2f22a60b.atom.xml.gz
+  ctime: 1790809188:789317400
+  mtime: 1790809188:786317700
+  dev: 67	ino: 486428
+  uid: 1000	gid: 1000
+  size: 42138	flags: 0
+data/enrichment/arxiv_ids/batch-02468d99730782673c53.atom.xml.gz
+  ctime: 1790809161:708893600
+  mtime: 1790809161:707893200
+  dev: 67	ino: 486412
+  uid: 1000	gid: 1000
+  size: 35517	flags: 0
+data/enrichment/arxiv_ids/batch-0a9e996125e2ab0f59c6.atom.xml.gz
+  ctime: 1790809185:926818000
+  mtime: 1790809185:924806400
+  dev: 67	ino: 486425
+  uid: 1000	gid: 1000
+  size: 41977	flags: 0
+data/enrichment/arxiv_ids/batch-0b4f6d6cd5e2a4ae7c63.atom.xml.gz
+  ctime: 1790809134:879572200
+  mtime: 1790809134:877079100
+  dev: 67	ino: 486384
+  uid: 1000	gid: 1000
+  size: 26230	flags: 0
+data/enrichment/arxiv_ids/batch-0bdad7cf4d28991b62b9.atom.xml.gz
+  ctime: 1790809143:722666200
+  mtime: 1790809143:721127300
+  dev: 67	ino: 486402
+  uid: 1000	gid: 1000
+  size: 41469	flags: 0
+data/enrichment/arxiv_ids/batch-1e7467db9e7dd7e8df92.atom.xml.gz
+  ctime: 1790809137:702682000
+  mtime: 1790809137:701248400
+  dev: 67	ino: 486395
+  uid: 1000	gid: 1000
+  size: 30565	flags: 0
+data/enrichment/arxiv_ids/batch-3ca3d2f80f75ff31e13b.atom.xml.gz
+  ctime: 1790809155:812326200
+  mtime: 1790809155:811158400
+  dev: 67	ino: 486408
+  uid: 1000	gid: 1000
+  size: 33494	flags: 0
+data/enrichment/arxiv_ids/batch-3dad1c585f84cba809a2.atom.xml.gz
+  ctime: 1790809173:731068400
+  mtime: 1790809173:728555900
+  dev: 67	ino: 486420
+  uid: 1000	gid: 1000
+  size: 45542	flags: 0
+data/enrichment/arxiv_ids/batch-4064a3aae6a40581d41b.atom.xml.gz
+  ctime: 1790809194:746247500
+  mtime: 1790809194:743809800
+  dev: 67	ino: 486434
+  uid: 1000	gid: 1000
+  size: 45751	flags: 0
+data/enrichment/arxiv_ids/batch-43c19a49de5fde9d6dea.atom.xml.gz
+  ctime: 1790809176:816212200
+  mtime: 1790809176:814219100
+  dev: 67	ino: 486421
+  uid: 1000	gid: 1000
+  size: 37985	flags: 0
+data/enrichment/arxiv_ids/batch-6057dfccefafeb2d8bed.atom.xml.gz
+  ctime: 1790809182:795196800
+  mtime: 1790809182:794196100
+  dev: 67	ino: 486424
+  uid: 1000	gid: 1000
+  size: 45082	flags: 0
+data/enrichment/arxiv_ids/batch-6492a446abefd0b3d22d.atom.xml.gz
+  ctime: 1790809152:845480500
+  mtime: 1790809152:843475000
+  dev: 67	ino: 486406
+  uid: 1000	gid: 1000
+  size: 45416	flags: 0
+data/enrichment/arxiv_ids/batch-66aecd4581ba8aa316cc.atom.xml.gz
+  ctime: 1790809149:716683600
+  mtime: 1790809149:714079300
+  dev: 67	ino: 486404
+  uid: 1000	gid: 1000
+  size: 32078	flags: 0
+data/enrichment/arxiv_ids/batch-7af83f522069dd05dee0.atom.xml.gz
+  ctime: 1790809179:732564200
+  mtime: 1790809179:729048300
+  dev: 67	ino: 486423
+  uid: 1000	gid: 1000
+  size: 42417	flags: 0
+data/enrichment/arxiv_ids/batch-86dc31524477b4dc49da.atom.xml.gz
+  ctime: 1790809167:803611400
+  mtime: 1790809167:800255300
+  dev: 67	ino: 486414
+  uid: 1000	gid: 1000
+  size: 36068	flags: 0
+data/enrichment/arxiv_ids/batch-8709478c6e70c9ec2987.atom.xml.gz
+  ctime: 1790809191:762633800
+  mtime: 1790809191:761236400
+  dev: 67	ino: 486433
+  uid: 1000	gid: 1000
+  size: 41307	flags: 0
+data/enrichment/arxiv_ids/batch-8ad4ae242bd067a88a0b.atom.xml.gz
+  ctime: 1790809205:995225300
+  mtime: 1790809205:992221700
+  dev: 67	ino: 486447
+  uid: 1000	gid: 1000
+  size: 42738	flags: 0
+data/enrichment/arxiv_ids/batch-92d3adf1d7ffe3280994.atom.xml.gz
+  ctime: 1790809146:717226500
+  mtime: 1790809146:715216100
+  dev: 67	ino: 486403
+  uid: 1000	gid: 1000
+  size: 36866	flags: 0
+data/enrichment/arxiv_ids/batch-a1f88d3bb16d18a281da.atom.xml.gz
+  ctime: 1790809158:839304100
+  mtime: 1790809158:836295700
+  dev: 67	ino: 486411
+  uid: 1000	gid: 1000
+  size: 39444	flags: 0
+data/enrichment/arxiv_ids/batch-ba2af862ccab67038c14.atom.xml.gz
+  ctime: 1790809170:789017600
+  mtime: 1790809170:785940400
+  dev: 67	ino: 486416
+  uid: 1000	gid: 1000
+  size: 38834	flags: 0
+data/enrichment/arxiv_ids/batch-d84f52e0cb9d594b8ba8.atom.xml.gz
+  ctime: 1790809206:579586800
+  mtime: 1790809206:576389400
+  dev: 67	ino: 486446
+  uid: 1000	gid: 1000
+  size: 39802	flags: 0
+data/enrichment/arxiv_ids/batch-dcd260f8407232d9f58a.atom.xml.gz
+  ctime: 1790809164:769606100
+  mtime: 1790809164:767116400
+  dev: 67	ino: 486413
+  uid: 1000	gid: 1000
+  size: 42568	flags: 0
+data/enrichment/arxiv_ids/batch-dd24df5a7c797355ecd6.atom.xml.gz
+  ctime: 1790809200:511140000
+  mtime: 1790809200:509135900
+  dev: 67	ino: 486444
+  uid: 1000	gid: 1000
+  size: 43932	flags: 0
+data/enrichment/arxiv_ids/batch-f0ad6098c47a061dcb26.atom.xml.gz
+  ctime: 1790809140:728789600
+  mtime: 1790809140:727779400
+  dev: 67	ino: 486387
+  uid: 1000	gid: 1000
+  size: 39962	flags: 0
+data/raw/2026-08-28/_manifest.json
+  ctime: 1790789706:396235800
+  mtime: 1787957705:342441600
+  dev: 67	ino: 79627
+  uid: 1000	gid: 1000
+  size: 1728	flags: 0
+data/raw/2026-08-28/hf_models.jsonl.gz
+  ctime: 1790789706:396235800
+  mtime: 1787957705:338395400
+  dev: 67	ino: 77538
+  uid: 1000	gid: 1000
+  size: 284266	flags: 0
+data/raw/2026-08-28/openrouter_models.json.gz
+  ctime: 1790789706:396235800
+  mtime: 1787957666:903305700
+  dev: 67	ino: 78908
+  uid: 1000	gid: 1000
+  size: 69578	flags: 0
+data/raw/2026-08-28/openrouter_rankings.html.gz
+  ctime: 1790789706:396235800
+  mtime: 1787957667:333805200
+  dev: 67	ino: 79339
+  uid: 1000	gid: 1000
+  size: 178801	flags: 0
+data/raw/2026-08-29/_manifest.json
+  ctime: 1787962202:539781000
+  mtime: 1787962202:539781000
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2268	flags: 0
+data/raw/2026-08-29/hf_models.jsonl.gz
+  ctime: 1790789706:396235800
+  mtime: 1787962202:542306800
+  dev: 67	ino: 85890
+  uid: 1000	gid: 1000
+  size: 283494	flags: 0
+data/raw/2026-08-29/hf_top_models.jsonl.gz
+  ctime: 1790789706:396235800
+  mtime: 1787962202:546824800
+  dev: 67	ino: 86026
+  uid: 1000	gid: 1000
+  size: 491271	flags: 0
+data/raw/2026-08-29/openrouter_models.json.gz
+  ctime: 1790789706:397236100
+  mtime: 1787962202:547824800
+  dev: 67	ino: 87116
+  uid: 1000	gid: 1000
+  size: 69213	flags: 0
+data/raw/2026-08-29/openrouter_rankings.html.gz
+  ctime: 1790789706:397236100
+  mtime: 1787962202:549853600
+  dev: 67	ino: 87423
+  uid: 1000	gid: 1000
+  size: 178821	flags: 0
+data/raw/2026-08-30/_manifest.json
+  ctime: 1788073203:547257000
+  mtime: 1788073203:547257000
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-08-30/hf_models.jsonl.gz
+  ctime: 1790789706:397236100
+  mtime: 1788073203:550259000
+  dev: 67	ino: 1121714
+  uid: 1000	gid: 1000
+  size: 283811	flags: 0
+data/raw/2026-08-30/hf_new_models.jsonl.gz
+  ctime: 1790789706:397236100
+  mtime: 1788073203:551260100
+  dev: 67	ino: 1121715
+  uid: 1000	gid: 1000
+  size: 143246	flags: 0
+data/raw/2026-08-30/hf_top_models.jsonl.gz
+  ctime: 1790789706:397236100
+  mtime: 1788073203:553256700
+  dev: 67	ino: 1121716
+  uid: 1000	gid: 1000
+  size: 488711	flags: 0
+data/raw/2026-08-30/openrouter_models.json.gz
+  ctime: 1790789706:397236100
+  mtime: 1788073203:554258900
+  dev: 67	ino: 1121717
+  uid: 1000	gid: 1000
+  size: 69251	flags: 0
+data/raw/2026-08-30/openrouter_rankings.html.gz
+  ctime: 1790789706:397236100
+  mtime: 1788073203:556258500
+  dev: 67	ino: 1121718
+  uid: 1000	gid: 1000
+  size: 178736	flags: 0
+data/raw/2026-08-31/_manifest.json
+  ctime: 1788159605:986273400
+  mtime: 1788159605:986273400
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-08-31/hf_models.jsonl.gz
+  ctime: 1790789706:398236700
+  mtime: 1788159605:989274300
+  dev: 67	ino: 227910
+  uid: 1000	gid: 1000
+  size: 284132	flags: 0
+data/raw/2026-08-31/hf_new_models.jsonl.gz
+  ctime: 1790789706:398236700
+  mtime: 1788159605:991281900
+  dev: 67	ino: 227912
+  uid: 1000	gid: 1000
+  size: 144064	flags: 0
+data/raw/2026-08-31/hf_top_models.jsonl.gz
+  ctime: 1790789706:398236700
+  mtime: 1788159605:994289500
+  dev: 67	ino: 227917
+  uid: 1000	gid: 1000
+  size: 488013	flags: 0
+data/raw/2026-08-31/openrouter_models.json.gz
+  ctime: 1790789706:398236700
+  mtime: 1788159605:995294100
+  dev: 67	ino: 228439
+  uid: 1000	gid: 1000
+  size: 69252	flags: 0
+data/raw/2026-08-31/openrouter_rankings.html.gz
+  ctime: 1790789706:398236700
+  mtime: 1788159605:997288500
+  dev: 67	ino: 230716
+  uid: 1000	gid: 1000
+  size: 179208	flags: 0
+data/raw/2026-09-01/_manifest.json
+  ctime: 1788246003:683233700
+  mtime: 1788246003:683233700
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-09-01/hf_models.jsonl.gz
+  ctime: 1790789706:399236600
+  mtime: 1788246003:685315600
+  dev: 67	ino: 260378
+  uid: 1000	gid: 1000
+  size: 286833	flags: 0
+data/raw/2026-09-01/hf_new_models.jsonl.gz
+  ctime: 1790789706:399236600
+  mtime: 1788246003:686301600
+  dev: 67	ino: 260421
+  uid: 1000	gid: 1000
+  size: 143075	flags: 0
+data/raw/2026-09-01/hf_top_models.jsonl.gz
+  ctime: 1790789706:399236600
+  mtime: 1788246003:689796400
+  dev: 67	ino: 260435
+  uid: 1000	gid: 1000
+  size: 486443	flags: 0
+data/raw/2026-09-01/openrouter_models.json.gz
+  ctime: 1790789706:399236600
+  mtime: 1788246003:690791100
+  dev: 67	ino: 260454
+  uid: 1000	gid: 1000
+  size: 71103	flags: 0
+data/raw/2026-09-01/openrouter_rankings.html.gz
+  ctime: 1790789706:399236600
+  mtime: 1788246003:691795200
+  dev: 67	ino: 260489
+  uid: 1000	gid: 1000
+  size: 179119	flags: 0
+data/raw/2026-09-02/_manifest.json
+  ctime: 1788332405:854006800
+  mtime: 1788332405:854006800
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-09-02/hf_models.jsonl.gz
+  ctime: 1790789706:399236600
+  mtime: 1788332405:855014100
+  dev: 67	ino: 40944
+  uid: 1000	gid: 1000
+  size: 288219	flags: 0
+data/raw/2026-09-02/hf_new_models.jsonl.gz
+  ctime: 1790789706:399236600
+  mtime: 1788332405:857523800
+  dev: 67	ino: 42164
+  uid: 1000	gid: 1000
+  size: 142736	flags: 0
+data/raw/2026-09-02/hf_top_models.jsonl.gz
+  ctime: 1790789706:399236600
+  mtime: 1788332405:858524600
+  dev: 67	ino: 42264
+  uid: 1000	gid: 1000
+  size: 487108	flags: 0
+data/raw/2026-09-02/openrouter_models.json.gz
+  ctime: 1790789706:399236600
+  mtime: 1788332405:859521100
+  dev: 67	ino: 42696
+  uid: 1000	gid: 1000
+  size: 70720	flags: 0
+data/raw/2026-09-02/openrouter_rankings.html.gz
+  ctime: 1790789706:399236600
+  mtime: 1788332405:860524400
+  dev: 67	ino: 43204
+  uid: 1000	gid: 1000
+  size: 178991	flags: 0
+data/raw/2026-09-03/_manifest.json
+  ctime: 1788418805:481025400
+  mtime: 1788418805:481025400
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3015	flags: 0
+data/raw/2026-09-03/hf_models.jsonl.gz
+  ctime: 1790789706:400236400
+  mtime: 1788418805:483025400
+  dev: 67	ino: 295931
+  uid: 1000	gid: 1000
+  size: 285829	flags: 0
+data/raw/2026-09-03/hf_new_models.jsonl.gz
+  ctime: 1790789706:400236400
+  mtime: 1788418805:484025200
+  dev: 67	ino: 295941
+  uid: 1000	gid: 1000
+  size: 145388	flags: 0
+data/raw/2026-09-03/hf_top_models.jsonl.gz
+  ctime: 1790789706:400236400
+  mtime: 1788418805:486025800
+  dev: 67	ino: 295956
+  uid: 1000	gid: 1000
+  size: 488463	flags: 0
+data/raw/2026-09-03/openrouter_models.json.gz
+  ctime: 1790789706:400236400
+  mtime: 1788418805:487031900
+  dev: 67	ino: 295961
+  uid: 1000	gid: 1000
+  size: 71197	flags: 0
+data/raw/2026-09-03/openrouter_rankings.html.gz
+  ctime: 1790789706:400236400
+  mtime: 1788418805:489029600
+  dev: 67	ino: 298194
+  uid: 1000	gid: 1000
+  size: 179009	flags: 0
+data/raw/2026-09-04/_manifest.json
+  ctime: 1788596417:575921700
+  mtime: 1788596417:575921700
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-09-04/hf_models.jsonl.gz
+  ctime: 1790789706:400236400
+  mtime: 1788596417:577919900
+  dev: 67	ino: 361694
+  uid: 1000	gid: 1000
+  size: 288163	flags: 0
+data/raw/2026-09-04/hf_new_models.jsonl.gz
+  ctime: 1790789706:401236900
+  mtime: 1788596417:578923000
+  dev: 67	ino: 361760
+  uid: 1000	gid: 1000
+  size: 141685	flags: 0
+data/raw/2026-09-04/hf_top_models.jsonl.gz
+  ctime: 1790789706:401236900
+  mtime: 1788596417:580923000
+  dev: 67	ino: 361767
+  uid: 1000	gid: 1000
+  size: 489392	flags: 0
+data/raw/2026-09-04/openrouter_models.json.gz
+  ctime: 1790789706:401236900
+  mtime: 1788596417:581924900
+  dev: 67	ino: 361797
+  uid: 1000	gid: 1000
+  size: 71379	flags: 0
+data/raw/2026-09-04/openrouter_rankings.html.gz
+  ctime: 1790789706:401236900
+  mtime: 1788596417:583431100
+  dev: 67	ino: 362389
+  uid: 1000	gid: 1000
+  size: 180105	flags: 0
+data/raw/2026-09-05/_manifest.json
+  ctime: 1788596417:583431100
+  mtime: 1788596417:583431100
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-09-05/hf_models.jsonl.gz
+  ctime: 1790789706:401236900
+  mtime: 1788596417:586438300
+  dev: 67	ino: 362783
+  uid: 1000	gid: 1000
+  size: 287930	flags: 0
+data/raw/2026-09-05/hf_new_models.jsonl.gz
+  ctime: 1790789706:401236900
+  mtime: 1788596417:587438800
+  dev: 67	ino: 362792
+  uid: 1000	gid: 1000
+  size: 142151	flags: 0
+data/raw/2026-09-05/hf_top_models.jsonl.gz
+  ctime: 1790789706:401236900
+  mtime: 1788596417:589441900
+  dev: 67	ino: 364055
+  uid: 1000	gid: 1000
+  size: 488262	flags: 0
+data/raw/2026-09-05/openrouter_models.json.gz
+  ctime: 1790789706:401236900
+  mtime: 1788596417:590435600
+  dev: 67	ino: 367400
+  uid: 1000	gid: 1000
+  size: 71426	flags: 0
+data/raw/2026-09-05/openrouter_rankings.html.gz
+  ctime: 1790789706:401236900
+  mtime: 1788596417:591436900
+  dev: 67	ino: 367431
+  uid: 1000	gid: 1000
+  size: 179953	flags: 0
+data/raw/2026-09-06/_manifest.json
+  ctime: 1788850806:255077600
+  mtime: 1788850806:255077600
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-09-06/hf_models.jsonl.gz
+  ctime: 1790789706:402237600
+  mtime: 1788850806:258076900
+  dev: 67	ino: 702913
+  uid: 1000	gid: 1000
+  size: 288150	flags: 0
+data/raw/2026-09-06/hf_new_models.jsonl.gz
+  ctime: 1790789706:402237600
+  mtime: 1788850806:260077500
+  dev: 67	ino: 702915
+  uid: 1000	gid: 1000
+  size: 144988	flags: 0
+data/raw/2026-09-06/hf_top_models.jsonl.gz
+  ctime: 1790789706:402237600
+  mtime: 1788850806:262077100
+  dev: 67	ino: 702916
+  uid: 1000	gid: 1000
+  size: 488521	flags: 0
+data/raw/2026-09-06/openrouter_models.json.gz
+  ctime: 1790789706:402237600
+  mtime: 1788850806:263080000
+  dev: 67	ino: 702917
+  uid: 1000	gid: 1000
+  size: 71432	flags: 0
+data/raw/2026-09-06/openrouter_rankings.html.gz
+  ctime: 1790789706:402237600
+  mtime: 1788850806:265090700
+  dev: 67	ino: 702934
+  uid: 1000	gid: 1000
+  size: 179916	flags: 0
+data/raw/2026-09-07/_manifest.json
+  ctime: 1788850806:266093200
+  mtime: 1788850806:266093200
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-09-07/hf_models.jsonl.gz
+  ctime: 1790789706:402237600
+  mtime: 1788850806:268090000
+  dev: 67	ino: 702951
+  uid: 1000	gid: 1000
+  size: 288225	flags: 0
+data/raw/2026-09-07/hf_new_models.jsonl.gz
+  ctime: 1790789706:402237600
+  mtime: 1788850806:269090000
+  dev: 67	ino: 702952
+  uid: 1000	gid: 1000
+  size: 136986	flags: 0
+data/raw/2026-09-07/hf_top_models.jsonl.gz
+  ctime: 1790789706:402237600
+  mtime: 1788850806:272087800
+  dev: 67	ino: 702961
+  uid: 1000	gid: 1000
+  size: 487851	flags: 0
+data/raw/2026-09-07/openrouter_models.json.gz
+  ctime: 1790789706:402237600
+  mtime: 1788850806:273087300
+  dev: 67	ino: 702965
+  uid: 1000	gid: 1000
+  size: 71151	flags: 0
+data/raw/2026-09-07/openrouter_rankings.html.gz
+  ctime: 1790789706:403236800
+  mtime: 1788850806:275088500
+  dev: 67	ino: 702971
+  uid: 1000	gid: 1000
+  size: 181364	flags: 0
+data/raw/2026-09-08/_manifest.json
+  ctime: 1788850806:276086200
+  mtime: 1788850806:276086200
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-09-08/hf_models.jsonl.gz
+  ctime: 1790789706:403236800
+  mtime: 1788850806:278607400
+  dev: 67	ino: 702978
+  uid: 1000	gid: 1000
+  size: 291528	flags: 0
+data/raw/2026-09-08/hf_new_models.jsonl.gz
+  ctime: 1790789706:403236800
+  mtime: 1788850806:279618500
+  dev: 67	ino: 702989
+  uid: 1000	gid: 1000
+  size: 140613	flags: 0
+data/raw/2026-09-08/hf_top_models.jsonl.gz
+  ctime: 1790789706:403236800
+  mtime: 1788850806:282617900
+  dev: 67	ino: 702993
+  uid: 1000	gid: 1000
+  size: 489562	flags: 0
+data/raw/2026-09-08/openrouter_models.json.gz
+  ctime: 1790789706:403236800
+  mtime: 1788850806:282617900
+  dev: 67	ino: 702997
+  uid: 1000	gid: 1000
+  size: 71381	flags: 0
+data/raw/2026-09-08/openrouter_rankings.html.gz
+  ctime: 1790789706:403236800
+  mtime: 1788850806:285124600
+  dev: 67	ino: 703000
+  uid: 1000	gid: 1000
+  size: 181400	flags: 0
+data/raw/2026-09-09/_manifest.json
+  ctime: 1789023605:927089600
+  mtime: 1789023605:928089700
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-09-09/hf_models.jsonl.gz
+  ctime: 1790789706:403236800
+  mtime: 1789023605:930588500
+  dev: 67	ino: 613568
+  uid: 1000	gid: 1000
+  size: 290774	flags: 0
+data/raw/2026-09-09/hf_new_models.jsonl.gz
+  ctime: 1790789706:404236700
+  mtime: 1789023605:932588000
+  dev: 67	ino: 624679
+  uid: 1000	gid: 1000
+  size: 141214	flags: 0
+data/raw/2026-09-09/hf_top_models.jsonl.gz
+  ctime: 1790789706:404236700
+  mtime: 1789023605:936590300
+  dev: 67	ino: 624699
+  uid: 1000	gid: 1000
+  size: 492865	flags: 0
+data/raw/2026-09-09/openrouter_models.json.gz
+  ctime: 1790789706:404236700
+  mtime: 1789023605:938096700
+  dev: 67	ino: 624713
+  uid: 1000	gid: 1000
+  size: 71443	flags: 0
+data/raw/2026-09-09/openrouter_rankings.html.gz
+  ctime: 1790789706:404236700
+  mtime: 1789023605:940103700
+  dev: 67	ino: 624715
+  uid: 1000	gid: 1000
+  size: 194229	flags: 0
+data/raw/2026-09-10/_manifest.json
+  ctime: 1789023605:940103700
+  mtime: 1789023605:941103900
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-09-10/hf_models.jsonl.gz
+  ctime: 1790789706:404236700
+  mtime: 1789023605:943103800
+  dev: 67	ino: 624796
+  uid: 1000	gid: 1000
+  size: 290566	flags: 0
+data/raw/2026-09-10/hf_new_models.jsonl.gz
+  ctime: 1790789706:404236700
+  mtime: 1789023605:945104100
+  dev: 67	ino: 624812
+  uid: 1000	gid: 1000
+  size: 140511	flags: 0
+data/raw/2026-09-10/hf_top_models.jsonl.gz
+  ctime: 1790789706:404236700
+  mtime: 1789023605:946104200
+  dev: 67	ino: 624815
+  uid: 1000	gid: 1000
+  size: 492952	flags: 0
+data/raw/2026-09-10/openrouter_models.json.gz
+  ctime: 1790789706:404236700
+  mtime: 1789023605:947103500
+  dev: 67	ino: 624824
+  uid: 1000	gid: 1000
+  size: 71299	flags: 0
+data/raw/2026-09-10/openrouter_rankings.html.gz
+  ctime: 1790789706:404236700
+  mtime: 1789023605:948611500
+  dev: 67	ino: 624832
+  uid: 1000	gid: 1000
+  size: 194788	flags: 0
+data/raw/2026-09-11/_manifest.json
+  ctime: 1789110856:719760900
+  mtime: 1789110856:719760900
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2985	flags: 0
+data/raw/2026-09-11/hf_models.jsonl.gz
+  ctime: 1790789706:405236700
+  mtime: 1789110856:722269600
+  dev: 67	ino: 555892
+  uid: 1000	gid: 1000
+  size: 292318	flags: 0
+data/raw/2026-09-11/hf_new_models.jsonl.gz
+  ctime: 1790789706:405236700
+  mtime: 1789110856:723272100
+  dev: 67	ino: 555894
+  uid: 1000	gid: 1000
+  size: 138185	flags: 0
+data/raw/2026-09-11/hf_top_models.jsonl.gz
+  ctime: 1790789706:405236700
+  mtime: 1789110856:725276300
+  dev: 67	ino: 555895
+  uid: 1000	gid: 1000
+  size: 491311	flags: 0
+data/raw/2026-09-11/openrouter_models.json.gz
+  ctime: 1790789706:405236700
+  mtime: 1789110856:725276300
+  dev: 67	ino: 555896
+  uid: 1000	gid: 1000
+  size: 72480	flags: 0
+data/raw/2026-09-11/openrouter_rankings.html.gz
+  ctime: 1790789706:405236700
+  mtime: 1789110856:727277500
+  dev: 67	ino: 555897
+  uid: 1000	gid: 1000
+  size: 181850	flags: 0
+data/raw/2026-09-12/_manifest.json
+  ctime: 1789204195:315927800
+  mtime: 1789204195:315927800
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 2806	flags: 0
+data/raw/2026-09-12/hf_models.jsonl.gz
+  ctime: 1790789706:405236700
+  mtime: 1789204195:318931000
+  dev: 67	ino: 1218767
+  uid: 1000	gid: 1000
+  size: 295375	flags: 0
+data/raw/2026-09-12/hf_new_models.jsonl.gz
+  ctime: 1790789706:405236700
+  mtime: 1789204195:321458400
+  dev: 67	ino: 1218769
+  uid: 1000	gid: 1000
+  size: 133500	flags: 0
+data/raw/2026-09-12/hf_top_models.jsonl.gz
+  ctime: 1790789706:405236700
+  mtime: 1789204195:323461200
+  dev: 67	ino: 1218776
+  uid: 1000	gid: 1000
+  size: 489251	flags: 0
+data/raw/2026-09-12/openrouter_models.json.gz
+  ctime: 1790789706:405236700
+  mtime: 1789204195:324462000
+  dev: 67	ino: 1218778
+  uid: 1000	gid: 1000
+  size: 73003	flags: 0
+data/raw/2026-09-12/openrouter_rankings.html.gz
+  ctime: 1790789706:405236700
+  mtime: 1789204195:326462300
+  dev: 67	ino: 1218781
+  uid: 1000	gid: 1000
+  size: 181399	flags: 0
+data/raw/2026-09-13/_manifest.json
+  ctime: 1789369591:240549800
+  mtime: 1789369591:240549800
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-13/hf_models.jsonl.gz
+  ctime: 1790789706:406236500
+  mtime: 1789369591:243550200
+  dev: 67	ino: 840222
+  uid: 1000	gid: 1000
+  size: 295685	flags: 0
+data/raw/2026-09-13/hf_new_models.jsonl.gz
+  ctime: 1790789706:406236500
+  mtime: 1789369591:245550100
+  dev: 67	ino: 840304
+  uid: 1000	gid: 1000
+  size: 135353	flags: 0
+data/raw/2026-09-13/hf_top_models.jsonl.gz
+  ctime: 1790789706:406236500
+  mtime: 1789369591:247550000
+  dev: 67	ino: 840400
+  uid: 1000	gid: 1000
+  size: 492113	flags: 0
+data/raw/2026-09-13/openrouter_models.json.gz
+  ctime: 1790789706:406236500
+  mtime: 1789369591:248551700
+  dev: 67	ino: 840505
+  uid: 1000	gid: 1000
+  size: 73318	flags: 0
+data/raw/2026-09-13/openrouter_rankings.html.gz
+  ctime: 1790789706:406236500
+  mtime: 1789369591:250552200
+  dev: 67	ino: 840506
+  uid: 1000	gid: 1000
+  size: 181160	flags: 0
+data/raw/2026-09-14/_manifest.json
+  ctime: 1789369591:251551600
+  mtime: 1789369591:251551600
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-14/hf_models.jsonl.gz
+  ctime: 1790789706:406236500
+  mtime: 1789369591:254550100
+  dev: 67	ino: 840588
+  uid: 1000	gid: 1000
+  size: 295767	flags: 0
+data/raw/2026-09-14/hf_new_models.jsonl.gz
+  ctime: 1790789706:407236200
+  mtime: 1789369591:255550900
+  dev: 67	ino: 840590
+  uid: 1000	gid: 1000
+  size: 136129	flags: 0
+data/raw/2026-09-14/hf_top_models.jsonl.gz
+  ctime: 1790789706:407236200
+  mtime: 1789369591:258556600
+  dev: 67	ino: 840798
+  uid: 1000	gid: 1000
+  size: 495022	flags: 0
+data/raw/2026-09-14/openrouter_models.json.gz
+  ctime: 1790789706:407236200
+  mtime: 1789369591:258556600
+  dev: 67	ino: 840799
+  uid: 1000	gid: 1000
+  size: 73336	flags: 0
+data/raw/2026-09-14/openrouter_rankings.html.gz
+  ctime: 1790789706:407236200
+  mtime: 1789369591:260551500
+  dev: 67	ino: 840800
+  uid: 1000	gid: 1000
+  size: 181544	flags: 0
+data/raw/2026-09-15/_manifest.json
+  ctime: 1789542005:378702500
+  mtime: 1789542005:378702500
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-15/hf_models.jsonl.gz
+  ctime: 1790789706:407236200
+  mtime: 1789542005:382711900
+  dev: 67	ino: 552856
+  uid: 1000	gid: 1000
+  size: 295950	flags: 0
+data/raw/2026-09-15/hf_new_models.jsonl.gz
+  ctime: 1790789706:407236200
+  mtime: 1789542005:384711900
+  dev: 67	ino: 552857
+  uid: 1000	gid: 1000
+  size: 137578	flags: 0
+data/raw/2026-09-15/hf_top_models.jsonl.gz
+  ctime: 1790789706:407236200
+  mtime: 1789542005:387712300
+  dev: 67	ino: 552942
+  uid: 1000	gid: 1000
+  size: 494611	flags: 0
+data/raw/2026-09-15/openrouter_models.json.gz
+  ctime: 1790789706:407236200
+  mtime: 1789542005:389711900
+  dev: 67	ino: 553012
+  uid: 1000	gid: 1000
+  size: 73278	flags: 0
+data/raw/2026-09-15/openrouter_rankings.html.gz
+  ctime: 1790789706:407236200
+  mtime: 1789542005:391710300
+  dev: 67	ino: 553013
+  uid: 1000	gid: 1000
+  size: 181339	flags: 0
+data/raw/2026-09-16/_manifest.json
+  ctime: 1789542005:391710300
+  mtime: 1789542005:391710300
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-16/hf_models.jsonl.gz
+  ctime: 1790789706:408236000
+  mtime: 1789542005:394709900
+  dev: 67	ino: 553017
+  uid: 1000	gid: 1000
+  size: 295974	flags: 0
+data/raw/2026-09-16/hf_new_models.jsonl.gz
+  ctime: 1790789706:408236000
+  mtime: 1789542005:394709900
+  dev: 67	ino: 553020
+  uid: 1000	gid: 1000
+  size: 126915	flags: 0
+data/raw/2026-09-16/hf_top_models.jsonl.gz
+  ctime: 1790789706:408236000
+  mtime: 1789542005:396713000
+  dev: 67	ino: 553021
+  uid: 1000	gid: 1000
+  size: 496059	flags: 0
+data/raw/2026-09-16/openrouter_models.json.gz
+  ctime: 1790789706:408236000
+  mtime: 1789542005:397917700
+  dev: 67	ino: 553022
+  uid: 1000	gid: 1000
+  size: 73226	flags: 0
+data/raw/2026-09-16/openrouter_rankings.html.gz
+  ctime: 1790789706:408236000
+  mtime: 1789542005:398916900
+  dev: 67	ino: 553024
+  uid: 1000	gid: 1000
+  size: 235033	flags: 0
+data/raw/2026-09-17/_manifest.json
+  ctime: 1789628466:410647500
+  mtime: 1789628466:410647500
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3390	flags: 0
+data/raw/2026-09-17/hf_models.jsonl.gz
+  ctime: 1790789706:408236000
+  mtime: 1789628466:412646700
+  dev: 67	ino: 603162
+  uid: 1000	gid: 1000
+  size: 292997	flags: 0
+data/raw/2026-09-17/hf_new_models.jsonl.gz
+  ctime: 1790789706:408236000
+  mtime: 1789628466:414650800
+  dev: 67	ino: 603166
+  uid: 1000	gid: 1000
+  size: 110653	flags: 0
+data/raw/2026-09-17/hf_top_models.jsonl.gz
+  ctime: 1790789706:408236000
+  mtime: 1789628466:416651300
+  dev: 67	ino: 603167
+  uid: 1000	gid: 1000
+  size: 496575	flags: 0
+data/raw/2026-09-17/openrouter_models.json.gz
+  ctime: 1790789706:408236000
+  mtime: 1789628466:417646100
+  dev: 67	ino: 603169
+  uid: 1000	gid: 1000
+  size: 73550	flags: 0
+data/raw/2026-09-17/openrouter_rankings.html.gz
+  ctime: 1790789706:408236000
+  mtime: 1789628466:419648400
+  dev: 67	ino: 603172
+  uid: 1000	gid: 1000
+  size: 236355	flags: 0
+data/raw/2026-09-18/_manifest.json
+  ctime: 1789714806:800226500
+  mtime: 1789714806:800226500
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-18/hf_models.jsonl.gz
+  ctime: 1790789706:409236100
+  mtime: 1789714806:802234400
+  dev: 67	ino: 481214
+  uid: 1000	gid: 1000
+  size: 296141	flags: 0
+data/raw/2026-09-18/hf_new_models.jsonl.gz
+  ctime: 1790789706:409236100
+  mtime: 1789714806:803425800
+  dev: 67	ino: 481331
+  uid: 1000	gid: 1000
+  size: 112183	flags: 0
+data/raw/2026-09-18/hf_top_models.jsonl.gz
+  ctime: 1790789706:409236100
+  mtime: 1789714806:805423600
+  dev: 67	ino: 481332
+  uid: 1000	gid: 1000
+  size: 495805	flags: 0
+data/raw/2026-09-18/openrouter_models.json.gz
+  ctime: 1790789706:409236100
+  mtime: 1789714806:806420600
+  dev: 67	ino: 481335
+  uid: 1000	gid: 1000
+  size: 73653	flags: 0
+data/raw/2026-09-18/openrouter_rankings.html.gz
+  ctime: 1790789706:409236100
+  mtime: 1789714806:808422800
+  dev: 67	ino: 481336
+  uid: 1000	gid: 1000
+  size: 236691	flags: 0
+data/raw/2026-09-19/_manifest.json
+  ctime: 1789974004:539268300
+  mtime: 1789974004:539268300
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-19/hf_models.jsonl.gz
+  ctime: 1790789706:409236100
+  mtime: 1789974004:541268500
+  dev: 67	ino: 345186
+  uid: 1000	gid: 1000
+  size: 298090	flags: 0
+data/raw/2026-09-19/hf_new_models.jsonl.gz
+  ctime: 1790789706:409236100
+  mtime: 1789974004:542268200
+  dev: 67	ino: 347218
+  uid: 1000	gid: 1000
+  size: 121249	flags: 0
+data/raw/2026-09-19/hf_top_models.jsonl.gz
+  ctime: 1790789706:410236200
+  mtime: 1789974004:544270700
+  dev: 67	ino: 349423
+  uid: 1000	gid: 1000
+  size: 496633	flags: 0
+data/raw/2026-09-19/openrouter_models.json.gz
+  ctime: 1790789706:410236200
+  mtime: 1789974004:545268300
+  dev: 67	ino: 349707
+  uid: 1000	gid: 1000
+  size: 73809	flags: 0
+data/raw/2026-09-19/openrouter_rankings.html.gz
+  ctime: 1790789706:410236200
+  mtime: 1789974004:547268300
+  dev: 67	ino: 361841
+  uid: 1000	gid: 1000
+  size: 239725	flags: 0
+data/raw/2026-09-20/_manifest.json
+  ctime: 1789974004:547268300
+  mtime: 1789974004:547268300
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-20/hf_models.jsonl.gz
+  ctime: 1790789706:410236200
+  mtime: 1789974004:549268400
+  dev: 67	ino: 380905
+  uid: 1000	gid: 1000
+  size: 298202	flags: 0
+data/raw/2026-09-20/hf_new_models.jsonl.gz
+  ctime: 1790789706:410236200
+  mtime: 1789974004:551268600
+  dev: 67	ino: 390084
+  uid: 1000	gid: 1000
+  size: 136442	flags: 0
+data/raw/2026-09-20/hf_top_models.jsonl.gz
+  ctime: 1790789706:410236200
+  mtime: 1789974004:553268300
+  dev: 67	ino: 391194
+  uid: 1000	gid: 1000
+  size: 496352	flags: 0
+data/raw/2026-09-20/openrouter_models.json.gz
+  ctime: 1790789706:410236200
+  mtime: 1789974004:554269400
+  dev: 67	ino: 391826
+  uid: 1000	gid: 1000
+  size: 73935	flags: 0
+data/raw/2026-09-20/openrouter_rankings.html.gz
+  ctime: 1790789706:410236200
+  mtime: 1789974004:556268700
+  dev: 67	ino: 392211
+  uid: 1000	gid: 1000
+  size: 239614	flags: 0
+data/raw/2026-09-21/_manifest.json
+  ctime: 1789974004:556268700
+  mtime: 1789974004:556268700
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-21/hf_models.jsonl.gz
+  ctime: 1790789706:410236200
+  mtime: 1789974004:558271100
+  dev: 67	ino: 438132
+  uid: 1000	gid: 1000
+  size: 298384	flags: 0
+data/raw/2026-09-21/hf_new_models.jsonl.gz
+  ctime: 1790789706:411236400
+  mtime: 1789974004:560269300
+  dev: 67	ino: 445204
+  uid: 1000	gid: 1000
+  size: 137838	flags: 0
+data/raw/2026-09-21/hf_top_models.jsonl.gz
+  ctime: 1790789706:411236400
+  mtime: 1789974004:562268400
+  dev: 67	ino: 447968
+  uid: 1000	gid: 1000
+  size: 496245	flags: 0
+data/raw/2026-09-21/openrouter_models.json.gz
+  ctime: 1790789706:411236400
+  mtime: 1789974004:562268400
+  dev: 67	ino: 448037
+  uid: 1000	gid: 1000
+  size: 74033	flags: 0
+data/raw/2026-09-21/openrouter_rankings.html.gz
+  ctime: 1790789706:411236400
+  mtime: 1789974004:564268800
+  dev: 67	ino: 448229
+  uid: 1000	gid: 1000
+  size: 240576	flags: 0
+data/raw/2026-09-22/_manifest.json
+  ctime: 1790060405:862725200
+  mtime: 1790060405:863723700
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-22/hf_models.jsonl.gz
+  ctime: 1790789706:411236400
+  mtime: 1790060405:865727400
+  dev: 67	ino: 108927
+  uid: 1000	gid: 1000
+  size: 298389	flags: 0
+data/raw/2026-09-22/hf_new_models.jsonl.gz
+  ctime: 1790789706:411236400
+  mtime: 1790060405:867729000
+  dev: 67	ino: 109290
+  uid: 1000	gid: 1000
+  size: 137491	flags: 0
+data/raw/2026-09-22/hf_top_models.jsonl.gz
+  ctime: 1790789706:411236400
+  mtime: 1790060405:869729300
+  dev: 67	ino: 109541
+  uid: 1000	gid: 1000
+  size: 495129	flags: 0
+data/raw/2026-09-22/openrouter_models.json.gz
+  ctime: 1790789706:411236400
+  mtime: 1790060405:871739000
+  dev: 67	ino: 110356
+  uid: 1000	gid: 1000
+  size: 74088	flags: 0
+data/raw/2026-09-22/openrouter_rankings.html.gz
+  ctime: 1790789706:411236400
+  mtime: 1790060405:873732900
+  dev: 67	ino: 110534
+  uid: 1000	gid: 1000
+  size: 241490	flags: 0
+data/raw/2026-09-23/_manifest.json
+  ctime: 1790233205:10555100
+  mtime: 1790233205:10555100
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-23/hf_models.jsonl.gz
+  ctime: 1790789706:412235800
+  mtime: 1790233205:13551300
+  dev: 67	ino: 586072
+  uid: 1000	gid: 1000
+  size: 300789	flags: 0
+data/raw/2026-09-23/hf_new_models.jsonl.gz
+  ctime: 1790789706:412235800
+  mtime: 1790233205:14551400
+  dev: 67	ino: 587287
+  uid: 1000	gid: 1000
+  size: 136762	flags: 0
+data/raw/2026-09-23/hf_top_models.jsonl.gz
+  ctime: 1790789706:412235800
+  mtime: 1790233205:15552600
+  dev: 67	ino: 587460
+  uid: 1000	gid: 1000
+  size: 494613	flags: 0
+data/raw/2026-09-23/openrouter_models.json.gz
+  ctime: 1790789706:412235800
+  mtime: 1790233205:17060300
+  dev: 67	ino: 594130
+  uid: 1000	gid: 1000
+  size: 75090	flags: 0
+data/raw/2026-09-23/openrouter_rankings.html.gz
+  ctime: 1790789706:412235800
+  mtime: 1790233205:19584600
+  dev: 67	ino: 601411
+  uid: 1000	gid: 1000
+  size: 241843	flags: 0
+data/raw/2026-09-24/_manifest.json
+  ctime: 1790233205:19584600
+  mtime: 1790233205:19584600
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-24/hf_models.jsonl.gz
+  ctime: 1790789706:413237500
+  mtime: 1790233205:22586700
+  dev: 67	ino: 605035
+  uid: 1000	gid: 1000
+  size: 299034	flags: 0
+data/raw/2026-09-24/hf_new_models.jsonl.gz
+  ctime: 1790789706:413237500
+  mtime: 1790233205:23584300
+  dev: 67	ino: 606849
+  uid: 1000	gid: 1000
+  size: 137262	flags: 0
+data/raw/2026-09-24/hf_top_models.jsonl.gz
+  ctime: 1790789706:413237500
+  mtime: 1790233205:25581400
+  dev: 67	ino: 607642
+  uid: 1000	gid: 1000
+  size: 496135	flags: 0
+data/raw/2026-09-24/openrouter_models.json.gz
+  ctime: 1790789706:413237500
+  mtime: 1790233205:26581200
+  dev: 67	ino: 608417
+  uid: 1000	gid: 1000
+  size: 75821	flags: 0
+data/raw/2026-09-24/openrouter_rankings.html.gz
+  ctime: 1790789706:413237500
+  mtime: 1790233205:28582000
+  dev: 67	ino: 608588
+  uid: 1000	gid: 1000
+  size: 242061	flags: 0
+data/raw/2026-09-25/_manifest.json
+  ctime: 1790319605:52740100
+  mtime: 1790319605:52740100
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-25/hf_models.jsonl.gz
+  ctime: 1790789706:413237500
+  mtime: 1790319605:55740700
+  dev: 67	ino: 75764
+  uid: 1000	gid: 1000
+  size: 301266	flags: 0
+data/raw/2026-09-25/hf_new_models.jsonl.gz
+  ctime: 1790789706:413237500
+  mtime: 1790319605:57024300
+  dev: 67	ino: 76684
+  uid: 1000	gid: 1000
+  size: 137507	flags: 0
+data/raw/2026-09-25/hf_top_models.jsonl.gz
+  ctime: 1790789706:413237500
+  mtime: 1790319605:59028500
+  dev: 67	ino: 77211
+  uid: 1000	gid: 1000
+  size: 495530	flags: 0
+data/raw/2026-09-25/openrouter_models.json.gz
+  ctime: 1790789706:413237500
+  mtime: 1790319605:60030300
+  dev: 67	ino: 77233
+  uid: 1000	gid: 1000
+  size: 76201	flags: 0
+data/raw/2026-09-25/openrouter_rankings.html.gz
+  ctime: 1790789706:414236900
+  mtime: 1790319605:62032000
+  dev: 67	ino: 77592
+  uid: 1000	gid: 1000
+  size: 243991	flags: 0
+data/raw/2026-09-26/_manifest.json
+  ctime: 1790408182:327430100
+  mtime: 1790408182:327430100
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-26/hf_models.jsonl.gz
+  ctime: 1790789706:414236900
+  mtime: 1790408182:330791700
+  dev: 67	ino: 162116
+  uid: 1000	gid: 1000
+  size: 297222	flags: 0
+data/raw/2026-09-26/hf_new_models.jsonl.gz
+  ctime: 1790789706:414236900
+  mtime: 1790408182:359258400
+  dev: 67	ino: 162241
+  uid: 1000	gid: 1000
+  size: 144737	flags: 0
+data/raw/2026-09-26/hf_top_models.jsonl.gz
+  ctime: 1790789706:414236900
+  mtime: 1790408182:362794800
+  dev: 67	ino: 162351
+  uid: 1000	gid: 1000
+  size: 496019	flags: 0
+data/raw/2026-09-26/openrouter_models.json.gz
+  ctime: 1790789706:414236900
+  mtime: 1790408182:363794500
+  dev: 67	ino: 162583
+  uid: 1000	gid: 1000
+  size: 75971	flags: 0
+data/raw/2026-09-26/openrouter_rankings.html.gz
+  ctime: 1790789706:414236900
+  mtime: 1790408182:366306700
+  dev: 67	ino: 163018
+  uid: 1000	gid: 1000
+  size: 244444	flags: 0
+data/raw/2026-09-27/_manifest.json
+  ctime: 1790509468:12757300
+  mtime: 1790509468:12757300
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-27/hf_models.jsonl.gz
+  ctime: 1790789706:414236900
+  mtime: 1790509468:15979700
+  dev: 67	ino: 86122
+  uid: 1000	gid: 1000
+  size: 296798	flags: 0
+data/raw/2026-09-27/hf_new_models.jsonl.gz
+  ctime: 1790789706:414236900
+  mtime: 1790509468:18354900
+  dev: 67	ino: 86234
+  uid: 1000	gid: 1000
+  size: 149369	flags: 0
+data/raw/2026-09-27/hf_top_models.jsonl.gz
+  ctime: 1790789706:415236700
+  mtime: 1790509468:22409800
+  dev: 67	ino: 86471
+  uid: 1000	gid: 1000
+  size: 496703	flags: 0
+data/raw/2026-09-27/openrouter_models.json.gz
+  ctime: 1790789706:415236700
+  mtime: 1790509468:23491200
+  dev: 67	ino: 105346
+  uid: 1000	gid: 1000
+  size: 76047	flags: 0
+data/raw/2026-09-27/openrouter_rankings.html.gz
+  ctime: 1790789706:415236700
+  mtime: 1790509468:25080100
+  dev: 67	ino: 105458
+  uid: 1000	gid: 1000
+  size: 244753	flags: 0
+data/raw/2026-09-28/_manifest.json
+  ctime: 1790579158:769004200
+  mtime: 1790579158:769004200
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-28/hf_models.jsonl.gz
+  ctime: 1790789706:415236700
+  mtime: 1790579158:773003900
+  dev: 67	ino: 1129753
+  uid: 1000	gid: 1000
+  size: 296808	flags: 0
+data/raw/2026-09-28/hf_new_models.jsonl.gz
+  ctime: 1790789706:415236700
+  mtime: 1790579158:774519000
+  dev: 67	ino: 1129754
+  uid: 1000	gid: 1000
+  size: 152302	flags: 0
+data/raw/2026-09-28/hf_top_models.jsonl.gz
+  ctime: 1790789706:415236700
+  mtime: 1790579158:777529600
+  dev: 67	ino: 1129755
+  uid: 1000	gid: 1000
+  size: 496702	flags: 0
+data/raw/2026-09-28/openrouter_models.json.gz
+  ctime: 1790789706:415236700
+  mtime: 1790579158:779530100
+  dev: 67	ino: 1129756
+  uid: 1000	gid: 1000
+  size: 76061	flags: 0
+data/raw/2026-09-28/openrouter_rankings.html.gz
+  ctime: 1790789706:415236700
+  mtime: 1790579158:799586000
+  dev: 67	ino: 1129757
+  uid: 1000	gid: 1000
+  size: 245038	flags: 0
+data/raw/2026-09-29/_manifest.json
+  ctime: 1790665739:430553800
+  mtime: 1790665739:430553800
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-29/hf_models.jsonl.gz
+  ctime: 1790789706:416235900
+  mtime: 1790665739:433554200
+  dev: 67	ino: 338406
+  uid: 1000	gid: 1000
+  size: 300230	flags: 0
+data/raw/2026-09-29/hf_new_models.jsonl.gz
+  ctime: 1790789706:416235900
+  mtime: 1790665739:434556900
+  dev: 67	ino: 338885
+  uid: 1000	gid: 1000
+  size: 153413	flags: 0
+data/raw/2026-09-29/hf_top_models.jsonl.gz
+  ctime: 1790789706:416235900
+  mtime: 1790665739:436552200
+  dev: 67	ino: 338979
+  uid: 1000	gid: 1000
+  size: 499619	flags: 0
+data/raw/2026-09-29/openrouter_models.json.gz
+  ctime: 1790789706:417234800
+  mtime: 1790665739:437553000
+  dev: 67	ino: 340289
+  uid: 1000	gid: 1000
+  size: 76419	flags: 0
+data/raw/2026-09-29/openrouter_rankings.html.gz
+  ctime: 1790789706:417234800
+  mtime: 1790665739:438553500
+  dev: 67	ino: 340318
+  uid: 1000	gid: 1000
+  size: 245139	flags: 0
+data/raw/2026-09-30/_manifest.json
+  ctime: 1790754235:536810800
+  mtime: 1790754235:536810800
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3211	flags: 0
+data/raw/2026-09-30/hf_models.jsonl.gz
+  ctime: 1790789706:417234800
+  mtime: 1790754235:540321900
+  dev: 67	ino: 608018
+  uid: 1000	gid: 1000
+  size: 300398	flags: 0
+data/raw/2026-09-30/hf_new_models.jsonl.gz
+  ctime: 1790789706:417234800
+  mtime: 1790754235:542338800
+  dev: 67	ino: 610856
+  uid: 1000	gid: 1000
+  size: 149679	flags: 0
+data/raw/2026-09-30/hf_top_models.jsonl.gz
+  ctime: 1790789706:417234800
+  mtime: 1790754235:546304900
+  dev: 67	ino: 610858
+  uid: 1000	gid: 1000
+  size: 501628	flags: 0
+data/raw/2026-09-30/openrouter_models.json.gz
+  ctime: 1790789706:417234800
+  mtime: 1790754235:547336200
+  dev: 67	ino: 610861
+  uid: 1000	gid: 1000
+  size: 76726	flags: 0
+data/raw/2026-09-30/openrouter_rankings.html.gz
+  ctime: 1790789706:417234800
+  mtime: 1790754235:548853200
+  dev: 67	ino: 610888
+  uid: 1000	gid: 1000
+  size: 246154	flags: 0
+data/raw/2026-10-01/_manifest.json
+  ctime: 1790816169:761560100
+  mtime: 1790816169:761560100
+  dev: 67	ino: 489837
+  uid: 1000	gid: 1000
+  size: 4353	flags: 0
+data/raw/2026-10-01/arxiv.jsonl.gz
+  ctime: 1790816151:498706000
+  mtime: 1790816151:495186700
+  dev: 67	ino: 35737
+  uid: 1000	gid: 1000
+  size: 2671417	flags: 0
+data/raw/2026-10-01/hf_inference_providers.jsonl.gz
+  ctime: 1790816169:758551400
+  mtime: 1790816169:756545900
+  dev: 67	ino: 489834
+  uid: 1000	gid: 1000
+  size: 308889	flags: 0
+data/raw/2026-10-01/hf_models.jsonl.gz
+  ctime: 1790816134:755112500
+  mtime: 1790816134:753111100
+  dev: 67	ino: 129097
+  uid: 1000	gid: 1000
+  size: 300610	flags: 0
+data/raw/2026-10-01/hf_new_models.jsonl.gz
+  ctime: 1790816137:281485900
+  mtime: 1790816137:279481100
+  dev: 67	ino: 489832
+  uid: 1000	gid: 1000
+  size: 137180	flags: 0
+data/raw/2026-10-01/hf_top_models.jsonl.gz
+  ctime: 1790816136:675271100
+  mtime: 1790816136:672269700
+  dev: 67	ino: 489831
+  uid: 1000	gid: 1000
+  size: 499636	flags: 0
+data/raw/2026-10-01/openrouter_models.json.gz
+  ctime: 1790816094:570563300
+  mtime: 1790816094:542648400
+  dev: 67	ino: 489781
+  uid: 1000	gid: 1000
+  size: 76885	flags: 0
+data/raw/2026-10-01/openrouter_rankings.html.gz
+  ctime: 1790816094:941330700
+  mtime: 1790816094:937918700
+  dev: 67	ino: 489829
+  uid: 1000	gid: 1000
+  size: 246760	flags: 0
+data/raw/2026-10-02/_manifest.json
+  ctime: 1790925041:322425000
+  mtime: 1790925041:322425000
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4488	flags: 0
+data/raw/2026-10-02/arxiv.jsonl.gz
+  ctime: 1790925041:341431000
+  mtime: 1790925041:341431000
+  dev: 67	ino: 490594
+  uid: 1000	gid: 1000
+  size: 3041322	flags: 0
+data/raw/2026-10-02/hf_inference_providers.jsonl.gz
+  ctime: 1790925041:343434500
+  mtime: 1790925041:343434500
+  dev: 67	ino: 490597
+  uid: 1000	gid: 1000
+  size: 309427	flags: 0
+data/raw/2026-10-02/hf_models.jsonl.gz
+  ctime: 1790925041:346429500
+  mtime: 1790925041:346429500
+  dev: 67	ino: 490600
+  uid: 1000	gid: 1000
+  size: 305068	flags: 0
+data/raw/2026-10-02/hf_new_models.jsonl.gz
+  ctime: 1790925041:347429500
+  mtime: 1790925041:347429500
+  dev: 67	ino: 490603
+  uid: 1000	gid: 1000
+  size: 125781	flags: 0
+data/raw/2026-10-02/hf_top_models.jsonl.gz
+  ctime: 1790925041:349934700
+  mtime: 1790925041:349934700
+  dev: 67	ino: 490606
+  uid: 1000	gid: 1000
+  size: 499542	flags: 0
+data/raw/2026-10-02/openrouter_models.json.gz
+  ctime: 1790925041:350941400
+  mtime: 1790925041:350941400
+  dev: 67	ino: 490608
+  uid: 1000	gid: 1000
+  size: 77230	flags: 0
+data/raw/2026-10-02/openrouter_rankings.html.gz
+  ctime: 1790925041:352940400
+  mtime: 1790925041:352940400
+  dev: 67	ino: 490611
+  uid: 1000	gid: 1000
+  size: 246877	flags: 0
+data/raw/2026-10-03/_manifest.json
+  ctime: 1791010804:865238500
+  mtime: 1791010804:865238500
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4485	flags: 0
+data/raw/2026-10-03/arxiv.jsonl.gz
+  ctime: 1791010804:875028700
+  mtime: 1791010804:875028700
+  dev: 67	ino: 1353596
+  uid: 1000	gid: 1000
+  size: 1525117	flags: 0
+data/raw/2026-10-03/hf_inference_providers.jsonl.gz
+  ctime: 1791010804:879623900
+  mtime: 1791010804:879623900
+  dev: 67	ino: 1353597
+  uid: 1000	gid: 1000
+  size: 309319	flags: 0
+data/raw/2026-10-03/hf_models.jsonl.gz
+  ctime: 1791010804:882634900
+  mtime: 1791010804:882634900
+  dev: 67	ino: 1353598
+  uid: 1000	gid: 1000
+  size: 305255	flags: 0
+data/raw/2026-10-03/hf_new_models.jsonl.gz
+  ctime: 1791010804:882634900
+  mtime: 1791010804:882634900
+  dev: 67	ino: 1353599
+  uid: 1000	gid: 1000
+  size: 133093	flags: 0
+data/raw/2026-10-03/hf_top_models.jsonl.gz
+  ctime: 1791010804:884631400
+  mtime: 1791010804:884631400
+  dev: 67	ino: 1353600
+  uid: 1000	gid: 1000
+  size: 500563	flags: 0
+data/raw/2026-10-03/openrouter_models.json.gz
+  ctime: 1791010804:886145500
+  mtime: 1791010804:886145500
+  dev: 67	ino: 1353601
+  uid: 1000	gid: 1000
+  size: 77523	flags: 0
+data/raw/2026-10-03/openrouter_rankings.html.gz
+  ctime: 1791010804:888694100
+  mtime: 1791010804:888694100
+  dev: 67	ino: 1353602
+  uid: 1000	gid: 1000
+  size: 247201	flags: 0
+data/raw/2026-10-04/_manifest.json
+  ctime: 1791105794:281164600
+  mtime: 1791105794:281164600
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4471	flags: 0
+data/raw/2026-10-04/arxiv.jsonl.gz
+  ctime: 1791105794:282173700
+  mtime: 1791105794:282173700
+  dev: 67	ino: 644006
+  uid: 1000	gid: 1000
+  size: 2580	flags: 0
+data/raw/2026-10-04/hf_inference_providers.jsonl.gz
+  ctime: 1791105794:284673600
+  mtime: 1791105794:284673600
+  dev: 67	ino: 644027
+  uid: 1000	gid: 1000
+  size: 309014	flags: 0
+data/raw/2026-10-04/hf_models.jsonl.gz
+  ctime: 1791105794:287185200
+  mtime: 1791105794:287185200
+  dev: 67	ino: 644029
+  uid: 1000	gid: 1000
+  size: 305003	flags: 0
+data/raw/2026-10-04/hf_new_models.jsonl.gz
+  ctime: 1791105794:287842400
+  mtime: 1791105794:287842400
+  dev: 67	ino: 644044
+  uid: 1000	gid: 1000
+  size: 135515	flags: 0
+data/raw/2026-10-04/hf_top_models.jsonl.gz
+  ctime: 1791105794:290209900
+  mtime: 1791105794:290209900
+  dev: 67	ino: 644045
+  uid: 1000	gid: 1000
+  size: 501485	flags: 0
+data/raw/2026-10-04/openrouter_models.json.gz
+  ctime: 1791105794:291216200
+  mtime: 1791105794:291216200
+  dev: 67	ino: 644082
+  uid: 1000	gid: 1000
+  size: 77329	flags: 0
+data/raw/2026-10-04/openrouter_rankings.html.gz
+  ctime: 1791105794:293396200
+  mtime: 1791105794:293396200
+  dev: 67	ino: 644084
+  uid: 1000	gid: 1000
+  size: 246827	flags: 0
+data/raw/2026-10-05/_manifest.json
+  ctime: 1791183605:593567600
+  mtime: 1791183605:593567600
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4485	flags: 0
+data/raw/2026-10-05/arxiv.jsonl.gz
+  ctime: 1791183605:599565200
+  mtime: 1791183605:599565200
+  dev: 67	ino: 714635
+  uid: 1000	gid: 1000
+  size: 1129807	flags: 0
+data/raw/2026-10-05/hf_inference_providers.jsonl.gz
+  ctime: 1791183605:601568100
+  mtime: 1791183605:601568100
+  dev: 67	ino: 714639
+  uid: 1000	gid: 1000
+  size: 309069	flags: 0
+data/raw/2026-10-05/hf_models.jsonl.gz
+  ctime: 1791183605:604568300
+  mtime: 1791183605:604568300
+  dev: 67	ino: 714642
+  uid: 1000	gid: 1000
+  size: 304965	flags: 0
+data/raw/2026-10-05/hf_new_models.jsonl.gz
+  ctime: 1791183605:605574200
+  mtime: 1791183605:605574200
+  dev: 67	ino: 714664
+  uid: 1000	gid: 1000
+  size: 140587	flags: 0
+data/raw/2026-10-05/hf_top_models.jsonl.gz
+  ctime: 1791183605:607565800
+  mtime: 1791183605:607565800
+  dev: 67	ino: 735961
+  uid: 1000	gid: 1000
+  size: 501706	flags: 0
+data/raw/2026-10-05/openrouter_models.json.gz
+  ctime: 1791183605:607565800
+  mtime: 1791183605:607565800
+  dev: 67	ino: 736122
+  uid: 1000	gid: 1000
+  size: 77347	flags: 0
+data/raw/2026-10-05/openrouter_rankings.html.gz
+  ctime: 1791183605:609567600
+  mtime: 1791183605:609567600
+  dev: 67	ino: 736127
+  uid: 1000	gid: 1000
+  size: 246711	flags: 0
+data/raw/2026-10-06/_manifest.json
+  ctime: 1791270006:788667200
+  mtime: 1791270006:788667200
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4485	flags: 0
+data/raw/2026-10-06/arxiv.jsonl.gz
+  ctime: 1791270006:796072700
+  mtime: 1791270006:796072700
+  dev: 67	ino: 1741557
+  uid: 1000	gid: 1000
+  size: 1235905	flags: 0
+data/raw/2026-10-06/hf_inference_providers.jsonl.gz
+  ctime: 1791270006:798071200
+  mtime: 1791270006:798071200
+  dev: 67	ino: 1741558
+  uid: 1000	gid: 1000
+  size: 309083	flags: 0
+data/raw/2026-10-06/hf_models.jsonl.gz
+  ctime: 1791270006:802155400
+  mtime: 1791270006:802155400
+  dev: 67	ino: 1741559
+  uid: 1000	gid: 1000
+  size: 305021	flags: 0
+data/raw/2026-10-06/hf_new_models.jsonl.gz
+  ctime: 1791270006:804153600
+  mtime: 1791270006:804153600
+  dev: 67	ino: 1741560
+  uid: 1000	gid: 1000
+  size: 146564	flags: 0
+data/raw/2026-10-06/hf_top_models.jsonl.gz
+  ctime: 1791270006:806664900
+  mtime: 1791270006:806664900
+  dev: 67	ino: 1741561
+  uid: 1000	gid: 1000
+  size: 502966	flags: 0
+data/raw/2026-10-06/openrouter_models.json.gz
+  ctime: 1791270006:807664400
+  mtime: 1791270006:807664400
+  dev: 67	ino: 1741562
+  uid: 1000	gid: 1000
+  size: 77909	flags: 0
+data/raw/2026-10-06/openrouter_rankings.html.gz
+  ctime: 1791270006:810664200
+  mtime: 1791270006:810664200
+  dev: 67	ino: 1741563
+  uid: 1000	gid: 1000
+  size: 258612	flags: 0
+data/raw/2026-10-07/_manifest.json
+  ctime: 1791443471:686309800
+  mtime: 1791443471:686309800
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4488	flags: 0
+data/raw/2026-10-07/arxiv.jsonl.gz
+  ctime: 1791443471:706333500
+  mtime: 1791443471:706333500
+  dev: 67	ino: 160349
+  uid: 1000	gid: 1000
+  size: 3734054	flags: 0
+data/raw/2026-10-07/hf_inference_providers.jsonl.gz
+  ctime: 1791443471:708819100
+  mtime: 1791443471:708819100
+  dev: 67	ino: 160408
+  uid: 1000	gid: 1000
+  size: 308797	flags: 0
+data/raw/2026-10-07/hf_models.jsonl.gz
+  ctime: 1791443471:711566700
+  mtime: 1791443471:711566700
+  dev: 67	ino: 161818
+  uid: 1000	gid: 1000
+  size: 305223	flags: 0
+data/raw/2026-10-07/hf_new_models.jsonl.gz
+  ctime: 1791443471:712583600
+  mtime: 1791443471:712583600
+  dev: 67	ino: 164220
+  uid: 1000	gid: 1000
+  size: 146735	flags: 0
+data/raw/2026-10-07/hf_top_models.jsonl.gz
+  ctime: 1791443471:713606800
+  mtime: 1791443471:713606800
+  dev: 67	ino: 165374
+  uid: 1000	gid: 1000
+  size: 503486	flags: 0
+data/raw/2026-10-07/openrouter_models.json.gz
+  ctime: 1791443471:714615800
+  mtime: 1791443471:714615800
+  dev: 67	ino: 168561
+  uid: 1000	gid: 1000
+  size: 78240	flags: 0
+data/raw/2026-10-07/openrouter_rankings.html.gz
+  ctime: 1791443471:716611000
+  mtime: 1791443471:716611000
+  dev: 67	ino: 186424
+  uid: 1000	gid: 1000
+  size: 264662	flags: 0
+data/raw/2026-10-08/_manifest.json
+  ctime: 1791443471:717627700
+  mtime: 1791443471:717627700
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4487	flags: 0
+data/raw/2026-10-08/arxiv.jsonl.gz
+  ctime: 1791443471:730628100
+  mtime: 1791443471:730628100
+  dev: 67	ino: 202812
+  uid: 1000	gid: 1000
+  size: 2522976	flags: 0
+data/raw/2026-10-08/hf_inference_providers.jsonl.gz
+  ctime: 1791443471:732627600
+  mtime: 1791443471:732627600
+  dev: 67	ino: 202816
+  uid: 1000	gid: 1000
+  size: 309596	flags: 0
+data/raw/2026-10-08/hf_models.jsonl.gz
+  ctime: 1791443471:734739900
+  mtime: 1791443471:734739900
+  dev: 67	ino: 204217
+  uid: 1000	gid: 1000
+  size: 305366	flags: 0
+data/raw/2026-10-08/hf_new_models.jsonl.gz
+  ctime: 1791443471:735811000
+  mtime: 1791443471:735811000
+  dev: 67	ino: 206497
+  uid: 1000	gid: 1000
+  size: 144538	flags: 0
+data/raw/2026-10-08/hf_top_models.jsonl.gz
+  ctime: 1791443471:736820300
+  mtime: 1791443471:736820300
+  dev: 67	ino: 208414
+  uid: 1000	gid: 1000
+  size: 503585	flags: 0
+data/raw/2026-10-08/openrouter_models.json.gz
+  ctime: 1791443471:738244300
+  mtime: 1791443471:738244300
+  dev: 67	ino: 210529
+  uid: 1000	gid: 1000
+  size: 78390	flags: 0
+data/raw/2026-10-08/openrouter_rankings.html.gz
+  ctime: 1791443471:739745400
+  mtime: 1791443471:739745400
+  dev: 67	ino: 220025
+  uid: 1000	gid: 1000
+  size: 265516	flags: 0
+data/raw/2026-10-09/_manifest.json
+  ctime: 1791529206:151678700
+  mtime: 1791529206:151678700
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4487	flags: 0
+data/raw/2026-10-09/arxiv.jsonl.gz
+  ctime: 1791529206:167907500
+  mtime: 1791529206:167907500
+  dev: 67	ino: 1756529
+  uid: 1000	gid: 1000
+  size: 2440481	flags: 0
+data/raw/2026-10-09/hf_inference_providers.jsonl.gz
+  ctime: 1791529206:169916900
+  mtime: 1791529206:169916900
+  dev: 67	ino: 1756530
+  uid: 1000	gid: 1000
+  size: 309099	flags: 0
+data/raw/2026-10-09/hf_models.jsonl.gz
+  ctime: 1791529206:171925600
+  mtime: 1791529206:171925600
+  dev: 67	ino: 1756531
+  uid: 1000	gid: 1000
+  size: 304011	flags: 0
+data/raw/2026-10-09/hf_new_models.jsonl.gz
+  ctime: 1791529206:173065500
+  mtime: 1791529206:173065500
+  dev: 67	ino: 1756532
+  uid: 1000	gid: 1000
+  size: 147923	flags: 0
+data/raw/2026-10-09/hf_top_models.jsonl.gz
+  ctime: 1791529206:175171500
+  mtime: 1791529206:175171500
+  dev: 67	ino: 1756533
+  uid: 1000	gid: 1000
+  size: 503319	flags: 0
+data/raw/2026-10-09/openrouter_models.json.gz
+  ctime: 1791529206:176170100
+  mtime: 1791529206:176170100
+  dev: 67	ino: 1756534
+  uid: 1000	gid: 1000
+  size: 78490	flags: 0
+data/raw/2026-10-09/openrouter_rankings.html.gz
+  ctime: 1791529206:178651700
+  mtime: 1791529206:178651700
+  dev: 67	ino: 1756535
+  uid: 1000	gid: 1000
+  size: 265947	flags: 0
+data/raw/2026-10-10/_manifest.json
+  ctime: 1791615605:321861100
+  mtime: 1791615605:321861100
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4485	flags: 0
+data/raw/2026-10-10/arxiv.jsonl.gz
+  ctime: 1791615605:330003000
+  mtime: 1791615605:330003000
+  dev: 67	ino: 1245913
+  uid: 1000	gid: 1000
+  size: 1254712	flags: 0
+data/raw/2026-10-10/hf_inference_providers.jsonl.gz
+  ctime: 1791615605:332537300
+  mtime: 1791615605:332537300
+  dev: 67	ino: 1245914
+  uid: 1000	gid: 1000
+  size: 309063	flags: 0
+data/raw/2026-10-10/hf_models.jsonl.gz
+  ctime: 1791615605:335560600
+  mtime: 1791615605:335560600
+  dev: 67	ino: 1245915
+  uid: 1000	gid: 1000
+  size: 299134	flags: 0
+data/raw/2026-10-10/hf_new_models.jsonl.gz
+  ctime: 1791615605:336560100
+  mtime: 1791615605:336560100
+  dev: 67	ino: 1245916
+  uid: 1000	gid: 1000
+  size: 145260	flags: 0
+data/raw/2026-10-10/hf_top_models.jsonl.gz
+  ctime: 1791615605:338564700
+  mtime: 1791615605:338564700
+  dev: 67	ino: 1245917
+  uid: 1000	gid: 1000
+  size: 502840	flags: 0
+data/raw/2026-10-10/openrouter_models.json.gz
+  ctime: 1791615605:339562400
+  mtime: 1791615605:339562400
+  dev: 67	ino: 1245918
+  uid: 1000	gid: 1000
+  size: 76649	flags: 0
+data/raw/2026-10-10/openrouter_rankings.html.gz
+  ctime: 1791615605:341634000
+  mtime: 1791615605:341634000
+  dev: 67	ino: 1245919
+  uid: 1000	gid: 1000
+  size: 267265	flags: 0
+data/validation/archive_portability/05aa67d965fd724a22b0d1449d42892f7c5a5de9841f45dfc1f93fec047022cc.json
+  ctime: 1791020732:578586500
+  mtime: 1791020732:578586500
+  dev: 67	ino: 1013766
+  uid: 1000	gid: 1000
+  size: 2027404	flags: 0
+data/validation/archive_portability/39ff1b7851a484b13ec828fd8577d3509bf4ebb548b53a2ec5dfd096c4cc01a8.json
+  ctime: 1791020731:822940000
+  mtime: 1791020731:822940000
+  dev: 67	ino: 1013765
+  uid: 1000	gid: 1000
+  size: 2027404	flags: 0
+data/validation/baseline_activations/activation-000001.json
+  ctime: 1791009866:347031500
+  mtime: 1791009866:347031500
+  dev: 67	ino: 1351683
+  uid: 1000	gid: 1000
+  size: 1858187	flags: 0
+data/validation/deployment_layer_validation_2026-10-03.json
+  ctime: 1791010233:651776200
+  mtime: 1791010233:651776200
+  dev: 67	ino: 51531
+  uid: 1000	gid: 1000
+  size: 6417	flags: 0
+data/validation/deployment_layer_validation_2026-10-03_final.json
+  ctime: 1791010507:173296500
+  mtime: 1791010507:173296500
+  dev: 67	ino: 1108038
+  uid: 1000	gid: 1000
+  size: 7607	flags: 0
+data/validation/historical_archive_baseline.json
+  ctime: 1791007371:795798500
+  mtime: 1791007371:795798500
+  dev: 67	ino: 683910
+  uid: 1000	gid: 1000
+  size: 50906	flags: 0
+data/validation/historical_archive_baseline_2026-10-03_active_001.json
+  ctime: 1791009864:234144500
+  mtime: 1791009864:234144500
+  dev: 67	ino: 55318
+  uid: 1000	gid: 1000
+  size: 50906	flags: 0
+data/validation/identity_history_validation_2026-10-03.json
+  ctime: 1791021580:290721700
+  mtime: 1791021580:290721700
+  dev: 67	ino: 53562
+  uid: 1000	gid: 1000
+  size: 7551	flags: 0
+data/validation/lifecycle_events_validation_2026-10-03.json
+  ctime: 1791023080:634262300
+  mtime: 1791023080:634262300
+  dev: 67	ino: 1113575
+  uid: 1000	gid: 1000
+  size: 6401	flags: 0
+data/validation/phase2_validation.json
+  ctime: 1791007913:12921500
+  mtime: 1791007913:12921500
+  dev: 67	ino: 101331
+  uid: 1000	gid: 1000
+  size: 4075	flags: 0
+docs/adr/0001-snapshots-live-in-git-until-s3.md
+  ctime: 1787958373:613873100
+  mtime: 1787961984:518960400
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3714	flags: 0
+docs/gold_metric_contract.md
+  ctime: 1790809705:595606800
+  mtime: 1790809705:595606800
+  dev: 67	ino: 110484
+  uid: 1000	gid: 1000
+  size: 4553	flags: 0
+docs/provider_sources_spike.md
+  ctime: 1790816347:839688700
+  mtime: 1790816347:839688700
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 6038	flags: 0
+docs/temporal_archive_phase2.md
+  ctime: 1791021447:920276500
+  mtime: 1791021447:920276500
+  dev: 67	ino: 666757
+  uid: 1000	gid: 1000
+  size: 8599	flags: 0
+docs/temporal_archive_portability.md
+  ctime: 1791021447:126191200
+  mtime: 1791021447:126191200
+  dev: 67	ino: 260864
+  uid: 1000	gid: 1000
+  size: 3127	flags: 0
+docs/temporal_deployment_layer.md
+  ctime: 1791010507:934697000
+  mtime: 1791010507:934697000
+  dev: 67	ino: 1352623
+  uid: 1000	gid: 1000
+  size: 12575	flags: 0
+docs/temporal_identity_history.md
+  ctime: 1791021446:354477400
+  mtime: 1791021446:354477400
+  dev: 67	ino: 125286
+  uid: 1000	gid: 1000
+  size: 8685	flags: 0
+docs/temporal_lifecycle_events.md
+  ctime: 1791023070:258647000
+  mtime: 1791023070:258647000
+  dev: 67	ino: 1096208
+  uid: 1000	gid: 1000
+  size: 9643	flags: 0
+docs/temporal_model_migration_plan.md
+  ctime: 1791022804:161900900
+  mtime: 1791022804:161900900
+  dev: 67	ino: 8973
+  uid: 1000	gid: 1000
+  size: 29004	flags: 0
+gold/__init__.py
+  ctime: 1790809275:348405300
+  mtime: 1790809275:348405300
+  dev: 67	ino: 486454
+  uid: 1000	gid: 1000
+  size: 70	flags: 0
+gold/__main__.py
+  ctime: 1790809276:158788100
+  mtime: 1790809276:158788100
+  dev: 67	ino: 486459
+  uid: 1000	gid: 1000
+  size: 50	flags: 0
+gold/build.py
+  ctime: 1790809533:929936600
+  mtime: 1790809533:929936600
+  dev: 67	ino: 486463
+  uid: 1000	gid: 1000
+  size: 17405	flags: 0
+known_gaps.txt
+  ctime: 1790789706:418236900
+  mtime: 1787958848:459011400
+  dev: 67	ino: 738812
+  uid: 1000	gid: 1000
+  size: 512	flags: 0
+pyproject.toml
+  ctime: 1790789706:418236900
+  mtime: 1787957643:768386600
+  dev: 67	ino: 77567
+  uid: 1000	gid: 1000
+  size: 349	flags: 0
+requirements-dev.txt
+  ctime: 1790789706:418236900
+  mtime: 1787957643:740781700
+  dev: 67	ino: 77559
+  uid: 1000	gid: 1000
+  size: 46	flags: 0
+requirements.txt
+  ctime: 1790806322:161883400
+  mtime: 1790806322:161883400
+  dev: 67	ino: 77502
+  uid: 1000	gid: 1000
+  size: 33	flags: 0
+scripts/pull_snapshots.ps1
+  ctime: 1790789706:419238000
+  mtime: 1787958805:503393900
+  dev: 67	ino: 38341
+  uid: 1000	gid: 1000
+  size: 3002	flags: 0
+silver/__init__.py
+  ctime: 1790806440:445308400
+  mtime: 1790806440:445308400
+  dev: 67	ino: 942780
+  uid: 1000	gid: 1000
+  size: 68	flags: 0
+silver/__main__.py
+  ctime: 1790806441:829081600
+  mtime: 1790806441:829081600
+  dev: 67	ino: 942782
+  uid: 1000	gid: 1000
+  size: 50	flags: 0
+silver/build.py
+  ctime: 1791233593:216115300
+  mtime: 1791233593:216115300
+  dev: 67	ino: 325978
+  uid: 1000	gid: 1000
+  size: 32773	flags: 0
+temporal/__init__.py
+  ctime: 1791007521:633270500
+  mtime: 1791007521:633270500
+  dev: 67	ino: 684283
+  uid: 1000	gid: 1000
+  size: 71	flags: 0
+temporal/__main__.py
+  ctime: 1791022265:229739400
+  mtime: 1791022265:229739400
+  dev: 67	ino: 684325
+  uid: 1000	gid: 1000
+  size: 8404	flags: 0
+temporal/archive.py
+  ctime: 1791020522:730707900
+  mtime: 1791020522:730707900
+  dev: 67	ino: 684307
+  uid: 1000	gid: 1000
+  size: 6380	flags: 0
+temporal/baselines.py
+  ctime: 1791020523:470712200
+  mtime: 1791020523:470712200
+  dev: 67	ino: 37525
+  uid: 1000	gid: 1000
+  size: 6624	flags: 0
+temporal/deployments.py
+  ctime: 1791009862:714979100
+  mtime: 1791009862:714979100
+  dev: 67	ino: 41072
+  uid: 1000	gid: 1000
+  size: 14179	flags: 0
+temporal/events.py
+  ctime: 1791022802:642144600
+  mtime: 1791022802:642144600
+  dev: 67	ino: 10710
+  uid: 1000	gid: 1000
+  size: 15327	flags: 0
+temporal/identity.py
+  ctime: 1791021136:192512300
+  mtime: 1791021136:192512300
+  dev: 67	ino: 79013
+  uid: 1000	gid: 1000
+  size: 13278	flags: 0
+temporal/index.py
+  ctime: 1791009419:529461100
+  mtime: 1791009419:529461100
+  dev: 67	ino: 684367
+  uid: 1000	gid: 1000
+  size: 6527	flags: 0
+temporal/portability.py
+  ctime: 1791021178:431115800
+  mtime: 1791021178:431115800
+  dev: 67	ino: 2109
+  uid: 1000	gid: 1000
+  size: 4088	flags: 0
+tests/conftest.py
+  ctime: 1787957577:63239700
+  mtime: 1790816035:370417300
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 4333	flags: 0
+tests/test_arxiv.py
+  ctime: 1790807063:648689100
+  mtime: 1790807063:648689100
+  dev: 67	ino: 8034
+  uid: 1000	gid: 1000
+  size: 3838	flags: 0
+tests/test_arxiv_ids.py
+  ctime: 1790809671:914654900
+  mtime: 1790809671:914654900
+  dev: 67	ino: 486466
+  uid: 1000	gid: 1000
+  size: 2319	flags: 0
+tests/test_audit.py
+  ctime: 1787958755:491495000
+  mtime: 1787999087:81142600
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 6988	flags: 0
+tests/test_bronze_is_verbatim.py
+  ctime: 1790789706:420237300
+  mtime: 1787957606:81398800
+  dev: 67	ino: 603673
+  uid: 1000	gid: 1000
+  size: 1517	flags: 0
+tests/test_gold.py
+  ctime: 1790809603:508839800
+  mtime: 1790809603:508839800
+  dev: 67	ino: 486528
+  uid: 1000	gid: 1000
+  size: 3111	flags: 0
+tests/test_hf_inference_providers.py
+  ctime: 1790816270:236541500
+  mtime: 1790816270:236541500
+  dev: 67	ino: 489843
+  uid: 1000	gid: 1000
+  size: 2142	flags: 0
+tests/test_hf_new_models.py
+  ctime: 1790789706:420237300
+  mtime: 1787999101:26788900
+  dev: 67	ino: 553307
+  uid: 1000	gid: 1000
+  size: 2406	flags: 0
+tests/test_hf_top_models.py
+  ctime: 1787961868:792734200
+  mtime: 1787999074:820273300
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 3430	flags: 0
+tests/test_idempotence.py
+  ctime: 1787957595:688388400
+  mtime: 1787961851:378874200
+  dev: 0	ino: 0
+  uid: 0	gid: 0
+  size: 1653	flags: 0
+tests/test_resume.py
+  ctime: 1790806321:497960600
+  mtime: 1790806321:497960600
+  dev: 67	ino: 603773
+  uid: 1000	gid: 1000
+  size: 2231	flags: 0
+tests/test_silver.py
+  ctime: 1790806765:721168000
+  mtime: 1790806765:721168000
+  dev: 67	ino: 106987
+  uid: 1000	gid: 1000
+  size: 1769	flags: 0
+tests/test_temporal_archive.py
+  ctime: 1791009996:167321400
+  mtime: 1791009996:167321400
+  dev: 67	ino: 683928
+  uid: 1000	gid: 1000
+  size: 10304	flags: 0
+tests/test_temporal_baselines.py
+  ctime: 1791010404:750206000
+  mtime: 1791010404:750206000
+  dev: 67	ino: 39641
+  uid: 1000	gid: 1000
+  size: 5329	flags: 0
+tests/test_temporal_deployments.py
+  ctime: 1791009996:928667000
+  mtime: 1791009996:928667000
+  dev: 67	ino: 26742
+  uid: 1000	gid: 1000
+  size: 10458	flags: 0
+tests/test_temporal_events.py
+  ctime: 1791022891:713409300
+  mtime: 1791022891:713409300
+  dev: 67	ino: 51074
+  uid: 1000	gid: 1000
+  size: 15356	flags: 0
+tests/test_temporal_identity.py
+  ctime: 1791021177:699153100
+  mtime: 1791021177:699153100
+  dev: 67	ino: 1041916
+  uid: 1000	gid: 1000
+  size: 12823	flags: 0
+tests/test_temporal_portability.py
+  ctime: 1791020524:971082500
+  mtime: 1791020524:971082500
+  dev: 67	ino: 672536
+  uid: 1000	gid: 1000
+  size: 2610	flags: 0

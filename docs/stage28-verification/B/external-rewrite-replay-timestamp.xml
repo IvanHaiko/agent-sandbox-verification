@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="56" time="2.892" timestamp="2026-10-09T11:46:27.835622+02:00" hostname="Ivan"><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[None]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload1]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload2]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload3]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload4]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload5]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload6]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload7]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload8]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload9]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload10]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload11]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload12]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload13]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload14]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload15]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload16]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload17]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload18]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload19]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload20]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload21]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload22]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_transform[payload23]" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[None]" time="0.002" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload1]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload2]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload3]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload4]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload5]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload6]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload7]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload8]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload9]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload10]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload11]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload12]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload13]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload14]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload15]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload16]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload17]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload18]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload19]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload20]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload21]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload22]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_malformed_before_connection[payload23]" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_late_invalid_before_connection" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_empty_without_database" time="0.001" /><testcase classname="tests.test_stage28_evaluation" name="test_null_nested_and_input_preservation" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_existing_link_precedence" time="0.000" /><testcase classname="tests.test_stage28_evaluation" name="test_postgres_replay_and_changed_values" time="0.201"><failure message="assert {'igdb_game_s...rrors&quot;:0}',)]} == {'igdb_game_s...rrors&quot;:0}',)]}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'igdb_games': [('{&quot;igdb_game_id&quot;:71001,&quot;name&quot;:&quot;Example&quot;,&quot;slug&quot;:null,&quot;summary&quot;:null,&quot;url&quot;:null,&quot;first_release_date&quot;:nu...rectory/category/example&quot;}]},&quot;updated_at&quot;:&quot;2026-10-09T11:46:28.736185&quot;,&quot;game_type_label&quot;:null,&quot;status_label&quot;:null}',)]} != {'igdb_games': [('{&quot;igdb_game_id&quot;:71001,&quot;name&quot;:&quot;Example&quot;,&quot;slug&quot;:null,&quot;summary&quot;:null,&quot;url&quot;:null,&quot;first_release_date&quot;:nu...h.tv/directory/category/example&quot;}]},&quot;updated_at&quot;:&quot;2000-01-01T00:00:00&quot;,&quot;game_type_label&quot;:null,&quot;status_label&quot;:null}',)]}&#10;  Use -v to get more diff">test_database = 'stage28_B_external_rewrite_replay_timestamp'
+tmp_path = PosixPath('/home/ivan/codex-role-auh6zrem/scratch/tmp/test_postgres_replay_and_chang0')
+
+    def test_postgres_replay_and_changed_values(test_database, tmp_path):
+        payload = {"data": [game()]}
+        path = write(tmp_path, payload)
+        assert load.load_data("igdb", path) == 1
+        before = rows()
+        # A stored sentinel makes a timestamp rewrite visible without sleeps or clock assumptions.
+        with get_db_connection() as conn:
+            conn.execute("UPDATE igdb_games SET updated_at='2000-01-01'")
+            conn.execute("UPDATE twitch_categories SET updated_at='2000-01-01'")
+        before = rows()
+        reordered = {"data": [dict(reversed(list(payload["data"][0].items())))]}
+        assert load.load_igdb_file(write(tmp_path, reordered)) == 1
+&gt;       assert rows() == before
+E       assert {'igdb_game_s...rrors":0}',)]} == {'igdb_game_s...rrors":0}',)]}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'igdb_games': [('{"igdb_game_id":71001,"name":"Example","slug":null,"summary":null,"url":null,"first_release_date":nu...rectory/category/example"}]},"updated_at":"2026-10-09T11:46:28.736185","game_type_label":null,"status_label":null}',)]} != {'igdb_games': [('{"igdb_game_id":71001,"name":"Example","slug":null,"summary":null,"url":null,"first_release_date":nu...h.tv/directory/category/example"}]},"updated_at":"2000-01-01T00:00:00","game_type_label":null,"status_label":null}',)]}
+E         Use -v to get more diff
+
+tests/test_stage28_evaluation.py:107: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_postgres_failure_rolls_back_and_saved_retry[upsert_igdb_game_store_link]" time="0.069"><failure message="assert {'igdb_game_s...rrors&quot;:0}',)]} == {'igdb_game_s...rrors&quot;:0}',)]}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'igdb_games': [('{&quot;igdb_game_id&quot;:71001,&quot;name&quot;:&quot;Updated&quot;,&quot;slug&quot;:null,&quot;summary&quot;:null,&quot;url&quot;:null,&quot;first_release_date&quot;:nu...rectory/category/example&quot;}]},&quot;updated_at&quot;:&quot;2026-10-09T11:46:30.499249&quot;,&quot;game_type_label&quot;:null,&quot;status_label&quot;:null}',)]} != {'igdb_games': [('{&quot;igdb_game_id&quot;:71001,&quot;name&quot;:&quot;Updated&quot;,&quot;slug&quot;:null,&quot;summary&quot;:null,&quot;url&quot;:null,&quot;first_release_date&quot;:nu...rectory/category/example&quot;}]},&quot;updated_at&quot;:&quot;2026-10-09T11:46:30.487127&quot;,&quot;game_type_label&quot;:null,&quot;status_label&quot;:null}',)]}&#10;  Use -v to get more diff">test_database = 'stage28_B_external_rewrite_replay_timestamp'
+tmp_path = PosixPath('/home/ivan/codex-role-auh6zrem/scratch/tmp/test_postgres_failure_rolls_ba0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x79afd98ee660&gt;
+seam = 'upsert_igdb_game_store_link'
+
+    @pytest.mark.parametrize("seam", ["upsert_igdb_game_store_link", "upsert_twitch_category"])
+    def test_postgres_failure_rolls_back_and_saved_retry(test_database, tmp_path, monkeypatch, seam):
+        original = {"data": [game()]}
+        load.load_igdb_file(write(tmp_path, original))
+        before = rows()
+        second = game(71002, "Second")
+        second["external_games"][0]["uid"] = "81002"
+        second["websites"][0]["url"] = "https://store.steampowered.com/app/91002/Second"
+        payload = {"data": [dict(game(), name="Updated"), second]}
+        path = write(tmp_path, payload)
+        fn = getattr(load, seam)
+        def failing(conn, record):
+            if record["igdb_game_id"] == 71002:
+                raise RuntimeError("injected write failure")
+            return fn(conn, record)
+        with monkeypatch.context() as patch:
+            patch.setattr(load, seam, failing)
+            with pytest.raises(RuntimeError, match="injected write failure"):
+                load.load_igdb_file(path)
+        assert rows() == before
+        assert load.load_igdb_file(path) == 2
+        final = rows()
+        assert all(len(v) == 2 for v in final.values())
+        assert load.load_igdb_file(path) == 2
+&gt;       assert rows() == final
+E       assert {'igdb_game_s...rrors":0}',)]} == {'igdb_game_s...rrors":0}',)]}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'igdb_games': [('{"igdb_game_id":71001,"name":"Updated","slug":null,"summary":null,"url":null,"first_release_date":nu...rectory/category/example"}]},"updated_at":"2026-10-09T11:46:30.499249","game_type_label":null,"status_label":null}',)]} != {'igdb_games': [('{"igdb_game_id":71001,"name":"Updated","slug":null,"summary":null,"url":null,"first_release_date":nu...rectory/category/example"}]},"updated_at":"2026-10-09T11:46:30.487127","game_type_label":null,"status_label":null}',)]}
+E         Use -v to get more diff
+
+tests/test_stage28_evaluation.py:141: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_postgres_failure_rolls_back_and_saved_retry[upsert_twitch_category]" time="0.069"><failure message="assert {'igdb_game_s...rrors&quot;:0}',)]} == {'igdb_game_s...rrors&quot;:0}',)]}&#10;  &#10;  Omitting 2 identical items, use -vv to show&#10;  Differing items:&#10;  {'igdb_games': [('{&quot;igdb_game_id&quot;:71001,&quot;name&quot;:&quot;Updated&quot;,&quot;slug&quot;:null,&quot;summary&quot;:null,&quot;url&quot;:null,&quot;first_release_date&quot;:nu...rectory/category/example&quot;}]},&quot;updated_at&quot;:&quot;2026-10-09T11:46:30.596402&quot;,&quot;game_type_label&quot;:null,&quot;status_label&quot;:null}',)]} != {'igdb_games': [('{&quot;igdb_game_id&quot;:71001,&quot;name&quot;:&quot;Updated&quot;,&quot;slug&quot;:null,&quot;summary&quot;:null,&quot;url&quot;:null,&quot;first_release_date&quot;:nu...rectory/category/example&quot;}]},&quot;updated_at&quot;:&quot;2026-10-09T11:46:30.582695&quot;,&quot;game_type_label&quot;:null,&quot;status_label&quot;:null}',)]}&#10;  Use -v to get more diff">test_database = 'stage28_B_external_rewrite_replay_timestamp'
+tmp_path = PosixPath('/home/ivan/codex-role-auh6zrem/scratch/tmp/test_postgres_failure_rolls_ba1')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x79afd98ef4d0&gt;
+seam = 'upsert_twitch_category'
+
+    @pytest.mark.parametrize("seam", ["upsert_igdb_game_store_link", "upsert_twitch_category"])
+    def test_postgres_failure_rolls_back_and_saved_retry(test_database, tmp_path, monkeypatch, seam):
+        original = {"data": [game()]}
+        load.load_igdb_file(write(tmp_path, original))
+        before = rows()
+        second = game(71002, "Second")
+        second["external_games"][0]["uid"] = "81002"
+        second["websites"][0]["url"] = "https://store.steampowered.com/app/91002/Second"
+        payload = {"data": [dict(game(), name="Updated"), second]}
+        path = write(tmp_path, payload)
+        fn = getattr(load, seam)
+        def failing(conn, record):
+            if record["igdb_game_id"] == 71002:
+                raise RuntimeError("injected write failure")
+            return fn(conn, record)
+        with monkeypatch.context() as patch:
+            patch.setattr(load, seam, failing)
+            with pytest.raises(RuntimeError, match="injected write failure"):
+                load.load_igdb_file(path)
+        assert rows() == before
+        assert load.load_igdb_file(path) == 2
+        final = rows()
+        assert all(len(v) == 2 for v in final.values())
+        assert load.load_igdb_file(path) == 2
+&gt;       assert rows() == final
+E       assert {'igdb_game_s...rrors":0}',)]} == {'igdb_game_s...rrors":0}',)]}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'igdb_games': [('{"igdb_game_id":71001,"name":"Updated","slug":null,"summary":null,"url":null,"first_release_date":nu...rectory/category/example"}]},"updated_at":"2026-10-09T11:46:30.596402","game_type_label":null,"status_label":null}',)]} != {'igdb_games': [('{"igdb_game_id":71001,"name":"Updated","slug":null,"summary":null,"url":null,"first_release_date":nu...rectory/category/example"}]},"updated_at":"2026-10-09T11:46:30.582695","game_type_label":null,"status_label":null}',)]}
+E         Use -v to get more diff
+
+tests/test_stage28_evaluation.py:141: AssertionError</failure></testcase><testcase classname="tests.test_stage28_evaluation" name="test_postgres_remap_and_no_absence_delete" time="0.091" /></testsuite></testsuites>

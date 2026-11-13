@@ -1,0 +1,47 @@
+{
+  "protected_repo": "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+  "guard_workspace": "/home/ivan/codex-stage33-guard-eewxwoyk",
+  "argv": [
+    "/usr/bin/env",
+    "GIT_OPTIONAL_LOCKS=0",
+    "GIT_INDEX_FILE=/home/ivan/codex-stage33-guard-eewxwoyk/.scratch/private.index",
+    "git",
+    "-C",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+    "diff",
+    "--binary"
+  ],
+  "result": {
+    "exit_code": 0,
+    "timed_out": false,
+    "owned_process_group_ended": true,
+    "descendants_killed": false,
+    "stdout": "diff --git a/unstaged.txt b/unstaged.txt\nindex 4b48dee..dc42955 100644\n--- a/unstaged.txt\n+++ b/unstaged.txt\n@@ -1 +1 @@\n-original\n+working change\n",
+    "stderr": ""
+  },
+  "write_denial": {
+    "exit_code": 0,
+    "timed_out": false,
+    "owned_process_group_ended": true,
+    "descendants_killed": false,
+    "stdout": "{\"errno\": 30}\n",
+    "stderr": ""
+  },
+  "original_index_before": "e1b4fec6188c9f62b5407ddf2d69b7f8ce1a70f48ee3386a083a3e3fc844f5fd",
+  "original_index_after": "e1b4fec6188c9f62b5407ddf2d69b7f8ce1a70f48ee3386a083a3e3fc844f5fd",
+  "private_index_after": "cfae71f7fcb4a6f3791b3e4e156aff280809dc62eaeccafae35dbbc1a2cfd3cb",
+  "diff_output_matches_unprotected": true,
+  "staged_entries_unchanged": true,
+  "working_files_unchanged": true,
+  "auto_refresh_disabled_command": [
+    "git",
+    "-C",
+    "/mnt/c/Users/4ivan/codex-multi-agent/.test-tmp/stage33/stat-reproduction",
+    "-c",
+    "diff.autoRefreshIndex=false",
+    "diff",
+    "--binary"
+  ],
+  "auto_refresh_disabled_exit_code": 0,
+  "auto_refresh_disabled_preserved_bytes": true
+}

@@ -1,0 +1,6 @@
+{
+  "design_sha256": "e905fbcfab4b5ca927636c8b7761b54ded651600217597b554305716adf0a159",
+  "frozen_at": 1791297402.3707328,
+  "candidate_visible_during_design": false,
+  "test_intent_frozen_before_candidate_exposure": true
+}

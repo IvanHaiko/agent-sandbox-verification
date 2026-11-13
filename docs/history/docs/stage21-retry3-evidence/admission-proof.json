@@ -1,0 +1,68 @@
+{
+  "codex_dynamic_roundtrip": true,
+  "docker_mutation": true,
+  "host_execution_trap": true,
+  "token_visibility": true,
+  "builtin_response_denied": true,
+  "timeout_cleanup": true,
+  "cancel_cleanup": true,
+  "overflow_cleanup": true,
+  "secret_output_rejected_before_export": true,
+  "real_model_calls": 0,
+  "host_executable_names": [
+    "codex.exe",
+    "docker",
+    "git",
+    "python.exe"
+  ],
+  "isolation_capabilities": {
+    "fresh_context": true,
+    "filesystem_read": true,
+    "filesystem_write": true,
+    "session_storage": true,
+    "private_home": true,
+    "private_cache": true,
+    "instruction_control": true,
+    "network_denied": true,
+    "isolated_checkout": true,
+    "readonly_mounts": true,
+    "environment": true,
+    "hidden_tests": true,
+    "controller_storage": true
+  },
+  "codex_sha256": "3b8f6e33caa75f232558a3cf76ff9b87bb5ef6dbcf4996372f24e55c78b1b916",
+  "binding": {
+    "backend": "docker_isolated",
+    "image": "sha256:6c07868196d1880d956f4b5ddf50244bc281faab39704a8940b1c1f3159a145e",
+    "engine": {
+      "ID": "08073c92-26e8-4704-96c9-2a6fe97c07a3",
+      "ServerVersion": "29.7.2",
+      "KernelVersion": "6.6.87.2-microsoft-standard-WSL2",
+      "Driver": "overlayfs",
+      "SecurityOptions": [
+        "name=seccomp,profile=builtin",
+        "name=cgroupns"
+      ]
+    },
+    "settings": "8e090833f93e8d931f7283795c7375aff8a1170e183c17d23f59a1cfe908b4cc",
+    "implementation": "3d42116a91cf90ce208a6facc041ae82c6dabee2b37e555b920cf2a48536701a",
+    "project": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage21-retry3-admission\\test_current_stage21a_transpor0\\project",
+    "stage18c": {
+      "topology": "trusted-codex-gated-responses-dynamic-docker-tools",
+      "protocol": 1,
+      "implementation": "9e443378e1232bee3060deb953401dd751913670755faa36ad8783c6b748e5f7",
+      "model_route": "https://api.openai.com/v1/responses",
+      "role_network": "none",
+      "ipc": "trusted-loopback-model-relay; trusted-stdio-codex; docker-attach-tools",
+      "codex": {
+        "path": "C:\\Users\\4ivan\\AppData\\Local\\OpenAI\\Codex\\bin\\5ea220ae823df3d7\\codex.exe",
+        "sha256": "3b8f6e33caa75f232558a3cf76ff9b87bb5ef6dbcf4996372f24e55c78b1b916"
+      }
+    }
+  },
+  "execution_count": 9,
+  "workspace_mutations": [
+    "src/example.py"
+  ],
+  "provider": "synthetic-localhost-only"
+}

@@ -1,0 +1,11 @@
+{
+  "authorized_by": "Human user message: давай еще раз",
+  "authorized_at": 1791300344.6583543,
+  "maximum_workflow_attempts_this_authorization": 1,
+  "previous_evidence": "docs/stage21-evidence",
+  "same_task_contract": true,
+  "same_routing": true,
+  "same_transport_and_timeout_configuration": true,
+  "fresh_role_contexts": true,
+  "automatic_infrastructure_retries": 0
+}

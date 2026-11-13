@@ -1,0 +1,437 @@
+{
+  "environment_setup": {
+    "started_at": 1791531241.4529748,
+    "ended_at": 1791531411.048633,
+    "elapsed_seconds": 169.59565901756287
+  },
+  "configurations": {
+    "A": {
+      "evaluation": {
+        "patch_reproduced": true,
+        "external": {
+          "exit_code": 0,
+          "tests": 24,
+          "passed": 24,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 3.8959927558898926
+        },
+        "regression": {
+          "exit_code": 0,
+          "tests": 227,
+          "passed": 227,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 7.255904912948608
+        },
+        "independent": {
+          "exit_code": 0,
+          "tests": 34,
+          "passed": 34,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 4.313756704330444
+        },
+        "mutations": {
+          "naive": {
+            "exit_code": 1,
+            "tests": 34,
+            "passed": 8,
+            "failed": 26,
+            "errors": 0,
+            "skipped": 0,
+            "elapsed_seconds": 5.98894190788269
+          },
+          "drop-final": {
+            "exit_code": 1,
+            "tests": 34,
+            "passed": 10,
+            "failed": 24,
+            "errors": 0,
+            "skipped": 0,
+            "elapsed_seconds": 6.038446426391602
+          }
+        },
+        "external_mutations": {
+          "naive": {
+            "exit_code": 1,
+            "tests": 24,
+            "passed": 6,
+            "failed": 18,
+            "errors": 0,
+            "skipped": 0,
+            "elapsed_seconds": 4.839848041534424
+          },
+          "drop-final": {
+            "exit_code": 1,
+            "tests": 24,
+            "passed": 9,
+            "failed": 15,
+            "errors": 0,
+            "skipped": 0,
+            "elapsed_seconds": 5.457060813903809
+          }
+        }
+      },
+      "regression_groups": {
+        "existing_tests": {
+          "tests": 168,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "candidate_tests": {
+          "tests": 35,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "external": {
+          "tests": 24,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "requirements_covered": [
+        "boundaries",
+        "comments",
+        "compatibility",
+        "dollars",
+        "errors",
+        "persistence",
+        "quotes"
+      ],
+      "independent_cases_in_manifest": 12,
+      "candidate_lines": {
+        "src/migrations.py": 74,
+        "src/sql_statements.py": 106,
+        "tests/test_migration_sql.py": 202
+      },
+      "candidate_functions": {
+        "src/migrations.py": [
+          "run_migrations"
+        ],
+        "src/sql_statements.py": [
+          "_identifier_character",
+          "_quoted_end",
+          "split_sql_statements"
+        ],
+        "tests/test_migration_sql.py": [
+          "test_quoted_and_commented_semicolons_are_preserved",
+          "test_empty_fragments_comments_and_token_boundaries",
+          "test_unterminated_regions_reject_the_entire_input",
+          "test_runner_validates_before_executing_current_file",
+          "test_runner_records_empty_files_and_executes_each_statement",
+          "isolated_migration_schema",
+          "test_migration_sql_executes_and_reruns_db",
+          "test_failed_migration_rolls_back_only_its_file_db"
+        ]
+      },
+      "patch_sha256": "0f0dcd066298271b868e6b0a4862ffff303a416410405f3d20258ff922ed4f41",
+      "development_checks": [
+        {
+          "file": "implementer-check-1.json",
+          "check": "unit",
+          "exit_code": 0,
+          "final_candidate_hashes_match": false
+        },
+        {
+          "file": "implementer-check-2.json",
+          "check": "integration",
+          "exit_code": 0,
+          "final_candidate_hashes_match": false
+        },
+        {
+          "file": "implementer-check-3.json",
+          "check": "lint",
+          "exit_code": 0,
+          "final_candidate_hashes_match": false
+        },
+        {
+          "file": "implementer-check-4.json",
+          "check": "unit",
+          "exit_code": 0,
+          "final_candidate_hashes_match": true
+        },
+        {
+          "file": "implementer-check-5.json",
+          "check": "integration",
+          "exit_code": 0,
+          "final_candidate_hashes_match": true
+        },
+        {
+          "file": "implementer-check-6.json",
+          "check": "lint",
+          "exit_code": 0,
+          "final_candidate_hashes_match": true
+        }
+      ],
+      "recorded_execution_seconds": 787.9055559635162,
+      "roles_parent_reported": {
+        "independent_tester": {
+          "id": "/root/independent_tester",
+          "started_at": 1791531461.076,
+          "completed_at": 1791531723.17,
+          "status": "completed",
+          "model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "fork_turns": "none",
+          "duration_seconds": 262.0940001010895,
+          "top_level_tests": 12,
+          "design_correspondence_verified": true
+        },
+        "implementer": {
+          "id": "/root/implementer",
+          "started_at": 1791531735.174,
+          "completed_at": 1791532050.912,
+          "status": "completed",
+          "model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "fork_turns": "none",
+          "duration_seconds": 315.73799991607666,
+          "reported_checks": {
+            "unit": {
+              "passed": 40,
+              "skipped": 0
+            },
+            "integration": {
+              "passed": 203,
+              "skipped": 0
+            },
+            "lint": "passed"
+          }
+        },
+        "reviewer": {
+          "id": "/root/reviewer",
+          "started_at": 1791532133.297,
+          "completed_at": 1791532216.841,
+          "status": "completed",
+          "recommendation": "accept",
+          "model": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "fork_turns": "none",
+          "duration_seconds": 83.5440001487732
+        }
+      },
+      "native_json_usage": [
+        {
+          "input_tokens": 756813,
+          "cached_input_tokens": 716544,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 6009,
+          "reasoning_output_tokens": 540
+        }
+      ],
+      "role_sessions": 4,
+      "usage_scope": "CLI turn.completed usage; separate child usage not exposed; aggregation scope unverified",
+      "role_seconds_sum_parent_reported": 661.3760001659393,
+      "acceptance_setup_attempts": [
+        {
+          "file": "orchestrator-acceptance-1.json",
+          "check": "independent",
+          "exit_code": 1
+        },
+        {
+          "file": "orchestrator-acceptance-2.json",
+          "check": "independent",
+          "exit_code": 0
+        }
+      ],
+      "shared_evaluation_and_controls_seconds": 37.78995156288147
+    },
+    "B": {
+      "evaluation": {
+        "patch_reproduced": true,
+        "external": {
+          "exit_code": 0,
+          "tests": 24,
+          "passed": 24,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 3.689915895462036
+        },
+        "regression": {
+          "exit_code": 0,
+          "tests": 217,
+          "passed": 217,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 6.961513996124268
+        },
+        "independent": {
+          "exit_code": 0,
+          "tests": 40,
+          "passed": 40,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "elapsed_seconds": 4.339783668518066
+        },
+        "mutations": {
+          "naive": {
+            "exit_code": 1,
+            "tests": 40,
+            "passed": 4,
+            "failed": 36,
+            "errors": 0,
+            "skipped": 0,
+            "elapsed_seconds": 7.138220548629761
+          },
+          "drop-final": {
+            "exit_code": 1,
+            "tests": 40,
+            "passed": 12,
+            "failed": 28,
+            "errors": 0,
+            "skipped": 0,
+            "elapsed_seconds": 6.814446687698364
+          }
+        },
+        "external_mutations": {
+          "naive": {
+            "exit_code": 1,
+            "tests": 24,
+            "passed": 6,
+            "failed": 18,
+            "errors": 0,
+            "skipped": 0,
+            "elapsed_seconds": 5.425029993057251
+          },
+          "drop-final": {
+            "exit_code": 1,
+            "tests": 24,
+            "passed": 9,
+            "failed": 15,
+            "errors": 0,
+            "skipped": 0,
+            "elapsed_seconds": 5.262485504150391
+          }
+        }
+      },
+      "regression_groups": {
+        "existing_tests": {
+          "tests": 168,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "candidate_tests": {
+          "tests": 25,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "external": {
+          "tests": 24,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        }
+      },
+      "requirements_covered": [
+        "boundaries",
+        "comments",
+        "compatibility",
+        "dollars",
+        "errors",
+        "persistence",
+        "quotes"
+      ],
+      "independent_cases_in_manifest": 17,
+      "candidate_lines": {
+        "src/migrations.py": 74,
+        "src/sql_statements.py": 96,
+        "tests/test_migration_sql.py": 193
+      },
+      "candidate_functions": {
+        "src/migrations.py": [
+          "run_migrations"
+        ],
+        "src/sql_statements.py": [
+          "_identifier_char",
+          "_quoted_end",
+          "split_sql_statements"
+        ],
+        "tests/test_migration_sql.py": [
+          "test_split_preserves_sql_regions",
+          "test_split_rejects_unterminated_regions",
+          "test_runner_validates_whole_file_before_execution",
+          "test_runner_executes_fragments_and_records_empty_files",
+          "migration_schema_db",
+          "test_runner_quoted_bodies_and_rerun_db",
+          "test_runner_failure_rolls_back_only_current_file_db"
+        ]
+      },
+      "patch_sha256": "4c63fc710b7cdee829c46b4a6a7e7cbea50212518237ed0509e97b3254add711",
+      "development_checks": [
+        {
+          "file": "implementer-check-1.json",
+          "check": "unit",
+          "exit_code": 0,
+          "final_candidate_hashes_match": true
+        },
+        {
+          "file": "implementer-check-2.json",
+          "check": "integration",
+          "exit_code": 0,
+          "final_candidate_hashes_match": true
+        },
+        {
+          "file": "implementer-check-3.json",
+          "check": "lint",
+          "exit_code": 0,
+          "final_candidate_hashes_match": true
+        }
+      ],
+      "recorded_original_execution_seconds": 537.3157017230988,
+      "original_workflow_completed": false,
+      "roles": [
+        {
+          "role": "implementer",
+          "resolved_model": "gpt-6.1-sol",
+          "reasoning": "medium",
+          "elapsed_seconds": 215.15,
+          "native_reported_tokens_used": 41902,
+          "execution_status": "completed",
+          "sandbox_preflight_passed": true,
+          "mutation_scope_valid": true,
+          "failure_closeout": null
+        },
+        {
+          "role": "independent_tester",
+          "resolved_model": "gpt-6.1-sol",
+          "reasoning": "medium",
+          "elapsed_seconds": 310.747,
+          "native_reported_tokens_used": 56767,
+          "execution_status": "completed",
+          "sandbox_preflight_passed": true,
+          "mutation_scope_valid": true,
+          "failure_closeout": null
+        },
+        {
+          "role": "reviewer",
+          "resolved_model": "gpt-6.1-sol",
+          "reasoning": "medium",
+          "elapsed_seconds": 105.424,
+          "native_reported_tokens_used": 43034,
+          "execution_status": "completed",
+          "sandbox_preflight_passed": true,
+          "mutation_scope_valid": true,
+          "failure_closeout": true
+        }
+      ],
+      "role_sessions": 3,
+      "native_reported_counter_sum": 141703,
+      "review_closeout_seconds": 105.424,
+      "usage_scope": "Sum of native tokens used text counters for three role invocations; no input/output/cache breakdown; includes closeout reviewer",
+      "shared_evaluation_and_controls_seconds": 39.63139629364014
+    }
+  },
+  "counter_warning": "A JSON usage and B native text counters have different scopes and fields; no cost or total-token ranking."
+}

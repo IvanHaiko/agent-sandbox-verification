@@ -1,0 +1,57 @@
+{
+  "project": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-workflow\\qualification-1\\project",
+  "binding": {
+    "backend": "docker_isolated",
+    "image": "sha256:6c07868196d1880d956f4b5ddf50244bc281faab39704a8940b1c1f3159a145e",
+    "engine": {
+      "ID": "08073c92-26e8-4704-96c9-2a6fe97c07a3",
+      "ServerVersion": "29.7.2",
+      "KernelVersion": "6.6.87.2-microsoft-standard-WSL2",
+      "Driver": "overlayfs",
+      "SecurityOptions": [
+        "name=seccomp,profile=builtin",
+        "name=cgroupns"
+      ]
+    },
+    "settings": "8e090833f93e8d931f7283795c7375aff8a1170e183c17d23f59a1cfe908b4cc",
+    "implementation": "3d42116a91cf90ce208a6facc041ae82c6dabee2b37e555b920cf2a48536701a",
+    "project": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-workflow\\qualification-1\\project",
+    "stage18c": {
+      "topology": "trusted-codex-gated-responses-dynamic-docker-tools",
+      "protocol": 1,
+      "implementation": "9e443378e1232bee3060deb953401dd751913670755faa36ad8783c6b748e5f7",
+      "model_route": "https://api.openai.com/v1/responses",
+      "role_network": "none",
+      "ipc": "trusted-loopback-model-relay; trusted-stdio-codex; docker-attach-tools",
+      "codex": {
+        "path": "C:\\Users\\4ivan\\AppData\\Local\\OpenAI\\Codex\\bin\\5ea220ae823df3d7\\codex.exe",
+        "sha256": "3b8f6e33caa75f232558a3cf76ff9b87bb5ef6dbcf4996372f24e55c78b1b916"
+      }
+    }
+  },
+  "manifest": {
+    "task_id": "STAGE20-LABELS",
+    "base_commit": "8a7032b1b7a6fb13433c1e475dfff47a167a3f28",
+    "worktrees": {
+      "orchestrator": {
+        "path": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-workflow\\qualification-1\\runtime\\codex-agent-system-3b3b06b9e8dabbff\\worktrees\\STAGE20-LABELS\\orchestrator",
+        "kind": "isolated_checkout"
+      },
+      "implementer": {
+        "path": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-workflow\\qualification-1\\runtime\\codex-agent-system-3b3b06b9e8dabbff\\worktrees\\STAGE20-LABELS\\implementer",
+        "kind": "isolated_checkout"
+      },
+      "tester": {
+        "path": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-workflow\\qualification-1\\runtime\\codex-agent-system-3b3b06b9e8dabbff\\worktrees\\STAGE20-LABELS\\tester",
+        "kind": "isolated_checkout"
+      },
+      "reviewer": {
+        "path": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-workflow\\qualification-1\\runtime\\codex-agent-system-3b3b06b9e8dabbff\\worktrees\\STAGE20-LABELS\\reviewer",
+        "kind": "isolated_checkout"
+      }
+    }
+  },
+  "inherited_admission": true,
+  "fresh_adversarial_probes": false,
+  "source": "C:\\Users\\4ivan\\codex-multi-agent\\.test-tmp\\stage22-sol56-admission\\test_current_stage22_transport0\\runtime\\codex-agent-system-3c6cc020562b3369\\docker-runner\\attestations\\08d6232219eafc47d95f0b6bf580be9e7832de9d35984f4306e56d27f9ebd1f3"
+}

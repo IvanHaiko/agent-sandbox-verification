@@ -1,0 +1,30 @@
+# Connection profile for the dbt project, kept next to dbt_project.yml
+# rather than in ~/.dbt so that it is version-controlled with the models
+# it connects for.
+#
+# It lives here because the alternative already cost us: the project's
+# Postgres moved to port 5433 (5432 belongs to an unrelated local
+# database), the copy in ~/.dbt still said 5432, and the resulting
+# "dbt does not work" was recorded in ROADMAP.md as dbt being missing.
+# It was installed the whole time.
+#
+# No secrets: every value is read from the environment, the same .env the
+# Python side uses. Only the port carries a default, because it is the one
+# value that differs from a stock Postgres install and the one that broke.
+#
+# dbt looks for profiles.yml in the current directory first, then
+# ~/.dbt. Run dbt from inside steam_analytics/, or pass
+# --profiles-dir steam_analytics, rather than relying on the search order.
+
+steam_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('POSTGRES_HOST', 'localhost') }}"
+      port: "{{ env_var('POSTGRES_PORT', '5433') | int }}"
+      user: "{{ env_var('POSTGRES_USER') }}"
+      pass: "{{ env_var('POSTGRES_PASSWORD') }}"
+      dbname: "{{ env_var('POSTGRES_DB', 'steam_analytics') }}"
+      schema: public
+      threads: 1
