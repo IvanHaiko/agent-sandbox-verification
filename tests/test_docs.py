@@ -180,3 +180,18 @@ def test_broken_relative_links_fail_check(tmp_path):
     assert docs.main(['check'], tmp_path) == 0
     (tmp_path / 'README.md').write_text('[gone](docs/missing.md)\n', encoding='utf-8')
     assert docs.main(['check'], tmp_path) == 2
+
+
+def test_stale_architecture_image_fails_check(tmp_path):
+    import hashlib
+    guide(tmp_path)
+    source = tmp_path / 'docs' / 'architecture.mmd'
+    source.write_text('flowchart TB\n  A --> B\n', encoding='utf-8')
+    image = tmp_path / 'docs' / 'architecture.svg'
+    assert docs.main(['build'], tmp_path) == 0
+    assert docs.main(['check'], tmp_path) == 2  # image missing
+    digest = hashlib.sha256(source.read_bytes().replace(b'\r\n', b'\n')).hexdigest()  # CRLF-safe
+    image.write_text(f'<!-- source-sha256: {digest} -->\n<svg/>\n', encoding='utf-8')
+    assert docs.main(['check'], tmp_path) == 0
+    source.write_text('flowchart TB\n  A --> C\n', encoding='utf-8')
+    assert docs.main(['check'], tmp_path) == 2  # source edited, image not re-rendered

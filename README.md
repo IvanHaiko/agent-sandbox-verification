@@ -36,30 +36,9 @@ passed 182 tests with Ruff and PostgreSQL. Full account:
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  P["Parent coordinator<br/>trusted: launches, judges"]
-  subgraph W["Restricted worker, one per role"]
-    direction TB
-    E["env -i + allow-list<br/>no parent credentials"]
-    C["Codex CLI<br/>named permission profile"]
-    F["Claude Code<br/>1. outer bubblewrap fence<br/>2. Claude's Bash sandbox<br/>3. --restricted + dontAsk rules"]
-    E --> C
-    E --> F
-  end
-  WS[("Role workspace<br/>inputs read-only<br/>tests/ writable")]
-  X[("Everything else<br/>sibling roles, $HOME, /mnt/c,<br/>network, /proc, shared /tmp")]
-  A["accept()<br/>scope, frozen hashes,<br/>exit codes, review"]
-  O["Probe oracles<br/>inotify on canaries, tokens,<br/>byte hashes, negative control"]
-  P --> E
-  C -->|read inputs, write tests/| WS
-  F -->|read inputs, write tests/| WS
-  C -. denied .-> X
-  F -. denied .-> X
-  O -. watches .-> X
-  WS --> A
-  P -->|runs after the worker| A
-```
+![Architecture: a trusted parent launches each role as a restricted worker; Codex and Claude Code workers read their inputs and write only tests/, everything else is denied, and probe oracles watch the canaries](docs/architecture.svg)
+
+Source: [`docs/architecture.mmd`](docs/architecture.mmd), rendered by `scripts/render_diagram.py`; `docs.py check` fails if the image is stale.
 
 - **Codex**: the CLI's own permission profile. Runtime reads are minimal, the
   workspace is read-only, `tests/` is writable, and `/tmp` and the network are denied.

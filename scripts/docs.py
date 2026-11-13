@@ -5,6 +5,7 @@ or scanning of historical evidence is needed. Run from any working directory.
 """
 import argparse
 import fnmatch
+import hashlib
 import json
 from pathlib import Path, PurePosixPath, PureWindowsPath
 import re
@@ -170,6 +171,24 @@ def readme_with_results(root):
     return text, f'{head}{RESULTS_START}\n{render_results(root)}\n{RESULTS_END}{tail}'
 
 
+DIAGRAM_SOURCE = PurePosixPath('docs/architecture.mmd')
+DIAGRAM = PurePosixPath('docs/architecture.svg')
+
+
+def stale_diagram(root):
+    """The rendered SVG must carry the hash of its current Mermaid source."""
+    source = root / DIAGRAM_SOURCE
+    if not source.exists():
+        return None
+    image = root / DIAGRAM
+    text = source.read_bytes().decode('utf-8').replace('\r\n', '\n')
+    digest = hashlib.sha256(text.encode('utf-8')).hexdigest()
+    if not image.exists() or f'source-sha256: {digest}' not in image.read_text(encoding='utf-8')[:400]:
+        return (f'{DIAGRAM} is stale or missing for {DIAGRAM_SOURCE}; '
+                'run python scripts/render_diagram.py')
+    return None
+
+
 LINK = re.compile(r'\[[^\]]*\]\(([^)\s]+)\)')
 
 
@@ -228,6 +247,9 @@ def main(argv=None, root=ROOT):
             if readme is not None and readme[0] != readme[1]:
                 raise ValueError('README results table differs from the recorded summary; '
                                  'run python scripts/docs.py build')
+            diagram = stale_diagram(root)
+            if diagram:
+                raise ValueError(diagram)
             broken = broken_links(root, records)
             if broken:
                 raise ValueError('Broken relative links: ' + '; '.join(broken))

@@ -1,0 +1,21 @@
+flowchart TB
+  P["Parent coordinator<br/>trusted: launches workers, runs accept()"]
+  E["env -i + allow-list<br/>no parent credentials"]
+  subgraph W["Restricted worker, one per role"]
+    direction LR
+    C["Codex CLI<br/>named permission profile"]
+    F["Claude Code<br/>1. outer bubblewrap fence<br/>2. Claude's Bash sandbox<br/>3. --restricted + dontAsk rules"]
+  end
+  WS[("Role workspace<br/>inputs read-only<br/>tests/ writable")]
+  X[("Everything else<br/>sibling roles, $HOME, /mnt/c,<br/>network, /proc, shared /tmp")]
+  A["accept()<br/>scope, frozen hashes, exit codes, review"]
+  O["Probe oracles<br/>inotify on canaries, tokens,<br/>byte hashes, negative control"]
+  P --> E
+  E --> C
+  E --> F
+  C -->|read inputs, write tests/| WS
+  F -->|read inputs, write tests/| WS
+  C -. denied .-> X
+  F -. denied .-> X
+  O -. watches .-> X
+  WS --> A
