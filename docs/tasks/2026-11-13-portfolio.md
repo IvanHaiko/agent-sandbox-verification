@@ -48,10 +48,15 @@ Checks:
   - module size is now about 450 lines;
   - the `/mnt/c` gap is described as found in code review, not reproduced live;
   - the demo output is marked as condensed;
-- the Mermaid diagram was rendered with mermaid 10.9.1 in a browser (8 nodes,
-  10 edges), and one edge was flipped so the coordinator lays out on the left;
+- the architecture diagram is a static SVG rendered from `docs/architecture.mmd`
+  with Mermaid 10.9.1 (`scripts/render_diagram.py`), and `docs.py check` verifies
+  its source hash. GitHub's inline Mermaid viewer had shown the first, wide version
+  in a clipped 180 px frame; the published README was checked again after the change;
 - `pytest`: 55 passed, 4 skipped;
 - `docs.py check`: OK.
 
 Not done: a recorded GIF demo (no recording tool available), and renaming the
 repository (the folder name and package name stay; the GitHub name is the user's choice).
+
+Published on 13 November 2026 at https://github.com/IvanHaiko/agent-sandbox-verification
+(public; commits authored with the GitHub noreply address).
