@@ -52,7 +52,7 @@ Checks:
   with Mermaid 10.9.1 (`scripts/render_diagram.py`), and `docs.py check` verifies
   its source hash. GitHub's inline Mermaid viewer had shown the first, wide version
   in a clipped 180 px frame; the published README was checked again after the change;
-- `pytest`: 55 passed, 4 skipped;
+- `pytest`: 56 passed, 4 skipped (after the diagram check was added);
 - `docs.py check`: OK.
 
 Not done: a recorded GIF demo (no recording tool available), and renaming the
